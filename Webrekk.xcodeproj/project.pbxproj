@@ -27,6 +27,18 @@
 		A334862B23BF3F2800D0EB5F /* WebtrekkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A334862A23BF3F2800D0EB5F /* WebtrekkTests.m */; };
 		A334862D23BF3F2800D0EB5F /* libWebrekk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A334861823BF3E2300D0EB5F /* libWebrekk.a */; };
 		A334863423BF3FAD00D0EB5F /* Webrekk.h in Headers */ = {isa = PBXBuildFile; fileRef = A334861B23BF3E2300D0EB5F /* Webrekk.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A334867323BF569400D0EB5F /* WebtrekkNetworkMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = A334866F23BF569400D0EB5F /* WebtrekkNetworkMetadata.m */; };
+		A334867423BF569400D0EB5F /* WebtrekkNetworkMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = A334866F23BF569400D0EB5F /* WebtrekkNetworkMetadata.m */; };
+		A334867523BF569400D0EB5F /* WebtrekkNetworkMetadata.h in Headers */ = {isa = PBXBuildFile; fileRef = A334867023BF569400D0EB5F /* WebtrekkNetworkMetadata.h */; };
+		A334867623BF569400D0EB5F /* WebtrekkRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = A334867123BF569400D0EB5F /* WebtrekkRequest.h */; };
+		A334867723BF569400D0EB5F /* WebtrekkRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = A334867223BF569400D0EB5F /* WebtrekkRequest.m */; };
+		A334867823BF569400D0EB5F /* WebtrekkRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = A334867223BF569400D0EB5F /* WebtrekkRequest.m */; };
+		A334867D23BF56A100D0EB5F /* WebtrekkNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A334867923BF56A100D0EB5F /* WebtrekkNetworkManager.m */; };
+		A334867E23BF56A100D0EB5F /* WebtrekkNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A334867923BF56A100D0EB5F /* WebtrekkNetworkManager.m */; };
+		A334867F23BF56A100D0EB5F /* WebtrekkNetworkManager.h in Headers */ = {isa = PBXBuildFile; fileRef = A334867A23BF56A100D0EB5F /* WebtrekkNetworkManager.h */; };
+		A334868023BF56A100D0EB5F /* WebtrekkRequestBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = A334867B23BF56A100D0EB5F /* WebtrekkRequestBuilder.h */; };
+		A334868123BF56A100D0EB5F /* WebtrekkRequestBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = A334867C23BF56A100D0EB5F /* WebtrekkRequestBuilder.m */; };
+		A334868223BF56A100D0EB5F /* WebtrekkRequestBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = A334867C23BF56A100D0EB5F /* WebtrekkRequestBuilder.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +82,14 @@
 		A334863D23BF409D00D0EB5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A334864723BF409D00D0EB5F /* WebtrekkTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebtrekkTests.m; sourceTree = "<group>"; };
 		A334864923BF409D00D0EB5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A334866F23BF569400D0EB5F /* WebtrekkNetworkMetadata.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebtrekkNetworkMetadata.m; sourceTree = "<group>"; };
+		A334867023BF569400D0EB5F /* WebtrekkNetworkMetadata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebtrekkNetworkMetadata.h; sourceTree = "<group>"; };
+		A334867123BF569400D0EB5F /* WebtrekkRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebtrekkRequest.h; sourceTree = "<group>"; };
+		A334867223BF569400D0EB5F /* WebtrekkRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebtrekkRequest.m; sourceTree = "<group>"; };
+		A334867923BF56A100D0EB5F /* WebtrekkNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebtrekkNetworkManager.m; sourceTree = "<group>"; };
+		A334867A23BF56A100D0EB5F /* WebtrekkNetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebtrekkNetworkManager.h; sourceTree = "<group>"; };
+		A334867B23BF56A100D0EB5F /* WebtrekkRequestBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebtrekkRequestBuilder.h; sourceTree = "<group>"; };
+		A334867C23BF56A100D0EB5F /* WebtrekkRequestBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebtrekkRequestBuilder.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +134,8 @@
 		A334861A23BF3E2300D0EB5F /* Webrekk */ = {
 			isa = PBXGroup;
 			children = (
+				A334866D23BF567700D0EB5F /* Network */,
+				A334866C23BF566600D0EB5F /* Model */,
 				A334861B23BF3E2300D0EB5F /* Webrekk.h */,
 				A334861C23BF3E2300D0EB5F /* Webrekk.m */,
 			);
@@ -147,6 +169,36 @@
 			path = WebtrekkTests;
 			sourceTree = "<group>";
 		};
+		A334866C23BF566600D0EB5F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A334866E23BF568400D0EB5F /* Network */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A334866D23BF567700D0EB5F /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				A334867A23BF56A100D0EB5F /* WebtrekkNetworkManager.h */,
+				A334867923BF56A100D0EB5F /* WebtrekkNetworkManager.m */,
+				A334867B23BF56A100D0EB5F /* WebtrekkRequestBuilder.h */,
+				A334867C23BF56A100D0EB5F /* WebtrekkRequestBuilder.m */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		A334866E23BF568400D0EB5F /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				A334867023BF569400D0EB5F /* WebtrekkNetworkMetadata.h */,
+				A334866F23BF569400D0EB5F /* WebtrekkNetworkMetadata.m */,
+				A334867123BF569400D0EB5F /* WebtrekkRequest.h */,
+				A334867223BF569400D0EB5F /* WebtrekkRequest.m */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -155,6 +207,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A334863423BF3FAD00D0EB5F /* Webrekk.h in Headers */,
+				A334867623BF569400D0EB5F /* WebtrekkRequest.h in Headers */,
+				A334867F23BF56A100D0EB5F /* WebtrekkNetworkManager.h in Headers */,
+				A334867523BF569400D0EB5F /* WebtrekkNetworkMetadata.h in Headers */,
+				A334868023BF56A100D0EB5F /* WebtrekkRequestBuilder.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,7 +347,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A334867323BF569400D0EB5F /* WebtrekkNetworkMetadata.m in Sources */,
+				A334867723BF569400D0EB5F /* WebtrekkRequest.m in Sources */,
 				A334861D23BF3E2300D0EB5F /* Webrekk.m in Sources */,
+				A334867D23BF56A100D0EB5F /* WebtrekkNetworkManager.m in Sources */,
+				A334868123BF56A100D0EB5F /* WebtrekkRequestBuilder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,7 +359,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A334867423BF569400D0EB5F /* WebtrekkNetworkMetadata.m in Sources */,
+				A334867823BF569400D0EB5F /* WebtrekkRequest.m in Sources */,
 				A334862B23BF3F2800D0EB5F /* WebtrekkTests.m in Sources */,
+				A334867E23BF56A100D0EB5F /* WebtrekkNetworkManager.m in Sources */,
+				A334868223BF56A100D0EB5F /* WebtrekkRequestBuilder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
