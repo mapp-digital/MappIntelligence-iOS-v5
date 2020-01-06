@@ -8,52 +8,52 @@
 
 #import <Foundation/Foundation.h>
 
-typedef NS_ENUM(NSInteger, APXNetworkManagerOperationType) {
-    kAPXNetworkManagerOperationTypeRegister = 1,
-    kAPXNetworkManagerOperationTypeApplicationConfiguration,
-    kAPXNetworkManagerOperationTypeReportPushOpen,
-    kAPXNetworkManagerOperationTypeReportPushClicked,
-    kAPXNetworkManagerOperationTypePushDismiss,
-    kAPXNetworkManagerOperationTypeSetActions,
-    kAPXNetworkManagerOperationTypeSession,
-    kAPXNetworkManagerOperationTypeMessages,
-    kAPXNetworkManagerOperationTypeTags,
-    kAPXNetworkManagerOperationTypeGetCustomFields,
-    kAPXNetworkManagerOperationTypeFeedback,
-    kAPXNetworkManagerOperationTypeMoreApps,
-    kAPXNetworkManagerOperationTypeGetAlias,
-    kAPXNetworkManagerOperationTypeGeoServicesConfiguration, // For getting the geo_conf
-    kAPXNetworkManagerOperationTypeGeoGetRegions,
-    kAPXNetworkManagerOperationTypeGeoReportRegion,
-    kAPXNetworkManagerOperationTypeGeoCheckIfConfigurationNeedsUpdate
+typedef NS_ENUM(NSInteger, WebtrekkNetworkManagerOperationType) {
+    kWebtrekkNetworkManagerOperationTypeRegister = 1,
+    kWebtrekkNetworkManagerOperationTypeApplicationConfiguration,
+    kWebtrekkNetworkManagerOperationTypeReportPushOpen,
+    kWebtrekkNetworkManagerOperationTypeReportPushClicked,
+    kWebtrekkNetworkManagerOperationTypePushDismiss,
+    kWebtrekkNetworkManagerOperationTypeSetActions,
+    kWebtrekkNetworkManagerOperationTypeSession,
+    kWebtrekkNetworkManagerOperationTypeMessages,
+    kWebtrekkNetworkManagerOperationTypeTags,
+    kWebtrekkNetworkManagerOperationTypeGetCustomFields,
+    kWebtrekkNetworkManagerOperationTypeFeedback,
+    kWebtrekkNetworkManagerOperationTypeMoreApps,
+    kWebtrekkNetworkManagerOperationTypeGetAlias,
+    kWebtrekkNetworkManagerOperationTypeGeoServicesConfiguration, // For getting the geo_conf
+    kWebtrekkNetworkManagerOperationTypeGeoGetRegions,
+    kWebtrekkNetworkManagerOperationTypeGeoReportRegion,
+    kWebtrekkNetworkManagerOperationTypeGeoCheckIfConfigurationNeedsUpdate
 };
 
-typedef NS_ENUM(NSInteger, APXNetworkManagerEnvironment) {
-    kAPXNetworkManagerEnvironmentVirginia = 0,
-    kAPXNetworkManagerEnvironmentQALatest,
-    kAPXNetworkManagerEnvironmentQAStable,
-    kAPXNetworkManagerEnvironmentQA2,
-    kAPXNetworkManagerEnvironmentQA3,
-    kAPXNetworkManagerEnvironmentFrankfurt,
-    kAPXNetworkManagerEnvironmentQAFrankfurt,
-    kAPXNetworkManagerEnvironmentQAStaging,
-    kAPXNetworkManagerEnvironmentQAIntegration
+typedef NS_ENUM(NSInteger, WebtrekkNetworkManagerEnvironment) {
+    kWebtrekkNetworkManagerEnvironmentVirginia = 0,
+    kWebtrekkNetworkManagerEnvironmentQALatest,
+    kWebtrekkNetworkManagerEnvironmentQAStable,
+    kWebtrekkNetworkManagerEnvironmentQA2,
+    kWebtrekkNetworkManagerEnvironmentQA3,
+    kWebtrekkNetworkManagerEnvironmentFrankfurt,
+    kWebtrekkNetworkManagerEnvironmentQAFrankfurt,
+    kWebtrekkNetworkManagerEnvironmentQAStaging,
+    kWebtrekkNetworkManagerEnvironmentQAIntegration
 };
 
-typedef void(^APXNetworkManagerCompletionBlock)(NSError *error, id data);
+typedef void(^WebtrekkNetworkManagerCompletionBlock)(NSError *error, id data);
 
 @interface WebtrekkNetworkManager : NSObject
 
-@property (nonatomic) APXNetworkManagerEnvironment environment;
+@property (nonatomic) WebtrekkNetworkManagerEnvironment environment;
 @property (nonatomic, strong) NSString *sdkID;
 @property (nonatomic, strong) NSString *preferedURL;
 
 + (instancetype)shared;
 
 // for communication with Appoxee Servers, passing info and updates.
-- (void)performNetworkOperation:(APXNetworkManagerOperationType)operation withData:(NSData *)dataArg andCompletionBlock:(APXNetworkManagerCompletionBlock)completionBlock;
+- (void)performNetworkOperation:(WebtrekkNetworkManagerOperationType)operation withData:(NSData *)dataArg andCompletionBlock:(WebtrekkNetworkManagerCompletionBlock)completionBlock;
 
 // for communication with Appoxee Servers, passing info and updates.
-- (NSDictionary *)performSynchronousNetworkOperation:(APXNetworkManagerOperationType)operation withData:(NSData *)data;
+- (NSDictionary *)performSynchronousNetworkOperation:(WebtrekkNetworkManagerOperationType)operation withData:(NSData *)data;
 
 @end

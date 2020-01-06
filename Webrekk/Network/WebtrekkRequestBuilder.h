@@ -27,9 +27,9 @@
  @param keyedValues
  NSDictionary containing key-value objects.
  @param type
- APXRequestKeyType enum value.
+ WebtrekkRequestKeyType enum value.
  */
-- (void)addRequestKeyedValues:(NSDictionary *)keyedValues forRequestType:(APXRequestKeyType)type;
+- (void)addRequestKeyedValues:(NSDictionary *)keyedValues forRequestType:(WebtrekkRequestKeyType)type;
 
 /**
  Create an NSData JSON formated object with the added key-values.

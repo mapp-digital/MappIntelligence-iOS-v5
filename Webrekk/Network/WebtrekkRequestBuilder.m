@@ -7,8 +7,8 @@
 //
 
 #import "WebtrekkRequestBuilder.h"
-#import "APXLogger.h"
-#import "APXDataService.h"
+#import "WebtrekkLogger.h"
+#import "WebtrekkDataService.h"
 
 @interface WebtrekkRequestBuilder ()
 
@@ -20,7 +20,7 @@
 @property (nonatomic, strong) NSString *messageID;
 @property (nonatomic, strong) NSString *sendOutID;
 @property (nonatomic, strong, readwrite) WebtrekkRequest *request;
-@property (nonatomic) APXRequestKeyType keyType;
+@property (nonatomic) WebtrekkRequestKeyType keyType;
 @end
 
 @implementation WebtrekkRequestBuilder
@@ -31,10 +31,10 @@
     
 //    if (self) {
 //
-//        self.key = [APXDevice deviceUniqueGlobaldentifier];
+//        self.key = [WebtrekkDevice deviceUniqueGlobaldentifier];
 //
-//        self.aliasValue = [[APXDataService shared] alias];
-//        self.oldAliasValue = [[APXDataService shared] oldAlias];
+//        self.aliasValue = [[WebtrekkDataService shared] alias];
+//        self.oldAliasValue = [[WebtrekkDataService shared] oldAlias];
 //
 //    }
     
@@ -62,7 +62,7 @@
 
 #pragma mark - Methods
 
-- (void)addRequestKeyedValues:(NSDictionary *)keyedValues forRequestType:(APXRequestKeyType)type
+- (void)addRequestKeyedValues:(NSDictionary *)keyedValues forRequestType:(WebtrekkRequestKeyType)type
 {
     if (keyedValues) {
         self.keyType = type;
@@ -112,7 +112,7 @@
         
         if (self.request) {
             
-            NSDictionary *requestKeyedValues = [[[APXNotificationService shared] pushStat] dictionary];
+            NSDictionary *requestKeyedValues = [[NSDictionary alloc] init]; //[[[WebtrekkNotificationService shared] pushStat] dictionary];
             
             self.request = nil;
             
@@ -134,7 +134,7 @@
     
     if (self.key) {
         
-        if (_keyType == kAPXRequestKeyTypeActionSet) {
+        if (_keyType == kWebtrekkRequestKeyTypeActionSet) {
             keyedValues[@"oldAlias"] = self.oldAliasValue;
         }
         keyedValues[@"key"] = self.key;

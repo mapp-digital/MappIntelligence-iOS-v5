@@ -8,7 +8,7 @@
 
 #import "WebtrekkNetworkManager.h"
 #import "WebtrekkNetworkMetadata.h"
-#import "APXLogger.h"
+#import "WebtrekkLogger.h"
 
 @interface WebtrekkNetworkManager ()
 
@@ -32,7 +32,7 @@
     return shared;
 }
 
-- (void)performNetworkOperation:(APXNetworkManagerOperationType)operation withData:(NSData *)dataArg andCompletionBlock:(APXNetworkManagerCompletionBlock)completionBlock
+- (void)performNetworkOperation:(WebtrekkNetworkManagerOperationType)operation withData:(NSData *)dataArg andCompletionBlock:(WebtrekkNetworkManagerCompletionBlock)completionBlock
 {
     if (dataArg) {
         
@@ -87,10 +87,10 @@
                         
                         if (!metadata.isSuccess) {
                             
-                            requestError = [APXLogger errorWithType:kAPXErrorTypeNetwork];
+                            requestError = [WebtrekkLogger errorWithType:kWebtrekkErrorTypeNetwork];
                             
                             AppLog(@"Network protocol error.\n Code: %tu\nMessage: %@", metadata.code, metadata.message);
-                            [[APXLogger shared] logObj:[NSString stringWithFormat:@"Network protocol error with HTTP code: %tu", metadata.code] forDescription:kAPXLogLevelDescriptionError];
+                            [[WebtrekkLogger shared] logObj:[NSString stringWithFormat:@"Network protocol error with HTTP code: %tu", metadata.code] forDescription:kWebtrekkLogLevelDescriptionError];
                         }
                         
                         if (completionBlock) {
@@ -124,14 +124,14 @@
         
         AppLog(@"No data was supplied, aborting network operation: %tu", operation);
         
-        NSError *error = [APXLogger errorWithType:kAPXErrorTypeNetwork];
+        NSError *error = [WebtrekkLogger errorWithType:kWebtrekkErrorTypeNetwork];
         
         if (completionBlock) completionBlock(error, nil);
     }
 }
 
 
-- (NSDictionary *)performSynchronousNetworkOperation:(APXNetworkManagerOperationType)operation withData:(NSData *)data
+- (NSDictionary *)performSynchronousNetworkOperation:(WebtrekkNetworkManagerOperationType)operation withData:(NSData *)data
 {
     NSDictionary *responseDictionary = nil;
     
@@ -169,14 +169,14 @@
                 
                 NSDictionary *serverDictionary = (NSDictionary *)serverData;
                 
-                APXNetworkMetadata *metadata = [[APXNetworkMetadata alloc] initWithKeyedValues:serverDictionary[@"metadata"]];
+                WebtrekkNetworkMetadata *metadata = [[WebtrekkNetworkMetadata alloc] initWithKeyedValues:serverDictionary[@"metadata"]];
                 
                 responseDictionary = serverDictionary[@"payload"];
                 
                 if (!metadata.isSuccess) {
                     
                     AppLog(@"Synchronous - Network protocol error.\n Code: %tu\nMessage: %@", metadata.code, metadata.message);
-                    [[APXLogger shared] logObj:[NSString stringWithFormat:@"Network protocol error with HTTP code: %tu", metadata.code] forDescription:kAPXLogLevelDescriptionError];
+                    [[WebtrekkLogger shared] logObj:[NSString stringWithFormat:@"Network protocol error with HTTP code: %tu", metadata.code] forDescription:kWebtrekkLogLevelDescriptionError];
                     
                     responseDictionary = nil;
                 }
@@ -201,7 +201,7 @@
 
 #pragma mark - Request
 
-- (NSMutableURLRequest *)generateRequestForOperation:(APXNetworkManagerOperationType)operation
+- (NSMutableURLRequest *)generateRequestForOperation:(WebtrekkNetworkManagerOperationType)operation
 {
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     
@@ -213,7 +213,7 @@
         
         baseURL = self.preferedURL;
         
-    } else if (operation == kAPXNetworkManagerOperationTypeReportPushClicked) {
+    } else if (operation == kWebtrekkNetworkManagerOperationTypeReportPushClicked) {
         baseURL = @"https://charon-test.shortest-route.com/";
     } else {
         
@@ -222,7 +222,7 @@
     
     
     
-//    if (operation == kAPXNetworkManagerOperationTypeGeoGetRegions) {
+//    if (operation == kWebtrekkNetworkManagerOperationTypeGeoGetRegions) {
 //        baseURL = @"http://192.168.100.227:8887/rest/apps/1/1/geofences";
 //        url = @"http://192.168.100.227:8887/rest/apps/1/1/geofences";
 //    } else {
@@ -245,7 +245,7 @@
     return request;
 }
 
-- (NSURLRequest *)contentRequestForOperation:(APXNetworkManagerOperationType)operation withAppID:(NSString *)appID andUDID:(NSString *)udid
+- (NSURLRequest *)contentRequestForOperation:(WebtrekkNetworkManagerOperationType)operation withAppID:(NSString *)appID andUDID:(NSString *)udid
 {
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setHTTPMethod:@"POST"];
@@ -256,7 +256,7 @@
     
     NSString *endpoint = @"";
     
-    if (operation == kAPXNetworkManagerOperationTypeFeedback) {
+    if (operation == kWebtrekkNetworkManagerOperationTypeFeedback) {
         
         endpoint = @"AppBoxWebClient/feedback/feedback.aspx";
         
@@ -264,7 +264,7 @@
         
         [request setHTTPBody:[parameters dataUsingEncoding:NSUTF8StringEncoding]];
         
-    } else if (operation == kAPXNetworkManagerOperationTypeMoreApps) {
+    } else if (operation == kWebtrekkNetworkManagerOperationTypeMoreApps) {
         
         endpoint = [NSString stringWithFormat:@"MoreApps/%@", appID];
     }
@@ -282,33 +282,33 @@
     
     switch (self.environment) {
             
-        case kAPXNetworkManagerEnvironmentVirginia:
+        case kWebtrekkNetworkManagerEnvironmentVirginia:
         {
             //url = @"https://saas.appoxee.com/";
             url = [self getServerAddress];
         }
             break;
-        case kAPXNetworkManagerEnvironmentQALatest:
+        case kWebtrekkNetworkManagerEnvironmentQALatest:
         {
             url = @"http://latest.dev.appoxee.com/";
         }
             break;
-        case kAPXNetworkManagerEnvironmentQAStable:
+        case kWebtrekkNetworkManagerEnvironmentQAStable:
         {
             url = @"http://stable.dev.appoxee.com/";
         }
             break;
-        case kAPXNetworkManagerEnvironmentQA2:
+        case kWebtrekkNetworkManagerEnvironmentQA2:
         {
             url = @"http://qa2.appoxee.com/";
         }
             break;
-        case kAPXNetworkManagerEnvironmentQA3:
+        case kWebtrekkNetworkManagerEnvironmentQA3:
         {
             url = @"http://qa3.appoxee.com/";
         }
             break;
-        case kAPXNetworkManagerEnvironmentFrankfurt:
+        case kWebtrekkNetworkManagerEnvironmentFrankfurt:
         {
             //url = @"https://api.eu.appoxee.com/";
             //url = @"http://eu.dev.appoxee.com/";
@@ -317,18 +317,18 @@
             //url = @"http://192.168.43.107:8081/";
         }
             break;
-        case kAPXNetworkManagerEnvironmentQAFrankfurt:
+        case kWebtrekkNetworkManagerEnvironmentQAFrankfurt:
         {
 //            url = @"http://eu.dev.appoxee.com/";
             url = @"https://charon-test.shortest-route.com/";
         }
             break;
-        case kAPXNetworkManagerEnvironmentQAStaging:
+        case kWebtrekkNetworkManagerEnvironmentQAStaging:
         {
             url = @"http://staging.dev.appoxee.com/";
         }
             break;
-        case kAPXNetworkManagerEnvironmentQAIntegration:
+        case kWebtrekkNetworkManagerEnvironmentQAIntegration:
         {
             url = @"http://qa.dev.appoxee.com/";
         }
@@ -338,10 +338,10 @@
     return url;
 }
 
-- (NSString *)endPointByNetworkOperation:(APXNetworkManagerOperationType)operation
+- (NSString *)endPointByNetworkOperation:(WebtrekkNetworkManagerOperationType)operation
 {
     NSString *endpoint = @"api/v3/device/";
-//    if (operation == kAPXNetworkManagerOperationTypeReportPushClicked) {
+//    if (operation == kWebtrekkNetworkManagerOperationTypeReportPushClicked) {
 //        endpoint = @"api/push/event";
 //    }
     return endpoint;
@@ -350,31 +350,31 @@
 - (NSString *)getServerAddress
 {
     NSString *serverAdress = @"https://charon-test.shortest-route.com/";
-    switch ([[Appoxee shared] server]) {
-        case L3:
-            serverAdress = @"https://jamie.g.shortest-route.com/charon/";
-            break;
-        case EMC:
-            serverAdress = @"https://jamie.h.shortest-route.com/charon/";
-            break;
-        case EMC_US:
-            serverAdress = @"https://jamie.c.shortest-route.com/charon/";
-            break;
-        case CROC:
-            serverAdress = @"https://jamie.m.shortest-route.com/charon/";
-        case TEST:
-            serverAdress = @"https://charon-test.shortest-route.com/";
-        default:
-            break;
-    }
+//    switch ([[Appoxee shared] server]) {
+//        case L3:
+//            serverAdress = @"https://jamie.g.shortest-route.com/charon/";
+//            break;
+//        case EMC:
+//            serverAdress = @"https://jamie.h.shortest-route.com/charon/";
+//            break;
+//        case EMC_US:
+//            serverAdress = @"https://jamie.c.shortest-route.com/charon/";
+//            break;
+//        case CROC:
+//            serverAdress = @"https://jamie.m.shortest-route.com/charon/";
+//        case TEST:
+//            serverAdress = @"https://charon-test.shortest-route.com/";
+//        default:
+//            break;
+//    }
     return serverAdress;
 }
 
-- (NSString *)httpMethodForOperation:(APXNetworkManagerOperationType)operation
+- (NSString *)httpMethodForOperation:(WebtrekkNetworkManagerOperationType)operation
 {
     NSString *httpMethod = @"PUT";
     
-    if (operation == kAPXNetworkManagerOperationTypeReportPushClicked) {
+    if (operation == kWebtrekkNetworkManagerOperationTypeReportPushClicked) {
         httpMethod = @"POST";
     }
     
@@ -385,7 +385,7 @@
 
 #pragma mark - Retry
 
-- (BOOL)retryOperation:(APXNetworkManagerOperationType)operation withData:(NSData *)data andCompletionBlock:(APXNetworkManagerCompletionBlock)block
+- (BOOL)retryOperation:(WebtrekkNetworkManagerOperationType)operation withData:(NSData *)data andCompletionBlock:(WebtrekkNetworkManagerCompletionBlock)block
 {
     BOOL retrying = YES;
     
@@ -424,7 +424,7 @@
     return retrying;
 }
 
-- (void)removeRetryOfOperation:(APXNetworkManagerOperationType)operation
+- (void)removeRetryOfOperation:(WebtrekkNetworkManagerOperationType)operation
 {
     NSString *retryKey = [NSString stringWithFormat:@"%tu", operation];
     [self.retryOperations removeObjectForKey:retryKey];

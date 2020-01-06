@@ -7,10 +7,10 @@
 //
 
 #import "WebtrekkRequest.h"
-#import "APXLogger.h"
-#import "APXDataService.h"
+#import "WebtrekkLogger.h"
+#import "WebtrekkDataService.h"
 
-// Appoxee SDK
+// Webtrekk SDK
 #define key_actions @"actions"
 #define key_aliasValue @"alias"
 #define key_register @"register"
@@ -45,7 +45,7 @@
 
 #pragma mark - Class Methods
 
-- (void)addKeyedValues:(NSDictionary *)keyedValues forKeyType:(APXRequestKeyType)keyType
+- (void)addKeyedValues:(NSDictionary *)keyedValues forKeyType:(WebtrekkRequestKeyType)keyType
 {
     NSString *key = [self keyForKeyType:keyType];
     
@@ -59,7 +59,7 @@
             self.actionsSetters[key] = keyedValues[key];
         }
     }
-//    [[APXDataService shared] getDeviceAliasWithCompletionHandler:^(NSError *error, id data) {
+//    [[WebtrekkDataService shared] getDeviceAliasWithCompletionHandler:^(NSError *error, id data) {
 //        if (!error) {
 //            if ([data isKindOfClass:[NSString class]]) {
 //                self.aliasValue = data;
@@ -91,88 +91,88 @@
     AppLog(@"current request dictionary: %@", self.actions);
 }
 
-- (NSString *)keyForKeyType:(APXRequestKeyType)keyType
+- (NSString *)keyForKeyType:(WebtrekkRequestKeyType)keyType
 {
     NSString *key = nil;
     
     switch (keyType) {
             
-        case kAPXRequestKeyTypeRegister:
+        case kWebtrekkRequestKeyTypeRegister:
         {
            key = key_register;
         }
             break;
-        case kAPXRequestKeyTypeApplicationConfiguration:
+        case kWebtrekkRequestKeyTypeApplicationConfiguration:
         {
             key = key_applicationConfiguration;
         }
             break;
-        case kAPXRequestKeyTypeReportPushOpen:
+        case kWebtrekkRequestKeyTypeReportPushOpen:
         {
             key = key_reportPushOpen;
         }
             break;
-        case kAPXRequestKeyTypeReportPushDissmis:
+        case kWebtrekkRequestKeyTypeReportPushDissmis:
         {
             key = key_reportPushDismissed;
         }
             break;
-        case kAPXRequestKeyTypeReportRichPushOpen:
+        case kWebtrekkRequestKeyTypeReportRichPushOpen:
         {
             key = key_reportRichPushOpen;
         }
             break;
-        case kAPXRequestKeyTypeActionSet:
+        case kWebtrekkRequestKeyTypeActionSet:
         {
             key = key_actions_setters;
         }
             break;
-        case kAPXRequestKeyTypeSessionReport:
+        case kWebtrekkRequestKeyTypeSessionReport:
         {
             key = key_session_report;
         }
             break;
-        case kAPXRequestKeyTypeRichMessage:
+        case kWebtrekkRequestKeyTypeRichMessage:
         {
             key = key_richMessage;
         }
             break;
-        case kAPXRequestKeyTypeGetAppAndDeviceTags:
+        case kWebtrekkRequestKeyTypeGetAppAndDeviceTags:
         {
             key = key_applicationTags;
         }
             break;
-        case kAPXRequestKeyTypeUpdateAppAndDeviceTags:
+        case kWebtrekkRequestKeyTypeUpdateAppAndDeviceTags:
         {
             key = key_appliactionTagsUpdate;
         }
             break;
-        case kAPXRequestKeyTypeGetCustomFields:
+        case kWebtrekkRequestKeyTypeGetCustomFields:
         {
             key = key_customFields;
         }
             break;
-        case kAPXRequestKeyTypeGetAlias:
+        case kWebtrekkRequestKeyTypeGetAlias:
         {
             key = key_alias;
         }
             break;
-        case kAPXRequestKeyTypeGeoConfiguration:
+        case kWebtrekkRequestKeyTypeGeoConfiguration:
         {
             key = key_geo_geo_conf;
         }
             break;
-        case kAPXRequestKeyTypeGeoGetAllRegions:
+        case kWebtrekkRequestKeyTypeGeoGetAllRegions:
         {
             key = key_geo_get_regions;
         }
             break;
-        case kAPXRequestKeyTypeGeoReportCrossing:
+        case kWebtrekkRequestKeyTypeGeoReportCrossing:
         {
             key = key_geo_region_status;
         }
             break;
-        case kAPXRequestKeyTypeGeoUpdateGeoConf:
+        case kWebtrekkRequestKeyTypeGeoUpdateGeoConf:
         {
             key = key_geo_update_geo_conf;
         }
