@@ -126,7 +126,7 @@
 			children = (
 				A334861A23BF3E2300D0EB5F /* Webrekk */,
 				A334862923BF3F2800D0EB5F /* WebtrekkTests */,
-				A334863B23BF409D00D0EB5F /* Webtrekk */,
+				A334863B23BF409D00D0EB5F /* WebtrekkFramework */,
 				A334864623BF409D00D0EB5F /* WebtrekkTests */,
 				A334861923BF3E2300D0EB5F /* Products */,
 			);
@@ -164,13 +164,13 @@
 			path = WebtrekkTests;
 			sourceTree = "<group>";
 		};
-		A334863B23BF409D00D0EB5F /* Webtrekk */ = {
+		A334863B23BF409D00D0EB5F /* WebtrekkFramework */ = {
 			isa = PBXGroup;
 			children = (
 				A334863C23BF409D00D0EB5F /* Webtrekk.h */,
 				A334863D23BF409D00D0EB5F /* Info.plist */,
 			);
-			path = Webtrekk;
+			path = WebtrekkFramework;
 			sourceTree = "<group>";
 		};
 		A334864623BF409D00D0EB5F /* WebtrekkTests */ = {
