@@ -39,6 +39,7 @@
 		A334868023BF56A100D0EB5F /* WebtrekkRequestBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = A334867B23BF56A100D0EB5F /* WebtrekkRequestBuilder.h */; };
 		A334868123BF56A100D0EB5F /* WebtrekkRequestBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = A334867C23BF56A100D0EB5F /* WebtrekkRequestBuilder.m */; };
 		A334868223BF56A100D0EB5F /* WebtrekkRequestBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = A334867C23BF56A100D0EB5F /* WebtrekkRequestBuilder.m */; };
+		BC18ECFD23CDD14A00B2B99B /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC18ECFC23CDD14A00B2B99B /* Package.swift */; };
 		BCEAE6B623BF5912007F410D /* WebtrekkLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = BCEAE6B523BF5912007F410D /* WebtrekkLogger.h */; };
 		BCEAE6B823BF5A8B007F410D /* WebtrekkLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = BCEAE6B723BF5A8B007F410D /* WebtrekkLogger.m */; };
 		BCEAE6BC23C32F0A007F410D /* WebtrekkDataService.h in Headers */ = {isa = PBXBuildFile; fileRef = BCEAE6BB23C32F0A007F410D /* WebtrekkDataService.h */; };
@@ -95,6 +96,8 @@
 		A334867A23BF56A100D0EB5F /* WebtrekkNetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebtrekkNetworkManager.h; sourceTree = "<group>"; };
 		A334867B23BF56A100D0EB5F /* WebtrekkRequestBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebtrekkRequestBuilder.h; sourceTree = "<group>"; };
 		A334867C23BF56A100D0EB5F /* WebtrekkRequestBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebtrekkRequestBuilder.m; sourceTree = "<group>"; };
+		BC18ECFB23CDD14900B2B99B /* Webrekk-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Webrekk-Bridging-Header.h"; sourceTree = "<group>"; };
+		BC18ECFC23CDD14A00B2B99B /* Package.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		BCEAE6B523BF5912007F410D /* WebtrekkLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebtrekkLogger.h; sourceTree = "<group>"; };
 		BCEAE6B723BF5A8B007F410D /* WebtrekkLogger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebtrekkLogger.m; sourceTree = "<group>"; };
 		BCEAE6BB23C32F0A007F410D /* WebtrekkDataService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebtrekkDataService.h; sourceTree = "<group>"; };
@@ -124,11 +127,13 @@
 		A334860F23BF3E2300D0EB5F = {
 			isa = PBXGroup;
 			children = (
+				BC18ECFC23CDD14A00B2B99B /* Package.swift */,
 				A334861A23BF3E2300D0EB5F /* Webrekk */,
 				A334862923BF3F2800D0EB5F /* WebtrekkTests */,
 				A334863B23BF409D00D0EB5F /* WebtrekkFramework */,
 				A334864623BF409D00D0EB5F /* WebtrekkTests */,
 				A334861923BF3E2300D0EB5F /* Products */,
+				BC18ECFB23CDD14900B2B99B /* Webrekk-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -323,6 +328,7 @@
 				TargetAttributes = {
 					A334861723BF3E2300D0EB5F = {
 						CreatedOnToolsVersion = 11.3;
+						LastSwiftMigration = 1130;
 					};
 					A334862723BF3F2800D0EB5F = {
 						CreatedOnToolsVersion = 11.3;
@@ -409,6 +415,7 @@
 				A334867723BF569400D0EB5F /* WebtrekkRequest.m in Sources */,
 				BCEAE6B823BF5A8B007F410D /* WebtrekkLogger.m in Sources */,
 				A334861D23BF3E2300D0EB5F /* Webrekk.m in Sources */,
+				BC18ECFD23CDD14A00B2B99B /* Package.swift in Sources */,
 				A334867D23BF56A100D0EB5F /* WebtrekkNetworkManager.m in Sources */,
 				A334868123BF56A100D0EB5F /* WebtrekkRequestBuilder.m in Sources */,
 				BCEAE6C223C33258007F410D /* WebtrekkNotificationService.m in Sources */,
@@ -556,11 +563,20 @@
 		A334862223BF3E2300D0EB5F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LERY366S7C;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Webrekk-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -568,11 +584,19 @@
 		A334862323BF3E2300D0EB5F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LERY366S7C;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Webrekk-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -580,6 +604,7 @@
 		A334863123BF3F2800D0EB5F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LERY366S7C;
 				INFOPLIST_FILE = WebtrekkTests/Info.plist;
@@ -597,6 +622,7 @@
 		A334863223BF3F2800D0EB5F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LERY366S7C;
 				INFOPLIST_FILE = WebtrekkTests/Info.plist;
