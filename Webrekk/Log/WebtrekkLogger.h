@@ -5,6 +5,8 @@
 //  Created by Vladan Randjelovic on 03/01/2020.
 //  Copyright © 2020 Stefan Stevanovic. All rights reserved.
 //
+#import <Foundation/Foundation.h>
+
 typedef NS_ENUM(NSInteger, WebtrekkLogLevelDescription) {
     kWebtrekkLogLevelDescriptionDebug = 1, // The lowest priority that you would normally log, and purely informational in nature.
     kWebtrekkLogLevelDescriptionWarning = 2, // Something is amiss and might fail if not corrected
