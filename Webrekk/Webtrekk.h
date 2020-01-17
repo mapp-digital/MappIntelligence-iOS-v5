@@ -1,13 +1,15 @@
 //
-//  Webrekk.m
+//  Webrekk.h
 //  Webrekk
 //
 //  Created by Stefan Stevanovic on 1/3/20.
 //  Copyright © 2020 Stefan Stevanovic. All rights reserved.
 //
 
-#import "Webrekk.h"
+#import <Foundation/Foundation.h>
 
-@implementation Webrekk
+@interface Webtrekk : NSObject
+{}
++(id)sharedWebtrek;
 
 @end
