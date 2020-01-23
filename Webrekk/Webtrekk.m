@@ -7,9 +7,17 @@
 //
 
 #import "Webtrekk.h"
+#import "WebtrekkDataService.h"
+
+@interface Webtrekk()
+
+@property WebtrekkDataService *dataService;
+
+@end
 
 @implementation Webtrekk
 static Webtrekk *sharedInstance = nil;
+//WebtrekkDataService * dataService;
 
 +(id) sharedWebtrek {
     static dispatch_once_t onceToken;
@@ -22,6 +30,7 @@ static Webtrekk *sharedInstance = nil;
 -(id) init {
     if (!sharedInstance) {
         sharedInstance = [super init];
+        _dataService = [[WebtrekkDataService alloc]init];
     }
     return sharedInstance;
 }

@@ -7,24 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Config.h"
-
+#import "WebtrekkDefaultConfig.h"
 #define key_trackIDs @"track_ids"
 #define key_trackDomain @"track_domain"
 #define key_logLevel @"log_level"
 #define key_requestsInterval @"requests_interval"
 #define key_autoTracking @"auto_tracking"
-#define key_urlSession @"url_session"
 #define key_requestPerBatch @"request_per_batch"
 #define key_batchSupport @"batch_support"
 #define key_viewControllerAutoTracking @"view_controller_auto_tracking"
 
-
-
-
-@interface WebtrekkDefaultConfig: NSObject <Config>
-
-@end
 
 @implementation WebtrekkDefaultConfig : NSObject
 
@@ -40,8 +32,6 @@
 
 @synthesize trackIDs;
 
-@synthesize urlSession;
-
 @synthesize viewControllerAutoTracking;
 
 @synthesize logLevel;
@@ -50,123 +40,30 @@
     self = [super init];
     return self;
 }
-// Setters for configuration parameters with adding them to UserDefaults:
 
--(void)setTrackIDs:(NSDictionary *)trackIDs {
-    self.trackIDs = trackIDs;
-    
-    NSUserDefaults * standardUserDefaults = [NSUserDefaults standardUserDefaults];
-    if (standardUserDefaults) {
-        [standardUserDefaults setObject:self.trackIDs forKey:key_trackIDs];
-        [standardUserDefaults synchronize];
+-(void)encodeWithCoder:(NSCoder *) encoder {
+    [encoder encodeInt:self.requestPerBatch forKey:key_requestPerBatch];
+    [encoder encodeBool:self.autoTracking forKey:key_autoTracking];
+    [encoder encodeBool:self.batchSupport forKey:key_batchSupport];
+    [encoder encodeInt:self.requestsInterval forKey:key_requestsInterval];
+    [encoder encodeBool:self.viewControllerAutoTracking forKey:key_viewControllerAutoTracking];
+    [encoder encodeInt:self.logLevel forKey:key_logLevel];
+    [encoder encodeObject:self.trackIDs forKey:key_trackIDs];
+    [encoder encodeObject:self.trackDomain forKey:key_trackDomain];
+}
+
+- (instancetype)initWithCoder:(NSCoder *)coder
+{
+    if (self = [super init]) {
+        self.autoTracking = [coder decodeBoolForKey:key_autoTracking];
+        self.batchSupport = [coder decodeBoolForKey:key_batchSupport];
+        self.requestPerBatch = [coder decodeIntForKey:key_requestPerBatch];
+        self.requestsInterval = [coder decodeIntForKey:key_requestsInterval];
+        self.trackDomain = [coder decodeObjectForKey:key_trackDomain];
+        self.logLevel = [coder decodeIntForKey:key_logLevel];
+        self.trackIDs = [coder decodeObjectForKey:key_trackIDs];
+        self.viewControllerAutoTracking = [coder decodeBoolForKey:key_viewControllerAutoTracking];
     }
+    return self;
 }
-
--(void)setTrackDomain:(NSString *)trackDomain {
-    self.trackDomain = trackDomain;
-    
-    NSUserDefaults * standardUserDefaults = [NSUserDefaults standardUserDefaults];
-    if (standardUserDefaults) {
-        [standardUserDefaults setObject:self.trackDomain forKey:key_trackDomain];
-        [standardUserDefaults synchronize];
-    }
-}
-
--(void)setUrlSession:(NSURLSession *)urlSession {
-    self.urlSession = urlSession;
-    
-    NSUserDefaults * standardUserDefaults = [NSUserDefaults standardUserDefaults];
-    if (standardUserDefaults) {
-        [standardUserDefaults setObject:self.urlSession forKey:key_urlSession];
-        [standardUserDefaults synchronize];
-    }
-}
-
--(void)setRequestPerBatch:(NSInteger *)requestPerBatch {
-    self.requestPerBatch = requestPerBatch;
-    
-    NSUserDefaults * standardUserDefaults = [NSUserDefaults standardUserDefaults];
-    if (standardUserDefaults) {
-        [standardUserDefaults setInteger:*(self.requestPerBatch) forKey:key_requestPerBatch];
-        [standardUserDefaults synchronize];
-    }
-}
-
-- (void)setAutoTracking:(BOOL)autoTracking {
-    self.autoTracking = autoTracking;
-    
-    NSUserDefaults * standardUserDefaults = [NSUserDefaults standardUserDefaults];
-    if (standardUserDefaults) {
-        [standardUserDefaults setBool:self.autoTracking forKey:key_autoTracking];
-        [standardUserDefaults synchronize];
-    }
-}
-
-- (void)setBatchSupport:(BOOL)batchSupport {
-    self.batchSupport = batchSupport;
-    
-    NSUserDefaults * standardUserDefaults = [NSUserDefaults standardUserDefaults];
-    if (standardUserDefaults) {
-        [standardUserDefaults setBool:self.batchSupport forKey:key_batchSupport];
-        [standardUserDefaults synchronize];
-    }
-}
-
--(void)setRequestsInterval:(long *) requestsInterval {
-    self.requestsInterval = requestsInterval;
-    NSUserDefaults * standardUserDefaults = [NSUserDefaults standardUserDefaults];
-    if (standardUserDefaults) {
-        [standardUserDefaults setObject:[NSNumber numberWithLong: *(self.requestsInterval)] forKey:key_requestsInterval];
-        [standardUserDefaults synchronize];
-    }
-}
-
-- (void)setViewControllerAutoTracking:(BOOL)viewControllerAutoTracking {
-    self.viewControllerAutoTracking = viewControllerAutoTracking;
-    
-    NSUserDefaults * standardUserDefaults = [NSUserDefaults standardUserDefaults];
-    if (standardUserDefaults) {
-        [standardUserDefaults setBool:self.viewControllerAutoTracking forKey:key_viewControllerAutoTracking];
-        [standardUserDefaults synchronize];
-    }
-}
-
-// Getters:
-
--(void)setLogLevel:(WebtrekkLogLevelDescription *)logLevel {
-    self.logLevel = logLevel;
-}
-
-- (BOOL)autoTracking {
-    return autoTracking;
-}
-
-- (BOOL)batchSupport {
-    return batchSupport;
-}
-
-- (NSInteger *)requestPerBatch {
-    return requestPerBatch;
-}
-
-- (NSDictionary *)trackIDs {
-    return trackIDs;
-}
-
-- (NSString *)trackDomain {
-    return trackDomain;
-}
-
-- (NSURLSession *)urlSession {
-    return urlSession;
-}
-
-- (BOOL)viewControllerAutoTracking {
-    return viewControllerAutoTracking;
-}
-
--(WebtrekkLogLevelDescription *)logLevel {
-    return logLevel;
-}
-
 @end

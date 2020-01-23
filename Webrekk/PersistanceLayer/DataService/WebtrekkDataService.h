@@ -5,9 +5,8 @@
 //  Created by Vladan Randjelovic on 06/01/2020.
 //  Copyright © 2020 Stefan Stevanovic. All rights reserved.
 //
+@interface WebtrekkDataService : NSObject
 
-#ifndef WebtrekkDataService_h
-#define WebtrekkDataService_h
++(instancetype) shared;
 
-
-#endif /* WebtrekkDataService_h */
+@end
