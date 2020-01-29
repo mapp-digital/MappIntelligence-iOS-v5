@@ -8,5 +8,5 @@
 #import "Config.h"
 
 @interface WebtrekkDefaultConfig : NSObject <Config, NSCoding>
-
+-(instancetype) initWithDictionary:(NSDictionary *) dictionary;
 @end

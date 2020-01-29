@@ -24,7 +24,6 @@
 /* Begin PBXBuildFile section */
 		A334861D23BF3E2300D0EB5F /* Webtrekk.m in Sources */ = {isa = PBXBuildFile; fileRef = A334861C23BF3E2300D0EB5F /* Webtrekk.m */; };
 		A334861E23BF3E2300D0EB5F /* Webtrekk.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A334861B23BF3E2300D0EB5F /* Webtrekk.h */; };
-		A334862B23BF3F2800D0EB5F /* WebtrekkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A334862A23BF3F2800D0EB5F /* WebtrekkTests.m */; };
 		A334862D23BF3F2800D0EB5F /* libWebrekk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A334861823BF3E2300D0EB5F /* libWebrekk.a */; };
 		A334863423BF3FAD00D0EB5F /* Webtrekk.h in Headers */ = {isa = PBXBuildFile; fileRef = A334861B23BF3E2300D0EB5F /* Webtrekk.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A334867323BF569400D0EB5F /* WebtrekkNetworkMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = A334866F23BF569400D0EB5F /* WebtrekkNetworkMetadata.m */; };
@@ -39,6 +38,9 @@
 		A334868023BF56A100D0EB5F /* WebtrekkRequestBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = A334867B23BF56A100D0EB5F /* WebtrekkRequestBuilder.h */; };
 		A334868123BF56A100D0EB5F /* WebtrekkRequestBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = A334867C23BF56A100D0EB5F /* WebtrekkRequestBuilder.m */; };
 		A334868223BF56A100D0EB5F /* WebtrekkRequestBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = A334867C23BF56A100D0EB5F /* WebtrekkRequestBuilder.m */; };
+		BC60E07A23DF36C9000C045F /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BC60E07723DF36C9000C045F /* Info.plist */; };
+		BC60E07B23DF36C9000C045F /* WebtrekkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BC60E07823DF36C9000C045F /* WebtrekkTests.m */; };
+		BC60E07C23DF36C9000C045F /* WebtrekkDefaultConfigTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BC60E07923DF36C9000C045F /* WebtrekkDefaultConfigTest.m */; };
 		BCA1738223D5C12A00B31430 /* WebtrekkDefaultConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = BCA1738123D5C12A00B31430 /* WebtrekkDefaultConfig.h */; };
 		BCA1738423D5C2E700B31430 /* WebtrekkDataService.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA1738323D5C2E700B31430 /* WebtrekkDataService.m */; };
 		BCD5E2C323CF309900CE2092 /* Config.h in Sources */ = {isa = PBXBuildFile; fileRef = BCD5E2C223CF309900CE2092 /* Config.h */; };
@@ -85,12 +87,8 @@
 		A334861B23BF3E2300D0EB5F /* Webtrekk.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Webtrekk.h; sourceTree = "<group>"; };
 		A334861C23BF3E2300D0EB5F /* Webtrekk.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Webtrekk.m; sourceTree = "<group>"; };
 		A334862823BF3F2800D0EB5F /* WebtrekkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WebtrekkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A334862A23BF3F2800D0EB5F /* WebtrekkTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebtrekkTests.m; sourceTree = "<group>"; };
-		A334862C23BF3F2800D0EB5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A334863C23BF409D00D0EB5F /* Webtrekk.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Webtrekk.h; sourceTree = "<group>"; };
 		A334863D23BF409D00D0EB5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A334864723BF409D00D0EB5F /* WebtrekkTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WebtrekkTests.m; sourceTree = "<group>"; };
-		A334864923BF409D00D0EB5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A334866F23BF569400D0EB5F /* WebtrekkNetworkMetadata.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebtrekkNetworkMetadata.m; sourceTree = "<group>"; };
 		A334867023BF569400D0EB5F /* WebtrekkNetworkMetadata.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebtrekkNetworkMetadata.h; sourceTree = "<group>"; };
 		A334867123BF569400D0EB5F /* WebtrekkRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebtrekkRequest.h; sourceTree = "<group>"; };
@@ -100,6 +98,9 @@
 		A334867B23BF56A100D0EB5F /* WebtrekkRequestBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebtrekkRequestBuilder.h; sourceTree = "<group>"; };
 		A334867C23BF56A100D0EB5F /* WebtrekkRequestBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebtrekkRequestBuilder.m; sourceTree = "<group>"; };
 		BC18ECFB23CDD14900B2B99B /* Webrekk-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Webrekk-Bridging-Header.h"; sourceTree = "<group>"; };
+		BC60E07723DF36C9000C045F /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BC60E07823DF36C9000C045F /* WebtrekkTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebtrekkTests.m; sourceTree = "<group>"; };
+		BC60E07923DF36C9000C045F /* WebtrekkDefaultConfigTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebtrekkDefaultConfigTest.m; sourceTree = "<group>"; };
 		BCA1738123D5C12A00B31430 /* WebtrekkDefaultConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebtrekkDefaultConfig.h; sourceTree = "<group>"; };
 		BCA1738323D5C2E700B31430 /* WebtrekkDataService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebtrekkDataService.m; sourceTree = "<group>"; };
 		BCD5E2C223CF309900CE2092 /* Config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
@@ -134,9 +135,8 @@
 			isa = PBXGroup;
 			children = (
 				A334861A23BF3E2300D0EB5F /* Webrekk */,
-				A334862923BF3F2800D0EB5F /* WebtrekkTests */,
 				A334863B23BF409D00D0EB5F /* WebtrekkFramework */,
-				A334864623BF409D00D0EB5F /* WebtrekkTests */,
+				BC60E07223DF3659000C045F /* WebtrekkTests */,
 				A334861923BF3E2300D0EB5F /* Products */,
 				BC18ECFB23CDD14900B2B99B /* Webrekk-Bridging-Header.h */,
 			);
@@ -166,15 +166,6 @@
 			path = Webrekk;
 			sourceTree = "<group>";
 		};
-		A334862923BF3F2800D0EB5F /* WebtrekkTests */ = {
-			isa = PBXGroup;
-			children = (
-				A334862A23BF3F2800D0EB5F /* WebtrekkTests.m */,
-				A334862C23BF3F2800D0EB5F /* Info.plist */,
-			);
-			path = WebtrekkTests;
-			sourceTree = "<group>";
-		};
 		A334863B23BF409D00D0EB5F /* WebtrekkFramework */ = {
 			isa = PBXGroup;
 			children = (
@@ -182,15 +173,6 @@
 				A334863D23BF409D00D0EB5F /* Info.plist */,
 			);
 			path = WebtrekkFramework;
-			sourceTree = "<group>";
-		};
-		A334864623BF409D00D0EB5F /* WebtrekkTests */ = {
-			isa = PBXGroup;
-			children = (
-				A334864723BF409D00D0EB5F /* WebtrekkTests.m */,
-				A334864923BF409D00D0EB5F /* Info.plist */,
-			);
-			path = WebtrekkTests;
 			sourceTree = "<group>";
 		};
 		A334866C23BF566600D0EB5F /* Model */ = {
@@ -221,6 +203,16 @@
 				A334867223BF569400D0EB5F /* WebtrekkRequest.m */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		BC60E07223DF3659000C045F /* WebtrekkTests */ = {
+			isa = PBXGroup;
+			children = (
+				BC60E07723DF36C9000C045F /* Info.plist */,
+				BC60E07923DF36C9000C045F /* WebtrekkDefaultConfigTest.m */,
+				BC60E07823DF36C9000C045F /* WebtrekkTests.m */,
+			);
+			path = WebtrekkTests;
 			sourceTree = "<group>";
 		};
 		BCEAE6B423BF58A2007F410D /* Log */ = {
@@ -373,6 +365,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC60E07A23DF36C9000C045F /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -440,7 +433,8 @@
 			files = (
 				A334867423BF569400D0EB5F /* WebtrekkNetworkMetadata.m in Sources */,
 				A334867823BF569400D0EB5F /* WebtrekkRequest.m in Sources */,
-				A334862B23BF3F2800D0EB5F /* WebtrekkTests.m in Sources */,
+				BC60E07C23DF36C9000C045F /* WebtrekkDefaultConfigTest.m in Sources */,
+				BC60E07B23DF36C9000C045F /* WebtrekkTests.m in Sources */,
 				A334867E23BF56A100D0EB5F /* WebtrekkNetworkManager.m in Sources */,
 				A334868223BF56A100D0EB5F /* WebtrekkRequestBuilder.m in Sources */,
 			);

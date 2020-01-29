@@ -1,32 +1,32 @@
 //
-//  WebtrekkTests.m
+//  WebtrekkDefaultConfigTest.m
 //  WebtrekkTests
 //
-//  Created by Stefan Stevanovic on 1/3/20.
+//  Created by Vladan Randjelovic on 27/01/2020.
 //  Copyright © 2020 Stefan Stevanovic. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>
-#import <Webrekk/PersistanceLayer/WebtrekkDefaultConfig.h>
 
-@interface WebtrekkTests : XCTestCase
+@interface WebtrekkDefaultConfigTest : XCTestCase
 
-@property WebtrekkDefaultConfig *configToTest;
+@property (nonatomic) WebtrekkDefaultConfig *configuration;
 
 @end
 
-@implementation WebtrekkTests
+@implementation WebtrekkDefaultConfigTest
 
 - (void)setUp {
     // Put setup code here. This method is called before the invocation of each test method in the class.
-    _configToTest = [[WebtrekkDefaultConfig alloc] init];
+    [super setUp];
+    self.configuration = [[WebtrekkDefaultConfig alloc] init];
 }
 
 - (void)tearDown {
     // Put teardown code here. This method is called after the invocation of each test method in the class.
 }
 
-- (void)testWebtrekkInitWithDictionary {
+- (void)testExample {
     // This is an example of a functional test case.
     // Use XCTAssert and related functions to verify your tests produce the correct results.
 }

@@ -11,5 +11,5 @@
 @interface Webtrekk : NSObject
 {}
 +(id)sharedWebtrek;
-
+-(void) setConfigurationWith: (NSDictionary *) dictionary;
 @end
