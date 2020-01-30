@@ -15,7 +15,7 @@
 
 @property NSDictionary *const trackIDs;
 @property NSString *const trackDomain;
-@property long const requestsInterval;
+@property NSInteger const requestsInterval;
 @property WebtrekkLogLevelDescription logLevel;
 @property BOOL autoTracking;
 @property NSInteger const requestPerBatch;

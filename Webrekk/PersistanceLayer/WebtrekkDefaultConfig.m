@@ -38,6 +38,7 @@
 @synthesize logLevel;
 
 -(instancetype)init {
+    
     self = [super init];
     self.autoTracking = YES;
     self.batchSupport = NO;
@@ -47,7 +48,12 @@
     self.trackIDs = [[NSDictionary alloc] init];
     self.trackDomain = @"https://q3.webtrekk.net";
     self.viewControllerAutoTracking = YES;
-   
+    
+   NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:self requiringSecureCoding:NO error:NULL];
+   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+   [defaults setObject:encodedObject forKey:key_webtrekk_default_configuration];
+   [defaults synchronize];
+    
     [self logConfig];
 
     return self;
@@ -56,29 +62,37 @@
 -(instancetype) initWithDictionary:(NSDictionary *) dictionary {
     
     self = [super init];
-    for (id key in dictionary) {
-        self.autoTracking = [dictionary objectForKey:key_autoTracking];
-        self.batchSupport = [dictionary objectForKey:key_batchSupport];
-        self.requestPerBatch = [dictionary objectForKey:key_requestPerBatch];
-        self.requestsInterval = [dictionary objectForKey:key_requestsInterval];
-        self.logLevel = [dictionary objectForKey:key_logLevel];
-        self.trackIDs = [dictionary objectForKey:key_trackIDs];
-        self.trackDomain = [dictionary objectForKey:key_trackDomain];
-        self.viewControllerAutoTracking = [dictionary objectForKey:key_viewControllerAutoTracking];
+
+    for (id key in [dictionary allKeys]) {
+        
+        self.autoTracking = [dictionary valueForKey:key];
+        self.batchSupport = [dictionary valueForKey:key];
+        self.requestPerBatch = [dictionary valueForKey:key];
+        self.requestsInterval = [dictionary valueForKey:key];
+        self.logLevel = [dictionary valueForKey:key];
+        self.trackIDs = [dictionary objectForKey:key];
+        self.trackDomain = [dictionary objectForKey:key];
+        self.viewControllerAutoTracking = [dictionary valueForKey:key];
     }
     
-     [self logConfig];
+    NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:self requiringSecureCoding:NO error:NULL];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:encodedObject forKey:key_webtrekk_default_configuration];
+    [defaults synchronize];
+    
+    [self logConfig];
 
      return self;
 }
 
 -(void)encodeWithCoder:(NSCoder *) encoder {
-    [encoder encodeInt:self.requestPerBatch forKey:key_requestPerBatch];
+    
+    [encoder encodeInt64:self.requestPerBatch forKey:key_requestPerBatch];
     [encoder encodeBool:self.autoTracking forKey:key_autoTracking];
     [encoder encodeBool:self.batchSupport forKey:key_batchSupport];
-    [encoder encodeInt:self.requestsInterval forKey:key_requestsInterval];
+    [encoder encodeInt64:self.requestsInterval forKey:key_requestsInterval];
     [encoder encodeBool:self.viewControllerAutoTracking forKey:key_viewControllerAutoTracking];
-    [encoder encodeInt:self.logLevel forKey:key_logLevel];
+    [encoder encodeInt64:self.logLevel forKey:key_logLevel];
     [encoder encodeObject:self.trackIDs forKey:key_trackIDs];
     [encoder encodeObject:self.trackDomain forKey:key_trackDomain];
 }
@@ -97,15 +111,18 @@
     }
     return self;
 }
+
 -(void) logConfig {
+    
     [[WebtrekkLogger shared] logObj:([@"Auto Tracking is enabled: " stringByAppendingFormat:self.autoTracking ? @"Yes" : @"No"]) forDescription:self.logLevel];
     [[WebtrekkLogger shared] logObj:([@"Batch Support is enabled: " stringByAppendingFormat:self.batchSupport ? @"Yes" :@"No"]) forDescription:self.logLevel];
-    [[WebtrekkLogger shared] logObj:([@"Number of requests per batch: "  stringByAppendingFormat:@"%@", [NSString stringWithFormat:@"%ld", (long)self.requestPerBatch]]) forDescription:kWebtrekkLogLevelDescriptionDebug];
+    [[WebtrekkLogger shared] logObj:([@"Number of requests per batch: "  stringByAppendingFormat:@"%@", [NSString stringWithFormat:@"%ld", (long)self.requestPerBatch]]) forDescription:self.logLevel];
     [[WebtrekkLogger shared] logObj:([@"Request time interval in seconds: " stringByAppendingFormat:@"%@", [NSString stringWithFormat:@"%ld", self.requestsInterval]]) forDescription:self.logLevel];
     [[WebtrekkLogger shared] logObj:([@"Log Level is:  " stringByAppendingFormat:@"%@", [NSString stringWithFormat:@"%ld", (long)self.logLevel]]) forDescription:self.logLevel];
     [[WebtrekkLogger shared] logObj:([@"Tracking IDs: " stringByAppendingFormat:@"%@", self.trackIDs]) forDescription:self.logLevel];
     [[WebtrekkLogger shared] logObj:([@"Tracking domain is: " stringByAppendingFormat:@"%@", self.trackDomain]) forDescription:self.logLevel];
     [[WebtrekkLogger shared] logObj:([@"View Controller auto tracking is enabbled: " stringByAppendingFormat:self.viewControllerAutoTracking ? @"Yes" : @"No"]) forDescription:self.logLevel];
+
 }
 
 

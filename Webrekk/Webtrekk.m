@@ -30,14 +30,17 @@ static WebtrekkDefaultConfig * config = nil;
     return sharedInstance;
 }
 
-+(void) initWithDictionary: (NSDictionary *) dictionary {
-    config = [[WebtrekkDefaultConfig alloc] initWithDictionary: dictionary];
++(void) setConfigurationWith: (NSDictionary *) dictionary {
+    NSData * dictData = [NSKeyedArchiver archivedDataWithRootObject:dictionary requiringSecureCoding:NO error:NULL];
+    NSDictionary *dict = [NSKeyedUnarchiver unarchiveObjectWithData:dictData];
+    config = [[WebtrekkDefaultConfig alloc] initWithDictionary: dict];
 }
 
 -(id) init {
     if (!sharedInstance) {
         sharedInstance = [super init];
         _dataService = [[WebtrekkDataService alloc]init];
+        _configuration = [[WebtrekkDefaultConfig alloc] init];
     }
     return sharedInstance;
 }

@@ -23,7 +23,6 @@
 - (id)init
 {
     self = [super init];
-    _defaultConfiguration = [[WebtrekkDefaultConfig alloc] init];
     return self;
 }
 
