@@ -45,15 +45,11 @@
     self.requestPerBatch = 5000;
     self.requestsInterval = 900;
     self.logLevel = kWebtrekkLogLevelDescriptionDebug;
-    self.trackIDs = [[NSDictionary alloc] init];
+    self.trackIDs = [[NSArray alloc] init];
     self.trackDomain = @"https://q3.webtrekk.net";
     self.viewControllerAutoTracking = YES;
     
-   NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:self requiringSecureCoding:NO error:NULL];
-   NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-   [defaults setObject:encodedObject forKey:key_webtrekk_default_configuration];
-   [defaults synchronize];
-    
+    [self saveToUserDefaults];
     [self logConfig];
 
     return self;
@@ -68,15 +64,11 @@
         self.requestPerBatch = [[dictionary valueForKey:key_requestPerBatch] integerValue];
         self.requestsInterval = [[dictionary valueForKey:key_requestsInterval] longValue];
         self.logLevel = [[dictionary valueForKey:key_logLevel] integerValue];
-        self.trackIDs = [dictionary objectForKey:key_trackIDs];
+        self.trackIDs = [[dictionary objectForKey:key_trackIDs] componentsSeparatedByString:@","];
         self.trackDomain = [dictionary objectForKey:key_trackDomain];
         self.viewControllerAutoTracking = [[dictionary valueForKey:key_viewControllerAutoTracking] boolValue];
     
-    NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:self requiringSecureCoding:NO error:NULL];
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:encodedObject forKey:key_webtrekk_default_configuration];
-    [defaults synchronize];
-    
+    [self saveToUserDefaults];
     [self logConfig];
 
      return self;
@@ -122,5 +114,12 @@
 
 }
 
+-(void) saveToUserDefaults {
+    
+    NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:self requiringSecureCoding:NO error:NULL];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:encodedObject forKey:key_webtrekk_default_configuration];
+    [defaults synchronize];
+}
 
 @end

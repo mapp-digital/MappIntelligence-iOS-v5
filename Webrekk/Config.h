@@ -13,7 +13,7 @@
 
 //Webtrekk default configuration parameters:
 
-@property NSDictionary *const trackIDs;
+@property NSArray *const trackIDs;
 @property NSString *const trackDomain;
 @property NSInteger const requestsInterval;
 @property WebtrekkLogLevelDescription logLevel;
@@ -22,7 +22,7 @@
 @property BOOL batchSupport;
 @property BOOL viewControllerAutoTracking;
 
--(void)setTrackIDs:(NSDictionary *const)trackIDs;
+-(void)setTrackIDs:(NSArray *const)trackIDs;
 -(void)setTrackDomain:(NSString *const)trackDomain;
 -(void)setRequestsInterval:(long const)requestsInterval;
 -(void)setLogLevel:(WebtrekkLogLevelDescription)logLevel;
