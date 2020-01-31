@@ -63,17 +63,14 @@
     
     self = [super init];
 
-    for (id key in [dictionary allKeys]) {
-        
-        self.autoTracking = [dictionary valueForKey:key];
-        self.batchSupport = [dictionary valueForKey:key];
-        self.requestPerBatch = [dictionary valueForKey:key];
-        self.requestsInterval = [dictionary valueForKey:key];
-        self.logLevel = [dictionary valueForKey:key];
-        self.trackIDs = [dictionary objectForKey:key];
-        self.trackDomain = [dictionary objectForKey:key];
-        self.viewControllerAutoTracking = [dictionary valueForKey:key];
-    }
+    self.autoTracking = [[dictionary valueForKey:key_autoTracking] boolValue];
+        self.batchSupport = [[dictionary valueForKey:key_batchSupport] boolValue];
+        self.requestPerBatch = [[dictionary valueForKey:key_requestPerBatch] integerValue];
+        self.requestsInterval = [[dictionary valueForKey:key_requestsInterval] longValue];
+        self.logLevel = [[dictionary valueForKey:key_logLevel] integerValue];
+        self.trackIDs = [dictionary objectForKey:key_trackIDs];
+        self.trackDomain = [dictionary objectForKey:key_trackDomain];
+        self.viewControllerAutoTracking = [[dictionary valueForKey:key_viewControllerAutoTracking] boolValue];
     
     NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:self requiringSecureCoding:NO error:NULL];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
