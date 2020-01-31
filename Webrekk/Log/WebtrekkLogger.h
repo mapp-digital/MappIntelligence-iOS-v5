@@ -11,8 +11,9 @@ typedef NS_ENUM(NSInteger, WebtrekkLogLevelDescription) {
     kWebtrekkLogLevelDescriptionDebug = 1, // The lowest priority that you would normally log, and purely informational in nature.
     kWebtrekkLogLevelDescriptionWarning = 2, // Something is amiss and might fail if not corrected
     kWebtrekkLogLevelDescriptionError = 3, // Something has failed.
-    kWebtrekkLogLevelDescriptionCritical = 4, // A failure in a key system.
-    kWebtrekkLogLevelDescriptionEmergency = 5, // The highest priority, usually reserved for catastrophic failures and reboot notices.
+    kWebtrekkLogLevelDescriptionFault = 4, // A failure in a key system.
+    kWebtrekkLogLevelDescriptionInfo = 5, // Informational logs for updating configuration or migrating from older versions of the library.
+    kWebtrekkLogLevelDescriptionAll = 6, // All logs of the above.
 };
 typedef NS_ENUM(NSInteger, WebtrekkErrorType) {
     kWebtrekkErrorTypeCaching = 1,

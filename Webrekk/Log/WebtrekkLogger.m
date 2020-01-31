@@ -69,11 +69,14 @@
         case kWebtrekkLogLevelDescriptionError:
             logLevelDescription = @"[Webtrekk Error]";
             break;
-        case kWebtrekkLogLevelDescriptionCritical:
-            logLevelDescription = @"[Webtrekk Critical]";
+        case kWebtrekkLogLevelDescriptionFault:
+            logLevelDescription = @"[Webtrekk Fault]";
             break;
-        case kWebtrekkLogLevelDescriptionEmergency:
-            logLevelDescription = @"[Webtrekk Emergency]";
+        case kWebtrekkLogLevelDescriptionInfo:
+            logLevelDescription = @"[Webtrekk Info]";
+            break;
+        case kWebtrekkLogLevelDescriptionAll:
+            logLevelDescription = @"[Webtrekk All]";
             break;
     }
     
