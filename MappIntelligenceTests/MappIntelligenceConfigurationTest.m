@@ -20,7 +20,7 @@
 - (void)setUp {
     // Put setup code here. This method is called before the invocation of each test method in the class.
     self.testDictionary = [[NSDictionary alloc] init];
-    self.configuration = [[MappIntelligenceDefaultConfig alloc] initWithDictionary:self.testDictionary];
+    self.configuration = [[MappIntelligenceDefaultConfig alloc] init];
 }
 
 - (void)tearDown {
@@ -28,10 +28,10 @@
 }
 
 - (void)testExample {
-    XCTestExpectation *expectation = [self expectationWithDescription:@"test configuration"];
     
-    // This is an example of a functional test case.
-    // Use XCTAssert and related functions to verify your tests produce the correct results.
+    _testDictionary = @{};
+   
+    XCTAssertEqualObjects( self.configuration, [_configuration initWithDictionary:_testDictionary], @"Loaded default config");
 }
 
 - (void)testPerformanceExample {

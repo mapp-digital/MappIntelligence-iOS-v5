@@ -64,13 +64,20 @@
         self.requestPerBatch = [[dictionary valueForKey:key_requestPerBatch] integerValue];
         self.requestsInterval = [[dictionary valueForKey:key_requestsInterval] longValue];
         self.logLevel = [[dictionary valueForKey:key_logLevel] integerValue];
+    if (([dictionary objectForKey:key_trackIDs] == [NSNull null] )|| [[dictionary objectForKey:key_trackIDs] isEqualToString:@""]) {
+            [[MappIntelligenceLogger shared] logObj:(@"You must enter at least one tracking ID to save the configuration. ") forDescription:kMappIntelligenceLogLevelDescriptionWarning];
+    } else {
         self.trackIDs = [[dictionary objectForKey:key_trackIDs] componentsSeparatedByString:@","];
+    }
+    if ([[dictionary objectForKey:key_trackDomain] isEqualToString:@""]) {
+            [[MappIntelligenceLogger shared] logObj:(@"You must enter tracking domain to save the configuration. ") forDescription:kMappIntelligenceLogLevelDescriptionWarning];
+    } else {
         self.trackDomain = [dictionary objectForKey:key_trackDomain];
+    }
         self.viewControllerAutoTracking = [[dictionary valueForKey:key_viewControllerAutoTracking] boolValue];
     
-    [self saveToUserDefaults];
-    [self logConfig];
-
+        [self saveToUserDefaults];
+        [self logConfig];
      return self;
 }
 

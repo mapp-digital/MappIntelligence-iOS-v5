@@ -5,6 +5,6 @@
       location = "container:/Users/vladan.randjelovic/Desktop/Backup Webtrekk to Mapp Intelligence/Webtrekk-iOS-v5/MappIntelligenceSDK.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:../../DemoWebtrekkApp/DemoWebtrekkApp.xcodeproj">
+      location = "group:/Users/vladan.randjelovic/Desktop/DemoWebtrekkApp/DemoWebtrekkApp.xcodeproj">
    </FileRef>
 </Workspace>
