@@ -30,7 +30,7 @@ MappIntelligence  instance
  #Swift
 MappIntelligence.sharedMappIntelligence()
  #Objective C
- MappIntelligence *mappIntelligence = [MappIntelligence sharedMappIntelligence];
+[MappIntelligence sharedMappIntelligence];
 @endcode
 @return MappIntelligence an Instance Type of MappIntelligence.
 */
@@ -45,7 +45,7 @@ MappIntelligence.sharedMappIntelligence()
 /** Method for setting up the Mapp Intelligence configuration by user.
  @brief Call this methond in your application to allow user to configue tracking.
  @param dictionary NSDictionary which contains user input configuration, that look like the example below.
- <pre><code>
+@code
  class YourAppViewController
  var dictionary = [NSString: Any]()
  {
@@ -55,7 +55,7 @@ MappIntelligence.sharedMappIntelligence()
                "track_ids": trackingIDs, "view_controller_auto_tracking": viewControllerAutoTracking]
  MappIntelligence.setConfigurationWith(dictionary)
  }
- </code></pre>
+ @endcode
  @attention Dictionary parameters "trackingIDs" and "trackDomain" are mandatory and needed for configuration to be saved.
  */
 +(void) setConfigurationWith: (NSDictionary *) dictionary {
