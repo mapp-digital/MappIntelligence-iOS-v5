@@ -18,27 +18,39 @@
 @implementation MappIntelligenceConfigurationTest
 
 - (void)setUp {
-    // Put setup code here. This method is called before the invocation of each test method in the class.
-    self.testDictionary = [[NSDictionary alloc] init];
-    self.configuration = [[MappIntelligenceDefaultConfig alloc] init];
+    [super setUp];
 }
 
 - (void)tearDown {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
+    [super tearDown];
 }
 
-- (void)testExample {
+- (void)testInitialization {
+    XCTAssertNotNil([[MappIntelligenceDefaultConfig alloc] init]);
+}
+
+-(void)testInitWithDictionary {
+    NSDictionary *testDictionary = [[NSDictionary alloc] init];
+    testDictionary = @{@"auto_tracking": @NO, @"batch_support": @YES, @"request_per_batch": @1223, @"requests_interval": @2123, @"log_level": @3, @"track_domain": @"dom.com",
+                       @"track_ids": @"12133,123454", @"view_controller_auto_tracking": @NO};
+    XCTAssertNotNil([[MappIntelligenceDefaultConfig alloc] initWithDictionary:testDictionary]);
+}
+
+-(void)testInitWithDictionaryWhitoutTrackIDs {
+    NSDictionary *testDictionary = [[NSDictionary alloc] init];
+    testDictionary = @{@"auto_tracking": @NO, @"batch_support": @YES, @"request_per_batch": @1223, @"requests_interval": @2123, @"log_level": @3, @"track_domain": @"dom.com",
+                       @"track_ids": @"", @"view_controller_auto_tracking": @NO};
+    XCTAssertEqual([testDictionary objectForKey:@"track_ids"], @"");
+    XCTAssertNotNil([[MappIntelligenceDefaultConfig alloc] initWithDictionary:testDictionary]);
+}
+
+-(void)testInitWithDictionaryWhitoutTrackingDomain {
     
-    _testDictionary = @{};
-   
-    XCTAssertEqualObjects( self.configuration, [_configuration initWithDictionary:_testDictionary], @"Loaded default config");
+    NSDictionary *testDictionary = [[NSDictionary alloc] init];
+    testDictionary = @{@"auto_tracking": @NO, @"batch_support": @YES, @"request_per_batch": @1223, @"requests_interval": @2123, @"log_level": @3, @"track_domain": @"",
+                       @"track_ids": @"12133,123454", @"view_controller_auto_tracking": @NO};
+    XCTAssertEqual([testDictionary objectForKey:@"track_domain"], @"");
+    XCTAssertNotNil([[MappIntelligenceDefaultConfig alloc] initWithDictionary:testDictionary]);
+    
 }
-
-- (void)testPerformanceExample {
-    // This is an example of a performance test case.
-    [self measureBlock:^{
-        // Put the code you want to measure the time of here.
-    }];
-}
-
 @end
