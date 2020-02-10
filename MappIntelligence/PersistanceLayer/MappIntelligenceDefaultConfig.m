@@ -29,8 +29,10 @@
 
 @synthesize requestsInterval;
 
+/** Tracking domain is MANDATORY field */
 @synthesize trackDomain;
 
+/** Track ID is a mandatory field and must be entered at least one for the configuration to be saved */
 @synthesize trackIDs;
 
 @synthesize viewControllerAutoTracking;
