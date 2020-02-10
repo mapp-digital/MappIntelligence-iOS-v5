@@ -23,6 +23,18 @@
 static MappIntelligence *sharedInstance = nil;
 static MappIntelligenceDefaultConfig * config = nil;
 
+/**
+MappIntelligence  instance
+@brief Method for getting a singleton instance of MappIntelligence. Called inside AppDelegate for initializing MappIntelligence SDK
+@code
+ #Swift
+MappIntelligence.sharedMappIntelligence()
+ #Objective C
+ MappIntelligence *mappIntelligence = [MappIntelligence sharedMappIntelligence];
+@endcode
+@return MappIntelligence an Instance Type of MappIntelligence.
+*/
+
 +(id) sharedMappIntelligence {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
