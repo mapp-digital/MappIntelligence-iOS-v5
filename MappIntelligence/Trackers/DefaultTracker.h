@@ -12,4 +12,7 @@
 
 #endif /* DefaultTracker_h */
 @interface DefaultTracker:NSObject
+
++(NSString*)generateEverId;
++(NSUserDefaults*)sharedDefaults;
 @end
