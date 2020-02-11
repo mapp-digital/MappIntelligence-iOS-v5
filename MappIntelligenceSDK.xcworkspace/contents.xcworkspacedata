@@ -2,9 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "container:/Users/vladan.randjelovic/Desktop/Backup Webtrekk to Mapp Intelligence/Webtrekk-iOS-v5/MappIntelligenceSDK.xcodeproj">
+      location = "group:MappIntelligenceSDK.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:/Users/vladan.randjelovic/Desktop/DemoWebtrekkApp/DemoWebtrekkApp.xcodeproj">
+      location = "group:DemoWebtrekkApp/DemoWebtrekkApp.xcodeproj">
    </FileRef>
 </Workspace>
