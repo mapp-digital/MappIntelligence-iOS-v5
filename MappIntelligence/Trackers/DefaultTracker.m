@@ -30,6 +30,25 @@
 
 @implementation DefaultTracker:NSObject
 
+static DefaultTracker * sharedTracker = nil;
+static NSString * everID;
+
++(instancetype) sharedInstance {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedTracker = [[self alloc] init];
+    });
+    return sharedTracker;
+}
+
+-(instancetype)init {
+    if (!sharedTracker) {
+        sharedTracker = [super init];
+        everID = [DefaultTracker generateEverId];
+    }
+    return sharedTracker;
+}
+
 + (NSString *)generateEverId {
     
     NSString* tmpEverId = [[DefaultTracker sharedDefaults] stringForKey:everId];
