@@ -65,7 +65,11 @@
         self.batchSupport = [[dictionary valueForKey:key_batchSupport] boolValue];
         self.requestPerBatch = [[dictionary valueForKey:key_requestPerBatch] integerValue];
         self.requestsInterval = [[dictionary valueForKey:key_requestsInterval] longValue];
+    if ([[dictionary valueForKey:key_logLevel] integerValue] == 0) {
+        self.logLevel = kMappIntelligenceLogLevelDescriptionDebug;
+    } else {
         self.logLevel = [[dictionary valueForKey:key_logLevel] integerValue];
+    }
     if (([dictionary objectForKey:key_trackIDs] == [NSNull null] )|| [[dictionary objectForKey:key_trackIDs] isEqualToString:@""]) {
             [[MappIntelligenceLogger shared] logObj:(@"You must enter at least one tracking ID to save the configuration. ") forDescription:kMappIntelligenceLogLevelDescriptionWarning];
     } else {

@@ -6,16 +6,12 @@
 //  Copyright © 2020 Stefan Stevanovic. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
-#if !os(watchOS)
-#import <AVFoundation/AVFoundation.h>
-#endif
+NS_ASSUME_NONNULL_BEGIN
 
-@protocol Tracjer <class>
-
-@property NSString *everID {get, set}
-@property
-
+@protocol Tracker <NSObject>
 
 @end
+
+NS_ASSUME_NONNULL_END
