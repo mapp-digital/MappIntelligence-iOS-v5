@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="DemoWebtrekkApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Mapp Intelligence" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QvL-lF-keq">
+                                <rect key="frame" x="91.666666666666671" y="438" width="230.66666666666663" height="20"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NT4-Kt-2Ux">
+                                <rect key="frame" x="191" y="832" width="32" height="30"/>
+                                <state key="normal" title="Next"/>
+                                <connections>
+                                    <action selector="moveToConfigurationScreen:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kzK-QH-tGJ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="NT4-Kt-2Ux" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Fk8-bD-oBz"/>
+                            <constraint firstItem="QvL-lF-keq" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="SfV-Pt-LNZ"/>
+                            <constraint firstItem="NT4-Kt-2Ux" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="kci-9w-Wzt"/>
+                            <constraint firstItem="QvL-lF-keq" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="r42-H5-w8S"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <segue destination="WJg-jf-2Rr" kind="presentation" id="cnw-K1-wLY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="131.8840579710145" y="138.61607142857142"/>
+        </scene>
+        <!--Configuration View Controller-->
+        <scene sceneID="fCF-L7-Z4J">
+            <objects>
+                <viewController storyboardIdentifier="configuration" id="WJg-jf-2Rr" customClass="ConfigurationViewController" customModule="DemoWebtrekkApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3Pg-c8-ier">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Configuration" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kqt-mi-hbb">
+                                <rect key="frame" x="155" y="20" width="104" height="20.666666666666671"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enable auto tracking" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LWl-gG-HZf">
+                                <rect key="frame" x="20" y="60.666666666666664" width="295" height="20.666666666666664"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enable batch support" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sqd-Ct-JIm">
+                                <rect key="frame" x="20" y="101.66666666666667" width="164" height="20.333333333333329"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enable View Controller auto tracking" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bNO-R8-cgS">
+                                <rect key="frame" x="20" y="393.66666666666669" width="315" height="20.333333333333314"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qqy-PL-oym">
+                                <rect key="frame" x="345" y="60.666666666666657" width="51" height="31"/>
+                                <connections>
+                                    <action selector="enableAutoTracking:" destination="WJg-jf-2Rr" eventType="valueChanged" id="57E-sh-Tnr"/>
+                                </connections>
+                            </switch>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nm2-KX-SUI">
+                                <rect key="frame" x="345" y="393.66666666666669" width="51" height="31"/>
+                                <connections>
+                                    <action selector="enableVCAutoTracking:" destination="WJg-jf-2Rr" eventType="valueChanged" id="eIE-CG-sPB"/>
+                                </connections>
+                            </switch>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Set Requests Time Interval" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="igH-Vk-2qP">
+                                <rect key="frame" x="20" y="261.66666666666669" width="374" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="setRequestTime:" destination="WJg-jf-2Rr" eventType="editingDidEnd" id="hK1-O9-txA"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Set Tracking Domain" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GwC-eU-cBZ">
+                                <rect key="frame" x="20" y="305.66666666666669" width="374" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="setTrackDomain:" destination="WJg-jf-2Rr" eventType="editingDidEnd" id="E5P-Ce-Z1N"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Set Number Of Requests Per Queue" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Fo-NM-4LJ">
+                                <rect key="frame" x="20" y="217.66666666666666" width="374" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="setNumberOfRequests:" destination="WJg-jf-2Rr" eventType="editingDidEnd" id="vrF-F3-bhQ"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Set Log Level" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GEW-X4-v8k">
+                                <rect key="frame" x="20" y="142.66666666666666" width="374" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="setLogLevel:" destination="WJg-jf-2Rr" eventType="editingDidEnd" id="OhE-pq-eQL"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Set Tracking IDs" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I1g-mz-glS">
+                                <rect key="frame" x="20" y="349.66666666666669" width="374" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="setTrackingIDs:" destination="WJg-jf-2Rr" eventType="editingDidEnd" id="Cfc-WE-gjC"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FK9-Cu-OTC">
+                                <rect key="frame" x="190" y="768" width="34" height="30"/>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="setConfiguration:" destination="WJg-jf-2Rr" eventType="touchUpInside" id="hT5-eD-4pX"/>
+                                </connections>
+                            </button>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="0Is-UR-GBn">
+                                <rect key="frame" x="342" y="101.66666666666667" width="51" height="31.000000000000014"/>
+                                <connections>
+                                    <action selector="enableBatchSupport:" destination="WJg-jf-2Rr" eventType="valueChanged" id="Avb-PN-Oyj"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Setup requests queue" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U4B-zd-8yF">
+                                <rect key="frame" x="20" y="186.66666666666666" width="374" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="I1g-mz-glS" firstAttribute="leading" secondItem="VbJ-BP-tV4" secondAttribute="leading" constant="20" id="0hj-Sp-Mbl"/>
+                            <constraint firstItem="VbJ-BP-tV4" firstAttribute="trailing" secondItem="I1g-mz-glS" secondAttribute="trailing" constant="20" id="3Lo-Nb-n0c"/>
+                            <constraint firstItem="LWl-gG-HZf" firstAttribute="top" secondItem="Kqt-mi-hbb" secondAttribute="bottom" constant="20" id="7U7-Sd-vd1"/>
+                            <constraint firstItem="Kqt-mi-hbb" firstAttribute="top" secondItem="VbJ-BP-tV4" secondAttribute="top" constant="20" id="A4t-z1-ZH5"/>
+                            <constraint firstItem="9Fo-NM-4LJ" firstAttribute="top" secondItem="U4B-zd-8yF" secondAttribute="bottom" constant="10" id="AGe-vU-FSW"/>
+                            <constraint firstItem="GwC-eU-cBZ" firstAttribute="leading" secondItem="VbJ-BP-tV4" secondAttribute="leading" constant="20" id="Ekw-c8-2Ld"/>
+                            <constraint firstItem="qqy-PL-oym" firstAttribute="top" secondItem="Kqt-mi-hbb" secondAttribute="bottom" constant="20" id="N9a-bX-pFR"/>
+                            <constraint firstItem="GEW-X4-v8k" firstAttribute="top" secondItem="0Is-UR-GBn" secondAttribute="bottom" constant="10" id="Oi1-CS-p6F"/>
+                            <constraint firstItem="0Is-UR-GBn" firstAttribute="top" secondItem="qqy-PL-oym" secondAttribute="bottom" constant="10" id="PG3-n9-xAf"/>
+                            <constraint firstItem="qqy-PL-oym" firstAttribute="leading" secondItem="LWl-gG-HZf" secondAttribute="trailing" constant="30" id="Pxe-JJ-ssf"/>
+                            <constraint firstItem="FK9-Cu-OTC" firstAttribute="centerX" secondItem="VbJ-BP-tV4" secondAttribute="centerX" id="QHf-hd-ALz"/>
+                            <constraint firstItem="LWl-gG-HZf" firstAttribute="height" secondItem="qqy-PL-oym" secondAttribute="height" multiplier="0.66129" id="QUm-vG-PoZ"/>
+                            <constraint firstItem="sqd-Ct-JIm" firstAttribute="leading" secondItem="VbJ-BP-tV4" secondAttribute="leading" constant="20" id="Rgg-Pe-ogr"/>
+                            <constraint firstItem="sqd-Ct-JIm" firstAttribute="top" secondItem="qqy-PL-oym" secondAttribute="bottom" constant="10" id="TWG-YF-Flp"/>
+                            <constraint firstItem="VbJ-BP-tV4" firstAttribute="trailing" secondItem="qqy-PL-oym" secondAttribute="trailing" constant="20" id="U9x-Fa-UH9"/>
+                            <constraint firstItem="bNO-R8-cgS" firstAttribute="top" secondItem="I1g-mz-glS" secondAttribute="bottom" constant="10" id="UpR-fc-9OB"/>
+                            <constraint firstItem="igH-Vk-2qP" firstAttribute="top" secondItem="9Fo-NM-4LJ" secondAttribute="bottom" constant="10" id="VEZ-l0-9GW"/>
+                            <constraint firstItem="U4B-zd-8yF" firstAttribute="top" secondItem="GEW-X4-v8k" secondAttribute="bottom" constant="10" id="XCt-65-LYu"/>
+                            <constraint firstItem="VbJ-BP-tV4" firstAttribute="bottom" secondItem="FK9-Cu-OTC" secondAttribute="bottom" constant="10" id="XhW-Na-Lum"/>
+                            <constraint firstItem="nm2-KX-SUI" firstAttribute="leading" secondItem="bNO-R8-cgS" secondAttribute="trailing" constant="10" id="bS7-WP-8mV"/>
+                            <constraint firstItem="VbJ-BP-tV4" firstAttribute="trailing" secondItem="igH-Vk-2qP" secondAttribute="trailing" constant="20" id="c1S-c0-n9o"/>
+                            <constraint firstItem="VbJ-BP-tV4" firstAttribute="trailing" secondItem="GEW-X4-v8k" secondAttribute="trailing" constant="20" id="cLS-iI-98t"/>
+                            <constraint firstItem="GwC-eU-cBZ" firstAttribute="top" secondItem="igH-Vk-2qP" secondAttribute="bottom" constant="10" id="clI-zg-ygI"/>
+                            <constraint firstItem="LWl-gG-HZf" firstAttribute="leading" secondItem="VbJ-BP-tV4" secondAttribute="leading" constant="20" id="g7G-Wj-uc6"/>
+                            <constraint firstItem="I1g-mz-glS" firstAttribute="top" secondItem="GwC-eU-cBZ" secondAttribute="bottom" constant="10" id="heD-aI-ftS"/>
+                            <constraint firstItem="VbJ-BP-tV4" firstAttribute="trailing" secondItem="9Fo-NM-4LJ" secondAttribute="trailing" constant="20" id="iP3-3O-uDU"/>
+                            <constraint firstItem="nm2-KX-SUI" firstAttribute="top" secondItem="I1g-mz-glS" secondAttribute="bottom" constant="10" id="ib8-uK-ywC"/>
+                            <constraint firstItem="VbJ-BP-tV4" firstAttribute="trailing" secondItem="nm2-KX-SUI" secondAttribute="trailing" constant="20" id="kcm-u4-b63"/>
+                            <constraint firstItem="Kqt-mi-hbb" firstAttribute="centerX" secondItem="VbJ-BP-tV4" secondAttribute="centerX" id="n9w-LF-ikF"/>
+                            <constraint firstItem="GEW-X4-v8k" firstAttribute="leading" secondItem="VbJ-BP-tV4" secondAttribute="leading" constant="20" id="o1o-aa-2pl"/>
+                            <constraint firstItem="VbJ-BP-tV4" firstAttribute="trailing" secondItem="0Is-UR-GBn" secondAttribute="trailing" constant="23" id="qzm-hD-VBT"/>
+                            <constraint firstItem="U4B-zd-8yF" firstAttribute="leading" secondItem="VbJ-BP-tV4" secondAttribute="leading" constant="20" id="uTo-WK-B4P"/>
+                            <constraint firstItem="VbJ-BP-tV4" firstAttribute="trailing" secondItem="U4B-zd-8yF" secondAttribute="trailing" constant="20" id="v0W-mQ-Dzc"/>
+                            <constraint firstItem="9Fo-NM-4LJ" firstAttribute="leading" secondItem="VbJ-BP-tV4" secondAttribute="leading" constant="20" id="vMJ-jX-NrS"/>
+                            <constraint firstItem="bNO-R8-cgS" firstAttribute="leading" secondItem="VbJ-BP-tV4" secondAttribute="leading" constant="20" id="vU4-j4-Cqi"/>
+                            <constraint firstItem="VbJ-BP-tV4" firstAttribute="trailing" secondItem="GwC-eU-cBZ" secondAttribute="trailing" constant="20" id="z1M-Iz-Chi"/>
+                            <constraint firstItem="igH-Vk-2qP" firstAttribute="leading" secondItem="VbJ-BP-tV4" secondAttribute="leading" constant="20" id="zdC-5v-fSc"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="VbJ-BP-tV4"/>
+                    </view>
+                    <connections>
+                        <outlet property="enableAutoTrackingSwitch" destination="qqy-PL-oym" id="f3s-4Z-nhi"/>
+                        <outlet property="enableBatchSupportSwitch" destination="0Is-UR-GBn" id="Qcg-8h-dZj"/>
+                        <outlet property="enableViewControllerAutoTracking" destination="nm2-KX-SUI" id="fp9-7e-DGv"/>
+                        <outlet property="setLogLevelTF" destination="GEW-X4-v8k" id="Upv-O9-ww2"/>
+                        <outlet property="setNumberOfRequestsPerBatchTF" destination="9Fo-NM-4LJ" id="bsh-0G-hzy"/>
+                        <outlet property="setRequestsTimeIntervalTF" destination="igH-Vk-2qP" id="fCa-ai-HNi"/>
+                        <outlet property="setTrackingDomainTF" destination="GwC-eU-cBZ" id="lQc-c6-ENP"/>
+                        <outlet property="setTrackingIDsTF" destination="I1g-mz-glS" id="GZx-Ac-eiV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="88a-yd-iN7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1023.75" y="137.5"/>
+        </scene>
+    </scenes>
+</document>

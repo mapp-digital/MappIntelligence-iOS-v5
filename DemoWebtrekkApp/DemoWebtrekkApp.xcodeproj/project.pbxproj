@@ -1,0 +1,385 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BC70672123D9A4FE00F3BDD8 /* ConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC70672023D9A4FE00F3BDD8 /* ConfigurationViewController.swift */; };
+		BCA1739223D5D25C00B31430 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA1739123D5D25C00B31430 /* AppDelegate.swift */; };
+		BCA1739423D5D25C00B31430 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA1739323D5D25C00B31430 /* SceneDelegate.swift */; };
+		BCA1739623D5D25C00B31430 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA1739523D5D25C00B31430 /* ViewController.swift */; };
+		BCA1739923D5D25C00B31430 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCA1739723D5D25C00B31430 /* Main.storyboard */; };
+		BCA1739B23D5D25E00B31430 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCA1739A23D5D25E00B31430 /* Assets.xcassets */; };
+		BCA1739E23D5D25E00B31430 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCA1739C23D5D25E00B31430 /* LaunchScreen.storyboard */; };
+		BCA5E97223E961C30073CC5E /* libMappIntelligenceSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCA5E97123E961C30073CC5E /* libMappIntelligenceSDK.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		BC70672023D9A4FE00F3BDD8 /* ConfigurationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationViewController.swift; sourceTree = "<group>"; };
+		BCA1738E23D5D25C00B31430 /* DemoWebtrekkApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoWebtrekkApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BCA1739123D5D25C00B31430 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		BCA1739323D5D25C00B31430 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		BCA1739523D5D25C00B31430 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BCA1739823D5D25C00B31430 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BCA1739A23D5D25E00B31430 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BCA1739D23D5D25E00B31430 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		BCA1739F23D5D25E00B31430 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BCA173AB23D6F6E600B31430 /* DemoWebtrekkApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DemoWebtrekkApp-Bridging-Header.h"; sourceTree = "<group>"; };
+		BCA173AF23D6FBFC00B31430 /* libWebrekk.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libWebrekk.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		BCA5E96423E857850073CC5E /* libMappIntelligenceSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libMappIntelligenceSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		BCA5E97123E961C30073CC5E /* libMappIntelligenceSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libMappIntelligenceSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		BCAD7F2923E45B1A00741957 /* libWebrekk.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libWebrekk.a; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BCA1738B23D5D25C00B31430 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BCA5E97223E961C30073CC5E /* libMappIntelligenceSDK.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BCA1738523D5D25C00B31430 = {
+			isa = PBXGroup;
+			children = (
+				BCA1739023D5D25C00B31430 /* DemoWebtrekkApp */,
+				BCA1738F23D5D25C00B31430 /* Products */,
+				BCA173AE23D6FBFC00B31430 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		BCA1738F23D5D25C00B31430 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BCA1738E23D5D25C00B31430 /* DemoWebtrekkApp.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BCA1739023D5D25C00B31430 /* DemoWebtrekkApp */ = {
+			isa = PBXGroup;
+			children = (
+				BCA1739123D5D25C00B31430 /* AppDelegate.swift */,
+				BCA1739323D5D25C00B31430 /* SceneDelegate.swift */,
+				BCA1739523D5D25C00B31430 /* ViewController.swift */,
+				BCA1739723D5D25C00B31430 /* Main.storyboard */,
+				BCA1739A23D5D25E00B31430 /* Assets.xcassets */,
+				BCA1739C23D5D25E00B31430 /* LaunchScreen.storyboard */,
+				BCA1739F23D5D25E00B31430 /* Info.plist */,
+				BCA173AB23D6F6E600B31430 /* DemoWebtrekkApp-Bridging-Header.h */,
+				BC70672023D9A4FE00F3BDD8 /* ConfigurationViewController.swift */,
+			);
+			path = DemoWebtrekkApp;
+			sourceTree = "<group>";
+		};
+		BCA173AE23D6FBFC00B31430 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BCA5E97123E961C30073CC5E /* libMappIntelligenceSDK.a */,
+				BCA5E96423E857850073CC5E /* libMappIntelligenceSDK.a */,
+				BCAD7F2923E45B1A00741957 /* libWebrekk.a */,
+				BCA173AF23D6FBFC00B31430 /* libWebrekk.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BCA1738D23D5D25C00B31430 /* DemoWebtrekkApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BCA173A223D5D25E00B31430 /* Build configuration list for PBXNativeTarget "DemoWebtrekkApp" */;
+			buildPhases = (
+				BCA1738A23D5D25C00B31430 /* Sources */,
+				BCA1738B23D5D25C00B31430 /* Frameworks */,
+				BCA1738C23D5D25C00B31430 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DemoWebtrekkApp;
+			productName = DemoWebtrekkApp;
+			productReference = BCA1738E23D5D25C00B31430 /* DemoWebtrekkApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BCA1738623D5D25C00B31430 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1130;
+				LastUpgradeCheck = 1130;
+				ORGANIZATIONNAME = "Vladan Randjelovic";
+				TargetAttributes = {
+					BCA1738D23D5D25C00B31430 = {
+						CreatedOnToolsVersion = 11.3.1;
+						LastSwiftMigration = 1130;
+					};
+				};
+			};
+			buildConfigurationList = BCA1738923D5D25C00B31430 /* Build configuration list for PBXProject "DemoWebtrekkApp" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BCA1738523D5D25C00B31430;
+			productRefGroup = BCA1738F23D5D25C00B31430 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BCA1738D23D5D25C00B31430 /* DemoWebtrekkApp */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BCA1738C23D5D25C00B31430 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BCA1739E23D5D25E00B31430 /* LaunchScreen.storyboard in Resources */,
+				BCA1739B23D5D25E00B31430 /* Assets.xcassets in Resources */,
+				BCA1739923D5D25C00B31430 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BCA1738A23D5D25C00B31430 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BCA1739623D5D25C00B31430 /* ViewController.swift in Sources */,
+				BC70672123D9A4FE00F3BDD8 /* ConfigurationViewController.swift in Sources */,
+				BCA1739223D5D25C00B31430 /* AppDelegate.swift in Sources */,
+				BCA1739423D5D25C00B31430 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		BCA1739723D5D25C00B31430 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BCA1739823D5D25C00B31430 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		BCA1739C23D5D25E00B31430 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BCA1739D23D5D25E00B31430 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BCA173A023D5D25E00B31430 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		BCA173A123D5D25E00B31430 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BCA173A323D5D25E00B31430 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LERY366S7C;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)",
+					"${TARGET_BUILD_DIR}/Webrekk.framework",
+					"$(PROJECT_DIR)/DemoWebtrekkApp",
+				);
+				INFOPLIST_FILE = DemoWebtrekkApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.webtrekk.DemoWebtrekkApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "DemoWebtrekkApp/DemoWebtrekkApp-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BCA173A423D5D25E00B31430 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LERY366S7C;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)",
+					"${TARGET_BUILD_DIR}/Webrekk.framework",
+					"$(PROJECT_DIR)/DemoWebtrekkApp",
+				);
+				INFOPLIST_FILE = DemoWebtrekkApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.webtrekk.DemoWebtrekkApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "DemoWebtrekkApp/DemoWebtrekkApp-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BCA1738923D5D25C00B31430 /* Build configuration list for PBXProject "DemoWebtrekkApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BCA173A023D5D25E00B31430 /* Debug */,
+				BCA173A123D5D25E00B31430 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BCA173A223D5D25E00B31430 /* Build configuration list for PBXNativeTarget "DemoWebtrekkApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BCA173A323D5D25E00B31430 /* Debug */,
+				BCA173A423D5D25E00B31430 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BCA1738623D5D25C00B31430 /* Project object */;
+}
