@@ -52,7 +52,8 @@ static NSString * everID;
 -(NSString *)generateEverId {
     
     NSString* tmpEverId = [[DefaultTracker sharedDefaults] stringForKey:everId];
-    if ( !tmpEverId) {
+    //https://nshipster.com/nil/ read for more explanation
+    if ( tmpEverId != nil) {
         return tmpEverId;
     } else {
         tmpEverId = [[NSString alloc] initWithFormat:@"6%010.0f%08u", [[[NSDate alloc] init] timeIntervalSince1970], arc4random_uniform(99999999) + 1];
