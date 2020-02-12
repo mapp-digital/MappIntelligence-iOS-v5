@@ -149,6 +149,18 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ever ID:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pEO-We-vUs">
+                                <rect key="frame" x="74" y="444" width="59" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="eid" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2I1-Jh-Nz3">
+                                <rect key="frame" x="336.66666666666669" y="444" width="23.333333333333314" height="20.333333333333314"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -157,7 +169,9 @@
                             <constraint firstItem="LWl-gG-HZf" firstAttribute="top" secondItem="Kqt-mi-hbb" secondAttribute="bottom" constant="20" id="7U7-Sd-vd1"/>
                             <constraint firstItem="Kqt-mi-hbb" firstAttribute="top" secondItem="VbJ-BP-tV4" secondAttribute="top" constant="20" id="A4t-z1-ZH5"/>
                             <constraint firstItem="9Fo-NM-4LJ" firstAttribute="top" secondItem="U4B-zd-8yF" secondAttribute="bottom" constant="10" id="AGe-vU-FSW"/>
+                            <constraint firstItem="pEO-We-vUs" firstAttribute="top" secondItem="bNO-R8-cgS" secondAttribute="bottom" constant="30" id="ARz-AR-xAp"/>
                             <constraint firstItem="GwC-eU-cBZ" firstAttribute="leading" secondItem="VbJ-BP-tV4" secondAttribute="leading" constant="20" id="Ekw-c8-2Ld"/>
+                            <constraint firstItem="VbJ-BP-tV4" firstAttribute="trailing" secondItem="2I1-Jh-Nz3" secondAttribute="trailing" constant="54" id="H8P-kS-su3"/>
                             <constraint firstItem="qqy-PL-oym" firstAttribute="top" secondItem="Kqt-mi-hbb" secondAttribute="bottom" constant="20" id="N9a-bX-pFR"/>
                             <constraint firstItem="GEW-X4-v8k" firstAttribute="top" secondItem="0Is-UR-GBn" secondAttribute="bottom" constant="10" id="Oi1-CS-p6F"/>
                             <constraint firstItem="0Is-UR-GBn" firstAttribute="top" secondItem="qqy-PL-oym" secondAttribute="bottom" constant="10" id="PG3-n9-xAf"/>
@@ -175,6 +189,7 @@
                             <constraint firstItem="VbJ-BP-tV4" firstAttribute="trailing" secondItem="igH-Vk-2qP" secondAttribute="trailing" constant="20" id="c1S-c0-n9o"/>
                             <constraint firstItem="VbJ-BP-tV4" firstAttribute="trailing" secondItem="GEW-X4-v8k" secondAttribute="trailing" constant="20" id="cLS-iI-98t"/>
                             <constraint firstItem="GwC-eU-cBZ" firstAttribute="top" secondItem="igH-Vk-2qP" secondAttribute="bottom" constant="10" id="clI-zg-ygI"/>
+                            <constraint firstItem="2I1-Jh-Nz3" firstAttribute="top" secondItem="bNO-R8-cgS" secondAttribute="bottom" constant="30" id="eA6-22-QuU"/>
                             <constraint firstItem="LWl-gG-HZf" firstAttribute="leading" secondItem="VbJ-BP-tV4" secondAttribute="leading" constant="20" id="g7G-Wj-uc6"/>
                             <constraint firstItem="I1g-mz-glS" firstAttribute="top" secondItem="GwC-eU-cBZ" secondAttribute="bottom" constant="10" id="heD-aI-ftS"/>
                             <constraint firstItem="VbJ-BP-tV4" firstAttribute="trailing" secondItem="9Fo-NM-4LJ" secondAttribute="trailing" constant="20" id="iP3-3O-uDU"/>
@@ -184,6 +199,7 @@
                             <constraint firstItem="GEW-X4-v8k" firstAttribute="leading" secondItem="VbJ-BP-tV4" secondAttribute="leading" constant="20" id="o1o-aa-2pl"/>
                             <constraint firstItem="VbJ-BP-tV4" firstAttribute="trailing" secondItem="0Is-UR-GBn" secondAttribute="trailing" constant="23" id="qzm-hD-VBT"/>
                             <constraint firstItem="U4B-zd-8yF" firstAttribute="leading" secondItem="VbJ-BP-tV4" secondAttribute="leading" constant="20" id="uTo-WK-B4P"/>
+                            <constraint firstItem="pEO-We-vUs" firstAttribute="leading" secondItem="VbJ-BP-tV4" secondAttribute="leading" constant="74" id="ugN-jc-139"/>
                             <constraint firstItem="VbJ-BP-tV4" firstAttribute="trailing" secondItem="U4B-zd-8yF" secondAttribute="trailing" constant="20" id="v0W-mQ-Dzc"/>
                             <constraint firstItem="9Fo-NM-4LJ" firstAttribute="leading" secondItem="VbJ-BP-tV4" secondAttribute="leading" constant="20" id="vMJ-jX-NrS"/>
                             <constraint firstItem="bNO-R8-cgS" firstAttribute="leading" secondItem="VbJ-BP-tV4" secondAttribute="leading" constant="20" id="vU4-j4-Cqi"/>
@@ -196,6 +212,7 @@
                         <outlet property="enableAutoTrackingSwitch" destination="qqy-PL-oym" id="f3s-4Z-nhi"/>
                         <outlet property="enableBatchSupportSwitch" destination="0Is-UR-GBn" id="Qcg-8h-dZj"/>
                         <outlet property="enableViewControllerAutoTracking" destination="nm2-KX-SUI" id="fp9-7e-DGv"/>
+                        <outlet property="everID" destination="2I1-Jh-Nz3" id="Bvz-GY-hew"/>
                         <outlet property="setLogLevelTF" destination="GEW-X4-v8k" id="Upv-O9-ww2"/>
                         <outlet property="setNumberOfRequestsPerBatchTF" destination="9Fo-NM-4LJ" id="bsh-0G-hzy"/>
                         <outlet property="setRequestsTimeIntervalTF" destination="igH-Vk-2qP" id="fCa-ai-HNi"/>

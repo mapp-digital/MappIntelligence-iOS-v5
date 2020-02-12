@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #import "Log/MappIntelligenceLogger.h"
-
 @protocol Config
 
 //MappIntelligence default configuration parameters:

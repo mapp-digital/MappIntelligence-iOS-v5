@@ -44,12 +44,12 @@ static NSString * everID;
 -(instancetype)init {
     if (!sharedTracker) {
         sharedTracker = [super init];
-        everID = [DefaultTracker generateEverId];
+        everID = [sharedTracker generateEverId];
     }
     return sharedTracker;
 }
 
-+ (NSString *)generateEverId {
+-(NSString *)generateEverId {
     
     NSString* tmpEverId = [[DefaultTracker sharedDefaults] stringForKey:everId];
     if ( !tmpEverId) {

@@ -17,7 +17,7 @@
 #define key_batchSupport @"batch_support"
 #define key_viewControllerAutoTracking @"view_controller_auto_tracking"
 #define key_MappIntelligence_default_configuration @"defaultConfiguration"
-
+#import "DefaultTracker.h"
 
 @implementation MappIntelligenceDefaultConfig : NSObject
 
@@ -38,6 +38,7 @@
 @synthesize viewControllerAutoTracking;
 
 @synthesize logLevel;
+@synthesize tracker;
 
 -(instancetype)init {
     
@@ -50,7 +51,7 @@
     self.trackIDs = [[NSArray alloc] init];
     self.trackDomain = @"https://q3.MappIntelligence.net";
     self.viewControllerAutoTracking = YES;
-    
+    self.tracker = [[DefaultTracker alloc] init];
     [self saveToUserDefaults];
     [self logConfig];
 
@@ -124,7 +125,14 @@
     [[MappIntelligenceLogger shared] logObj:([@"Tracking IDs: " stringByAppendingFormat:@"%@", self.trackIDs]) forDescription:self.logLevel];
     [[MappIntelligenceLogger shared] logObj:([@"Tracking domain is: " stringByAppendingFormat:@"%@", self.trackDomain]) forDescription:self.logLevel];
     [[MappIntelligenceLogger shared] logObj:([@"View Controller auto tracking is enabbled: " stringByAppendingFormat:self.viewControllerAutoTracking ? @"Yes" : @"No"]) forDescription:self.logLevel];
-
+    @try {
+        [self.tracker generateEverId];
+    } @catch (NSException *exception) {
+        NSLog(@"Exception %@", exception);
+    } @finally {
+        [[MappIntelligenceLogger shared] logObj:([@"Ever ID is: " stringByAppendingFormat:@"%@", [self.tracker generateEverId]]) forDescription:self.logLevel];
+    }
+    
 }
 
 -(void) saveToUserDefaults {

@@ -18,6 +18,7 @@ class ConfigurationViewController: UIViewController {
     @IBOutlet weak var setRequestsTimeIntervalTF: UITextField!
     @IBOutlet weak var setTrackingDomainTF: UITextField!
     @IBOutlet weak var setTrackingIDsTF: UITextField!
+    @IBOutlet weak var everID: UILabel!
     var dictionary = [NSString: Any]()
     var autoTrackingValue = true
     var batchSupportValue = false
@@ -27,7 +28,6 @@ class ConfigurationViewController: UIViewController {
         super.viewDidLoad()
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
                self.view.addGestureRecognizer(tapGesture)
-        // Do any additional setup after loading the view.
     }
     
     @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
