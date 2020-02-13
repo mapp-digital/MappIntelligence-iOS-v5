@@ -28,6 +28,7 @@ class ConfigurationViewController: UIViewController {
         super.viewDidLoad()
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
                self.view.addGestureRecognizer(tapGesture)
+        MappIntelligence.shared()?.trackPage(self)
     }
     
     @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {

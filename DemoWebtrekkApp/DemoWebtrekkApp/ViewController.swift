@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
+        MappIntelligence.shared()?.trackPage(self)
     }
 
     @IBAction func moveToConfigurationScreen(_ sender: Any) {

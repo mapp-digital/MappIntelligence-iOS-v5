@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "DefaultTracker.h"
+#import "MappIntelligenceLogger.h"
 
 #define appHibernationDate @"appHibernationDate"
 #define appVersion @"appVersion"
@@ -66,6 +67,11 @@ static NSString * everID;
     }
     
     return @"";
+}
+
+- (void)track:(UIViewController *)controller {
+    NSString *CurrentSelectedCViewController = NSStringFromClass([controller class]);
+    [[MappIntelligenceLogger shared] logObj:[[NSString alloc]initWithFormat:@"Content ID is: %@", CurrentSelectedCViewController] forDescription:kMappIntelligenceLogLevelDescriptionDebug];
 }
 
 +(NSUserDefaults *)sharedDefaults {

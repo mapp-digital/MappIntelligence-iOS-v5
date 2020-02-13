@@ -10,12 +10,13 @@
 #import "MappIntelligenceDataService.h"
 #import "MappIntelligenceDefaultConfig.h"
 #import "MappIntelligenceLogger.h"
+#import "DefaultTracker.h"
 
 @interface MappIntelligence()
 
 @property MappIntelligenceDataService *dataService;
-
 @property MappIntelligenceDefaultConfig * configuration;
+@property DefaultTracker *tracker;
 
 @end
 
@@ -23,25 +24,22 @@
 static MappIntelligence *sharedInstance = nil;
 static MappIntelligenceDefaultConfig * config = nil;
 
-/**
-MappIntelligence  instance
-@brief Method for getting a singleton instance of MappIntelligence. Called inside AppDelegate for initializing MappIntelligence SDK
-@code
- #Swift
-MappIntelligence.sharedMappIntelligence()
- #Objective C
-[MappIntelligence sharedMappIntelligence];
-@endcode
-@return MappIntelligence an Instance Type of MappIntelligence.
-*/
+@synthesize tracker;
 
-+(id) sharedMappIntelligence {
++ (nullable instancetype)shared
+{
+    static MappIntelligence *shared = nil;
+    
     static dispatch_once_t onceToken;
+    
     dispatch_once(&onceToken, ^{
-        sharedInstance = [[self alloc] init];
+        
+        shared = [[MappIntelligence alloc] init];
     });
-    return sharedInstance;
+    
+    return shared;
 }
+
 /** Method for setting up the Mapp Intelligence configuration by user.
  @brief Call this methond in your application to allow user to configue tracking.
  @param dictionary NSDictionary which contains user input configuration, that look like the example below.
@@ -69,8 +67,13 @@ MappIntelligence.sharedMappIntelligence()
         sharedInstance = [super init];
         _dataService = [[MappIntelligenceDataService alloc]init];
         _configuration = [[MappIntelligenceDefaultConfig alloc] init];
+        tracker = [[DefaultTracker alloc] init];
     }
     return sharedInstance;
+}
+
+-(void)trackPage:(UIViewController*) controller {
+    [tracker track:controller];
 }
 
 @end

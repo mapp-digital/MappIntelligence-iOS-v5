@@ -8,10 +8,12 @@
 
 #ifndef DefaultTracker_h
 #define DefaultTracker_h
-
+#import <UIKit/UIKit.h>
 
 #endif /* DefaultTracker_h */
+
 @interface DefaultTracker:NSObject
 -(NSString*)generateEverId;
+-(void)track:(UIViewController*)controller;
 +(NSUserDefaults*)sharedDefaults;
 @end

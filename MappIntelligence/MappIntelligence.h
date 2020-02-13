@@ -7,9 +7,19 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface MappIntelligence : NSObject
 {}
-+(id)sharedMappIntelligence;
-+(void) setConfigurationWith: (NSDictionary *) dictionary;
+/**
+ MappIntelignece instance
+ @brief Method for gets a singleton instance of MappInteligence.
+ <pre><code>
+ MappIntelligence *mappIntelligence = [MappIntelligence shared];
+ </code></pre>
+ @return MappIntelligence an Instance Type of MappIntelligence.
+ */
++ (nullable instancetype)shared;
+-(void)trackPage:(UIViewController*_Nullable) controller;
++(void) setConfigurationWith: (NSDictionary *_Nullable) dictionary;
 @end

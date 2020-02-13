@@ -130,7 +130,7 @@
     } @catch (NSException *exception) {
         NSLog(@"Exception %@", exception);
     } @finally {
-        [[MappIntelligenceLogger shared] logObj:([@"Ever ID is: " stringByAppendingFormat:@"%@", [self.tracker generateEverId]]) forDescription:self.logLevel];
+//        [[MappIntelligenceLogger shared] logObj:([@"Ever ID is: " stringByAppendingFormat:@"%@", [self.tracker generateEverId]]) forDescription:self.logLevel];
     }
     
 }

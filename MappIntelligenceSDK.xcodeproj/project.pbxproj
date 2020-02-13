@@ -38,6 +38,10 @@
 		A334868023BF56A100D0EB5F /* MappIntelligenceRequestBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = A334867B23BF56A100D0EB5F /* MappIntelligenceRequestBuilder.h */; };
 		A334868123BF56A100D0EB5F /* MappIntelligenceRequestBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = A334867C23BF56A100D0EB5F /* MappIntelligenceRequestBuilder.m */; };
 		A334868223BF56A100D0EB5F /* MappIntelligenceRequestBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = A334867C23BF56A100D0EB5F /* MappIntelligenceRequestBuilder.m */; };
+		A36CD7CD23F44594004E3E2D /* TrackerRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = A36CD7CB23F44594004E3E2D /* TrackerRequest.h */; };
+		A36CD7CE23F44594004E3E2D /* TrackerRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = A36CD7CC23F44594004E3E2D /* TrackerRequest.m */; };
+		A36CD7D123F447D0004E3E2D /* Properties.h in Headers */ = {isa = PBXBuildFile; fileRef = A36CD7CF23F447D0004E3E2D /* Properties.h */; };
+		A36CD7D223F447D0004E3E2D /* Properties.m in Sources */ = {isa = PBXBuildFile; fileRef = A36CD7D023F447D0004E3E2D /* Properties.m */; };
 		BCA1738223D5C12A00B31430 /* MappIntelligenceDefaultConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = BCA1738123D5C12A00B31430 /* MappIntelligenceDefaultConfig.h */; };
 		BCA1738423D5C2E700B31430 /* MappIntelligenceDataService.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA1738323D5C2E700B31430 /* MappIntelligenceDataService.m */; };
 		BCBE5BFB23EB1798002125C1 /* MappIntelligenceSDKLoggerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBE5BFA23EB1798002125C1 /* MappIntelligenceSDKLoggerTest.m */; };
@@ -101,6 +105,10 @@
 		A334867A23BF56A100D0EB5F /* MappIntelligenceNetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MappIntelligenceNetworkManager.h; sourceTree = "<group>"; };
 		A334867B23BF56A100D0EB5F /* MappIntelligenceRequestBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MappIntelligenceRequestBuilder.h; sourceTree = "<group>"; };
 		A334867C23BF56A100D0EB5F /* MappIntelligenceRequestBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MappIntelligenceRequestBuilder.m; sourceTree = "<group>"; };
+		A36CD7CB23F44594004E3E2D /* TrackerRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TrackerRequest.h; sourceTree = "<group>"; };
+		A36CD7CC23F44594004E3E2D /* TrackerRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TrackerRequest.m; sourceTree = "<group>"; };
+		A36CD7CF23F447D0004E3E2D /* Properties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Properties.h; sourceTree = "<group>"; };
+		A36CD7D023F447D0004E3E2D /* Properties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Properties.m; sourceTree = "<group>"; };
 		BC18ECFB23CDD14900B2B99B /* MappIntelligence-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MappIntelligence-Bridging-Header.h"; sourceTree = "<group>"; };
 		BCA1738123D5C12A00B31430 /* MappIntelligenceDefaultConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MappIntelligenceDefaultConfig.h; sourceTree = "<group>"; };
 		BCA1738323D5C2E700B31430 /* MappIntelligenceDataService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MappIntelligenceDataService.m; sourceTree = "<group>"; };
@@ -199,6 +207,7 @@
 		A334866D23BF567700D0EB5F /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				A36CD7CA23F44567004E3E2D /* Tracking Request */,
 				A334867A23BF56A100D0EB5F /* MappIntelligenceNetworkManager.h */,
 				A334867923BF56A100D0EB5F /* MappIntelligenceNetworkManager.m */,
 				A334867B23BF56A100D0EB5F /* MappIntelligenceRequestBuilder.h */,
@@ -216,6 +225,17 @@
 				A334867223BF569400D0EB5F /* MappIntelligenceRequest.m */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		A36CD7CA23F44567004E3E2D /* Tracking Request */ = {
+			isa = PBXGroup;
+			children = (
+				A36CD7CB23F44594004E3E2D /* TrackerRequest.h */,
+				A36CD7CC23F44594004E3E2D /* TrackerRequest.m */,
+				A36CD7CF23F447D0004E3E2D /* Properties.h */,
+				A36CD7D023F447D0004E3E2D /* Properties.m */,
+			);
+			path = "Tracking Request";
 			sourceTree = "<group>";
 		};
 		BCBE5C0623F1A665002125C1 /* Trackers */ = {
@@ -296,8 +316,10 @@
 				A334863423BF3FAD00D0EB5F /* MappIntelligence.h in Headers */,
 				BCEAE6B623BF5912007F410D /* MappIntelligenceLogger.h in Headers */,
 				BCEAE6C023C33054007F410D /* MappIntelligenceNotificationService.h in Headers */,
+				A36CD7D123F447D0004E3E2D /* Properties.h in Headers */,
 				A334867623BF569400D0EB5F /* MappIntelligenceRequest.h in Headers */,
 				A334867F23BF56A100D0EB5F /* MappIntelligenceNetworkManager.h in Headers */,
+				A36CD7CD23F44594004E3E2D /* TrackerRequest.h in Headers */,
 				A334867523BF569400D0EB5F /* MappIntelligenceNetworkMetadata.h in Headers */,
 				BCEAE6BC23C32F0A007F410D /* MappIntelligenceDataService.h in Headers */,
 				BCA1738223D5C12A00B31430 /* MappIntelligenceDefaultConfig.h in Headers */,
@@ -443,8 +465,10 @@
 				A334867723BF569400D0EB5F /* MappIntelligenceRequest.m in Sources */,
 				BCBE5C0923F29E49002125C1 /* DefaultTracker.m in Sources */,
 				BCA1738423D5C2E700B31430 /* MappIntelligenceDataService.m in Sources */,
+				A36CD7CE23F44594004E3E2D /* TrackerRequest.m in Sources */,
 				BCEAE6B823BF5A8B007F410D /* MappIntelligenceLogger.m in Sources */,
 				A334861D23BF3E2300D0EB5F /* MappIntelligence.m in Sources */,
+				A36CD7D223F447D0004E3E2D /* Properties.m in Sources */,
 				A334867D23BF56A100D0EB5F /* MappIntelligenceNetworkManager.m in Sources */,
 				BCD5E2C523CF38F300CE2092 /* MappIntelligenceDefaultConfig.m in Sources */,
 				A334868123BF56A100D0EB5F /* MappIntelligenceRequestBuilder.m in Sources */,
@@ -489,7 +513,7 @@
 		A334861F23BF3E2300D0EB5F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -522,6 +546,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -536,6 +561,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -547,7 +573,7 @@
 		A334862023BF3E2300D0EB5F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -580,6 +606,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -588,6 +615,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -678,6 +706,7 @@
 				DEVELOPMENT_TEAM = LERY366S7C;
 				INFOPLIST_FILE = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = NO;
 			};
 			name = Debug;
 		};
@@ -688,6 +717,7 @@
 				DEVELOPMENT_TEAM = LERY366S7C;
 				INFOPLIST_FILE = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = NO;
 			};
 			name = Release;
 		};
