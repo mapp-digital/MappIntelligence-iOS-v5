@@ -50,10 +50,10 @@ typedef void(^MappIntelligenceNetworkManagerCompletionBlock)(NSError *error, id 
 
 + (instancetype)shared;
 
-// for communication with Appoxee Servers, passing info and updates.
+// for communication with MappIntelligence Servers, passing info and updates.
 - (void)performNetworkOperation:(MappIntelligenceNetworkManagerOperationType)operation withData:(NSData *)dataArg andCompletionBlock:(MappIntelligenceNetworkManagerCompletionBlock)completionBlock;
 
-// for communication with Appoxee Servers, passing info and updates.
+// for communication with MappIntelligence Servers, passing info and updates.
 - (NSDictionary *)performSynchronousNetworkOperation:(MappIntelligenceNetworkManagerOperationType)operation withData:(NSData *)data;
 
 @end

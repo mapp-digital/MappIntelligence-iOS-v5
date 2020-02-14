@@ -12,4 +12,5 @@
 @property DefaultTracker *tracker;
 
 -(instancetype) initWithDictionary:(NSDictionary *) dictionary;
+
 @end

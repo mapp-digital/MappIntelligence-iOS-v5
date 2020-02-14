@@ -34,12 +34,14 @@
 static DefaultTracker * sharedTracker = nil;
 static NSString * everID;
 
-+(instancetype) sharedInstance {
++(nullable instancetype) sharedInstance {
+    
+    static DefaultTracker *shared = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        sharedTracker = [[self alloc] init];
+        shared = [[DefaultTracker alloc] init];
     });
-    return sharedTracker;
+    return shared;
 }
 
 -(instancetype)init {
