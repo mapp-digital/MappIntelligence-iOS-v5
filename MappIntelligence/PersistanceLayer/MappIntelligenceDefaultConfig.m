@@ -64,8 +64,16 @@
 
     self.autoTracking = [[dictionary valueForKey:key_autoTracking] boolValue];
         self.batchSupport = [[dictionary valueForKey:key_batchSupport] boolValue];
+    if ([[dictionary valueForKey:key_requestPerBatch] integerValue] == 0) {
+        self.requestPerBatch = 10;
+    } else {
         self.requestPerBatch = [[dictionary valueForKey:key_requestPerBatch] integerValue];
+    }
+    if ([[dictionary valueForKey:key_requestsInterval] longValue] == 0) {
+        self.requestsInterval = 900;
+    } else {
         self.requestsInterval = [[dictionary valueForKey:key_requestsInterval] longValue];
+    }
     if ([[dictionary valueForKey:key_logLevel] integerValue] == 0) {
         self.logLevel = kMappIntelligenceLogLevelDescriptionDebug;
     } else {
