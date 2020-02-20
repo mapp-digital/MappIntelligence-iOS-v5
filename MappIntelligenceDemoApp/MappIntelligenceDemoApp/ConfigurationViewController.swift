@@ -52,25 +52,13 @@ class ConfigurationViewController: UIViewController {
     }
 
     @IBAction func enableAutoTracking(_ sender: Any) {
-        if (enableAutoTrackingSwitch.isOn) {
-            autoTrackingValue = true
-        } else {
-            autoTrackingValue = false
-        }
+        autoTrackingValue = enableAutoTrackingSwitch.isOn
     }
     @IBAction func enableBatchSupport(_ sender: Any) {
-        if (enableBatchSupportSwitch.isOn) {
-            batchSupportValue = true
-        } else {
-            batchSupportValue = false
-        }
+        batchSupportValue = enableBatchSupportSwitch.isOn
     }
     @IBAction func enableVCAutoTracking(_ sender: Any) {
-        if (enableViewControllerAutoTracking.isOn) {
-            vcAutoTracking = true
-        } else {
-            vcAutoTracking = false
-        }
+        vcAutoTracking = enableViewControllerAutoTracking.isOn
     }
     @IBAction func setRequestTime(_ sender: Any) {
     }

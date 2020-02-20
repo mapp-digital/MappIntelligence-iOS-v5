@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "BCA1738D23D5D25C00B31430"
-               BuildableName = "DemoWebtrekkApp.app"
-               BlueprintName = "DemoWebtrekkApp"
-               ReferencedContainer = "container:DemoWebtrekkApp.xcodeproj">
+               BuildableName = "MappIntelligenceDemoApp.app"
+               BlueprintName = "MappIntelligenceDemoApp"
+               ReferencedContainer = "container:MappIntelligenceDemoApp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,9 +45,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BCA1738D23D5D25C00B31430"
-            BuildableName = "DemoWebtrekkApp.app"
-            BlueprintName = "DemoWebtrekkApp"
-            ReferencedContainer = "container:DemoWebtrekkApp.xcodeproj">
+            BuildableName = "MappIntelligenceDemoApp.app"
+            BlueprintName = "MappIntelligenceDemoApp"
+            ReferencedContainer = "container:MappIntelligenceDemoApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BCA1738D23D5D25C00B31430"
-            BuildableName = "DemoWebtrekkApp.app"
-            BlueprintName = "DemoWebtrekkApp"
-            ReferencedContainer = "container:DemoWebtrekkApp.xcodeproj">
+            BuildableName = "MappIntelligenceDemoApp.app"
+            BlueprintName = "MappIntelligenceDemoApp"
+            ReferencedContainer = "container:MappIntelligenceDemoApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

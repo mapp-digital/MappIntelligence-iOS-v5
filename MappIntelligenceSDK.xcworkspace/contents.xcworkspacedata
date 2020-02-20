@@ -2,9 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:MappIntelligenceSDK.xcodeproj">
+      location = "group:MappIntelligenceDemoApp/MappIntelligenceDemoApp.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:DemoWebtrekkApp/DemoWebtrekkApp.xcodeproj">
+      location = "group:MappIntelligenceSDK.xcodeproj">
    </FileRef>
 </Workspace>

@@ -19,7 +19,7 @@
 
 /* Begin PBXFileReference section */
 		BC70672023D9A4FE00F3BDD8 /* ConfigurationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationViewController.swift; sourceTree = "<group>"; };
-		BCA1738E23D5D25C00B31430 /* DemoWebtrekkApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoWebtrekkApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BCA1738E23D5D25C00B31430 /* MappIntelligenceDemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MappIntelligenceDemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCA1739123D5D25C00B31430 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BCA1739323D5D25C00B31430 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		BCA1739523D5D25C00B31430 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -27,8 +27,8 @@
 		BCA1739A23D5D25E00B31430 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BCA1739D23D5D25E00B31430 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BCA1739F23D5D25E00B31430 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BCA173AB23D6F6E600B31430 /* DemoWebtrekkApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DemoWebtrekkApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		BCBE5C2923F3F9F3002125C1 /* libMappIntelligenceSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libMappIntelligenceSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		BCFC0F4823FEE2EA00186A6E /* MappIntelligenceDemoApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MappIntelligenceDemoApp-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,7 +46,7 @@
 		BCA1738523D5D25C00B31430 = {
 			isa = PBXGroup;
 			children = (
-				BCA1739023D5D25C00B31430 /* DemoWebtrekkApp */,
+				BCA1739023D5D25C00B31430 /* MappIntelligenceDemoApp */,
 				BCA1738F23D5D25C00B31430 /* Products */,
 				BCA173AE23D6FBFC00B31430 /* Frameworks */,
 			);
@@ -55,12 +55,12 @@
 		BCA1738F23D5D25C00B31430 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				BCA1738E23D5D25C00B31430 /* DemoWebtrekkApp.app */,
+				BCA1738E23D5D25C00B31430 /* MappIntelligenceDemoApp.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		BCA1739023D5D25C00B31430 /* DemoWebtrekkApp */ = {
+		BCA1739023D5D25C00B31430 /* MappIntelligenceDemoApp */ = {
 			isa = PBXGroup;
 			children = (
 				BCA1739123D5D25C00B31430 /* AppDelegate.swift */,
@@ -70,10 +70,10 @@
 				BCA1739A23D5D25E00B31430 /* Assets.xcassets */,
 				BCA1739C23D5D25E00B31430 /* LaunchScreen.storyboard */,
 				BCA1739F23D5D25E00B31430 /* Info.plist */,
-				BCA173AB23D6F6E600B31430 /* DemoWebtrekkApp-Bridging-Header.h */,
 				BC70672023D9A4FE00F3BDD8 /* ConfigurationViewController.swift */,
+				BCFC0F4823FEE2EA00186A6E /* MappIntelligenceDemoApp-Bridging-Header.h */,
 			);
-			path = DemoWebtrekkApp;
+			path = MappIntelligenceDemoApp;
 			sourceTree = "<group>";
 		};
 		BCA173AE23D6FBFC00B31430 /* Frameworks */ = {
@@ -87,9 +87,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		BCA1738D23D5D25C00B31430 /* DemoWebtrekkApp */ = {
+		BCA1738D23D5D25C00B31430 /* MappIntelligenceDemoApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BCA173A223D5D25E00B31430 /* Build configuration list for PBXNativeTarget "DemoWebtrekkApp" */;
+			buildConfigurationList = BCA173A223D5D25E00B31430 /* Build configuration list for PBXNativeTarget "MappIntelligenceDemoApp" */;
 			buildPhases = (
 				BCA1738A23D5D25C00B31430 /* Sources */,
 				BCA1738B23D5D25C00B31430 /* Frameworks */,
@@ -99,9 +99,9 @@
 			);
 			dependencies = (
 			);
-			name = DemoWebtrekkApp;
+			name = MappIntelligenceDemoApp;
 			productName = DemoWebtrekkApp;
-			productReference = BCA1738E23D5D25C00B31430 /* DemoWebtrekkApp.app */;
+			productReference = BCA1738E23D5D25C00B31430 /* MappIntelligenceDemoApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -120,7 +120,7 @@
 					};
 				};
 			};
-			buildConfigurationList = BCA1738923D5D25C00B31430 /* Build configuration list for PBXProject "DemoWebtrekkApp" */;
+			buildConfigurationList = BCA1738923D5D25C00B31430 /* Build configuration list for PBXProject "MappIntelligenceDemoApp" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -133,7 +133,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				BCA1738D23D5D25C00B31430 /* DemoWebtrekkApp */,
+				BCA1738D23D5D25C00B31430 /* MappIntelligenceDemoApp */,
 			);
 		};
 /* End PBXProject section */
@@ -312,14 +312,14 @@
 					"${TARGET_BUILD_DIR}/Webrekk.framework",
 					"$(PROJECT_DIR)/DemoWebtrekkApp",
 				);
-				INFOPLIST_FILE = DemoWebtrekkApp/Info.plist;
+				INFOPLIST_FILE = MappIntelligenceDemoApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.webtrekk.DemoWebtrekkApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "DemoWebtrekkApp/DemoWebtrekkApp-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "MappIntelligenceDemoApp/MappIntelligenceDemoApp-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -339,14 +339,14 @@
 					"${TARGET_BUILD_DIR}/Webrekk.framework",
 					"$(PROJECT_DIR)/DemoWebtrekkApp",
 				);
-				INFOPLIST_FILE = DemoWebtrekkApp/Info.plist;
+				INFOPLIST_FILE = MappIntelligenceDemoApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.webtrekk.DemoWebtrekkApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "DemoWebtrekkApp/DemoWebtrekkApp-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "MappIntelligenceDemoApp/MappIntelligenceDemoApp-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -355,7 +355,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		BCA1738923D5D25C00B31430 /* Build configuration list for PBXProject "DemoWebtrekkApp" */ = {
+		BCA1738923D5D25C00B31430 /* Build configuration list for PBXProject "MappIntelligenceDemoApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BCA173A023D5D25E00B31430 /* Debug */,
@@ -364,7 +364,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BCA173A223D5D25E00B31430 /* Build configuration list for PBXNativeTarget "DemoWebtrekkApp" */ = {
+		BCA173A223D5D25E00B31430 /* Build configuration list for PBXNativeTarget "MappIntelligenceDemoApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BCA173A323D5D25E00B31430 /* Debug */,

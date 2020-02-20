@@ -10,7 +10,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="DemoWebtrekkApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MappIntelligenceDemoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -49,7 +49,7 @@
         <!--Configuration View Controller-->
         <scene sceneID="fCF-L7-Z4J">
             <objects>
-                <viewController storyboardIdentifier="configuration" id="WJg-jf-2Rr" customClass="ConfigurationViewController" customModule="DemoWebtrekkApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="configuration" id="WJg-jf-2Rr" customClass="ConfigurationViewController" customModule="MappIntelligenceDemoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3Pg-c8-ier">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -93,7 +93,7 @@
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Set Requests Time Interval" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="igH-Vk-2qP">
                                 <rect key="frame" x="20" y="261.66666666666669" width="374" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" spellCheckingType="no" keyboardType="decimalPad" smartDashesType="no"/>
                                 <connections>
                                     <action selector="setRequestTime:" destination="WJg-jf-2Rr" eventType="editingDidEnd" id="hK1-O9-txA"/>
                                 </connections>
