@@ -17,7 +17,7 @@
 @property NSInteger const requestsInterval;
 @property MappIntelligenceLogLevelDescription logLevel;
 @property BOOL autoTracking;
-@property NSInteger const requestPerBatch;
+@property NSInteger const requestPerQueue;
 @property BOOL batchSupport;
 @property BOOL viewControllerAutoTracking;
 
@@ -26,7 +26,7 @@
 -(void)setRequestsInterval:(long const)requestsInterval;
 -(void)setLogLevel:(MappIntelligenceLogLevelDescription)logLevel;
 -(void)setAutoTracking:(BOOL)autoTracking;
--(void)setRequestPerBatch:(NSInteger const)requestPerBatch;
+-(void)setrequestPerQueue:(NSInteger const)requestPerQueue;
 -(void)setBatchSupport:(BOOL)batchSupport;
 -(void)setViewControllerAutoTracking:(BOOL)viewControllerAutoTracking;
 

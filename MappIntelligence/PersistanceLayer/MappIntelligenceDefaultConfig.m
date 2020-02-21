@@ -13,7 +13,7 @@
 #define key_logLevel @"log_level"
 #define key_requestsInterval @"requests_interval"
 #define key_autoTracking @"auto_tracking"
-#define key_requestPerBatch @"request_per_batch"
+#define key_requestPerQueue @"request_per_batch"
 #define key_batchSupport @"batch_support"
 #define key_viewControllerAutoTracking @"view_controller_auto_tracking"
 #define key_MappIntelligence_default_configuration @"defaultConfiguration"
@@ -25,7 +25,7 @@
 
 @synthesize batchSupport;
 
-@synthesize requestPerBatch;
+@synthesize requestPerQueue;
 
 @synthesize requestsInterval;
 
@@ -45,7 +45,7 @@
     self = [super init];
     self.autoTracking = YES;
     self.batchSupport = NO;
-    self.requestPerBatch = 10;
+    self.requestPerQueue = 10;
     self.requestsInterval = 900;
     self.logLevel = kMappIntelligenceLogLevelDescriptionDebug;
     self.trackIDs = [[NSArray alloc] init];
@@ -64,10 +64,10 @@
 
     self.autoTracking = [[dictionary valueForKey:key_autoTracking] boolValue];
         self.batchSupport = [[dictionary valueForKey:key_batchSupport] boolValue];
-    if ([[dictionary valueForKey:key_requestPerBatch] integerValue] == 0) {
-        self.requestPerBatch = 10;
+    if ([[dictionary valueForKey:key_requestPerQueue] integerValue] == 0) {
+        self.requestPerQueue = 10;
     } else {
-        self.requestPerBatch = [[dictionary valueForKey:key_requestPerBatch] integerValue];
+        self.requestPerQueue = [[dictionary valueForKey:key_requestPerQueue] integerValue];
     }
     if ([[dictionary valueForKey:key_requestsInterval] longValue] == 0) {
         self.requestsInterval = 900;
@@ -98,7 +98,7 @@
 
 -(void)encodeWithCoder:(NSCoder *) encoder {
     
-    [encoder encodeInt64:self.requestPerBatch forKey:key_requestPerBatch];
+    [encoder encodeInt64:self.requestPerQueue forKey:key_requestPerQueue];
     [encoder encodeBool:self.autoTracking forKey:key_autoTracking];
     [encoder encodeBool:self.batchSupport forKey:key_batchSupport];
     [encoder encodeInt64:self.requestsInterval forKey:key_requestsInterval];
@@ -113,7 +113,7 @@
     if (self = [super init]) {
         self.autoTracking = [coder decodeBoolForKey:key_autoTracking];
         self.batchSupport = [coder decodeBoolForKey:key_batchSupport];
-        self.requestPerBatch = [coder decodeIntForKey:key_requestPerBatch];
+        self.requestPerQueue = [coder decodeIntForKey:key_requestPerQueue];
         self.requestsInterval = [coder decodeIntForKey:key_requestsInterval];
         self.trackDomain = [coder decodeObjectForKey:key_trackDomain];
         self.logLevel = [coder decodeIntForKey:key_logLevel];
@@ -127,9 +127,11 @@
     
     [[MappIntelligenceLogger shared] logObj:([@"Auto Tracking is enabled: " stringByAppendingFormat:self.autoTracking ? @"Yes" : @"No"]) forDescription:self.logLevel];
     [[MappIntelligenceLogger shared] logObj:([@"Batch Support is enabled: " stringByAppendingFormat:self.batchSupport ? @"Yes" :@"No"]) forDescription:self.logLevel];
-    [[MappIntelligenceLogger shared] logObj:([@"Number of requests in queue: "  stringByAppendingFormat:@"%@", [NSString stringWithFormat:@"%ld", (long)self.requestPerBatch]]) forDescription:self.logLevel];
+    [self validateNumberOfRequestsPerQueue:self.requestPerQueue];
+    [[MappIntelligenceLogger shared] logObj:([@"Number of requests in queue: "  stringByAppendingFormat:@"%@", [NSString stringWithFormat:@"%ld", (long)self.requestPerQueue]]) forDescription:self.logLevel];
+    [self validateRequestTimeInterval:self.requestsInterval];
     [[MappIntelligenceLogger shared] logObj:([@"Request time interval in minutes: " stringByAppendingFormat:@"%@", [NSString stringWithFormat:@"%ld", (self.requestsInterval/60)]]) forDescription:self.logLevel];
-    [[MappIntelligenceLogger shared] logObj:([@"Log Level is:  " stringByAppendingFormat:@"%@", [NSString stringWithFormat:@"%ld", (long)self.logLevel]]) forDescription:self.logLevel];
+    [[MappIntelligenceLogger shared] logObj:([@"Log Level is:  " stringByAppendingFormat:@"%@", [[MappIntelligenceLogger shared] logLevelFor: self.logLevel]]) forDescription:self.logLevel];
     [[MappIntelligenceLogger shared] logObj:([@"Tracking IDs: " stringByAppendingFormat:@"%@", self.trackIDs]) forDescription:self.logLevel];
     [[MappIntelligenceLogger shared] logObj:([@"Tracking domain is: " stringByAppendingFormat:@"%@", self.trackDomain]) forDescription:self.logLevel];
     [[MappIntelligenceLogger shared] logObj:([@"View Controller auto tracking is enabbled: " stringByAppendingFormat:self.viewControllerAutoTracking ? @"Yes" : @"No"]) forDescription:self.logLevel];
@@ -141,6 +143,20 @@
 //        [[MappIntelligenceLogger shared] logObj:([@"Ever ID is: " stringByAppendingFormat:@"%@", [self.tracker generateEverId]]) forDescription:self.logLevel];
     }
     
+}
+
+-(void)validateNumberOfRequestsPerQueue:(NSInteger) numberOfRequests {
+    if (numberOfRequests > 10000) {
+        NSLog(@"Number of requests can't be grater than 10000, will be returned to default (10).");
+        self.requestPerQueue = 10;
+    }
+}
+
+-(void)validateRequestTimeInterval:(NSInteger) timeInterval {
+    if (timeInterval > 3600) {
+        NSLog(@"Request time interval can't be more than 3600 seconds (60 minutes), will be reset to default (15 minutes).");
+        self.requestsInterval = 900;
+    }
 }
 
 -(void) saveToUserDefaults {

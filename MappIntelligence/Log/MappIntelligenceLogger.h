@@ -9,7 +9,7 @@
 
 typedef NS_ENUM(NSInteger, MappIntelligenceLogLevelDescription) {
     kMappIntelligenceLogLevelDescriptionDebug = 1, // The lowest priority that you would normally log, and purely informational in nature.
-    kMappIntelligenceLogLevelDescriptionWarning = 2, // Something is amiss and might fail if not corrected
+    kMappIntelligenceLogLevelDescriptionWarning = 2, // Something is missing and might fail if not corrected
     kMappIntelligenceLogLevelDescriptionError = 3, // Something has failed.
     kMappIntelligenceLogLevelDescriptionFault = 4, // A failure in a key system.
     kMappIntelligenceLogLevelDescriptionInfo = 5, // Informational logs for updating configuration or migrating from older versions of the library.
@@ -46,6 +46,8 @@ typedef NS_ENUM(NSInteger, MappIntelligenceErrorType) {
 + (instancetype)shared;
 
 - (NSString *)logObj:(id)obj forDescription:(MappIntelligenceLogLevelDescription)logDescription;
+
+-(NSString *)logLevelFor:(MappIntelligenceLogLevelDescription)description;
 
 + (NSError *)errorWithType:(MappIntelligenceErrorType)errorType;
 

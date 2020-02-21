@@ -52,6 +52,47 @@
     return log;
 }
 
+-(NSString *)logLevelFor:(MappIntelligenceLogLevelDescription)description
+{
+    NSString *log =nil;
+    if (self.logLevel <= description) {
+        log = [NSString stringWithFormat:@"%@", [self logLevelForDescription: description]];
+        NSLog(@"%@",log);
+    }
+    return log;
+}
+
+#pragma mark - Log Level For Description
+
+- (NSString *)logLevelForDescription:(MappIntelligenceLogLevelDescription)logDescription
+{
+    NSString *logLevelForDescription = @"";
+    
+    switch (logDescription) {
+            
+        case kMappIntelligenceLogLevelDescriptionDebug:
+            logLevelForDescription = @"Debug";
+            break;
+        case kMappIntelligenceLogLevelDescriptionWarning:
+            logLevelForDescription = @"Warning";
+            break;
+        case kMappIntelligenceLogLevelDescriptionError:
+            logLevelForDescription = @"Error";
+            break;
+        case kMappIntelligenceLogLevelDescriptionFault:
+            logLevelForDescription = @"Fault";
+            break;
+        case kMappIntelligenceLogLevelDescriptionInfo:
+            logLevelForDescription = @"Info";
+            break;
+        case kMappIntelligenceLogLevelDescriptionAll:
+            logLevelForDescription = @"All";
+            break;
+    }
+    
+    return logLevelForDescription;
+}
+
 #pragma mark - Log Description
 
 - (NSString *)logLevelDescription:(MappIntelligenceLogLevelDescription)logDescription
