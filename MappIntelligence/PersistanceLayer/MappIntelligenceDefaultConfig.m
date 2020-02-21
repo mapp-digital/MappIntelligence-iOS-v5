@@ -133,6 +133,7 @@
     [[MappIntelligenceLogger shared] logObj:([@"Request time interval in minutes: " stringByAppendingFormat:@"%@", [NSString stringWithFormat:@"%ld", (self.requestsInterval/60)]]) forDescription:self.logLevel];
     [[MappIntelligenceLogger shared] logObj:([@"Log Level is:  " stringByAppendingFormat:@"%@", [[MappIntelligenceLogger shared] logLevelFor: self.logLevel]]) forDescription:self.logLevel];
     [[MappIntelligenceLogger shared] logObj:([@"Tracking IDs: " stringByAppendingFormat:@"%@", self.trackIDs]) forDescription:self.logLevel];
+    [self trackDomainValidation:self.trackDomain];
     [[MappIntelligenceLogger shared] logObj:([@"Tracking domain is: " stringByAppendingFormat:@"%@", self.trackDomain]) forDescription:self.logLevel];
     [[MappIntelligenceLogger shared] logObj:([@"View Controller auto tracking is enabbled: " stringByAppendingFormat:self.viewControllerAutoTracking ? @"Yes" : @"No"]) forDescription:self.logLevel];
     @try {
@@ -157,6 +158,17 @@
         NSLog(@"Request time interval can't be more than 3600 seconds (60 minutes), will be reset to default (15 minutes).");
         self.requestsInterval = 900;
     }
+}
+
+-(BOOL)trackDomainValidation:(NSString *)trackDomain {
+    NSURL *urlFormatDomain = [NSURL URLWithString:trackDomain];
+    if (!urlFormatDomain.scheme) {
+        self.trackDomain = [@"https://" stringByAppendingString:trackDomain];
+    } else if (!(urlFormatDomain && urlFormatDomain.scheme && urlFormatDomain.host)) {
+        NSLog(@"You must enter a valid url format for tracking domain!");
+    }
+    return urlFormatDomain && urlFormatDomain.scheme && urlFormatDomain.host;
+    
 }
 
 -(void) saveToUserDefaults {

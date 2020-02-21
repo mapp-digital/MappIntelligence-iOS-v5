@@ -108,13 +108,14 @@ class ConfigurationViewController: UIViewController, UIPickerViewDelegate, UIPic
     }
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-    return logLevelList[row] // dropdown item
+        setLogLevelTF.text = logLevelList[row]
+        return logLevelList[row] // dropdown item
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-    logLevelIndex = row
     selectedLogLevel = logLevelList[row] // selected item
     setLogLevelTF.text = selectedLogLevel
+    logLevelIndex = row
     }
     
 }
