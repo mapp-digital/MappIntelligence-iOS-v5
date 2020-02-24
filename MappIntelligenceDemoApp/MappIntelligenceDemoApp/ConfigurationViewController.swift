@@ -19,7 +19,7 @@ class ConfigurationViewController: UIViewController, UIPickerViewDelegate, UIPic
     @IBOutlet weak var setTrackingDomainTF: UITextField!
     @IBOutlet weak var setTrackingIDsTF: UITextField!
     @IBOutlet weak var everID: UILabel!
-    var dictionary = [NSString: Any]()
+    var configurationDetails = [NSString: Any]()
     var autoTrackingValue = true
     var batchSupportValue = false
     var vcAutoTracking = true
@@ -49,13 +49,13 @@ class ConfigurationViewController: UIViewController, UIPickerViewDelegate, UIPic
 
     func setConfiguration(autoTracking: Bool, batchSupport: Bool, requestsPerBatch: Int, requestsInterval: Float, logLevel:Int,
                           trackingDomain: String, trackingIDs: String, viewControllerAutoTracking: Bool) {
-        dictionary = ["auto_tracking": autoTracking, "batch_support": batchSupport, "request_per_batch": requestsPerBatch, "requests_interval": requestsInterval, "log_level": logLevel, "track_domain": trackingDomain,
+        configurationDetails = ["auto_tracking": autoTracking, "batch_support": batchSupport, "request_per_batch": requestsPerBatch, "requests_interval": requestsInterval, "log_level": logLevel, "track_domain": trackingDomain,
                       "track_ids": trackingIDs, "view_controller_auto_tracking": viewControllerAutoTracking]
 //        Webtrekk.init(dictionary: dictionary)
     }
     @IBAction func setConfiguration(_ sender: Any) {
         self.setConfiguration(autoTracking: autoTrackingValue, batchSupport: batchSupportValue, requestsPerBatch: (setNumberOfRequestsPerBatchTF!.text! as NSString).integerValue, requestsInterval: (setRequestsTimeIntervalTF!.text! as NSString).floatValue, logLevel: logLevelIndex+1 , trackingDomain: setTrackingDomainTF.text!, trackingIDs: setTrackingIDsTF.text!, viewControllerAutoTracking: vcAutoTracking)
-        MappIntelligence.setConfigurationWith(dictionary)
+        MappIntelligence.setConfigurationWith(configurationDetails)
     }
 
     @IBAction func enableAutoTracking(_ sender: Any) {

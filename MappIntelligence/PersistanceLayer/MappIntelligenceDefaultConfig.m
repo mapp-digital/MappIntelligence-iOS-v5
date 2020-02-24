@@ -161,12 +161,21 @@
 }
 
 -(BOOL)trackDomainValidation:(NSString *)trackDomain {
+    
     NSURL *urlFormatDomain = [NSURL URLWithString:trackDomain];
-    if (!urlFormatDomain.scheme) {
-        self.trackDomain = [@"https://" stringByAppendingString:trackDomain];
-    } else if (!(urlFormatDomain && urlFormatDomain.scheme && urlFormatDomain.host)) {
-        NSLog(@"You must enter a valid url format for tracking domain!");
+
+    if ([trackDomain isEqualToString:@""]) {
+        
+        if (!urlFormatDomain.scheme) {
+            self.trackDomain = [@"https://" stringByAppendingString:trackDomain];
+        } else if (!(urlFormatDomain && urlFormatDomain.scheme && urlFormatDomain.host)) {
+            NSLog(@"You must enter a valid url format for tracking domain!");
+        }
+    } else {
+        [[MappIntelligenceLogger shared] logObj:(@"You must enter tracking domain to save the configuration. ") forDescription:kMappIntelligenceLogLevelDescriptionWarning];
+
     }
+    
     return urlFormatDomain && urlFormatDomain.scheme && urlFormatDomain.host;
     
 }
