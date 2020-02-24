@@ -14,7 +14,7 @@
 
 @property NSArray *const trackIDs;
 @property NSString *const trackDomain;
-@property NSInteger const requestsInterval;
+@property NSTimeInterval const requestsInterval;
 @property MappIntelligenceLogLevelDescription logLevel;
 @property BOOL autoTracking;
 @property NSInteger const requestPerQueue;
@@ -23,7 +23,7 @@
 
 -(void)setTrackIDs:(NSArray *const)trackIDs;
 -(void)setTrackDomain:(NSString *const)trackDomain;
--(void)setRequestsInterval:(long const)requestsInterval;
+-(void)setRequestsInterval:(NSTimeInterval const)requestsInterval;
 -(void)setLogLevel:(MappIntelligenceLogLevelDescription)logLevel;
 -(void)setAutoTracking:(BOOL)autoTracking;
 -(void)setrequestPerQueue:(NSInteger const)requestPerQueue;

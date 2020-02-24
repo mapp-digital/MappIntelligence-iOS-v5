@@ -130,7 +130,7 @@
     [self validateNumberOfRequestsPerQueue:self.requestPerQueue];
     [[MappIntelligenceLogger shared] logObj:([@"Number of requests in queue: "  stringByAppendingFormat:@"%@", [NSString stringWithFormat:@"%ld", (long)self.requestPerQueue]]) forDescription:self.logLevel];
     [self validateRequestTimeInterval:self.requestsInterval];
-    [[MappIntelligenceLogger shared] logObj:([@"Request time interval in minutes: " stringByAppendingFormat:@"%@", [NSString stringWithFormat:@"%ld", (self.requestsInterval/60)]]) forDescription:self.logLevel];
+    [[MappIntelligenceLogger shared] logObj:([@"Request time interval in minutes: " stringByAppendingFormat:@"%@", [NSString stringWithFormat:@"%f", (self.requestsInterval/60.0)]]) forDescription:self.logLevel];
     [[MappIntelligenceLogger shared] logObj:([@"Log Level is:  " stringByAppendingFormat:@"%@", [[MappIntelligenceLogger shared] logLevelFor: self.logLevel]]) forDescription:self.logLevel];
     [[MappIntelligenceLogger shared] logObj:([@"Tracking IDs: " stringByAppendingFormat:@"%@", self.trackIDs]) forDescription:self.logLevel];
     [self trackDomainValidation:self.trackDomain];
@@ -154,9 +154,9 @@
 }
 
 -(void)validateRequestTimeInterval:(NSInteger) timeInterval {
-    if (timeInterval > 3600) {
+    if (timeInterval > 3600.0) {
         NSLog(@"Request time interval can't be more than 3600 seconds (60 minutes), will be reset to default (15 minutes).");
-        self.requestsInterval = 900;
+        self.requestsInterval = 900.0;
     }
 }
 

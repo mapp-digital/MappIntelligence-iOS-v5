@@ -101,7 +101,7 @@
                             <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Set Tracking Domain" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GwC-eU-cBZ">
                                 <rect key="frame" x="20" y="305.66666666666669" width="374" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="URL"/>
                                 <connections>
                                     <action selector="setTrackDomain:" destination="WJg-jf-2Rr" eventType="editingDidEnd" id="E5P-Ce-Z1N"/>
                                 </connections>
@@ -109,7 +109,7 @@
                             <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Set Number Of Requests Per Queue" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Fo-NM-4LJ">
                                 <rect key="frame" x="20" y="217.66666666666666" width="374" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                 <connections>
                                     <action selector="setNumberOfRequests:" destination="WJg-jf-2Rr" eventType="editingDidEnd" id="vrF-F3-bhQ"/>
                                 </connections>
@@ -128,7 +128,7 @@
                             <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Set Tracking IDs" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I1g-mz-glS">
                                 <rect key="frame" x="20" y="349.66666666666669" width="374" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                                 <connections>
                                     <action selector="setTrackingIDs:" destination="WJg-jf-2Rr" eventType="editingDidEnd" id="Cfc-WE-gjC"/>
                                 </connections>
