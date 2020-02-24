@@ -171,9 +171,6 @@
         } else if (!(urlFormatDomain && urlFormatDomain.scheme && urlFormatDomain.host)) {
             NSLog(@"You must enter a valid url format for tracking domain!");
         }
-    } else {
-        [[MappIntelligenceLogger shared] logObj:(@"You must enter tracking domain to save the configuration. ") forDescription:kMappIntelligenceLogLevelDescriptionWarning];
-
     }
     
     return urlFormatDomain && urlFormatDomain.scheme && urlFormatDomain.host;
