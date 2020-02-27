@@ -1,6 +1,6 @@
 //
 //  ConfigurationViewController.swift
-//  DemoWebtrekkApp
+//  MappIntelligenceDemoApp
 //
 //  Created by Vladan Randjelovic on 23/01/2020.
 //  Copyright © 2020 Vladan Randjelovic. All rights reserved.

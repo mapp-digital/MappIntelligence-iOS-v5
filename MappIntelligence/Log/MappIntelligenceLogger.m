@@ -57,7 +57,6 @@
     NSString *log =nil;
     if (self.logLevel <= description) {
         log = [NSString stringWithFormat:@"%@", [self logLevelForDescription: description]];
-        NSLog(@"%@",log);
     }
     return log;
 }

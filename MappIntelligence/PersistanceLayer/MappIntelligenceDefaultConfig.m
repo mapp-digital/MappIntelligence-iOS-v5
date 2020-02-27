@@ -40,6 +40,8 @@
 @synthesize logLevel;
 @synthesize tracker;
 
+
+
 -(instancetype)init {
     
     self = [super init];
@@ -83,14 +85,20 @@
             [[MappIntelligenceLogger shared] logObj:(@"You must enter at least one tracking ID to save the configuration. ") forDescription:kMappIntelligenceLogLevelDescriptionWarning];
     } else {
         self.trackIDs = [[dictionary objectForKey:key_trackIDs] componentsSeparatedByString:@","];
+        if ([self.trackIDs containsObject:@""] || [self.trackIDs containsObject:@" "] || ([[self.trackIDs lastObject]  isEqual: @","])) {
+            [[MappIntelligenceLogger shared] logObj:(@"Track IDs can not contain blank spaces! ") forDescription:kMappIntelligenceLogLevelDescriptionWarning];
+        }
     }
     if ([[dictionary objectForKey:key_trackDomain] isEqualToString:@""]) {
             [[MappIntelligenceLogger shared] logObj:(@"You must enter tracking domain to save the configuration. ") forDescription:kMappIntelligenceLogLevelDescriptionWarning];
+    } else if ([[dictionary objectForKey:key_trackDomain] rangeOfString:@"."].location == NSNotFound) {
+        
     } else {
         self.trackDomain = [dictionary objectForKey:key_trackDomain];
     }
         self.viewControllerAutoTracking = [[dictionary valueForKey:key_viewControllerAutoTracking] boolValue];
     
+        self.tracker = [[DefaultTracker alloc] init];
         [self saveToUserDefaults];
         [self logConfig];
      return self;
@@ -131,7 +139,8 @@
     [[MappIntelligenceLogger shared] logObj:([@"Number of requests in queue: "  stringByAppendingFormat:@"%@", [NSString stringWithFormat:@"%ld", (long)self.requestPerQueue]]) forDescription:self.logLevel];
     [self validateRequestTimeInterval:self.requestsInterval];
     [[MappIntelligenceLogger shared] logObj:([@"Request time interval in minutes: " stringByAppendingFormat:@"%@", [NSString stringWithFormat:@"%f", (self.requestsInterval/60.0)]]) forDescription:self.logLevel];
-    [[MappIntelligenceLogger shared] logObj:([@"Log Level is:  " stringByAppendingFormat:@"%@", [[MappIntelligenceLogger shared] logLevelFor: self.logLevel]]) forDescription:self.logLevel];
+    [[MappIntelligenceLogger shared] logObj:([@"Log Level is:  " stringByAppendingFormat:@"%@", [self getLogLevelFor:logLevel]]) forDescription:self.logLevel];
+    [self validateTrackingIDs:self.trackIDs];
     [[MappIntelligenceLogger shared] logObj:([@"Tracking IDs: " stringByAppendingFormat:@"%@", self.trackIDs]) forDescription:self.logLevel];
     [self trackDomainValidation:self.trackDomain];
     [[MappIntelligenceLogger shared] logObj:([@"Tracking domain is: " stringByAppendingFormat:@"%@", self.trackDomain]) forDescription:self.logLevel];
@@ -144,6 +153,10 @@
 //        [[MappIntelligenceLogger shared] logObj:([@"Ever ID is: " stringByAppendingFormat:@"%@", [self.tracker generateEverId]]) forDescription:self.logLevel];
     }
     
+}
+
+-(NSString *)getLogLevelFor: (MappIntelligenceLogLevelDescription) description {
+    return [[MappIntelligenceLogger shared] logLevelFor: description];
 }
 
 -(void)validateNumberOfRequestsPerQueue:(NSInteger) numberOfRequests {
@@ -160,21 +173,40 @@
     }
 }
 
--(BOOL)trackDomainValidation:(NSString *)trackDomain {
+-(BOOL)trackDomainValidation:(NSString *)trackingDomain {
+    NSURL *urlFormatDomain;
     
-    NSURL *urlFormatDomain = [NSURL URLWithString:trackDomain];
-
-    if ([trackDomain isEqualToString:@""]) {
+    if (trackingDomain != nil) {
+        urlFormatDomain = [NSURL URLWithString:trackingDomain];
+    }
+    
+    if (!urlFormatDomain) {
+         NSLog(@"You must enter a valid url format for tracking domain!");
         
-        if (!urlFormatDomain.scheme) {
-            self.trackDomain = [@"https://" stringByAppendingString:trackDomain];
+        if (!urlFormatDomain.scheme && trackingDomain != nil) {
+            NSString * scheme = @"https://";
+                self.trackDomain = [scheme stringByAppendingString:trackingDomain];
+            
         } else if (!(urlFormatDomain && urlFormatDomain.scheme && urlFormatDomain.host)) {
-            NSLog(@"You must enter a valid url format for tracking domain!");
+
+                NSLog(@"You must enter a valid url format for tracking domain!");
+
         }
     }
     
     return urlFormatDomain && urlFormatDomain.scheme && urlFormatDomain.host;
     
+}
+
+-(void)validateTrackingIDs:(NSArray *)validTrackingIDs {
+    NSArray *tempTrackingIDs;
+    
+    if (validTrackingIDs != nil) {
+       tempTrackingIDs = validTrackingIDs;
+    }
+    if ([[tempTrackingIDs lastObject]  isEqual: @""] || [[tempTrackingIDs lastObject] isEqual:@","] || [[tempTrackingIDs lastObject] isEqual:@" "]) {
+        NSLog(@"Tracking IDs can not contain blank spaces or empty strings!");
+    }
 }
 
 -(void) saveToUserDefaults {
