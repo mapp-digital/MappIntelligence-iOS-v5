@@ -33,6 +33,11 @@ class ConfigurationViewController: UIViewController, UIPickerViewDelegate, UIPic
         super.viewDidLoad()
         createPickerView()
         dismissPickerView()
+        setTrackingDomainTF.delegate = self
+        setTrackingIDsTF.delegate = self
+        setNumberOfRequestsPerBatchTF.delegate = self
+        setRequestsTimeIntervalTF.delegate = self
+        setupToolBarForNumberPadKeyboard()
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
                self.view.addGestureRecognizer(tapGesture)
         MappIntelligence.shared()?.trackPage(self)
@@ -81,6 +86,10 @@ class ConfigurationViewController: UIViewController, UIPickerViewDelegate, UIPic
     @IBAction func setTrackDomain(_ sender: Any) {
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
            return 1
        }
@@ -111,6 +120,20 @@ class ConfigurationViewController: UIViewController, UIPickerViewDelegate, UIPic
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         setLogLevelTF.text = logLevelList[row]
         return logLevelList[row] // dropdown item
+    }
+    
+    func setupToolBarForNumberPadKeyboard() {
+        let toolBar = UIToolbar(frame: CGRect(origin: .zero, size: .init(width: view.frame.size.width, height: 30)))
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(doneButtonAction))
+        toolBar.setItems([flexSpace, doneButton], animated: false)
+        toolBar.sizeToFit()
+        setRequestsTimeIntervalTF.inputAccessoryView = toolBar
+        setNumberOfRequestsPerBatchTF.inputAccessoryView = toolBar
+    }
+    
+    @objc func doneButtonAction() {
+        self.view.endEditing(true)
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
