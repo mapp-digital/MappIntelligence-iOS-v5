@@ -174,27 +174,20 @@
 }
 
 -(BOOL)trackDomainValidation:(NSString *)trackingDomain {
-    NSURL *urlFormatDomain;
     
+    NSURLComponents *components;
     if (trackingDomain != nil) {
-        urlFormatDomain = [NSURL URLWithString:trackingDomain];
+        components = [[NSURLComponents alloc] initWithString:trackingDomain];
     }
-    
-    if (!urlFormatDomain) {
-         NSLog(@"You must enter a valid url format for tracking domain!");
-        
-        if (!urlFormatDomain.scheme && trackingDomain != nil) {
-            NSString * scheme = @"https://";
-                self.trackDomain = [scheme stringByAppendingString:trackingDomain];
-            
-        } else if (!(urlFormatDomain && urlFormatDomain.scheme && urlFormatDomain.host)) {
-
-                NSLog(@"You must enter a valid url format for tracking domain!");
-
+    if (!components) {
+        NSLog(@"You must enter a valid url format for tracking domain!");
+    } else if (!components.scheme) {
+        if (([trackingDomain rangeOfString:@"https://"].location == NSNotFound) || ([trackingDomain rangeOfString:@"http://"].location == NSNotFound)) {
+        self.trackDomain = [NSString stringWithFormat:@"https://%@",trackingDomain];
         }
     }
     
-    return urlFormatDomain && urlFormatDomain.scheme && urlFormatDomain.host;
+    return components && components.scheme && components.host;
     
 }
 

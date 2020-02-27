@@ -92,6 +92,7 @@ class ConfigurationViewController: UIViewController, UIPickerViewDelegate, UIPic
     func createPickerView() {
            let pickerView = UIPickerView()
            pickerView.delegate = self
+        pickerView.accessibilityLabel = "logLevelPicker"
            setLogLevelTF.inputView = pickerView
     }
     func dismissPickerView() {
@@ -113,6 +114,12 @@ class ConfigurationViewController: UIViewController, UIPickerViewDelegate, UIPic
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        pickerView.view(forRow: 0, forComponent: component)?.accessibilityLabel = "debug"
+        pickerView.view(forRow: 1, forComponent: component)?.accessibilityLabel = "warning"
+        pickerView.view(forRow: 2, forComponent: component)?.accessibilityLabel = "error"
+        pickerView.view(forRow: 3, forComponent: component)?.accessibilityLabel = "fault"
+        pickerView.view(forRow: 4, forComponent: component)?.accessibilityLabel = "info"
+        pickerView.view(forRow: 5, forComponent: component)?.accessibilityLabel = "all"
     selectedLogLevel = logLevelList[row] // selected item
     setLogLevelTF.text = selectedLogLevel
     logLevelIndex = row

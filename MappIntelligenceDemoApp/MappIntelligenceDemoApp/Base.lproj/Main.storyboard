@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -23,6 +24,7 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NT4-Kt-2Ux">
                                 <rect key="frame" x="191" y="832" width="32" height="30"/>
+                                <accessibility key="accessibilityConfiguration" label="nexScreen"/>
                                 <state key="normal" title="Next"/>
                                 <connections>
                                     <action selector="moveToConfigurationScreen:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kzK-QH-tGJ"/>
@@ -80,18 +82,21 @@
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qqy-PL-oym">
                                 <rect key="frame" x="345" y="60.666666666666657" width="51" height="31"/>
+                                <accessibility key="accessibilityConfiguration" label="autoTrackingSwitch"/>
                                 <connections>
                                     <action selector="enableAutoTracking:" destination="WJg-jf-2Rr" eventType="valueChanged" id="57E-sh-Tnr"/>
                                 </connections>
                             </switch>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nm2-KX-SUI">
                                 <rect key="frame" x="345" y="393.66666666666669" width="51" height="31"/>
+                                <accessibility key="accessibilityConfiguration" label="viewControllerAutoTracking"/>
                                 <connections>
                                     <action selector="enableVCAutoTracking:" destination="WJg-jf-2Rr" eventType="valueChanged" id="eIE-CG-sPB"/>
                                 </connections>
                             </switch>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Set Requests Time Interval" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="igH-Vk-2qP">
                                 <rect key="frame" x="20" y="261.66666666666669" width="374" height="34"/>
+                                <accessibility key="accessibilityConfiguration" label="timeIntervalTextField"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" spellCheckingType="no" keyboardType="decimalPad" smartDashesType="no"/>
                                 <connections>
@@ -100,6 +105,7 @@
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Set Tracking Domain" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GwC-eU-cBZ">
                                 <rect key="frame" x="20" y="305.66666666666669" width="374" height="34"/>
+                                <accessibility key="accessibilityConfiguration" label="trackingDomainTextField"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="URL"/>
                                 <connections>
@@ -108,6 +114,7 @@
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Set Number Of Requests Per Queue" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Fo-NM-4LJ">
                                 <rect key="frame" x="20" y="217.66666666666666" width="374" height="34"/>
+                                <accessibility key="accessibilityConfiguration" label="numberOfRequestsTextField"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                 <connections>
@@ -116,7 +123,7 @@
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Set Log Level" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GEW-X4-v8k">
                                 <rect key="frame" x="20" y="142.66666666666666" width="374" height="34"/>
-                                <accessibility key="accessibilityConfiguration">
+                                <accessibility key="accessibilityConfiguration" label="logLevelTextField">
                                     <accessibilityTraits key="traits" notEnabled="YES"/>
                                 </accessibility>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -127,6 +134,7 @@
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Set Tracking IDs" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I1g-mz-glS">
                                 <rect key="frame" x="20" y="349.66666666666669" width="374" height="34"/>
+                                <accessibility key="accessibilityConfiguration" label="trackingIdsTextField"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
                                 <connections>
@@ -142,6 +150,7 @@
                             </button>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="0Is-UR-GBn">
                                 <rect key="frame" x="342" y="101.66666666666667" width="51" height="31.000000000000014"/>
+                                <accessibility key="accessibilityConfiguration" label="batchSupportSwitch"/>
                                 <connections>
                                     <action selector="enableBatchSupport:" destination="WJg-jf-2Rr" eventType="valueChanged" id="Avb-PN-Oyj"/>
                                 </connections>
