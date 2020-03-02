@@ -7,8 +7,8 @@
 //
 
 #import "MappIntelligenceRequestBuilder.h"
-#import "MappIntelligenceLogger.h"
 #import "MappIntelligenceDataService.h"
+#import "MappIntelligenceLogger.h"
 
 @interface MappIntelligenceRequestBuilder ()
 

@@ -28,7 +28,7 @@
 		BCA1739D23D5D25E00B31430 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BCA1739F23D5D25E00B31430 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BCBE5C2923F3F9F3002125C1 /* libMappIntelligenceSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libMappIntelligenceSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		BCFC0F4823FEE2EA00186A6E /* MappIntelligenceDemoApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MappIntelligenceDemoApp-Bridging-Header.h"; sourceTree = "<group>"; };
+		BCD2AA4F24095FC7006AB210 /* MappIntelligenceDemoApp-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MappIntelligenceDemoApp-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,7 +71,7 @@
 				BCA1739C23D5D25E00B31430 /* LaunchScreen.storyboard */,
 				BCA1739F23D5D25E00B31430 /* Info.plist */,
 				BC70672023D9A4FE00F3BDD8 /* ConfigurationViewController.swift */,
-				BCFC0F4823FEE2EA00186A6E /* MappIntelligenceDemoApp-Bridging-Header.h */,
+				BCD2AA4F24095FC7006AB210 /* MappIntelligenceDemoApp-Bridging-Header.h */,
 			);
 			path = MappIntelligenceDemoApp;
 			sourceTree = "<group>";

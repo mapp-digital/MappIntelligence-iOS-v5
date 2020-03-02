@@ -110,7 +110,6 @@
 		A36CD7CC23F44594004E3E2D /* TrackerRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TrackerRequest.m; sourceTree = "<group>"; };
 		A36CD7CF23F447D0004E3E2D /* Properties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Properties.h; sourceTree = "<group>"; };
 		A36CD7D023F447D0004E3E2D /* Properties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Properties.m; sourceTree = "<group>"; };
-		BC18ECFB23CDD14900B2B99B /* MappIntelligence-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MappIntelligence-Bridging-Header.h"; sourceTree = "<group>"; };
 		BCA1738123D5C12A00B31430 /* MappIntelligenceDefaultConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MappIntelligenceDefaultConfig.h; sourceTree = "<group>"; };
 		BCA1738323D5C2E700B31430 /* MappIntelligenceDataService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MappIntelligenceDataService.m; sourceTree = "<group>"; };
 		BCBE5BFA23EB1798002125C1 /* MappIntelligenceSDKLoggerTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MappIntelligenceSDKLoggerTest.m; sourceTree = SOURCE_ROOT; };
@@ -160,7 +159,6 @@
 				A334861923BF3E2300D0EB5F /* Products */,
 				A334863C23BF409D00D0EB5F /* MappIntelligence.h */,
 				BCEA32C023E979FD003AF806 /* MappIntelligenceTests */,
-				BC18ECFB23CDD14900B2B99B /* MappIntelligence-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
