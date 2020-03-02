@@ -56,7 +56,7 @@ class ConfigurationViewController: UIViewController, UIPickerViewDelegate, UIPic
                           trackingDomain: String, trackingIDs: String, viewControllerAutoTracking: Bool) {
         configurationDetails = ["auto_tracking": autoTracking, "batch_support": batchSupport, "request_per_batch": requestsPerBatch, "requests_interval": requestsInterval, "log_level": logLevel, "track_domain": trackingDomain,
                       "track_ids": trackingIDs, "view_controller_auto_tracking": viewControllerAutoTracking]
-//        Webtrekk.init(dictionary: dictionary)
+        //        Webtrekk.init(dictionary: dictionary)
     }
     @IBAction func setConfiguration(_ sender: Any) {
         self.setConfiguration(autoTracking: autoTrackingValue, batchSupport: batchSupportValue, requestsPerBatch: (setNumberOfRequestsPerBatchTF!.text! as NSString).integerValue, requestsInterval: (setRequestsTimeIntervalTF!.text! as NSString).floatValue, logLevel: logLevelIndex+1 , trackingDomain: setTrackingDomainTF.text!, trackingIDs: setTrackingIDsTF.text!, viewControllerAutoTracking: vcAutoTracking)

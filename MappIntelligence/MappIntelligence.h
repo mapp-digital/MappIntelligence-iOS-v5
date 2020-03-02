@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 //#import "MappIntelligenceDataService.h"
-#import "MappIntelligenceDefaultConfig.h"
 //#import "DefaultTracker.h"
 
 @interface MappIntelligence : NSObject
@@ -28,6 +27,6 @@
 
 +(void) setConfigurationWith: (NSDictionary *_Nullable) dictionary;
 
--(void)initWithConfiguration:(NSArray *_Nonnull)trackIDs onDomain:(NSString *_Nonnull)trackDomain withAutotrackingEnabled:(BOOL)autoTracking requestTimeout:(NSTimeInterval)requestTimeout numberOfRequests:(NSInteger)numberOfRequestInQueue batchSupportEnabled:(BOOL)batchSupport viewControllerAutoTrackingEnabled:(BOOL)viewControllerAutoTracking andLogLevel:(MappIntelligenceLogLevelDescription)logLevel;
+-(void)initWithConfiguration:(NSArray *_Nonnull)trackIDs onDomain:(NSString *_Nonnull)trackDomain withAutotrackingEnabled:(BOOL)autoTracking requestTimeout:(NSTimeInterval)requestTimeout numberOfRequests:(NSInteger)numberOfRequestInQueue batchSupportEnabled:(BOOL)batchSupport viewControllerAutoTrackingEnabled:(BOOL)viewControllerAutoTracking andLogLevel:(enum MappIntelligenceLogLevelDescription)logLevel;
 
 @end

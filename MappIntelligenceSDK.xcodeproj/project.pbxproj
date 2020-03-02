@@ -42,7 +42,6 @@
 		A36CD7CE23F44594004E3E2D /* TrackerRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = A36CD7CC23F44594004E3E2D /* TrackerRequest.m */; };
 		A36CD7D123F447D0004E3E2D /* Properties.h in Headers */ = {isa = PBXBuildFile; fileRef = A36CD7CF23F447D0004E3E2D /* Properties.h */; };
 		A36CD7D223F447D0004E3E2D /* Properties.m in Sources */ = {isa = PBXBuildFile; fileRef = A36CD7D023F447D0004E3E2D /* Properties.m */; };
-		BCA1738223D5C12A00B31430 /* MappIntelligenceDefaultConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = BCA1738123D5C12A00B31430 /* MappIntelligenceDefaultConfig.h */; };
 		BCA1738423D5C2E700B31430 /* MappIntelligenceDataService.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA1738323D5C2E700B31430 /* MappIntelligenceDataService.m */; };
 		BCBE5BFB23EB1798002125C1 /* MappIntelligenceSDKLoggerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBE5BFA23EB1798002125C1 /* MappIntelligenceSDKLoggerTest.m */; };
 		BCBE5BFD23EC090B002125C1 /* MappIntelligenceNetworkManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBE5BFC23EC090B002125C1 /* MappIntelligenceNetworkManagerTests.m */; };
@@ -51,10 +50,11 @@
 		BCBE5C0323EC0C36002125C1 /* MappIntelligenceRequestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBE5C0223EC0C36002125C1 /* MappIntelligenceRequestTests.m */; };
 		BCBE5C0923F29E49002125C1 /* DefaultTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBE5C0823F29E49002125C1 /* DefaultTracker.m */; };
 		BCBE5C3A23F698EF002125C1 /* DefaultTrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBE5C3923F698EF002125C1 /* DefaultTrackerTests.m */; };
+		BCCAE6D0240D29A9005E9FD6 /* MappIntelligenceLogger.m in Headers */ = {isa = PBXBuildFile; fileRef = BCEAE6B723BF5A8B007F410D /* MappIntelligenceLogger.m */; };
+		BCCAE6D2240D2E16005E9FD6 /* MappIntelligenceDefaultConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = BCA1738123D5C12A00B31430 /* MappIntelligenceDefaultConfig.h */; };
 		BCD5E2C323CF309900CE2092 /* Config.h in Sources */ = {isa = PBXBuildFile; fileRef = BCD5E2C223CF309900CE2092 /* Config.h */; };
 		BCD5E2C523CF38F300CE2092 /* MappIntelligenceDefaultConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD5E2C423CF38F300CE2092 /* MappIntelligenceDefaultConfig.m */; };
 		BCEA32C923E97CD0003AF806 /* MappIntelligenceConfigurationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BCEA32C823E97CD0003AF806 /* MappIntelligenceConfigurationTest.m */; };
-		BCEAE6B623BF5912007F410D /* MappIntelligenceLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = BCEAE6B523BF5912007F410D /* MappIntelligenceLogger.h */; };
 		BCEAE6B823BF5A8B007F410D /* MappIntelligenceLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = BCEAE6B723BF5A8B007F410D /* MappIntelligenceLogger.m */; };
 		BCEAE6BC23C32F0A007F410D /* MappIntelligenceDataService.h in Headers */ = {isa = PBXBuildFile; fileRef = BCEAE6BB23C32F0A007F410D /* MappIntelligenceDataService.h */; };
 		BCEAE6C023C33054007F410D /* MappIntelligenceNotificationService.h in Headers */ = {isa = PBXBuildFile; fileRef = BCEAE6BF23C33054007F410D /* MappIntelligenceNotificationService.h */; };
@@ -315,7 +315,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A334863423BF3FAD00D0EB5F /* MappIntelligence.h in Headers */,
-				BCEAE6B623BF5912007F410D /* MappIntelligenceLogger.h in Headers */,
+				BCCAE6D0240D29A9005E9FD6 /* MappIntelligenceLogger.m in Headers */,
 				BCEAE6C023C33054007F410D /* MappIntelligenceNotificationService.h in Headers */,
 				A36CD7D123F447D0004E3E2D /* Properties.h in Headers */,
 				A334867623BF569400D0EB5F /* MappIntelligenceRequest.h in Headers */,
@@ -323,7 +323,7 @@
 				A36CD7CD23F44594004E3E2D /* TrackerRequest.h in Headers */,
 				A334867523BF569400D0EB5F /* MappIntelligenceNetworkMetadata.h in Headers */,
 				BCEAE6BC23C32F0A007F410D /* MappIntelligenceDataService.h in Headers */,
-				BCA1738223D5C12A00B31430 /* MappIntelligenceDefaultConfig.h in Headers */,
+				BCCAE6D2240D2E16005E9FD6 /* MappIntelligenceDefaultConfig.h in Headers */,
 				A334868023BF56A100D0EB5F /* MappIntelligenceRequestBuilder.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -632,6 +632,8 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LERY366S7C;
+				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -642,7 +644,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "Webrekk-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Webtrekk-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -655,6 +657,8 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LERY366S7C;
+				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = NO;
+				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -665,7 +669,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "Webrekk-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Webtrekk-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -710,6 +714,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LERY366S7C;
+				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -722,6 +727,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LERY366S7C;
+				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";

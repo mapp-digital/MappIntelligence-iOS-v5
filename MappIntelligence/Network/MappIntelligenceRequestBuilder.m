@@ -8,7 +8,7 @@
 
 #import "MappIntelligenceRequestBuilder.h"
 #import "MappIntelligenceDataService.h"
-#import "MappIntelligenceLogger.h"
+//#import "MappIntelligenceLogger.h"
 
 @interface MappIntelligenceRequestBuilder ()
 
@@ -66,7 +66,7 @@
 {
     if (keyedValues) {
         self.keyType = type;
-        AppLog(@"Adding values for type: %tu", type);
+//        AppLog(@"Adding values for type: %tu", type);
         
         [self initializeRequest];
         
@@ -96,9 +96,9 @@
         
         data = [NSJSONSerialization dataWithJSONObject:requestKeyedValues options:NSJSONWritingPrettyPrinted error:&error];
         
-        if (error) AppLog(@"Error while converting request keyed values to JSON object.\nerror: %@", error);
-        
-        AppLog(@"Request created as JSON:\n%@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+//        if (error) AppLog(@"Error while converting request keyed values to JSON object.\nerror: %@", error);
+//
+//        AppLog(@"Request created as JSON:\n%@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
     }
     
     return data;
@@ -120,9 +120,9 @@
             
             data = [NSJSONSerialization dataWithJSONObject:requestKeyedValues options:NSJSONWritingPrettyPrinted error:&error];
             
-            if (error) AppLog(@"Error while converting request keyed values to JSON object.\nerror: %@", error);
-            
-            AppLog(@"Request created as JSON:\n%@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+//            if (error) AppLog(@"Error while converting request keyed values to JSON object.\nerror: %@", error);
+//            
+//            AppLog(@"Request created as JSON:\n%@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
         }
         
         return data;
