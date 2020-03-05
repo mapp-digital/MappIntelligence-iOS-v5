@@ -44,18 +44,7 @@
 -(instancetype)init {
     
     self = [super init];
-    [self setAutoTracking:YES];
-    [self setBatchSupport:NO];
-    [self setRequestPerQueue:10];
-    [self setRequestsInterval:900.00];
-    [self setLogLevel:kMappIntelligenceLogLevelDescriptionDebug];
-    [self setTrackIDs:[[NSArray alloc] init]];
-    [self setTrackDomain:@"https://q3.MappIntelligence.net"];
-    [self setViewControllerAutoTracking:YES];
-    [self setTracker:[[DefaultTracker alloc] init]];
-    [self saveToUserDefaults];
-    [self logConfig];
-
+    [self setLogLevel:kMappIntelligenceLogLevelDescriptionInfo];
     return self;
 }
 

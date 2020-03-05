@@ -11,7 +11,6 @@
 
 @interface MappIntelligence()
 
-//@property MappIntelligenceDataService *dataService;
 @property MappIntelligenceDefaultConfig * configuration;
 @property DefaultTracker *tracker;
 
@@ -73,15 +72,17 @@ static MappIntelligenceDefaultConfig * config = nil;
     [tracker track:controller];
 }
 
--(void)initWithConfiguration:(NSArray *)trackIDs onDomain:(NSString *)trackDomain withAutotrackingEnabled:(BOOL)autoTracking requestTimeout:(NSTimeInterval)requestTimeout numberOfRequests:(NSInteger)numberOfRequestInQueue batchSupportEnabled:(BOOL)batchSupport viewControllerAutoTrackingEnabled:(BOOL)viewControllerAutoTracking andLogLevel:(enum MappIntelligenceLogLevelDescription)logLevel {
-    [config setLogLevel:logLevel];
+-(void)initWithConfiguration:(NSArray *)trackIDs onDomain:(NSString *)trackDomain withAutotrackingEnabled:(BOOL)autoTracking requestTimeout:(NSTimeInterval)requestTimeout numberOfRequests:(NSInteger)numberOfRequestInQueue batchSupportEnabled:(BOOL)batchSupport viewControllerAutoTrackingEnabled:(BOOL)viewControllerAutoTracking andLogLevel:( logLevel)lv {
+    
+    [config setLogLevel:(MappIntelligenceLogLevelDescription)lv];
     [config setTrackIDs:trackIDs];
     [config setTrackDomain:trackDomain];
     [config setAutoTracking:autoTracking];
     [config setBatchSupport:batchSupport];
     [config setViewControllerAutoTracking:viewControllerAutoTracking];
-    [config setrequestPerQueue:numberOfRequestInQueue];
+    [config setRequestPerQueue:numberOfRequestInQueue];
     [config setRequestsInterval:requestTimeout];
+    [config logConfig];
 }
 
 @end
