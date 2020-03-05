@@ -42,6 +42,8 @@
 		A36CD7CE23F44594004E3E2D /* TrackerRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = A36CD7CC23F44594004E3E2D /* TrackerRequest.m */; };
 		A36CD7D123F447D0004E3E2D /* Properties.h in Headers */ = {isa = PBXBuildFile; fileRef = A36CD7CF23F447D0004E3E2D /* Properties.h */; };
 		A36CD7D223F447D0004E3E2D /* Properties.m in Sources */ = {isa = PBXBuildFile; fileRef = A36CD7D023F447D0004E3E2D /* Properties.m */; };
+		A380D1FA2411478C009E2CD8 /* TrackingEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = A380D1F82411478C009E2CD8 /* TrackingEvent.h */; };
+		A380D1FB2411478C009E2CD8 /* TrackingEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = A380D1F92411478C009E2CD8 /* TrackingEvent.m */; };
 		BCA1738423D5C2E700B31430 /* MappIntelligenceDataService.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA1738323D5C2E700B31430 /* MappIntelligenceDataService.m */; };
 		BCBE5BFB23EB1798002125C1 /* MappIntelligenceSDKLoggerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBE5BFA23EB1798002125C1 /* MappIntelligenceSDKLoggerTest.m */; };
 		BCBE5BFD23EC090B002125C1 /* MappIntelligenceNetworkManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBE5BFC23EC090B002125C1 /* MappIntelligenceNetworkManagerTests.m */; };
@@ -110,6 +112,8 @@
 		A36CD7CC23F44594004E3E2D /* TrackerRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TrackerRequest.m; sourceTree = "<group>"; };
 		A36CD7CF23F447D0004E3E2D /* Properties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Properties.h; sourceTree = "<group>"; };
 		A36CD7D023F447D0004E3E2D /* Properties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Properties.m; sourceTree = "<group>"; };
+		A380D1F82411478C009E2CD8 /* TrackingEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TrackingEvent.h; sourceTree = "<group>"; };
+		A380D1F92411478C009E2CD8 /* TrackingEvent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TrackingEvent.m; sourceTree = "<group>"; };
 		BCA1738123D5C12A00B31430 /* MappIntelligenceDefaultConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MappIntelligenceDefaultConfig.h; sourceTree = "<group>"; };
 		BCA1738323D5C2E700B31430 /* MappIntelligenceDataService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MappIntelligenceDataService.m; sourceTree = "<group>"; };
 		BCBE5BFA23EB1798002125C1 /* MappIntelligenceSDKLoggerTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MappIntelligenceSDKLoggerTest.m; sourceTree = SOURCE_ROOT; };
@@ -234,6 +238,8 @@
 				A36CD7CC23F44594004E3E2D /* TrackerRequest.m */,
 				A36CD7CF23F447D0004E3E2D /* Properties.h */,
 				A36CD7D023F447D0004E3E2D /* Properties.m */,
+				A380D1F82411478C009E2CD8 /* TrackingEvent.h */,
+				A380D1F92411478C009E2CD8 /* TrackingEvent.m */,
 			);
 			path = "Tracking Request";
 			sourceTree = "<group>";
@@ -316,6 +322,7 @@
 			files = (
 				A334863423BF3FAD00D0EB5F /* MappIntelligence.h in Headers */,
 				BCCAE6D0240D29A9005E9FD6 /* MappIntelligenceLogger.m in Headers */,
+				A380D1FA2411478C009E2CD8 /* TrackingEvent.h in Headers */,
 				BCEAE6C023C33054007F410D /* MappIntelligenceNotificationService.h in Headers */,
 				A36CD7D123F447D0004E3E2D /* Properties.h in Headers */,
 				A334867623BF569400D0EB5F /* MappIntelligenceRequest.h in Headers */,
@@ -469,6 +476,7 @@
 				A36CD7CE23F44594004E3E2D /* TrackerRequest.m in Sources */,
 				BCEAE6B823BF5A8B007F410D /* MappIntelligenceLogger.m in Sources */,
 				A334861D23BF3E2300D0EB5F /* MappIntelligence.m in Sources */,
+				A380D1FB2411478C009E2CD8 /* TrackingEvent.m in Sources */,
 				A36CD7D223F447D0004E3E2D /* Properties.m in Sources */,
 				A334867D23BF56A100D0EB5F /* MappIntelligenceNetworkManager.m in Sources */,
 				BCD5E2C523CF38F300CE2092 /* MappIntelligenceDefaultConfig.m in Sources */,
