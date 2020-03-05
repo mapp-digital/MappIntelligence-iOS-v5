@@ -12,5 +12,6 @@
 @property DefaultTracker *tracker;
 
 -(instancetype) initWithDictionary:(NSDictionary *) dictionary;
+-(void) logConfig;
 
 @end

@@ -8,13 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import "MappIntelligenceDataService.h"
-#import "MappIntelligenceDefaultConfig.h"
-#import "MappIntelligenceLogger.h"
+//#import "MappIntelligenceLogger.h"
 
 
 @interface MappIntelligenceDataService()
 
-@property MappIntelligenceDefaultConfig * defaultConfiguration;
 
 @end
 

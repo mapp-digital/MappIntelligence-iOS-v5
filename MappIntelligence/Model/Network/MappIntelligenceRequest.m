@@ -7,9 +7,8 @@
 //
 
 #import "MappIntelligenceRequest.h"
-#import "MappIntelligenceLogger.h"
 #import "MappIntelligenceDataService.h"
-
+#import "MappIntelligenceLogger.h"
 // MappIntelligence SDK
 #define key_actions @"actions"
 #define key_aliasValue @"alias"

@@ -7,14 +7,10 @@
 //
 
 #import "MappIntelligence.h"
-#import "MappIntelligenceDataService.h"
 #import "MappIntelligenceDefaultConfig.h"
-#import "MappIntelligenceLogger.h"
-#import "DefaultTracker.h"
 
 @interface MappIntelligence()
 
-@property MappIntelligenceDataService *dataService;
 @property MappIntelligenceDefaultConfig * configuration;
 @property DefaultTracker *tracker;
 
@@ -25,6 +21,16 @@ static MappIntelligence *sharedInstance = nil;
 static MappIntelligenceDefaultConfig * config = nil;
 
 @synthesize tracker;
+
+-(id) init {
+    if (!sharedInstance) {
+        sharedInstance = [super init];
+//        _dataService = [[MappIntelligenceDataService alloc]init];
+        config = [[MappIntelligenceDefaultConfig alloc] init];
+        tracker = [[DefaultTracker alloc] init];
+    }
+    return sharedInstance;
+}
 
 + (nullable instancetype)shared
 {
@@ -62,18 +68,21 @@ static MappIntelligenceDefaultConfig * config = nil;
     config = [[MappIntelligenceDefaultConfig alloc] initWithDictionary: dict];
 }
 
--(id) init {
-    if (!sharedInstance) {
-        sharedInstance = [super init];
-        _dataService = [[MappIntelligenceDataService alloc]init];
-        _configuration = [[MappIntelligenceDefaultConfig alloc] init];
-        tracker = [[DefaultTracker alloc] init];
-    }
-    return sharedInstance;
-}
-
 -(void)trackPage:(UIViewController*) controller {
     [tracker track:controller];
+}
+
+-(void)initWithConfiguration:(NSArray *)trackIDs onDomain:(NSString *)trackDomain withAutotrackingEnabled:(BOOL)autoTracking requestTimeout:(NSTimeInterval)requestTimeout numberOfRequests:(NSInteger)numberOfRequestInQueue batchSupportEnabled:(BOOL)batchSupport viewControllerAutoTrackingEnabled:(BOOL)viewControllerAutoTracking andLogLevel:( logLevel)lv {
+    
+    [config setLogLevel:(MappIntelligenceLogLevelDescription)lv];
+    [config setTrackIDs:trackIDs];
+    [config setTrackDomain:trackDomain];
+    [config setAutoTracking:autoTracking];
+    [config setBatchSupport:batchSupport];
+    [config setViewControllerAutoTracking:viewControllerAutoTracking];
+    [config setRequestPerQueue:numberOfRequestInQueue];
+    [config setRequestsInterval:requestTimeout];
+    [config logConfig];
 }
 
 @end

@@ -17,7 +17,6 @@
 #define key_batchSupport @"batch_support"
 #define key_viewControllerAutoTracking @"view_controller_auto_tracking"
 #define key_MappIntelligence_default_configuration @"defaultConfiguration"
-#import "DefaultTracker.h"
 
 @implementation MappIntelligenceDefaultConfig : NSObject
 
@@ -45,18 +44,7 @@
 -(instancetype)init {
     
     self = [super init];
-    self.autoTracking = YES;
-    self.batchSupport = NO;
-    self.requestPerQueue = 10;
-    self.requestsInterval = 900;
-    self.logLevel = kMappIntelligenceLogLevelDescriptionDebug;
-    self.trackIDs = [[NSArray alloc] init];
-    self.trackDomain = @"https://q3.MappIntelligence.net";
-    self.viewControllerAutoTracking = YES;
-    self.tracker = [[DefaultTracker alloc] init];
-    [self saveToUserDefaults];
-    [self logConfig];
-
+    [self setLogLevel:kMappIntelligenceLogLevelDescriptionInfo];
     return self;
 }
 
@@ -209,5 +197,37 @@
     [defaults setObject:encodedObject forKey:key_MappIntelligence_default_configuration];
     [defaults synchronize];
 }
+
+//- (void)setAutoTracking:(BOOL)autoTracking {
+//    self.autoTracking = autoTracking;
+//}
+//
+//- (void)setBatchSupport:(BOOL)batchSupport {
+//    self.batchSupport = batchSupport;
+//}
+//
+//- (void)setLogLevel:(MappIntelligenceLogLevelDescription)logLevel {
+//    self.logLevel = logLevel;
+//}
+//
+//- (void)setRequestsInterval:(const NSTimeInterval)requestsInterval {
+//    self.requestsInterval = requestsInterval;
+//}
+//
+//- (void)setTrackDomain:(NSString *const)trackDomain {
+//    self.trackDomain = trackDomain;
+//}
+//
+//- (void)setTrackIDs:(NSArray *const)trackIDs {
+//    self.trackIDs = trackIDs;
+//}
+//
+//- (void)setViewControllerAutoTracking:(BOOL)viewControllerAutoTracking {
+//    self.viewControllerAutoTracking = viewControllerAutoTracking;
+//}
+//
+//- (void)setrequestPerQueue:(const NSInteger)requestPerQueue {
+//    self.requestPerQueue = requestPerQueue;
+//}
 
 @end
