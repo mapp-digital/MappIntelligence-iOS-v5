@@ -82,6 +82,8 @@
     }
 }
 
+- (void)urlForRequest()
+
 - (NSData *)buildRequestAsJsonData
 {
     NSData *data = nil;
