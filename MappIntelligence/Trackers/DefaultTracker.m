@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "DefaultTracker.h"
 #import "MappIntelligenceLogger.h"
+#import "MappIntelligence.h"
+#import "Properties.h"
+#import "Enviroment.h"
 
 #define appHibernationDate @"appHibernationDate"
 #define appVersion @"appVersion"
@@ -27,12 +30,16 @@
 
 @interface DefaultTracker()
 
+-(void)enqueueRequestForEvent;
+-(Properties*) generateRequestProperties;
+
 @end
 
 @implementation DefaultTracker:NSObject
 
 static DefaultTracker * sharedTracker = nil;
 static NSString * everID;
+static NSString* userAgent;
 
 +(nullable instancetype) sharedInstance {
     
@@ -48,8 +55,16 @@ static NSString * everID;
     if (!sharedTracker) {
         sharedTracker = [super init];
         everID = [sharedTracker generateEverId];
+        [self generateUserAgent];
     }
     return sharedTracker;
+}
+
+-(void) generateUserAgent {
+    Enviroment* env = [[Enviroment alloc] init];
+    NSString* properties = [env.operatingSystemName stringByAppendingFormat:@" %@; %@; %@", env.operatingSystemVersionString, env.deviceModelString, NSLocale.currentLocale.localeIdentifier];
+
+    userAgent = [[NSString alloc] initWithFormat:@"Tracking Library %@ (%@))", MappIntelligence.version,  properties];
 }
 
 -(NSString *)generateEverId {
@@ -74,6 +89,27 @@ static NSString * everID;
 - (void)track:(UIViewController *)controller {
     NSString *CurrentSelectedCViewController = NSStringFromClass([controller class]);
     [[MappIntelligenceLogger shared] logObj:[[NSString alloc]initWithFormat:@"Content ID is: %@", CurrentSelectedCViewController] forDescription:kMappIntelligenceLogLevelDescriptionDebug];
+    
+    //create request
+    
+}
+
+- (void)enqueueRequestForEvent {
+    Properties* requestProperties = [self generateRequestProperties];
+    requestProperties.locale = [NSLocale currentLocale];
+    
+    #ifdef TARGET_OS_WATCHOS
+        
+    #else
+        //requestProperties.screenSize =
+    #endif
+    [requestProperties setIsFirstEventOfApp:NO];
+    [requestProperties setIsFirstEventOfSession:NO];
+    [requestProperties setIsFirstEventAfterAppUpdate:NO];
+}
+
+- (Properties *)generateRequestProperties {
+    return [[Properties alloc] initWithEverID:everID andSamplingRate:0 withTimeZone: [NSTimeZone localTimeZone] withTimestamp: [NSDate date] withUserAgent:userAgent];
 }
 
 +(NSUserDefaults *)sharedDefaults {
@@ -81,3 +117,4 @@ static NSString * everID;
 }
 
 @end
+

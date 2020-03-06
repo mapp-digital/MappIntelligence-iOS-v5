@@ -25,7 +25,6 @@ static MappIntelligenceDefaultConfig * config = nil;
 -(id) init {
     if (!sharedInstance) {
         sharedInstance = [super init];
-//        _dataService = [[MappIntelligenceDataService alloc]init];
         config = [[MappIntelligenceDefaultConfig alloc] init];
         tracker = [[DefaultTracker alloc] init];
     }
@@ -44,6 +43,10 @@ static MappIntelligenceDefaultConfig * config = nil;
     });
     
     return shared;
+}
+
++ (NSString *)version {
+    return @"5.0";
 }
 
 /** Method for setting up the Mapp Intelligence configuration by user.

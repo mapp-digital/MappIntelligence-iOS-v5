@@ -10,12 +10,13 @@
 
 @implementation Properties
 
-- (void)initWithEverID:(NSString *)eid andSamplingRate:(NSInteger)rate withTimeZone:(NSTimeZone *)zone withTimestamp:(NSDate *)stamp withUserAgent:(NSString *)agent {
+- (instancetype)initWithEverID:(NSString *)eid andSamplingRate:(NSInteger)rate withTimeZone:(NSTimeZone *)zone withTimestamp:(NSDate *)stamp withUserAgent:(NSString *)agent {
     self.everId = eid;
     self.samplingRate = rate;
     self.timeZone = zone;
     self.timestamp = stamp;
     self.userAgent = agent;
+    return self;
 }
 
 @end

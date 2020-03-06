@@ -29,6 +29,7 @@ typedef NS_ENUM(NSInteger, logLevel) {
  @return MappIntelligence an Instance Type of MappIntelligence.
  */
 + (nullable instancetype)shared;
++ (NSString*)version;
 
 -(void)trackPage:(UIViewController*_Nullable) controller;
 

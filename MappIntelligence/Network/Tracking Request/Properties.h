@@ -43,7 +43,7 @@ typedef NS_ENUM(NSInteger, ConnectionType) {
 @property UIInterfaceOrientation* interfaceOrientation;
 #endif
 
--(void)initWithEverID: (NSString*) eid andSamplingRate:(NSInteger)rate withTimeZone:(NSTimeZone*)zone withTimestamp:(NSDate*)stamp withUserAgent:(NSString*)agent;
+-(instancetype)initWithEverID: (NSString*) eid andSamplingRate:(NSInteger)rate withTimeZone:(NSTimeZone*)zone withTimestamp:(NSDate*)stamp withUserAgent:(NSString*)agent;
 @end
 
 NS_ASSUME_NONNULL_END
