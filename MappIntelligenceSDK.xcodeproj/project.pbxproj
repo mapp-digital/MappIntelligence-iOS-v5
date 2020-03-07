@@ -48,6 +48,12 @@
 		A380D200241296FD009E2CD8 /* PageViewEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = A380D1FE241296FD009E2CD8 /* PageViewEvent.m */; };
 		A380D2042412B0AB009E2CD8 /* Enviroment.h in Headers */ = {isa = PBXBuildFile; fileRef = A380D2022412B0AB009E2CD8 /* Enviroment.h */; };
 		A380D2052412B0AB009E2CD8 /* Enviroment.m in Sources */ = {isa = PBXBuildFile; fileRef = A380D2032412B0AB009E2CD8 /* Enviroment.m */; };
+		A380D2082412D8F2009E2CD8 /* RequestTrackerBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = A380D2062412D8F2009E2CD8 /* RequestTrackerBuilder.h */; };
+		A380D2092412D8F2009E2CD8 /* RequestTrackerBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = A380D2072412D8F2009E2CD8 /* RequestTrackerBuilder.m */; };
+		A380D20C2413D317009E2CD8 /* Configuration.h in Headers */ = {isa = PBXBuildFile; fileRef = A380D20A2413D317009E2CD8 /* Configuration.h */; };
+		A380D20D2413D317009E2CD8 /* Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = A380D20B2413D317009E2CD8 /* Configuration.m */; };
+		A380D2102413ED35009E2CD8 /* RequestUrlBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = A380D20E2413ED35009E2CD8 /* RequestUrlBuilder.h */; };
+		A380D2112413ED35009E2CD8 /* RequestUrlBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = A380D20F2413ED35009E2CD8 /* RequestUrlBuilder.m */; };
 		BCA1738423D5C2E700B31430 /* MappIntelligenceDataService.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA1738323D5C2E700B31430 /* MappIntelligenceDataService.m */; };
 		BCBE5BFB23EB1798002125C1 /* MappIntelligenceSDKLoggerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBE5BFA23EB1798002125C1 /* MappIntelligenceSDKLoggerTest.m */; };
 		BCBE5BFD23EC090B002125C1 /* MappIntelligenceNetworkManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBE5BFC23EC090B002125C1 /* MappIntelligenceNetworkManagerTests.m */; };
@@ -122,6 +128,12 @@
 		A380D1FE241296FD009E2CD8 /* PageViewEvent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PageViewEvent.m; sourceTree = "<group>"; };
 		A380D2022412B0AB009E2CD8 /* Enviroment.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Enviroment.h; sourceTree = "<group>"; };
 		A380D2032412B0AB009E2CD8 /* Enviroment.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Enviroment.m; sourceTree = "<group>"; };
+		A380D2062412D8F2009E2CD8 /* RequestTrackerBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RequestTrackerBuilder.h; sourceTree = "<group>"; };
+		A380D2072412D8F2009E2CD8 /* RequestTrackerBuilder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RequestTrackerBuilder.m; sourceTree = "<group>"; };
+		A380D20A2413D317009E2CD8 /* Configuration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Configuration.h; sourceTree = "<group>"; };
+		A380D20B2413D317009E2CD8 /* Configuration.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Configuration.m; sourceTree = "<group>"; };
+		A380D20E2413ED35009E2CD8 /* RequestUrlBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RequestUrlBuilder.h; sourceTree = "<group>"; };
+		A380D20F2413ED35009E2CD8 /* RequestUrlBuilder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RequestUrlBuilder.m; sourceTree = "<group>"; };
 		BCA1738123D5C12A00B31430 /* MappIntelligenceDefaultConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MappIntelligenceDefaultConfig.h; sourceTree = "<group>"; };
 		BCA1738323D5C2E700B31430 /* MappIntelligenceDataService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MappIntelligenceDataService.m; sourceTree = "<group>"; };
 		BCBE5BFA23EB1798002125C1 /* MappIntelligenceSDKLoggerTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MappIntelligenceSDKLoggerTest.m; sourceTree = SOURCE_ROOT; };
@@ -250,6 +262,10 @@
 				A36CD7D023F447D0004E3E2D /* Properties.m */,
 				A380D1F82411478C009E2CD8 /* TrackingEvent.h */,
 				A380D1F92411478C009E2CD8 /* TrackingEvent.m */,
+				A380D2062412D8F2009E2CD8 /* RequestTrackerBuilder.h */,
+				A380D2072412D8F2009E2CD8 /* RequestTrackerBuilder.m */,
+				A380D20E2413ED35009E2CD8 /* RequestUrlBuilder.h */,
+				A380D20F2413ED35009E2CD8 /* RequestUrlBuilder.m */,
 			);
 			path = "Tracking Request";
 			sourceTree = "<group>";
@@ -277,6 +293,8 @@
 			children = (
 				BCBE5C0723F1A688002125C1 /* DefaultTracker.h */,
 				BCBE5C0823F29E49002125C1 /* DefaultTracker.m */,
+				A380D20A2413D317009E2CD8 /* Configuration.h */,
+				A380D20B2413D317009E2CD8 /* Configuration.m */,
 			);
 			path = Trackers;
 			sourceTree = "<group>";
@@ -354,6 +372,7 @@
 				BCEAE6C023C33054007F410D /* MappIntelligenceNotificationService.h in Headers */,
 				A36CD7D123F447D0004E3E2D /* Properties.h in Headers */,
 				A334867623BF569400D0EB5F /* MappIntelligenceRequest.h in Headers */,
+				A380D2102413ED35009E2CD8 /* RequestUrlBuilder.h in Headers */,
 				A334867F23BF56A100D0EB5F /* MappIntelligenceNetworkManager.h in Headers */,
 				A36CD7CD23F44594004E3E2D /* TrackerRequest.h in Headers */,
 				A334867523BF569400D0EB5F /* MappIntelligenceNetworkMetadata.h in Headers */,
@@ -361,7 +380,9 @@
 				BCEAE6BC23C32F0A007F410D /* MappIntelligenceDataService.h in Headers */,
 				BCCAE6D2240D2E16005E9FD6 /* MappIntelligenceDefaultConfig.h in Headers */,
 				A334868023BF56A100D0EB5F /* MappIntelligenceRequestBuilder.h in Headers */,
+				A380D20C2413D317009E2CD8 /* Configuration.h in Headers */,
 				A380D2042412B0AB009E2CD8 /* Enviroment.h in Headers */,
+				A380D2082412D8F2009E2CD8 /* RequestTrackerBuilder.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -506,8 +527,11 @@
 				BCA1738423D5C2E700B31430 /* MappIntelligenceDataService.m in Sources */,
 				A36CD7CE23F44594004E3E2D /* TrackerRequest.m in Sources */,
 				BCEAE6B823BF5A8B007F410D /* MappIntelligenceLogger.m in Sources */,
+				A380D2112413ED35009E2CD8 /* RequestUrlBuilder.m in Sources */,
+				A380D2092412D8F2009E2CD8 /* RequestTrackerBuilder.m in Sources */,
 				A334861D23BF3E2300D0EB5F /* MappIntelligence.m in Sources */,
 				A380D1FB2411478C009E2CD8 /* TrackingEvent.m in Sources */,
+				A380D20D2413D317009E2CD8 /* Configuration.m in Sources */,
 				A36CD7D223F447D0004E3E2D /* Properties.m in Sources */,
 				A334867D23BF56A100D0EB5F /* MappIntelligenceNetworkManager.m in Sources */,
 				BCD5E2C523CF38F300CE2092 /* MappIntelligenceDefaultConfig.m in Sources */,

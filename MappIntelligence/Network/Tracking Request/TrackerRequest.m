@@ -7,15 +7,11 @@
 //
 
 #import "TrackerRequest.h"
-#import "TrackingEvent.h"
-#import "Properties.h"
 
 @interface TrackerRequest()
 
 @property TrackingEvent* event;
 @property Properties* properties;
-
--(void) initWithEvent: (TrackingEvent*) event andWithProperties: (Properties*) properties;
 
 @end
 
@@ -24,5 +20,9 @@
 - (void)initWithEvent:(TrackingEvent *)event andWithProperties:(Properties *)properties {
     self.event = event;
     self.properties = properties;
+}
+
+- (void)sendRequest {
+    
 }
 @end

@@ -7,10 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TrackingEvent.h"
+#import "Properties.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface TrackerRequest : NSObject
+
+-(void) initWithEvent: (TrackingEvent*) event andWithProperties: (Properties*) properties;
+-(void) sendRequest;
 
 @end
 

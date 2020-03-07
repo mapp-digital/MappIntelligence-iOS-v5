@@ -29,10 +29,12 @@ typedef NS_ENUM(NSInteger, logLevel) {
  @return MappIntelligence an Instance Type of MappIntelligence.
  */
 + (nullable instancetype)shared;
-+ (NSString*)version;
++ (NSString*_Nonnull)version;
 
 -(void)trackPage:(UIViewController*_Nullable) controller;
 
++(NSString*_Nonnull)getUrl;
++(NSString*_Nonnull)getId;
 +(void) setConfigurationWith: (NSDictionary *_Nullable) dictionary;
 
 -(void)initWithConfiguration:(NSArray *_Nonnull)trackIDs onDomain:(NSString *_Nonnull)trackDomain withAutotrackingEnabled:(BOOL)autoTracking requestTimeout:(NSTimeInterval)requestTimeout numberOfRequests:(NSInteger)numberOfRequestInQueue batchSupportEnabled:(BOOL)batchSupport viewControllerAutoTrackingEnabled:(BOOL)viewControllerAutoTracking andLogLevel:( logLevel)lv;

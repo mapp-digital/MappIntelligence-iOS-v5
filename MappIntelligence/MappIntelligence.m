@@ -9,6 +9,9 @@
 #import "MappIntelligence.h"
 #import "MappIntelligenceDefaultConfig.h"
 
+static MappIntelligence *sharedInstance = nil;
+static MappIntelligenceDefaultConfig * config = nil;
+
 @interface MappIntelligence()
 
 @property MappIntelligenceDefaultConfig * configuration;
@@ -17,8 +20,6 @@
 @end
 
 @implementation MappIntelligence
-static MappIntelligence *sharedInstance = nil;
-static MappIntelligenceDefaultConfig * config = nil;
 
 @synthesize tracker;
 
@@ -69,6 +70,14 @@ static MappIntelligenceDefaultConfig * config = nil;
     NSData * dictData = [NSKeyedArchiver archivedDataWithRootObject:dictionary requiringSecureCoding:NO error:NULL];
     NSDictionary *dict = [NSKeyedUnarchiver unarchiveObjectWithData:dictData];
     config = [[MappIntelligenceDefaultConfig alloc] initWithDictionary: dict];
+}
+
++ (NSString *)getUrl {
+    return [config trackDomain];
+}
+
++ (NSString *)getId {
+    return [[config trackIDs] firstObject];
 }
 
 -(void)trackPage:(UIViewController*) controller {

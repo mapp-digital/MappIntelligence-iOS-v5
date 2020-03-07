@@ -198,36 +198,4 @@
     [defaults synchronize];
 }
 
-//- (void)setAutoTracking:(BOOL)autoTracking {
-//    self.autoTracking = autoTracking;
-//}
-//
-//- (void)setBatchSupport:(BOOL)batchSupport {
-//    self.batchSupport = batchSupport;
-//}
-//
-//- (void)setLogLevel:(MappIntelligenceLogLevelDescription)logLevel {
-//    self.logLevel = logLevel;
-//}
-//
-//- (void)setRequestsInterval:(const NSTimeInterval)requestsInterval {
-//    self.requestsInterval = requestsInterval;
-//}
-//
-//- (void)setTrackDomain:(NSString *const)trackDomain {
-//    self.trackDomain = trackDomain;
-//}
-//
-//- (void)setTrackIDs:(NSArray *const)trackIDs {
-//    self.trackIDs = trackIDs;
-//}
-//
-//- (void)setViewControllerAutoTracking:(BOOL)viewControllerAutoTracking {
-//    self.viewControllerAutoTracking = viewControllerAutoTracking;
-//}
-//
-//- (void)setrequestPerQueue:(const NSInteger)requestPerQueue {
-//    self.requestPerQueue = requestPerQueue;
-//}
-
 @end

@@ -12,6 +12,9 @@
 #import "MappIntelligence.h"
 #import "Properties.h"
 #import "Enviroment.h"
+#import "Configuration.h"
+#import "RequestTrackerBuilder.h"
+#import "TrackerRequest.h"
 
 #define appHibernationDate @"appHibernationDate"
 #define appVersion @"appVersion"
@@ -29,6 +32,9 @@
 #define productListOrder @"productListOrder"
 
 @interface DefaultTracker()
+
+@property Configuration* config;
+@property TrackingEvent* event;
 
 -(void)enqueueRequestForEvent;
 -(Properties*) generateRequestProperties;
@@ -56,6 +62,7 @@ static NSString* userAgent;
         sharedTracker = [super init];
         everID = [sharedTracker generateEverId];
         [self generateUserAgent];
+        [self initializeTracking];
     }
     return sharedTracker;
 }
@@ -65,6 +72,11 @@ static NSString* userAgent;
     NSString* properties = [env.operatingSystemName stringByAppendingFormat:@" %@; %@; %@", env.operatingSystemVersionString, env.deviceModelString, NSLocale.currentLocale.localeIdentifier];
 
     userAgent = [[NSString alloc] initWithFormat:@"Tracking Library %@ (%@))", MappIntelligence.version,  properties];
+}
+
+-(void)initializeTracking {
+    self.config.serverUrl = [[NSURL alloc] initWithString:[MappIntelligence getUrl]];
+    self.config.MappIntelligenceId = [MappIntelligence getId];
 }
 
 -(NSString *)generateEverId {
@@ -106,6 +118,10 @@ static NSString* userAgent;
     [requestProperties setIsFirstEventOfApp:NO];
     [requestProperties setIsFirstEventOfSession:NO];
     [requestProperties setIsFirstEventAfterAppUpdate:NO];
+    
+    RequestTrackerBuilder* builder = [[RequestTrackerBuilder alloc] initWithConfoguration:self.config];
+    
+    TrackerRequest* request = [builder createRequestWith:_event andWith:requestProperties];
 }
 
 - (Properties *)generateRequestProperties {
