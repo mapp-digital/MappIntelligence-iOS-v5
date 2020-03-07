@@ -10,16 +10,13 @@
 
 @interface TrackerRequest()
 
-@property TrackingEvent* event;
-@property Properties* properties;
-
 @end
 
 @implementation TrackerRequest
 
 - (void)initWithEvent:(TrackingEvent *)event andWithProperties:(Properties *)properties {
-    self.event = event;
-    self.properties = properties;
+    [self setEvent:event];
+    [self setProperties:properties];
 }
 
 - (void)sendRequest {

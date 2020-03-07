@@ -7,12 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TrackerRequest.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface RequestUrlBuilder : NSObject
 
 -(instancetype)initWithUrl: (NSURL*) serverUrl andWithId: (NSString*) mappIntelligenceId;
+-(NSURL*)urlForRequest: (TrackerRequest*) request;
 
 @end
 
