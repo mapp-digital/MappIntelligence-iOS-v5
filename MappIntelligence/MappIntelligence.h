@@ -11,7 +11,7 @@
 
 typedef NS_ENUM(NSInteger, logLevel) {
     debug = 1, // The lowest priority that you would normally log, and purely informational in nature.
-    waring = 2, // Something is missing and might fail if not corrected
+    warning = 2, // Something is missing and might fail if not corrected
     error = 3, // Something has failed.
     fault = 4, // A failure in a key system.
     info = 5, // Informational logs for updating configuration or migrating from older versions of the library.
@@ -37,6 +37,6 @@ typedef NS_ENUM(NSInteger, logLevel) {
 +(NSString*_Nonnull)getId;
 +(void) setConfigurationWith: (NSDictionary *_Nullable) dictionary;
 
--(void)initWithConfiguration:(NSArray *_Nonnull)trackIDs onDomain:(NSString *_Nonnull)trackDomain withAutotrackingEnabled:(BOOL)autoTracking requestTimeout:(NSTimeInterval)requestTimeout numberOfRequests:(NSInteger)numberOfRequestInQueue batchSupportEnabled:(BOOL)batchSupport viewControllerAutoTrackingEnabled:(BOOL)viewControllerAutoTracking andLogLevel:( logLevel)lv;
+-(void)initWithConfiguration:(NSArray *_Nonnull)trackIDs onTrackdomain:(NSString *_Nonnull)trackDomain withAutotrackingEnabled:(BOOL)autoTracking requestTimeout:(NSTimeInterval)requestTimeout numberOfRequests:(NSInteger)numberOfRequestInQueue batchSupportEnabled:(BOOL)batchSupport viewControllerAutoTrackingEnabled:(BOOL)viewControllerAutoTracking andLogLevel:( logLevel)lv;
 
 @end

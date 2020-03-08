@@ -84,7 +84,7 @@ static MappIntelligenceDefaultConfig * config = nil;
     [tracker track:controller];
 }
 
--(void)initWithConfiguration:(NSArray *)trackIDs onDomain:(NSString *)trackDomain withAutotrackingEnabled:(BOOL)autoTracking requestTimeout:(NSTimeInterval)requestTimeout numberOfRequests:(NSInteger)numberOfRequestInQueue batchSupportEnabled:(BOOL)batchSupport viewControllerAutoTrackingEnabled:(BOOL)viewControllerAutoTracking andLogLevel:( logLevel)lv {
+-(void)initWithConfiguration:(NSArray *)trackIDs onTrackdomain:(NSString *)trackDomain withAutotrackingEnabled:(BOOL)autoTracking requestTimeout:(NSTimeInterval)requestTimeout numberOfRequests:(NSInteger)numberOfRequestInQueue batchSupportEnabled:(BOOL)batchSupport viewControllerAutoTrackingEnabled:(BOOL)viewControllerAutoTracking andLogLevel:( logLevel)lv {
     
     [config setLogLevel:(MappIntelligenceLogLevelDescription)lv];
     [config setTrackIDs:trackIDs];

@@ -14,7 +14,7 @@ var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        MappIntelligence.shared()?.initWithConfiguration([385255285199574], onDomain: "https://q3.webtrekk.net", withAutotrackingEnabled: true, requestTimeout: 45, numberOfRequests: 40, batchSupportEnabled: false, viewControllerAutoTrackingEnabled: true, andLogLevel: .info)
+        MappIntelligence.shared()?.initWithConfiguration([385255285199574], onTrackdomain: "https://q3.webtrekk.net", withAutotrackingEnabled: true, requestTimeout: 45, numberOfRequests: 40, batchSupportEnabled: false, viewControllerAutoTrackingEnabled: true, andLogLevel: .info)
         // Override point for customization after application launch.
         return true
     }
