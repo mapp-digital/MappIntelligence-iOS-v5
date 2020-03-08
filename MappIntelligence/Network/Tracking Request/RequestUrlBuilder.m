@@ -21,6 +21,7 @@
 
 -(NSURL*)buildBaseUrlwithServer: (NSURL*) serverUrl andWithId: (NSString*) mappIntelligenceId;
 -(NSString*)codeString: (NSString*)str;
+-(NSURL*)createURLFromParametersWith: (NSArray<NSURLQueryItem *>*)parameters;
 
 @end
 
@@ -80,8 +81,44 @@
     if (language) {
         [parametrs addObject:[NSURLQueryItem queryItemWithName:@"la" value:language]];
     }
+    [parametrs addObject:[NSURLQueryItem queryItemWithName:@"eor" value:@"1"]];
+    [sizeMonitor setCurrentRequestSize:[sizeMonitor currentRequestSize] + 5]; //add for end of the request
     
+    url = [self createURLFromParametersWith:parametrs];
     return url;
+}
+
+- (NSURL *)createURLFromParametersWith:(NSArray<NSURLQueryItem *> *)parameters {
+    NSURLComponents* urlComponents = [[NSURLComponents alloc] initWithURL:_baseUrl resolvingAgainstBaseURL:YES];
+    if (!urlComponents) {
+        [_logger logObj: [[NSString alloc] initWithFormat:@"Could not parse baseUrl: %@", _baseUrl] forDescription:kMappIntelligenceLogLevelDescriptionError];
+        return NULL;
+    }
+    
+    [urlComponents setPercentEncodedQuery:[self applyQueryItemsWithAlternativeURLEncodingWith:parameters andForComponents:urlComponents]];
+    if (!urlComponents.URL) {
+        [_logger logObj: [[NSString alloc] initWithFormat:@"Cannot build URL from components: %@", _baseUrl] forDescription:kMappIntelligenceLogLevelDescriptionError];
+        return NULL;
+    }
+    return urlComponents.URL;
+}
+
+-(NSString*)applyQueryItemsWithAlternativeURLEncodingWith: (NSArray<NSURLQueryItem *> *)parameters andForComponents: (NSURLComponents *)components {
+    NSMutableArray<NSString *> *componentsArray = [[NSMutableArray alloc] init];
+    for (NSURLQueryItem *object in parameters) {
+        NSString* value = [object value];
+        if (![[object name]  isEqual: @"p"]) {
+            value = [self codeString:[object value]];
+        }
+        [componentsArray addObject:[[NSString alloc] initWithFormat:@"%@=%@", [self codeString:[object name]], value] ];
+    }
+    if ([components percentEncodedQuery] != nil) {
+        [components setPercentEncodedQuery:[[NSString alloc] initWithFormat:@"%@&%@", [components percentEncodedQuery],[componentsArray componentsJoinedByString:@"&"]]];
+    } else {
+        [components setPercentEncodedQuery:[componentsArray componentsJoinedByString:@"&"]];
+    }
+    
+    return [components percentEncodedQuery];
 }
 
 - (NSString *)codeString:(NSString *)str {
