@@ -37,6 +37,7 @@
 }
 
 - (instancetype)initWithUrl:(NSURL *)serverUrl andWithId:(NSString *)mappIntelligenceId {
+    self = [self init];
     _serverUrl = serverUrl;
     _mappIntelligenceId = mappIntelligenceId;
     _baseUrl = [self buildBaseUrlwithServer:_serverUrl andWithId:_mappIntelligenceId];
@@ -44,7 +45,8 @@
 }
 
 - (NSURL*)buildBaseUrlwithServer:(NSURL *)serverUrl andWithId:(NSString *)mappIntelligenceId {
-    return [[serverUrl URLByAppendingPathComponent:mappIntelligenceId] URLByAppendingPathComponent:@"wt"];
+    NSURL* tmpUrl = [serverUrl URLByAppendingPathComponent:[[NSString alloc] initWithFormat:@"%@", mappIntelligenceId]];
+    return [tmpUrl URLByAppendingPathComponent:@"wt"];
 }
 
 - (NSURL*)urlForRequest:(TrackerRequest *)request {

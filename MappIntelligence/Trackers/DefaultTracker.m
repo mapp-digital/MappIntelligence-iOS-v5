@@ -38,7 +38,7 @@
 @property TrackingEvent* event;
 @property RequestUrlBuilder* requestUrlBuilder;
 
--(void)enqueueRequestForEvent;
+-(void)enqueueRequestForEvent: (TrackingEvent *)event;
 -(Properties*) generateRequestProperties;
 
 @end
@@ -63,6 +63,7 @@ static NSString* userAgent;
     if (!sharedTracker) {
         sharedTracker = [super init];
         everID = [sharedTracker generateEverId];
+        _config = [[Configuration alloc] init];
         [self generateUserAgent];
         [self initializeTracking];
     }
@@ -77,8 +78,8 @@ static NSString* userAgent;
 }
 
 -(void)initializeTracking {
-    self.config.serverUrl = [[NSURL alloc] initWithString:[MappIntelligence getUrl]];
-    self.config.MappIntelligenceId = [MappIntelligence getId];
+    _config.serverUrl = [[NSURL alloc] initWithString:[MappIntelligence getUrl]];
+    _config.MappIntelligenceId = [MappIntelligence getId];
     _requestUrlBuilder = [[RequestUrlBuilder alloc] initWithUrl:self.config.serverUrl andWithId:self.config.MappIntelligenceId];
 }
 
@@ -105,11 +106,13 @@ static NSString* userAgent;
     NSString *CurrentSelectedCViewController = NSStringFromClass([controller class]);
     [[MappIntelligenceLogger shared] logObj:[[NSString alloc]initWithFormat:@"Content ID is: %@", CurrentSelectedCViewController] forDescription:kMappIntelligenceLogLevelDescriptionDebug];
     
-    //create request
-    [self enqueueRequestForEvent];
+    //create request with page event
+    TrackingEvent* event = [[TrackingEvent alloc] init];
+    [event setPageName:CurrentSelectedCViewController];
+    [self enqueueRequestForEvent: event];
 }
 
-- (void)enqueueRequestForEvent {
+- (void)enqueueRequestForEvent: (TrackingEvent *) event {
     Properties* requestProperties = [self generateRequestProperties];
     requestProperties.locale = [NSLocale currentLocale];
     
@@ -124,7 +127,7 @@ static NSString* userAgent;
     
     RequestTrackerBuilder* builder = [[RequestTrackerBuilder alloc] initWithConfoguration:self.config];
     
-    TrackerRequest* request = [builder createRequestWith:_event andWith:requestProperties];
+    TrackerRequest* request = [builder createRequestWith:event andWith:requestProperties];
     
     NSURL* requestUrl = [_requestUrlBuilder urlForRequest:request];
     
