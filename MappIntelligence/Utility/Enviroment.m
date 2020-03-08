@@ -8,6 +8,7 @@
 
 #import "Enviroment.h"
 #import <UIKit/UIKit.h>
+#import <sys/utsname.h>
 
 @implementation Enviroment
 
@@ -31,7 +32,7 @@
 }
 
 - (NSString *)operatingSystemVersionString {
-    return [[NSProcessInfo init] operatingSystemVersionString];
+    return [[[NSProcessInfo alloc] init] operatingSystemVersionString];
 }
 
 @end

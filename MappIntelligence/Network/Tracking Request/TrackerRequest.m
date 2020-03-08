@@ -7,19 +7,42 @@
 //
 
 #import "TrackerRequest.h"
+#import "MappIntelligenceLogger.h"
 
 @interface TrackerRequest()
+
+@property MappIntelligenceLogger* loger;
+@property NSURLSession* urlSession;
 
 @end
 
 @implementation TrackerRequest
 
-- (void)initWithEvent:(TrackingEvent *)event andWithProperties:(Properties *)properties {
-    [self setEvent:event];
-    [self setProperties:properties];
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        _loger = [[MappIntelligenceLogger alloc] init];
+        _urlSession = [[NSURLSession alloc] init];
+    }
+    return self;
 }
 
-- (void)sendRequest {
+- (instancetype)initWithEvent:(TrackingEvent *)event andWithProperties:(Properties *)properties {
+    [self setEvent:event];
+    [self setProperties:properties];
+    return self;
+}
+
+- (void)sendRequestWith:(NSURL *)url {
+    [_loger logObj: [[NSString alloc] initWithFormat:@"Tracking Request: %@", [url absoluteURL]] forDescription:kMappIntelligenceLogLevelDescriptionInfo];
     
+    
+    [_urlSession dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if (error) {
+            [self->_loger logObj: [[NSString alloc] initWithFormat:@"Error while executing request: %@", [error description ]] forDescription:kMappIntelligenceLogLevelDescriptionError];
+        }
+        [self->_loger logObj: [[NSString alloc] initWithFormat:@"Response from tacking server: %@", [error description ]] forDescription:kMappIntelligenceLogLevelDescriptionDebug];
+    }];
 }
 @end

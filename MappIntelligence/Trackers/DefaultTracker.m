@@ -15,6 +15,7 @@
 #import "Configuration.h"
 #import "RequestTrackerBuilder.h"
 #import "TrackerRequest.h"
+#import "RequestUrlBuilder.h"
 
 #define appHibernationDate @"appHibernationDate"
 #define appVersion @"appVersion"
@@ -35,6 +36,7 @@
 
 @property Configuration* config;
 @property TrackingEvent* event;
+@property RequestUrlBuilder* requestUrlBuilder;
 
 -(void)enqueueRequestForEvent;
 -(Properties*) generateRequestProperties;
@@ -77,6 +79,7 @@ static NSString* userAgent;
 -(void)initializeTracking {
     self.config.serverUrl = [[NSURL alloc] initWithString:[MappIntelligence getUrl]];
     self.config.MappIntelligenceId = [MappIntelligence getId];
+    _requestUrlBuilder = [[RequestUrlBuilder alloc] initWithUrl:self.config.serverUrl andWithId:self.config.MappIntelligenceId];
 }
 
 -(NSString *)generateEverId {
@@ -103,7 +106,7 @@ static NSString* userAgent;
     [[MappIntelligenceLogger shared] logObj:[[NSString alloc]initWithFormat:@"Content ID is: %@", CurrentSelectedCViewController] forDescription:kMappIntelligenceLogLevelDescriptionDebug];
     
     //create request
-    
+    [self enqueueRequestForEvent];
 }
 
 - (void)enqueueRequestForEvent {
@@ -122,6 +125,10 @@ static NSString* userAgent;
     RequestTrackerBuilder* builder = [[RequestTrackerBuilder alloc] initWithConfoguration:self.config];
     
     TrackerRequest* request = [builder createRequestWith:_event andWith:requestProperties];
+    
+    NSURL* requestUrl = [_requestUrlBuilder urlForRequest:request];
+    
+    [request sendRequestWith:requestUrl];
 }
 
 - (Properties *)generateRequestProperties {

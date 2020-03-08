@@ -16,7 +16,7 @@
 }
 
 - (TrackerRequest *)createRequestWith:(TrackingEvent *)event andWith:(Properties *)properties {
-    return [[TrackerRequest alloc] init];
+    return [[TrackerRequest alloc] initWithEvent:event andWithProperties:properties];
 }
 
 @end

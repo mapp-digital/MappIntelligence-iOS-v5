@@ -9,9 +9,6 @@
 #import "MappIntelligence.h"
 #import "MappIntelligenceDefaultConfig.h"
 
-static MappIntelligence *sharedInstance = nil;
-static MappIntelligenceDefaultConfig * config = nil;
-
 @interface MappIntelligence()
 
 @property MappIntelligenceDefaultConfig * configuration;
@@ -21,13 +18,15 @@ static MappIntelligenceDefaultConfig * config = nil;
 
 @implementation MappIntelligence
 
+static MappIntelligence *sharedInstance = nil;
+static MappIntelligenceDefaultConfig * config = nil;
+
 @synthesize tracker;
 
 -(id) init {
     if (!sharedInstance) {
         sharedInstance = [super init];
         config = [[MappIntelligenceDefaultConfig alloc] init];
-        tracker = [[DefaultTracker alloc] init];
     }
     return sharedInstance;
 }
@@ -70,6 +69,7 @@ static MappIntelligenceDefaultConfig * config = nil;
     NSData * dictData = [NSKeyedArchiver archivedDataWithRootObject:dictionary requiringSecureCoding:NO error:NULL];
     NSDictionary *dict = [NSKeyedUnarchiver unarchiveObjectWithData:dictData];
     config = [[MappIntelligenceDefaultConfig alloc] initWithDictionary: dict];
+    
 }
 
 + (NSString *)getUrl {
@@ -95,6 +95,8 @@ static MappIntelligenceDefaultConfig * config = nil;
     [config setRequestPerQueue:numberOfRequestInQueue];
     [config setRequestsInterval:requestTimeout];
     [config logConfig];
+    //init with new dictionary data
+    tracker = [[DefaultTracker alloc] init];
 }
 
 @end

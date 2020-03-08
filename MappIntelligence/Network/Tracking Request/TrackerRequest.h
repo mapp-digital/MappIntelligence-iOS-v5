@@ -17,8 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property TrackingEvent* event;
 @property Properties* properties;
 
--(void) initWithEvent: (TrackingEvent*) event andWithProperties: (Properties*) properties;
--(void) sendRequest;
+-(instancetype) initWithEvent: (TrackingEvent*) event andWithProperties: (Properties*) properties;
+-(void) sendRequestWith: (NSURL*)url;
 
 @end
 
