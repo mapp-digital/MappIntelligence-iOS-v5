@@ -105,8 +105,14 @@
                     queryItemWithName:@"one"
                                 value:properties.isFirstEventOfApp ? @"1"
                                                                    : @"0"]];
-  [parametrs addObject:[NSURLQueryItem queryItemWithName:@"%@"
-                                                   value:properties.userAgent]];
+
+  [parametrs
+      addObject:[NSURLQueryItem
+                    queryItemWithName:@"X-WT-UA"
+                                value:[[NSString alloc]
+                                          initWithFormat:@"%@",
+                                                         properties
+                                                             .userAgent]]];
   NSString *language = [[properties locale] objectForKey:NSLocaleLanguageCode];
   if (language) {
     [parametrs
