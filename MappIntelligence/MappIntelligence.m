@@ -45,7 +45,7 @@ static MappIntelligenceDefaultConfig *config = nil;
 }
 
 + (NSString *)version {
-  return @"5.0";
+  return @"5.0.0";
 }
 
 /** Method for setting up the Mapp Intelligence configuration by user.

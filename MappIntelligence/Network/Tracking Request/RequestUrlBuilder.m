@@ -102,33 +102,9 @@
                                                                        : @"0"]];
   [parametrs
       addObject:[NSURLQueryItem
-                    queryItemWithName:@"mts"
-                                value:[[NSString alloc]
-                                          initWithFormat:
-                                              @"%f",
-                                              properties.timestamp
-                                                      .timeIntervalSince1970 *
-                                                  1000]]];
-  [parametrs
-      addObject:[NSURLQueryItem
                     queryItemWithName:@"one"
                                 value:properties.isFirstEventOfApp ? @"1"
                                                                    : @"0"]];
-  [parametrs
-      addObject:[NSURLQueryItem
-                    queryItemWithName:@"ps"
-                                value:[[NSString alloc]
-                                          initWithFormat:@"%ld",
-                                                         (long)properties
-                                                             .samplingRate]]];
-  [parametrs
-      addObject:[NSURLQueryItem
-                    queryItemWithName:@"tz"
-                                value:[[NSString alloc]
-                                          initWithFormat:
-                                              @"%ld", properties.timeZone
-                                                              .secondsFromGMT /
-                                                          60 / 60]]];
   [parametrs addObject:[NSURLQueryItem queryItemWithName:@"%@"
                                                    value:properties.userAgent]];
   NSString *language = [[properties locale] objectForKey:NSLocaleLanguageCode];
