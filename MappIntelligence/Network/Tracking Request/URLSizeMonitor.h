@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property int currentRequestSize;
 @property int currentProductSize;
 
--(void)addSize: (int) size;
+- (void)addSize:(int)size;
 
 @end
 

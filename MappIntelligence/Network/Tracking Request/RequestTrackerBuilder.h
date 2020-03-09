@@ -16,10 +16,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface RequestTrackerBuilder : NSObject
 
-@property Configuration* configuration;
+@property Configuration *configuration;
 
--(instancetype)initWithConfoguration: (Configuration*) conf;
--(TrackerRequest*)createRequestWith: (TrackingEvent*) event andWith: (Properties*) properties;
+- (instancetype)initWithConfoguration:(Configuration *)conf;
+- (TrackerRequest *)createRequestWith:(TrackingEvent *)event
+                              andWith:(Properties *)properties;
 @end
 
 NS_ASSUME_NONNULL_END

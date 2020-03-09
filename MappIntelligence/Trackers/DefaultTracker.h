@@ -12,8 +12,8 @@
 
 #endif /* DefaultTracker_h */
 
-@interface DefaultTracker:NSObject
--(NSString*)generateEverId;
--(void)track:(UIViewController*)controller;
-+(NSUserDefaults*)sharedDefaults;
+@interface DefaultTracker : NSObject
+- (NSString *)generateEverId;
+- (void)track:(UIViewController *)controller;
++ (NSUserDefaults *)sharedDefaults;
 @end

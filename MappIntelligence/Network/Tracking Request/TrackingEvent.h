@@ -12,10 +12,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TrackingEvent : NSObject
 
-@property NSString* ipAddress;
-@property NSString* pageName;
-@property NSDictionary* variables;
-@property NSObject* viewControllerType;
+@property NSString *ipAddress;
+@property NSString *pageName;
+@property NSDictionary *variables;
+@property NSObject *viewControllerType;
 
 @end
 

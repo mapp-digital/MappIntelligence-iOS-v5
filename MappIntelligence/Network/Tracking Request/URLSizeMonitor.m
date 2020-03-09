@@ -16,19 +16,18 @@
 
 @implementation URLSizeMonitor
 
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-        [self setCurrentProductSize:0];
-        [self setCurrentRequestSize:0];
-        _maxRequestSize = 8*1024;
-    }
-    return self;
+- (instancetype)init {
+  self = [super init];
+  if (self) {
+    [self setCurrentProductSize:0];
+    [self setCurrentRequestSize:0];
+    _maxRequestSize = 8 * 1024;
+  }
+  return self;
 }
 
 - (void)addSize:(int)size {
-    self.currentRequestSize += size;
+  self.currentRequestSize += size;
 }
 
 @end

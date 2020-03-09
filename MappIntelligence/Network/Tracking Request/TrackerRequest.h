@@ -14,11 +14,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TrackerRequest : NSObject
 
-@property TrackingEvent* event;
-@property Properties* properties;
+@property TrackingEvent *event;
+@property Properties *properties;
 
--(instancetype) initWithEvent: (TrackingEvent*) event andWithProperties: (Properties*) properties;
--(void) sendRequestWith: (NSURL*)url;
+- (instancetype)initWithEvent:(TrackingEvent *)event
+            andWithProperties:(Properties *)properties;
+- (void)sendRequestWith:(NSURL *)url;
 
 @end
 

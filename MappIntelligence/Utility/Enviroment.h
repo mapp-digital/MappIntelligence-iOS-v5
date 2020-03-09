@@ -12,10 +12,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Enviroment : NSObject
 
-@property (nonatomic) NSString* appVersion;
-@property (nonatomic) NSString* deviceModelString;
-@property (nonatomic) NSString* operatingSystemName;
-@property (nonatomic) NSString* operatingSystemVersionString;
+@property(nonatomic) NSString *appVersion;
+@property(nonatomic) NSString *deviceModelString;
+@property(nonatomic) NSString *operatingSystemName;
+@property(nonatomic) NSString *operatingSystemVersionString;
 
 @end
 

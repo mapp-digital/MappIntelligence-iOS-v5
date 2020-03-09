@@ -13,10 +13,10 @@ NS_ASSUME_NONNULL_BEGIN
 @interface Configuration : NSObject
 
 /// url for remote tracking server
-@property NSURL* serverUrl;
+@property NSURL *serverUrl;
 
 /// Id which identify customer
-@property NSString* MappIntelligenceId;
+@property NSString *MappIntelligenceId;
 
 @end
 

@@ -1,3 +1,6 @@
+
+        
+    
 //
 //  Enviroment.m
 //  MappIntelligenceSDK
@@ -13,26 +16,26 @@
 @implementation Enviroment
 
 - (NSString *)appVersion {
-    return NSBundle.mainBundle.infoDictionary[@"CFBundleShortVersionString"];
+  return NSBundle.mainBundle.infoDictionary[@"CFBundleShortVersionString"];
 }
 
 - (NSString *)deviceModelString {
-    #if TARGET_IPHONE_SIMULATOR
-        return @"iPhone";
-    #else
-        struct utsname systemInfo;
-        uname(&systemInfo);
-        return [NSString stringWithCString:systemInfo.machine
-        encoding:NSUTF8StringEncoding];
-    #endif
+#if TARGET_IPHONE_SIMULATOR
+  return @"iPhone";
+#else
+  struct utsname systemInfo;
+  uname(&systemInfo);
+  return [NSString stringWithCString:systemInfo.machine
+                            encoding:NSUTF8StringEncoding];
+#endif
 }
 
 - (NSString *)operatingSystemName {
-    return [[UIDevice currentDevice] systemName];
+  return [[UIDevice currentDevice] systemName];
 }
 
 - (NSString *)operatingSystemVersionString {
-    return [[[NSProcessInfo alloc] init] operatingSystemVersionString];
+  return [[[NSProcessInfo alloc] init] operatingSystemVersionString];
 }
 
 @end

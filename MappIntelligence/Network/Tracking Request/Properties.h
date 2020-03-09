@@ -12,38 +12,42 @@
 NS_ASSUME_NONNULL_BEGIN
 
 typedef NS_ENUM(NSInteger, ConnectionType) {
-    cellular_2G = 0,
-    cellular_3G = 1,
-    cellular_4G = 2,
-    offline = 3,
-    other = 4,
-    wifi = 5
+  cellular_2G = 0,
+  cellular_3G = 1,
+  cellular_4G = 2,
+  offline = 3,
+  other = 4,
+  wifi = 5
 };
 
 @interface Properties : NSObject
 
-@property NSUUID* advertisingId;
+@property NSUUID *advertisingId;
 @property BOOL advertisingTrackingEnabled;
-@property NSString* appVersion;
+@property NSString *appVersion;
 @property ConnectionType connectionType;
-@property NSString* everId;
+@property NSString *everId;
 @property BOOL isFirstEventAfterAppUpdate;
 @property BOOL isFirstEventOfApp;
 @property BOOL isFirstEventOfSession;
-@property NSLocale* locale;
+@property NSLocale *locale;
 @property NSInteger requestQueueSize;
-@property NSObject* screenSize;
+@property NSObject *screenSize;
 @property NSInteger samplingRate;
-@property NSTimeZone* timeZone;
-@property NSDate* timestamp;
-@property NSString* userAgent;
+@property NSTimeZone *timeZone;
+@property NSDate *timestamp;
+@property NSString *userAgent;
 @property NSInteger adClearId;
 
 #if !TARGET_OS_WATCHOS && !TARGET_OS_TV
-@property UIInterfaceOrientation* interfaceOrientation;
+@property UIInterfaceOrientation *interfaceOrientation;
 #endif
 
--(instancetype)initWithEverID: (NSString*) eid andSamplingRate:(NSInteger)rate withTimeZone:(NSTimeZone*)zone withTimestamp:(NSDate*)stamp withUserAgent:(NSString*)agent;
+- (instancetype)initWithEverID:(NSString *)eid
+               andSamplingRate:(NSInteger)rate
+                  withTimeZone:(NSTimeZone *)zone
+                 withTimestamp:(NSDate *)stamp
+                 withUserAgent:(NSString *)agent;
 @end
 
 NS_ASSUME_NONNULL_END

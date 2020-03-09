@@ -11,12 +11,14 @@
 @implementation RequestTrackerBuilder
 
 - (instancetype)initWithConfoguration:(Configuration *)conf {
-    self.configuration = conf;
-    return self;
+  self.configuration = conf;
+  return self;
 }
 
-- (TrackerRequest *)createRequestWith:(TrackingEvent *)event andWith:(Properties *)properties {
-    return [[TrackerRequest alloc] initWithEvent:event andWithProperties:properties];
+- (TrackerRequest *)createRequestWith:(TrackingEvent *)event
+                              andWith:(Properties *)properties {
+  return
+      [[TrackerRequest alloc] initWithEvent:event andWithProperties:properties];
 }
 
 @end

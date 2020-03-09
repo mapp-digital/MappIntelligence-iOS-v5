@@ -7,6 +7,7 @@
 //
 @interface MappIntelligenceDataService : NSObject
 
-+(instancetype) shared;
++ (instancetype)shared;
 
 @end
+
