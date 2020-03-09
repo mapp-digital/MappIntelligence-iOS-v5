@@ -37,7 +37,6 @@ typedef NS_ENUM(NSInteger, logLevel) {
 
 + (NSString *_Nonnull)getUrl;
 + (NSString *_Nonnull)getId;
-+ (void)setConfigurationWith:(NSDictionary *_Nullable)dictionary;
 
 - (void)initWithConfiguration:(NSArray *_Nonnull)trackIDs
                         onTrackdomain:(NSString *_Nonnull)trackDomain

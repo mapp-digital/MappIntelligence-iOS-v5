@@ -51,16 +51,11 @@ class ConfigurationViewController: UIViewController, UIPickerViewDelegate, UIPic
         setTrackingIDsTF.resignFirstResponder()
 
        }
-
-    func setConfiguration(autoTracking: Bool, batchSupport: Bool, requestsPerBatch: Int, requestsInterval: Float, logLevel:Int,
-                          trackingDomain: String, trackingIDs: String, viewControllerAutoTracking: Bool) {
-        configurationDetails = ["auto_tracking": autoTracking, "batch_support": batchSupport, "request_per_batch": requestsPerBatch, "requests_interval": requestsInterval, "log_level": logLevel, "track_domain": trackingDomain,
-                      "track_ids": trackingIDs, "view_controller_auto_tracking": viewControllerAutoTracking]
-        //        Webtrekk.init(dictionary: dictionary)
-    }
+    
     @IBAction func setConfiguration(_ sender: Any) {
-        self.setConfiguration(autoTracking: autoTrackingValue, batchSupport: batchSupportValue, requestsPerBatch: (setNumberOfRequestsPerBatchTF!.text! as NSString).integerValue, requestsInterval: (setRequestsTimeIntervalTF!.text! as NSString).floatValue, logLevel: logLevelIndex+1 , trackingDomain: setTrackingDomainTF.text!, trackingIDs: setTrackingIDsTF.text!, viewControllerAutoTracking: vcAutoTracking)
-        MappIntelligence.setConfigurationWith(configurationDetails)
+        let timeout = Float(setRequestsTimeIntervalTF?.text ?? "30")
+        
+        MappIntelligence.shared()?.initWithConfiguration(((setTrackingIDsTF.text?.split(separator: ","))!), onTrackdomain: setTrackingDomainTF.text ?? "", withAutotrackingEnabled: autoTrackingValue, requestTimeout: TimeInterval(timeout ?? 30), numberOfRequests: (setNumberOfRequestsPerBatchTF!.text! as NSString).integerValue, batchSupportEnabled: batchSupportValue, viewControllerAutoTrackingEnabled: vcAutoTracking, andLogLevel: logLevel(rawValue: logLevelIndex+1) ?? .all)
     }
 
     @IBAction func enableAutoTracking(_ sender: Any) {
