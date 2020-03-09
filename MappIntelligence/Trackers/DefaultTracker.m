@@ -37,6 +37,8 @@
 @property Configuration *config;
 @property TrackingEvent *event;
 @property RequestUrlBuilder *requestUrlBuilder;
+@property NSUserDefaults* defaults;
+@property BOOL isFirstEvenOpen;
 
 - (void)enqueueRequestForEvent:(TrackingEvent *)event;
 - (Properties *)generateRequestProperties;
@@ -64,6 +66,7 @@ static NSString *userAgent;
     sharedTracker = [super init];
     everID = [sharedTracker generateEverId];
     _config = [[Configuration alloc] init];
+    _defaults = [NSUserDefaults standardUserDefaults];
     [self generateUserAgent];
     [self initializeTracking];
   }
@@ -113,6 +116,15 @@ static NSString *userAgent;
 }
 
 - (void)track:(UIViewController *)controller {
+
+  if (![_defaults stringForKey:isFirstEventOfApp]) {
+    [_defaults setBool:YES forKey:isFirstEventOfApp];
+    [_defaults synchronize];
+    _isFirstEvenOpen = YES;
+  } else {
+    _isFirstEvenOpen = NO;
+  }
+
   NSString *CurrentSelectedCViewController =
       NSStringFromClass([controller class]);
   [[MappIntelligenceLogger shared]
@@ -136,7 +148,7 @@ static NSString *userAgent;
 #else
 // requestProperties.screenSize =
 #endif
-  [requestProperties setIsFirstEventOfApp:NO];
+  [requestProperties setIsFirstEventOfApp:_isFirstEvenOpen];
   [requestProperties setIsFirstEventOfSession:NO];
   [requestProperties setIsFirstEventAfterAppUpdate:NO];
 
