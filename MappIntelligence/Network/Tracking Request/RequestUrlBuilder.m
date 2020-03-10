@@ -68,7 +68,7 @@
 
   Properties *properties = [request properties];
   NSString *screenSize = [[NSString alloc]
-      initWithFormat:@"%fx%f", [UIScreen mainScreen].bounds.size.width,
+      initWithFormat:@"%.fx%.f", [UIScreen mainScreen].bounds.size.width,
                      [UIScreen mainScreen].bounds.size.height];
   NSString *libraryVersionOriginal = [MappIntelligence version];
   NSString *libraryVersionParced =
@@ -87,7 +87,7 @@
                     queryItemWithName:@"p"
                                 value:[[NSString alloc]
                                           initWithFormat:
-                                              @"%@,%@,0,%@,32,0,%f,0,0,0",
+                                              @"%@,%@,0,%@,32,0,%.f,0,0,0",
                                               libraryVersionParced, pageName,
                                               screenSize,
                                               properties.timestamp
