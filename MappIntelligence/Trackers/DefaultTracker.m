@@ -16,6 +16,7 @@
 #import "RequestTrackerBuilder.h"
 #import "TrackerRequest.h"
 #import "RequestUrlBuilder.h"
+#import "UIFlowObserver.h"
 
 #define appHibernationDate @"appHibernationDate"
 #define appVersion @"appVersion"
@@ -39,6 +40,8 @@
 @property RequestUrlBuilder *requestUrlBuilder;
 @property NSUserDefaults* defaults;
 @property BOOL isFirstEvenOpen;
+@property BOOL isFirstEventOfSession;
+@property UIFlowObserver *flowObserver;
 
 - (void)enqueueRequestForEvent:(TrackingEvent *)event;
 - (Properties *)generateRequestProperties;
@@ -67,6 +70,7 @@ static NSString *userAgent;
     everID = [sharedTracker generateEverId];
     _config = [[Configuration alloc] init];
     _defaults = [NSUserDefaults standardUserDefaults];
+    _flowObserver = [[UIFlowObserver alloc] initWith:self];
     [self generateUserAgent];
     [self initializeTracking];
   }
@@ -137,6 +141,7 @@ static NSString *userAgent;
   TrackingEvent *event = [[TrackingEvent alloc] init];
   [event setPageName:CurrentSelectedCViewController];
   [self enqueueRequestForEvent:event];
+  _isFirstEventOfSession = NO;
 }
 
 - (void)enqueueRequestForEvent:(TrackingEvent *)event {

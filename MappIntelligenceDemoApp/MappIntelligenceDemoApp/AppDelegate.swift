@@ -18,6 +18,14 @@ var window: UIWindow?
         // Override point for customization after application launch.
         return true
     }
+    
+    func applicationWillTerminate(_ application: UIApplication) {
+        print("will terminate")
+    }
+    
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        print("application did enter bacground")
+    }
 
     // MARK: UISceneSession Lifecycle
 

@@ -44,6 +44,8 @@
 		A380D2112413ED35009E2CD8 /* RequestUrlBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = A380D20F2413ED35009E2CD8 /* RequestUrlBuilder.m */; };
 		A380D21424141B55009E2CD8 /* URLSizeMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = A380D21224141B55009E2CD8 /* URLSizeMonitor.h */; };
 		A380D21524141B55009E2CD8 /* URLSizeMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = A380D21324141B55009E2CD8 /* URLSizeMonitor.m */; };
+		A3EAFF612418E02F009D5108 /* UIFlowObserver.h in Headers */ = {isa = PBXBuildFile; fileRef = A3EAFF5F2418E02F009D5108 /* UIFlowObserver.h */; };
+		A3EAFF622418E02F009D5108 /* UIFlowObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = A3EAFF602418E02F009D5108 /* UIFlowObserver.m */; };
 		BCA1738423D5C2E700B31430 /* MappIntelligenceDataService.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA1738323D5C2E700B31430 /* MappIntelligenceDataService.m */; };
 		BCBE5BFB23EB1798002125C1 /* MappIntelligenceSDKLoggerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBE5BFA23EB1798002125C1 /* MappIntelligenceSDKLoggerTest.m */; };
 		BCBE5BFD23EC090B002125C1 /* MappIntelligenceNetworkManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBE5BFC23EC090B002125C1 /* MappIntelligenceNetworkManagerTests.m */; };
@@ -116,6 +118,8 @@
 		A380D20F2413ED35009E2CD8 /* RequestUrlBuilder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RequestUrlBuilder.m; sourceTree = "<group>"; };
 		A380D21224141B55009E2CD8 /* URLSizeMonitor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = URLSizeMonitor.h; sourceTree = "<group>"; };
 		A380D21324141B55009E2CD8 /* URLSizeMonitor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = URLSizeMonitor.m; sourceTree = "<group>"; };
+		A3EAFF5F2418E02F009D5108 /* UIFlowObserver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIFlowObserver.h; sourceTree = "<group>"; };
+		A3EAFF602418E02F009D5108 /* UIFlowObserver.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIFlowObserver.m; sourceTree = "<group>"; };
 		BCA1738123D5C12A00B31430 /* MappIntelligenceDefaultConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MappIntelligenceDefaultConfig.h; sourceTree = "<group>"; };
 		BCA1738323D5C2E700B31430 /* MappIntelligenceDataService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MappIntelligenceDataService.m; sourceTree = "<group>"; };
 		BCBE5BFA23EB1798002125C1 /* MappIntelligenceSDKLoggerTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MappIntelligenceSDKLoggerTest.m; sourceTree = SOURCE_ROOT; };
@@ -252,6 +256,8 @@
 				BCBE5C0823F29E49002125C1 /* DefaultTracker.m */,
 				A380D20A2413D317009E2CD8 /* Configuration.h */,
 				A380D20B2413D317009E2CD8 /* Configuration.m */,
+				A3EAFF5F2418E02F009D5108 /* UIFlowObserver.h */,
+				A3EAFF602418E02F009D5108 /* UIFlowObserver.m */,
 			);
 			path = Trackers;
 			sourceTree = "<group>";
@@ -316,6 +322,7 @@
 				BCEAE6BC23C32F0A007F410D /* MappIntelligenceDataService.h in Headers */,
 				BCCAE6D2240D2E16005E9FD6 /* MappIntelligenceDefaultConfig.h in Headers */,
 				A380D21424141B55009E2CD8 /* URLSizeMonitor.h in Headers */,
+				A3EAFF612418E02F009D5108 /* UIFlowObserver.h in Headers */,
 				A380D20C2413D317009E2CD8 /* Configuration.h in Headers */,
 				A380D2042412B0AB009E2CD8 /* Enviroment.h in Headers */,
 				A380D2082412D8F2009E2CD8 /* RequestTrackerBuilder.h in Headers */,
@@ -465,6 +472,7 @@
 				A380D2092412D8F2009E2CD8 /* RequestTrackerBuilder.m in Sources */,
 				A334861D23BF3E2300D0EB5F /* MappIntelligence.m in Sources */,
 				A380D1FB2411478C009E2CD8 /* TrackingEvent.m in Sources */,
+				A3EAFF622418E02F009D5108 /* UIFlowObserver.m in Sources */,
 				A380D20D2413D317009E2CD8 /* Configuration.m in Sources */,
 				A36CD7D223F447D0004E3E2D /* Properties.m in Sources */,
 				A380D21524141B55009E2CD8 /* URLSizeMonitor.m in Sources */,
