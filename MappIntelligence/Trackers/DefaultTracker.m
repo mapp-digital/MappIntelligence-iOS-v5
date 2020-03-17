@@ -22,17 +22,8 @@
 #define appVersion @"appVersion"
 #define configuration @"configuration"
 #define everId @"everId"
-#define isFirstEventAfterAppUpdate @"isFirstEventAfterAppUpdate"
 #define isFirstEventInNewSession @"firstNewSession"
 #define isFirstEventOfApp @"isFirstEventOfApp"
-#define isSampling @"isSampling"
-#define isOptedOut @"isOptedOut"
-#define migrationCompleted @"migrationCompleted"
-#define samplingRate @"samplingRate"
-#define adClearId @"adClearId"
-#define crossDeviceProperties @"crossDeviceProperties"
-#define isSettingsToAppSpecificConverted @"isSettingsToAppSpecificConverted"
-#define productListOrder @"productListOrder"
 
 @interface DefaultTracker ()
 
@@ -171,7 +162,7 @@ static NSString *userAgent;
 
   [request sendRequestWith:requestUrl];
   _isFirstEventOfSession = NO;
-  _isFirstEvenOpen = NO;
+  _isFirstEventOpen = NO;
 }
 
 - (Properties *)generateRequestProperties {
