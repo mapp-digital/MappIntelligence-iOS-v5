@@ -40,7 +40,7 @@
 @property TrackingEvent *event;
 @property RequestUrlBuilder *requestUrlBuilder;
 @property NSUserDefaults* defaults;
-@property BOOL isFirstEvenOpen;
+@property BOOL isFirstEventOpen;
 @property BOOL isFirstEventOfSession;
 @property UIFlowObserver *flowObserver;
 
@@ -126,10 +126,10 @@ static NSString *userAgent;
   if (![_defaults stringForKey:isFirstEventOfApp]) {
     [_defaults setBool:YES forKey:isFirstEventOfApp];
     [_defaults synchronize];
-    _isFirstEvenOpen = YES;
+    _isFirstEventOpen = YES;
     _isFirstEventOfSession = YES;
   } else {
-    _isFirstEvenOpen = NO;
+    _isFirstEventOpen = NO;
   }
 
   NSString *CurrentSelectedCViewController =
