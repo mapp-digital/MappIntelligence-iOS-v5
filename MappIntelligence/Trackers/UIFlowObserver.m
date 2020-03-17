@@ -21,6 +21,7 @@
 @property NSObject *applicationDidBecomeActiveObserver;
 @property NSObject *applicationWillEnterForegroundObserver;
 @property NSObject *applicationWillResignActiveObserver;
+@property NSUserDefaults *sharedDefaults;
 #endif
 
 @end
@@ -30,6 +31,7 @@
 - (instancetype)initWith:(DefaultTracker *)tracker {
     self = [super init];
     _tracker = tracker;
+    _sharedDefaults = [NSUserDefaults standardUserDefaults];
     return self;
 }
 
@@ -37,10 +39,31 @@
 #if !TARGET_OS_WATCHOS
   NSNotificationCenter *notificationCenter =
       [NSNotificationCenter defaultCenter];
-//    applicationWillResignActiveObserver = [notificationCenter addObserverForName:  object:<#(nullable id)#> queue:<#(nullable NSOperationQueue *)#> usingBlock:<#^(NSNotification * _Nonnull note)block#>];
+    _applicationWillResignActiveObserver = [notificationCenter addObserverForName: UIApplicationDidBecomeActiveNotification object:NULL queue:NULL usingBlock:^(NSNotification * _Nonnull note) {
+        [self didBecomeActive];
+    }];
+    _applicationWillEnterForegroundObserver = [notificationCenter addObserverForName:UIApplicationWillEnterForegroundNotification object:NULL queue:NULL usingBlock:^(NSNotification * _Nonnull note) {
+        [self willEnterForeground];
+    }];
+    _applicationWillResignActiveObserver = [notificationCenter addObserverForName:UIApplicationWillResignActiveNotification object:NULL queue:NULL usingBlock:^(NSNotification * _Nonnull note) {
+        [self willResignActive];
+    }];
 #else
 #endif
   return YES;
 }
 
+-(void)didBecomeActive {
+    
+}
+
+-(void)willEnterForeground {
+    [_tracker updateFirstSession];
+}
+
+-(void)willResignActive {
+    [_tracker initHibernate];
+}
+
 @end
+

@@ -95,6 +95,7 @@ static NSString *userAgent;
   _requestUrlBuilder =
       [[RequestUrlBuilder alloc] initWithUrl:self.config.serverUrl
                                    andWithId:self.config.MappIntelligenceId];
+  [_flowObserver setup];
 }
 
 - (NSString *)generateEverId {
@@ -154,7 +155,7 @@ static NSString *userAgent;
 // requestProperties.screenSize =
 #endif
   [requestProperties setIsFirstEventOfApp:_isFirstEvenOpen];
-  [requestProperties setIsFirstEventOfSession:NO];
+  [requestProperties setIsFirstEventOfSession:_isFirstEventOfSession];
   [requestProperties setIsFirstEventAfterAppUpdate:NO];
 
   RequestTrackerBuilder *builder =
@@ -166,6 +167,8 @@ static NSString *userAgent;
   NSURL *requestUrl = [_requestUrlBuilder urlForRequest:request];
 
   [request sendRequestWith:requestUrl];
+  _isFirstEventOfSession = NO;
+  _isFirstEvenOpen = NO;
 }
 
 - (Properties *)generateRequestProperties {
@@ -180,5 +183,39 @@ static NSString *userAgent;
   return [NSUserDefaults standardUserDefaults];
 }
 
+- (void)initHibernate {
+  NSDate *date = [[NSDate alloc] init];
+  [[MappIntelligenceLogger shared]
+              logObj:[[NSString alloc] initWithFormat:@"save current date for "
+                                                      @"session detection %@ "
+                                                      @"with defaults %d",
+                                                      date, _defaults == NULL]
+      forDescription:kMappIntelligenceLogLevelDescriptionDebug];
+  [DefaultTracker.sharedDefaults setObject:date forKey:appHibernationDate];
+  [_defaults synchronize];
+}
+
+- (void)updateFirstSession {
+  NSDate *hibernationDateSettings =
+      [DefaultTracker.sharedDefaults objectForKey:appHibernationDate];
+  [[MappIntelligenceLogger shared]
+              logObj:[[NSString alloc]
+                         initWithFormat:@"read saved date for session "
+                                        @"detection %@, defaults %d value: %@ "
+                                        @"timeIntervalSinceNow is: %f)",
+                                        hibernationDateSettings,
+                                        _defaults == NULL,
+                                        hibernationDateSettings,
+                                        [hibernationDateSettings
+                                            timeIntervalSinceNow]]
+      forDescription:kMappIntelligenceLogLevelDescriptionDebug];
+  NSTimeInterval resendOnStartEventTime = (30 * 60);
+  if ((-[hibernationDateSettings timeIntervalSinceNow]) <
+      resendOnStartEventTime) {
+    _isFirstEventOfSession = YES;
+  } else {
+    _isFirstEventOfSession = NO;
+  }
+}
 @end
 

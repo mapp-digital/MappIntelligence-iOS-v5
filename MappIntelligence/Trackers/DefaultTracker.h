@@ -16,4 +16,6 @@
 - (NSString *)generateEverId;
 - (void)track:(UIViewController *)controller;
 + (NSUserDefaults *)sharedDefaults;
+- (void)initHibernate;
+- (void)updateFirstSession;
 @end
