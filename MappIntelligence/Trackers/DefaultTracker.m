@@ -148,7 +148,7 @@ static NSString *userAgent;
 #else
 // requestProperties.screenSize =
 #endif
-  [requestProperties setIsFirstEventOfApp:_isFirstEvenOpen];
+  [requestProperties setIsFirstEventOfApp:_isFirstEventOpen];
   [requestProperties setIsFirstEventOfSession:_isFirstEventOfSession];
   [requestProperties setIsFirstEventAfterAppUpdate:NO];
 

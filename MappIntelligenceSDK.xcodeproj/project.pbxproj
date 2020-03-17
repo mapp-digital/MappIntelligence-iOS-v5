@@ -129,7 +129,6 @@
 		BCBE5C0223EC0C36002125C1 /* MappIntelligenceRequestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MappIntelligenceRequestTests.m; sourceTree = "<group>"; };
 		BCBE5C0723F1A688002125C1 /* DefaultTracker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DefaultTracker.h; sourceTree = "<group>"; };
 		BCBE5C0823F29E49002125C1 /* DefaultTracker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DefaultTracker.m; sourceTree = "<group>"; };
-		BCBE5C0A23F2A97C002125C1 /* Tracker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Tracker.h; sourceTree = "<group>"; };
 		BCBE5C3923F698EF002125C1 /* DefaultTrackerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DefaultTrackerTests.m; sourceTree = SOURCE_ROOT; };
 		BCD5E2C223CF309900CE2092 /* Config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
 		BCD5E2C423CF38F300CE2092 /* MappIntelligenceDefaultConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MappIntelligenceDefaultConfig.m; sourceTree = "<group>"; };
@@ -191,7 +190,6 @@
 				BCD5E2C223CF309900CE2092 /* Config.h */,
 				A334861B23BF3E2300D0EB5F /* MappIntelligence.h */,
 				A334861C23BF3E2300D0EB5F /* MappIntelligence.m */,
-				BCBE5C0A23F2A97C002125C1 /* Tracker.h */,
 			);
 			path = MappIntelligence;
 			sourceTree = "<group>";
