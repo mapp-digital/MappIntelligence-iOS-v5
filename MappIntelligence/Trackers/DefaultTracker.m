@@ -71,6 +71,7 @@ static NSString *userAgent;
     _config = [[Configuration alloc] init];
     _defaults = [NSUserDefaults standardUserDefaults];
     _flowObserver = [[UIFlowObserver alloc] initWith:self];
+    [_flowObserver setup];
     [self generateUserAgent];
     [self initializeTracking];
   }
@@ -95,7 +96,6 @@ static NSString *userAgent;
   _requestUrlBuilder =
       [[RequestUrlBuilder alloc] initWithUrl:self.config.serverUrl
                                    andWithId:self.config.MappIntelligenceId];
-  [_flowObserver setup];
 }
 
 - (NSString *)generateEverId {
@@ -148,6 +148,7 @@ static NSString *userAgent;
 - (void)enqueueRequestForEvent:(TrackingEvent *)event {
   Properties *requestProperties = [self generateRequestProperties];
   requestProperties.locale = [NSLocale currentLocale];
+  [self updateFirstSession];
 
 #ifdef TARGET_OS_WATCHOS
 

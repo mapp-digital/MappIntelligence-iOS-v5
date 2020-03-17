@@ -13,9 +13,10 @@
 #endif /* DefaultTracker_h */
 
 @interface DefaultTracker : NSObject
-- (NSString *)generateEverId;
-- (void)track:(UIViewController *)controller;
-+ (NSUserDefaults *)sharedDefaults;
++ (nullable instancetype)sharedInstance;
+- (NSString *_Nullable)generateEverId;
+- (void)track:(UIViewController *_Nonnull)controller;
++ (NSUserDefaults *_Nonnull)sharedDefaults;
 - (void)initHibernate;
 - (void)updateFirstSession;
 @end

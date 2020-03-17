@@ -78,8 +78,8 @@ static MappIntelligenceDefaultConfig *config = nil;
   [config setRequestPerQueue:numberOfRequestInQueue];
   [config setRequestsInterval:requestTimeout];
   [config logConfig];
-  // init with new dictionary data
-  tracker = [[DefaultTracker alloc] init];
+
+  tracker = [DefaultTracker sharedInstance];
 }
 
 @end
