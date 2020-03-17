@@ -23,6 +23,7 @@
 #define configuration @"configuration"
 #define everId @"everId"
 #define isFirstEventAfterAppUpdate @"isFirstEventAfterAppUpdate"
+#define isFirstEventInNewSession @"firstNewSession"
 #define isFirstEventOfApp @"isFirstEventOfApp"
 #define isSampling @"isSampling"
 #define isOptedOut @"isOptedOut"
@@ -126,6 +127,7 @@ static NSString *userAgent;
     [_defaults setBool:YES forKey:isFirstEventOfApp];
     [_defaults synchronize];
     _isFirstEvenOpen = YES;
+    _isFirstEventOfSession = YES;
   } else {
     _isFirstEvenOpen = NO;
   }
@@ -192,7 +194,8 @@ static NSString *userAgent;
                                                       @"with defaults %d",
                                                       date, _defaults == NULL]
       forDescription:kMappIntelligenceLogLevelDescriptionDebug];
-  [DefaultTracker.sharedDefaults setObject:date forKey:appHibernationDate];
+  [_defaults setObject:date forKey:appHibernationDate];
+  [_defaults setBool:YES forKey:isFirstEventInNewSession];
   [_defaults synchronize];
 }
 
@@ -210,13 +213,10 @@ static NSString *userAgent;
                                         [hibernationDateSettings
                                             timeIntervalSinceNow]]
       forDescription:kMappIntelligenceLogLevelDescriptionDebug];
-  NSTimeInterval resendOnStartEventTime = (30 * 60);
-  if ((-[hibernationDateSettings timeIntervalSinceNow]) <
-      resendOnStartEventTime) {
-    _isFirstEventOfSession = YES;
-  } else {
-    _isFirstEventOfSession = NO;
-  }
+  _isFirstEventOfSession =
+      [_defaults boolForKey:isFirstEventInNewSession];
+  [_defaults setBool:NO forKey:isFirstEventInNewSession];
+  [_defaults synchronize];
 }
 @end
 

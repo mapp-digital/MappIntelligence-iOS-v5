@@ -46,6 +46,9 @@
         [self willEnterForeground];
     }];
     _applicationWillResignActiveObserver = [notificationCenter addObserverForName:UIApplicationWillResignActiveNotification object:NULL queue:NULL usingBlock:^(NSNotification * _Nonnull note) {
+        //[self willResignActive];
+    }];
+    [notificationCenter addObserverForName:UIApplicationWillTerminateNotification object:NULL queue:NULL usingBlock:^(NSNotification * _Nonnull note) {
         [self willResignActive];
     }];
 #else
