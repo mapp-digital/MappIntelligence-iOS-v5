@@ -11,7 +11,6 @@
 @interface MappIntelligenceDefaultConfig : NSObject <Config, NSCoding>
 @property DefaultTracker *tracker;
 
-- (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 - (void)logConfig;
 
 @end

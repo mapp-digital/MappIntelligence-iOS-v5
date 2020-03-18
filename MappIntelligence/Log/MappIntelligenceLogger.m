@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "MappIntelligenceLogger.h"
+#import "MappIntelligenceDefaultConfig.h"
 @implementation MappIntelligenceLogger
 
 #pragma mark - Initialization
@@ -86,6 +87,8 @@
     break;
   case kMappIntelligenceLogLevelDescriptionAll:
     logLevelForDescription = @"All";
+  case kMappIntelligenceLogLevelDescriptionNone:
+    logLevelForDescription = @"None";
     break;
   }
 
@@ -117,6 +120,9 @@
     break;
   case kMappIntelligenceLogLevelDescriptionAll:
     logLevelDescription = @"[MappIntelligence All]";
+    break;
+  case kMappIntelligenceLogLevelDescriptionNone:
+    logLevelDescription = @"";
     break;
   }
 

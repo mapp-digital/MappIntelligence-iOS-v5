@@ -21,7 +21,7 @@
 - (instancetype)init {
   self = [super init];
   if (self) {
-    _loger = [[MappIntelligenceLogger alloc] init];
+    _loger = [MappIntelligenceLogger shared];
     _urlSession = [[NSURLSession alloc] init];
   }
   return self;

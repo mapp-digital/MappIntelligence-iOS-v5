@@ -18,6 +18,7 @@ typedef NS_ENUM(NSInteger, logLevel) {
   info = 5, // Informational logs for updating configuration or migrating from
             // older versions of the library.
   all = 6,  // All logs of the above.
+  none = 7  // None of the logs.
 };
 
 @interface MappIntelligence : NSObject {

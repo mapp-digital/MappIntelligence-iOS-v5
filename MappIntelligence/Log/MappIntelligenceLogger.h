@@ -18,25 +18,11 @@ typedef NS_ENUM(NSInteger, MappIntelligenceLogLevelDescription) {
   kMappIntelligenceLogLevelDescriptionFault = 4, // A failure in a key system.
   kMappIntelligenceLogLevelDescriptionInfo = 5,  // Informational logs for
                                                  // updating configuration or
-                                                // migrating from older versions
-                                                // of the library.
+  // migrating from older versions
+  // of the library.
   kMappIntelligenceLogLevelDescriptionAll = 6, // All logs of the above.
-};
-typedef NS_ENUM(NSInteger, MappIntelligenceErrorType) {
-  kMappIntelligenceErrorTypeCaching = 1,
-  kMappIntelligenceErrorTypeUnCaching = 2,
-  kMappIntelligenceErrorTypeCachingObjectDoesNotExist = 3,
-  kMappIntelligenceErrorTypeMissingArguments = 11,
-  kMappIntelligenceErrorTypeBadArguments = 12,
-  kMappIntelligenceErrorTypeNetwork = 20,
-  kMappIntelligenceErrorTypeTagExists = 30,
-  kMappIntelligenceErrorTypeTagDoesNotExists = 31,
-  kMappIntelligenceErrorTypeTagUncompletedArguments = 32,
-  kMappIntelligenceErrorTypeOptionNotAvailable = 40,
-  kMappIntelligenceErrorTypeGeneralError = 50,
-  kMappIntelligenceErrorTypeSilentPush = 60,
-  kMappIntelligenceErrorTypeDMC = 70,
-  kMappIntelligenceErrorTypeDMCUserDoesntExist = 71,
+  kMappIntelligenceLogLevelDescriptionNone =
+      7, // None of the logs will be displayed
 };
 
 //#define INTERNAL_DEBUG // comment out to remove internal logs
@@ -59,8 +45,6 @@ typedef NS_ENUM(NSInteger, MappIntelligenceErrorType) {
       forDescription:(MappIntelligenceLogLevelDescription)logDescription;
 
 - (NSString *)logLevelFor:(MappIntelligenceLogLevelDescription)description;
-
-+ (NSError *)errorWithType:(MappIntelligenceErrorType)errorType;
 
 @end
 

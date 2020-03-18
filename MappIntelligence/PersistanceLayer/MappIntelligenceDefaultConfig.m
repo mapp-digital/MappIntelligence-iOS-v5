@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "MappIntelligenceDefaultConfig.h"
+#import "MappIntelligenceLogger.h"
 #define key_trackIDs @"track_ids"
 #define key_trackDomain @"track_domain"
 #define key_logLevel @"log_level"
@@ -18,92 +19,30 @@
 #define key_viewControllerAutoTracking @"view_controller_auto_tracking"
 #define key_MappIntelligence_default_configuration @"defaultConfiguration"
 
+@interface MappIntelligenceDefaultConfig ()
+@property (nonnull) MappIntelligenceLogger *logger;
+@end
+
 @implementation MappIntelligenceDefaultConfig : NSObject
 
 @synthesize autoTracking;
-
 @synthesize batchSupport;
-
 @synthesize requestPerQueue;
-
 @synthesize requestsInterval;
-
 /** Tracking domain is MANDATORY field */
 @synthesize trackDomain;
 
 /** Track ID is a mandatory field and must be entered at least one for the
  * configuration to be saved */
 @synthesize trackIDs;
-
 @synthesize viewControllerAutoTracking;
-
 @synthesize logLevel;
 @synthesize tracker;
 
 - (instancetype)init {
 
   self = [super init];
-  [self setLogLevel:kMappIntelligenceLogLevelDescriptionInfo];
-  return self;
-}
-
-- (instancetype)initWithDictionary:(NSDictionary *)dictionary {
-
-  self = [super init];
-
-  self.autoTracking = [[dictionary valueForKey:key_autoTracking] boolValue];
-  self.batchSupport = [[dictionary valueForKey:key_batchSupport] boolValue];
-  if ([[dictionary valueForKey:key_requestPerQueue] integerValue] == 0) {
-    self.requestPerQueue = 10;
-  } else {
-    self.requestPerQueue =
-        [[dictionary valueForKey:key_requestPerQueue] integerValue];
-  }
-  if ([[dictionary valueForKey:key_requestsInterval] longValue] == 0) {
-    self.requestsInterval = 900;
-  } else {
-    self.requestsInterval =
-        [[dictionary valueForKey:key_requestsInterval] longValue];
-  }
-  if ([[dictionary valueForKey:key_logLevel] integerValue] == 0) {
-    self.logLevel = kMappIntelligenceLogLevelDescriptionDebug;
-  } else {
-    self.logLevel = [[dictionary valueForKey:key_logLevel] integerValue];
-  }
-  if (([dictionary objectForKey:key_trackIDs] == [NSNull null]) ||
-      [[dictionary objectForKey:key_trackIDs] isEqualToString:@""]) {
-    [[MappIntelligenceLogger shared]
-                logObj:(@"You must enter at least one tracking ID to save the "
-                        @"configuration. ")
-        forDescription:kMappIntelligenceLogLevelDescriptionWarning];
-  } else {
-    self.trackIDs = [[dictionary objectForKey:key_trackIDs]
-        componentsSeparatedByString:@","];
-    if ([self.trackIDs containsObject:@""] ||
-        [self.trackIDs containsObject:@" "] ||
-        ([[self.trackIDs lastObject] isEqual:@","])) {
-      [[MappIntelligenceLogger shared]
-                  logObj:(@"Track IDs can not contain blank spaces! ")
-          forDescription:kMappIntelligenceLogLevelDescriptionWarning];
-    }
-  }
-  if ([[dictionary objectForKey:key_trackDomain] isEqualToString:@""]) {
-    [[MappIntelligenceLogger shared]
-                logObj:(@"You must enter tracking domain to save the "
-                        @"configuration. ")
-        forDescription:kMappIntelligenceLogLevelDescriptionWarning];
-  } else if ([[dictionary objectForKey:key_trackDomain] rangeOfString:@"."]
-                 .location == NSNotFound) {
-
-  } else {
-    self.trackDomain = [dictionary objectForKey:key_trackDomain];
-  }
-  self.viewControllerAutoTracking =
-      [[dictionary valueForKey:key_viewControllerAutoTracking] boolValue];
-
-  self.tracker = [[DefaultTracker alloc] init];
-  [self saveToUserDefaults];
-  [self logConfig];
+  _logger = [MappIntelligenceLogger shared];
   return self;
 }
 
@@ -137,69 +76,60 @@
 
 - (void)logConfig {
 
-  [[MappIntelligenceLogger shared]
-              logObj:([@"Auto Tracking is enabled: "
-                         stringByAppendingFormat:self.autoTracking ? @"Yes"
-                                                                   : @"No"])
-      forDescription:self.logLevel];
-  [[MappIntelligenceLogger shared]
-              logObj:([@"Batch Support is enabled: "
-                         stringByAppendingFormat:self.batchSupport ? @"Yes"
-                                                                   : @"No"])
-      forDescription:self.logLevel];
+  [_logger logObj:([@"Auto Tracking is enabled: "
+                      stringByAppendingFormat:self.autoTracking ? @"Yes"
+                                                                : @"No"])
+      forDescription:kMappIntelligenceLogLevelDescriptionInfo];
+  [_logger logObj:([@"Batch Support is enabled: "
+                      stringByAppendingFormat:self.batchSupport ? @"Yes"
+                                                                : @"No"])
+      forDescription:kMappIntelligenceLogLevelDescriptionInfo];
   [self validateNumberOfRequestsPerQueue:self.requestPerQueue];
-  [[MappIntelligenceLogger shared]
-              logObj:([@"Number of requests in queue: "
-                         stringByAppendingFormat:
-                             @"%@",
-                             [NSString
-                                 stringWithFormat:@"%ld",
-                                                  (long)self.requestPerQueue]])
-      forDescription:self.logLevel];
+  [_logger logObj:([@"Number of requests in queue: "
+                      stringByAppendingFormat:
+                          @"%@",
+                          [NSString
+                              stringWithFormat:@"%ld",
+                                               (long)self.requestPerQueue]])
+      forDescription:kMappIntelligenceLogLevelDescriptionInfo];
   [self validateRequestTimeInterval:self.requestsInterval];
-  [[MappIntelligenceLogger shared]
-              logObj:([@"Request time interval in minutes: "
-                         stringByAppendingFormat:
-                             @"%@",
-                             [NSString stringWithFormat:@"%f",
-                                                        (self.requestsInterval /
-                                                         60.0)]])
-      forDescription:self.logLevel];
-  [[MappIntelligenceLogger shared]
-              logObj:([@"Log Level is:  "
-                         stringByAppendingFormat:@"%@",
-                                                 [self
-                                                     getLogLevelFor:logLevel]])
-      forDescription:self.logLevel];
+  [_logger logObj:([@"Request time interval in minutes: "
+                      stringByAppendingFormat:
+                          @"%@",
+                          [NSString
+                              stringWithFormat:@"%f",
+                                               (self.requestsInterval / 60.0)]])
+      forDescription:kMappIntelligenceLogLevelDescriptionInfo];
+  [_logger logObj:([@"Log Level is:  "
+                      stringByAppendingFormat:@"%@",
+                                              [self getLogLevelFor:logLevel]])
+      forDescription:kMappIntelligenceLogLevelDescriptionInfo];
   [self validateTrackingIDs:self.trackIDs];
-  [[MappIntelligenceLogger shared]
-              logObj:([@"Tracking IDs: "
-                         stringByAppendingFormat:@"%@", self.trackIDs])
-      forDescription:self.logLevel];
+  [_logger logObj:([@"Tracking IDs: "
+                      stringByAppendingFormat:@"%@", self.trackIDs])
+      forDescription:kMappIntelligenceLogLevelDescriptionInfo];
   [self trackDomainValidation:self.trackDomain];
-  [[MappIntelligenceLogger shared]
-              logObj:([@"Tracking domain is: "
-                         stringByAppendingFormat:@"%@", self.trackDomain])
-      forDescription:self.logLevel];
-  [[MappIntelligenceLogger shared]
-              logObj:([@"View Controller auto tracking is enabbled: "
-                         stringByAppendingFormat:self.viewControllerAutoTracking
-                                                     ? @"Yes"
-                                                     : @"No"])
-      forDescription:self.logLevel];
+  [_logger logObj:([@"Tracking domain is: "
+                      stringByAppendingFormat:@"%@", self.trackDomain])
+      forDescription:kMappIntelligenceLogLevelDescriptionInfo];
+  [_logger logObj:([@"View Controller auto tracking is enabbled: "
+                      stringByAppendingFormat:self.viewControllerAutoTracking
+                                                  ? @"Yes"
+                                                  : @"No"])
+      forDescription:kMappIntelligenceLogLevelDescriptionInfo];
   @try {
     [self.tracker generateEverId];
   } @catch (NSException *exception) {
     NSLog(@"Exception %@", exception);
   } @finally {
-    //        [[MappIntelligenceLogger shared] logObj:([@"Ever ID is: "
+    //        [_logger logObj:([@"Ever ID is: "
     //        stringByAppendingFormat:@"%@", [self.tracker generateEverId]])
     //        forDescription:self.logLevel];
   }
 }
 
 - (NSString *)getLogLevelFor:(MappIntelligenceLogLevelDescription)description {
-  return [[MappIntelligenceLogger shared] logLevelFor:description];
+  return [_logger logLevelFor:description];
 }
 
 - (void)validateNumberOfRequestsPerQueue:(NSInteger)numberOfRequests {
@@ -259,6 +189,11 @@
   [defaults setObject:encodedObject
                forKey:key_MappIntelligence_default_configuration];
   [defaults synchronize];
+}
+
+- (void)setLogLevel:(MappIntelligenceLogLevelDescription)logLevel {
+  //self.logLevel = logLevel;
+  [_logger setLogLevel:logLevel];
 }
 
 @end
