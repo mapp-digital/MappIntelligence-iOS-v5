@@ -45,6 +45,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneWillEnterForeground(_ scene: UIScene) {
         // Called as the scene transitions from the background to the foreground.
         // Use this method to undo the changes made on entering the background.
+        if var topController = UIApplication.shared.keyWindow?.rootViewController {
+            while let presentedViewController = topController.presentedViewController {
+                topController = presentedViewController
+            }
+
+            // topController should now be your topmost view controller
+            MappIntelligence.shared()?.trackPage(topController)
+        }
     }
 
     @available(iOS 13.0, *)

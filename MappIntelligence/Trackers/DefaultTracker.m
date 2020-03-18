@@ -22,7 +22,6 @@
 #define appVersion @"appVersion"
 #define configuration @"configuration"
 #define everId @"everId"
-#define isFirstEventInNewSession @"firstNewSession"
 #define isFirstEventOfApp @"isFirstEventOfApp"
 
 @interface DefaultTracker ()
@@ -34,6 +33,7 @@
 @property BOOL isFirstEventOpen;
 @property BOOL isFirstEventOfSession;
 @property UIFlowObserver *flowObserver;
+@property NSCondition *conditionUntilGetFNS;
 
 - (void)enqueueRequestForEvent:(TrackingEvent *)event;
 - (Properties *)generateRequestProperties;
@@ -64,6 +64,8 @@ static NSString *userAgent;
     _defaults = [NSUserDefaults standardUserDefaults];
     _flowObserver = [[UIFlowObserver alloc] initWith:self];
     [_flowObserver setup];
+    _conditionUntilGetFNS = [[NSCondition alloc] init];
+    _isReady = NO;
     [self generateUserAgent];
     [self initializeTracking];
   }
@@ -134,14 +136,24 @@ static NSString *userAgent;
   // create request with page event
   TrackingEvent *event = [[TrackingEvent alloc] init];
   [event setPageName:CurrentSelectedCViewController];
-  [self enqueueRequestForEvent:event];
-  _isFirstEventOfSession = NO;
+
+  dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),
+                 ^(void) {
+                   // Background Thread
+                   [self->_conditionUntilGetFNS lock];
+                   while (!self->_isReady)
+                     [self->_conditionUntilGetFNS wait];
+                   dispatch_async(dispatch_get_main_queue(), ^(void) {
+                     // Run UI Updates
+                     [self enqueueRequestForEvent:event];
+                     [self->_conditionUntilGetFNS unlock];
+                   });
+                 });
 }
 
 - (void)enqueueRequestForEvent:(TrackingEvent *)event {
   Properties *requestProperties = [self generateRequestProperties];
   requestProperties.locale = [NSLocale currentLocale];
-  [self updateFirstSession];
 
 #ifdef TARGET_OS_WATCHOS
 
@@ -186,28 +198,18 @@ static NSString *userAgent;
                                                       date, _defaults == NULL]
       forDescription:kMappIntelligenceLogLevelDescriptionDebug];
   [_defaults setObject:date forKey:appHibernationDate];
-  [_defaults setBool:YES forKey:isFirstEventInNewSession];
-  [_defaults synchronize];
+  _isReady = NO;
 }
 
-- (void)updateFirstSession {
-  NSDate *hibernationDateSettings =
-      [DefaultTracker.sharedDefaults objectForKey:appHibernationDate];
-  [[MappIntelligenceLogger shared]
-              logObj:[[NSString alloc]
-                         initWithFormat:@"read saved date for session "
-                                        @"detection %@, defaults %d value: %@ "
-                                        @"timeIntervalSinceNow is: %f)",
-                                        hibernationDateSettings,
-                                        _defaults == NULL,
-                                        hibernationDateSettings,
-                                        [hibernationDateSettings
-                                            timeIntervalSinceNow]]
-      forDescription:kMappIntelligenceLogLevelDescriptionDebug];
-  _isFirstEventOfSession =
-      [_defaults boolForKey:isFirstEventInNewSession];
-  [_defaults setBool:NO forKey:isFirstEventInNewSession];
-  [_defaults synchronize];
+- (void)updateFirstSessionWith: (UIApplicationState) state {
+    if (state == UIApplicationStateInactive) {
+        _isFirstEventOfSession = YES;
+    } else {
+        _isFirstEventOfSession = NO;
+    }
+    _isReady = YES;
+    [_conditionUntilGetFNS signal];
+    [_conditionUntilGetFNS unlock];
 }
 @end
 

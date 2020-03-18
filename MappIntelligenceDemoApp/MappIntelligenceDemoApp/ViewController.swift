@@ -15,9 +15,8 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        MappIntelligence.shared()?.trackPage(self)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
     }
 
     @IBAction func moveToConfigurationScreen(_ sender: Any) {
