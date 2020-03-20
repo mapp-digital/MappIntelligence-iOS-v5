@@ -40,7 +40,8 @@ class ConfigurationViewController: UIViewController, UIPickerViewDelegate, UIPic
         setupToolBarForNumberPadKeyboard()
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
                self.view.addGestureRecognizer(tapGesture)
-        MappIntelligence.shared()?.trackPage(self) 
+        MappIntelligence.shared()?.trackPage(self)
+        MappIntelligence.shared()?.trackPage(with: "testCustomStringName")
     }
     
     @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {

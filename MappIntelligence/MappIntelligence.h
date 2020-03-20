@@ -35,6 +35,7 @@ typedef NS_ENUM(NSInteger, logLevel) {
 + (NSString *_Nonnull)version;
 
 - (void)trackPage:(UIViewController *_Nullable)controller;
+- (void)trackPageWith:(NSString *_Nullable)name;
 
 + (NSString *_Nonnull)getUrl;
 + (NSString *_Nonnull)getId;

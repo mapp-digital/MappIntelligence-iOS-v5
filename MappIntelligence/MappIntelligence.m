@@ -60,6 +60,10 @@ static MappIntelligenceDefaultConfig *config = nil;
   [tracker track:controller];
 }
 
+-(void)trackPageWith:(NSString *)name {
+  [tracker trackWith:name];
+}
+
 - (void)initWithConfiguration:(NSArray *)trackIDs
                         onTrackdomain:(NSString *)trackDomain
               withAutotrackingEnabled:(BOOL)autoTracking

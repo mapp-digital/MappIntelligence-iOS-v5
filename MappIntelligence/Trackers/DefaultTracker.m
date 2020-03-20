@@ -115,7 +115,12 @@ static NSString *userAgent;
 }
 
 - (void)track:(UIViewController *)controller {
+  NSString *CurrentSelectedCViewController =
+      NSStringFromClass([controller class]);
+  [self trackWith:CurrentSelectedCViewController];
+}
 
+- (void)trackWith:(NSString *)name {
   if (![_defaults stringForKey:isFirstEventOfApp]) {
     [_defaults setBool:YES forKey:isFirstEventOfApp];
     [_defaults synchronize];
@@ -125,17 +130,14 @@ static NSString *userAgent;
     _isFirstEventOpen = NO;
   }
 
-  NSString *CurrentSelectedCViewController =
-      NSStringFromClass([controller class]);
   [[MappIntelligenceLogger shared]
               logObj:[[NSString alloc]
-                         initWithFormat:@"Content ID is: %@",
-                                        CurrentSelectedCViewController]
+                         initWithFormat:@"Content ID is: %@", name]
       forDescription:kMappIntelligenceLogLevelDescriptionDebug];
 
   // create request with page event
   TrackingEvent *event = [[TrackingEvent alloc] init];
-  [event setPageName:CurrentSelectedCViewController];
+  [event setPageName:name];
 
   dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),
                  ^(void) {

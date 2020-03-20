@@ -17,6 +17,7 @@
 + (nullable instancetype)sharedInstance;
 - (NSString *_Nullable)generateEverId;
 - (void)track:(UIViewController *_Nonnull)controller;
+- (void)trackWith:(NSString *_Nonnull)name;
 + (NSUserDefaults *_Nonnull)sharedDefaults;
 - (void)initHibernate;
 - (void)updateFirstSessionWith: (UIApplicationState) state;
