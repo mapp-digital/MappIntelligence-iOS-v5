@@ -86,7 +86,7 @@ static MappIntelligenceDefaultConfig *config = nil;
   [config setRequestsInterval:requestTimeout];
   [config logConfig];
 
-  tracker = [DefaultTracker sharedInstance];
+  (!tracker) ? tracker = [DefaultTracker sharedInstance] : [tracker reset];
 }
 
 - (void)reset {

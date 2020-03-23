@@ -88,8 +88,8 @@ static NSString *userAgent;
   _config.serverUrl = [[NSURL alloc] initWithString:[MappIntelligence getUrl]];
   _config.MappIntelligenceId = [MappIntelligence getId];
   _requestUrlBuilder =
-      [[RequestUrlBuilder alloc] initWithUrl:self.config.serverUrl
-                                   andWithId:self.config.MappIntelligenceId];
+      [[RequestUrlBuilder alloc] initWithUrl:_config.serverUrl
+                                   andWithId:_config.MappIntelligenceId];
 }
 
 - (NSString *)generateEverId {
@@ -99,19 +99,23 @@ static NSString *userAgent;
   if (tmpEverId != nil) {
     return tmpEverId;
   } else {
-    tmpEverId = [[NSString alloc]
-        initWithFormat:@"6%010.0f%08u",
-                       [[[NSDate alloc] init] timeIntervalSince1970],
-                       arc4random_uniform(99999999) + 1];
-    [[DefaultTracker sharedDefaults] setValue:tmpEverId forKey:everId];
-
-    if ([everId isEqual:[[NSNull alloc] init]]) {
-      @throw @"Can't generate ever id";
-    }
-    return tmpEverId;
+    return [self getNewEverID];
   }
 
   return @"";
+}
+
+- (NSString *)getNewEverID {
+  NSString *tmpEverId = [[NSString alloc]
+      initWithFormat:@"6%010.0f%08u",
+                     [[[NSDate alloc] init] timeIntervalSince1970],
+                     arc4random_uniform(99999999) + 1];
+  [[DefaultTracker sharedDefaults] setValue:tmpEverId forKey:everId];
+
+  if ([everId isEqual:[[NSNull alloc] init]]) {
+    @throw @"Can't generate ever id";
+  }
+  return tmpEverId;
 }
 
 - (void)track:(UIViewController *)controller {
@@ -121,6 +125,13 @@ static NSString *userAgent;
 }
 
 - (void)trackWith:(NSString *)name {
+  if ([_config.MappIntelligenceId isEqual:@""] ||
+      [_config.serverUrl isEqual:@""]) {
+    [[MappIntelligenceLogger shared]
+                logObj:@"Request can not be sent with empty track domain or track id."
+        forDescription:kMappIntelligenceLogLevelDescriptionDebug];
+    return;
+  }
   if (![_defaults stringForKey:isFirstEventOfApp]) {
     [_defaults setBool:YES forKey:isFirstEventOfApp];
     [_defaults synchronize];
@@ -217,6 +228,8 @@ static NSString *userAgent;
 - (void)reset {
     sharedTracker = NULL;
     sharedTracker = [self init];
+    _isReady = YES;
+    everID = [self getNewEverID];
 }
 @end
 
