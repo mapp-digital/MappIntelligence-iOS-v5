@@ -21,4 +21,5 @@
 + (NSUserDefaults *_Nonnull)sharedDefaults;
 - (void)initHibernate;
 - (void)updateFirstSessionWith: (UIApplicationState) state;
+- (void)reset;
 @end

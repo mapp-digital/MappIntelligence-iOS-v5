@@ -213,5 +213,10 @@ static NSString *userAgent;
     [_conditionUntilGetFNS signal];
     [_conditionUntilGetFNS unlock];
 }
+
+- (void)reset {
+    sharedTracker = NULL;
+    sharedTracker = [self init];
+}
 @end
 

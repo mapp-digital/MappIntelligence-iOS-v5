@@ -52,11 +52,11 @@ static MappIntelligenceDefaultConfig *config = nil;
 }
 
 + (NSString *)getUrl {
-  return [config trackDomain];
+  return ([config trackDomain] == NULL) ? @"" : [config trackDomain];;
 }
 
 + (NSString *)getId {
-  return [[config trackIDs] firstObject];
+  return ([[config trackIDs] firstObject] == NULL) ? @"" : [[config trackIDs] firstObject];
 }
 
 - (void)trackPage:(UIViewController *)controller {
@@ -92,6 +92,7 @@ static MappIntelligenceDefaultConfig *config = nil;
 - (void)reset {
     sharedInstance = NULL;
     sharedInstance = [self init];
+    [tracker reset];
     [_logger logObj:@"Reset Mapp Inteligence Instance."
         forDescription:kMappIntelligenceLogLevelDescriptionDebug];
     [config logConfig];

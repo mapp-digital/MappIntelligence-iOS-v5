@@ -129,4 +129,8 @@
   return logLevelDescription;
 }
 
+- (void)setLogLevel:(MappIntelligenceLogLevelDescription)logLevel {
+    NSLog(@"%@", [[NSString alloc] initWithFormat:@"Log level is changed to: %ld", (long)logLevel]);
+}
+
 @end
