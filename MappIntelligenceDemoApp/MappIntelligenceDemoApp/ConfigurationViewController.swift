@@ -26,7 +26,7 @@ class ConfigurationViewController: UIViewController, UIPickerViewDelegate, UIPic
     var selectedLogLevel: String?
     var logLevelIndex = 0
     
-    var logLevelList = ["Debug","Warning","Error","Fault","Info","All"]
+    var logLevelList = ["Debug","Warning","Error","Fault","Info","All", "None"]
     
     
     override func viewDidLoad() {
@@ -139,6 +139,7 @@ class ConfigurationViewController: UIViewController, UIPickerViewDelegate, UIPic
         pickerView.view(forRow: 3, forComponent: component)?.accessibilityLabel = "fault"
         pickerView.view(forRow: 4, forComponent: component)?.accessibilityLabel = "info"
         pickerView.view(forRow: 5, forComponent: component)?.accessibilityLabel = "all"
+        pickerView.view(forRow: 6, forComponent: component)?.accessibilityLabel = "none"
     selectedLogLevel = logLevelList[row] // selected item
     setLogLevelTF.text = selectedLogLevel
     logLevelIndex = row
