@@ -18,7 +18,7 @@
 
   if (self) {
 
-    self.logLevel = kMappIntelligenceLogLevelDescriptionDebug;
+    self.logLevel = kMappIntelligenceLogLevelDescriptionNone;
   }
 
   return self;
