@@ -229,6 +229,8 @@ static NSString *userAgent;
     sharedTracker = NULL;
     sharedTracker = [self init];
     _isReady = YES;
+    [_defaults removeObjectForKey:isFirstEventOfApp];
+    [_defaults synchronize];
     everID = [self getNewEverID];
 }
 @end
