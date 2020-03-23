@@ -30,11 +30,24 @@
                                     <action selector="moveToConfigurationScreen:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kzK-QH-tGJ"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wgy-Jv-PY3">
+                                <rect key="frame" x="10" y="782" width="394" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="bQD-0V-2zf"/>
+                                </constraints>
+                                <state key="normal" title="Reset Singleton Instance of Mapp Inteligence"/>
+                                <connections>
+                                    <action selector="resetInstance:" destination="BYZ-38-t0r" eventType="touchUpInside" id="b7u-8U-bRz"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="NT4-Kt-2Ux" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Fk8-bD-oBz"/>
                             <constraint firstItem="QvL-lF-keq" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="SfV-Pt-LNZ"/>
+                            <constraint firstItem="wgy-Jv-PY3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="UQF-bQ-1Qr"/>
+                            <constraint firstItem="NT4-Kt-2Ux" firstAttribute="top" secondItem="wgy-Jv-PY3" secondAttribute="bottom" constant="20" id="VMB-yM-BQK"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="wgy-Jv-PY3" secondAttribute="trailing" constant="10" id="fO0-9U-0Hp"/>
                             <constraint firstItem="NT4-Kt-2Ux" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="kci-9w-Wzt"/>
                             <constraint firstItem="QvL-lF-keq" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="r42-H5-w8S"/>
                         </constraints>

@@ -8,11 +8,13 @@
 
 #import "MappIntelligence.h"
 #import "MappIntelligenceDefaultConfig.h"
+#import "MappIntelligenceLogger.h"
 
 @interface MappIntelligence ()
 
 @property MappIntelligenceDefaultConfig *configuration;
 @property DefaultTracker *tracker;
+@property MappIntelligenceLogger *logger;
 
 @end
 
@@ -27,6 +29,7 @@ static MappIntelligenceDefaultConfig *config = nil;
   if (!sharedInstance) {
     sharedInstance = [super init];
     config = [[MappIntelligenceDefaultConfig alloc] init];
+    _logger = [MappIntelligenceLogger shared];
   }
   return sharedInstance;
 }
@@ -84,6 +87,14 @@ static MappIntelligenceDefaultConfig *config = nil;
   [config logConfig];
 
   tracker = [DefaultTracker sharedInstance];
+}
+
+- (void)reset {
+    sharedInstance = NULL;
+    sharedInstance = [self init];
+    [_logger logObj:@"Reset Mapp Inteligence Instance."
+        forDescription:kMappIntelligenceLogLevelDescriptionDebug];
+    [config logConfig];
 }
 
 @end

@@ -25,5 +25,8 @@ class ViewController: UIViewController {
         self.present(vc, animated: true, completion: nil)
     }
     
+    @IBAction func resetInstance(_ sender: Any) {
+        MappIntelligence.shared()?.reset()
+    }
 }
 

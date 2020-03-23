@@ -49,4 +49,6 @@ typedef NS_ENUM(NSInteger, logLevel) {
     viewControllerAutoTrackingEnabled:(BOOL)viewControllerAutoTracking
                           andLogLevel:(logLevel)lv;
 
+- (void)reset;
+
 @end
