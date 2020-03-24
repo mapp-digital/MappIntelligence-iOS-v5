@@ -10,14 +10,14 @@
 #import <UIKit/UIKit.h>
 
 typedef NS_ENUM(NSInteger, logLevel) {
-  debug = 1,   // The lowest priority that you would normally log, and purely
+  all = 1,     // All logs of the above.
+  debug = 2,   // The lowest priority that you would normally log, and purely
                // informational in nature.
-  warning = 2, // Something is missing and might fail if not corrected
-  error = 3,   // Something has failed.
-  fault = 4,   // A failure in a key system.
-  info = 5, // Informational logs for updating configuration or migrating from
+  warning = 3, // Something is missing and might fail if not corrected
+  error = 4,   // Something has failed.
+  fault = 5,   // A failure in a key system.
+  info = 6, // Informational logs for updating configuration or migrating from
             // older versions of the library.
-  all = 6,  // All logs of the above.
   none = 7  // None of the logs.
 };
 
