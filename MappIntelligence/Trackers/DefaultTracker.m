@@ -7,6 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#if !TARGET_OS_IOS
+#import <WatchKit/WatchKit.h>
+#endif
+
 #import "DefaultTracker.h"
 #import "MappIntelligenceLogger.h"
 #import "MappIntelligence.h"

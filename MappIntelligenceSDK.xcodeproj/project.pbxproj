@@ -22,6 +22,8 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		A32AEA29242A6F4600BC7B46 /* MappIntelligenceWatchOS.m in Sources */ = {isa = PBXBuildFile; fileRef = A32AEA28242A6F4600BC7B46 /* MappIntelligenceWatchOS.m */; };
+		A32AEA2A242A6F4600BC7B46 /* MappIntelligenceWatchOS.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A32AEA27242A6F4600BC7B46 /* MappIntelligenceWatchOS.h */; };
 		A334861D23BF3E2300D0EB5F /* MappIntelligence.m in Sources */ = {isa = PBXBuildFile; fileRef = A334861C23BF3E2300D0EB5F /* MappIntelligence.m */; };
 		A334861E23BF3E2300D0EB5F /* MappIntelligence.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A334861B23BF3E2300D0EB5F /* MappIntelligence.h */; };
 		A334862D23BF3F2800D0EB5F /* libMappIntelligenceSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A334861823BF3E2300D0EB5F /* libMappIntelligenceSDK.a */; };
@@ -81,6 +83,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		A32AEA23242A6F4600BC7B46 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+				A32AEA2A242A6F4600BC7B46 /* MappIntelligenceWatchOS.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A334861623BF3E2300D0EB5F /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -94,6 +106,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A32AEA25242A6F4600BC7B46 /* libMappIntelligenceWatchOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMappIntelligenceWatchOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A32AEA27242A6F4600BC7B46 /* MappIntelligenceWatchOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MappIntelligenceWatchOS.h; sourceTree = "<group>"; };
+		A32AEA28242A6F4600BC7B46 /* MappIntelligenceWatchOS.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MappIntelligenceWatchOS.m; sourceTree = "<group>"; };
 		A334861823BF3E2300D0EB5F /* libMappIntelligenceSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMappIntelligenceSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A334861B23BF3E2300D0EB5F /* MappIntelligence.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MappIntelligence.h; sourceTree = "<group>"; };
 		A334861C23BF3E2300D0EB5F /* MappIntelligence.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MappIntelligence.m; sourceTree = "<group>"; };
@@ -140,6 +155,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		A32AEA22242A6F4600BC7B46 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A334861523BF3E2300D0EB5F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -158,11 +180,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A32AEA26242A6F4600BC7B46 /* MappIntelligenceWatchOS */ = {
+			isa = PBXGroup;
+			children = (
+				A32AEA27242A6F4600BC7B46 /* MappIntelligenceWatchOS.h */,
+				A32AEA28242A6F4600BC7B46 /* MappIntelligenceWatchOS.m */,
+			);
+			path = MappIntelligenceWatchOS;
+			sourceTree = "<group>";
+		};
 		A334860F23BF3E2300D0EB5F = {
 			isa = PBXGroup;
 			children = (
 				A334861A23BF3E2300D0EB5F /* MappIntelligence */,
 				A334863B23BF409D00D0EB5F /* MappIntelligenceFramework */,
+				A32AEA26242A6F4600BC7B46 /* MappIntelligenceWatchOS */,
 				A334861923BF3E2300D0EB5F /* Products */,
 				A334863C23BF409D00D0EB5F /* MappIntelligence.h */,
 				BCEA32C023E979FD003AF806 /* MappIntelligenceTests */,
@@ -174,6 +206,7 @@
 			children = (
 				A334861823BF3E2300D0EB5F /* libMappIntelligenceSDK.a */,
 				A334862823BF3F2800D0EB5F /* MappIntelligenceTests.xctest */,
+				A32AEA25242A6F4600BC7B46 /* libMappIntelligenceWatchOS.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -330,6 +363,23 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		A32AEA24242A6F4600BC7B46 /* MappIntelligenceWatchOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A32AEA2B242A6F4600BC7B46 /* Build configuration list for PBXNativeTarget "MappIntelligenceWatchOS" */;
+			buildPhases = (
+				A32AEA21242A6F4600BC7B46 /* Sources */,
+				A32AEA22242A6F4600BC7B46 /* Frameworks */,
+				A32AEA23242A6F4600BC7B46 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MappIntelligenceWatchOS;
+			productName = MappIntelligenceWatchOS;
+			productReference = A32AEA25242A6F4600BC7B46 /* libMappIntelligenceWatchOS.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 		A334861723BF3E2300D0EB5F /* MappIntelligenceSDK */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = A334862123BF3E2300D0EB5F /* Build configuration list for PBXNativeTarget "MappIntelligenceSDK" */;
@@ -373,9 +423,13 @@
 		A334861023BF3E2300D0EB5F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 1130;
 				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = "Stefan Stevanovic";
 				TargetAttributes = {
+					A32AEA24242A6F4600BC7B46 = {
+						CreatedOnToolsVersion = 11.3.1;
+					};
 					A334861723BF3E2300D0EB5F = {
 						CreatedOnToolsVersion = 11.3;
 						LastSwiftMigration = 1130;
@@ -404,6 +458,7 @@
 				A334861723BF3E2300D0EB5F /* MappIntelligenceSDK */,
 				A334862723BF3F2800D0EB5F /* MappIntelligenceTests */,
 				A334865223BF42C300D0EB5F /* MappIntelligenceFramework */,
+				A32AEA24242A6F4600BC7B46 /* MappIntelligenceWatchOS */,
 			);
 		};
 /* End PBXProject section */
@@ -457,6 +512,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		A32AEA21242A6F4600BC7B46 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A32AEA29242A6F4600BC7B46 /* MappIntelligenceWatchOS.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A334861423BF3E2300D0EB5F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -510,6 +573,36 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		A32AEA2C242A6F4600BC7B46 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LERY366S7C;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 6.1;
+			};
+			name = Debug;
+		};
+		A32AEA2D242A6F4600BC7B46 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LERY366S7C;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 6.1;
+			};
+			name = Release;
+		};
 		A334861F23BF3E2300D0EB5F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -738,6 +831,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		A32AEA2B242A6F4600BC7B46 /* Build configuration list for PBXNativeTarget "MappIntelligenceWatchOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A32AEA2C242A6F4600BC7B46 /* Debug */,
+				A32AEA2D242A6F4600BC7B46 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		A334861323BF3E2300D0EB5F /* Build configuration list for PBXProject "MappIntelligenceSDK" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
