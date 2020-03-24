@@ -86,16 +86,16 @@ static MappIntelligenceDefaultConfig *config = nil;
   [config setRequestsInterval:requestTimeout];
   [config logConfig];
 
-  (!tracker) ? tracker = [DefaultTracker sharedInstance] : [tracker reset];
+  tracker = [DefaultTracker sharedInstance];
 }
 
 - (void)reset {
     sharedInstance = NULL;
     sharedInstance = [self init];
-    [tracker reset];
     [_logger logObj:@"Reset Mapp Inteligence Instance."
         forDescription:kMappIntelligenceLogLevelDescriptionDebug];
     [config logConfig];
+    [tracker reset];
 }
 
 @end
