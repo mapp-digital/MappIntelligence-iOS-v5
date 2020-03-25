@@ -22,4 +22,5 @@
 - (void)initHibernate;
 - (void)updateFirstSessionWith: (UIApplicationState) state;
 - (void)reset;
+- (void)initializeTracking;
 @end

@@ -56,7 +56,8 @@
 
 - (NSString *)logLevelFor:(MappIntelligenceLogLevelDescription)description {
   NSString *log = nil;
-  if (self.logLevel <= description) {
+    if (self.logLevel == description ||
+  self.logLevel == kMappIntelligenceLogLevelDescriptionAll) {
     log = [NSString
         stringWithFormat:@"%@", [self logLevelForDescription:description]];
   }
@@ -88,6 +89,7 @@
     break;
   case kMappIntelligenceLogLevelDescriptionAll:
     logLevelForDescription = @"All";
+    break;
   case kMappIntelligenceLogLevelDescriptionNone:
     logLevelForDescription = @"None";
     break;

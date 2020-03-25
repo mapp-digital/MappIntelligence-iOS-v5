@@ -189,6 +189,13 @@
 			path = MappIntelligenceWatchOS;
 			sourceTree = "<group>";
 		};
+		A32AEA6A242B72CA00BC7B46 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A334860F23BF3E2300D0EB5F = {
 			isa = PBXGroup;
 			children = (
@@ -198,6 +205,7 @@
 				A334861923BF3E2300D0EB5F /* Products */,
 				A334863C23BF409D00D0EB5F /* MappIntelligence.h */,
 				BCEA32C023E979FD003AF806 /* MappIntelligenceTests */,
+				A32AEA6A242B72CA00BC7B46 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};

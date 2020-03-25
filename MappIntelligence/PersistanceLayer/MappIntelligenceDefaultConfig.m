@@ -102,7 +102,7 @@
       forDescription:kMappIntelligenceLogLevelDescriptionInfo];
   [_logger logObj:([@"Log Level is:  "
                       stringByAppendingFormat:@"%@",
-                                              [self getLogLevelFor:logLevel]])
+                                              [self getLogLevelFor:[_logger logLevel]]])
       forDescription:kMappIntelligenceLogLevelDescriptionInfo];
   [self validateTrackingIDs:self.trackIDs];
   [_logger logObj:([@"Tracking IDs: "

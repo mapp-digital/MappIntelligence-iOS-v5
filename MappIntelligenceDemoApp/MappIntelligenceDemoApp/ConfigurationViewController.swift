@@ -26,7 +26,7 @@ class ConfigurationViewController: UIViewController, UIPickerViewDelegate, UIPic
     var selectedLogLevel: String?
     var logLevelIndex = 0
     
-    var logLevelList = ["Debug","Warning","Error","Fault","Info","All", "None"]
+    var logLevelList = ["All", "Debug","Warning","Error","Fault","Info", "None"]
     
     
     override func viewDidLoad() {
@@ -133,12 +133,12 @@ class ConfigurationViewController: UIViewController, UIPickerViewDelegate, UIPic
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        pickerView.view(forRow: 0, forComponent: component)?.accessibilityLabel = "debug"
-        pickerView.view(forRow: 1, forComponent: component)?.accessibilityLabel = "warning"
-        pickerView.view(forRow: 2, forComponent: component)?.accessibilityLabel = "error"
-        pickerView.view(forRow: 3, forComponent: component)?.accessibilityLabel = "fault"
-        pickerView.view(forRow: 4, forComponent: component)?.accessibilityLabel = "info"
-        pickerView.view(forRow: 5, forComponent: component)?.accessibilityLabel = "all"
+        pickerView.view(forRow: 0, forComponent: component)?.accessibilityLabel = "all"
+        pickerView.view(forRow: 1, forComponent: component)?.accessibilityLabel = "debug"
+        pickerView.view(forRow: 2, forComponent: component)?.accessibilityLabel = "warning"
+        pickerView.view(forRow: 3, forComponent: component)?.accessibilityLabel = "error"
+        pickerView.view(forRow: 4, forComponent: component)?.accessibilityLabel = "fault"
+        pickerView.view(forRow: 5, forComponent: component)?.accessibilityLabel = "info"
         pickerView.view(forRow: 6, forComponent: component)?.accessibilityLabel = "none"
     selectedLogLevel = logLevelList[row] // selected item
     setLogLevelTF.text = selectedLogLevel

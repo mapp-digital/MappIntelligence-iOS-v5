@@ -87,6 +87,7 @@ static MappIntelligenceDefaultConfig *config = nil;
   [config logConfig];
 
   tracker = [DefaultTracker sharedInstance];
+  [tracker initializeTracking];
 }
 
 - (void)reset {
