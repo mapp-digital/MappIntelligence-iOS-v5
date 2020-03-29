@@ -80,6 +80,13 @@
 			remoteGlobalIDString = A334861723BF3E2300D0EB5F;
 			remoteInfo = Webrekk;
 		};
+		A3D489E4242CF9D9001792F4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A334861023BF3E2300D0EB5F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A334861723BF3E2300D0EB5F;
+			remoteInfo = MappIntelligenceSDK;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -133,6 +140,8 @@
 		A380D20F2413ED35009E2CD8 /* RequestUrlBuilder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RequestUrlBuilder.m; sourceTree = "<group>"; };
 		A380D21224141B55009E2CD8 /* URLSizeMonitor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = URLSizeMonitor.h; sourceTree = "<group>"; };
 		A380D21324141B55009E2CD8 /* URLSizeMonitor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = URLSizeMonitor.m; sourceTree = "<group>"; };
+		A3DD62E0242CE045004B3A2D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS6.1.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		A3DD62E2242CE111004B3A2D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS6.1.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		A3EAFF5F2418E02F009D5108 /* UIFlowObserver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIFlowObserver.h; sourceTree = "<group>"; };
 		A3EAFF602418E02F009D5108 /* UIFlowObserver.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIFlowObserver.m; sourceTree = "<group>"; };
 		BCA1738123D5C12A00B31430 /* MappIntelligenceDefaultConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MappIntelligenceDefaultConfig.h; sourceTree = "<group>"; };
@@ -192,6 +201,8 @@
 		A32AEA6A242B72CA00BC7B46 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A3DD62E2242CE111004B3A2D /* Foundation.framework */,
+				A3DD62E0242CE045004B3A2D /* UIKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -382,6 +393,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				A3D489E5242CF9D9001792F4 /* PBXTargetDependency */,
 			);
 			name = MappIntelligenceWatchOS;
 			productName = MappIntelligenceWatchOS;
@@ -577,6 +589,11 @@
 			isa = PBXTargetDependency;
 			target = A334861723BF3E2300D0EB5F /* MappIntelligenceSDK */;
 			targetProxy = A334865623BF435D00D0EB5F /* PBXContainerItemProxy */;
+		};
+		A3D489E5242CF9D9001792F4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A334861723BF3E2300D0EB5F /* MappIntelligenceSDK */;
+			targetProxy = A3D489E4242CF9D9001792F4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

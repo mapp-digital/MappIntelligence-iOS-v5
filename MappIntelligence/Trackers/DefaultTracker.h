@@ -16,11 +16,13 @@
 @property BOOL isReady;
 + (nullable instancetype)sharedInstance;
 - (NSString *_Nullable)generateEverId;
+#if !TARGET_OS_WATCH
 - (void)track:(UIViewController *_Nonnull)controller;
+- (void)updateFirstSessionWith: (UIApplicationState) state;
+#endif
 - (void)trackWith:(NSString *_Nonnull)name;
 + (NSUserDefaults *_Nonnull)sharedDefaults;
 - (void)initHibernate;
-- (void)updateFirstSessionWith: (UIApplicationState) state;
 - (void)reset;
 - (void)initializeTracking;
 @end

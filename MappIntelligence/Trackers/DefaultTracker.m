@@ -121,13 +121,13 @@ static NSString *userAgent;
   }
   return tmpEverId;
 }
-
+#if !TARGET_OS_WATCHOS
 - (void)track:(UIViewController *)controller {
   NSString *CurrentSelectedCViewController =
       NSStringFromClass([controller class]);
   [self trackWith:CurrentSelectedCViewController];
 }
-
+#endif
 - (void)trackWith:(NSString *)name {
   if ([_config.MappIntelligenceId isEqual:@""] ||
       [_config.serverUrl isEqual:@""]) {
@@ -217,7 +217,7 @@ static NSString *userAgent;
   [_defaults setObject:date forKey:appHibernationDate];
   _isReady = NO;
 }
-
+#if !TARGET_OS_WATCHOS
 - (void)updateFirstSessionWith: (UIApplicationState) state {
     if (state == UIApplicationStateInactive) {
         _isFirstEventOfSession = YES;
@@ -237,5 +237,6 @@ static NSString *userAgent;
     [_defaults synchronize];
     everID = [self getNewEverID];
 }
+#endif
 @end
 
