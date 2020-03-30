@@ -8,7 +8,7 @@
 
 #import "MappIntelligenceWatchOS.h"
 #import <WatchKit/WatchKit.h>
-//#import "MappIntelligence.h"
+#import "MappIntelligence.h"
 #import "DefaultTracker.h"
 //#import "MappIntelligenceLogger.h"
 //#import "MappIntelligence.h"
@@ -19,7 +19,7 @@
 //@property MappIntelligenceDefaultConfig *configuration;
 //@property DefaultTracker *tracker;
 //@property MappIntelligenceLogger *logger;
-//@property MappIntelligence * shared;
+@property MappIntelligence * mappIntelligence;
 
 @end
 
@@ -48,36 +48,14 @@
 
     shared = [[MappIntelligenceWatchOS alloc] init];
   });
-    //shared = [[MappIntelligence alloc] init];
     
   return shared;
 }
-//
-//-(void)trackPageWith:(NSString *)name {
-//  [tracker trackWith:name];
-//}
-//
-//- (void)initWithConfiguration:(NSArray *)trackIDs
-//                        onTrackdomain:(NSString *)trackDomain
-//              withAutotrackingEnabled:(BOOL)autoTracking
-//                       requestTimeout:(NSTimeInterval)requestTimeout
-//                     numberOfRequests:(NSInteger)numberOfRequestInQueue
-//                  batchSupportEnabled:(BOOL)batchSupport
-//    viewControllerAutoTrackingEnabled:(BOOL)viewControllerAutoTracking
-//                          andLogLevel:(logLevel)lv {
-//
-//  [config setLogLevel:(MappIntelligenceLogLevelDescription)lv];
-//  [config setTrackIDs:trackIDs];
-//  [config setTrackDomain:trackDomain];
-//  [config setAutoTracking:autoTracking];
-//  [config setBatchSupport:batchSupport];
-//  [config setViewControllerAutoTracking:viewControllerAutoTracking];
-//  [config setRequestPerQueue:numberOfRequestInQueue];
-//  [config setRequestsInterval:requestTimeout];
-//  [config logConfig];
-//
-//  tracker = [DefaultTracker sharedInstance];
-//  [tracker initializeTracking];
-//}
+
+- (void)initWithConfiguration:(NSArray *)trackIDs onTrackdomain:(NSString *)trackDomain withAutotrackingEnabled:(BOOL)autoTracking requestTimeout:(NSTimeInterval)requestTimeout numberOfRequests:(NSInteger)numberOfRequestInQueue batchSupportEnabled:(BOOL)batchSupport viewControllerAutoTrackingEnabled:(BOOL)viewControllerAutoTracking andLogLevel:(NSInteger)lv {
+    _mappIntelligence = [MappIntelligence shared];
+    [_mappIntelligence initWithConfiguration:trackIDs onTrackdomain:trackDomain withAutotrackingEnabled:autoTracking requestTimeout:requestTimeout numberOfRequests:numberOfRequestInQueue batchSupportEnabled:batchSupport viewControllerAutoTrackingEnabled:viewControllerAutoTracking andLogLevel: all];
+    NSLog(@"Initialisation completed");
+}
 
 @end

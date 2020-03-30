@@ -12,6 +12,9 @@
 #import "Enviroment.h"
 #import <UIKit/UIKit.h>
 #import <sys/utsname.h>
+#if TARGET_OS_WATCH
+#import <WatchKit/WatchKit.h>
+#endif
 
 @implementation Enviroment
 
@@ -31,7 +34,11 @@
 }
 
 - (NSString *)operatingSystemName {
+#if !TARGET_OS_WATCH
   return [[UIDevice currentDevice] systemName];
+#else
+    return [[WKInterfaceDevice currentDevice] systemName];
+#endif
 }
 
 - (NSString *)operatingSystemVersionString {

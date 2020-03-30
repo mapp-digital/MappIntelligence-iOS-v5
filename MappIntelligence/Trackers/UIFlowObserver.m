@@ -16,7 +16,7 @@
 @interface UIFlowObserver ()
 
 @property DefaultTracker *tracker;
-#if !TARGET_OS_WATCHOS
+#if !TARGET_OS_WATCH
 @property UIApplication *application;
 @property NSObject *applicationDidBecomeActiveObserver;
 @property NSObject *applicationWillEnterForegroundObserver;
@@ -31,12 +31,14 @@
 - (instancetype)initWith:(DefaultTracker *)tracker {
     self = [super init];
     _tracker = tracker;
+#if !TARGET_OS_WATCH
     _sharedDefaults = [NSUserDefaults standardUserDefaults];
+#endif
     return self;
 }
 
 -(BOOL)setup {
-#if !TARGET_OS_WATCHOS
+#if !TARGET_OS_WATCH
   NSNotificationCenter *notificationCenter =
       [NSNotificationCenter defaultCenter];
     //Posted when the app becomes active.
@@ -68,8 +70,11 @@
 -(void)willEnterForeground {
     //[_tracker updateFirstSession];
     //NSLog(@"%ld",(long)[[UIApplication sharedApplication] applicationState] );
-    //application status if came relaunch app is INACTIVE
-    [_tracker updateFirstSessionWith:[[UIApplication sharedApplication] applicationState]];
+// application status if came relaunch app is INACTIVE
+#if !TARGET_OS_WATCH
+  [_tracker updateFirstSessionWith:[[UIApplication sharedApplication]
+                                       applicationState]];
+#endif
 }
 
 -(void)willResignActive {

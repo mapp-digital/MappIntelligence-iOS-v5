@@ -11,6 +11,9 @@
 #import "Properties.h"
 #import "MappIntelligence.h"
 #import "URLSizeMonitor.h"
+#if TARGET_OS_WATCH
+#import <WatchKit/WatchKit.h>
+#endif
 
 @interface RequestUrlBuilder ()
 
@@ -67,9 +70,18 @@
   }
 
   Properties *properties = [request properties];
+#if !TARGET_OS_WATCH
   NSString *screenSize = [[NSString alloc]
       initWithFormat:@"%.fx%.f", [UIScreen mainScreen].bounds.size.width,
                      [UIScreen mainScreen].bounds.size.height];
+#else
+  NSString *screenSize = [[NSString alloc]
+      initWithFormat:@"%.fx%.f",
+                     [[WKInterfaceDevice currentDevice] screenBounds]
+                         .size.width,
+                     [[WKInterfaceDevice currentDevice] screenBounds]
+                         .size.height];
+#endif
   NSString *libraryVersionOriginal = [MappIntelligence version];
   NSString *libraryVersionParced =
       [self codeString:[libraryVersionOriginal

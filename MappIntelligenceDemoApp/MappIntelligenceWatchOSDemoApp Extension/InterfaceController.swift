@@ -16,6 +16,8 @@ class InterfaceController: WKInterfaceController {
         super.awake(withContext: context)
         
         // Configure interface objects here.
+        MappIntelligenceWatchOS.shared()?.initWithConfiguration([385255285199574 as UInt64], onTrackdomain: "https://q3.webtrekk.net", withAutotrackingEnabled: true, requestTimeout: 45, numberOfRequests: 40, batchSupportEnabled: false, viewControllerAutoTrackingEnabled: true, andLogLevel: 0)
+
     }
     
     override func willActivate() {

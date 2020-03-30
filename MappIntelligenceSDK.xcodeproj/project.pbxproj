@@ -28,6 +28,19 @@
 		A334861E23BF3E2300D0EB5F /* MappIntelligence.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A334861B23BF3E2300D0EB5F /* MappIntelligence.h */; };
 		A334862D23BF3F2800D0EB5F /* libMappIntelligenceSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A334861823BF3E2300D0EB5F /* libMappIntelligenceSDK.a */; };
 		A334863423BF3FAD00D0EB5F /* MappIntelligence.h in Headers */ = {isa = PBXBuildFile; fileRef = A334861B23BF3E2300D0EB5F /* MappIntelligence.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A36C6DFF2432380A008A9CB6 /* MappIntelligence.m in Sources */ = {isa = PBXBuildFile; fileRef = A334861C23BF3E2300D0EB5F /* MappIntelligence.m */; };
+		A36C6E0024323873008A9CB6 /* DefaultTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBE5C0823F29E49002125C1 /* DefaultTracker.m */; };
+		A36C6E012432387F008A9CB6 /* MappIntelligenceLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = BCEAE6B723BF5A8B007F410D /* MappIntelligenceLogger.m */; };
+		A36C6E022432388A008A9CB6 /* MappIntelligenceDefaultConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD5E2C423CF38F300CE2092 /* MappIntelligenceDefaultConfig.m */; };
+		A36C6E03243238E3008A9CB6 /* Properties.m in Sources */ = {isa = PBXBuildFile; fileRef = A36CD7D023F447D0004E3E2D /* Properties.m */; };
+		A36C6E0424323903008A9CB6 /* RequestTrackerBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = A380D2072412D8F2009E2CD8 /* RequestTrackerBuilder.m */; };
+		A36C6E052432390B008A9CB6 /* TrackingEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = A380D1F92411478C009E2CD8 /* TrackingEvent.m */; };
+		A36C6E0624323917008A9CB6 /* RequestUrlBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = A380D20F2413ED35009E2CD8 /* RequestUrlBuilder.m */; };
+		A36C6E072432392A008A9CB6 /* Enviroment.m in Sources */ = {isa = PBXBuildFile; fileRef = A380D2032412B0AB009E2CD8 /* Enviroment.m */; };
+		A36C6E0824323931008A9CB6 /* Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = A380D20B2413D317009E2CD8 /* Configuration.m */; };
+		A36C6E092432393A008A9CB6 /* UIFlowObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = A3EAFF602418E02F009D5108 /* UIFlowObserver.m */; };
+		A36C6E0A24323F17008A9CB6 /* URLSizeMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = A380D21324141B55009E2CD8 /* URLSizeMonitor.m */; };
+		A36C6E0B24323F22008A9CB6 /* TrackerRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = A36CD7CC23F44594004E3E2D /* TrackerRequest.m */; };
 		A36CD7CD23F44594004E3E2D /* TrackerRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = A36CD7CB23F44594004E3E2D /* TrackerRequest.h */; };
 		A36CD7CE23F44594004E3E2D /* TrackerRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = A36CD7CC23F44594004E3E2D /* TrackerRequest.m */; };
 		A36CD7D123F447D0004E3E2D /* Properties.h in Headers */ = {isa = PBXBuildFile; fileRef = A36CD7CF23F447D0004E3E2D /* Properties.h */; };
@@ -80,7 +93,7 @@
 			remoteGlobalIDString = A334861723BF3E2300D0EB5F;
 			remoteInfo = Webrekk;
 		};
-		A3D489E4242CF9D9001792F4 /* PBXContainerItemProxy */ = {
+		A36C6DFD243233FE008A9CB6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A334861023BF3E2300D0EB5F /* Project object */;
 			proxyType = 1;
@@ -393,7 +406,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				A3D489E5242CF9D9001792F4 /* PBXTargetDependency */,
+				A36C6DFE243233FE008A9CB6 /* PBXTargetDependency */,
 			);
 			name = MappIntelligenceWatchOS;
 			productName = MappIntelligenceWatchOS;
@@ -536,6 +549,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A36C6E0B24323F22008A9CB6 /* TrackerRequest.m in Sources */,
+				A36C6E0A24323F17008A9CB6 /* URLSizeMonitor.m in Sources */,
+				A36C6E092432393A008A9CB6 /* UIFlowObserver.m in Sources */,
+				A36C6E0824323931008A9CB6 /* Configuration.m in Sources */,
+				A36C6E072432392A008A9CB6 /* Enviroment.m in Sources */,
+				A36C6E0624323917008A9CB6 /* RequestUrlBuilder.m in Sources */,
+				A36C6E052432390B008A9CB6 /* TrackingEvent.m in Sources */,
+				A36C6E0424323903008A9CB6 /* RequestTrackerBuilder.m in Sources */,
+				A36C6E03243238E3008A9CB6 /* Properties.m in Sources */,
+				A36C6E022432388A008A9CB6 /* MappIntelligenceDefaultConfig.m in Sources */,
+				A36C6E012432387F008A9CB6 /* MappIntelligenceLogger.m in Sources */,
+				A36C6E0024323873008A9CB6 /* DefaultTracker.m in Sources */,
+				A36C6DFF2432380A008A9CB6 /* MappIntelligence.m in Sources */,
 				A32AEA29242A6F4600BC7B46 /* MappIntelligenceWatchOS.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -590,10 +616,10 @@
 			target = A334861723BF3E2300D0EB5F /* MappIntelligenceSDK */;
 			targetProxy = A334865623BF435D00D0EB5F /* PBXContainerItemProxy */;
 		};
-		A3D489E5242CF9D9001792F4 /* PBXTargetDependency */ = {
+		A36C6DFE243233FE008A9CB6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = A334861723BF3E2300D0EB5F /* MappIntelligenceSDK */;
-			targetProxy = A3D489E4242CF9D9001792F4 /* PBXContainerItemProxy */;
+			targetProxy = A36C6DFD243233FE008A9CB6 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

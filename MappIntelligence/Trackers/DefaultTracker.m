@@ -121,7 +121,7 @@ static NSString *userAgent;
   }
   return tmpEverId;
 }
-#if !TARGET_OS_WATCHOS
+#if !TARGET_OS_WATCH
 - (void)track:(UIViewController *)controller {
   NSString *CurrentSelectedCViewController =
       NSStringFromClass([controller class]);
@@ -217,7 +217,7 @@ static NSString *userAgent;
   [_defaults setObject:date forKey:appHibernationDate];
   _isReady = NO;
 }
-#if !TARGET_OS_WATCHOS
+#if !TARGET_OS_WATCH
 - (void)updateFirstSessionWith: (UIApplicationState) state {
     if (state == UIApplicationStateInactive) {
         _isFirstEventOfSession = YES;
@@ -228,7 +228,7 @@ static NSString *userAgent;
     [_conditionUntilGetFNS signal];
     [_conditionUntilGetFNS unlock];
 }
-
+#endif
 - (void)reset {
     sharedTracker = NULL;
     sharedTracker = [self init];
@@ -237,6 +237,6 @@ static NSString *userAgent;
     [_defaults synchronize];
     everID = [self getNewEverID];
 }
-#endif
+
 @end
 
