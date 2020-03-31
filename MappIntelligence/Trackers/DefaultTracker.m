@@ -153,6 +153,9 @@ static NSString *userAgent;
   // create request with page event
   TrackingEvent *event = [[TrackingEvent alloc] init];
   [event setPageName:name];
+#ifdef TARGET_OS_WATCH
+    _isReady = YES;
+#endif
 
   dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),
                  ^(void) {
@@ -172,7 +175,7 @@ static NSString *userAgent;
   Properties *requestProperties = [self generateRequestProperties];
   requestProperties.locale = [NSLocale currentLocale];
 
-#ifdef TARGET_OS_WATCHOS
+#ifdef TARGET_OS_WATCH
 
 #else
 // requestProperties.screenSize =

@@ -37,4 +37,8 @@
     [_mappIntelligence initWithConfiguration:trackIDs onTrackdomain:trackDomain withAutotrackingEnabled:autoTracking requestTimeout:requestTimeout numberOfRequests:numberOfRequestInQueue batchSupportEnabled:batchSupport viewControllerAutoTrackingEnabled:viewControllerAutoTracking andLogLevel: (logLevel)lv];
 }
 
+-(void)trackPageWith:(NSString *)name {
+    [_mappIntelligence trackPageWith:name];
+}
+
 @end

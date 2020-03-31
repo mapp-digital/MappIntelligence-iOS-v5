@@ -29,6 +29,6 @@ class InterfaceController: WKInterfaceController {
     }
 
     @IBAction func TrackPage() {
-        
+        MappIntelligenceWatchOS.shared()?.trackPage(with: "trackWatchOSTestPageName")
     }
 }
