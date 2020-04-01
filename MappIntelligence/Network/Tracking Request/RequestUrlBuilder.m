@@ -71,16 +71,21 @@
 
   Properties *properties = [request properties];
 #if !TARGET_OS_WATCH
+  CGFloat scale = [[UIScreen mainScreen] scale];
   NSString *screenSize = [[NSString alloc]
-      initWithFormat:@"%.fx%.f", [UIScreen mainScreen].bounds.size.width,
-                     [UIScreen mainScreen].bounds.size.height];
+      initWithFormat:@"%.fx%.f",
+                     [UIScreen mainScreen].bounds.size.width * scale,
+                     [UIScreen mainScreen].bounds.size.height * scale];
 #else
+  CGFloat scale = [[WKInterfaceDevice currentDevice] screenScale];
   NSString *screenSize = [[NSString alloc]
       initWithFormat:@"%.fx%.f",
                      [[WKInterfaceDevice currentDevice] screenBounds]
-                         .size.width,
+                             .size.width *
+                         scale,
                      [[WKInterfaceDevice currentDevice] screenBounds]
-                         .size.height];
+                             .size.height *
+                         scale];
 #endif
   NSString *libraryVersionOriginal = [MappIntelligence version];
   NSString *libraryVersionParced =

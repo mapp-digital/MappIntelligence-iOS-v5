@@ -9,6 +9,9 @@
 #ifndef DefaultTracker_h
 #define DefaultTracker_h
 #import <UIKit/UIKit.h>
+#if TARGET_OS_WATCH
+#import <WatchKit/WatchKit.h>
+#endif
 
 #endif /* DefaultTracker_h */
 
@@ -19,6 +22,8 @@
 #if !TARGET_OS_WATCH
 - (void)track:(UIViewController *_Nonnull)controller;
 - (void)updateFirstSessionWith: (UIApplicationState) state;
+#else
+- (void)updateFirstSessionWith: (WKApplicationState) state;
 #endif
 - (void)trackWith:(NSString *_Nonnull)name;
 + (NSUserDefaults *_Nonnull)sharedDefaults;

@@ -221,24 +221,38 @@ static NSString *userAgent;
   _isReady = NO;
 }
 #if !TARGET_OS_WATCH
-- (void)updateFirstSessionWith: (UIApplicationState) state {
-    if (state == UIApplicationStateInactive) {
-        _isFirstEventOfSession = YES;
-    } else {
-        _isFirstEventOfSession = NO;
-    }
-    _isReady = YES;
-    [_conditionUntilGetFNS signal];
-    [_conditionUntilGetFNS unlock];
+- (void)updateFirstSessionWith:(UIApplicationState)state {
+  if (state == UIApplicationStateInactive) {
+    _isFirstEventOfSession = YES;
+  } else {
+    _isFirstEventOfSession = NO;
+  }
+  [self fireSignal];
+}
+#else
+- (void)updateFirstSessionWith:(WKApplicationState)state {
+  if (state != WKApplicationStateInactive) {
+    _isFirstEventOfSession = YES;
+  } else {
+    _isFirstEventOfSession = NO;
+  }
+    [self fireSignal];
 }
 #endif
+
+- (void)fireSignal {
+  _isReady = YES;
+  [_conditionUntilGetFNS signal];
+  [_conditionUntilGetFNS unlock];
+}
+
 - (void)reset {
-    sharedTracker = NULL;
-    sharedTracker = [self init];
-    _isReady = YES;
-    [_defaults removeObjectForKey:isFirstEventOfApp];
-    [_defaults synchronize];
-    everID = [self getNewEverID];
+  sharedTracker = NULL;
+  sharedTracker = [self init];
+  _isReady = YES;
+  [_defaults removeObjectForKey:isFirstEventOfApp];
+  [_defaults synchronize];
+  everID = [self getNewEverID];
 }
 
 @end

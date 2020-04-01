@@ -7,7 +7,8 @@
 //
 
 #import "UIFlowObserver.h"
-#if TARGET_OS_WATCHOS
+#if TARGET_OS_WATCH
+#import <WatchKit/WatchKit.h>
 #else
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
@@ -18,11 +19,11 @@
 @property DefaultTracker *tracker;
 #if !TARGET_OS_WATCH
 @property UIApplication *application;
+#endif
 @property NSObject *applicationDidBecomeActiveObserver;
 @property NSObject *applicationWillEnterForegroundObserver;
 @property NSObject *applicationWillResignActiveObserver;
 @property NSUserDefaults *sharedDefaults;
-#endif
 
 @end
 
@@ -37,10 +38,10 @@
     return self;
 }
 
--(BOOL)setup {
-#if !TARGET_OS_WATCH
+- (BOOL)setup {
   NSNotificationCenter *notificationCenter =
       [NSNotificationCenter defaultCenter];
+#if !TARGET_OS_WATCH
     //Posted when the app becomes active.
     _applicationDidBecomeActiveObserver = [notificationCenter addObserverForName: UIApplicationDidBecomeActiveNotification object:NULL queue:NULL usingBlock:^(NSNotification * _Nonnull note) {
         [self didBecomeActive];
@@ -58,6 +59,12 @@
         //[self willResignActive];
     }];
 #else
+    _applicationWillEnterForegroundObserver = [notificationCenter addObserverForName:@"UIApplicationWillEnterForegroundNotification" object:NULL queue:NULL usingBlock:^(NSNotification * _Nonnull note) {
+        [self willEnterForeground];
+    }];
+    _applicationDidBecomeActiveObserver = [notificationCenter addObserverForName: @"UIApplicationDidBecomeActiveNotification" object:NULL queue:NULL usingBlock:^(NSNotification * _Nonnull note) {
+        [self didBecomeActive];
+    }];
 #endif
   return YES;
 }
@@ -65,6 +72,9 @@
 -(void)didBecomeActive {
     //[_tracker updateFirstSession];
     //NSLog(@"%ld",(long)[[UIApplication sharedApplication] applicationState] );
+#if TARGET_OS_WATCH
+//    [_tracker updateFirstSessionWith:[[WKExtension sharedExtension] applicationState]];
+#endif
 }
 
 -(void)willEnterForeground {
@@ -74,6 +84,9 @@
 #if !TARGET_OS_WATCH
   [_tracker updateFirstSessionWith:[[UIApplication sharedApplication]
                                        applicationState]];
+#else
+  [_tracker updateFirstSessionWith:[[WKExtension sharedExtension] applicationState]];
+    NSLog(@"%ld session state: %ld", (long)[[WKExtension sharedExtension] applicationState], (long)[[WKExtendedRuntimeSession session] state]);
 #endif
 }
 
