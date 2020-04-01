@@ -120,7 +120,10 @@
   @try {
     [self.tracker generateEverId];
   } @catch (NSException *exception) {
-    NSLog(@"Exception %@", exception);
+    [_logger logObj:[[NSString alloc]
+                        initWithFormat:@"Exception while generate ever id: %@",
+                                       exception]
+        forDescription:kMappIntelligenceLogLevelDescriptionError];
   } @finally {
     //        [_logger logObj:([@"Ever ID is: "
     //        stringByAppendingFormat:@"%@", [self.tracker generateEverId]])
@@ -134,16 +137,19 @@
 
 - (void)validateNumberOfRequestsPerQueue:(NSInteger)numberOfRequests {
   if (numberOfRequests > 10000) {
-    NSLog(@"Number of requests can't be grater than 10000, will be returned to "
-          @"default (10).");
+    [_logger logObj:@"Number of requests can't be grater than 10000, will be "
+                    @"returned to "
+                    @"default (10)."
+        forDescription:kMappIntelligenceLogLevelDescriptionError];
     self.requestPerQueue = 10;
   }
 }
 
 - (void)validateRequestTimeInterval:(NSInteger)timeInterval {
   if (timeInterval > 3600.0) {
-    NSLog(@"Request time interval can't be more than 3600 seconds (60 "
-          @"minutes), will be reset to default (15 minutes).");
+    [_logger logObj:@"Request time interval can't be more than 3600 seconds "
+                    @"(60 minutes), will be reset to default (15 minutes)."
+        forDescription:kMappIntelligenceLogLevelDescriptionError];
     self.requestsInterval = 900.0;
   }
 }
@@ -155,7 +161,8 @@
     components = [[NSURLComponents alloc] initWithString:trackingDomain];
   }
   if (!components) {
-    NSLog(@"You must enter a valid url format for tracking domain!");
+    [_logger logObj:@"You must enter a valid url format for tracking domain!"
+        forDescription:kMappIntelligenceLogLevelDescriptionError];
   } else if (!components.scheme) {
     if (([trackingDomain rangeOfString:@"https://"].location == NSNotFound) ||
         ([trackingDomain rangeOfString:@"http://"].location == NSNotFound)) {
@@ -176,7 +183,8 @@
   if ([[tempTrackingIDs lastObject] isEqual:@""] ||
       [[tempTrackingIDs lastObject] isEqual:@","] ||
       [[tempTrackingIDs lastObject] isEqual:@" "]) {
-    NSLog(@"Tracking IDs can not contain blank spaces or empty strings!");
+      [_logger logObj:@"Tracking IDs can not contain blank spaces or empty strings!"
+      forDescription:kMappIntelligenceLogLevelDescriptionError];
   }
 }
 
