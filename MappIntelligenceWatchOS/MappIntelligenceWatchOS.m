@@ -41,4 +41,8 @@
     [_mappIntelligence trackPageWith:name];
 }
 
+- (void)reset {
+    [_mappIntelligence reset];
+}
+
 @end

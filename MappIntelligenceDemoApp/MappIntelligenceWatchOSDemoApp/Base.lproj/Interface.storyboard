@@ -16,6 +16,16 @@
                                 <action selector="TrackPage" destination="AgC-eL-Hgc" id="jRC-5w-60f"/>
                             </connections>
                         </button>
+                        <button width="1" alignment="left" title="Reset" id="9Al-Td-v19">
+                            <connections>
+                                <action selector="reset" destination="AgC-eL-Hgc" id="Hx2-Gp-iQY"/>
+                            </connections>
+                        </button>
+                        <button width="1" alignment="left" title="Init Again" id="6Oy-1d-yLh">
+                            <connections>
+                                <action selector="InitAgain" destination="AgC-eL-Hgc" id="7Sr-ZI-5XP"/>
+                            </connections>
+                        </button>
                     </items>
                 </controller>
             </objects>

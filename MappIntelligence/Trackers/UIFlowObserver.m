@@ -65,13 +65,17 @@
     _applicationDidBecomeActiveObserver = [notificationCenter addObserverForName: @"UIApplicationDidBecomeActiveNotification" object:NULL queue:NULL usingBlock:^(NSNotification * _Nonnull note) {
         [self didBecomeActive];
     }];
+    [notificationCenter addObserverForName:@"UIApplicationWillTerminateNotification" object:NULL queue:NULL usingBlock:^(NSNotification * _Nonnull note) {
+        [self willTerminate];
+    }];
+    _applicationWillResignActiveObserver = [notificationCenter addObserverForName:@"UIApplicationWillResignActiveNotification" object:NULL queue:NULL usingBlock:^(NSNotification * _Nonnull note) {
+        [self willResignActive];
+    }];
 #endif
   return YES;
 }
 
 -(void)didBecomeActive {
-    //[_tracker updateFirstSession];
-    //NSLog(@"%ld",(long)[[UIApplication sharedApplication] applicationState] );
 #if TARGET_OS_WATCH
 //    [_tracker updateFirstSessionWith:[[WKExtension sharedExtension] applicationState]];
 #endif
@@ -91,7 +95,16 @@
 }
 
 -(void)willResignActive {
+#if TARGET_OS_WATCH
+    NSLog(@"%ld session state: %ld", (long)[[WKExtension sharedExtension] applicationState], (long)[[WKExtendedRuntimeSession session] state]);
+#endif  
   [_tracker initHibernate];
+}
+
+-(void)willTerminate {
+#if TARGET_OS_WATCH
+    NSLog(@"Watch OS will be terminate");
+#endif
 }
 
 @end

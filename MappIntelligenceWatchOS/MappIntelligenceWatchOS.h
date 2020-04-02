@@ -38,5 +38,6 @@ typedef NS_ENUM(NSInteger, logWatchOSLevel) {
 viewControllerAutoTrackingEnabled:(BOOL)viewControllerAutoTracking
                       andLogLevel:(logWatchOSLevel)lv;
 - (void)trackPageWith:(NSString *_Nullable)name;
+- (void)reset;
 
 @end

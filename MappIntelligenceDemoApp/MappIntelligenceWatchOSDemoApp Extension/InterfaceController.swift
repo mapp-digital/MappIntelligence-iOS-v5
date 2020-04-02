@@ -31,4 +31,10 @@ class InterfaceController: WKInterfaceController {
     @IBAction func TrackPage() {
         MappIntelligenceWatchOS.shared()?.trackPage(with: "trackWatchOSTestPageName")
     }
+    @IBAction func reset() {
+        MappIntelligenceWatchOS.shared()?.reset()
+    }
+    @IBAction func InitAgain() {
+        MappIntelligenceWatchOS.shared()?.initWithConfiguration([385255285199574 as UInt64], onTrackdomain: "https://q3.webtrekk.net", withAutotrackingEnabled: true, requestTimeout: 45, numberOfRequests: 40, batchSupportEnabled: false, viewControllerAutoTrackingEnabled: true, andLogLevel: .allWatchOSLogs)
+    }
 }
