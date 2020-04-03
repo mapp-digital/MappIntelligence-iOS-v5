@@ -14,6 +14,8 @@
 #import <AVFoundation/AVFoundation.h>
 #endif
 
+#define doesAppEnterInBackground @"enteredInBackground";
+
 @interface UIFlowObserver ()
 
 @property DefaultTracker *tracker;
@@ -23,6 +25,7 @@
 @property NSObject *applicationDidBecomeActiveObserver;
 @property NSObject *applicationWillEnterForegroundObserver;
 @property NSObject *applicationWillResignActiveObserver;
+@property NSObject *applicationWillTerminataObserver;
 @property NSUserDefaults *sharedDefaults;
 
 @end
@@ -32,9 +35,7 @@
 - (instancetype)initWith:(DefaultTracker *)tracker {
     self = [super init];
     _tracker = tracker;
-#if !TARGET_OS_WATCH
     _sharedDefaults = [NSUserDefaults standardUserDefaults];
-#endif
     return self;
 }
 
@@ -65,7 +66,7 @@
     _applicationDidBecomeActiveObserver = [notificationCenter addObserverForName: @"UIApplicationDidBecomeActiveNotification" object:NULL queue:NULL usingBlock:^(NSNotification * _Nonnull note) {
         [self didBecomeActive];
     }];
-    [notificationCenter addObserverForName:@"UIApplicationWillTerminateNotification" object:NULL queue:NULL usingBlock:^(NSNotification * _Nonnull note) {
+    _applicationWillTerminataObserver = [notificationCenter addObserverForName:@"UIApplicationWillTerminateNotification" object:NULL queue:NULL usingBlock:^(NSNotification * _Nonnull note) {
         [self willTerminate];
     }];
     _applicationWillResignActiveObserver = [notificationCenter addObserverForName:@"UIApplicationWillResignActiveNotification" object:NULL queue:NULL usingBlock:^(NSNotification * _Nonnull note) {
@@ -76,35 +77,28 @@
 }
 
 -(void)didBecomeActive {
-#if TARGET_OS_WATCH
-//    [_tracker updateFirstSessionWith:[[WKExtension sharedExtension] applicationState]];
-#endif
+    
 }
 
 -(void)willEnterForeground {
-    //[_tracker updateFirstSession];
-    //NSLog(@"%ld",(long)[[UIApplication sharedApplication] applicationState] );
-// application status if came relaunch app is INACTIVE
 #if !TARGET_OS_WATCH
   [_tracker updateFirstSessionWith:[[UIApplication sharedApplication]
                                        applicationState]];
 #else
-  [_tracker updateFirstSessionWith:[[WKExtension sharedExtension] applicationState]];
-    NSLog(@"%ld session state: %ld", (long)[[WKExtension sharedExtension] applicationState], (long)[[WKExtendedRuntimeSession session] state]);
+  [_tracker updateFirstSessionWith:WKApplicationStateActive];
 #endif
 }
 
 -(void)willResignActive {
 #if TARGET_OS_WATCH
-    NSLog(@"%ld session state: %ld", (long)[[WKExtension sharedExtension] applicationState], (long)[[WKExtendedRuntimeSession session] state]);
-#endif  
+    NSLog(@"will resign active %ld session state: %ld", (long)[[WKExtension sharedExtension] applicationState], (long)[[WKExtendedRuntimeSession session] state]);
+    [_sharedDefaults setBool:YES forKey:@"enteredInBackground"];
+    [_sharedDefaults synchronize];
+#endif
   [_tracker initHibernate];
 }
 
 -(void)willTerminate {
-#if TARGET_OS_WATCH
-    NSLog(@"Watch OS will be terminate");
-#endif
 }
 
 @end

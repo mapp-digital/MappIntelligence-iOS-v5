@@ -228,15 +228,26 @@ static NSString *userAgent;
     _isFirstEventOfSession = NO;
   }
   [self fireSignal];
+    
 }
 #else
 - (void)updateFirstSessionWith:(WKApplicationState)state {
-  if (state != WKApplicationStateInactive) {
-    _isFirstEventOfSession = YES;
-  } else {
-    _isFirstEventOfSession = NO;
-  }
-    [self fireSignal];
+ NSDate *date = [[NSDate alloc] init];
+ [[MappIntelligenceLogger shared]
+             logObj:[[NSString alloc]
+                        initWithFormat:
+                            @" interval since last close of app:  %f",
+                            [date
+                                timeIntervalSinceDate:
+                                    [_defaults objectForKey:appHibernationDate]]]
+     forDescription:kMappIntelligenceLogLevelDescriptionDebug];
+ if ([date timeIntervalSinceDate:[_defaults objectForKey:appHibernationDate]] >
+     5 * 60) {
+   _isFirstEventOfSession = YES;
+ } else {
+   _isFirstEventOfSession = NO;
+ }
+ [self fireSignal];
 }
 #endif
 
