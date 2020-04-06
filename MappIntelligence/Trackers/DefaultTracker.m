@@ -175,11 +175,6 @@ static NSString *userAgent;
   Properties *requestProperties = [self generateRequestProperties];
   requestProperties.locale = [NSLocale currentLocale];
 
-#ifdef TARGET_OS_WATCH
-
-#else
-// requestProperties.screenSize =
-#endif
   [requestProperties setIsFirstEventOfApp:_isFirstEventOpen];
   [requestProperties setIsFirstEventOfSession:_isFirstEventOfSession];
   [requestProperties setIsFirstEventAfterAppUpdate:NO];
@@ -242,7 +237,7 @@ static NSString *userAgent;
                                     [_defaults objectForKey:appHibernationDate]]]
      forDescription:kMappIntelligenceLogLevelDescriptionDebug];
  if ([date timeIntervalSinceDate:[_defaults objectForKey:appHibernationDate]] >
-     5 * 60) {
+     30 * 60) {
    _isFirstEventOfSession = YES;
  } else {
    _isFirstEventOfSession = NO;

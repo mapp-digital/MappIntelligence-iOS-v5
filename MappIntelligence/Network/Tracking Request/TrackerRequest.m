@@ -58,7 +58,7 @@
         [self->_loger logObj:[[NSString alloc]
                                  initWithFormat:
                                      @"Response from tacking server: %@",
-                                     [error description]]
+                                     [response description]]
               forDescription:kMappIntelligenceLogLevelDescriptionDebug];
       }] resume];
 }

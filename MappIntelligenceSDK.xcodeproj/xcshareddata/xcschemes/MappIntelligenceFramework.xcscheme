@@ -28,6 +28,16 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A334862723BF3F2800D0EB5F"
+               BuildableName = "MappIntelligenceTests.xctest"
+               BlueprintName = "MappIntelligenceTests"
+               ReferencedContainer = "container:MappIntelligenceSDK.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
