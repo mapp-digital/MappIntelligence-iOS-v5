@@ -22,9 +22,11 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		A31D7A4F243CC0F200386A1C /* TrackerRequestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A31D7A4E243CC0F200386A1C /* TrackerRequestTests.m */; };
 		A32AEA29242A6F4600BC7B46 /* MappIntelligenceWatchOS.m in Sources */ = {isa = PBXBuildFile; fileRef = A32AEA28242A6F4600BC7B46 /* MappIntelligenceWatchOS.m */; };
 		A32AEA2A242A6F4600BC7B46 /* MappIntelligenceWatchOS.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A32AEA27242A6F4600BC7B46 /* MappIntelligenceWatchOS.h */; };
 		A32EE09F243B574E00EDC5B8 /* UIFlowObserverTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A32EE09E243B574E00EDC5B8 /* UIFlowObserverTests.m */; };
+		A32EE0A2243CB97200EDC5B8 /* MappIntelligenceDefaultConfigTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A32EE0A1243CB97200EDC5B8 /* MappIntelligenceDefaultConfigTest.m */; };
 		A334861D23BF3E2300D0EB5F /* MappIntelligence.m in Sources */ = {isa = PBXBuildFile; fileRef = A334861C23BF3E2300D0EB5F /* MappIntelligence.m */; };
 		A334861E23BF3E2300D0EB5F /* MappIntelligence.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A334861B23BF3E2300D0EB5F /* MappIntelligence.h */; };
 		A334862D23BF3F2800D0EB5F /* libMappIntelligenceSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A334861823BF3E2300D0EB5F /* libMappIntelligenceSDK.a */; };
@@ -62,7 +64,6 @@
 		A380D21524141B55009E2CD8 /* URLSizeMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = A380D21324141B55009E2CD8 /* URLSizeMonitor.m */; };
 		A3EAFF612418E02F009D5108 /* UIFlowObserver.h in Headers */ = {isa = PBXBuildFile; fileRef = A3EAFF5F2418E02F009D5108 /* UIFlowObserver.h */; };
 		A3EAFF622418E02F009D5108 /* UIFlowObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = A3EAFF602418E02F009D5108 /* UIFlowObserver.m */; };
-		BCA1738423D5C2E700B31430 /* MappIntelligenceDataService.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA1738323D5C2E700B31430 /* MappIntelligenceDataService.m */; };
 		BCBE5BFB23EB1798002125C1 /* MappIntelligenceSDKLoggerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBE5BFA23EB1798002125C1 /* MappIntelligenceSDKLoggerTest.m */; };
 		BCBE5C0923F29E49002125C1 /* DefaultTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBE5C0823F29E49002125C1 /* DefaultTracker.m */; };
 		BCBE5C3A23F698EF002125C1 /* DefaultTrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBE5C3923F698EF002125C1 /* DefaultTrackerTests.m */; };
@@ -72,7 +73,6 @@
 		BCD5E2C523CF38F300CE2092 /* MappIntelligenceDefaultConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD5E2C423CF38F300CE2092 /* MappIntelligenceDefaultConfig.m */; };
 		BCEA32C923E97CD0003AF806 /* MappIntelligenceConfigurationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BCEA32C823E97CD0003AF806 /* MappIntelligenceConfigurationTest.m */; };
 		BCEAE6B823BF5A8B007F410D /* MappIntelligenceLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = BCEAE6B723BF5A8B007F410D /* MappIntelligenceLogger.m */; };
-		BCEAE6BC23C32F0A007F410D /* MappIntelligenceDataService.h in Headers */ = {isa = PBXBuildFile; fileRef = BCEAE6BB23C32F0A007F410D /* MappIntelligenceDataService.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,10 +123,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A31D7A4E243CC0F200386A1C /* TrackerRequestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TrackerRequestTests.m; sourceTree = "<group>"; };
 		A32AEA25242A6F4600BC7B46 /* libMappIntelligenceWatchOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMappIntelligenceWatchOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A32AEA27242A6F4600BC7B46 /* MappIntelligenceWatchOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MappIntelligenceWatchOS.h; sourceTree = "<group>"; };
 		A32AEA28242A6F4600BC7B46 /* MappIntelligenceWatchOS.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MappIntelligenceWatchOS.m; sourceTree = "<group>"; };
 		A32EE09E243B574E00EDC5B8 /* UIFlowObserverTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIFlowObserverTests.m; sourceTree = "<group>"; };
+		A32EE0A1243CB97200EDC5B8 /* MappIntelligenceDefaultConfigTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MappIntelligenceDefaultConfigTest.m; sourceTree = "<group>"; };
 		A334861823BF3E2300D0EB5F /* libMappIntelligenceSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMappIntelligenceSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A334861B23BF3E2300D0EB5F /* MappIntelligence.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MappIntelligence.h; sourceTree = "<group>"; };
 		A334861C23BF3E2300D0EB5F /* MappIntelligence.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MappIntelligence.m; sourceTree = "<group>"; };
@@ -156,8 +158,7 @@
 		A3EAFF5F2418E02F009D5108 /* UIFlowObserver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIFlowObserver.h; sourceTree = "<group>"; };
 		A3EAFF602418E02F009D5108 /* UIFlowObserver.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIFlowObserver.m; sourceTree = "<group>"; };
 		BCA1738123D5C12A00B31430 /* MappIntelligenceDefaultConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MappIntelligenceDefaultConfig.h; sourceTree = "<group>"; };
-		BCA1738323D5C2E700B31430 /* MappIntelligenceDataService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MappIntelligenceDataService.m; sourceTree = "<group>"; };
-		BCBE5BFA23EB1798002125C1 /* MappIntelligenceSDKLoggerTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MappIntelligenceSDKLoggerTest.m; sourceTree = SOURCE_ROOT; };
+		BCBE5BFA23EB1798002125C1 /* MappIntelligenceSDKLoggerTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MappIntelligenceSDKLoggerTest.m; path = MappIntelligenceTests/Log/MappIntelligenceSDKLoggerTest.m; sourceTree = SOURCE_ROOT; };
 		BCBE5C0723F1A688002125C1 /* DefaultTracker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DefaultTracker.h; sourceTree = "<group>"; };
 		BCBE5C0823F29E49002125C1 /* DefaultTracker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DefaultTracker.m; sourceTree = "<group>"; };
 		BCBE5C3923F698EF002125C1 /* DefaultTrackerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = DefaultTrackerTests.m; path = MappIntelligenceTests/Trackers/DefaultTrackerTests.m; sourceTree = SOURCE_ROOT; };
@@ -167,7 +168,6 @@
 		BCEA32C823E97CD0003AF806 /* MappIntelligenceConfigurationTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MappIntelligenceConfigurationTest.m; sourceTree = "<group>"; };
 		BCEAE6B523BF5912007F410D /* MappIntelligenceLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MappIntelligenceLogger.h; sourceTree = "<group>"; };
 		BCEAE6B723BF5A8B007F410D /* MappIntelligenceLogger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MappIntelligenceLogger.m; sourceTree = "<group>"; };
-		BCEAE6BB23C32F0A007F410D /* MappIntelligenceDataService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MappIntelligenceDataService.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +196,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A31D7A4B243CBDE500386A1C /* Log */ = {
+			isa = PBXGroup;
+			children = (
+				BCBE5BFA23EB1798002125C1 /* MappIntelligenceSDKLoggerTest.m */,
+			);
+			path = Log;
+			sourceTree = "<group>";
+		};
+		A31D7A4C243CBE1A00386A1C /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				A31D7A4D243CC0B600386A1C /* Tracking Request */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		A31D7A4D243CC0B600386A1C /* Tracking Request */ = {
+			isa = PBXGroup;
+			children = (
+				A31D7A4E243CC0F200386A1C /* TrackerRequestTests.m */,
+			);
+			path = "Tracking Request";
+			sourceTree = "<group>";
+		};
 		A32AEA26242A6F4600BC7B46 /* MappIntelligenceWatchOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -235,6 +259,14 @@
 				A32EE09E243B574E00EDC5B8 /* UIFlowObserverTests.m */,
 			);
 			path = Trackers;
+			sourceTree = "<group>";
+		};
+		A32EE0A0243CB94F00EDC5B8 /* PersistanceLayer */ = {
+			isa = PBXGroup;
+			children = (
+				A32EE0A1243CB97200EDC5B8 /* MappIntelligenceDefaultConfigTest.m */,
+			);
+			name = PersistanceLayer;
 			sourceTree = "<group>";
 		};
 		A334860F23BF3E2300D0EB5F = {
@@ -345,10 +377,12 @@
 		BCEA32C023E979FD003AF806 /* MappIntelligenceTests */ = {
 			isa = PBXGroup;
 			children = (
+				A31D7A4C243CBE1A00386A1C /* Network */,
+				A31D7A4B243CBDE500386A1C /* Log */,
+				A32EE0A0243CB94F00EDC5B8 /* PersistanceLayer */,
 				A32EE09D243B570D00EDC5B8 /* Trackers */,
 				A32EE09C243B56FC00EDC5B8 /* Events */,
 				A32EE09B243B56B200EDC5B8 /* Utility */,
-				BCBE5BFA23EB1798002125C1 /* MappIntelligenceSDKLoggerTest.m */,
 				BCEA32C823E97CD0003AF806 /* MappIntelligenceConfigurationTest.m */,
 				BCEA32C123E979FD003AF806 /* Info.plist */,
 			);
@@ -369,18 +403,8 @@
 			children = (
 				BCA1738123D5C12A00B31430 /* MappIntelligenceDefaultConfig.h */,
 				BCD5E2C423CF38F300CE2092 /* MappIntelligenceDefaultConfig.m */,
-				BCEAE6BA23C32EE9007F410D /* DataService */,
 			);
 			path = PersistanceLayer;
-			sourceTree = "<group>";
-		};
-		BCEAE6BA23C32EE9007F410D /* DataService */ = {
-			isa = PBXGroup;
-			children = (
-				BCEAE6BB23C32F0A007F410D /* MappIntelligenceDataService.h */,
-				BCA1738323D5C2E700B31430 /* MappIntelligenceDataService.m */,
-			);
-			path = DataService;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -397,7 +421,6 @@
 				A380D2102413ED35009E2CD8 /* RequestUrlBuilder.h in Headers */,
 				A36CD7CD23F44594004E3E2D /* TrackerRequest.h in Headers */,
 				A380D1FF241296FD009E2CD8 /* PageViewEvent.h in Headers */,
-				BCEAE6BC23C32F0A007F410D /* MappIntelligenceDataService.h in Headers */,
 				BCCAE6D2240D2E16005E9FD6 /* MappIntelligenceDefaultConfig.h in Headers */,
 				A380D21424141B55009E2CD8 /* URLSizeMonitor.h in Headers */,
 				A3EAFF612418E02F009D5108 /* UIFlowObserver.h in Headers */,
@@ -587,7 +610,6 @@
 			files = (
 				BCBE5C0923F29E49002125C1 /* DefaultTracker.m in Sources */,
 				A380D200241296FD009E2CD8 /* PageViewEvent.m in Sources */,
-				BCA1738423D5C2E700B31430 /* MappIntelligenceDataService.m in Sources */,
 				A36CD7CE23F44594004E3E2D /* TrackerRequest.m in Sources */,
 				BCEAE6B823BF5A8B007F410D /* MappIntelligenceLogger.m in Sources */,
 				A380D2112413ED35009E2CD8 /* RequestUrlBuilder.m in Sources */,
@@ -611,6 +633,8 @@
 				A32EE09F243B574E00EDC5B8 /* UIFlowObserverTests.m in Sources */,
 				BCBE5C3A23F698EF002125C1 /* DefaultTrackerTests.m in Sources */,
 				BCEA32C923E97CD0003AF806 /* MappIntelligenceConfigurationTest.m in Sources */,
+				A32EE0A2243CB97200EDC5B8 /* MappIntelligenceDefaultConfigTest.m in Sources */,
+				A31D7A4F243CC0F200386A1C /* TrackerRequestTests.m in Sources */,
 				BCBE5BFB23EB1798002125C1 /* MappIntelligenceSDKLoggerTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -22,7 +22,9 @@
   self = [super init];
   if (self) {
     _loger = [MappIntelligenceLogger shared];
+#if !TARGET_OS_WATCH
     _urlSession = [[NSURLSession alloc] init];
+#endif
   }
   return self;
 }
@@ -35,7 +37,7 @@
   return self;
 }
 
-- (void)sendRequestWith:(NSURL *)url {
+- (void)sendRequestWith:(NSURL *)url andCompletition:(nonnull void (^)(NSError * _Nonnull))handler {
   [_loger logObj:[[NSString alloc]
                      initWithFormat:@"Tracking Request: %@", [url absoluteURL]]
       forDescription:kMappIntelligenceLogLevelDescriptionInfo];
@@ -60,6 +62,7 @@
                                      @"Response from tacking server: %@",
                                      [response description]]
               forDescription:kMappIntelligenceLogLevelDescriptionDebug];
+        handler(error);
       }] resume];
 }
 

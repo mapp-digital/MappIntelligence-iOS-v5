@@ -37,7 +37,6 @@
 @synthesize trackIDs;
 @synthesize viewControllerAutoTracking;
 @synthesize logLevel;
-@synthesize tracker;
 
 - (instancetype)init {
 
@@ -117,18 +116,6 @@
                                                   ? @"Yes"
                                                   : @"No"])
       forDescription:kMappIntelligenceLogLevelDescriptionInfo];
-  @try {
-    [self.tracker generateEverId];
-  } @catch (NSException *exception) {
-    [_logger logObj:[[NSString alloc]
-                        initWithFormat:@"Exception while generate ever id: %@",
-                                       exception]
-        forDescription:kMappIntelligenceLogLevelDescriptionError];
-  } @finally {
-    //        [_logger logObj:([@"Ever ID is: "
-    //        stringByAppendingFormat:@"%@", [self.tracker generateEverId]])
-    //        forDescription:self.logLevel];
-  }
 }
 
 - (NSString *)getLogLevelFor:(MappIntelligenceLogLevelDescription)description {

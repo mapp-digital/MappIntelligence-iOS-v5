@@ -9,7 +9,6 @@
 #import "DefaultTracker.h"
 
 @interface MappIntelligenceDefaultConfig : NSObject <Config, NSCoding>
-@property DefaultTracker *tracker;
 
 - (void)logConfig;
 

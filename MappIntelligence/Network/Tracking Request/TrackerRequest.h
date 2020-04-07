@@ -19,7 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)initWithEvent:(TrackingEvent *)event
             andWithProperties:(Properties *)properties;
-- (void)sendRequestWith:(NSURL *)url;
+- (void)sendRequestWith:(NSURL *)url
+        andCompletition:(void (^)(NSError *error))handler;
 
 @end
 

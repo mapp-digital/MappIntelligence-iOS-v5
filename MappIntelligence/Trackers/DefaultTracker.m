@@ -31,6 +31,7 @@
 @interface DefaultTracker ()
 
 @property Configuration *config;
+@property MappIntelligenceLogger *logger;
 @property TrackingEvent *event;
 @property RequestUrlBuilder *requestUrlBuilder;
 @property NSUserDefaults* defaults;
@@ -65,6 +66,7 @@ static NSString *userAgent;
     sharedTracker = [super init];
     everID = [sharedTracker generateEverId];
     _config = [[Configuration alloc] init];
+    _logger = [MappIntelligenceLogger shared];
     _defaults = [NSUserDefaults standardUserDefaults];
     _flowObserver = [[UIFlowObserver alloc] initWith:self];
     [_flowObserver setup];
@@ -131,8 +133,8 @@ static NSString *userAgent;
 - (void)trackWith:(NSString *)name {
   if ([_config.MappIntelligenceId isEqual:@""] ||
       [_config.serverUrl isEqual:@""]) {
-    [[MappIntelligenceLogger shared]
-                logObj:@"Request can not be sent with empty track domain or track id."
+    [_logger logObj:
+                 @"Request can not be sent with empty track domain or track id."
         forDescription:kMappIntelligenceLogLevelDescriptionDebug];
     return;
   }
@@ -145,9 +147,7 @@ static NSString *userAgent;
     _isFirstEventOpen = NO;
   }
 
-  [[MappIntelligenceLogger shared]
-              logObj:[[NSString alloc]
-                         initWithFormat:@"Content ID is: %@", name]
+  [_logger logObj:[[NSString alloc] initWithFormat:@"Content ID is: %@", name]
       forDescription:kMappIntelligenceLogLevelDescriptionDebug];
 
   // create request with page event
@@ -187,7 +187,17 @@ static NSString *userAgent;
 
   NSURL *requestUrl = [_requestUrlBuilder urlForRequest:request];
 
-  [request sendRequestWith:requestUrl];
+  [request sendRequestWith:requestUrl
+           andCompletition:^(NSError *_Nonnull error) {
+             if (error) {
+               [self->_logger
+                           logObj:[[NSString alloc]
+                                      initWithFormat:
+                                          @"Request: %@ ended with error: %@",
+                                          requestUrl, error]
+                   forDescription:kMappIntelligenceLogLevelDescriptionError];
+             }
+           }];
   _isFirstEventOfSession = NO;
   _isFirstEventOpen = NO;
 }
@@ -206,11 +216,10 @@ static NSString *userAgent;
 
 - (void)initHibernate {
   NSDate *date = [[NSDate alloc] init];
-  [[MappIntelligenceLogger shared]
-              logObj:[[NSString alloc] initWithFormat:@"save current date for "
-                                                      @"session detection %@ "
-                                                      @"with defaults %d",
-                                                      date, _defaults == NULL]
+  [_logger logObj:[[NSString alloc] initWithFormat:@"save current date for "
+                                                   @"session detection %@ "
+                                                   @"with defaults %d",
+                                                   date, _defaults == NULL]
       forDescription:kMappIntelligenceLogLevelDescriptionDebug];
   [_defaults setObject:date forKey:appHibernationDate];
   _isReady = NO;
@@ -227,22 +236,21 @@ static NSString *userAgent;
 }
 #else
 - (void)updateFirstSessionWith:(WKApplicationState)state {
- NSDate *date = [[NSDate alloc] init];
- [[MappIntelligenceLogger shared]
-             logObj:[[NSString alloc]
-                        initWithFormat:
-                            @" interval since last close of app:  %f",
-                            [date
-                                timeIntervalSinceDate:
-                                    [_defaults objectForKey:appHibernationDate]]]
-     forDescription:kMappIntelligenceLogLevelDescriptionDebug];
- if ([date timeIntervalSinceDate:[_defaults objectForKey:appHibernationDate]] >
-     30 * 60) {
-   _isFirstEventOfSession = YES;
- } else {
-   _isFirstEventOfSession = NO;
- }
- [self fireSignal];
+  NSDate *date = [[NSDate alloc] init];
+  [_logger logObj:[[NSString alloc]
+                      initWithFormat:
+                          @" interval since last close of app:  %f",
+                          [date
+                              timeIntervalSinceDate:
+                                  [_defaults objectForKey:appHibernationDate]]]
+      forDescription:kMappIntelligenceLogLevelDescriptionDebug];
+  if ([date timeIntervalSinceDate:[_defaults objectForKey:appHibernationDate]] >
+      30 * 60) {
+    _isFirstEventOfSession = YES;
+  } else {
+    _isFirstEventOfSession = NO;
+  }
+  [self fireSignal];
 }
 #endif
 
