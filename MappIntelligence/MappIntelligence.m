@@ -56,8 +56,10 @@ static MappIntelligenceDefaultConfig *config = nil;
 }
 
 + (NSString *)getId {
-  return ([[config trackIDs] firstObject] == NULL) ? @"" : [[config trackIDs]
-                                                                firstObject];
+  return ([[config trackIDs] firstObject] == NULL)
+             ? @""
+             : [NSString
+                   stringWithFormat:@"%@", [[config trackIDs] firstObject]];
 }
 
 #if !TARGET_OS_WATCH

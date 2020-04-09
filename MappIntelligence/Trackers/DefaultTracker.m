@@ -138,6 +138,11 @@ static NSString *userAgent;
         forDescription:kMappIntelligenceLogLevelDescriptionDebug];
     return;
   }
+  if ([name length] > 255) {
+    [_logger logObj:@"Content ID contains more than 255 characters, and that "
+                    @"part will be cutted automatically."
+        forDescription:kMappIntelligenceLogLevelDescriptionWarning];
+  }
   if (![_defaults stringForKey:isFirstEventOfApp]) {
     [_defaults setBool:YES forKey:isFirstEventOfApp];
     [_defaults synchronize];
