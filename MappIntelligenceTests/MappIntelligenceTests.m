@@ -38,6 +38,8 @@
     [_instance initWithConfiguration:@[@12345464] onTrackdomain:_testTrackDomain withAutotrackingEnabled:YES requestTimeout:60 numberOfRequests:10 batchSupportEnabled:YES viewControllerAutoTrackingEnabled:YES andLogLevel: all];
     XCTAssertTrue([[MappIntelligence getId] isEqualToString:@"12345464"]);
     XCTAssertTrue([[MappIntelligence getUrl] isEqualToString:_testTrackDomain], "track tomain is same");
+    [_instance initWithConfiguration:@[@12345464, @6677777777] onTrackdomain:_testTrackDomain withAutotrackingEnabled:YES requestTimeout:60 numberOfRequests:10 batchSupportEnabled:YES viewControllerAutoTrackingEnabled:YES andLogLevel: all];
+    XCTAssertTrue([[MappIntelligence getId] isEqualToString:@"12345464,6677777777"]);
 }
 
 - (void)testReset {
@@ -45,7 +47,7 @@
     [_instance reset];
     NSString *newEverID = [[DefaultTracker sharedInstance] generateEverId];
     XCTAssertFalse([previousEverID isEqualToString:newEverID], "after reset, ever ids are different!");
-    [_instance initWithConfiguration:@[@12345464] onTrackdomain:_testTrackDomain withAutotrackingEnabled:YES requestTimeout:60 numberOfRequests:10 batchSupportEnabled:YES viewControllerAutoTrackingEnabled:YES andLogLevel: all];
+    [_instance initWithConfiguration:@[@12345464, @6677777777] onTrackdomain:_testTrackDomain withAutotrackingEnabled:YES requestTimeout:60 numberOfRequests:10 batchSupportEnabled:YES viewControllerAutoTrackingEnabled:YES andLogLevel: all];
 }
 
 - (void)testTrackController {

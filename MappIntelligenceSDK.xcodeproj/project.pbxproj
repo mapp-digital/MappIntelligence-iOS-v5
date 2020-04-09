@@ -76,7 +76,6 @@
 		BCCAE6D2240D2E16005E9FD6 /* MappIntelligenceDefaultConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = BCA1738123D5C12A00B31430 /* MappIntelligenceDefaultConfig.h */; };
 		BCD5E2C323CF309900CE2092 /* Config.h in Sources */ = {isa = PBXBuildFile; fileRef = BCD5E2C223CF309900CE2092 /* Config.h */; };
 		BCD5E2C523CF38F300CE2092 /* MappIntelligenceDefaultConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD5E2C423CF38F300CE2092 /* MappIntelligenceDefaultConfig.m */; };
-		BCEA32C923E97CD0003AF806 /* MappIntelligenceConfigurationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BCEA32C823E97CD0003AF806 /* MappIntelligenceConfigurationTest.m */; };
 		BCEAE6B823BF5A8B007F410D /* MappIntelligenceLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = BCEAE6B723BF5A8B007F410D /* MappIntelligenceLogger.m */; };
 /* End PBXBuildFile section */
 
@@ -175,7 +174,6 @@
 		BCD5E2C223CF309900CE2092 /* Config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
 		BCD5E2C423CF38F300CE2092 /* MappIntelligenceDefaultConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MappIntelligenceDefaultConfig.m; sourceTree = "<group>"; };
 		BCEA32C123E979FD003AF806 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BCEA32C823E97CD0003AF806 /* MappIntelligenceConfigurationTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MappIntelligenceConfigurationTest.m; sourceTree = "<group>"; };
 		BCEAE6B523BF5912007F410D /* MappIntelligenceLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MappIntelligenceLogger.h; sourceTree = "<group>"; };
 		BCEAE6B723BF5A8B007F410D /* MappIntelligenceLogger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MappIntelligenceLogger.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -397,7 +395,6 @@
 				A32EE09D243B570D00EDC5B8 /* Trackers */,
 				A32EE09C243B56FC00EDC5B8 /* Events */,
 				A32EE09B243B56B200EDC5B8 /* Utility */,
-				BCEA32C823E97CD0003AF806 /* MappIntelligenceConfigurationTest.m */,
 				BCEA32C123E979FD003AF806 /* Info.plist */,
 				A3A7255E243F154900671DB2 /* MappIntelligenceTests.m */,
 			);
@@ -649,7 +646,6 @@
 				A3A7255D243E07A100671DB2 /* URLSizeMonitorTests.m in Sources */,
 				A3A72557243DBF1000671DB2 /* PropertiesTests.m in Sources */,
 				BCBE5C3A23F698EF002125C1 /* DefaultTrackerTests.m in Sources */,
-				BCEA32C923E97CD0003AF806 /* MappIntelligenceConfigurationTest.m in Sources */,
 				A3A7255B243DEA0500671DB2 /* RequestUrlBuilderTests.m in Sources */,
 				A32EE0A2243CB97200EDC5B8 /* MappIntelligenceDefaultConfigTest.m in Sources */,
 				A31D7A4F243CC0F200386A1C /* TrackerRequestTests.m in Sources */,
