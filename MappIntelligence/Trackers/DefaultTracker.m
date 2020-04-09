@@ -124,19 +124,25 @@ static NSString *userAgent;
   return tmpEverId;
 }
 #if !TARGET_OS_WATCH
-- (void)track:(UIViewController *)controller {
+- (NSError *_Nullable)track:(UIViewController *)controller {
   NSString *CurrentSelectedCViewController =
       NSStringFromClass([controller class]);
-  [self trackWith:CurrentSelectedCViewController];
+  return [self trackWith:CurrentSelectedCViewController];
 }
 #endif
-- (void)trackWith:(NSString *)name {
+- (NSError *_Nullable)trackWith:(NSString *)name {
   if ([_config.MappIntelligenceId isEqual:@""] ||
       [_config.serverUrl isEqual:@""]) {
-    [_logger logObj:
-                 @"Request can not be sent with empty track domain or track id."
+    NSString *msg =
+        @"Request can not be sent with empty track domain or track id.";
+    [_logger logObj:msg
         forDescription:kMappIntelligenceLogLevelDescriptionDebug];
-    return;
+    NSString *domain = @"com.mapp.mappIntelligenceSDK.ErrorDomain";
+    NSString *desc = NSLocalizedString(msg, @"");
+    NSDictionary *userInfo = @{NSLocalizedDescriptionKey : desc};
+    NSError *error =
+        [NSError errorWithDomain:domain code:-101 userInfo:userInfo];
+    return error;
   }
   if ([name length] > 255) {
     [_logger logObj:@"Content ID contains more than 255 characters, and that "
@@ -174,6 +180,7 @@ static NSString *userAgent;
                      [self->_conditionUntilGetFNS unlock];
                    });
                  });
+    return NULL;
 }
 
 - (void)enqueueRequestForEvent:(TrackingEvent *)event {

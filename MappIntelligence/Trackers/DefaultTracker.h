@@ -20,12 +20,12 @@
 + (nullable instancetype)sharedInstance;
 - (NSString *_Nullable)generateEverId;
 #if !TARGET_OS_WATCH
-- (void)track:(UIViewController *_Nonnull)controller;
+- (NSError*_Nullable)track:(UIViewController *_Nonnull)controller;
 - (void)updateFirstSessionWith: (UIApplicationState) state;
 #else
 - (void)updateFirstSessionWith: (WKApplicationState) state;
 #endif
-- (void)trackWith:(NSString *_Nonnull)name;
+- (NSError*_Nullable)trackWith:(NSString *_Nonnull)name;
 + (NSUserDefaults *_Nonnull)sharedDefaults;
 - (void)initHibernate;
 - (void)reset;

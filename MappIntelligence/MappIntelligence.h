@@ -34,9 +34,9 @@ typedef NS_ENUM(NSInteger, logLevel) {
 + (nullable instancetype)shared;
 + (NSString *_Nonnull)version;
 #if !TARGET_OS_WATCH
-- (void)trackPage:(UIViewController *_Nullable)controller;
+- (NSError *_Nullable)trackPage:(UIViewController *_Nullable)controller;
 #endif
-- (void)trackPageWith:(NSString *_Nullable)name;
+- (NSError *_Nullable)trackPageWith:(NSString *_Nullable)name;
 
 + (NSString *_Nonnull)getUrl;
 + (NSString *_Nonnull)getId;

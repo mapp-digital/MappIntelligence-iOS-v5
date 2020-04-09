@@ -59,17 +59,17 @@ static MappIntelligenceDefaultConfig *config = nil;
   return ([[config trackIDs] firstObject] == NULL)
              ? @""
              : [NSString
-                   stringWithFormat:@"%@", [[config trackIDs] firstObject]];
+                   stringWithFormat:@"%@", [[config trackIDs] componentsJoinedByString:@","]];
 }
 
 #if !TARGET_OS_WATCH
-- (void)trackPage:(UIViewController *)controller {
-  [tracker track:controller];
+- (NSError *_Nullable)trackPage:(UIViewController *)controller {
+  return [tracker track:controller];
 }
 #endif
 
-- (void)trackPageWith:(NSString *)name {
-  [tracker trackWith:name];
+- (NSError *_Nullable)trackPageWith:(NSString *)name {
+  return [tracker trackWith:name];
 }
 
 - (void)initWithConfiguration:(NSArray *)trackIDs
