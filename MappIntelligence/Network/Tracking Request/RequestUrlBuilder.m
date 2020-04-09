@@ -20,6 +20,7 @@
 @property NSURL *baseUrl;
 @property NSURL *serverUrl;
 @property NSString *mappIntelligenceId;
+@property URLSizeMonitor *sizeMonitor;
 @property MappIntelligenceLogger *logger;
 
 - (NSURL *)buildBaseUrlwithServer:(NSURL *)serverUrl
@@ -35,6 +36,7 @@
   self = [super init];
   if (self) {
     _logger = [[MappIntelligenceLogger alloc] init];
+    _sizeMonitor = [[URLSizeMonitor alloc] init];
   }
   return self;
 }
@@ -92,24 +94,25 @@
       [self codeString:[libraryVersionOriginal
                            stringByReplacingOccurrencesOfString:@"."
                                                      withString:@""]];
-  URLSizeMonitor *sizeMonitor = [[URLSizeMonitor alloc] init];
+  _sizeMonitor = [[URLSizeMonitor alloc] init];
 
   // begin cycle
   NSMutableArray *parametrs = [[NSMutableArray alloc] init];
-  [sizeMonitor setCurrentRequestSize:1024]; // reserve for non product items
+  [_sizeMonitor setCurrentRequestSize:1024]; // reserve for non product items
   NSString *pageName = [self codeString:pageNameOpt];
 
   [parametrs
-      addObject:[NSURLQueryItem
-                    queryItemWithName:@"p"
-                                value:[[NSString alloc]
-                                          initWithFormat:
-                                              @"%@,%@,0,%@,32,0,%.f,0,0,0",
-                                              libraryVersionParced, pageName,
-                                              screenSize,
-                                              properties.timestamp
-                                                      .timeIntervalSince1970 *
-                                                  1000]]];
+      addObject:
+          [NSURLQueryItem
+              queryItemWithName:@"p"
+                          value:[_sizeMonitor
+                                    cutPParameterLegth:libraryVersionParced
+                                              pageName:pageName
+                                         andScreenSize:screenSize
+                                          andTimeStamp:
+                                              (properties.timestamp
+                                                   .timeIntervalSince1970 *
+                                               1000)]]];
   [parametrs addObject:[NSURLQueryItem queryItemWithName:@"eid"
                                                    value:properties.everId]];
   [parametrs
@@ -143,7 +146,7 @@
         addObject:[NSURLQueryItem queryItemWithName:@"la" value:language]];
   }
   [parametrs addObject:[NSURLQueryItem queryItemWithName:@"eor" value:@"1"]];
-  [sizeMonitor setCurrentRequestSize:[sizeMonitor currentRequestSize] +
+  [_sizeMonitor setCurrentRequestSize:[_sizeMonitor currentRequestSize] +
                                      5]; // add for end of the request
 
   url = [self createURLFromParametersWith:parametrs];

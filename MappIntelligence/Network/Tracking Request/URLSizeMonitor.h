@@ -16,6 +16,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property int currentProductSize;
 
 - (void)addSize:(int)size;
+- (NSString *)cutPParameterLegth:(NSString *)library
+                        pageName:(NSString *)page
+                   andScreenSize:(NSString *)size
+                    andTimeStamp:(double)stamp;
 
 @end
 

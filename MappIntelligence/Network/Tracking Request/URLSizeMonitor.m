@@ -30,4 +30,22 @@
   self.currentRequestSize += size;
 }
 
+- (NSString *)cutPParameterLegth:(NSString *)library
+                        pageName:(NSString *)page
+                   andScreenSize:(NSString *)size
+                    andTimeStamp:(double)stamp {
+  NSString *pParameter = [[NSString alloc]
+      initWithFormat:@"%@,%@,0,%@,32,0,%.f,0,0,0", library, page, size, stamp];
+  NSString *cuttedPage = page;
+  if ([pParameter length] > 255) {
+    unsigned long treshold = [pParameter length] - 255;
+    unsigned long lastIndex = [page length] - treshold - 1;
+    cuttedPage = [page substringToIndex:lastIndex];
+  }
+  pParameter =
+      [[NSString alloc] initWithFormat:@"%@,%@,0,%@,32,0,%.f,0,0,0", library,
+                                       cuttedPage, size, stamp];
+  return pParameter;
+}
+
 @end
