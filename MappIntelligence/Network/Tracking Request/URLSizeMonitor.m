@@ -39,7 +39,7 @@
   NSString *cuttedPage = page;
   if ([pParameter length] > 255) {
     unsigned long treshold = [pParameter length] - 255;
-    unsigned long lastIndex = [page length] - treshold - 1;
+    unsigned long lastIndex = [page length] - treshold;
     cuttedPage = [page substringToIndex:lastIndex];
   }
   pParameter =

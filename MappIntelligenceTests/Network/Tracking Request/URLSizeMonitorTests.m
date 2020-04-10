@@ -31,4 +31,15 @@
     [_sizeMonitor addSize:50];
     XCTAssertLessThan(previousSize, [_sizeMonitor currentRequestSize]);
 }
+
+- (void)testCutPParameterLegth {
+    NSString *library = @"cutPParameterLegth";
+    NSString *contentID = @"testCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringName";
+    NSString *size = @"1125x2436";
+    double stamp = 1586522540579.0879;
+    NSString *pParameter = [[NSString alloc] initWithFormat:@"%@,%@,0,%@,32,0,%.f,0,0,0", library, contentID, size, stamp];
+    XCTAssertTrue([pParameter length] > 255, @"p parameter is greater than 255 characters");
+    pParameter = [_sizeMonitor cutPParameterLegth:library pageName:contentID andScreenSize:size andTimeStamp:stamp];
+    XCTAssertTrue([pParameter length] == 255, @"p parameter is greater than 255 characters");
+}
 @end
