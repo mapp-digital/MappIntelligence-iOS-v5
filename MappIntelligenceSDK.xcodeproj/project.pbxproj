@@ -22,6 +22,9 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		A30E3EBD24448CED0047D7A6 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = A30E3EBC24448CED0047D7A6 /* README.md */; };
+		A30E3EBF24448D010047D7A6 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = A30E3EBE24448D010047D7A6 /* LICENSE */; };
+		A30E3EC1244491F30047D7A6 /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = A30E3EC0244491F30047D7A6 /* .travis.yml */; };
 		A31D7A4F243CC0F200386A1C /* TrackerRequestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A31D7A4E243CC0F200386A1C /* TrackerRequestTests.m */; };
 		A32AEA29242A6F4600BC7B46 /* MappIntelligenceWatchOS.m in Sources */ = {isa = PBXBuildFile; fileRef = A32AEA28242A6F4600BC7B46 /* MappIntelligenceWatchOS.m */; };
 		A32AEA2A242A6F4600BC7B46 /* MappIntelligenceWatchOS.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A32AEA27242A6F4600BC7B46 /* MappIntelligenceWatchOS.h */; };
@@ -127,6 +130,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A30E3EBC24448CED0047D7A6 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = "../Webtrekk/webtrekk-ios-sdk/README.md"; sourceTree = "<group>"; };
+		A30E3EBE24448D010047D7A6 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		A30E3EC0244491F30047D7A6 /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .travis.yml; sourceTree = "<group>"; };
 		A31D7A4E243CC0F200386A1C /* TrackerRequestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TrackerRequestTests.m; sourceTree = "<group>"; };
 		A32AEA25242A6F4600BC7B46 /* libMappIntelligenceWatchOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMappIntelligenceWatchOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A32AEA27242A6F4600BC7B46 /* MappIntelligenceWatchOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MappIntelligenceWatchOS.h; sourceTree = "<group>"; };
@@ -284,6 +290,9 @@
 		A334860F23BF3E2300D0EB5F = {
 			isa = PBXGroup;
 			children = (
+				A30E3EC0244491F30047D7A6 /* .travis.yml */,
+				A30E3EBE24448D010047D7A6 /* LICENSE */,
+				A30E3EBC24448CED0047D7A6 /* README.md */,
 				A334861A23BF3E2300D0EB5F /* MappIntelligence */,
 				A334863B23BF409D00D0EB5F /* MappIntelligenceFramework */,
 				A32AEA26242A6F4600BC7B46 /* MappIntelligenceWatchOS */,
@@ -551,6 +560,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A30E3EC1244491F30047D7A6 /* .travis.yml in Resources */,
+				A30E3EBF24448D010047D7A6 /* LICENSE in Resources */,
+				A30E3EBD24448CED0047D7A6 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -682,12 +694,13 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LERY366S7C;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 6.1;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Debug;
 		};
@@ -697,12 +710,13 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LERY366S7C;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 6.1;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Release;
 		};
@@ -758,7 +772,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -812,7 +826,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -830,7 +844,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -843,6 +857,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Debug;
 		};
@@ -856,7 +871,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -868,6 +883,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "Webtrekk-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Release;
 		};

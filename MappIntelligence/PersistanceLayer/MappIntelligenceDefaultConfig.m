@@ -175,17 +175,6 @@
   }
 }
 
-- (void)saveToUserDefaults {
-
-  NSData *encodedObject = [NSKeyedArchiver archivedDataWithRootObject:self
-                                                requiringSecureCoding:NO
-                                                                error:NULL];
-  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-  [defaults setObject:encodedObject
-               forKey:key_MappIntelligence_default_configuration];
-  [defaults synchronize];
-}
-
 - (void)setLogLevel:(MappIntelligenceLogLevelDescription)logLevel {
   //self.logLevel = logLevel;
   [_logger setLogLevel:logLevel];
