@@ -22,9 +22,10 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		A30E3EBD24448CED0047D7A6 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = A30E3EBC24448CED0047D7A6 /* README.md */; };
 		A30E3EBF24448D010047D7A6 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = A30E3EBE24448D010047D7A6 /* LICENSE */; };
 		A30E3EC1244491F30047D7A6 /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = A30E3EC0244491F30047D7A6 /* .travis.yml */; };
+		A30E3EC324449ED90047D7A6 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = A30E3EC224449ED90047D7A6 /* README.md */; };
+		A30E3EC52444A0B70047D7A6 /* .oclint.yml in Resources */ = {isa = PBXBuildFile; fileRef = A30E3EC42444A0B70047D7A6 /* .oclint.yml */; };
 		A31D7A4F243CC0F200386A1C /* TrackerRequestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A31D7A4E243CC0F200386A1C /* TrackerRequestTests.m */; };
 		A32AEA29242A6F4600BC7B46 /* MappIntelligenceWatchOS.m in Sources */ = {isa = PBXBuildFile; fileRef = A32AEA28242A6F4600BC7B46 /* MappIntelligenceWatchOS.m */; };
 		A32AEA2A242A6F4600BC7B46 /* MappIntelligenceWatchOS.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A32AEA27242A6F4600BC7B46 /* MappIntelligenceWatchOS.h */; };
@@ -130,9 +131,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		A30E3EBC24448CED0047D7A6 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = "../Webtrekk/webtrekk-ios-sdk/README.md"; sourceTree = "<group>"; };
 		A30E3EBE24448D010047D7A6 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		A30E3EC0244491F30047D7A6 /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .travis.yml; sourceTree = "<group>"; };
+		A30E3EC224449ED90047D7A6 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		A30E3EC42444A0B70047D7A6 /* .oclint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .oclint.yml; sourceTree = "<group>"; };
 		A31D7A4E243CC0F200386A1C /* TrackerRequestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TrackerRequestTests.m; sourceTree = "<group>"; };
 		A32AEA25242A6F4600BC7B46 /* libMappIntelligenceWatchOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMappIntelligenceWatchOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A32AEA27242A6F4600BC7B46 /* MappIntelligenceWatchOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MappIntelligenceWatchOS.h; sourceTree = "<group>"; };
@@ -290,9 +292,10 @@
 		A334860F23BF3E2300D0EB5F = {
 			isa = PBXGroup;
 			children = (
+				A30E3EC42444A0B70047D7A6 /* .oclint.yml */,
 				A30E3EC0244491F30047D7A6 /* .travis.yml */,
+				A30E3EC224449ED90047D7A6 /* README.md */,
 				A30E3EBE24448D010047D7A6 /* LICENSE */,
-				A30E3EBC24448CED0047D7A6 /* README.md */,
 				A334861A23BF3E2300D0EB5F /* MappIntelligence */,
 				A334863B23BF409D00D0EB5F /* MappIntelligenceFramework */,
 				A32AEA26242A6F4600BC7B46 /* MappIntelligenceWatchOS */,
@@ -560,9 +563,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A30E3EC324449ED90047D7A6 /* README.md in Resources */,
 				A30E3EC1244491F30047D7A6 /* .travis.yml in Resources */,
+				A30E3EC52444A0B70047D7A6 /* .oclint.yml in Resources */,
 				A30E3EBF24448D010047D7A6 /* LICENSE in Resources */,
-				A30E3EBD24448CED0047D7A6 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
