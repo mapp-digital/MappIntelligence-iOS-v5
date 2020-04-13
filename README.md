@@ -10,7 +10,7 @@ The Webtrekk SDK allows you to track user activities, screen flow and media usag
 
 | Plattform | Version            |
 |-----------|-------------------:|
-| `iOS`     |             `8.0+` |
+| `iOS`     |             `10.0+` |
 | `watchOs` |             `2.0+` |
 
 
