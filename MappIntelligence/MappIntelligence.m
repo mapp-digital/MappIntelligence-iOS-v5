@@ -95,6 +95,10 @@ static MappIntelligenceDefaultConfig *config = nil;
   [tracker initializeTracking];
 }
 
+- (void)initWithConfiguration:(NSArray *)trackIDs onTrackdomain:(NSString *)trackDomain requestTimeout:(NSTimeInterval)requestTimeout andLogLevel:(logLevel)lv {
+    [self initWithConfiguration:trackIDs onTrackdomain:trackDomain withAutotrackingEnabled:YES requestTimeout:requestTimeout numberOfRequests:10 batchSupportEnabled:YES viewControllerAutoTrackingEnabled:YES andLogLevel:lv];
+}
+
 - (void)reset {
     sharedInstance = NULL;
     sharedInstance = [self init];

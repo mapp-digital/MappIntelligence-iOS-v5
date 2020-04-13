@@ -43,18 +43,18 @@
       forDescription:kMappIntelligenceLogLevelDescriptionInfo];
 
   [self createUrlSession];
-
+    
   [[_urlSession
         dataTaskWithURL:url
       completionHandler:^(NSData *_Nullable data,
                           NSURLResponse *_Nullable response,
                           NSError *_Nullable error) {
         if (error) {
-          [self->_loger logObj:[[NSString alloc]
-                                   initWithFormat:
-                                       @"Error while executing request: %@",
-                                       [error description]]
-                forDescription:kMappIntelligenceLogLevelDescriptionError];
+//          [self->_loger logObj:[[NSString alloc]
+//                                   initWithFormat:
+//                                       @"Error while executing request: %@",
+//                                       [error description]]
+//                forDescription:kMappIntelligenceLogLevelDescriptionError];
           return;
         }
         [self->_loger logObj:[[NSString alloc]

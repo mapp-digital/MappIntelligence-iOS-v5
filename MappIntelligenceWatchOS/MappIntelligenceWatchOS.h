@@ -29,13 +29,18 @@ typedef NS_ENUM(NSInteger, logWatchOSLevel) {
  @return MappIntelligence an Instance Type of MappIntelligence.
  */
 + (nullable instancetype)shared;
+//- (void)initWithConfiguration:(NSArray *_Nonnull)trackIDs
+//                    onTrackdomain:(NSString *_Nonnull)trackDomain
+//          withAutotrackingEnabled:(BOOL)autoTracking
+//                   requestTimeout:(NSTimeInterval)requestTimeout
+//                 numberOfRequests:(NSInteger)numberOfRequestInQueue
+//              batchSupportEnabled:(BOOL)batchSupport
+//viewControllerAutoTrackingEnabled:(BOOL)viewControllerAutoTracking
+//                      andLogLevel:(logWatchOSLevel)lv;
+
 - (void)initWithConfiguration:(NSArray *_Nonnull)trackIDs
                     onTrackdomain:(NSString *_Nonnull)trackDomain
-          withAutotrackingEnabled:(BOOL)autoTracking
                    requestTimeout:(NSTimeInterval)requestTimeout
-                 numberOfRequests:(NSInteger)numberOfRequestInQueue
-              batchSupportEnabled:(BOOL)batchSupport
-viewControllerAutoTrackingEnabled:(BOOL)viewControllerAutoTracking
                       andLogLevel:(logWatchOSLevel)lv;
 - (void)trackPageWith:(NSString *_Nullable)name;
 - (void)reset;

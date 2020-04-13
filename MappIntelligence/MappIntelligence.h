@@ -41,14 +41,19 @@ typedef NS_ENUM(NSInteger, logLevel) {
 + (NSString *_Nonnull)getUrl;
 + (NSString *_Nonnull)getId;
 
+//- (void)initWithConfiguration:(NSArray *_Nonnull)trackIDs
+//                        onTrackdomain:(NSString *_Nonnull)trackDomain
+//              withAutotrackingEnabled:(BOOL)autoTracking
+//                       requestTimeout:(NSTimeInterval)requestTimeout
+//                     numberOfRequests:(NSInteger)numberOfRequestInQueue
+//                  batchSupportEnabled:(BOOL)batchSupport
+//    viewControllerAutoTrackingEnabled:(BOOL)viewControllerAutoTracking
+//                          andLogLevel:(logLevel)lv;
+
 - (void)initWithConfiguration:(NSArray *_Nonnull)trackIDs
-                        onTrackdomain:(NSString *_Nonnull)trackDomain
-              withAutotrackingEnabled:(BOOL)autoTracking
-                       requestTimeout:(NSTimeInterval)requestTimeout
-                     numberOfRequests:(NSInteger)numberOfRequestInQueue
-                  batchSupportEnabled:(BOOL)batchSupport
-    viewControllerAutoTrackingEnabled:(BOOL)viewControllerAutoTracking
-                          andLogLevel:(logLevel)lv;
+                    onTrackdomain:(NSString *_Nonnull)trackDomain
+                   requestTimeout:(NSTimeInterval)requestTimeout
+                      andLogLevel:(logLevel)lv;
 
 - (void)reset;
 

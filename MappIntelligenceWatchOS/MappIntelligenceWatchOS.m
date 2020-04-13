@@ -32,9 +32,8 @@
   return shared;
 }
 
-- (void)initWithConfiguration:(NSArray *)trackIDs onTrackdomain:(NSString *)trackDomain withAutotrackingEnabled:(BOOL)autoTracking requestTimeout:(NSTimeInterval)requestTimeout numberOfRequests:(NSInteger)numberOfRequestInQueue batchSupportEnabled:(BOOL)batchSupport viewControllerAutoTrackingEnabled:(BOOL)viewControllerAutoTracking andLogLevel:(logWatchOSLevel)lv {
-    _mappIntelligence = [MappIntelligence shared];
-    [_mappIntelligence initWithConfiguration:trackIDs onTrackdomain:trackDomain withAutotrackingEnabled:autoTracking requestTimeout:requestTimeout numberOfRequests:numberOfRequestInQueue batchSupportEnabled:batchSupport viewControllerAutoTrackingEnabled:viewControllerAutoTracking andLogLevel: (logLevel)lv];
+- (void)initWithConfiguration:(NSArray *)trackIDs onTrackdomain:(NSString *)trackDomain requestTimeout:(NSTimeInterval)requestTimeout andLogLevel:(logWatchOSLevel)lv {
+    [_mappIntelligence initWithConfiguration:trackIDs onTrackdomain:trackDomain requestTimeout:requestTimeout andLogLevel:(logLevel)lv];
 }
 
 -(void)trackPageWith:(NSString *)name {
