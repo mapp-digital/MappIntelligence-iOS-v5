@@ -91,7 +91,6 @@
 
 -(void)willResignActive {
 #if TARGET_OS_WATCH
-    NSLog(@"will resign active %ld session state: %ld", (long)[[WKExtension sharedExtension] applicationState], (long)[[WKExtendedRuntimeSession session] state]);
     [_sharedDefaults setBool:YES forKey:@"enteredInBackground"];
     [_sharedDefaults synchronize];
 #endif

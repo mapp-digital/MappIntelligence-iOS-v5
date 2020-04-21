@@ -32,6 +32,15 @@
   return shared;
 }
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        _mappIntelligence = [MappIntelligence shared];
+    }
+    return self;
+}
+
 - (void)initWithConfiguration:(NSArray *)trackIDs onTrackdomain:(NSString *)trackDomain requestTimeout:(NSTimeInterval)requestTimeout andLogLevel:(logWatchOSLevel)lv {
     [_mappIntelligence initWithConfiguration:trackIDs onTrackdomain:trackDomain requestTimeout:requestTimeout andLogLevel:(logLevel)lv];
 }
