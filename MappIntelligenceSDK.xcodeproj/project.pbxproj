@@ -22,11 +22,6 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		A30E3EBF24448D010047D7A6 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = A30E3EBE24448D010047D7A6 /* LICENSE */; };
-		A30E3EC1244491F30047D7A6 /* .travis.yml in Resources */ = {isa = PBXBuildFile; fileRef = A30E3EC0244491F30047D7A6 /* .travis.yml */; };
-		A30E3EC324449ED90047D7A6 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = A30E3EC224449ED90047D7A6 /* README.md */; };
-		A30E3EC52444A0B70047D7A6 /* .oclint.yml in Resources */ = {isa = PBXBuildFile; fileRef = A30E3EC42444A0B70047D7A6 /* .oclint.yml */; };
-		A30E3EC72444A3970047D7A6 /* MappIntelligence.podspec in Resources */ = {isa = PBXBuildFile; fileRef = A30E3EC62444A3970047D7A6 /* MappIntelligence.podspec */; };
 		A31D7A4F243CC0F200386A1C /* TrackerRequestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A31D7A4E243CC0F200386A1C /* TrackerRequestTests.m */; };
 		A32AEA29242A6F4600BC7B46 /* MappIntelligenceWatchOS.m in Sources */ = {isa = PBXBuildFile; fileRef = A32AEA28242A6F4600BC7B46 /* MappIntelligenceWatchOS.m */; };
 		A32AEA2A242A6F4600BC7B46 /* MappIntelligenceWatchOS.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A32AEA27242A6F4600BC7B46 /* MappIntelligenceWatchOS.h */; };
@@ -566,11 +561,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A30E3EC324449ED90047D7A6 /* README.md in Resources */,
-				A30E3EC1244491F30047D7A6 /* .travis.yml in Resources */,
-				A30E3EC52444A0B70047D7A6 /* .oclint.yml in Resources */,
-				A30E3EC72444A3970047D7A6 /* MappIntelligence.podspec in Resources */,
-				A30E3EBF24448D010047D7A6 /* LICENSE in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -780,7 +770,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -834,7 +824,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
