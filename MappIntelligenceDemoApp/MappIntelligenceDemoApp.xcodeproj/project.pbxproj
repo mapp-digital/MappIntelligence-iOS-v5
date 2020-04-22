@@ -257,7 +257,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1130;
 				LastUpgradeCheck = 1130;
-				ORGANIZATIONNAME = "Vladan Randjelovic";
+				ORGANIZATIONNAME = "Mapp Digital US, LLC";
 				TargetAttributes = {
 					A32AEA3C242B605B00BC7B46 = {
 						CreatedOnToolsVersion = 11.3.1;

@@ -3,7 +3,7 @@
 //  MappIntelligenceTests
 //
 //  Created by Vladan Randjelovic on 14/02/2020.
-//  Copyright © 2020 Stefan Stevanovic. All rights reserved.
+//  Copyright © 2020 Mapp Digital US, LLC. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>

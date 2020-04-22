@@ -3,7 +3,7 @@
 //  Webrekk
 //
 //  Created by Stefan Stevanovic on 1/3/20.
-//  Copyright © 2020 Stefan Stevanovic. All rights reserved.
+//  Copyright © 2020 Mapp Digital US, LLC. All rights reserved.
 //
 
 #import "MappIntelligence.h"

@@ -3,7 +3,7 @@
 //  MappIntelligenceWatchOSDemoApp Extension
 //
 //  Created by Stefan Stevanovic on 3/25/20.
-//  Copyright © 2020 Vladan Randjelovic. All rights reserved.
+//  Copyright © 2020 Mapp Digital US, LLC. All rights reserved.
 //
 
 import WatchKit
