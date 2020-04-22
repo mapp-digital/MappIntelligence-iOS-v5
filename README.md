@@ -40,7 +40,7 @@ As of iOS 9 Apple is more strictly enforcing the usage of SSL for network connec
 
 # Example App with functionality
 
-For an example app of the functionality in this SDK see: https://github.com/Webtrekk/Webtrekk-iOS-v5/tree/master/MappIntelligenceDemoApp
+For an example app of the functionality in this SDK see: https://github.com/mapp-digital/MappIntelligence-iOS-v5/tree/master/MappIntelligenceDemoApp
 
 # License
 
