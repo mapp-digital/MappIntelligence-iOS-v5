@@ -127,7 +127,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		A30E3EBE24448D010047D7A6 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		A30E3EC0244491F30047D7A6 /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .travis.yml; sourceTree = "<group>"; };
 		A30E3EC224449ED90047D7A6 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A30E3EC42444A0B70047D7A6 /* .oclint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .oclint.yml; sourceTree = "<group>"; };
@@ -144,6 +143,7 @@
 		A334862823BF3F2800D0EB5F /* MappIntelligenceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MappIntelligenceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A334863C23BF409D00D0EB5F /* MappIntelligence.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MappIntelligence.h; sourceTree = "<group>"; };
 		A334863D23BF409D00D0EB5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A33C1D3724504A310049D5E5 /* LICENSE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
 		A36CD7CB23F44594004E3E2D /* TrackerRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TrackerRequest.h; sourceTree = "<group>"; };
 		A36CD7CC23F44594004E3E2D /* TrackerRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TrackerRequest.m; sourceTree = "<group>"; };
 		A36CD7CF23F447D0004E3E2D /* Properties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Properties.h; sourceTree = "<group>"; };
@@ -293,7 +293,7 @@
 				A30E3EC42444A0B70047D7A6 /* .oclint.yml */,
 				A30E3EC0244491F30047D7A6 /* .travis.yml */,
 				A30E3EC224449ED90047D7A6 /* README.md */,
-				A30E3EBE24448D010047D7A6 /* LICENSE */,
+				A33C1D3724504A310049D5E5 /* LICENSE.md */,
 				A334861A23BF3E2300D0EB5F /* MappIntelligence */,
 				A334863B23BF409D00D0EB5F /* MappIntelligenceFramework */,
 				A32AEA26242A6F4600BC7B46 /* MappIntelligenceWatchOS */,
