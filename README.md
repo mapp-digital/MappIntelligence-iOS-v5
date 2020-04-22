@@ -1,4 +1,4 @@
-# Webtrekk Tracking Library
+# MappIntelligence Tracking Library
 
 [![Build Status](https://travis-ci.com/Webtrekk/Webtrekk-iOS-v5.svg?branch=master)](https://travis-ci.com/github/Webtrekk/Webtrekk-iOS-v5)
 
