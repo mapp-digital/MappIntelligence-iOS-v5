@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.com/Webtrekk/Webtrekk-iOS-v5.svg?branch=master)](https://travis-ci.com/github/Webtrekk/Webtrekk-iOS-v5)
 
-[![CocoaPods Compatible](https://img.shields.io/cocoapods/v/Webtrekk.svg?style=flat-square)](https://cocoapods.org/pods/Webtrekk) ![Carthage](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat) ![Platform support](https://img.shields.io/badge/platform-ios%20%7C%20watchos-lightgrey.svg?style=flat-square)
+[![CocoaPods Compatible](https://img.shields.io/cocoapods/v/MappIntelligence.svg?style=flat-square)](https://cocoapods.org/pods/MappIntelligence) ![Carthage](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat) ![Platform support](https://img.shields.io/badge/platform-ios%20%7C%20watchos-lightgrey.svg?style=flat-square)
 
 The Webtrekk SDK allows you to track user activities, screen flow and media usage for an App. All data is send to the Webtrekk tracking system for further analysis.
 
@@ -18,11 +18,11 @@ The Webtrekk SDK allows you to track user activities, screen flow and media usag
 
 [CocoaPods](htttps://www.cocoapods.org) (*Podfile*):
 
-`pod 'Webtrekk'`
+`pod 'MappIntelligence'`
 
 [Carthage](https://github.com/Carthage/Carthage) (*Cartfile*):
 
-`github "Webtrekk/webtrekk-ios-sdk"`
+`github "mapp-digital/MappIntelligence-iOS-v5"`
 
 # OCLint
 
