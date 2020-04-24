@@ -15,6 +15,12 @@
 		A32AEA53242B605F00BC7B46 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32AEA52242B605F00BC7B46 /* NotificationController.swift */; };
 		A32AEA55242B606000BC7B46 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A32AEA54242B606000BC7B46 /* Assets.xcassets */; };
 		A32AEA5A242B606000BC7B46 /* MappIntelligenceWatchOSDemoApp.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = A32AEA3D242B605B00BC7B46 /* MappIntelligenceWatchOSDemoApp.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A35C78F02452F81500D36144 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35C78EF2452F81500D36144 /* AppDelegate.swift */; };
+		A35C78F22452F81500D36144 /* ViewControllerTV.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35C78F12452F81500D36144 /* ViewControllerTV.swift */; };
+		A35C78F52452F81500D36144 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A35C78F32452F81500D36144 /* Main.storyboard */; };
+		A35C78F72452F81600D36144 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A35C78F62452F81600D36144 /* Assets.xcassets */; };
+		A35C78FA2452F81600D36144 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A35C78F82452F81600D36144 /* LaunchScreen.storyboard */; };
+		A35C79002452F83700D36144 /* libMappIntelligencetvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A35C78FF2452F83700D36144 /* libMappIntelligencetvOS.a */; };
 		A38A6AF4242CD74F00600D82 /* libMappIntelligenceWatchOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A38A6AF3242CD74F00600D82 /* libMappIntelligenceWatchOS.a */; };
 		BC70672123D9A4FE00F3BDD8 /* ConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC70672023D9A4FE00F3BDD8 /* ConfigurationViewController.swift */; };
 		BCA1739223D5D25C00B31430 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA1739123D5D25C00B31430 /* AppDelegate.swift */; };
@@ -82,6 +88,15 @@
 		A32AEA57242B606000BC7B46 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		A32AEA63242B6F7500BC7B46 /* MappIntelligenceWatchOSDemoApp Extension-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MappIntelligenceWatchOSDemoApp Extension-Bridging-Header.h"; sourceTree = "<group>"; };
 		A32AEA68242B716100BC7B46 /* libMappIntelligenceWatchOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libMappIntelligenceWatchOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A35C78ED2452F81500D36144 /* MappIntelligenceTvOSDemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MappIntelligenceTvOSDemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A35C78EF2452F81500D36144 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A35C78F12452F81500D36144 /* ViewControllerTV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerTV.swift; sourceTree = "<group>"; };
+		A35C78F42452F81500D36144 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A35C78F62452F81600D36144 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A35C78F92452F81600D36144 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A35C78FB2452F81600D36144 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A35C78FF2452F83700D36144 /* libMappIntelligencetvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libMappIntelligencetvOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A35C79012452FA0500D36144 /* MappIntelligenceTvOSDemoApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MappIntelligenceTvOSDemoApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		A38A6AEF242CCFA100600D82 /* libMappIntelligenceSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libMappIntelligenceSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A38A6AF1242CD0C600600D82 /* libMappIntelligenceSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libMappIntelligenceSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A38A6AF3242CD74F00600D82 /* libMappIntelligenceWatchOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libMappIntelligenceWatchOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -105,6 +120,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				A38A6AF4242CD74F00600D82 /* libMappIntelligenceWatchOS.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A35C78EA2452F81500D36144 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A35C79002452F83700D36144 /* libMappIntelligencetvOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,12 +166,27 @@
 			path = "MappIntelligenceWatchOSDemoApp Extension";
 			sourceTree = "<group>";
 		};
+		A35C78EE2452F81500D36144 /* MappIntelligenceTvOSDemoApp */ = {
+			isa = PBXGroup;
+			children = (
+				A35C78EF2452F81500D36144 /* AppDelegate.swift */,
+				A35C78F12452F81500D36144 /* ViewControllerTV.swift */,
+				A35C78F32452F81500D36144 /* Main.storyboard */,
+				A35C78F62452F81600D36144 /* Assets.xcassets */,
+				A35C78F82452F81600D36144 /* LaunchScreen.storyboard */,
+				A35C78FB2452F81600D36144 /* Info.plist */,
+				A35C79012452FA0500D36144 /* MappIntelligenceTvOSDemoApp-Bridging-Header.h */,
+			);
+			path = MappIntelligenceTvOSDemoApp;
+			sourceTree = "<group>";
+		};
 		BCA1738523D5D25C00B31430 = {
 			isa = PBXGroup;
 			children = (
 				BCA1739023D5D25C00B31430 /* MappIntelligenceDemoApp */,
 				A32AEA3E242B605B00BC7B46 /* MappIntelligenceWatchOSDemoApp */,
 				A32AEA4D242B605F00BC7B46 /* MappIntelligenceWatchOSDemoApp Extension */,
+				A35C78EE2452F81500D36144 /* MappIntelligenceTvOSDemoApp */,
 				BCA1738F23D5D25C00B31430 /* Products */,
 				BCA173AE23D6FBFC00B31430 /* Frameworks */,
 			);
@@ -160,6 +198,7 @@
 				BCA1738E23D5D25C00B31430 /* MappIntelligenceDemoApp.app */,
 				A32AEA3D242B605B00BC7B46 /* MappIntelligenceWatchOSDemoApp.app */,
 				A32AEA49242B605F00BC7B46 /* MappIntelligenceWatchOSDemoApp Extension.appex */,
+				A35C78ED2452F81500D36144 /* MappIntelligenceTvOSDemoApp.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -183,6 +222,7 @@
 		BCA173AE23D6FBFC00B31430 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A35C78FF2452F83700D36144 /* libMappIntelligencetvOS.a */,
 				A38A6AF3242CD74F00600D82 /* libMappIntelligenceWatchOS.a */,
 				A38A6AF1242CD0C600600D82 /* libMappIntelligenceSDK.a */,
 				A38A6AEF242CCFA100600D82 /* libMappIntelligenceSDK.a */,
@@ -230,6 +270,23 @@
 			productReference = A32AEA49242B605F00BC7B46 /* MappIntelligenceWatchOSDemoApp Extension.appex */;
 			productType = "com.apple.product-type.watchkit2-extension";
 		};
+		A35C78EC2452F81500D36144 /* MappIntelligenceTvOSDemoApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A35C78FC2452F81600D36144 /* Build configuration list for PBXNativeTarget "MappIntelligenceTvOSDemoApp" */;
+			buildPhases = (
+				A35C78E92452F81500D36144 /* Sources */,
+				A35C78EA2452F81500D36144 /* Frameworks */,
+				A35C78EB2452F81500D36144 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MappIntelligenceTvOSDemoApp;
+			productName = MappIntelligenceTvOSDemoApp;
+			productReference = A35C78ED2452F81500D36144 /* MappIntelligenceTvOSDemoApp.app */;
+			productType = "com.apple.product-type.application";
+		};
 		BCA1738D23D5D25C00B31430 /* MappIntelligenceDemoApp */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = BCA173A223D5D25E00B31430 /* Build configuration list for PBXNativeTarget "MappIntelligenceDemoApp" */;
@@ -266,6 +323,10 @@
 						CreatedOnToolsVersion = 11.3.1;
 						LastSwiftMigration = 1130;
 					};
+					A35C78EC2452F81500D36144 = {
+						CreatedOnToolsVersion = 11.3.1;
+						LastSwiftMigration = 1130;
+					};
 					BCA1738D23D5D25C00B31430 = {
 						CreatedOnToolsVersion = 11.3.1;
 						LastSwiftMigration = 1130;
@@ -288,6 +349,7 @@
 				BCA1738D23D5D25C00B31430 /* MappIntelligenceDemoApp */,
 				A32AEA3C242B605B00BC7B46 /* MappIntelligenceWatchOSDemoApp */,
 				A32AEA48242B605F00BC7B46 /* MappIntelligenceWatchOSDemoApp Extension */,
+				A35C78EC2452F81500D36144 /* MappIntelligenceTvOSDemoApp */,
 			);
 		};
 /* End PBXProject section */
@@ -307,6 +369,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				A32AEA55242B606000BC7B46 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A35C78EB2452F81500D36144 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A35C78FA2452F81600D36144 /* LaunchScreen.storyboard in Resources */,
+				A35C78F72452F81600D36144 /* Assets.xcassets in Resources */,
+				A35C78F52452F81500D36144 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,6 +402,15 @@
 				A32AEA53242B605F00BC7B46 /* NotificationController.swift in Sources */,
 				A32AEA51242B605F00BC7B46 /* ExtensionDelegate.swift in Sources */,
 				A32AEA4F242B605F00BC7B46 /* InterfaceController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A35C78E92452F81500D36144 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A35C78F22452F81500D36144 /* ViewControllerTV.swift in Sources */,
+				A35C78F02452F81500D36144 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -366,6 +447,22 @@
 				A32AEA40242B605B00BC7B46 /* Base */,
 			);
 			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
+		A35C78F32452F81500D36144 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A35C78F42452F81500D36144 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A35C78F82452F81600D36144 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A35C78F92452F81600D36144 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 		BCA1739723D5D25C00B31430 /* Main.storyboard */ = {
@@ -479,6 +576,51 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 6.1;
+			};
+			name = Release;
+		};
+		A35C78FD2452F81600D36144 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LERY366S7C;
+				INFOPLIST_FILE = MappIntelligenceTvOSDemoApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.mapp.MappIntelligenceTvOSDemoApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_OBJC_BRIDGING_HEADER = "MappIntelligenceTvOSDemoApp/MappIntelligenceTvOSDemoApp-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 13.2;
+			};
+			name = Debug;
+		};
+		A35C78FE2452F81600D36144 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LERY366S7C;
+				INFOPLIST_FILE = MappIntelligenceTvOSDemoApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.mapp.MappIntelligenceTvOSDemoApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_OBJC_BRIDGING_HEADER = "MappIntelligenceTvOSDemoApp/MappIntelligenceTvOSDemoApp-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 13.2;
 			};
 			name = Release;
 		};
@@ -668,6 +810,15 @@
 			buildConfigurations = (
 				A32AEA60242B606000BC7B46 /* Debug */,
 				A32AEA61242B606000BC7B46 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A35C78FC2452F81600D36144 /* Build configuration list for PBXNativeTarget "MappIntelligenceTvOSDemoApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A35C78FD2452F81600D36144 /* Debug */,
+				A35C78FE2452F81600D36144 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -31,6 +31,21 @@
 		A334861E23BF3E2300D0EB5F /* MappIntelligence.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A334861B23BF3E2300D0EB5F /* MappIntelligence.h */; };
 		A334862D23BF3F2800D0EB5F /* libMappIntelligenceSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A334861823BF3E2300D0EB5F /* libMappIntelligenceSDK.a */; };
 		A334863423BF3FAD00D0EB5F /* MappIntelligence.h in Headers */ = {isa = PBXBuildFile; fileRef = A334861B23BF3E2300D0EB5F /* MappIntelligence.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A35C78C82452E6FF00D36144 /* MappIntelligencetvOS.m in Sources */ = {isa = PBXBuildFile; fileRef = A35C78C72452E6FF00D36144 /* MappIntelligencetvOS.m */; };
+		A35C78C92452E6FF00D36144 /* MappIntelligencetvOS.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A35C78C62452E6FF00D36144 /* MappIntelligencetvOS.h */; };
+		A35C79052452FBFC00D36144 /* MappIntelligence.m in Sources */ = {isa = PBXBuildFile; fileRef = A334861C23BF3E2300D0EB5F /* MappIntelligence.m */; };
+		A35C79062452FC0800D36144 /* DefaultTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBE5C0823F29E49002125C1 /* DefaultTracker.m */; };
+		A35C79072452FC1100D36144 /* MappIntelligenceDefaultConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD5E2C423CF38F300CE2092 /* MappIntelligenceDefaultConfig.m */; };
+		A35C79082452FC1100D36144 /* MappIntelligenceLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = BCEAE6B723BF5A8B007F410D /* MappIntelligenceLogger.m */; };
+		A35C79092452FC9D00D36144 /* RequestTrackerBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = A380D2072412D8F2009E2CD8 /* RequestTrackerBuilder.m */; };
+		A35C790A2452FCB700D36144 /* Enviroment.m in Sources */ = {isa = PBXBuildFile; fileRef = A380D2032412B0AB009E2CD8 /* Enviroment.m */; };
+		A35C790B2452FCB700D36144 /* Configuration.m in Sources */ = {isa = PBXBuildFile; fileRef = A380D20B2413D317009E2CD8 /* Configuration.m */; };
+		A35C790C2452FCB700D36144 /* UIFlowObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = A3EAFF602418E02F009D5108 /* UIFlowObserver.m */; };
+		A35C790D2452FCB700D36144 /* RequestUrlBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = A380D20F2413ED35009E2CD8 /* RequestUrlBuilder.m */; };
+		A35C790E2452FCD600D36144 /* TrackerRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = A36CD7CC23F44594004E3E2D /* TrackerRequest.m */; };
+		A35C790F2452FCD600D36144 /* Properties.m in Sources */ = {isa = PBXBuildFile; fileRef = A36CD7D023F447D0004E3E2D /* Properties.m */; };
+		A35C79102452FCD600D36144 /* TrackingEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = A380D1F92411478C009E2CD8 /* TrackingEvent.m */; };
+		A35C79112452FCD600D36144 /* URLSizeMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = A380D21324141B55009E2CD8 /* URLSizeMonitor.m */; };
 		A36C6DFF2432380A008A9CB6 /* MappIntelligence.m in Sources */ = {isa = PBXBuildFile; fileRef = A334861C23BF3E2300D0EB5F /* MappIntelligence.m */; };
 		A36C6E0024323873008A9CB6 /* DefaultTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBE5C0823F29E49002125C1 /* DefaultTracker.m */; };
 		A36C6E012432387F008A9CB6 /* MappIntelligenceLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = BCEAE6B723BF5A8B007F410D /* MappIntelligenceLogger.m */; };
@@ -94,6 +109,13 @@
 			remoteGlobalIDString = A334861723BF3E2300D0EB5F;
 			remoteInfo = Webrekk;
 		};
+		A35C78CD2452E72600D36144 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A334861023BF3E2300D0EB5F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A334861723BF3E2300D0EB5F;
+			remoteInfo = MappIntelligenceSDK;
+		};
 		A36C6DFD243233FE008A9CB6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A334861023BF3E2300D0EB5F /* Project object */;
@@ -124,6 +146,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A35C78C22452E6FF00D36144 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+				A35C78C92452E6FF00D36144 /* MappIntelligencetvOS.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -144,6 +176,9 @@
 		A334863C23BF409D00D0EB5F /* MappIntelligence.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MappIntelligence.h; sourceTree = "<group>"; };
 		A334863D23BF409D00D0EB5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A33C1D3A24508C990049D5E5 /* LICENSE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
+		A35C78C42452E6FF00D36144 /* libMappIntelligencetvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMappIntelligencetvOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A35C78C62452E6FF00D36144 /* MappIntelligencetvOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MappIntelligencetvOS.h; sourceTree = "<group>"; };
+		A35C78C72452E6FF00D36144 /* MappIntelligencetvOS.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MappIntelligencetvOS.m; sourceTree = "<group>"; };
 		A36CD7CB23F44594004E3E2D /* TrackerRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TrackerRequest.h; sourceTree = "<group>"; };
 		A36CD7CC23F44594004E3E2D /* TrackerRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TrackerRequest.m; sourceTree = "<group>"; };
 		A36CD7CF23F447D0004E3E2D /* Properties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Properties.h; sourceTree = "<group>"; };
@@ -203,6 +238,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				A334862D23BF3F2800D0EB5F /* libMappIntelligenceSDK.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A35C78C12452E6FF00D36144 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,6 +339,7 @@
 				A334861A23BF3E2300D0EB5F /* MappIntelligence */,
 				A334863B23BF409D00D0EB5F /* MappIntelligenceFramework */,
 				A32AEA26242A6F4600BC7B46 /* MappIntelligenceWatchOS */,
+				A35C78C52452E6FF00D36144 /* MappIntelligencetvOS */,
 				A334861923BF3E2300D0EB5F /* Products */,
 				A334863C23BF409D00D0EB5F /* MappIntelligence.h */,
 				BCEA32C023E979FD003AF806 /* MappIntelligenceTests */,
@@ -310,6 +353,7 @@
 				A334861823BF3E2300D0EB5F /* libMappIntelligenceSDK.a */,
 				A334862823BF3F2800D0EB5F /* MappIntelligenceTests.xctest */,
 				A32AEA25242A6F4600BC7B46 /* libMappIntelligenceWatchOS.a */,
+				A35C78C42452E6FF00D36144 /* libMappIntelligencetvOS.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -344,6 +388,15 @@
 				A36CD7CA23F44567004E3E2D /* Tracking Request */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		A35C78C52452E6FF00D36144 /* MappIntelligencetvOS */ = {
+			isa = PBXGroup;
+			children = (
+				A35C78C62452E6FF00D36144 /* MappIntelligencetvOS.h */,
+				A35C78C72452E6FF00D36144 /* MappIntelligencetvOS.m */,
+			);
+			path = MappIntelligencetvOS;
 			sourceTree = "<group>";
 		};
 		A36CD7CA23F44567004E3E2D /* Tracking Request */ = {
@@ -510,6 +563,24 @@
 			productReference = A334862823BF3F2800D0EB5F /* MappIntelligenceTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		A35C78C32452E6FF00D36144 /* MappIntelligencetvOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A35C78CA2452E6FF00D36144 /* Build configuration list for PBXNativeTarget "MappIntelligencetvOS" */;
+			buildPhases = (
+				A35C78C02452E6FF00D36144 /* Sources */,
+				A35C78C12452E6FF00D36144 /* Frameworks */,
+				A35C78C22452E6FF00D36144 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A35C78CE2452E72600D36144 /* PBXTargetDependency */,
+			);
+			name = MappIntelligencetvOS;
+			productName = MappIntelligencetvOS;
+			productReference = A35C78C42452E6FF00D36144 /* libMappIntelligencetvOS.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -533,6 +604,9 @@
 					A334865223BF42C300D0EB5F = {
 						CreatedOnToolsVersion = 11.3;
 					};
+					A35C78C32452E6FF00D36144 = {
+						CreatedOnToolsVersion = 11.3.1;
+					};
 				};
 			};
 			buildConfigurationList = A334861323BF3E2300D0EB5F /* Build configuration list for PBXProject "MappIntelligenceSDK" */;
@@ -552,6 +626,7 @@
 				A334862723BF3F2800D0EB5F /* MappIntelligenceTests */,
 				A334865223BF42C300D0EB5F /* MappIntelligenceFramework */,
 				A32AEA24242A6F4600BC7B46 /* MappIntelligenceWatchOS */,
+				A35C78C32452E6FF00D36144 /* MappIntelligencetvOS */,
 			);
 		};
 /* End PBXProject section */
@@ -665,6 +740,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A35C78C02452E6FF00D36144 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A35C790E2452FCD600D36144 /* TrackerRequest.m in Sources */,
+				A35C790F2452FCD600D36144 /* Properties.m in Sources */,
+				A35C79102452FCD600D36144 /* TrackingEvent.m in Sources */,
+				A35C79112452FCD600D36144 /* URLSizeMonitor.m in Sources */,
+				A35C790A2452FCB700D36144 /* Enviroment.m in Sources */,
+				A35C790B2452FCB700D36144 /* Configuration.m in Sources */,
+				A35C790C2452FCB700D36144 /* UIFlowObserver.m in Sources */,
+				A35C790D2452FCB700D36144 /* RequestUrlBuilder.m in Sources */,
+				A35C79092452FC9D00D36144 /* RequestTrackerBuilder.m in Sources */,
+				A35C79072452FC1100D36144 /* MappIntelligenceDefaultConfig.m in Sources */,
+				A35C79082452FC1100D36144 /* MappIntelligenceLogger.m in Sources */,
+				A35C79062452FC0800D36144 /* DefaultTracker.m in Sources */,
+				A35C79052452FBFC00D36144 /* MappIntelligence.m in Sources */,
+				A35C78C82452E6FF00D36144 /* MappIntelligencetvOS.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -677,6 +773,11 @@
 			isa = PBXTargetDependency;
 			target = A334861723BF3E2300D0EB5F /* MappIntelligenceSDK */;
 			targetProxy = A334865623BF435D00D0EB5F /* PBXContainerItemProxy */;
+		};
+		A35C78CE2452E72600D36144 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A334861723BF3E2300D0EB5F /* MappIntelligenceSDK */;
+			targetProxy = A35C78CD2452E72600D36144 /* PBXContainerItemProxy */;
 		};
 		A36C6DFE243233FE008A9CB6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -945,6 +1046,36 @@
 			};
 			name = Release;
 		};
+		A35C78CB2452E6FF00D36144 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LERY366S7C;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 13.2;
+			};
+			name = Debug;
+		};
+		A35C78CC2452E6FF00D36144 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LERY366S7C;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 13.2;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -989,6 +1120,15 @@
 			buildConfigurations = (
 				A334865423BF42C300D0EB5F /* Debug */,
 				A334865523BF42C300D0EB5F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A35C78CA2452E6FF00D36144 /* Build configuration list for PBXNativeTarget "MappIntelligencetvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A35C78CB2452E6FF00D36144 /* Debug */,
+				A35C78CC2452E6FF00D36144 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

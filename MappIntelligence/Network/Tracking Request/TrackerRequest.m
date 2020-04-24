@@ -22,7 +22,7 @@
   self = [super init];
   if (self) {
     _loger = [MappIntelligenceLogger shared];
-#if !TARGET_OS_WATCH
+#if TARGET_OS_IOS
     _urlSession = [[NSURLSession alloc] init];
 #endif
   }

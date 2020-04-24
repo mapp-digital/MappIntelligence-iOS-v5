@@ -34,10 +34,10 @@
 }
 
 - (NSString *)operatingSystemName {
-#if !TARGET_OS_WATCH
-  return [[UIDevice currentDevice] systemName];
+#if TARGET_OS_WATCH
+  return [[WKInterfaceDevice currentDevice] systemName]; 
 #else
-    return [[WKInterfaceDevice currentDevice] systemName];
+    return [[UIDevice currentDevice] systemName];
 #endif
 }
 
