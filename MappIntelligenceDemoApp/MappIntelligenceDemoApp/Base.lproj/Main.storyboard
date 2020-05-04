@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -54,7 +54,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <segue destination="WJg-jf-2Rr" kind="presentation" id="cnw-K1-wLY"/>
+                        <segue destination="WJg-jf-2Rr" kind="presentation" identifier="toSettingsScreen" id="cnw-K1-wLY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -82,13 +82,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enable batch support" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sqd-Ct-JIm">
-                                <rect key="frame" x="20" y="101.66666666666667" width="164" height="20.333333333333329"/>
+                                <rect key="frame" x="20" y="101.66666666666667" width="295" height="20.333333333333329"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enable View Controller auto tracking" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bNO-R8-cgS">
-                                <rect key="frame" x="20" y="393.66666666666669" width="315" height="20.333333333333314"/>
+                                <rect key="frame" x="20" y="393.66666666666669" width="306.66666666666669" height="20.333333333333314"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -101,7 +101,7 @@
                                 </connections>
                             </switch>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nm2-KX-SUI">
-                                <rect key="frame" x="345" y="393.66666666666669" width="51" height="31"/>
+                                <rect key="frame" x="336.66666666666669" y="393.66666666666669" width="59.333333333333314" height="31"/>
                                 <accessibility key="accessibilityConfiguration" label="viewControllerAutoTracking"/>
                                 <connections>
                                     <action selector="enableVCAutoTracking:" destination="WJg-jf-2Rr" eventType="valueChanged" id="eIE-CG-sPB"/>
@@ -175,7 +175,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ever ID:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pEO-We-vUs">
-                                <rect key="frame" x="74" y="444" width="59" height="21"/>
+                                <rect key="frame" x="73.999999999999986" y="444" width="252.66666666666663" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -197,6 +197,7 @@
                             <constraint firstItem="pEO-We-vUs" firstAttribute="top" secondItem="bNO-R8-cgS" secondAttribute="bottom" constant="30" id="ARz-AR-xAp"/>
                             <constraint firstItem="GwC-eU-cBZ" firstAttribute="leading" secondItem="VbJ-BP-tV4" secondAttribute="leading" constant="20" id="Ekw-c8-2Ld"/>
                             <constraint firstItem="VbJ-BP-tV4" firstAttribute="trailing" secondItem="2I1-Jh-Nz3" secondAttribute="trailing" constant="54" id="H8P-kS-su3"/>
+                            <constraint firstItem="2I1-Jh-Nz3" firstAttribute="leading" secondItem="nm2-KX-SUI" secondAttribute="leading" id="L5C-lQ-Sjw"/>
                             <constraint firstItem="qqy-PL-oym" firstAttribute="top" secondItem="Kqt-mi-hbb" secondAttribute="bottom" constant="20" id="N9a-bX-pFR"/>
                             <constraint firstItem="GEW-X4-v8k" firstAttribute="top" secondItem="0Is-UR-GBn" secondAttribute="bottom" constant="10" id="Oi1-CS-p6F"/>
                             <constraint firstItem="0Is-UR-GBn" firstAttribute="top" secondItem="qqy-PL-oym" secondAttribute="bottom" constant="10" id="PG3-n9-xAf"/>
@@ -220,9 +221,11 @@
                             <constraint firstItem="VbJ-BP-tV4" firstAttribute="trailing" secondItem="9Fo-NM-4LJ" secondAttribute="trailing" constant="20" id="iP3-3O-uDU"/>
                             <constraint firstItem="nm2-KX-SUI" firstAttribute="top" secondItem="I1g-mz-glS" secondAttribute="bottom" constant="10" id="ib8-uK-ywC"/>
                             <constraint firstItem="VbJ-BP-tV4" firstAttribute="trailing" secondItem="nm2-KX-SUI" secondAttribute="trailing" constant="20" id="kcm-u4-b63"/>
+                            <constraint firstItem="pEO-We-vUs" firstAttribute="trailing" secondItem="bNO-R8-cgS" secondAttribute="trailing" id="n9H-nY-CTl"/>
                             <constraint firstItem="Kqt-mi-hbb" firstAttribute="centerX" secondItem="VbJ-BP-tV4" secondAttribute="centerX" id="n9w-LF-ikF"/>
                             <constraint firstItem="GEW-X4-v8k" firstAttribute="leading" secondItem="VbJ-BP-tV4" secondAttribute="leading" constant="20" id="o1o-aa-2pl"/>
                             <constraint firstItem="VbJ-BP-tV4" firstAttribute="trailing" secondItem="0Is-UR-GBn" secondAttribute="trailing" constant="23" id="qzm-hD-VBT"/>
+                            <constraint firstItem="sqd-Ct-JIm" firstAttribute="trailing" secondItem="LWl-gG-HZf" secondAttribute="trailing" id="rdv-zh-BYZ"/>
                             <constraint firstItem="U4B-zd-8yF" firstAttribute="leading" secondItem="VbJ-BP-tV4" secondAttribute="leading" constant="20" id="uTo-WK-B4P"/>
                             <constraint firstItem="pEO-We-vUs" firstAttribute="leading" secondItem="VbJ-BP-tV4" secondAttribute="leading" constant="74" id="ugN-jc-139"/>
                             <constraint firstItem="VbJ-BP-tV4" firstAttribute="trailing" secondItem="U4B-zd-8yF" secondAttribute="trailing" constant="20" id="v0W-mQ-Dzc"/>

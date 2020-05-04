@@ -22,13 +22,4 @@
 @property BOOL batchSupport;
 @property BOOL viewControllerAutoTracking;
 
-- (void)setTrackIDs:(NSArray *const)trackIDs;
-- (void)setTrackDomain:(NSString *const)trackDomain;
-- (void)setRequestsInterval:(NSTimeInterval const)requestsInterval;
-- (void)setLogLevel:(MappIntelligenceLogLevelDescription)logLevel;
-- (void)setAutoTracking:(BOOL)autoTracking;
-- (void)setrequestPerQueue:(NSInteger const)requestPerQueue;
-- (void)setBatchSupport:(BOOL)batchSupport;
-- (void)setViewControllerAutoTracking:(BOOL)viewControllerAutoTracking;
-
 @end

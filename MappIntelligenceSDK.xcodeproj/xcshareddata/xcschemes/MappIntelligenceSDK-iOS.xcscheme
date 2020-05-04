@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BCA1738D23D5D25C00B31430"
-               BuildableName = "MappIntelligenceDemoApp.app"
-               BlueprintName = "MappIntelligenceDemoApp"
-               ReferencedContainer = "container:MappIntelligenceDemoApp.xcodeproj">
+               BlueprintIdentifier = "A35C795A2457679000D36144"
+               BuildableName = "MappIntelligenceSDK_iOS.framework"
+               BlueprintName = "MappIntelligenceSDK-iOS"
+               ReferencedContainer = "container:MappIntelligenceSDK.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -40,16 +40,6 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "BCA1738D23D5D25C00B31430"
-            BuildableName = "MappIntelligenceDemoApp.app"
-            BlueprintName = "MappIntelligenceDemoApp"
-            ReferencedContainer = "container:MappIntelligenceDemoApp.xcodeproj">
-         </BuildableReference>
-      </BuildableProductRunnable>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -57,16 +47,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "BCA1738D23D5D25C00B31430"
-            BuildableName = "MappIntelligenceDemoApp.app"
-            BlueprintName = "MappIntelligenceDemoApp"
-            ReferencedContainer = "container:MappIntelligenceDemoApp.xcodeproj">
+            BlueprintIdentifier = "A35C795A2457679000D36144"
+            BuildableName = "MappIntelligenceSDK_iOS.framework"
+            BlueprintName = "MappIntelligenceSDK-iOS"
+            ReferencedContainer = "container:MappIntelligenceSDK.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
