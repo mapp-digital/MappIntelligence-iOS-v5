@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <MappIntelligenceSDK_watchOS/MappIntelligenceWatchOS.h>
 
 //! Project version number for MappIntelligenceSDK_watchOS.
 FOUNDATION_EXPORT double MappIntelligenceSDK_watchOSVersionNumber;

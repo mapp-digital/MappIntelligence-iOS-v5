@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <MappIntelligenceSDK_tvOS/MappIntelligencetvOS.h>
 
 //! Project version number for MappIntelligenceSDK_tvOS.
 FOUNDATION_EXPORT double MappIntelligenceSDK_tvOSVersionNumber;
