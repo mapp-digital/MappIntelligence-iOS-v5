@@ -37,6 +37,8 @@
 		A33B36FB246024A6005EA9AE /* libMappIntelligencetvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A35C78C42452E6FF00D36144 /* libMappIntelligencetvOS.a */; };
 		A33B36FE24602DD2005EA9AE /* libMappIntelligenceSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A334861823BF3E2300D0EB5F /* libMappIntelligenceSDK.a */; };
 		A33B3700246047C8005EA9AE /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A33B36FF246047C8005EA9AE /* libz.tbd */; };
+		A3423CEF24615A8900B36F5F /* MappIntelligence.h in Resources */ = {isa = PBXBuildFile; fileRef = A334861B23BF3E2300D0EB5F /* MappIntelligence.h */; };
+		A3423CF024615A8900B36F5F /* MappIntelligence.m in Resources */ = {isa = PBXBuildFile; fileRef = A334861C23BF3E2300D0EB5F /* MappIntelligence.m */; };
 		A35C78C82452E6FF00D36144 /* MappIntelligencetvOS.m in Sources */ = {isa = PBXBuildFile; fileRef = A35C78C72452E6FF00D36144 /* MappIntelligencetvOS.m */; };
 		A35C78C92452E6FF00D36144 /* MappIntelligencetvOS.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A35C78C62452E6FF00D36144 /* MappIntelligencetvOS.h */; };
 		A35C79052452FBFC00D36144 /* MappIntelligence.m in Sources */ = {isa = PBXBuildFile; fileRef = A334861C23BF3E2300D0EB5F /* MappIntelligence.m */; };
@@ -846,6 +848,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3423CEF24615A8900B36F5F /* MappIntelligence.h in Resources */,
+				A3423CF024615A8900B36F5F /* MappIntelligence.m in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
