@@ -20,28 +20,21 @@ typedef NS_ENUM(NSInteger, logWatchOSLevel) {
   noneOfWatchOSLogs = 7  // None of the logs.
 };
 @interface MappIntelligenceWatchOS : NSObject
+
+@property (nonatomic, readwrite) NSTimeInterval requestTimeout;
+@property (nonatomic, readwrite) logWatchOSLevel logLevelWatchOS;
 /**
  MappIntelignece instance
  @brief Method for gets a singleton instance of MappInteligence.
  <pre><code>
- MappIntelligence *mappIntelligence = [MappIntelligence shared];
+ MappIntelligenceWatchOS *mappIntelligenceWatchOS = [MappIntelligenceWatchOS shared];
  </code></pre>
  @return MappIntelligence an Instance Type of MappIntelligence.
  */
 + (nullable instancetype)shared;
-//- (void)initWithConfiguration:(NSArray *_Nonnull)trackIDs
-//                    onTrackdomain:(NSString *_Nonnull)trackDomain
-//          withAutotrackingEnabled:(BOOL)autoTracking
-//                   requestTimeout:(NSTimeInterval)requestTimeout
-//                 numberOfRequests:(NSInteger)numberOfRequestInQueue
-//              batchSupportEnabled:(BOOL)batchSupport
-//viewControllerAutoTrackingEnabled:(BOOL)viewControllerAutoTracking
-//                      andLogLevel:(logWatchOSLevel)lv;
 
 - (void)initWithConfiguration:(NSArray *_Nonnull)trackIDs
-                    onTrackdomain:(NSString *_Nonnull)trackDomain
-                   requestTimeout:(NSTimeInterval)requestTimeout
-                      andLogLevel:(logWatchOSLevel)lv;
+                    onTrackdomain:(NSString *_Nonnull)trackDomain;
 - (void)trackPageWith:(NSString *_Nullable)name;
 - (void)reset;
 

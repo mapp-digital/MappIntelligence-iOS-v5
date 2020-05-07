@@ -15,7 +15,7 @@ class InterfaceController: WKInterfaceController {
         super.awake(withContext: context)
         
         // Configure interface objects here.
-        MappIntelligenceWatchOS.shared()?.initWithConfiguration([385255285199574 as UInt64], onTrackdomain: "https://q3.webtrekk.net", requestTimeout: 45, andLogLevel: .allWatchOSLogs)
+        MappIntelligenceWatchOS.shared()?.initWithConfiguration([385255285199574 as UInt64], onTrackdomain: "https://q3.webtrekk.net")
     }
     
     override func willActivate() {
@@ -35,6 +35,6 @@ class InterfaceController: WKInterfaceController {
         MappIntelligenceWatchOS.shared()?.reset()
     }
     @IBAction func InitAgain() {
-        MappIntelligenceWatchOS.shared()?.initWithConfiguration([385255285199574 as UInt64], onTrackdomain: "https://q3.webtrekk.net", requestTimeout: 45, andLogLevel: .allWatchOSLogs)
+        MappIntelligenceWatchOS.shared()?.initWithConfiguration([385255285199574 as UInt64], onTrackdomain: "https://q3.webtrekk.net")
     }
 }

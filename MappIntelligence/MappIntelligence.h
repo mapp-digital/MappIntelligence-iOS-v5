@@ -23,6 +23,9 @@ typedef NS_ENUM(NSInteger, logLevel) {
 
 @interface MappIntelligence : NSObject {
 }
+
+@property (nonatomic, readwrite) NSTimeInterval requestTimeout;
+@property (nonatomic, readwrite) logLevel logLevel;
 /**
  MappIntelignece instance
  @brief Method for gets a singleton instance of MappInteligence.
@@ -33,27 +36,16 @@ typedef NS_ENUM(NSInteger, logLevel) {
  */
 + (nullable instancetype)shared;
 + (NSString *_Nonnull)version;
++ (NSString *_Nonnull)getUrl;
++ (NSString *_Nonnull)getId;
+
 #if !TARGET_OS_WATCH
 - (NSError *_Nullable)trackPage:(UIViewController *_Nullable)controller;
 #endif
 - (NSError *_Nullable)trackPageWith:(NSString *_Nullable)name;
 
-+ (NSString *_Nonnull)getUrl;
-+ (NSString *_Nonnull)getId;
-
-//- (void)initWithConfiguration:(NSArray *_Nonnull)trackIDs
-//                        onTrackdomain:(NSString *_Nonnull)trackDomain
-//              withAutotrackingEnabled:(BOOL)autoTracking
-//                       requestTimeout:(NSTimeInterval)requestTimeout
-//                     numberOfRequests:(NSInteger)numberOfRequestInQueue
-//                  batchSupportEnabled:(BOOL)batchSupport
-//    viewControllerAutoTrackingEnabled:(BOOL)viewControllerAutoTracking
-//                          andLogLevel:(logLevel)lv;
-
 - (void)initWithConfiguration:(NSArray *_Nonnull)trackIDs
-                    onTrackdomain:(NSString *_Nonnull)trackDomain
-                   requestTimeout:(NSTimeInterval)requestTimeout
-                      andLogLevel:(logLevel)lv;
+                    onTrackdomain:(NSString *_Nonnull)trackDomain;
 
 - (void)reset;
 

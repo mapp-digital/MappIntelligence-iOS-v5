@@ -40,8 +40,24 @@
     return self;
 }
 
-- (void)initWithConfiguration:(NSArray *)trackIDs onTrackdomain:(NSString *)trackDomain requestTimeout:(NSTimeInterval)requestTimeout andLogLevel:(logTvOSLevel)lv {
-    [_mappIntelligence initWithConfiguration:trackIDs onTrackdomain:trackDomain requestTimeout:requestTimeout andLogLevel:(logLevel)lv];
+- (void)initWithConfiguration:(NSArray *)trackIDs onTrackdomain:(NSString *)trackDomain {
+    [_mappIntelligence initWithConfiguration:trackIDs onTrackdomain:trackDomain];
+}
+
+- (void)setRequestTimeout:(NSTimeInterval)requestTimeout {
+    [_mappIntelligence setRequestTimeout:requestTimeout];
+}
+
+- (void)setLogLevel:(logTvOSLevel)logLevelTVOS {
+    [_mappIntelligence setLogLevel: (logLevel)logLevelTVOS];
+}
+
+- (NSTimeInterval)requestTimeout {
+    return [_mappIntelligence requestTimeout];
+}
+
+- (logTvOSLevel)logLevelWatchOS {
+    return (logTvOSLevel)[_mappIntelligence logLevel];
 }
 
 -(void)trackPageWith:(NSString *)name {

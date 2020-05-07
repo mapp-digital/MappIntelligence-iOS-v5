@@ -41,8 +41,25 @@
     return self;
 }
 
-- (void)initWithConfiguration:(NSArray *)trackIDs onTrackdomain:(NSString *)trackDomain requestTimeout:(NSTimeInterval)requestTimeout andLogLevel:(logWatchOSLevel)lv {
-    [_mappIntelligence initWithConfiguration:trackIDs onTrackdomain:trackDomain requestTimeout:requestTimeout andLogLevel:(logLevel)lv];
+- (void)initWithConfiguration:(NSArray *)trackIDs onTrackdomain:(NSString *)trackDomain {
+    //by default log level is set to null and request timeout to 45
+    [_mappIntelligence initWithConfiguration:trackIDs onTrackdomain:trackDomain];
+}
+
+- (void)setRequestTimeout:(NSTimeInterval)requestTimeout {
+    [_mappIntelligence setRequestTimeout:requestTimeout];
+}
+
+- (void)setLogLevel:(logWatchOSLevel)logLevelWatchOS {
+    [_mappIntelligence setLogLevel: (logLevel)logLevelWatchOS];
+}
+
+- (NSTimeInterval)requestTimeout {
+    return [_mappIntelligence requestTimeout];
+}
+
+- (logWatchOSLevel)logLevelWatchOS {
+    return (logWatchOSLevel)[_mappIntelligence logLevel];
 }
 
 -(void)trackPageWith:(NSString *)name {

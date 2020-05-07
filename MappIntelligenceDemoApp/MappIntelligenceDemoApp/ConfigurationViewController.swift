@@ -54,9 +54,8 @@ class ConfigurationViewController: UIViewController, UIPickerViewDelegate, UIPic
        }
     
     @IBAction func setConfiguration(_ sender: Any) {
-        let timeout = Float(setRequestsTimeIntervalTF?.text ?? "30")
         
-        MappIntelligence.shared()?.initWithConfiguration(((setTrackingIDsTF.text?.split(separator: ","))!), onTrackdomain: setTrackingDomainTF.text ?? "", requestTimeout: TimeInterval(timeout ?? 30), andLogLevel: logLevel(rawValue: logLevelIndex+1) ?? .all)
+        MappIntelligence.shared()?.initWithConfiguration(((setTrackingIDsTF.text?.split(separator: ","))!), onTrackdomain: setTrackingDomainTF.text ?? "")
     }
 
     @IBAction func enableAutoTracking(_ sender: Any) {

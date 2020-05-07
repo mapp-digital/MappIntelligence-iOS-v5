@@ -95,8 +95,25 @@ static MappIntelligenceDefaultConfig *config = nil;
   [tracker initializeTracking];
 }
 
-- (void)initWithConfiguration:(NSArray *)trackIDs onTrackdomain:(NSString *)trackDomain requestTimeout:(NSTimeInterval)requestTimeout andLogLevel:(logLevel)lv {
-    [self initWithConfiguration:trackIDs onTrackdomain:trackDomain withAutotrackingEnabled:YES requestTimeout:requestTimeout numberOfRequests:10 batchSupportEnabled:YES viewControllerAutoTrackingEnabled:YES andLogLevel:lv];
+- (void)initWithConfiguration:(NSArray *)trackIDs onTrackdomain:(NSString *)trackDomain  {
+    //default values for tequest timeout is 45 and for log level it is .none
+    [self initWithConfiguration:trackIDs onTrackdomain:trackDomain withAutotrackingEnabled:YES requestTimeout:45 numberOfRequests:10 batchSupportEnabled:YES viewControllerAutoTrackingEnabled:YES andLogLevel: none];
+}
+
+- (void)setRequestTimeout:(NSTimeInterval)requestTimeout {
+  [config setRequestsInterval:requestTimeout];
+}
+
+- (void)setLogLevel:(logLevel)logLevel {
+  [config setLogLevel:(MappIntelligenceLogLevelDescription)logLevel];
+}
+
+- (NSTimeInterval)requestTimeout {
+  return [config requestsInterval];
+}
+
+- (logLevel)logLevel {
+  return (logLevel)[config logLevel];
 }
 
 - (void)reset {
