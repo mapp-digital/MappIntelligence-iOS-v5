@@ -102,10 +102,12 @@ static MappIntelligenceDefaultConfig *config = nil;
 
 - (void)setRequestTimeout:(NSTimeInterval)requestTimeout {
   [config setRequestsInterval:requestTimeout];
+  [config logConfig];
 }
 
 - (void)setLogLevel:(logLevel)logLevel {
   [config setLogLevel:(MappIntelligenceLogLevelDescription)logLevel];
+  [config logConfig];
 }
 
 - (NSTimeInterval)requestTimeout {
