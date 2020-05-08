@@ -144,8 +144,12 @@
 - (BOOL)trackDomainValidation:(NSString *)trackingDomain {
 
   NSURLComponents *components;
-  if (trackingDomain != nil) {
+  if ([trackDomain length] != 0) {
     components = [[NSURLComponents alloc] initWithString:trackingDomain];
+  } else {
+    [_logger logObj:@"Tracking domain can not be empty!"
+        forDescription:kMappIntelligenceLogLevelDescriptionError];
+      return false;
   }
   if (!components) {
     [_logger logObj:@"You must enter a valid url format for tracking domain!"

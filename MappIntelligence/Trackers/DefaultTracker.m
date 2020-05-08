@@ -132,7 +132,7 @@ static NSString *userAgent;
 #endif
 - (NSError *_Nullable)trackWith:(NSString *)name {
   if ([_config.MappIntelligenceId isEqual:@""] ||
-      [_config.serverUrl isEqual:@""]) {
+      [_config.serverUrl.absoluteString isEqual:@""]) {
     NSString *msg =
         @"Request can not be sent with empty track domain or track id.";
     [_logger logObj:msg
