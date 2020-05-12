@@ -35,6 +35,11 @@
 - (instancetype)initWith:(DefaultTracker *)tracker {
     self = [super init];
     _tracker = tracker;
+    //to force new session only for TV, bacause notficataion for willenterforeground do not work on TVOS
+#if TARGET_OS_TV
+    [_tracker updateFirstSessionWith:[[UIApplication sharedApplication]
+                                      applicationState]];
+#endif
     _sharedDefaults = [NSUserDefaults standardUserDefaults];
     return self;
 }
@@ -61,6 +66,7 @@
     }];
 #else
     _applicationWillEnterForegroundObserver = [notificationCenter addObserverForName:@"UIApplicationWillEnterForegroundNotification" object:NULL queue:NULL usingBlock:^(NSNotification * _Nonnull note) {
+        
         [self willEnterForeground];
     }];
     _applicationDidBecomeActiveObserver = [notificationCenter addObserverForName: @"UIApplicationDidBecomeActiveNotification" object:NULL queue:NULL usingBlock:^(NSNotification * _Nonnull note) {
@@ -94,10 +100,11 @@
     [_sharedDefaults setBool:YES forKey:@"enteredInBackground"];
     [_sharedDefaults synchronize];
 #endif
-  [_tracker initHibernate];
+	  [_tracker initHibernate];
 }
 
 -(void)willTerminate {
+    
 }
 
 @end
