@@ -50,7 +50,7 @@
     [_mappIntelligence setRequestTimeout:requestTimeout];
 }
 
-- (void)setLogLevel:(logWatchOSLevel)logLevelWatchOS {
+- (void)setLogLevelWatchOS:(logWatchOSLevel)logLevelWatchOS {
     [_mappIntelligence setLogLevel: (logLevel)logLevelWatchOS];
 }
 

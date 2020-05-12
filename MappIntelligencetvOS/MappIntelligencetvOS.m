@@ -48,7 +48,7 @@
     [_mappIntelligence setRequestTimeout:requestTimeout];
 }
 
-- (void)setLogLevel:(logTvOSLevel)logLevelTVOS {
+- (void)setLogLevelTVOS:(logTvOSLevel)logLevelTVOS {
     [_mappIntelligence setLogLevel: (logLevel)logLevelTVOS];
 }
 
@@ -56,7 +56,7 @@
     return [_mappIntelligence requestTimeout];
 }
 
-- (logTvOSLevel)logLevelWatchOS {
+- (logTvOSLevel)logLevelTVOS {
     return (logTvOSLevel)[_mappIntelligence logLevel];
 }
 
