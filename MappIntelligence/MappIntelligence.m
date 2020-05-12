@@ -96,6 +96,13 @@ static MappIntelligenceDefaultConfig *config = nil;
 }
 
 - (void)initWithConfiguration:(NSArray *)trackIDs onTrackdomain:(NSString *)trackDomain  {
+    NSPredicate *p = [NSPredicate predicateWithFormat:@"self isKindOfClass: %@",
+                                                          [NSNumber class]];
+    NSArray *filtered = [trackIDs filteredArrayUsingPredicate:p];
+    if(filtered.count != trackIDs.count) {
+        [_logger logObj:@"Track Identifiers can only contain NSNumbers. Initialization is stopped!" forDescription:kMappIntelligenceLogLevelDescriptionFault];
+        return;
+    }
     //default values for tequest timeout is 45 and for log level it is .none
     [self initWithConfiguration:trackIDs onTrackdomain:trackDomain withAutotrackingEnabled:YES requestTimeout:45 numberOfRequests:10 batchSupportEnabled:YES viewControllerAutoTrackingEnabled:YES andLogLevel: none];
 }

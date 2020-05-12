@@ -75,6 +75,9 @@
 
 - (void)logConfig {
 
+  if (trackIDs == nil) {
+    return;
+  }
   [_logger logObj:([@"Auto Tracking is enabled: "
                       stringByAppendingFormat:self.autoTracking ? @"Yes"
                                                                 : @"No"])

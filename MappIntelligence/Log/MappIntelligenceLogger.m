@@ -42,7 +42,7 @@
   NSString *log = nil;
 
   if (self.logLevel == logDescription ||
-      self.logLevel == kMappIntelligenceLogLevelDescriptionAll) {
+      self.logLevel == kMappIntelligenceLogLevelDescriptionAll || logDescription == kMappIntelligenceLogLevelDescriptionFault) {
 
     log = [NSString stringWithFormat:@"%@ %@",
                                      [self logLevelDescription:logDescription],
