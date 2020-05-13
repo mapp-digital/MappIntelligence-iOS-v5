@@ -95,7 +95,9 @@ static MappIntelligenceDefaultConfig *config = nil;
   [tracker initializeTracking];
 }
 
-- (void)initWithConfiguration:(NSArray *)trackIDs onTrackdomain:(NSString *)trackDomain  {
+- (void)initWithConfiguration:(NSArray *_Nonnull)trackIDs onTrackdomain:(NSString *_Nonnull)trackDomain  {
+    NSParameterAssert(trackIDs.count > 0);
+    NSParameterAssert(![trackDomain isEqualToString:@""]);
     NSPredicate *p = [NSPredicate predicateWithFormat:@"self isKindOfClass: %@",
                                                           [NSNumber class]];
     NSArray *filtered = [trackIDs filteredArrayUsingPredicate:p];

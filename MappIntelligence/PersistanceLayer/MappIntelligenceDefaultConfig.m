@@ -170,7 +170,10 @@
 
 - (void)validateTrackingIDs:(NSArray *)validTrackingIDs {
   NSArray *tempTrackingIDs;
-
+    if ([validTrackingIDs count] == 0) {
+        [_logger logObj:@"You must enter a track IDs, track IDs list can not be empty!"
+        forDescription:kMappIntelligenceLogLevelDescriptionError];
+    }
   if (validTrackingIDs != nil) {
     tempTrackingIDs = validTrackingIDs;
   }
@@ -183,7 +186,6 @@
 }
 
 - (void)setLogLevel:(MappIntelligenceLogLevelDescription)logLevel {
-  //self.logLevel = logLevel;
   [_logger setLogLevel:logLevel];
 }
 

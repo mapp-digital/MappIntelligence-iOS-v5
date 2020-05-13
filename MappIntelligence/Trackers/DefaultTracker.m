@@ -136,7 +136,7 @@ static NSString *userAgent;
     NSString *msg =
         @"Request can not be sent with empty track domain or track id.";
     [_logger logObj:msg
-        forDescription:kMappIntelligenceLogLevelDescriptionDebug];
+        forDescription:kMappIntelligenceLogLevelDescriptionError];
     NSString *domain = @"com.mapp.mappIntelligenceSDK.ErrorDomain";
     NSString *desc = NSLocalizedString(msg, @"");
     NSDictionary *userInfo = @{NSLocalizedDescriptionKey : desc};
