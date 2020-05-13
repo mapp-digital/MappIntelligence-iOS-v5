@@ -84,7 +84,7 @@
 
     log = [[MappIntelligenceLogger shared] logObj:@"test" forDescription:kMappIntelligenceLogLevelDescriptionFault];
 
-    XCTAssertNil(log);
+    XCTAssertNotNil(log);
 
     [[MappIntelligenceLogger shared] setLogLevel:kMappIntelligenceLogLevelDescriptionDebug];
 
