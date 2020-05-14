@@ -6,21 +6,6 @@
 	objectVersion = 50;
 	objects = {
 
-/* Begin PBXAggregateTarget section */
-		A334865223BF42C300D0EB5F /* MappIntelligenceFramework */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = A334865323BF42C300D0EB5F /* Build configuration list for PBXAggregateTarget "MappIntelligenceFramework" */;
-			buildPhases = (
-				A334865823BF436400D0EB5F /* ShellScript */,
-			);
-			dependencies = (
-				A334865723BF435D00D0EB5F /* PBXTargetDependency */,
-			);
-			name = MappIntelligenceFramework;
-			productName = Webtrekk;
-		};
-/* End PBXAggregateTarget section */
-
 /* Begin PBXBuildFile section */
 		A31D7A4F243CC0F200386A1C /* TrackerRequestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A31D7A4E243CC0F200386A1C /* TrackerRequestTests.m */; };
 		A32AEA29242A6F4600BC7B46 /* MappIntelligenceWatchOS.m in Sources */ = {isa = PBXBuildFile; fileRef = A32AEA28242A6F4600BC7B46 /* MappIntelligenceWatchOS.m */; };
@@ -114,13 +99,6 @@
 			remoteGlobalIDString = A334861723BF3E2300D0EB5F;
 			remoteInfo = Webrekk;
 		};
-		A334865623BF435D00D0EB5F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A334861023BF3E2300D0EB5F /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A334861723BF3E2300D0EB5F;
-			remoteInfo = Webrekk;
-		};
 		A33B36EC24602482005EA9AE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A334861023BF3E2300D0EB5F /* Project object */;
@@ -207,7 +185,6 @@
 		A334861C23BF3E2300D0EB5F /* MappIntelligence.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MappIntelligence.m; sourceTree = "<group>"; };
 		A334862823BF3F2800D0EB5F /* MappIntelligenceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MappIntelligenceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A334863C23BF409D00D0EB5F /* MappIntelligence.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MappIntelligence.h; sourceTree = "<group>"; };
-		A334863D23BF409D00D0EB5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A33B36E32460246F005EA9AE /* MappIntelligenceSDK_watchOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MappIntelligenceSDK_watchOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A33B36E52460246F005EA9AE /* MappIntelligenceSDK_watchOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MappIntelligenceSDK_watchOS.h; sourceTree = "<group>"; };
 		A33B36E62460246F005EA9AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -406,7 +383,6 @@
 				A30E3EC0244491F30047D7A6 /* .travis.yml */,
 				A30E3EC224449ED90047D7A6 /* README.md */,
 				A334861A23BF3E2300D0EB5F /* MappIntelligence */,
-				A334863B23BF409D00D0EB5F /* MappIntelligenceFramework */,
 				A32AEA26242A6F4600BC7B46 /* MappIntelligenceWatchOS */,
 				A35C78C52452E6FF00D36144 /* MappIntelligencetvOS */,
 				A35C795C2457679000D36144 /* MappIntelligenceSDK-iOS */,
@@ -447,14 +423,6 @@
 				A334861C23BF3E2300D0EB5F /* MappIntelligence.m */,
 			);
 			path = MappIntelligence;
-			sourceTree = "<group>";
-		};
-		A334863B23BF409D00D0EB5F /* MappIntelligenceFramework */ = {
-			isa = PBXGroup;
-			children = (
-				A334863D23BF409D00D0EB5F /* Info.plist */,
-			);
-			path = MappIntelligenceFramework;
 			sourceTree = "<group>";
 		};
 		A334866D23BF567700D0EB5F /* Network */ = {
@@ -786,9 +754,6 @@
 					A334862723BF3F2800D0EB5F = {
 						CreatedOnToolsVersion = 11.3;
 					};
-					A334865223BF42C300D0EB5F = {
-						CreatedOnToolsVersion = 11.3;
-					};
 					A33B36E22460246F005EA9AE = {
 						CreatedOnToolsVersion = 11.4.1;
 					};
@@ -818,7 +783,6 @@
 			targets = (
 				A334861723BF3E2300D0EB5F /* MappIntelligenceSDK */,
 				A334862723BF3F2800D0EB5F /* MappIntelligenceTests */,
-				A334865223BF42C300D0EB5F /* MappIntelligenceFramework */,
 				A32AEA24242A6F4600BC7B46 /* MappIntelligenceWatchOS */,
 				A35C78C32452E6FF00D36144 /* MappIntelligencetvOS */,
 				A35C795A2457679000D36144 /* MappIntelligenceSDK-iOS */,
@@ -860,26 +824,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		A334865823BF436400D0EB5F /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nset -e\n\n# If we're already inside this script then die\nif [ -n \"$RW_MULTIPLATFORM_BUILD_IN_PROGRESS\" ]; then\n  exit 0\nfi\nexport RW_MULTIPLATFORM_BUILD_IN_PROGRESS=1\n\nRW_FRAMEWORK_NAME=${PROJECT_NAME}\nRW_INPUT_STATIC_LIB=\"lib${PROJECT_NAME}.a\"\nRW_FRAMEWORK_LOCATION=\"${BUILT_PRODUCTS_DIR}/${RW_FRAMEWORK_NAME}.framework\"\n\nfunction build_static_library {\n    # Will rebuild the static library as specified\n    #     build_static_library sdk\n    xcrun xcodebuild -project \"${PROJECT_FILE_PATH}\" \\\n                     -target \"${TARGET_NAME}\" \\\n                     -configuration \"${CONFIGURATION}\" \\\n                     -sdk \"${1}\" \\\n                     ONLY_ACTIVE_ARCH=NO \\\n                     BUILD_DIR=\"${BUILD_DIR}\" \\\n                     OBJROOT=\"${OBJROOT}/DependentBuilds\" \\\n                     BUILD_ROOT=\"${BUILD_ROOT}\" \\\n                     SYMROOT=\"${SYMROOT}\" $ACTION\n}\n\nfunction make_fat_library {\n    # Will smash 2 static libs together\n    #     make_fat_library in1 in2 out\n    xcrun lipo -create \"${1}\" \"${2}\" -output \"${3}\"\n}\n\n# 1 - Extract the platform (iphoneos/iphonesimulator) from the SDK name\nif [[ \"$SDK_NAME\" =~ ([A-Za-z]+) ]]; then\n  RW_SDK_PLATFORM=${BASH_REMATCH[1]}\nelse\n  echo \"Could not find platform name from SDK_NAME: $SDK_NAME\"\n  exit 1\nfi\n\n# 2 - Extract the version from the SDK\nif [[ \"$SDK_NAME\" =~ ([0-9]+.*$) ]]; then\n  RW_SDK_VERSION=${BASH_REMATCH[1]}\nelse\n  echo \"Could not find sdk version from SDK_NAME: $SDK_NAME\"\n  exit 1\nfi\n\n# 3 - Determine the other platform\nif [ \"$RW_SDK_PLATFORM\" == \"iphoneos\" ]; then\n  RW_OTHER_PLATFORM=iphonesimulator\nelse\n  RW_OTHER_PLATFORM=iphoneos\nfi\n\n# 4 - Find the build directory\nif [[ \"$BUILT_PRODUCTS_DIR\" =~ (.*)$RW_SDK_PLATFORM$ ]]; then\n  RW_OTHER_BUILT_PRODUCTS_DIR=\"${BASH_REMATCH[1]}${RW_OTHER_PLATFORM}\"\nelse\n  echo \"Could not find other platform build directory.\"\n  exit 1\nfi\n\n# Build the other platform.\nbuild_static_library \"${RW_OTHER_PLATFORM}${RW_SDK_VERSION}\"\n\n# If we're currently building for iphonesimulator, then need to rebuild\n#   to ensure that we get both i386 and x86_64\nif [ \"$RW_SDK_PLATFORM\" == \"iphonesimulator\" ]; then\n    build_static_library \"${SDK_NAME}\"\nfi\n\n# Join the 2 static libs into 1 and push into the .framework\nmake_fat_library \"${BUILT_PRODUCTS_DIR}/${RW_INPUT_STATIC_LIB}\" \\\n                 \"${RW_OTHER_BUILT_PRODUCTS_DIR}/${RW_INPUT_STATIC_LIB}\" \\\n                 \"${RW_FRAMEWORK_LOCATION}/Versions/A/${RW_FRAMEWORK_NAME}\"\n\n# Ensure that the framework is present in both platform's build directories\ncp -a \"${RW_FRAMEWORK_LOCATION}/Versions/A/${RW_FRAMEWORK_NAME}\" \\\n      \"${RW_OTHER_BUILT_PRODUCTS_DIR}/${RW_FRAMEWORK_NAME}.framework/Versions/A/${RW_FRAMEWORK_NAME}\"\n\n# Copy the framework to the user's desktop\necho \"Copy directory to desktop\"\necho \"${RW_FRAMEWORK_LOCATION}\" \necho \"${HOME}/Desktop/${RW_FRAMEWORK_NAME}.framework\"\nditto -rsrcFork \"${RW_FRAMEWORK_LOCATION}\" \"${HOME}/Desktop/${RW_FRAMEWORK_NAME}.framework\"\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A32AEA21242A6F4600BC7B46 /* Sources */ = {
@@ -991,11 +935,6 @@
 			isa = PBXTargetDependency;
 			target = A334861723BF3E2300D0EB5F /* MappIntelligenceSDK */;
 			targetProxy = A334862E23BF3F2800D0EB5F /* PBXContainerItemProxy */;
-		};
-		A334865723BF435D00D0EB5F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A334861723BF3E2300D0EB5F /* MappIntelligenceSDK */;
-			targetProxy = A334865623BF435D00D0EB5F /* PBXContainerItemProxy */;
 		};
 		A33B36ED24602482005EA9AE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1258,32 +1197,6 @@
 			};
 			name = Release;
 		};
-		A334865423BF42C300D0EB5F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = LERY366S7C;
-				FRAMEWORK_SEARCH_PATHS = "";
-				INFOPLIST_FILE = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = NO;
-			};
-			name = Debug;
-		};
-		A334865523BF42C300D0EB5F /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = LERY366S7C;
-				FRAMEWORK_SEARCH_PATHS = "";
-				INFOPLIST_FILE = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = NO;
-			};
-			name = Release;
-		};
 		A33B36E82460246F005EA9AE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1315,7 +1228,7 @@
 				TARGETED_DEVICE_FAMILY = 4;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
-				WATCHOS_DEPLOYMENT_TARGET = 6.2;
+				WATCHOS_DEPLOYMENT_TARGET = 4.0;
 			};
 			name = Debug;
 		};
@@ -1350,7 +1263,7 @@
 				TARGETED_DEVICE_FAMILY = 4;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
-				WATCHOS_DEPLOYMENT_TARGET = 6.2;
+				WATCHOS_DEPLOYMENT_TARGET = 4.0;
 			};
 			name = Release;
 		};
@@ -1382,7 +1295,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 13.4;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -1416,7 +1329,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 13.4;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -1433,7 +1346,7 @@
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 13.2;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
 			};
 			name = Debug;
 		};
@@ -1448,7 +1361,7 @@
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 13.2;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
 			};
 			name = Release;
 		};
@@ -1467,6 +1380,7 @@
 				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "MappIntelligenceSDK-iOS/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1501,6 +1415,7 @@
 				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "MappIntelligenceSDK-iOS/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1555,15 +1470,6 @@
 			buildConfigurations = (
 				A334863123BF3F2800D0EB5F /* Debug */,
 				A334863223BF3F2800D0EB5F /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		A334865323BF42C300D0EB5F /* Build configuration list for PBXAggregateTarget "MappIntelligenceFramework" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A334865423BF42C300D0EB5F /* Debug */,
-				A334865523BF42C300D0EB5F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
