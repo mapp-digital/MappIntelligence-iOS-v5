@@ -107,11 +107,11 @@
                                               [self getLogLevelFor:[_logger logLevel]]])
       forDescription:kMappIntelligenceLogLevelDescriptionInfo];
   [self validateTrackingIDs:self.trackIDs];
-  [_logger logObj:([@"Tracking IDs: "
+  [_logger logObj:([@"Track IDs: "
                       stringByAppendingFormat:@"%@", self.trackIDs])
       forDescription:kMappIntelligenceLogLevelDescriptionInfo];
   [self trackDomainValidation:self.trackDomain];
-  [_logger logObj:([@"Tracking domain is: "
+  [_logger logObj:([@"Track domain is: "
                       stringByAppendingFormat:@"%@", self.trackDomain])
       forDescription:kMappIntelligenceLogLevelDescriptionInfo];
   [_logger logObj:([@"View Controller auto tracking is enabbled: "
@@ -150,7 +150,7 @@
   if ([trackDomain length] != 0) {
     components = [[NSURLComponents alloc] initWithString:trackingDomain];
   } else {
-    [_logger logObj:@"Tracking domain can not be empty!"
+    [_logger logObj:@"You must enter a track domain, track domain cannot be empty!"
         forDescription:kMappIntelligenceLogLevelDescriptionError];
       return false;
   }
@@ -171,7 +171,7 @@
 - (void)validateTrackingIDs:(NSArray *)validTrackingIDs {
   NSArray *tempTrackingIDs;
     if ([validTrackingIDs count] == 0) {
-        [_logger logObj:@"You must enter a track IDs, track IDs list can not be empty!"
+        [_logger logObj:@"You must enter at least one track ID, track ID list cannot be empty!"
         forDescription:kMappIntelligenceLogLevelDescriptionError];
     }
   if (validTrackingIDs != nil) {

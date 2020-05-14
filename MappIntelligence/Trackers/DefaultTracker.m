@@ -134,7 +134,7 @@ static NSString *userAgent;
   if ([_config.MappIntelligenceId isEqual:@""] ||
       [_config.serverUrl.absoluteString isEqual:@""]) {
     NSString *msg =
-        @"Request can not be sent with empty track domain or track id.";
+        @"Request cannot be sent without a track domain and track ID.";
     [_logger logObj:msg
         forDescription:kMappIntelligenceLogLevelDescriptionError];
     NSString *domain = @"com.mapp.mappIntelligenceSDK.ErrorDomain";
