@@ -9,6 +9,7 @@
 #import "MappIntelligence.h"
 #import "MappIntelligenceDefaultConfig.h"
 #import "MappIntelligenceLogger.h"
+#import "DatabaseManager.h"
 
 @interface MappIntelligence ()
 
@@ -30,6 +31,7 @@ static MappIntelligenceDefaultConfig *config = nil;
     sharedInstance = [super init];
     config = [[MappIntelligenceDefaultConfig alloc] init];
     _logger = [MappIntelligenceLogger shared];
+      [DatabaseManager shared];
   }
   return sharedInstance;
 }

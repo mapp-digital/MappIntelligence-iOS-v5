@@ -7,12 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Request.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface DatabaseManager : NSObject
 
-typedef void(^StorageManagerCompletionHandler)(NSError *error, id data);
+typedef void(^StorageManagerCompletionHandler)(NSError *error, id _Nullable data);
+
++ (instancetype)shared;
+- (BOOL)insertRequest:(Request *)request;
 
 @end
 

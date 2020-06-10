@@ -78,6 +78,20 @@
 		A3A7255F243F154900671DB2 /* MappIntelligenceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3A7255E243F154900671DB2 /* MappIntelligenceTests.m */; };
 		A3CC5486248FC418006215FD /* DatabaseManager.h in Headers */ = {isa = PBXBuildFile; fileRef = A3CC5484248FC418006215FD /* DatabaseManager.h */; };
 		A3CC5487248FC418006215FD /* DatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A3CC5485248FC418006215FD /* DatabaseManager.m */; };
+		A3CC548A249125DD006215FD /* Parameter.h in Headers */ = {isa = PBXBuildFile; fileRef = A3CC5488249125DD006215FD /* Parameter.h */; };
+		A3CC548B249125DD006215FD /* Parameter.m in Sources */ = {isa = PBXBuildFile; fileRef = A3CC5489249125DD006215FD /* Parameter.m */; };
+		A3CC548E249125F0006215FD /* Request.h in Headers */ = {isa = PBXBuildFile; fileRef = A3CC548C249125F0006215FD /* Request.h */; };
+		A3CC548F249125F0006215FD /* Request.m in Sources */ = {isa = PBXBuildFile; fileRef = A3CC548D249125F0006215FD /* Request.m */; };
+		A3CC549224912AA8006215FD /* RequestData.h in Headers */ = {isa = PBXBuildFile; fileRef = A3CC549024912AA8006215FD /* RequestData.h */; };
+		A3CC549324912AA8006215FD /* RequestData.m in Sources */ = {isa = PBXBuildFile; fileRef = A3CC549124912AA8006215FD /* RequestData.m */; };
+		A3CC5496249151DB006215FD /* DatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A3CC5485248FC418006215FD /* DatabaseManager.m */; };
+		A3CC5497249151DC006215FD /* DatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A3CC5485248FC418006215FD /* DatabaseManager.m */; };
+		A3CC5498249151DF006215FD /* Parameter.m in Sources */ = {isa = PBXBuildFile; fileRef = A3CC5489249125DD006215FD /* Parameter.m */; };
+		A3CC5499249151E0006215FD /* Parameter.m in Sources */ = {isa = PBXBuildFile; fileRef = A3CC5489249125DD006215FD /* Parameter.m */; };
+		A3CC549A249151E3006215FD /* Request.m in Sources */ = {isa = PBXBuildFile; fileRef = A3CC548D249125F0006215FD /* Request.m */; };
+		A3CC549B249151E5006215FD /* Request.m in Sources */ = {isa = PBXBuildFile; fileRef = A3CC548D249125F0006215FD /* Request.m */; };
+		A3CC549C249151E8006215FD /* RequestData.m in Sources */ = {isa = PBXBuildFile; fileRef = A3CC549124912AA8006215FD /* RequestData.m */; };
+		A3CC549D249151E9006215FD /* RequestData.m in Sources */ = {isa = PBXBuildFile; fileRef = A3CC549124912AA8006215FD /* RequestData.m */; };
 		A3E8274E2461B6B700952606 /* MappIntelligence.h in Headers */ = {isa = PBXBuildFile; fileRef = A334861B23BF3E2300D0EB5F /* MappIntelligence.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A3E8274F2461B6F200952606 /* MappIntelligenceWatchOS.h in Headers */ = {isa = PBXBuildFile; fileRef = A32AEA27242A6F4600BC7B46 /* MappIntelligenceWatchOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A3E827502461B72700952606 /* MappIntelligencetvOS.h in Headers */ = {isa = PBXBuildFile; fileRef = A35C78C62452E6FF00D36144 /* MappIntelligencetvOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -226,6 +240,12 @@
 		A3A7255E243F154900671DB2 /* MappIntelligenceTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MappIntelligenceTests.m; sourceTree = "<group>"; };
 		A3CC5484248FC418006215FD /* DatabaseManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DatabaseManager.h; sourceTree = "<group>"; };
 		A3CC5485248FC418006215FD /* DatabaseManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DatabaseManager.m; sourceTree = "<group>"; };
+		A3CC5488249125DD006215FD /* Parameter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Parameter.h; sourceTree = "<group>"; };
+		A3CC5489249125DD006215FD /* Parameter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Parameter.m; sourceTree = "<group>"; };
+		A3CC548C249125F0006215FD /* Request.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Request.h; sourceTree = "<group>"; };
+		A3CC548D249125F0006215FD /* Request.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Request.m; sourceTree = "<group>"; };
+		A3CC549024912AA8006215FD /* RequestData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RequestData.h; sourceTree = "<group>"; };
+		A3CC549124912AA8006215FD /* RequestData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RequestData.m; sourceTree = "<group>"; };
 		A3DD62E0242CE045004B3A2D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS6.1.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		A3DD62E2242CE111004B3A2D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS6.1.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		A3EAFF5F2418E02F009D5108 /* UIFlowObserver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIFlowObserver.h; sourceTree = "<group>"; };
@@ -515,6 +535,12 @@
 			children = (
 				A3CC5484248FC418006215FD /* DatabaseManager.h */,
 				A3CC5485248FC418006215FD /* DatabaseManager.m */,
+				A3CC5488249125DD006215FD /* Parameter.h */,
+				A3CC5489249125DD006215FD /* Parameter.m */,
+				A3CC548C249125F0006215FD /* Request.h */,
+				A3CC548D249125F0006215FD /* Request.m */,
+				A3CC549024912AA8006215FD /* RequestData.h */,
+				A3CC549124912AA8006215FD /* RequestData.m */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -575,16 +601,19 @@
 			files = (
 				A334863423BF3FAD00D0EB5F /* MappIntelligence.h in Headers */,
 				BCCAE6D0240D29A9005E9FD6 /* MappIntelligenceLogger.m in Headers */,
+				A3CC549224912AA8006215FD /* RequestData.h in Headers */,
 				A380D1FA2411478C009E2CD8 /* TrackingEvent.h in Headers */,
 				A36CD7D123F447D0004E3E2D /* Properties.h in Headers */,
 				A380D2102413ED35009E2CD8 /* RequestUrlBuilder.h in Headers */,
 				A36CD7CD23F44594004E3E2D /* TrackerRequest.h in Headers */,
 				A380D1FF241296FD009E2CD8 /* PageViewEvent.h in Headers */,
 				BCCAE6D2240D2E16005E9FD6 /* MappIntelligenceDefaultConfig.h in Headers */,
+				A3CC548E249125F0006215FD /* Request.h in Headers */,
 				A380D21424141B55009E2CD8 /* URLSizeMonitor.h in Headers */,
 				A3EAFF612418E02F009D5108 /* UIFlowObserver.h in Headers */,
 				A380D20C2413D317009E2CD8 /* Configuration.h in Headers */,
 				A3CC5486248FC418006215FD /* DatabaseManager.h in Headers */,
+				A3CC548A249125DD006215FD /* Parameter.h in Headers */,
 				A380D2042412B0AB009E2CD8 /* Enviroment.h in Headers */,
 				A380D2082412D8F2009E2CD8 /* RequestTrackerBuilder.h in Headers */,
 			);
@@ -851,13 +880,17 @@
 				A36C6E0824323931008A9CB6 /* Configuration.m in Sources */,
 				A36C6E072432392A008A9CB6 /* Enviroment.m in Sources */,
 				A36C6E0624323917008A9CB6 /* RequestUrlBuilder.m in Sources */,
+				A3CC549A249151E3006215FD /* Request.m in Sources */,
 				A36C6E052432390B008A9CB6 /* TrackingEvent.m in Sources */,
+				A3CC5498249151DF006215FD /* Parameter.m in Sources */,
 				A36C6E0424323903008A9CB6 /* RequestTrackerBuilder.m in Sources */,
 				A36C6E03243238E3008A9CB6 /* Properties.m in Sources */,
 				A36C6E022432388A008A9CB6 /* MappIntelligenceDefaultConfig.m in Sources */,
 				A36C6E012432387F008A9CB6 /* MappIntelligenceLogger.m in Sources */,
+				A3CC549C249151E8006215FD /* RequestData.m in Sources */,
 				A36C6E0024323873008A9CB6 /* DefaultTracker.m in Sources */,
 				A36C6DFF2432380A008A9CB6 /* MappIntelligence.m in Sources */,
+				A3CC5496249151DB006215FD /* DatabaseManager.m in Sources */,
 				A32AEA29242A6F4600BC7B46 /* MappIntelligenceWatchOS.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -866,6 +899,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3CC548B249125DD006215FD /* Parameter.m in Sources */,
 				BCBE5C0923F29E49002125C1 /* DefaultTracker.m in Sources */,
 				A380D200241296FD009E2CD8 /* PageViewEvent.m in Sources */,
 				A36CD7CE23F44594004E3E2D /* TrackerRequest.m in Sources */,
@@ -875,6 +909,7 @@
 				A334861D23BF3E2300D0EB5F /* MappIntelligence.m in Sources */,
 				A380D1FB2411478C009E2CD8 /* TrackingEvent.m in Sources */,
 				A3EAFF622418E02F009D5108 /* UIFlowObserver.m in Sources */,
+				A3CC549324912AA8006215FD /* RequestData.m in Sources */,
 				A380D20D2413D317009E2CD8 /* Configuration.m in Sources */,
 				A36CD7D223F447D0004E3E2D /* Properties.m in Sources */,
 				A380D21524141B55009E2CD8 /* URLSizeMonitor.m in Sources */,
@@ -882,6 +917,7 @@
 				BCD5E2C523CF38F300CE2092 /* MappIntelligenceDefaultConfig.m in Sources */,
 				BCD5E2C323CF309900CE2092 /* Config.h in Sources */,
 				A380D2052412B0AB009E2CD8 /* Enviroment.m in Sources */,
+				A3CC548F249125F0006215FD /* Request.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -926,13 +962,17 @@
 				A35C79112452FCD600D36144 /* URLSizeMonitor.m in Sources */,
 				A35C790A2452FCB700D36144 /* Enviroment.m in Sources */,
 				A35C790B2452FCB700D36144 /* Configuration.m in Sources */,
+				A3CC549B249151E5006215FD /* Request.m in Sources */,
 				A35C790C2452FCB700D36144 /* UIFlowObserver.m in Sources */,
+				A3CC5499249151E0006215FD /* Parameter.m in Sources */,
 				A35C790D2452FCB700D36144 /* RequestUrlBuilder.m in Sources */,
 				A35C79092452FC9D00D36144 /* RequestTrackerBuilder.m in Sources */,
 				A35C79072452FC1100D36144 /* MappIntelligenceDefaultConfig.m in Sources */,
 				A35C79082452FC1100D36144 /* MappIntelligenceLogger.m in Sources */,
+				A3CC549D249151E9006215FD /* RequestData.m in Sources */,
 				A35C79062452FC0800D36144 /* DefaultTracker.m in Sources */,
 				A35C79052452FBFC00D36144 /* MappIntelligence.m in Sources */,
+				A3CC5497249151DC006215FD /* DatabaseManager.m in Sources */,
 				A35C78C82452E6FF00D36144 /* MappIntelligencetvOS.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

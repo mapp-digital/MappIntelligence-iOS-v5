@@ -11,6 +11,7 @@
 #import "Properties.h"
 #import "MappIntelligence.h"
 #import "URLSizeMonitor.h"
+#import "DatabaseManager.h"
 #if TARGET_OS_WATCH
 #import <WatchKit/WatchKit.h>
 #endif
@@ -154,6 +155,8 @@
 }
 
 - (NSURL *)createURLFromParametersWith:(NSArray<NSURLQueryItem *> *)parameters {
+    [[DatabaseManager shared] insertRequest:[[Request alloc] initWithParamters:parameters andDomain:[MappIntelligence getUrl] andTrackIds:_mappIntelligenceId]];
+    
   NSURLComponents *urlComponents = [[NSURLComponents alloc] initWithURL:_baseUrl
                                                 resolvingAgainstBaseURL:YES];
   if (!urlComponents) {
