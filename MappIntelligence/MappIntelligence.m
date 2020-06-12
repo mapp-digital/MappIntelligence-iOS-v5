@@ -148,8 +148,8 @@ static MappIntelligenceDefaultConfig *config = nil;
     }];
 }
 
-- (void)removeRequestFromDatabase {
-    
+- (void)removeRequestFromDatabaseWithID: (int)ID; {
+    [[DatabaseManager shared] deleteRequest:ID];
 }
 
 @end

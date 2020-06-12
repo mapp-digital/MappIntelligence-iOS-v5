@@ -156,6 +156,56 @@ NSString *const StorageErrorDescriptionGeneralError = @"General Error";
     });
 }
 
+- (BOOL)deleteRequest:(int)ID
+{
+    BOOL success = YES;
+    
+    sqlite3_stmt *sql_statement;
+    const char *dbPath = [self.databasePath UTF8String];
+        
+    if (sqlite3_open(dbPath, &_requestsDB) == SQLITE_OK) {
+            
+        NSString *insertSQL = [NSString stringWithFormat:@"DELETE FROM REQUESTS_TABLE WHERE ID = ?"];
+            
+        const char *insertStatement = [insertSQL UTF8String];
+            
+        sqlite3_prepare_v2(_requestsDB, insertStatement, -1, &sql_statement, NULL);
+            
+        sqlite3_bind_int(sql_statement, 1, ID);
+            
+        if (sqlite3_step(sql_statement) != SQLITE_DONE) {
+                
+            success = NO;
+        }
+        sqlite3_exec(_requestsDB, "END TRANSACTION", NULL, NULL, NULL);
+        sqlite3_finalize(sql_statement);
+        
+        //remove also paramters from parameters table
+        insertSQL = [NSString stringWithFormat:@"DELETE FROM PARAMETERS_TABLE WHERE REQUEST_TABLE_ID = ?"];
+            
+        insertStatement = [insertSQL UTF8String];
+            
+        sqlite3_prepare_v2(_requestsDB, insertStatement, -1, &sql_statement, NULL);
+            
+        sqlite3_bind_int(sql_statement, 1, ID);
+            
+        if (sqlite3_step(sql_statement) != SQLITE_DONE) {
+                
+            success = NO;
+        }
+        sqlite3_exec(_requestsDB, "END TRANSACTION", NULL, NULL, NULL);
+        sqlite3_finalize(sql_statement);
+        
+        sqlite3_close(_requestsDB);
+            
+    } else {
+            
+        success = NO;
+    }
+    
+    return success;
+}
+
 - (void)insertRegionData:(RequestData *)requestData withCompletionHandler:(StorageManagerCompletionHandler)completionHandler
 {
     [self deleteDataBaseWithCompletionHandler:^(NSError *error, id data) {

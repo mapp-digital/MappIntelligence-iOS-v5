@@ -14,12 +14,19 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.tap)))
+        self.view.isUserInteractionEnabled = true
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
     @IBAction func removeRequestFromDatabase(_ sender: Any) {
+        guard let requestID = Int32(requestIDTextField.text ?? "0") else {return}
+        MappIntelligence.shared()?.removeRequestFromDatabase(withID: requestID)
     }
     @IBAction func printAllRequests(_ sender: Any) {
         MappIntelligence.shared()?.printAllRequestFromDatabase()
@@ -34,6 +41,24 @@ class ViewController: UIViewController {
     
     @IBAction func resetInstance(_ sender: Any) {
         MappIntelligence.shared()?.reset()
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+        }
+    }
+
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
+    }
+    
+    @objc func tap() {
+        self.requestIDTextField.endEditing(true)
     }
 }
 

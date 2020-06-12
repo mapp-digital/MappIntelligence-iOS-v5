@@ -18,6 +18,7 @@ typedef void(^StorageManagerCompletionHandler)(NSError *error, id _Nullable data
 + (instancetype)shared;
 - (BOOL)insertRequest:(Request *)request;
 - (void)fetchAllRequestsWithCompletionHandler:(StorageManagerCompletionHandler)completionHandler;
+- (BOOL)deleteRequest:(int)ID;
 
 @end
 

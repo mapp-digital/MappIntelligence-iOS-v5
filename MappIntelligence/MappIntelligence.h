@@ -51,6 +51,6 @@ typedef NS_ENUM(NSInteger, logLevel) {
 
 //testable methods
 - (void) printAllRequestFromDatabase;
-- (void) removeRequestFromDatabase;
+- (void) removeRequestFromDatabaseWithID: (int)ID;
 
 @end
