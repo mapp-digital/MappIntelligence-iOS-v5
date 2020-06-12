@@ -10,6 +10,7 @@
 #import "MappIntelligenceDefaultConfig.h"
 #import "MappIntelligenceLogger.h"
 #import "DatabaseManager.h"
+#import "RequestData.h"
 
 @interface MappIntelligence ()
 
@@ -134,6 +135,21 @@ static MappIntelligenceDefaultConfig *config = nil;
         forDescription:kMappIntelligenceLogLevelDescriptionDebug];
     [config logConfig];
     [tracker reset];
+}
+
+- (void)printAllRequestFromDatabase {
+    [[DatabaseManager shared] fetchAllRequestsWithCompletionHandler:^(NSError * _Nonnull error, id  _Nullable data) {
+        if (!error) {
+            RequestData* dt = (RequestData*)data;
+            [dt print];
+        } else {
+            NSLog(@"error while fetching requests!");
+        }
+    }];
+}
+
+- (void)removeRequestFromDatabase {
+    
 }
 
 @end

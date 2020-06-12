@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)initWithKeyedValues:(NSDictionary *)keyedValues;
 - (NSDictionary *)dictionaryWithValuesForKeys:(NSArray *)keys;
+- (NSString*)print;
 
 @end
 

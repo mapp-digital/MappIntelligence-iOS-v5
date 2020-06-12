@@ -370,6 +370,171 @@ NSString *const StorageErrorDescriptionGeneralError = @"General Error";
     return error;
 }
 
+- (void)fetchAllRequestsWithCompletionHandler:(StorageManagerCompletionHandler)completionHandler
+{
+    dispatch_queue_t queue = dispatch_queue_create("Fetch Resulats", NULL);
+    
+    dispatch_async(queue, ^{
+        
+        NSMutableArray *requests = nil;
+        NSMutableArray *requestIds = nil;
+        
+        const char *dbPath = [self.databasePath UTF8String];
+        
+        NSError *error;
+        
+        if (sqlite3_open(dbPath, &self->_requestsDB) == SQLITE_OK) {
+
+          NSString *querySQL = @"SELECT rowid, * FROM REQUESTS_TABLE ORDER BY ID";
+
+          sqlite3_stmt *sql_statement;
+
+          const char *query_stmt = [querySQL UTF8String];
+
+          if (sqlite3_prepare_v2(self->_requestsDB, query_stmt, -1,
+                                 &sql_statement, NULL) == SQLITE_OK) {
+
+            requests = [[NSMutableArray alloc] init];
+            requestIds = [[NSMutableArray alloc] init];
+
+            while (sqlite3_step(sql_statement) == SQLITE_ROW) {
+                
+              int uniqueId = sqlite3_column_double(sql_statement, 1);
+              NSString* domain = [[NSString alloc]
+              initWithUTF8String:(const char *)sqlite3_column_text(
+                                     sql_statement, 2)];
+              NSString* ids = [[NSString alloc]
+              initWithUTF8String:(const char *)sqlite3_column_text(
+                                     sql_statement, 3)];
+              int status = sqlite3_column_double(sql_statement, 4);
+                
+              NSDictionary *keyedValues = @{
+                @"id" : @(uniqueId),
+                @"track_domain" : domain,
+                @"track_ids" : ids,
+                @"status" : @(status)
+              };
+                Request *request = [[Request alloc] initWithKeyedValues:keyedValues];
+                [requestIds insertObject:@(uniqueId) atIndex:0];
+              [requests insertObject:request atIndex:0];
+            }
+
+          } else {
+
+            NSDictionary *userInfo = @{
+              NSLocalizedDescriptionKey : StorageErrorDescriptionPrepareDB
+            };
+            error = [[NSError alloc] initWithDomain:StorageDomainSqlite
+                                               code:0
+                                           userInfo:userInfo];
+          }
+
+        } else {
+            
+            NSDictionary *userInfo = @{NSLocalizedDescriptionKey : StorageErrorDescriptionOpenDB};
+            error = [[NSError alloc] initWithDomain:StorageDomainSqlite code:0 userInfo:userInfo];
+        }
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            if (completionHandler) {
+                
+                NSArray *reveresedRequests = [[requests reverseObjectEnumerator] allObjects];
+                
+                    [self fetchAllParametersForRequestID: requestIds andCompletitionHandler:^(NSError * _Nonnull error, id  _Nullable data) {
+                        NSMutableArray<Parameter*> *parameters = (NSMutableArray<Parameter*> *)data;
+                        for (Request* request in reveresedRequests) {
+                            NSPredicate* predicate = [NSPredicate predicateWithBlock:^BOOL(id  _Nullable evaluatedObject, NSDictionary<NSString *,id> * _Nullable bindings) {
+                                Parameter* paramater = (Parameter*)evaluatedObject;
+                                return (paramater.request_uniqueId == request.uniqueId);
+                            }];
+                            request.parameters = (NSMutableArray<Parameter *> * )[parameters filteredArrayUsingPredicate:predicate];
+                        }
+                        RequestData* requestData = [[RequestData alloc] initWithRequests:reveresedRequests];
+                        completionHandler(error, requestData);
+                    }];
+                
+            }
+        });
+    });
+}
+
+-(void)fetchAllParametersForRequestID: (NSArray*)ids andCompletitionHandler:(StorageManagerCompletionHandler)completionHandler  {
+    
+    dispatch_queue_t queue = dispatch_queue_create("Fetch Resulats", NULL);
+    
+    dispatch_async(queue, ^{
+        
+        NSMutableArray *parameters = nil;
+        
+        const char *dbPath = [self.databasePath UTF8String];
+        
+        NSError *error;
+        
+        if (sqlite3_open(dbPath, &self->_requestsDB) == SQLITE_OK) {
+
+            NSString *querySQL = [[NSString alloc] initWithFormat:@"SELECT rowid, * FROM PARAMETERS_TABLE WHERE REQUEST_TABLE_ID IN (%@)", [ids componentsJoinedByString:@","]];
+
+          sqlite3_stmt *sql_statement;
+
+          const char *query_stmt = [querySQL UTF8String];
+
+          if (sqlite3_prepare_v2(self->_requestsDB, query_stmt, -1,
+                                 &sql_statement, NULL) == SQLITE_OK) {
+
+            parameters = [[NSMutableArray alloc] init];
+
+            while (sqlite3_step(sql_statement) == SQLITE_ROW) {
+
+              NSString *uuid = [[NSString alloc]
+                  initWithUTF8String:(const char *)sqlite3_column_text(
+                                         sql_statement, 1)];
+              NSNumber *uniqueId = @([uuid doubleValue]);
+              NSString* name = [[NSString alloc]
+              initWithUTF8String:(const char *)sqlite3_column_text(
+                                     sql_statement, 2)];
+              NSString* value = [[NSString alloc]
+              initWithUTF8String:(const char *)sqlite3_column_text(
+                                     sql_statement, 3)];
+              int request_uniqueId = sqlite3_column_int(sql_statement, 4);
+
+              NSDictionary *keyedValues = @{
+                @"id" : uniqueId,
+                @"name" : name,
+                @"value" : value,
+                @"request_table_id" : @(request_uniqueId)
+              };
+                Parameter *parameter = [[Parameter alloc] initWithKeyedValues:keyedValues];
+              [parameters insertObject:parameter atIndex:0];
+            }
+
+          } else {
+
+            NSDictionary *userInfo = @{
+              NSLocalizedDescriptionKey : StorageErrorDescriptionPrepareDB
+            };
+            error = [[NSError alloc] initWithDomain:StorageDomainSqlite
+                                               code:0
+                                           userInfo:userInfo];
+          }
+
+        } else {
+            
+            NSDictionary *userInfo = @{NSLocalizedDescriptionKey : StorageErrorDescriptionOpenDB};
+            error = [[NSError alloc] initWithDomain:StorageDomainSqlite code:0 userInfo:userInfo];
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+                
+                if (completionHandler) {
+                    
+                    NSArray *reveresedRarameters = [[parameters reverseObjectEnumerator] allObjects];
+                    completionHandler(error, reveresedRarameters);
+                }
+            });
+        });
+}
+
+
 #pragma mark - Getters && Setters
 
 - (NSString *)databasePath

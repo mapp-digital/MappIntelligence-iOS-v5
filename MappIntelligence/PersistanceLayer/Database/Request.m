@@ -53,10 +53,10 @@
     if (keyedValues) {
         
         self.uniqueId = @([keyedValues[key_id] integerValue]);
-        self.domain = [keyedValues[key_domain] stringValue];
-        self.track_ids = [keyedValues[key_ids] stringValue];
+        self.domain = keyedValues[key_domain] ;
+        self.track_ids = keyedValues[key_ids];
         self.status = @([keyedValues[key_status] integerValue]);
-        self.parameters = keyedValues[key_parameters];
+        //self.parameters = keyedValues[key_parameters];
     }
 }
 
@@ -89,5 +89,13 @@
     }
     
     return keyedValues;
+}
+
+- (void)print {
+    NSString* request = [[NSString alloc] initWithFormat:@"ID: %@ and domain: %@ and ids: %@ and paramters: ", self.uniqueId, self.domain, self.track_ids];
+    for(Parameter* parameter in self.parameters) {
+        request = [request stringByAppendingString:[parameter print]];
+    }
+    NSLog(@"%@", request);
 }
 @end

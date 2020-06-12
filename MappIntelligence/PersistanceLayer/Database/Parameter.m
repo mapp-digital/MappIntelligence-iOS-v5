@@ -36,10 +36,14 @@
 {
     if (keyedValues) {
         
-        //self.uniqueId = @([keyedValues[key_id] integerValue]);
+        if(keyedValues[key_id]) {
+            self.uniqueId = @([keyedValues[key_id] integerValue]);
+        }
         self.name = keyedValues[key_name];
         self.value = keyedValues[key_value];
-        //self.request_uniqueId = @([keyedValues[key_request_id] integerValue]);
+        if (keyedValues[key_request_id]) {
+            self.request_uniqueId = @([keyedValues[key_request_id] integerValue]);
+        }
     }
 }
 
@@ -68,5 +72,9 @@
     }
     
     return keyedValues;
+}
+
+- (NSString*)print {
+    return [[NSString alloc] initWithFormat:@"\n\n name: %@, value: %@", self.name, self.value];
 }
 @end

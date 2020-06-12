@@ -71,12 +71,13 @@
 		A380D2112413ED35009E2CD8 /* RequestUrlBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = A380D20F2413ED35009E2CD8 /* RequestUrlBuilder.m */; };
 		A380D21424141B55009E2CD8 /* URLSizeMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = A380D21224141B55009E2CD8 /* URLSizeMonitor.h */; };
 		A380D21524141B55009E2CD8 /* URLSizeMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = A380D21324141B55009E2CD8 /* URLSizeMonitor.m */; };
+		A3852A95249389060090F47B /* DatabaseManager.m in Headers */ = {isa = PBXBuildFile; fileRef = A3CC5485248FC418006215FD /* DatabaseManager.m */; };
 		A3A72557243DBF1000671DB2 /* PropertiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3A72556243DBF1000671DB2 /* PropertiesTests.m */; };
 		A3A72559243DC22C00671DB2 /* RequestTrackerBuilderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3A72558243DC22C00671DB2 /* RequestTrackerBuilderTests.m */; };
 		A3A7255B243DEA0500671DB2 /* RequestUrlBuilderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3A7255A243DEA0500671DB2 /* RequestUrlBuilderTests.m */; };
 		A3A7255D243E07A100671DB2 /* URLSizeMonitorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3A7255C243E07A100671DB2 /* URLSizeMonitorTests.m */; };
 		A3A7255F243F154900671DB2 /* MappIntelligenceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3A7255E243F154900671DB2 /* MappIntelligenceTests.m */; };
-		A3CC5486248FC418006215FD /* DatabaseManager.h in Headers */ = {isa = PBXBuildFile; fileRef = A3CC5484248FC418006215FD /* DatabaseManager.h */; };
+		A3CC5486248FC418006215FD /* DatabaseManager.h in Headers */ = {isa = PBXBuildFile; fileRef = A3CC5484248FC418006215FD /* DatabaseManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A3CC5487248FC418006215FD /* DatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A3CC5485248FC418006215FD /* DatabaseManager.m */; };
 		A3CC548A249125DD006215FD /* Parameter.h in Headers */ = {isa = PBXBuildFile; fileRef = A3CC5488249125DD006215FD /* Parameter.h */; };
 		A3CC548B249125DD006215FD /* Parameter.m in Sources */ = {isa = PBXBuildFile; fileRef = A3CC5489249125DD006215FD /* Parameter.m */; };
@@ -600,6 +601,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A334863423BF3FAD00D0EB5F /* MappIntelligence.h in Headers */,
+				A3CC5486248FC418006215FD /* DatabaseManager.h in Headers */,
+				A3852A95249389060090F47B /* DatabaseManager.m in Headers */,
 				BCCAE6D0240D29A9005E9FD6 /* MappIntelligenceLogger.m in Headers */,
 				A3CC549224912AA8006215FD /* RequestData.h in Headers */,
 				A380D1FA2411478C009E2CD8 /* TrackingEvent.h in Headers */,
@@ -612,7 +615,6 @@
 				A380D21424141B55009E2CD8 /* URLSizeMonitor.h in Headers */,
 				A3EAFF612418E02F009D5108 /* UIFlowObserver.h in Headers */,
 				A380D20C2413D317009E2CD8 /* Configuration.h in Headers */,
-				A3CC5486248FC418006215FD /* DatabaseManager.h in Headers */,
 				A3CC548A249125DD006215FD /* Parameter.h in Headers */,
 				A380D2042412B0AB009E2CD8 /* Enviroment.h in Headers */,
 				A380D2082412D8F2009E2CD8 /* RequestTrackerBuilder.h in Headers */,

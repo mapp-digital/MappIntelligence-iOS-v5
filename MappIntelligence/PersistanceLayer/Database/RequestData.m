@@ -80,6 +80,12 @@
     return keyedValues;
 }
 
+- (void)print {
+    for (Request* request in self.requests) {
+        [request print];
+    }
+}
+
 #pragma mark - Getters
 
 - (NSMutableArray *)regions
