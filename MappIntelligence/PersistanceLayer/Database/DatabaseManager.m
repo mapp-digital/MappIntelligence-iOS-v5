@@ -95,7 +95,7 @@ NSString *const StorageErrorDescriptionGeneralError = @"General Error";
                 
                 char *errorMsg;
                 const char *sql_statement_parameters = "CREATE TABLE IF NOT EXISTS PARAMETERS_TABLE (ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT, VALUE TEXT, REQUEST_TABLE_ID INTEGER, FOREIGN KEY (REQUEST_TABLE_ID) REFERENCES REQUESTS_TABLE (ID))";
-                const char *sql_statement = "CREATE TABLE IF NOT EXISTS REQUESTS_TABLE (ID INTEGER PRIMARY KEY AUTOINCREMENT, DOMAIN TEXT, IDS TEXT, STATUS UINT)";
+                const char *sql_statement = "CREATE TABLE IF NOT EXISTS REQUESTS_TABLE (ID INTEGER PRIMARY KEY AUTOINCREMENT, DOMAIN TEXT, IDS TEXT, STATUS UINT, DATE TEXT)";
                 
                 if (sqlite3_exec(self->_requestsDB, sql_statement, NULL, NULL, &errorMsg) != SQLITE_OK) {
                     
@@ -288,7 +288,7 @@ NSString *const StorageErrorDescriptionGeneralError = @"General Error";
         
         if (sqlite3_open(dbPath, &_requestsDB) == SQLITE_OK) {
             
-            NSString *insertSQL = [NSString stringWithFormat:@"INSERT INTO REQUESTS_TABLE (DOMAIN, IDS, STATUS) VALUES(?, ?, ?)"];
+            NSString *insertSQL = [NSString stringWithFormat:@"INSERT INTO REQUESTS_TABLE (DOMAIN, IDS, STATUS, DATE) VALUES(?, ?, ?, ?)"];
             
             const char *insertStatement = [insertSQL UTF8String];
             
@@ -297,6 +297,17 @@ NSString *const StorageErrorDescriptionGeneralError = @"General Error";
             sqlite3_bind_text(sql_statement, 1, [request.domain UTF8String], -1, SQLITE_TRANSIENT);
             sqlite3_bind_text(sql_statement, 2, [request.track_ids UTF8String], -1, SQLITE_TRANSIENT);
             sqlite3_bind_int(sql_statement, 3,  [request.status intValue]);
+            time_t rawtime;
+            struct tm *currentTime;
+            time ( &rawtime );
+            currentTime = localtime ( &rawtime );
+
+            const int TIME_STRING_LENGTH = 20;
+            char buffer [TIME_STRING_LENGTH];
+
+            // SQLite expected date string format is "YYYY-MM-DD HH:MM:SS" (there are others too)
+            strftime(buffer, TIME_STRING_LENGTH, "%Y-%m-%d %H:%M:%S", currentTime);
+            sqlite3_bind_text(sql_statement, 4, buffer, -1, SQLITE_TRANSIENT);
             
             if (sqlite3_step(sql_statement) != SQLITE_DONE) {
                 
@@ -342,6 +353,7 @@ NSString *const StorageErrorDescriptionGeneralError = @"General Error";
             sqlite3_bind_text(sql_statement, 1, [parameter.name UTF8String], -1, SQLITE_TRANSIENT);
             sqlite3_bind_text(sql_statement, 2, [parameter.value UTF8String], -1, SQLITE_TRANSIENT);
             sqlite3_bind_int(sql_statement, 3,  [parameter.request_uniqueId intValue]);
+            
             
             if (sqlite3_step(sql_statement) != SQLITE_DONE) {
                 
@@ -457,12 +469,14 @@ NSString *const StorageErrorDescriptionGeneralError = @"General Error";
               initWithUTF8String:(const char *)sqlite3_column_text(
                                      sql_statement, 3)];
               int status = sqlite3_column_double(sql_statement, 4);
+                NSString* date = [[NSString alloc] initWithUTF8String:(const char *)sqlite3_column_text(sql_statement, 5)];
                 
               NSDictionary *keyedValues = @{
                 @"id" : @(uniqueId),
                 @"track_domain" : domain,
                 @"track_ids" : ids,
-                @"status" : @(status)
+                @"status" : @(status),
+                @"date": date
               };
                 Request *request = [[Request alloc] initWithKeyedValues:keyedValues];
                 [requestIds insertObject:@(uniqueId) atIndex:0];

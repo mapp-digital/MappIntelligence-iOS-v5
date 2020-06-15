@@ -12,6 +12,7 @@
 #define key_domain @"track_domain"
 #define key_ids @"track_ids"
 #define key_status @"status"
+#define key_date @"date"
 #define key_parameters @"parameters"
 
 @implementation Request
@@ -56,6 +57,10 @@
         self.domain = keyedValues[key_domain] ;
         self.track_ids = keyedValues[key_ids];
         self.status = @([keyedValues[key_status] integerValue]);
+        NSString *dateString =  keyedValues[key_date];
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+        self.date = [dateFormatter dateFromString:dateString];
         //self.parameters = keyedValues[key_parameters];
     }
 }
@@ -88,11 +93,15 @@
         keyedValues[key_parameters] = self.parameters;
     }
     
+    if (self.date) {
+        keyedValues[key_date] = self.date;
+    }
+    
     return keyedValues;
 }
 
 - (void)print {
-    NSString* request = [[NSString alloc] initWithFormat:@"ID: %@ and domain: %@ and ids: %@ and paramters: ", self.uniqueId, self.domain, self.track_ids];
+    NSString* request = [[NSString alloc] initWithFormat:@"ID: %@ and domain: %@ and ids: %@ and date: %@ and paramters: ", self.uniqueId, self.domain, self.track_ids, self.date];
     for(Parameter* parameter in self.parameters) {
         request = [request stringByAppendingString:[parameter print]];
     }

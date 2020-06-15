@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, readwrite) NSString *domain; // string
 @property (nonatomic, strong, readwrite) NSString *track_ids; // string
 @property (nonatomic, strong, readwrite) NSNumber *status; // integer
+@property (nonatomic, strong, readwrite) NSDate *date; // integer
 @property (nonatomic, strong, readwrite) NSMutableArray<Parameter*> *parameters;
 
 - (instancetype)initWithKeyedValues:(NSDictionary *)keyedValues;
