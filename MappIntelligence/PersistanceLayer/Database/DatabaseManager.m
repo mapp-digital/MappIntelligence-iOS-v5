@@ -598,6 +598,80 @@ NSString *const StorageErrorDescriptionGeneralError = @"General Error";
         });
 }
 
+-(void)removeOldRequestsWithCompletitionHandler: (StorageManagerCompletionHandler)completionHandler  {
+    dispatch_queue_t queue = dispatch_queue_create("Fetch Resulats", NULL);
+    
+    dispatch_async(queue, ^{
+        
+        NSMutableArray *requestIds = nil;
+        
+        const char *dbPath = [self.databasePath UTF8String];
+        
+        NSError *error;
+        
+        if (sqlite3_open(dbPath, &self->_requestsDB) == SQLITE_OK) {
+            //TODO: change it to be 14 days, this is only for testing purpose
+          NSString *querySQL = @"SELECT ID FROM REQUESTS_TABLE WHERE datetime(DATE, '+6 hours') <= datetime('now');";
+
+          sqlite3_stmt *sql_statement;
+
+          const char *query_stmt = [querySQL UTF8String];
+
+          if (sqlite3_prepare_v2(self->_requestsDB, query_stmt, -1,
+                                 &sql_statement, NULL) == SQLITE_OK) {
+
+            requestIds = [[NSMutableArray alloc] init];
+
+            while (sqlite3_step(sql_statement) == SQLITE_ROW) {
+                
+              int uniqueId = sqlite3_column_double(sql_statement, 0);
+                [requestIds insertObject:@(uniqueId) atIndex:0];
+            }
+              //removing requests
+              if ([requestIds count] != 0) {
+                  
+              NSString *insertSQL = [NSString stringWithFormat:@"DELETE FROM REQUESTS_TABLE WHERE ID IN (%@)", [requestIds componentsJoinedByString:@","]];
+                  
+              const char *insertStatement = [insertSQL UTF8String];
+                  
+                  sqlite3_prepare_v2(self->_requestsDB, insertStatement, -1, &sql_statement, NULL);
+                  
+                  if (sqlite3_step(sql_statement) != SQLITE_DONE) {
+                      //TODO: error while deleting old requests
+                  }
+              }
+              
+              sqlite3_close(self->_requestsDB);
+
+          } else {
+
+            NSDictionary *userInfo = @{
+              NSLocalizedDescriptionKey : StorageErrorDescriptionPrepareDB
+            };
+            error = [[NSError alloc] initWithDomain:StorageDomainSqlite
+                                               code:0
+                                           userInfo:userInfo];
+          }
+
+        } else {
+            
+            NSDictionary *userInfo = @{NSLocalizedDescriptionKey : StorageErrorDescriptionOpenDB};
+            error = [[NSError alloc] initWithDomain:StorageDomainSqlite code:0 userInfo:userInfo];
+        }
+        
+        
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            if (completionHandler) {
+                
+                completionHandler(error, NULL);
+                
+            }
+        });
+    });
+}
+
 
 #pragma mark - Getters && Setters
 
