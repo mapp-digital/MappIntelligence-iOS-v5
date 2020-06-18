@@ -693,6 +693,17 @@ NSString *const StorageErrorDescriptionGeneralError = @"General Error";
                   if (sqlite3_step(sql_statement) != SQLITE_DONE) {
                       //TODO: error while deleting old requests
                   }
+                  
+                  //remove also paramters from parameters table
+                  insertSQL = [NSString stringWithFormat:@"DELETE FROM PARAMETERS_TABLE WHERE REQUEST_TABLE_ID IN (%@)", [requestIds componentsJoinedByString:@","]];
+                      
+                  insertStatement = [insertSQL UTF8String];
+                      
+                  sqlite3_prepare_v2(self->_requestsDB, insertStatement, -1, &sql_statement, NULL);
+                      
+                  if (sqlite3_step(sql_statement) != SQLITE_DONE) {
+                    //TODO: hendle error
+                  }
               }
               
               sqlite3_close(self->_requestsDB);

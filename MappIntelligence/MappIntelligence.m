@@ -97,11 +97,11 @@ static MappIntelligenceDefaultConfig *config = nil;
   tracker = [DefaultTracker sharedInstance];
   [tracker initializeTracking];
     
-//    [[DatabaseManager shared] removeOldRequestsWithCompletitionHandler:^(NSError * _Nonnull error, id  _Nullable data) {
-//        if (!error) {
-//            [self->_logger logObj:@"Remove older requests from 14 days" forDescription:kMappIntelligenceLogLevelDescriptionDebug];
-//        }
-//    }];
+    [[DatabaseManager shared] removeOldRequestsWithCompletitionHandler:^(NSError * _Nonnull error, id  _Nullable data) {
+        if (!error) {
+            [self->_logger logObj:@"Remove older requests from 14 days" forDescription:kMappIntelligenceLogLevelDescriptionDebug];
+        }
+    }];
 }
 
 - (void)initWithConfiguration:(NSArray *_Nonnull)trackIDs onTrackdomain:(NSString *_Nonnull)trackDomain  {
