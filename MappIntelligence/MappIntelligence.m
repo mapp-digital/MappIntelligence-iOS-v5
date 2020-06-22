@@ -101,6 +101,7 @@ static MappIntelligenceDefaultConfig *config = nil;
         if (!error) {
             [self->_logger logObj:@"Remove older requests from 14 days" forDescription:kMappIntelligenceLogLevelDescriptionDebug];
         }
+        [self->tracker sendRequestFromDatabase];
     }];
 }
 

@@ -30,4 +30,5 @@
 - (void)initHibernate;
 - (void)reset;
 - (void)initializeTracking;
+- (void)sendRequestFromDatabase;
 @end

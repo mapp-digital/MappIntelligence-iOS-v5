@@ -7,6 +7,8 @@
 //
 
 #import "RequestData.h"
+#import "TrackerRequest.h"
+#import "DatabaseManager.h"
 
 #define KEY_REGIONS @"regions"
 
@@ -83,6 +85,20 @@
 - (void)print {
     for (Request* request in self.requests) {
         [request print];
+    }
+}
+
+- (void)sendAllRequests {
+    for (Request* r in _requests) {
+        TrackerRequest *request = [[TrackerRequest alloc] init];
+        [request sendRequestWith:r.url andCompletition:^(NSError * _Nonnull error) {
+            if(error) {
+                //TODO: log error 
+            } else {
+                //remove request from DB
+                [[DatabaseManager shared] deleteRequest:r.uniqueId.intValue];
+            }
+        }];
     }
 }
 

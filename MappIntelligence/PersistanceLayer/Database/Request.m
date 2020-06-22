@@ -7,6 +7,7 @@
 //
 
 #import "Request.h"
+#import "RequestUrlBuilder.h"
 
 #define key_id @"id"
 #define key_domain @"track_domain"
@@ -106,5 +107,18 @@
         request = [request stringByAppendingString:[parameter print]];
     }
     NSLog(@"%@", request);
+}
+
+- (NSMutableArray<NSURLQueryItem *> *)convertParamters {
+    NSMutableArray<NSURLQueryItem *> * array = [[NSMutableArray alloc] init];
+    for (Parameter* p in _parameters) {
+        [array addObject:[[NSURLQueryItem alloc] initWithName:p.name value:p.value]];
+    }
+    return array;
+}
+
+- (NSURL *)url {
+    RequestUrlBuilder* builder = [[RequestUrlBuilder alloc] initWithUrl:[[NSURL alloc] initWithString:_domain] andWithId:_track_ids];
+    return [builder createURLFromParametersWith:[self convertParamters]];
 }
 @end

@@ -21,6 +21,8 @@
 #import "TrackerRequest.h"
 #import "RequestUrlBuilder.h"
 #import "UIFlowObserver.h"
+#import "DatabaseManager.h"
+#import "RequestData.h"
 
 #define appHibernationDate @"appHibernationDate"
 #define appVersion @"appVersion"
@@ -96,6 +98,15 @@ static NSString *userAgent;
   _requestUrlBuilder =
       [[RequestUrlBuilder alloc] initWithUrl:_config.serverUrl
                                    andWithId:_config.MappIntelligenceId];
+}
+
+- (void)sendRequestFromDatabase {
+    [[DatabaseManager shared] fetchAllRequestsWithCompletionHandler:^(NSError * _Nonnull error, id  _Nullable data) {
+        if (!error) {
+            RequestData* dt = (RequestData*)data;
+            [dt sendAllRequests];
+        }
+    }];
 }
 
 - (NSString *)generateEverId {
@@ -208,6 +219,11 @@ static NSString *userAgent;
                                           @"Request: %@ ended with error: %@",
                                           requestUrl, error]
                    forDescription:kMappIntelligenceLogLevelDescriptionError];
+                 //put request into database if fails to send with STATUS flag set to 2
+                 Request *request = [self->_requestUrlBuilder dbRequest];
+                 //TODO: create enum
+                 [request setStatus:[[NSNumber alloc] initWithInt:2]];
+                 [[DatabaseManager shared] insertRequest:request];
              }
            }];
   _isFirstEventOfSession = NO;

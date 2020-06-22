@@ -163,7 +163,7 @@ NSString *const StorageErrorDescriptionGeneralError = @"General Error";
     sqlite3_stmt *sql_statement;
     const char *dbPath = [self.databasePath UTF8String];
         
-    if (sqlite3_open(dbPath, &_requestsDB) == SQLITE_OK) {
+    if (sqlite3_open_v2(dbPath, &_requestsDB, SQLITE_OPEN_CREATE | SQLITE_OPEN_READWRITE | SQLITE_OPEN_SHAREDCACHE, NULL) == SQLITE_OK) {
             
         NSString *insertSQL = [NSString stringWithFormat:@"DELETE FROM REQUESTS_TABLE WHERE ID = ?"];
             
@@ -177,7 +177,7 @@ NSString *const StorageErrorDescriptionGeneralError = @"General Error";
                 
             success = NO;
         }
-        sqlite3_exec(_requestsDB, "END TRANSACTION", NULL, NULL, NULL);
+        sqlite3_exec(_requestsDB, "BEGIN TRANSACTION", NULL, NULL, NULL);
         sqlite3_finalize(sql_statement);
         
         //remove also paramters from parameters table
@@ -214,7 +214,7 @@ NSString *const StorageErrorDescriptionGeneralError = @"General Error";
         
     if (sqlite3_open(dbPath, &_requestsDB) == SQLITE_OK) {
             
-        NSString *insertSQL = [NSString stringWithFormat:@"SELECT ROWID FROM REQUESTS_TABLE ORDER BY id ASC LIMIT CASE WHEN (SELECT COUNT(*) FROM REQUESTS_TABLE) > 2 THEN (SELECT COUNT(*) FROM REQUESTS_TABLE) - 2 ELSE 0 END"];
+        NSString *insertSQL = [NSString stringWithFormat:@"SELECT ROWID FROM REQUESTS_TABLE ORDER BY id ASC LIMIT CASE WHEN (SELECT COUNT(*) FROM REQUESTS_TABLE) > 100000 THEN (SELECT COUNT(*) FROM REQUESTS_TABLE) - 100000 ELSE 0 END"];
             
         const char *insertStatement = [insertSQL UTF8String];
             

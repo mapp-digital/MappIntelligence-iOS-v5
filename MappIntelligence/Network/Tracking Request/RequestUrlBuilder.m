@@ -151,11 +151,13 @@
                                      5]; // add for end of the request
 
   url = [self createURLFromParametersWith:parametrs];
+  _dbRequest = [[Request alloc] initWithParamters:parametrs
+                                        andDomain:[MappIntelligence getUrl]
+                                      andTrackIds:_mappIntelligenceId];
   return url;
 }
 
 - (NSURL *)createURLFromParametersWith:(NSArray<NSURLQueryItem *> *)parameters {
-    [[DatabaseManager shared] insertRequest:[[Request alloc] initWithParamters:parameters andDomain:[MappIntelligence getUrl] andTrackIds:_mappIntelligenceId]];
     
   NSURLComponents *urlComponents = [[NSURLComponents alloc] initWithURL:_baseUrl
                                                 resolvingAgainstBaseURL:YES];
