@@ -23,6 +23,7 @@
 #import "UIFlowObserver.h"
 #import "DatabaseManager.h"
 #import "RequestData.h"
+#import "RequestBatchSupportUrlBuilder.h"
 
 #define appHibernationDate @"appHibernationDate"
 #define appVersion @"appVersion"
@@ -36,6 +37,7 @@
 @property MappIntelligenceLogger *logger;
 @property TrackingEvent *event;
 @property RequestUrlBuilder *requestUrlBuilder;
+@property RequestBatchSupportUrlBuilder* requestBatchSupportUrlBuilder;
 @property NSUserDefaults* defaults;
 @property BOOL isFirstEventOpen;
 @property BOOL isFirstEventOfSession;
@@ -107,6 +109,12 @@ static NSString *userAgent;
             [dt sendAllRequests];
         }
     }];
+}
+- (void)sendBatchForRequest {
+    if(!_requestBatchSupportUrlBuilder) {
+        _requestBatchSupportUrlBuilder = [[RequestBatchSupportUrlBuilder alloc] init];
+    }
+    [_requestBatchSupportUrlBuilder sendBatchForRequests];
 }
 
 - (NSString *)generateEverId {
@@ -209,23 +217,26 @@ static NSString *userAgent;
       [builder createRequestWith:event andWith:requestProperties];
 
   NSURL *requestUrl = [_requestUrlBuilder urlForRequest:request];
-
-  [request sendRequestWith:requestUrl
-           andCompletition:^(NSError *_Nonnull error) {
-             if (error) {
-               [self->_logger
-                           logObj:[[NSString alloc]
-                                      initWithFormat:
-                                          @"Request: %@ ended with error: %@",
-                                          requestUrl, error]
-                   forDescription:kMappIntelligenceLogLevelDescriptionError];
-                 //put request into database if fails to send with STATUS flag set to 2
-                 Request *request = [self->_requestUrlBuilder dbRequest];
-                 //TODO: create enum
-                 [request setStatus:[[NSNumber alloc] initWithInt:2]];
-                 [[DatabaseManager shared] insertRequest:request];
-             }
-           }];
+    Request *r = [self->_requestUrlBuilder dbRequest];
+    //TODO: create enum
+    [r setStatus:[[NSNumber alloc] initWithInt:2]];
+    [[DatabaseManager shared] insertRequest:r];
+//  [request sendRequestWith:requestUrl
+//           andCompletition:^(NSError *_Nonnull error) {
+//             if (error) {
+//               [self->_logger
+//                           logObj:[[NSString alloc]
+//                                      initWithFormat:
+//                                          @"Request: %@ ended with error: %@",
+//                                          requestUrl, error]
+//                   forDescription:kMappIntelligenceLogLevelDescriptionError];
+//                 //put request into database if fails to send with STATUS flag set to 2
+//                 Request *request = [self->_requestUrlBuilder dbRequest];
+//                 //TODO: create enum
+//                 [request setStatus:[[NSNumber alloc] initWithInt:2]];
+//                 [[DatabaseManager shared] insertRequest:request];
+//             }
+//           }];
   _isFirstEventOfSession = NO;
   _isFirstEventOpen = NO;
 }

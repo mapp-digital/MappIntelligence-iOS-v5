@@ -31,4 +31,5 @@
 - (void)reset;
 - (void)initializeTracking;
 - (void)sendRequestFromDatabase;
+- (void)sendBatchForRequest;
 @end

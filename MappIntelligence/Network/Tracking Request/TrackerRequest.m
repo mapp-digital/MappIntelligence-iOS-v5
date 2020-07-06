@@ -60,6 +60,33 @@
       }] resume];
 }
 
+- (void)sendRequestWith:(NSURL *)url andBody:(NSString*)body andCompletition:(nonnull void (^)(NSError * _Nonnull))handler {
+  [_loger logObj:[[NSString alloc]
+                     initWithFormat:@"Tracking Request: %@ with body: %@", [url absoluteURL], body]
+      forDescription:kMappIntelligenceLogLevelDescriptionInfo];
+
+  [self createUrlSession];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
+        cachePolicy:NSURLRequestUseProtocolCachePolicy
+    timeoutInterval:60.0];
+    [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
+
+    [request setHTTPMethod:@"POST"];
+    [request setHTTPBody:[[NSData alloc] initWithBase64EncodedString:body options:NSDataBase64DecodingIgnoreUnknownCharacters]];
+    
+    [[_urlSession dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if (!error) {
+            [self->_loger logObj:[[NSString alloc]
+                                  initWithFormat:
+                                  @"Response from tracking server for sended batch support: %@",
+                                  [response description]]
+                  forDescription:kMappIntelligenceLogLevelDescriptionDebug];
+        }
+        handler(error);
+    }] resume];
+}
+
 - (void)createUrlSession {
   NSURLSessionConfiguration *urlSessionConfiguration =
       [NSURLSessionConfiguration ephemeralSessionConfiguration];

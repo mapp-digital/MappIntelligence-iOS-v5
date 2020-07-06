@@ -21,6 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
             andWithProperties:(Properties *)properties;
 - (void)sendRequestWith:(NSURL *)url
         andCompletition:(void (^)(NSError *error))handler;
+- (void)sendRequestWith:(NSURL *)url andBody:(NSString*)body andCompletition:(void (^)(NSError *error))handler;
 
 @end
 
