@@ -20,6 +20,7 @@ typedef void(^StorageManagerCompletionHandler)(NSError *error, id _Nullable data
 - (void)fetchAllRequestsWithCompletionHandler:(StorageManagerCompletionHandler)completionHandler;
 - (BOOL)deleteRequest:(int)ID;
 - (void)removeOldRequestsWithCompletitionHandler: (StorageManagerCompletionHandler)completionHandler;
+- (void)removeRequestsDB:(NSArray *)requestIds;
 @end
 
 NS_ASSUME_NONNULL_END

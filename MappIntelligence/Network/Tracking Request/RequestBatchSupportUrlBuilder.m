@@ -45,6 +45,7 @@
         [request sendRequestWith:[[NSURL alloc] initWithString:self->_baseUrl] andBody:body andCompletition:^(NSError * _Nonnull error) {
             if (!error) {;
                 [self->_loger logObj: [[NSString alloc] initWithFormat:@"Batch request sent successfuly!"] forDescription: kMappIntelligenceLogLevelDescriptionDebug];
+                [self->_dbManager removeRequestsDB:[self getRequestIDs:dt]];
             }
         }];
     }];
@@ -58,6 +59,14 @@
         [body appendString:@"\n"];
     }
     return body;
+}
+
+-(NSArray* )getRequestIDs:(RequestData*) data {
+    NSMutableArray* array = [[NSMutableArray alloc] init];
+    for (Request* req in data.requests) {
+        [array addObject:req.uniqueId];
+    }
+    return array;
 }
 
 
