@@ -18,6 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// Id which identify customer
 @property NSString *MappIntelligenceId;
 
+@property NSTimeInterval requestInterval;
+
 @end
 
 NS_ASSUME_NONNULL_END

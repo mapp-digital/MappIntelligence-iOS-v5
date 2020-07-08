@@ -245,6 +245,37 @@ NSString *const StorageErrorDescriptionGeneralError = @"General Error";
   return success;
 }
 
+-(BOOL)updateStatusOfRequestWithId: (int) identifier andStatus: (int) status {
+    BOOL success = YES;
+    sqlite3_stmt *sql_statement;
+    const char *dbPath = [self.databasePath UTF8String];
+
+    if (sqlite3_open_v2(dbPath, &_requestsDB,
+                        SQLITE_OPEN_CREATE | SQLITE_OPEN_READWRITE |
+                            SQLITE_OPEN_SHAREDCACHE,
+                        NULL) == SQLITE_OK) {
+
+      NSString *insertSQL =
+          [NSString stringWithFormat:@"UPDATE REQUESTS_TABLE SET STATUS = ? WHERE REQUESTS_TABLE.ID = ?"];
+
+      const char *insertStatement = [insertSQL UTF8String];
+
+      sqlite3_prepare_v2(_requestsDB, insertStatement, -1, &sql_statement, NULL);
+
+      sqlite3_bind_int(sql_statement, 1, status);
+      sqlite3_bind_int(sql_statement, 2, identifier);
+
+      if (sqlite3_step(sql_statement) != SQLITE_DONE) {
+
+        success = NO;
+      }
+      sqlite3_exec(_requestsDB, "BEGIN TRANSACTION", NULL, NULL, NULL);
+      sqlite3_finalize(sql_statement);
+    }
+    sqlite3_close(_requestsDB);
+    return success;
+}
+
 - (BOOL)deleteTooOldRequests {
   BOOL success = YES;
 
@@ -563,7 +594,7 @@ NSString *const StorageErrorDescriptionGeneralError = @"General Error";
   return error;
 }
 
-- (void)fetchAllRequestsWithCompletionHandler:
+- (void)fetchAllRequestsFromInterval:(double)interval andWithCompletionHandler:
     (StorageManagerCompletionHandler)completionHandler {
   dispatch_queue_t queue = dispatch_queue_create("Fetch Resulats", NULL);
 
@@ -578,8 +609,11 @@ NSString *const StorageErrorDescriptionGeneralError = @"General Error";
 
     if (sqlite3_open(dbPath, &self->_requestsDB) == SQLITE_OK) {
 
-      NSString *querySQL = @"SELECT rowid, * FROM REQUESTS_TABLE ORDER BY ID";
-
+      NSString *querySQL = [[NSString alloc]
+          initWithFormat:
+              @"SELECT rowid, * FROM REQUESTS_TABLE ORDER BY ID WHERE "
+              @"datetime(DATE, '+%d minutes') <= datetime('now');",
+              (int)interval];
       sqlite3_stmt *sql_statement;
 
       const char *query_stmt = [querySQL UTF8String];

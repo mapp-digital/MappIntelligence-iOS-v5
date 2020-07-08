@@ -91,7 +91,7 @@ static MappIntelligenceDefaultConfig *config = nil;
   [config setBatchSupport:batchSupport];
   [config setViewControllerAutoTracking:viewControllerAutoTracking];
   [config setRequestPerQueue:numberOfRequestInQueue];
-  [config setRequestsInterval:requestTimeout];
+  //[config setRequestsInterval:requestTimeout];
   [config logConfig];
 
   tracker = [DefaultTracker sharedInstance];
@@ -101,9 +101,12 @@ static MappIntelligenceDefaultConfig *config = nil;
         if (!error) {
             [self->_logger logObj:@"Remove older requests from 14 days" forDescription:kMappIntelligenceLogLevelDescriptionDebug];
         }
-        //TODO: uncoment after test batch support
-        //[self->tracker sendRequestFromDatabase];
-        [self->tracker sendBatchForRequest];
+        if (config.batchSupport == YES) {
+            //TODO: add timeout to this methods
+            [self->tracker sendBatchForRequest];
+        } else {
+            [self->tracker sendRequestFromDatabase];
+        }
     }];
 }
 
@@ -147,7 +150,7 @@ static MappIntelligenceDefaultConfig *config = nil;
 }
 
 - (void)printAllRequestFromDatabase {
-    [[DatabaseManager shared] fetchAllRequestsWithCompletionHandler:^(NSError * _Nonnull error, id  _Nullable data) {
+    [[DatabaseManager shared] fetchAllRequestsFromInterval:[config requestsInterval] andWithCompletionHandler: ^(NSError * _Nonnull error, id  _Nullable data) {
         if (!error) {
             RequestData* dt = (RequestData*)data;
             [dt print];

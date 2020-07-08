@@ -28,7 +28,7 @@
 @synthesize autoTracking;
 @synthesize batchSupport;
 @synthesize requestPerQueue;
-@synthesize requestsInterval;
+@synthesize requestsInterval = _requestsInterval;
 /** Tracking domain is MANDATORY field */
 @synthesize trackDomain;
 
@@ -40,8 +40,17 @@
 
 - (instancetype)init {
 
-  self = [super init];
-  _logger = [MappIntelligenceLogger shared];
+    if (self = [super init]) {
+      _logger = [MappIntelligenceLogger shared];
+        NSLog(@"requestInterval: %f and case: %d", [[NSUserDefaults standardUserDefaults]
+        doubleForKey:key_requestsInterval], [[NSUserDefaults standardUserDefaults]
+                                             doubleForKey:key_requestsInterval] != 0);
+      self.requestsInterval = ([[NSUserDefaults standardUserDefaults]
+                                  doubleForKey:key_requestsInterval] != 0)
+                                  ? (double)[[NSUserDefaults standardUserDefaults]
+                                        doubleForKey:key_requestsInterval]
+                                  : 15 * 60;
+    }
   return self;
 }
 
@@ -140,7 +149,7 @@
     [_logger logObj:@"Request time interval can't be more than 3600 seconds "
                     @"(60 minutes), will be reset to default (15 minutes)."
         forDescription:kMappIntelligenceLogLevelDescriptionError];
-    self.requestsInterval = 900.0;
+      self.requestsInterval = 900.0;
   }
 }
 
@@ -188,5 +197,9 @@
 - (void)setLogLevel:(MappIntelligenceLogLevelDescription)logLevel {
   [_logger setLogLevel:logLevel];
 }
-
+- (void)setRequestsInterval:(NSTimeInterval)requestsInterval {
+    _requestsInterval = requestsInterval;
+    [[NSUserDefaults standardUserDefaults] setDouble:requestsInterval forKey:key_requestsInterval];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
 @end

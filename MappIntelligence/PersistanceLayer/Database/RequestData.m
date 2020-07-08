@@ -8,6 +8,7 @@
 
 #import "RequestData.h"
 #import "TrackerRequest.h"
+#import "MappIntelligenceLogger.h"
 #import "DatabaseManager.h"
 
 #define KEY_REGIONS @"regions"
@@ -15,6 +16,7 @@
 @interface RequestData ()
 
 @property (nonatomic, strong) NSMutableArray *requests; // of type Reques
+@property (nonatomic, strong) MappIntelligenceLogger* logger;
 
 @end
 
@@ -29,6 +31,7 @@
     if (self) {
         
         [self setValuesForKeysWithDictionary:keyedValues];
+        _logger = [MappIntelligenceLogger shared];
     }
     
     return self;
@@ -41,6 +44,7 @@
     if (self) {
     
         self.requests = [requests mutableCopy];
+        _logger = [MappIntelligenceLogger shared];
     }
 
     return self;
@@ -93,7 +97,9 @@
         TrackerRequest *request = [[TrackerRequest alloc] init];
         [request sendRequestWith:r.url andCompletition:^(NSError * _Nonnull error) {
             if(error) {
-                //TODO: log error 
+                [self->_logger logObj:error forDescription:kMappIntelligenceLogLevelDescriptionDebug];
+                //TODO: add enum for status
+                [[DatabaseManager shared] updateStatusOfRequestWithId: (int)[r.uniqueId integerValue] andStatus:2];
             } else {
                 //remove request from DB
                 [[DatabaseManager shared] deleteRequest:r.uniqueId.intValue];

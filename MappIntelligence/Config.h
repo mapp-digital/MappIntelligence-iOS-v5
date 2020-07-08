@@ -15,7 +15,7 @@
 
 @property NSArray *const trackIDs;
 @property NSString *const trackDomain;
-@property NSTimeInterval const requestsInterval;
+@property (nonatomic, setter = setRequestsInterval:) NSTimeInterval requestsInterval;
 @property MappIntelligenceLogLevelDescription logLevel;
 @property BOOL autoTracking;
 @property NSInteger const requestPerQueue;

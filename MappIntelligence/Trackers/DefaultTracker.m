@@ -97,13 +97,14 @@ static NSString *userAgent;
 - (void)initializeTracking {
   _config.serverUrl = [[NSURL alloc] initWithString:[MappIntelligence getUrl]];
   _config.MappIntelligenceId = [MappIntelligence getId];
+  _config.requestInterval = [[MappIntelligence shared] requestTimeout];
   _requestUrlBuilder =
       [[RequestUrlBuilder alloc] initWithUrl:_config.serverUrl
                                    andWithId:_config.MappIntelligenceId];
 }
 
 - (void)sendRequestFromDatabase {
-    [[DatabaseManager shared] fetchAllRequestsWithCompletionHandler:^(NSError * _Nonnull error, id  _Nullable data) {
+    [[DatabaseManager shared] fetchAllRequestsFromInterval:_config.requestInterval andWithCompletionHandler:^(NSError * _Nonnull error, id  _Nullable data) {
         if (!error) {
             RequestData* dt = (RequestData*)data;
             [dt sendAllRequests];
@@ -219,7 +220,7 @@ static NSString *userAgent;
   NSURL *requestUrl = [_requestUrlBuilder urlForRequest:request];
     Request *r = [self->_requestUrlBuilder dbRequest];
     //TODO: create enum
-    [r setStatus:[[NSNumber alloc] initWithInt:2]];
+    [r setStatus:[[NSNumber alloc] initWithInt:0]];
     [[DatabaseManager shared] insertRequest:r];
 //  [request sendRequestWith:requestUrl
 //           andCompletition:^(NSError *_Nonnull error) {

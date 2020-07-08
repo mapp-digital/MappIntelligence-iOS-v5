@@ -38,7 +38,7 @@
 }
 
 -(void)sendBatchForRequests {
-    [_dbManager fetchAllRequestsWithCompletionHandler:^(NSError * _Nonnull error, id  _Nullable data) {
+    [_dbManager fetchAllRequestsFromInterval:[[MappIntelligence shared] requestTimeout] andWithCompletionHandler:^(NSError * _Nonnull error, id  _Nullable data) {
         RequestData* dt = (RequestData*)data;
         NSArray<NSString *>* bodies = [self createBatchWith:dt];
         TrackerRequest *request = [[TrackerRequest alloc] init];
@@ -62,9 +62,12 @@
 }
 
 - (NSArray<NSString *> *)createBatchWith:(RequestData *)data {
+  NSMutableArray *array = [[NSMutableArray alloc] init];
+    if(!data.requests) {
+        return array;
+    }
   NSMutableString *body = [[NSMutableString alloc] init];
   int i = 0;
-  NSMutableArray *array = [[NSMutableArray alloc] init];
   long requestsCount = data.requests.count;
   if (requestsCount > 10000) {
     [body setString:@""];

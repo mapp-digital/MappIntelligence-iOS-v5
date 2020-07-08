@@ -17,10 +17,11 @@ typedef void(^StorageManagerCompletionHandler)(NSError *error, id _Nullable data
 
 + (instancetype)shared;
 - (BOOL)insertRequest:(Request *)request;
-- (void)fetchAllRequestsWithCompletionHandler:(StorageManagerCompletionHandler)completionHandler;
+- (void)fetchAllRequestsFromInterval:(double)interval  andWithCompletionHandler:(StorageManagerCompletionHandler)completionHandler;
 - (BOOL)deleteRequest:(int)ID;
 - (void)removeOldRequestsWithCompletitionHandler: (StorageManagerCompletionHandler)completionHandler;
 - (void)removeRequestsDB:(NSArray *)requestIds;
+-(BOOL)updateStatusOfRequestWithId: (int) identifier andStatus: (int) status;
 @end
 
 NS_ASSUME_NONNULL_END
