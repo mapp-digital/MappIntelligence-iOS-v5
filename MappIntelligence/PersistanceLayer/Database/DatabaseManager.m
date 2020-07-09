@@ -69,6 +69,11 @@ NSString *const StorageErrorDescriptionGeneralError = @"General Error";
   return self;
 }
 
+- (void)dealloc
+{
+    sqlite3_close(_requestsDB);
+}
+
 + (instancetype)shared {
   static DatabaseManager *sharedInstance = nil;
 
@@ -159,6 +164,8 @@ NSString *const StorageErrorDescriptionGeneralError = @"General Error";
     dispatch_async(dispatch_get_main_queue(), ^{
 
       if (completionHandler) {
+          const char *dbPath = [self.databasePath UTF8String];
+          NSLog(@"open database with: %d and requestDB: %d", sqlite3_open(dbPath, &self->_requestsDB), self->_requestsDB == NULL);
 
         completionHandler(error, nil);
       }
@@ -420,8 +427,8 @@ NSString *const StorageErrorDescriptionGeneralError = @"General Error";
 
     sqlite3_stmt *sql_statement;
     const char *dbPath = [self.databasePath UTF8String];
-
-    if (sqlite3_open(dbPath, &_requestsDB) == SQLITE_OK) {
+      //NSLog(@"open database with: %d and requestDB: %d", sqlite3_open(dbPath, &_requestsDB), _requestsDB == NULL);
+    //if (sqlite3_open(dbPath, &_requestsDB) == SQLITE_OK) {
 
       NSString *insertSQL =
           [NSString stringWithFormat:@"INSERT INTO REQUESTS_TABLE (DOMAIN, "
@@ -463,16 +470,17 @@ NSString *const StorageErrorDescriptionGeneralError = @"General Error";
             [[NSNumber alloc] initWithLongLong:lastRowID];
         [self insertParameter:parameter];
       }
-      [self deleteTooOldRequests];
+        //TODO:check do we need it
+      //[self deleteTooOldRequests];
       sqlite3_exec(_requestsDB, "END TRANSACTION", NULL, NULL, NULL);
       sqlite3_finalize(sql_statement);
-      sqlite3_close(_requestsDB);
+      //sqlite3_close(_requestsDB);
 
     } else {
 
       success = NO;
     }
-  }
+  //}
 
   return success;
 }
@@ -485,7 +493,7 @@ NSString *const StorageErrorDescriptionGeneralError = @"General Error";
     sqlite3_stmt *sql_statement;
     const char *dbPath = [self.databasePath UTF8String];
 
-    if (sqlite3_open(dbPath, &_requestsDB) == SQLITE_OK) {
+    //if (sqlite3_open(dbPath, &_requestsDB) == SQLITE_OK) {
 
       NSString *insertSQL = [NSString
           stringWithFormat:@"INSERT INTO PARAMETERS_TABLE (name, VALUE, "
@@ -520,7 +528,7 @@ NSString *const StorageErrorDescriptionGeneralError = @"General Error";
 
       success = NO;
     }
-  }
+  //}
 
   return success;
 }

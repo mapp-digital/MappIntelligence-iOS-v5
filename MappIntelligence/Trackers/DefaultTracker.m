@@ -25,6 +25,58 @@
 #import "RequestData.h"
 #import "RequestBatchSupportUrlBuilder.h"
 
+
+
+#import <objc/runtime.h>
+
+@implementation NSThread(isLocking)
+
+static int waiting_condition_key;
+
+-(BOOL) isWaitingOnCondition {
+    // here, we sleep for a microsecond (1 millionth of a second) so that the
+    // other thread can catch up,  and actually call 'wait'. This time
+    // interval is so small that you will never notice it in an actual
+    // application, it's just here because of how multithreaded
+    // applications work.
+    usleep(1);
+
+    BOOL val = [objc_getAssociatedObject(self, &waiting_condition_key) boolValue];
+
+    // sleep before and after so it works on both edges
+    usleep(1);
+
+    return val;
+}
+
+-(void) setIsWaitingOnCondition:(BOOL) value {
+        objc_setAssociatedObject(self, &waiting_condition_key, @(value), OBJC_ASSOCIATION_RETAIN);
+}
+
+@end
+
+@implementation NSCondition(isLocking)
+
++(void) load {
+    Method old = class_getInstanceMethod(self, @selector(wait));
+    Method new = class_getInstanceMethod(self, @selector(_wait));
+
+    method_exchangeImplementations(old, new);
+}
+
+-(void) _wait {
+    // this is the replacement for the original wait method
+    [[NSThread currentThread] setIsWaitingOnCondition:YES];
+
+    // call  the original implementation, which now resides in the same name as this method
+    [self _wait];
+
+    [[NSThread currentThread] setIsWaitingOnCondition:NO];
+}
+
+@end
+
+
 #define appHibernationDate @"appHibernationDate"
 #define appVersion @"appVersion"
 #define configuration @"configuration"
@@ -43,6 +95,7 @@
 @property BOOL isFirstEventOfSession;
 @property UIFlowObserver *flowObserver;
 @property NSCondition *conditionUntilGetFNS;
+@property dispatch_queue_t queue;
 
 - (void)enqueueRequestForEvent:(TrackingEvent *)event;
 - (Properties *)generateRequestProperties;
@@ -78,6 +131,7 @@ static NSString *userAgent;
     _isReady = NO;
     [self generateUserAgent];
     [self initializeTracking];
+      _queue = dispatch_queue_create("Inserting Requests", NULL);
   }
   return sharedTracker;
 }
@@ -187,19 +241,41 @@ static NSString *userAgent;
 #ifdef TARGET_OS_WATCH
     _isReady = YES;
 #endif
-
-  dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0),
+  dispatch_async(_queue,
                  ^(void) {
                    // Background Thread
                    [self->_conditionUntilGetFNS lock];
                    while (!self->_isReady)
                      [self->_conditionUntilGetFNS wait];
-                   dispatch_async(dispatch_get_main_queue(), ^(void) {
+                   //dispatch_async(dispatch_get_main_queue(), ^(void) {
                      // Run UI Updates
                      [self enqueueRequestForEvent:event];
+                     [self->_conditionUntilGetFNS signal];
                      [self->_conditionUntilGetFNS unlock];
-                   });
+                   //});
                  });
+    
+//    __block NSCondition *condition = [NSCondition new];
+//
+//       NSThread *otherThread = [[NSThread alloc] initWithTarget:^{
+//           NSLog(@"Thread started");
+//
+//           [condition lock];
+//           [condition wait];
+//           [condition unlock];
+//
+//           NSLog(@"Thread ended");
+//       } selector:@selector(invoke) object:nil];
+//       [otherThread start];
+//
+//       while (![otherThread isWaitingOnCondition]);
+//
+//       [condition lock];
+//       [condition signal];
+//       [condition unlock];
+//
+//       NSLog(@"%i", [otherThread isWaitingOnCondition]);
+    
     return NULL;
 }
 
@@ -221,7 +297,8 @@ static NSString *userAgent;
     Request *r = [self->_requestUrlBuilder dbRequest];
     //TODO: create enum
     [r setStatus:[[NSNumber alloc] initWithInt:0]];
-    [[DatabaseManager shared] insertRequest:r];
+    BOOL status = [[DatabaseManager shared] insertRequest:r];
+    NSLog(@"request written with success: %d", status);
 //  [request sendRequestWith:requestUrl
 //           andCompletition:^(NSError *_Nonnull error) {
 //             if (error) {
@@ -310,4 +387,3 @@ static NSString *userAgent;
 }
 
 @end
-
