@@ -612,7 +612,7 @@ NSString *const StorageErrorDescriptionGeneralError = @"General Error";
       NSString *querySQL = [[NSString alloc]
           initWithFormat:
               @"SELECT rowid, * FROM REQUESTS_TABLE WHERE "
-              @"datetime(DATE, '+%d seconds') <= datetime('now') ORDER BY ID;",
+              @"datetime(DATE, '+%d seconds') <= datetime('now','localtime') ORDER BY ID;",
               (int)interval];
       sqlite3_stmt *sql_statement;
 
@@ -803,7 +803,7 @@ NSString *const StorageErrorDescriptionGeneralError = @"General Error";
     if (sqlite3_open(dbPath, &self->_requestsDB) == SQLITE_OK) {
       // TODO: change it to be 14 days, this is only for testing purpose
       NSString *querySQL = @"SELECT ID FROM REQUESTS_TABLE WHERE "
-                           @"datetime(DATE, '+14 days') <= datetime('now');";
+                           @"datetime(DATE, '+14 days') <= datetime('now','localtime');";
 
       sqlite3_stmt *sql_statement;
 

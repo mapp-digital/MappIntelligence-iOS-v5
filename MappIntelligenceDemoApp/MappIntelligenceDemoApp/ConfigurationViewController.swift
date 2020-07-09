@@ -42,6 +42,10 @@ class ConfigurationViewController: UIViewController, UIPickerViewDelegate, UIPic
                self.view.addGestureRecognizer(tapGesture)
         //MappIntelligence.shared()?.trackPage(self)
         MappIntelligence.shared()?.trackPage(with: "testCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringName")
+//        for i in [Int](0...10000) {
+//            MappIntelligence.shared()?.trackPage(with: String(format: "request_numero:_%d", i))
+//            sleep(1)
+//        }
     }
     
     @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
