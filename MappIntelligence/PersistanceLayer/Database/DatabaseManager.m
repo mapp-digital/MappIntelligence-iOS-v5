@@ -611,8 +611,8 @@ NSString *const StorageErrorDescriptionGeneralError = @"General Error";
 
       NSString *querySQL = [[NSString alloc]
           initWithFormat:
-              @"SELECT rowid, * FROM REQUESTS_TABLE ORDER BY ID WHERE "
-              @"datetime(DATE, '+%d minutes') <= datetime('now');",
+              @"SELECT rowid, * FROM REQUESTS_TABLE WHERE "
+              @"datetime(DATE, '+%d seconds') <= datetime('now') ORDER BY ID;",
               (int)interval];
       sqlite3_stmt *sql_statement;
 
