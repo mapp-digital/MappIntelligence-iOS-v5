@@ -48,6 +48,7 @@ typedef NS_ENUM(NSInteger, logLevel) {
                     onTrackdomain:(NSString *_Nonnull)trackDomain;
 
 - (void)reset;
+- (void)optOutWith:(BOOL) status andSendCurrentData:(BOOL) value;
 
 //testable methods
 - (void) printAllRequestFromDatabase;

@@ -21,5 +21,6 @@
 @property NSInteger const requestPerQueue;
 @property BOOL batchSupport;
 @property BOOL viewControllerAutoTracking;
+@property BOOL optOut;
 
 @end

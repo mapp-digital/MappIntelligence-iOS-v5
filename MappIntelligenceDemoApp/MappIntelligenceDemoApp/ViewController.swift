@@ -38,9 +38,19 @@ class ViewController: UIViewController {
         self.present(vc, animated: true, completion: nil)
         
     }
+    @IBAction func optOutAndSendData(_ sender: Any) {
+        MappIntelligence.shared()?.optOut(with: true, andSendCurrentData: true)
+    }
+    @IBAction func optOutAndDontSendData(_ sender: Any) {
+        MappIntelligence.shared()?.optOut(with: true, andSendCurrentData: false)
+    }
     
     @IBAction func resetInstance(_ sender: Any) {
         MappIntelligence.shared()?.reset()
+    }
+    
+    @IBAction func optIn(_ sender: Any) {
+        MappIntelligence.shared()?.optOut(with: false, andSendCurrentData: false)
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {

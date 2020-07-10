@@ -32,4 +32,5 @@
 - (void)initializeTracking;
 - (void)sendRequestFromDatabase;
 - (void)sendBatchForRequest;
+- (void)removeAllRequestsFromDB;
 @end

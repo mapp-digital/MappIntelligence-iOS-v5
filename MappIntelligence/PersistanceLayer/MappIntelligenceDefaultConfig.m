@@ -16,6 +16,7 @@
 #define key_autoTracking @"auto_tracking"
 #define key_requestPerQueue @"request_per_batch"
 #define key_batchSupport @"batch_support"
+#define key_optOut @"optOut"
 #define key_viewControllerAutoTracking @"view_controller_auto_tracking"
 #define key_MappIntelligence_default_configuration @"defaultConfiguration"
 
@@ -29,6 +30,7 @@
 @synthesize batchSupport;
 @synthesize requestPerQueue;
 @synthesize requestsInterval = _requestsInterval;
+@synthesize optOut = _optOut;
 /** Tracking domain is MANDATORY field */
 @synthesize trackDomain;
 
@@ -50,6 +52,9 @@
                                   ? (double)[[NSUserDefaults standardUserDefaults]
                                         doubleForKey:key_requestsInterval]
                                   : 15 * 60;
+        self.optOut = (![[NSUserDefaults standardUserDefaults]
+                         doubleForKey:key_optOut]) ? NO : [[NSUserDefaults standardUserDefaults]
+                                                           doubleForKey:key_optOut];
     }
   return self;
 }
@@ -200,6 +205,11 @@
 - (void)setRequestsInterval:(NSTimeInterval)requestsInterval {
     _requestsInterval = requestsInterval;
     [[NSUserDefaults standardUserDefaults] setDouble:requestsInterval forKey:key_requestsInterval];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+- (void)setOptOut:(BOOL)optOut {
+    _optOut = optOut;
+    [[NSUserDefaults standardUserDefaults] setBool:optOut forKey:key_optOut];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 @end

@@ -67,11 +67,19 @@ static MappIntelligenceDefaultConfig *config = nil;
 
 #if !TARGET_OS_WATCH
 - (NSError *_Nullable)trackPage:(UIViewController *)controller {
+    if ([config optOut]) {
+        [_logger logObj:@"You are opted out and you have no ability to track anymore." forDescription:kMappIntelligenceLogLevelDescriptionDebug];
+        return NULL;
+    }
   return [tracker track:controller];
 }
 #endif
 
 - (NSError *_Nullable)trackPageWith:(NSString *)name {
+    if ([config optOut]) {
+         [_logger logObj:@"You are opted out and you have no ability to track anymore." forDescription:kMappIntelligenceLogLevelDescriptionDebug];
+        return NULL;
+    }
   return [tracker trackWith:name];
 }
 
@@ -147,6 +155,18 @@ static MappIntelligenceDefaultConfig *config = nil;
         forDescription:kMappIntelligenceLogLevelDescriptionDebug];
     [config logConfig];
     [tracker reset];
+}
+
+- (void)optOutWith:(BOOL)status andSendCurrentData:(BOOL)value {
+    [config setOptOut:status];
+    [_logger logObj: [[NSString alloc] initWithFormat:@"You are opting out with status %d", status] forDescription:kMappIntelligenceLogLevelDescriptionDebug];
+    if (value) {
+        //send data and remove it from DB
+        [tracker sendBatchForRequest];
+    } else {
+        //just remove data from DB, and do not send it
+        [tracker removeAllRequestsFromDB];
+    }
 }
 
 - (void)printAllRequestFromDatabase {

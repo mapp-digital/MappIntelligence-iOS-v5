@@ -165,6 +165,10 @@ static NSString *userAgent;
         }
     }];
 }
+
+- (void)removeAllRequestsFromDB {
+    [[DatabaseManager shared] deleteAllRequest];
+}
 - (void)sendBatchForRequest {
     if(!_requestBatchSupportUrlBuilder) {
         _requestBatchSupportUrlBuilder = [[RequestBatchSupportUrlBuilder alloc] init];

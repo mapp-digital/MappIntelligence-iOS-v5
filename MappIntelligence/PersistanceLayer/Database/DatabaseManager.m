@@ -197,6 +197,58 @@ NSString *const StorageErrorDescriptionGeneralError = @"General Error";
   });
 }
 
+- (BOOL)deleteAllRequest {
+  BOOL success = YES;
+
+  sqlite3_stmt *sql_statement;
+  const char *dbPath = [self.databasePath UTF8String];
+
+  if (sqlite3_open_v2(dbPath, &_requestsDB,
+                      SQLITE_OPEN_CREATE | SQLITE_OPEN_READWRITE |
+                          SQLITE_OPEN_SHAREDCACHE,
+                      NULL) == SQLITE_OK) {
+
+    NSString *insertSQL =
+        [NSString stringWithFormat:@"DELETE * FROM REQUESTS_TABLE"];
+
+    const char *insertStatement = [insertSQL UTF8String];
+
+    sqlite3_prepare_v2(_requestsDB, insertStatement, -1, &sql_statement, NULL);
+
+
+    if (sqlite3_step(sql_statement) != SQLITE_DONE) {
+
+      success = NO;
+    }
+    sqlite3_exec(_requestsDB, "BEGIN TRANSACTION", NULL, NULL, NULL);
+    sqlite3_finalize(sql_statement);
+
+    // remove also paramters from parameters table
+    insertSQL = [NSString
+        stringWithFormat:
+            @"DELETE * FROM PARAMETERS_TABLE"];
+
+    insertStatement = [insertSQL UTF8String];
+
+    sqlite3_prepare_v2(_requestsDB, insertStatement, -1, &sql_statement, NULL);
+
+    if (sqlite3_step(sql_statement) != SQLITE_DONE) {
+
+      success = NO;
+    }
+    sqlite3_exec(_requestsDB, "END TRANSACTION", NULL, NULL, NULL);
+    sqlite3_finalize(sql_statement);
+
+    sqlite3_close(_requestsDB);
+
+  } else {
+
+    success = NO;
+  }
+
+  return success;
+}
+
 - (BOOL)deleteRequest:(int)ID {
   BOOL success = YES;
 
