@@ -209,7 +209,7 @@ NSString *const StorageErrorDescriptionGeneralError = @"General Error";
                       NULL) == SQLITE_OK) {
 
     NSString *insertSQL =
-        [NSString stringWithFormat:@"DELETE * FROM REQUESTS_TABLE"];
+        [NSString stringWithFormat:@"DELETE FROM REQUESTS_TABLE"];
 
     const char *insertStatement = [insertSQL UTF8String];
 
@@ -226,7 +226,7 @@ NSString *const StorageErrorDescriptionGeneralError = @"General Error";
     // remove also paramters from parameters table
     insertSQL = [NSString
         stringWithFormat:
-            @"DELETE * FROM PARAMETERS_TABLE"];
+            @"DELETE FROM PARAMETERS_TABLE"];
 
     insertStatement = [insertSQL UTF8String];
 
