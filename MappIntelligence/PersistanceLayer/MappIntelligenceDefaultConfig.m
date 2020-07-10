@@ -212,4 +212,7 @@
     [[NSUserDefaults standardUserDefaults] setBool:optOut forKey:key_optOut];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
+- (BOOL)optOut {
+    return _optOut;
+}
 @end

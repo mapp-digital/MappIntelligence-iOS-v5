@@ -97,7 +97,6 @@
                                 <state key="normal" title="Opt In"/>
                                 <connections>
                                     <action selector="optIn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qxX-S8-5Gm"/>
-                                    <action selector="optOutAndDontSendData:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bsp-x6-csR"/>
                                 </connections>
                             </button>
                         </subviews>
