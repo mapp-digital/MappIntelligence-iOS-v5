@@ -31,6 +31,7 @@ NSString *const StorageErrorDescriptionGeneralError = @"General Error";
 @property(strong, nonatomic) NSString *databasePath;
 @property(strong, nonatomic) NSString *dbFolderDirectoryPath;
 @property(nonatomic) sqlite3 *requestsDB;
+@property dispatch_queue_t executionQueue;
 
 @end
 
@@ -45,6 +46,7 @@ NSString *const StorageErrorDescriptionGeneralError = @"General Error";
 
     // self.regionsDataVersion = [[APXLSSystemManager shared]
     // dbCachedVersionNumber];
+    _executionQueue = dispatch_queue_create("I/O operations DB", NULL);
     NSFileManager *fileManager = [NSFileManager defaultManager];
     BOOL isDirecotry = YES;
     // we will also create the 'DB' directory now.
@@ -199,11 +201,12 @@ NSString *const StorageErrorDescriptionGeneralError = @"General Error";
 
 - (BOOL)deleteAllRequest {
   BOOL success = YES;
-
+    
+dispatch_async(_executionQueue, ^{
   sqlite3_stmt *sql_statement;
   const char *dbPath = [self.databasePath UTF8String];
 
-  if (sqlite3_open_v2(dbPath, &_requestsDB,
+    if (sqlite3_open_v2(dbPath, &self->_requestsDB,
                       SQLITE_OPEN_CREATE | SQLITE_OPEN_READWRITE |
                           SQLITE_OPEN_SHAREDCACHE,
                       NULL) == SQLITE_OK) {
@@ -213,14 +216,14 @@ NSString *const StorageErrorDescriptionGeneralError = @"General Error";
 
     const char *insertStatement = [insertSQL UTF8String];
 
-    sqlite3_prepare_v2(_requestsDB, insertStatement, -1, &sql_statement, NULL);
+      sqlite3_prepare_v2(self->_requestsDB, insertStatement, -1, &sql_statement, NULL);
 
 
     if (sqlite3_step(sql_statement) != SQLITE_DONE) {
 
-      success = NO;
+      //success = NO;
     }
-    sqlite3_exec(_requestsDB, "BEGIN TRANSACTION", NULL, NULL, NULL);
+      sqlite3_exec(self->_requestsDB, "BEGIN TRANSACTION", NULL, NULL, NULL);
     sqlite3_finalize(sql_statement);
 
     // remove also paramters from parameters table
@@ -230,22 +233,22 @@ NSString *const StorageErrorDescriptionGeneralError = @"General Error";
 
     insertStatement = [insertSQL UTF8String];
 
-    sqlite3_prepare_v2(_requestsDB, insertStatement, -1, &sql_statement, NULL);
+      sqlite3_prepare_v2(self->_requestsDB, insertStatement, -1, &sql_statement, NULL);
 
     if (sqlite3_step(sql_statement) != SQLITE_DONE) {
 
-      success = NO;
+      //success = NO;
     }
-    sqlite3_exec(_requestsDB, "END TRANSACTION", NULL, NULL, NULL);
+      sqlite3_exec(self->_requestsDB, "END TRANSACTION", NULL, NULL, NULL);
     sqlite3_finalize(sql_statement);
 
-    sqlite3_close(_requestsDB);
+      sqlite3_close(self->_requestsDB);
 
   } else {
 
-    success = NO;
+    //success = NO;
   }
-
+});
   return success;
 }
 
@@ -476,11 +479,12 @@ NSString *const StorageErrorDescriptionGeneralError = @"General Error";
   BOOL success = YES;
 
   if (request) {
+      dispatch_async(_executionQueue, ^{
 
     sqlite3_stmt *sql_statement;
-    const char *dbPath = [self.databasePath UTF8String];
-      //NSLog(@"open database with: %d and requestDB: %d", sqlite3_open(dbPath, &_requestsDB), _requestsDB == NULL);
-    //if (sqlite3_open(dbPath, &_requestsDB) == SQLITE_OK) {
+      const char *dbPath = [self.databasePath UTF8String];
+      NSLog(@"DB: %d", _requestsDB == nil);
+    if (sqlite3_open(dbPath, &_requestsDB) == SQLITE_OK) {
 
       NSString *insertSQL =
           [NSString stringWithFormat:@"INSERT INTO REQUESTS_TABLE (DOMAIN, "
@@ -511,10 +515,10 @@ NSString *const StorageErrorDescriptionGeneralError = @"General Error";
 
       if (sqlite3_step(sql_statement) != SQLITE_DONE) {
 
-        success = NO;
+        //success = NO;
       }
 
-      long long lastRowID = sqlite3_last_insert_rowid(_requestsDB);
+        long long lastRowID = sqlite3_last_insert_rowid(self->_requestsDB);
 
       // TODO: add parameters to database
       for (Parameter *parameter in request.parameters) {
@@ -524,15 +528,16 @@ NSString *const StorageErrorDescriptionGeneralError = @"General Error";
       }
         //TODO:check do we need it
       //[self deleteTooOldRequests];
-      sqlite3_exec(_requestsDB, "END TRANSACTION", NULL, NULL, NULL);
+        sqlite3_exec(self->_requestsDB, "END TRANSACTION", NULL, NULL, NULL);
       sqlite3_finalize(sql_statement);
-      //sqlite3_close(_requestsDB);
+        sqlite3_close(self->_requestsDB);
 
     } else {
 
-      success = NO;
+      //success = NO;
     }
-  //}
+      });
+  }
 
   return success;
 }
@@ -545,7 +550,7 @@ NSString *const StorageErrorDescriptionGeneralError = @"General Error";
     sqlite3_stmt *sql_statement;
     const char *dbPath = [self.databasePath UTF8String];
 
-    //if (sqlite3_open(dbPath, &_requestsDB) == SQLITE_OK) {
+    if (sqlite3_open(dbPath, &_requestsDB) == SQLITE_OK) {
 
       NSString *insertSQL = [NSString
           stringWithFormat:@"INSERT INTO PARAMETERS_TABLE (name, VALUE, "
@@ -580,7 +585,7 @@ NSString *const StorageErrorDescriptionGeneralError = @"General Error";
 
       success = NO;
     }
-  //}
+  }
 
   return success;
 }

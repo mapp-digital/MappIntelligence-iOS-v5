@@ -17,6 +17,7 @@
 @property MappIntelligenceDefaultConfig *configuration;
 @property DefaultTracker *tracker;
 @property MappIntelligenceLogger *logger;
+@property NSTimer* timerForSendRequests;
 
 @end
 
@@ -116,6 +117,17 @@ static MappIntelligenceDefaultConfig *config = nil;
             [self->tracker sendRequestFromDatabase];
         }
     }];
+    [self initTimerForRequestsSendout];
+}
+
+- (void)initTimerForRequestsSendout {
+    _timerForSendRequests = [NSTimer scheduledTimerWithTimeInterval: [config requestsInterval] repeats:YES block:^(NSTimer * _Nonnull timer) {
+        if (config.batchSupport == YES) {
+            [self->tracker sendBatchForRequest];
+        } else {
+            [self->tracker sendRequestFromDatabase];
+        }
+    }];
 }
 
 - (void)initWithConfiguration:(NSArray *_Nonnull)trackIDs onTrackdomain:(NSString *_Nonnull)trackDomain  {
@@ -127,12 +139,17 @@ static MappIntelligenceDefaultConfig *config = nil;
         return;
     }
     //default values for tequest timeout is 45 and for log level it is .none
-    [self initWithConfiguration:trackIDs onTrackdomain:trackDomain withAutotrackingEnabled:YES requestTimeout:45 numberOfRequests:10 batchSupportEnabled:YES viewControllerAutoTrackingEnabled:YES andLogLevel: none];
+    [self initWithConfiguration:trackIDs onTrackdomain:trackDomain withAutotrackingEnabled:YES requestTimeout:15*60 numberOfRequests:10 batchSupportEnabled:YES viewControllerAutoTrackingEnabled:YES andLogLevel: none];
 }
 
 - (void)setRequestTimeout:(NSTimeInterval)requestTimeout {
   [config setRequestsInterval:requestTimeout];
   [config logConfig];
+  if (_timerForSendRequests) {
+    [_timerForSendRequests invalidate];
+    _timerForSendRequests = nil;
+    [self initTimerForRequestsSendout];
+  }
 }
 
 - (void)setLogLevel:(logLevel)logLevel {
