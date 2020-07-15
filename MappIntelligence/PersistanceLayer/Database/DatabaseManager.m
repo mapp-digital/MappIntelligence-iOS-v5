@@ -483,8 +483,8 @@ dispatch_async(_executionQueue, ^{
 
     sqlite3_stmt *sql_statement;
       const char *dbPath = [self.databasePath UTF8String];
-      NSLog(@"DB: %d", _requestsDB == nil);
-    if (sqlite3_open(dbPath, &_requestsDB) == SQLITE_OK) {
+          NSLog(@"DB: %d", self->_requestsDB == nil);
+          if (sqlite3_open(dbPath, &self->_requestsDB) == SQLITE_OK) {
 
       NSString *insertSQL =
           [NSString stringWithFormat:@"INSERT INTO REQUESTS_TABLE (DOMAIN, "
@@ -492,7 +492,7 @@ dispatch_async(_executionQueue, ^{
 
       const char *insertStatement = [insertSQL UTF8String];
 
-      sqlite3_prepare_v2(_requestsDB, insertStatement, -1, &sql_statement,
+              sqlite3_prepare_v2(self->_requestsDB, insertStatement, -1, &sql_statement,
                          NULL);
 
       sqlite3_bind_text(sql_statement, 1, [request.domain UTF8String], -1,
@@ -676,9 +676,8 @@ dispatch_async(_executionQueue, ^{
 
       NSString *querySQL = [[NSString alloc]
           initWithFormat:
-              @"SELECT rowid, * FROM REQUESTS_TABLE WHERE "
-              @"datetime(DATE, '+%d seconds') <= datetime('now','localtime') ORDER BY ID;",
-              (int)interval];
+              @"SELECT rowid, * FROM REQUESTS_TABLE "
+              @" ORDER BY ID;"];
       sqlite3_stmt *sql_statement;
 
       const char *query_stmt = [querySQL UTF8String];
