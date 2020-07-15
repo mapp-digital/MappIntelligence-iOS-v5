@@ -93,7 +93,7 @@ NSString *const StorageErrorDescriptionGeneralError = @"General Error";
     (StorageManagerCompletionHandler)completionHandler {
   //dispatch_queue_t queue = dispatch_queue_create("Create DB", NULL);
 
-  dispatch_async(_executionQueue, ^{
+  dispatch_sync(_executionQueue, ^{
 
     NSError *error;
 
@@ -129,7 +129,8 @@ NSString *const StorageErrorDescriptionGeneralError = @"General Error";
                                              code:0
                                          userInfo:userInfo];
         }
-
+          NSLog(@"Create Database with status: %d", sqlite3_exec(self->_requestsDB, sql_statement_parameters, NULL,
+                                                                 NULL, &errorMsg));
         if (sqlite3_exec(self->_requestsDB, sql_statement_parameters, NULL,
                          NULL, &errorMsg) != SQLITE_OK) {
 
@@ -257,11 +258,11 @@ dispatch_async(_executionQueue, ^{
 
 - (BOOL)deleteRequest:(int)ID {
   BOOL success = YES;
-
+dispatch_async(_executionQueue, ^{
   sqlite3_stmt *sql_statement;
   const char *dbPath = [self.databasePath UTF8String];
 
-  if (sqlite3_open_v2(dbPath, &_requestsDB,
+    if (sqlite3_open_v2(dbPath, &self->_requestsDB,
                       SQLITE_OPEN_CREATE | SQLITE_OPEN_READWRITE |
                           SQLITE_OPEN_SHAREDCACHE,
                       NULL) == SQLITE_OK) {
@@ -271,15 +272,15 @@ dispatch_async(_executionQueue, ^{
 
     const char *insertStatement = [insertSQL UTF8String];
 
-    sqlite3_prepare_v2(_requestsDB, insertStatement, -1, &sql_statement, NULL);
+        sqlite3_prepare_v2(self->_requestsDB, insertStatement, -1, &sql_statement, NULL);
 
     sqlite3_bind_int(sql_statement, 1, ID);
 
     if (sqlite3_step(sql_statement) != SQLITE_DONE) {
 
-      success = NO;
+      //success = NO;
     }
-    sqlite3_exec(_requestsDB, "BEGIN TRANSACTION", NULL, NULL, NULL);
+        sqlite3_exec(self->_requestsDB, "BEGIN TRANSACTION", NULL, NULL, NULL);
     sqlite3_finalize(sql_statement);
 
     // remove also paramters from parameters table
@@ -289,13 +290,13 @@ dispatch_async(_executionQueue, ^{
 
     insertStatement = [insertSQL UTF8String];
 
-    sqlite3_prepare_v2(_requestsDB, insertStatement, -1, &sql_statement, NULL);
+        sqlite3_prepare_v2(self->_requestsDB, insertStatement, -1, &sql_statement, NULL);
 
     sqlite3_bind_int(sql_statement, 1, ID);
 
     if (sqlite3_step(sql_statement) != SQLITE_DONE) {
 
-      success = NO;
+      //success = NO;
     }
     sqlite3_exec(_requestsDB, "END TRANSACTION", NULL, NULL, NULL);
     sqlite3_finalize(sql_statement);
@@ -304,18 +305,19 @@ dispatch_async(_executionQueue, ^{
 
   } else {
 
-    success = NO;
+    //success = NO;
   }
-
+});
   return success;
 }
 
 -(BOOL)updateStatusOfRequestWithId: (int) identifier andStatus: (int) status {
     BOOL success = YES;
+    dispatch_async(_executionQueue, ^{
     sqlite3_stmt *sql_statement;
     const char *dbPath = [self.databasePath UTF8String];
 
-    if (sqlite3_open_v2(dbPath, &_requestsDB,
+        if (sqlite3_open_v2(dbPath, &self->_requestsDB,
                         SQLITE_OPEN_CREATE | SQLITE_OPEN_READWRITE |
                             SQLITE_OPEN_SHAREDCACHE,
                         NULL) == SQLITE_OK) {
@@ -325,29 +327,32 @@ dispatch_async(_executionQueue, ^{
 
       const char *insertStatement = [insertSQL UTF8String];
 
-      sqlite3_prepare_v2(_requestsDB, insertStatement, -1, &sql_statement, NULL);
+        sqlite3_prepare_v2(self->_requestsDB, insertStatement, -1, &sql_statement, NULL);
 
       sqlite3_bind_int(sql_statement, 1, status);
       sqlite3_bind_int(sql_statement, 2, identifier);
 
       if (sqlite3_step(sql_statement) != SQLITE_DONE) {
 
-        success = NO;
+        //success = NO;
       }
-      sqlite3_exec(_requestsDB, "BEGIN TRANSACTION", NULL, NULL, NULL);
+        sqlite3_exec(self->_requestsDB, "BEGIN TRANSACTION", NULL, NULL, NULL);
       sqlite3_finalize(sql_statement);
     }
     //sqlite3_close(_requestsDB);
+    });
     return success;
 }
 
 - (BOOL)deleteTooOldRequests {
   BOOL success = YES;
 
+    dispatch_async(_executionQueue, ^{
+    
   sqlite3_stmt *sql_statement;
   const char *dbPath = [self.databasePath UTF8String];
 
-  if (sqlite3_open(dbPath, &_requestsDB) == SQLITE_OK) {
+        if (sqlite3_open(dbPath, &self->_requestsDB) == SQLITE_OK) {
 
     NSString *insertSQL = [NSString
         stringWithFormat:@"SELECT ROWID FROM REQUESTS_TABLE ORDER BY id ASC "
@@ -357,7 +362,7 @@ dispatch_async(_executionQueue, ^{
 
     const char *insertStatement = [insertSQL UTF8String];
 
-    sqlite3_prepare_v2(_requestsDB, insertStatement, -1, &sql_statement, NULL);
+            sqlite3_prepare_v2(self->_requestsDB, insertStatement, -1, &sql_statement, NULL);
 
     NSMutableArray *requestIds = [[NSMutableArray alloc] init];
 
@@ -373,10 +378,10 @@ dispatch_async(_executionQueue, ^{
 
       insertStatement = [insertSQL UTF8String];
 
-      sqlite3_prepare_v2(_requestsDB, insertStatement, -1, &sql_statement,
+        sqlite3_prepare_v2(self->_requestsDB, insertStatement, -1, &sql_statement,
                          NULL);
       if (sqlite3_step(sql_statement) != SQLITE_OK) {
-        success = NO;
+       // success = NO;
       }
 
       insertSQL = [NSString
@@ -385,22 +390,22 @@ dispatch_async(_executionQueue, ^{
                            [requestIds componentsJoinedByString:@","]];
 
       insertStatement = [insertSQL UTF8String];
-      sqlite3_prepare_v2(_requestsDB, insertStatement, -1, &sql_statement,
+        sqlite3_prepare_v2(self->_requestsDB, insertStatement, -1, &sql_statement,
                          NULL);
       if (sqlite3_step(sql_statement) != SQLITE_OK) {
-        success = NO;
+       // success = NO;
       }
     }
-    sqlite3_exec(_requestsDB, "END TRANSACTION", NULL, NULL, NULL);
+            sqlite3_exec(self->_requestsDB, "END TRANSACTION", NULL, NULL, NULL);
     sqlite3_finalize(sql_statement);
 
     //sqlite3_close(_requestsDB);
 
   } else {
 
-    success = NO;
+   // success = NO;
   }
-
+    });
   return success;
 }
 
@@ -664,9 +669,9 @@ dispatch_async(_executionQueue, ^{
 
 - (void)fetchAllRequestsFromInterval:(double)interval andWithCompletionHandler:
     (StorageManagerCompletionHandler)completionHandler {
-  dispatch_queue_t queue = dispatch_queue_create("Fetch Resulats", NULL);
+  //dispatch_queue_t queue = dispatch_queue_create("Fetch Resulats", NULL);
 
-  dispatch_async(queue, ^{
+  dispatch_async(_executionQueue, ^{
 
     NSMutableArray *requests = nil;
     NSMutableArray *requestIds = nil;
