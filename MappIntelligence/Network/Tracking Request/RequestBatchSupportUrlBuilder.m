@@ -29,7 +29,8 @@
     self = [super init];
     if (self) {
         //initialisation of base url
-        _baseUrl = [[NSString alloc] initWithFormat:@"%@/%@/batch?eid=%@", [MappIntelligence getUrl], [MappIntelligence getId],  [[DefaultTracker sharedInstance] generateEverId]];
+        DefaultTracker* tracker = [DefaultTracker sharedInstance];
+        _baseUrl = [[NSString alloc] initWithFormat:@"%@/%@/batch?eid=%@&X-WT-UA=%@", [MappIntelligence getUrl], [MappIntelligence getId],  [tracker generateEverId], [[tracker generateUserAgent] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]] ];
         _dbManager = [DatabaseManager shared];
         _loger = [MappIntelligenceLogger shared];
         
@@ -77,7 +78,7 @@
         [data.requests subarrayWithRange:NSMakeRange(i * 5000, length)];
     for (Request *req in subArray) {
       [body appendString:@"wt?"];
-      [body appendString:[[req url] query]];
+      [body appendString:[[req urlForBatchSupprot:YES] query]];
       [body appendString:@"\n"];
     }
     [array addObject:body];
@@ -85,7 +86,7 @@
   } else {
     for (Request *req in data.requests) {
       [body appendString:@"wt?"];
-      [body appendString:[[req url] query]];
+      [body appendString:[[req urlForBatchSupprot:YES] query]];
       [body appendString:@"\n"];
     }
     [array addObject:body];

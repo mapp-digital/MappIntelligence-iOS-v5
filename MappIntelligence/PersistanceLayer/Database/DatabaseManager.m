@@ -144,14 +144,14 @@ NSString *const StorageErrorDescriptionGeneralError = @"General Error";
                                          userInfo:userInfo];
         }
 
-        if (sqlite3_close(self->_requestsDB) != SQLITE_OK) {
-
-          NSDictionary *userInfo =
-              @{NSLocalizedDescriptionKey : StorageErrorDescriptionCloseDB};
-          error = [[NSError alloc] initWithDomain:StorageDomainSqlite
-                                             code:0
-                                         userInfo:userInfo];
-        }
+//        if (sqlite3_close(self->_requestsDB) != SQLITE_OK) {
+//
+//          NSDictionary *userInfo =
+//              @{NSLocalizedDescriptionKey : StorageErrorDescriptionCloseDB};
+//          error = [[NSError alloc] initWithDomain:StorageDomainSqlite
+//                                             code:0
+//                                         userInfo:userInfo];
+//        }
 
       } else {
 
@@ -168,6 +168,9 @@ NSString *const StorageErrorDescriptionGeneralError = @"General Error";
       if (completionHandler) {
           const char *dbPath = [self.databasePath UTF8String];
           NSLog(@"open database with: %d and requestDB: %d", sqlite3_open(dbPath, &self->_requestsDB), self->_requestsDB == NULL);
+          if (sqlite3_open(dbPath, &self->_requestsDB) != SQLITE_OK) {
+              NSLog(@"Failed to open database!");
+          }
 
         completionHandler(error, nil);
       }
@@ -242,7 +245,7 @@ dispatch_async(_executionQueue, ^{
       sqlite3_exec(self->_requestsDB, "END TRANSACTION", NULL, NULL, NULL);
     sqlite3_finalize(sql_statement);
 
-      sqlite3_close(self->_requestsDB);
+      //sqlite3_close(self->_requestsDB);
 
   } else {
 
@@ -297,7 +300,7 @@ dispatch_async(_executionQueue, ^{
     sqlite3_exec(_requestsDB, "END TRANSACTION", NULL, NULL, NULL);
     sqlite3_finalize(sql_statement);
 
-    sqlite3_close(_requestsDB);
+    //sqlite3_close(_requestsDB);
 
   } else {
 
@@ -334,7 +337,7 @@ dispatch_async(_executionQueue, ^{
       sqlite3_exec(_requestsDB, "BEGIN TRANSACTION", NULL, NULL, NULL);
       sqlite3_finalize(sql_statement);
     }
-    sqlite3_close(_requestsDB);
+    //sqlite3_close(_requestsDB);
     return success;
 }
 
@@ -391,7 +394,7 @@ dispatch_async(_executionQueue, ^{
     sqlite3_exec(_requestsDB, "END TRANSACTION", NULL, NULL, NULL);
     sqlite3_finalize(sql_statement);
 
-    sqlite3_close(_requestsDB);
+    //sqlite3_close(_requestsDB);
 
   } else {
 
@@ -530,7 +533,7 @@ dispatch_async(_executionQueue, ^{
       //[self deleteTooOldRequests];
         sqlite3_exec(self->_requestsDB, "END TRANSACTION", NULL, NULL, NULL);
       sqlite3_finalize(sql_statement);
-        sqlite3_close(self->_requestsDB);
+        //sqlite3_close(self->_requestsDB);
 
     } else {
 
@@ -645,14 +648,14 @@ dispatch_async(_executionQueue, ^{
 
     if (sqlite3_finalize(sql_statement) == SQLITE_OK) {
 
-      if (sqlite3_close(_requestsDB) != SQLITE_OK) {
-
-        NSDictionary *userInfo =
-            @{NSLocalizedDescriptionKey : StorageErrorDescriptionCloseDB};
-        error = [[NSError alloc] initWithDomain:StorageDomainSqlite
-                                           code:0
-                                       userInfo:userInfo];
-      }
+//      if (sqlite3_close(_requestsDB) != SQLITE_OK) {
+//
+//        NSDictionary *userInfo =
+//            @{NSLocalizedDescriptionKey : StorageErrorDescriptionCloseDB};
+//        error = [[NSError alloc] initWithDomain:StorageDomainSqlite
+//                                           code:0
+//                                       userInfo:userInfo];
+//      }
     }
   }
 
@@ -915,7 +918,7 @@ dispatch_async(_executionQueue, ^{
           }
         }
 
-        sqlite3_close(self->_requestsDB);
+        //sqlite3_close(self->_requestsDB);
 
       } else {
 
@@ -983,7 +986,7 @@ dispatch_async(_executionQueue, ^{
       }
     }
 
-    sqlite3_close(self->_requestsDB);
+    //sqlite3_close(self->_requestsDB);
   }
 }
 

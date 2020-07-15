@@ -95,7 +95,7 @@
 - (void)sendAllRequests {
     for (Request* r in _requests) {
         TrackerRequest *request = [[TrackerRequest alloc] init];
-        [request sendRequestWith:r.url andCompletition:^(NSError * _Nonnull error) {
+        [request sendRequestWith: [r urlForBatchSupprot:NO] andCompletition:^(NSError * _Nonnull error) {
             if(error) {
                 [self->_logger logObj:error forDescription:kMappIntelligenceLogLevelDescriptionDebug];
                 //TODO: add enum for status

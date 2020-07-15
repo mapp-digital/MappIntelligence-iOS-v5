@@ -69,8 +69,8 @@
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
         cachePolicy:NSURLRequestUseProtocolCachePolicy
     timeoutInterval:60.0];
-    [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    [request addValue:@"text/plain" forHTTPHeaderField:@"Content-Type"];
+    [request addValue:@"text/plain" forHTTPHeaderField:@"Accept"];
 
     [request setHTTPMethod:@"POST"];
     [request setHTTPBody:[[NSData alloc] initWithBase64EncodedString:body options:NSDataBase64DecodingIgnoreUnknownCharacters]];

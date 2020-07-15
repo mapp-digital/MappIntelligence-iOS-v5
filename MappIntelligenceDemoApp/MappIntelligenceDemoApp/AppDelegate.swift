@@ -14,7 +14,7 @@ var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        MappIntelligence.shared()?.initWithConfiguration([385255285199574], onTrackdomain: "https://q3.webtrekk.net")
+        MappIntelligence.shared()?.initWithConfiguration([794940687426749], onTrackdomain: "http://tracker-int-01.webtrekk.net")
         //MappIntelligence.shared()?.initWithConfiguration([], onTrackdomain: "")
         MappIntelligence.shared()?.logLevel = .all
 

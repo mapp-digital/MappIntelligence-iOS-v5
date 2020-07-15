@@ -136,7 +136,7 @@ static NSString *userAgent;
   return sharedTracker;
 }
 
-- (void)generateUserAgent {
+- (NSString*)generateUserAgent {
   Enviroment *env = [[Enviroment alloc] init];
   NSString *properties = [env.operatingSystemName
       stringByAppendingFormat:@" %@; %@; %@", env.operatingSystemVersionString,
@@ -146,6 +146,7 @@ static NSString *userAgent;
   userAgent =
       [[NSString alloc] initWithFormat:@"Tracking Library %@ (%@))",
                                        MappIntelligence.version, properties];
+    return userAgent;
 }
 
 - (void)initializeTracking {

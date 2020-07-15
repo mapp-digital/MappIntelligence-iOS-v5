@@ -109,16 +109,19 @@
     NSLog(@"%@", request);
 }
 
-- (NSMutableArray<NSURLQueryItem *> *)convertParamters {
+- (NSMutableArray<NSURLQueryItem *> *)convertParamtersWith: (BOOL)batch {
     NSMutableArray<NSURLQueryItem *> * array = [[NSMutableArray alloc] init];
     for (Parameter* p in _parameters) {
+        if (batch && ([p.name isEqualToString:@"eid"] || [p.name isEqualToString:@"X-WT-UA"])) {
+            continue;
+        }
         [array addObject:[[NSURLQueryItem alloc] initWithName:p.name value:p.value]];
     }
     return array;
 }
 
-- (NSURL *)url {
+- (NSURL *)urlForBatchSupprot: (BOOL)option {
     RequestUrlBuilder* builder = [[RequestUrlBuilder alloc] initWithUrl:[[NSURL alloc] initWithString:_domain] andWithId:_track_ids];
-    return [builder createURLFromParametersWith:[self convertParamters]];
+    return [builder createURLFromParametersWith:[self convertParamtersWith:option]];
 }
 @end
