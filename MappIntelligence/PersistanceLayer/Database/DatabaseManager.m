@@ -91,9 +91,9 @@ NSString *const StorageErrorDescriptionGeneralError = @"General Error";
 
 - (void)createDatabaseWithCompletionHandler:
     (StorageManagerCompletionHandler)completionHandler {
-  dispatch_queue_t queue = dispatch_queue_create("Create DB", NULL);
+  //dispatch_queue_t queue = dispatch_queue_create("Create DB", NULL);
 
-  dispatch_async(queue, ^{
+  dispatch_async(_executionQueue, ^{
 
     NSError *error;
 
