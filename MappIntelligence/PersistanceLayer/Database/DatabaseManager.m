@@ -670,7 +670,7 @@ dispatch_async(_executionQueue, ^{
 - (void)fetchAllRequestsFromInterval:(double)interval andWithCompletionHandler:
     (StorageManagerCompletionHandler)completionHandler {
   //dispatch_queue_t queue = dispatch_queue_create("Fetch Resulats", NULL);
-
+//TODO: select count of request and make logic around it
   dispatch_async(_executionQueue, ^{
 
     NSMutableArray *requests = nil;
