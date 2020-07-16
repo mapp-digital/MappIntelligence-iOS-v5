@@ -26,6 +26,8 @@ typedef NS_ENUM(NSInteger, logLevel) {
 
 @property (nonatomic, readwrite) NSTimeInterval requestTimeout;
 @property (nonatomic, readwrite) logLevel logLevel;
+@property (nonatomic, readwrite) BOOL batchSupportEnabled;
+@property (nonatomic, readwrite) NSInteger batchSupportSize;
 /**
  MappIntelignece instance
  @brief Method for gets a singleton instance of MappInteligence.

@@ -17,6 +17,8 @@ var window: UIWindow?
         MappIntelligence.shared()?.initWithConfiguration([794940687426749], onTrackdomain: "http://tracker-int-01.webtrekk.net")
         //MappIntelligence.shared()?.initWithConfiguration([], onTrackdomain: "")
         MappIntelligence.shared()?.logLevel = .all
+        MappIntelligence.shared()?.batchSupportEnabled = false;
+        MappIntelligence.shared()?.batchSupportSize = 150;
 
         // Override point for customization after application launch.
         return true

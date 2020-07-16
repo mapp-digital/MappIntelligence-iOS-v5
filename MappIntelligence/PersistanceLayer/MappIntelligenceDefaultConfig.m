@@ -27,8 +27,8 @@
 @implementation MappIntelligenceDefaultConfig : NSObject
 
 @synthesize autoTracking;
-@synthesize batchSupport;
-@synthesize requestPerQueue;
+@synthesize batchSupport = _batchSupport;
+@synthesize requestPerQueue = _requestPerQueue;
 @synthesize requestsInterval = _requestsInterval;
 @synthesize optOut = _optOut;
 /** Tracking domain is MANDATORY field */
@@ -47,14 +47,27 @@
         NSLog(@"requestInterval: %f and case: %d", [[NSUserDefaults standardUserDefaults]
         doubleForKey:key_requestsInterval], [[NSUserDefaults standardUserDefaults]
                                              doubleForKey:key_requestsInterval] != 0);
-      self.requestsInterval = ([[NSUserDefaults standardUserDefaults]
-                                  doubleForKey:key_requestsInterval] != 0)
-                                  ? (double)[[NSUserDefaults standardUserDefaults]
-                                        doubleForKey:key_requestsInterval]
-                                  : 15 * 60;
-        self.optOut = (![[NSUserDefaults standardUserDefaults]
-                         doubleForKey:key_optOut]) ? NO : [[NSUserDefaults standardUserDefaults]
-                                                           doubleForKey:key_optOut];
+        self.requestsInterval =
+            ([[NSUserDefaults standardUserDefaults]
+                 doubleForKey:key_requestsInterval] != 0)
+                ? (double)[[NSUserDefaults standardUserDefaults]
+                      doubleForKey:key_requestsInterval]
+                : 15 * 60;
+        self.optOut =
+            (![[NSUserDefaults standardUserDefaults] doubleForKey:key_optOut])
+                ? NO
+                : [[NSUserDefaults standardUserDefaults]
+                      doubleForKey:key_optOut];
+        self.batchSupport = (![[NSUserDefaults standardUserDefaults]
+                                doubleForKey:key_batchSupport])
+                                ? NO
+                                : [[NSUserDefaults standardUserDefaults]
+                                      doubleForKey:key_batchSupport];
+        self.requestPerQueue = (![[NSUserDefaults standardUserDefaults]
+                                   doubleForKey:key_requestPerQueue])
+                                   ? 100
+                                   : [[NSUserDefaults standardUserDefaults]
+                                         doubleForKey:key_requestPerQueue];
     }
   return self;
 }
@@ -143,10 +156,17 @@
   if (numberOfRequests > 10000) {
     [_logger logObj:@"Number of requests can't be grater than 10000, will be "
                     @"returned to "
-                    @"default (10)."
+                    @"default (100)."
         forDescription:kMappIntelligenceLogLevelDescriptionError];
-    self.requestPerQueue = 10;
+    self.requestPerQueue = 100;
   }
+    if (numberOfRequests < 100) {
+      [_logger logObj:@"Number of requests can't be lower than 100, will be "
+                      @"returned to "
+                      @"default (100)."
+          forDescription:kMappIntelligenceLogLevelDescriptionError];
+      self.requestPerQueue = 100;
+    }
 }
 
 - (void)validateRequestTimeInterval:(NSInteger)timeInterval {
@@ -214,5 +234,17 @@
 }
 - (BOOL)optOut {
     return _optOut;
+}
+
+- (void)setRequestPerQueue:(NSInteger)requestPerQueue {
+    _requestPerQueue = requestPerQueue;
+    [[NSUserDefaults standardUserDefaults] setInteger:requestPerQueue forKey:key_requestPerQueue];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (void)setBatchSupport:(BOOL)batchSupport {
+    _batchSupport = batchSupport;
+    [[NSUserDefaults standardUserDefaults] setBool:batchSupport forKey:key_batchSupport];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 @end

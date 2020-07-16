@@ -39,7 +39,7 @@
 }
 
 -(void)sendBatchForRequests {
-    [_dbManager fetchAllRequestsFromInterval:[[MappIntelligence shared] requestTimeout] andWithCompletionHandler:^(NSError * _Nonnull error, id  _Nullable data) {
+    [_dbManager fetchAllRequestsFromInterval:[[MappIntelligence shared] batchSupportSize] andWithCompletionHandler:^(NSError * _Nonnull error, id  _Nullable data) {
         RequestData* dt = (RequestData*)data;
         NSArray<NSString *>* bodies = [self createBatchWith:dt];
         TrackerRequest *request = [[TrackerRequest alloc] init];
@@ -78,7 +78,7 @@
         [data.requests subarrayWithRange:NSMakeRange(i * 5000, length)];
     for (Request *req in subArray) {
       [body appendString:@"wt?"];
-      [body appendString:[[req urlForBatchSupprot:YES] query]];
+      [body appendString:[[[req urlForBatchSupprot:YES] query] stringByReplacingOccurrencesOfString:@"\n" withString:@" "]];
       [body appendString:@"\n"];
     }
     [array addObject:body];
@@ -86,7 +86,7 @@
   } else {
     for (Request *req in data.requests) {
       [body appendString:@"wt?"];
-      [body appendString:[[req urlForBatchSupprot:YES] query]];
+      [body appendString:[[[req urlForBatchSupprot:YES] query] stringByReplacingOccurrencesOfString:@"\n" withString:@" "] ];
       [body appendString:@"\n"];
     }
     [array addObject:body];

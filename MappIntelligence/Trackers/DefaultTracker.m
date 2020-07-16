@@ -153,13 +153,14 @@ static NSString *userAgent;
   _config.serverUrl = [[NSURL alloc] initWithString:[MappIntelligence getUrl]];
   _config.MappIntelligenceId = [MappIntelligence getId];
   _config.requestInterval = [[MappIntelligence shared] requestTimeout];
+  _config.requestPerQueue = [[MappIntelligence shared] batchSupportSize];
   _requestUrlBuilder =
       [[RequestUrlBuilder alloc] initWithUrl:_config.serverUrl
                                    andWithId:_config.MappIntelligenceId];
 }
 
 - (void)sendRequestFromDatabase {
-    [[DatabaseManager shared] fetchAllRequestsFromInterval:_config.requestInterval andWithCompletionHandler:^(NSError * _Nonnull error, id  _Nullable data) {
+    [[DatabaseManager shared] fetchAllRequestsFromInterval:[[MappIntelligence shared] batchSupportSize] andWithCompletionHandler:^(NSError * _Nonnull error, id  _Nullable data) {
         if (!error) {
             RequestData* dt = (RequestData*)data;
             [dt sendAllRequests];

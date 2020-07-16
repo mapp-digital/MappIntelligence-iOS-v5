@@ -139,7 +139,7 @@ static MappIntelligenceDefaultConfig *config = nil;
         return;
     }
     //default values for tequest timeout is 45 and for log level it is .none
-    [self initWithConfiguration:trackIDs onTrackdomain:trackDomain withAutotrackingEnabled:YES requestTimeout:15*60 numberOfRequests:10 batchSupportEnabled:YES viewControllerAutoTrackingEnabled:YES andLogLevel: none];
+    [self initWithConfiguration:trackIDs onTrackdomain:trackDomain withAutotrackingEnabled:YES requestTimeout:15*60 numberOfRequests:10 batchSupportEnabled:NO viewControllerAutoTrackingEnabled:YES andLogLevel: none];
 }
 
 - (void)setRequestTimeout:(NSTimeInterval)requestTimeout {
@@ -157,12 +157,21 @@ static MappIntelligenceDefaultConfig *config = nil;
   [config logConfig];
 }
 
+- (void) setBatchSupportEnabled:(BOOL)batchSupportEnabled {
+    [config setBatchSupport:batchSupportEnabled];
+    [config logConfig];
+}
+
 - (NSTimeInterval)requestTimeout {
   return [config requestsInterval];
 }
 
 - (logLevel)logLevel {
   return (logLevel)[config logLevel];
+}
+
+- (BOOL)batchSupportEnabled {
+    return [config batchSupport];
 }
 
 - (void)reset {
@@ -187,7 +196,7 @@ static MappIntelligenceDefaultConfig *config = nil;
 }
 
 - (void)printAllRequestFromDatabase {
-    [[DatabaseManager shared] fetchAllRequestsFromInterval:[config requestsInterval] andWithCompletionHandler: ^(NSError * _Nonnull error, id  _Nullable data) {
+    [[DatabaseManager shared] fetchAllRequestsFromInterval:[config requestPerQueue] andWithCompletionHandler: ^(NSError * _Nonnull error, id  _Nullable data) {
         if (!error) {
             RequestData* dt = (RequestData*)data;
             [dt print];
