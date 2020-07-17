@@ -19,7 +19,7 @@
 @property BOOL isReady;
 + (nullable instancetype)sharedInstance;
 - (NSString *_Nullable)generateEverId;
-- (NSString*)generateUserAgent;
+- (NSString*_Nonnull)generateUserAgent;
 #if !TARGET_OS_WATCH
 - (NSError*_Nullable)track:(UIViewController *_Nonnull)controller;
 - (void)updateFirstSessionWith: (UIApplicationState) state;

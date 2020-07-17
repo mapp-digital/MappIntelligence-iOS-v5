@@ -16,6 +16,8 @@
 		A334861E23BF3E2300D0EB5F /* MappIntelligence.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A334861B23BF3E2300D0EB5F /* MappIntelligence.h */; };
 		A334862D23BF3F2800D0EB5F /* libMappIntelligenceSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A334861823BF3E2300D0EB5F /* libMappIntelligenceSDK.a */; };
 		A334863423BF3FAD00D0EB5F /* MappIntelligence.h in Headers */ = {isa = PBXBuildFile; fileRef = A334861B23BF3E2300D0EB5F /* MappIntelligence.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A337445C24C1A12A0096259B /* PageProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = A337445A24C1A12A0096259B /* PageProperties.h */; };
+		A337445D24C1A12A0096259B /* PageProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = A337445B24C1A12A0096259B /* PageProperties.m */; };
 		A33B36E72460246F005EA9AE /* MappIntelligenceSDK_watchOS.h in Headers */ = {isa = PBXBuildFile; fileRef = A33B36E52460246F005EA9AE /* MappIntelligenceSDK_watchOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A33B36EB24602482005EA9AE /* libMappIntelligenceWatchOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A32AEA25242A6F4600BC7B46 /* libMappIntelligenceWatchOS.a */; };
 		A33B36F72460249F005EA9AE /* MappIntelligenceSDK_tvOS.h in Headers */ = {isa = PBXBuildFile; fileRef = A33B36F52460249F005EA9AE /* MappIntelligenceSDK_tvOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -207,6 +209,8 @@
 		A334861C23BF3E2300D0EB5F /* MappIntelligence.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MappIntelligence.m; sourceTree = "<group>"; };
 		A334862823BF3F2800D0EB5F /* MappIntelligenceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MappIntelligenceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A334863C23BF409D00D0EB5F /* MappIntelligence.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MappIntelligence.h; sourceTree = "<group>"; };
+		A337445A24C1A12A0096259B /* PageProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PageProperties.h; sourceTree = "<group>"; };
+		A337445B24C1A12A0096259B /* PageProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PageProperties.m; sourceTree = "<group>"; };
 		A33B36E32460246F005EA9AE /* MappIntelligenceSDK_watchOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MappIntelligenceSDK_watchOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A33B36E52460246F005EA9AE /* MappIntelligenceSDK_watchOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MappIntelligenceSDK_watchOS.h; sourceTree = "<group>"; };
 		A33B36E62460246F005EA9AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -444,6 +448,7 @@
 		A334861A23BF3E2300D0EB5F /* MappIntelligence */ = {
 			isa = PBXGroup;
 			children = (
+				A337445924C1A1110096259B /* Properties */,
 				A380D2012412B095009E2CD8 /* Utility */,
 				A380D1FC241296E1009E2CD8 /* Events */,
 				BCBE5C0623F1A665002125C1 /* Trackers */,
@@ -463,6 +468,15 @@
 				A36CD7CA23F44567004E3E2D /* Tracking Request */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		A337445924C1A1110096259B /* Properties */ = {
+			isa = PBXGroup;
+			children = (
+				A337445A24C1A12A0096259B /* PageProperties.h */,
+				A337445B24C1A12A0096259B /* PageProperties.m */,
+			);
+			path = Properties;
 			sourceTree = "<group>";
 		};
 		A33B36E42460246F005EA9AE /* MappIntelligenceSDK-watchOS */ = {
@@ -626,6 +640,7 @@
 				A3EAFF612418E02F009D5108 /* UIFlowObserver.h in Headers */,
 				A380D20C2413D317009E2CD8 /* Configuration.h in Headers */,
 				A3CC548A249125DD006215FD /* Parameter.h in Headers */,
+				A337445C24C1A12A0096259B /* PageProperties.h in Headers */,
 				A3D9835224AE298200AF0CD8 /* RequestBatchSupportUrlBuilder.h in Headers */,
 				A380D2042412B0AB009E2CD8 /* Enviroment.h in Headers */,
 				A380D2082412D8F2009E2CD8 /* RequestTrackerBuilder.h in Headers */,
@@ -931,6 +946,7 @@
 				A3CC5487248FC418006215FD /* DatabaseManager.m in Sources */,
 				BCD5E2C523CF38F300CE2092 /* MappIntelligenceDefaultConfig.m in Sources */,
 				BCD5E2C323CF309900CE2092 /* Config.h in Sources */,
+				A337445D24C1A12A0096259B /* PageProperties.m in Sources */,
 				A380D2052412B0AB009E2CD8 /* Enviroment.m in Sources */,
 				A3CC548F249125F0006215FD /* Request.m in Sources */,
 			);
