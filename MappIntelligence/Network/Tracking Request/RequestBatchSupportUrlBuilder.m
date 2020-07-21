@@ -46,7 +46,7 @@
         for (NSString *body in bodies) {
           [request
               sendRequestWith:[[NSURL alloc] initWithString:self->_baseUrl]
-                      andBody:[body stringByRemovingPercentEncoding]
+                      andBody:body
               andCompletition:^(NSError *_Nonnull error) {
                 if (!error) {
                   ;

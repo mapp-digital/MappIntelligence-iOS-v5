@@ -69,11 +69,11 @@
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
         cachePolicy:NSURLRequestUseProtocolCachePolicy
     timeoutInterval:60.0];
-    [request addValue:@"text/plain" forHTTPHeaderField:@"Content-Type"];
-    [request addValue:@"text/plain" forHTTPHeaderField:@"Accept"];
+    [request addValue:@"text/plain; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+    [request addValue:@"text/plain; charset=utf-8" forHTTPHeaderField:@"Accept"];
 
     [request setHTTPMethod:@"POST"];
-    [request setHTTPBody:[[NSData alloc] initWithBase64EncodedString:body options:NSDataBase64DecodingIgnoreUnknownCharacters]];
+    [request setHTTPBody:[body dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:NO]];
     
     [[_urlSession dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (!error) {
