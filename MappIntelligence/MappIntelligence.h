@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "PageViewEvent.h"
+
+@class MappIntelligence;
 
 typedef NS_ENUM(NSInteger, logLevel) {
   all = 1,     // All logs of the above.
@@ -45,6 +48,7 @@ typedef NS_ENUM(NSInteger, logLevel) {
 - (NSError *_Nullable)trackPage:(UIViewController *_Nullable)controller;
 #endif
 - (NSError *_Nullable)trackPageWith:(NSString *_Nullable)name;
+- (NSError *_Nullable)trackPageWithEvent:(PageViewEvent  *_Nullable)event;
 
 - (void)initWithConfiguration:(NSArray *_Nonnull)trackIDs
                     onTrackdomain:(NSString *_Nonnull)trackDomain;

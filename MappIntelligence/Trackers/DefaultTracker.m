@@ -210,6 +210,35 @@ static NSString *userAgent;
   return [self trackWith:CurrentSelectedCViewController];
 }
 #endif
+- (NSError *)trackWithEvent:(PageViewEvent *)event {
+      if (![_defaults stringForKey:isFirstEventOfApp]) {
+        [_defaults setBool:YES forKey:isFirstEventOfApp];
+        [_defaults synchronize];
+        _isFirstEventOpen = YES;
+        _isFirstEventOfSession = YES;
+      } else {
+        _isFirstEventOpen = NO;
+      }
+    #ifdef TARGET_OS_WATCH
+        _isReady = YES;
+    #endif
+      dispatch_async(_queue,
+                     ^(void) {
+                       // Background Thread
+                       [self->_conditionUntilGetFNS lock];
+                       while (!self->_isReady)
+                         [self->_conditionUntilGetFNS wait];
+                       //dispatch_async(dispatch_get_main_queue(), ^(void) {
+                         // Run UI Updates
+                         [self enqueueRequestForEvent:event];
+                         [self->_conditionUntilGetFNS signal];
+                         [self->_conditionUntilGetFNS unlock];
+                       //});
+                     });
+        
+        return NULL;
+}
+
 - (NSError *_Nullable)trackWith:(NSString *)name {
   if ([_config.MappIntelligenceId isEqual:@""] ||
       [_config.serverUrl.absoluteString isEqual:@""]) {
@@ -260,27 +289,6 @@ static NSString *userAgent;
                      [self->_conditionUntilGetFNS unlock];
                    //});
                  });
-    
-//    __block NSCondition *condition = [NSCondition new];
-//
-//       NSThread *otherThread = [[NSThread alloc] initWithTarget:^{
-//           NSLog(@"Thread started");
-//
-//           [condition lock];
-//           [condition wait];
-//           [condition unlock];
-//
-//           NSLog(@"Thread ended");
-//       } selector:@selector(invoke) object:nil];
-//       [otherThread start];
-//
-//       while (![otherThread isWaitingOnCondition]);
-//
-//       [condition lock];
-//       [condition signal];
-//       [condition unlock];
-//
-//       NSLog(@"%i", [otherThread isWaitingOnCondition]);
     
     return NULL;
 }

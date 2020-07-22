@@ -84,6 +84,14 @@ static MappIntelligenceDefaultConfig *config = nil;
   return [tracker trackWith:name];
 }
 
+- (NSError *)trackPageWithEvent:(PageViewEvent *)event {
+    if ([config optOut]) {
+         [_logger logObj:@"You are opted out and you have no ability to track anymore." forDescription:kMappIntelligenceLogLevelDescriptionDebug];
+        return NULL;
+    }
+    return [tracker trackWithEvent:event];
+}
+
 - (void)initWithConfiguration:(NSArray *)trackIDs
                         onTrackdomain:(NSString *)trackDomain
               withAutotrackingEnabled:(BOOL)autoTracking

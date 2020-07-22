@@ -10,4 +10,12 @@
 
 @implementation PageViewEvent
 
+@synthesize pageName = _pageName;
+
+- (instancetype)initWith:(PageProperties *)properties {
+    self = [super init];
+    _pageProperties = properties;
+    _pageName = @"defaultName";
+    return self;
+}
 @end

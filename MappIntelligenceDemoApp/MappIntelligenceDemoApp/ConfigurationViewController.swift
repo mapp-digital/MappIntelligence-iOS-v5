@@ -45,6 +45,7 @@ class ConfigurationViewController: UIViewController, UIPickerViewDelegate, UIPic
 //        for i in [Int](0...10000) {
 //            MappIntelligence.shared()?.trackPage(with: String(format: "request_numero:_%d", i))
 //        }
+        MappIntelligence.shared()?.trackPage(with: PageViewEvent(PageProperties([20: "cp20Override"], andWithGroup: nil, andWithSearch: "testSearchTerm")))
     }
     
     @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {

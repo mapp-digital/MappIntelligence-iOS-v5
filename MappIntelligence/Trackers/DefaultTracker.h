@@ -9,6 +9,7 @@
 #ifndef DefaultTracker_h
 #define DefaultTracker_h
 #import <UIKit/UIKit.h>
+#import "PageViewEvent.h"
 #if TARGET_OS_WATCH
 #import <WatchKit/WatchKit.h>
 #endif
@@ -27,6 +28,7 @@
 - (void)updateFirstSessionWith: (WKApplicationState) state;
 #endif
 - (NSError*_Nullable)trackWith:(NSString *_Nonnull)name;
+- (NSError*_Nullable)trackWithEvent:(PageViewEvent *_Nonnull)event;
 + (NSUserDefaults *_Nonnull)sharedDefaults;
 - (void)initHibernate;
 - (void)reset;
