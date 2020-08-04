@@ -38,8 +38,11 @@
     return self;
 }
 
--(void)sendBatchForRequests {
+-(void)sendBatchForRequestsWithCompletition:(void (^)(NSError *error))handler {
     [_dbManager fetchAllRequestsFromInterval:[[MappIntelligence shared] batchSupportSize] andWithCompletionHandler:^(NSError * _Nonnull error, id  _Nullable data) {
+        if (error) {
+            handler(error);
+        }
         RequestData* dt = (RequestData*)data;
         NSArray<NSString *>* bodies = [self createBatchWith:dt];
         TrackerRequest *request = [[TrackerRequest alloc] init];
@@ -57,6 +60,7 @@
                       forDescription:kMappIntelligenceLogLevelDescriptionDebug];
                   [self->_dbManager removeRequestsDB:[self getRequestIDs:dt]];
                 }
+              handler(error);
               }];
         }
     }];

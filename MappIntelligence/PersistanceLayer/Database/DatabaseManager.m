@@ -44,8 +44,6 @@ NSString *const StorageErrorDescriptionGeneralError = @"General Error";
 
   if (self) {
 
-    // self.regionsDataVersion = [[APXLSSystemManager shared]
-    // dbCachedVersionNumber];
     _executionQueue = dispatch_queue_create("I/O operations DB", NULL);
     NSFileManager *fileManager = [NSFileManager defaultManager];
     BOOL isDirecotry = YES;
@@ -91,7 +89,6 @@ NSString *const StorageErrorDescriptionGeneralError = @"General Error";
 
 - (void)createDatabaseWithCompletionHandler:
     (StorageManagerCompletionHandler)completionHandler {
-  //dispatch_queue_t queue = dispatch_queue_create("Create DB", NULL);
 
   dispatch_sync(_executionQueue, ^{
 
@@ -144,15 +141,6 @@ NSString *const StorageErrorDescriptionGeneralError = @"General Error";
                                              code:0
                                          userInfo:userInfo];
         }
-
-//        if (sqlite3_close(self->_requestsDB) != SQLITE_OK) {
-//
-//          NSDictionary *userInfo =
-//              @{NSLocalizedDescriptionKey : StorageErrorDescriptionCloseDB};
-//          error = [[NSError alloc] initWithDomain:StorageDomainSqlite
-//                                             code:0
-//                                         userInfo:userInfo];
-//        }
 
       } else {
 
@@ -246,8 +234,6 @@ dispatch_async(_executionQueue, ^{
       sqlite3_exec(self->_requestsDB, "END TRANSACTION", NULL, NULL, NULL);
     sqlite3_finalize(sql_statement);
 
-      //sqlite3_close(self->_requestsDB);
-
   } else {
 
     //success = NO;
@@ -298,7 +284,7 @@ dispatch_async(_executionQueue, ^{
 
       //success = NO;
     }
-    sqlite3_exec(_requestsDB, "END TRANSACTION", NULL, NULL, NULL);
+        sqlite3_exec(self->_requestsDB, "END TRANSACTION", NULL, NULL, NULL);
     sqlite3_finalize(sql_statement);
 
     //sqlite3_close(_requestsDB);
@@ -409,80 +395,6 @@ dispatch_async(_executionQueue, ^{
   return success;
 }
 
-- (void)insertRegionData:(RequestData *)requestData
-    withCompletionHandler:(StorageManagerCompletionHandler)completionHandler {
-  [self deleteDataBaseWithCompletionHandler:^(NSError *error, id data) {
-
-    if (!error) {
-
-      [self createDatabaseWithCompletionHandler:^(NSError *error, id data) {
-
-        if (!error) {
-
-          dispatch_queue_t queue =
-              dispatch_queue_create("Inserting Queue", NULL);
-
-          dispatch_async(queue, ^{
-
-            NSError *possibleError;
-
-            possibleError = [self prepareBulksAndInsert:requestData.requests];
-
-            dispatch_async(dispatch_get_main_queue(), ^{
-
-              if (completionHandler)
-                completionHandler(possibleError, nil);
-            });
-          });
-
-        } else {
-
-          if (completionHandler)
-            completionHandler(error, nil);
-        }
-      }];
-
-    } else {
-
-      if (completionHandler)
-        completionHandler(error, nil);
-    }
-  }];
-}
-
-- (NSError *)prepareBulksAndInsert:(NSArray *)requests {
-#define MAX_BULK_SIZE 500
-
-  NSError *error;
-
-  NSInteger expectedArrayCount = ([requests count] / MAX_BULK_SIZE);
-  NSMutableArray *arrayOfRequestsArray =
-      [[NSMutableArray alloc] initWithCapacity:expectedArrayCount];
-  NSInteger itemsRemaining = [requests count];
-  NSInteger i = 0;
-
-  while (i < [requests count]) {
-
-    NSRange range = NSMakeRange(i, MIN(MAX_BULK_SIZE, itemsRemaining));
-    [arrayOfRequestsArray addObject:[requests subarrayWithRange:range]];
-
-    itemsRemaining -= range.length;
-    i += range.length;
-  }
-
-  for (NSArray *array in arrayOfRequestsArray) {
-
-    error = [self insertRequests:array];
-
-    if (error) {
-
-      break;
-    }
-  }
-
-  return error;
-}
-
 - (BOOL)insertRequest:(Request *)request {
   BOOL success = YES;
 
@@ -581,11 +493,6 @@ dispatch_async(_executionQueue, ^{
       }
 
       if (sqlite3_reset(sql_statement) != SQLITE_OK) {
-
-        // NSDictionary *userInfo = @{NSLocalizedDescriptionKey :
-        // StorageErrorDescriptionInsertionBulk};
-        // NSError* error = [[NSError alloc] initWithDomain:StorageDomainSqlite
-        // code:0 userInfo:userInfo];
         return NO;
       }
 
@@ -652,15 +559,6 @@ dispatch_async(_executionQueue, ^{
     sqlite3_exec(_requestsDB, "END TRANSACTION", NULL, NULL, &cError);
 
     if (sqlite3_finalize(sql_statement) == SQLITE_OK) {
-
-//      if (sqlite3_close(_requestsDB) != SQLITE_OK) {
-//
-//        NSDictionary *userInfo =
-//            @{NSLocalizedDescriptionKey : StorageErrorDescriptionCloseDB};
-//        error = [[NSError alloc] initWithDomain:StorageDomainSqlite
-//                                           code:0
-//                                       userInfo:userInfo];
-//      }
     }
   }
 
@@ -923,8 +821,6 @@ dispatch_async(_executionQueue, ^{
           }
         }
 
-        //sqlite3_close(self->_requestsDB);
-
       } else {
 
         NSDictionary *userInfo =
@@ -991,7 +887,6 @@ dispatch_async(_executionQueue, ^{
       }
     }
 
-    //sqlite3_close(self->_requestsDB);
   }
 }
 

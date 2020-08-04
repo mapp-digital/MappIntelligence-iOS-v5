@@ -175,7 +175,11 @@ static NSString *userAgent;
     if(!_requestBatchSupportUrlBuilder) {
         _requestBatchSupportUrlBuilder = [[RequestBatchSupportUrlBuilder alloc] init];
     }
-    [_requestBatchSupportUrlBuilder sendBatchForRequests];
+    [_requestBatchSupportUrlBuilder sendBatchForRequestsWithCompletition:^(NSError * _Nonnull error) {
+        if (error) {
+            [self->_logger logObj:@"There was an error while sending batch of requests." forDescription:kMappIntelligenceLogLevelDescriptionDebug];
+        }
+    }];
 }
 
 - (NSString *)generateEverId {
