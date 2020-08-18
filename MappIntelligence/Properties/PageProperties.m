@@ -29,7 +29,7 @@
     }
     if (_groups) {
         for(NSString* key in _groups) {
-            [items addObject:[[NSURLQueryItem alloc] initWithName:[NSString stringWithFormat:@"ct%@",key] value: _groups[key]]];
+            [items addObject:[[NSURLQueryItem alloc] initWithName:[NSString stringWithFormat:@"cg%@",key] value: _groups[key]]];
         }
     }
     if (_internalSearch) {
