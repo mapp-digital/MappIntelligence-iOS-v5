@@ -9,6 +9,12 @@
 #import <Foundation/Foundation.h>
 #import "Parameter.h"
 
+typedef NS_ENUM(NSInteger, REQUEST_STATUS) {
+    ACTIVE,
+    SENT,
+    FAILED
+};
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Request : NSObject
@@ -16,7 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, readwrite) NSNumber *uniqueId; // NSInteger
 @property (nonatomic, strong, readwrite) NSString *domain; // string
 @property (nonatomic, strong, readwrite) NSString *track_ids; // string
-@property (nonatomic, strong, readwrite) NSNumber *status; // integer
+@property (nonatomic, readwrite)  REQUEST_STATUS status; // integer
 @property (nonatomic, strong, readwrite) NSDate *date; // integer
 @property (nonatomic, strong, readwrite) NSMutableArray<Parameter*> *parameters;
 

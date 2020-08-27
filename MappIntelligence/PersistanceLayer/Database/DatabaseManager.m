@@ -419,7 +419,7 @@ dispatch_async(_executionQueue, ^{
                         SQLITE_TRANSIENT);
       sqlite3_bind_text(sql_statement, 2, [request.track_ids UTF8String], -1,
                         SQLITE_TRANSIENT);
-      sqlite3_bind_int(sql_statement, 3, [request.status intValue]);
+      sqlite3_bind_int(sql_statement, 3, (int)(request.status));
       time_t rawtime;
       struct tm *currentTime;
       time(&rawtime);
@@ -528,7 +528,7 @@ dispatch_async(_executionQueue, ^{
                           SQLITE_TRANSIENT);
         sqlite3_bind_text(sql_statement, 2, [request.track_ids UTF8String], -1,
                           SQLITE_TRANSIENT);
-        sqlite3_bind_int(sql_statement, 3, [request.status intValue]);
+        sqlite3_bind_int(sql_statement, 3, (int)request.status);
 
         if (sqlite3_step(sql_statement) == SQLITE_DONE) {
 

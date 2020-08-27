@@ -313,26 +313,9 @@ static NSString *userAgent;
 
   NSURL *requestUrl = [_requestUrlBuilder urlForRequest:request];
     Request *r = [self->_requestUrlBuilder dbRequest];
-    //TODO: create enum
-    [r setStatus:[[NSNumber alloc] initWithInt:0]];
+    [r setStatus:ACTIVE];
     BOOL status = [[DatabaseManager shared] insertRequest:r];
     NSLog(@"request written with success: %d", status);
-//  [request sendRequestWith:requestUrl
-//           andCompletition:^(NSError *_Nonnull error) {
-//             if (error) {
-//               [self->_logger
-//                           logObj:[[NSString alloc]
-//                                      initWithFormat:
-//                                          @"Request: %@ ended with error: %@",
-//                                          requestUrl, error]
-//                   forDescription:kMappIntelligenceLogLevelDescriptionError];
-//                 //put request into database if fails to send with STATUS flag set to 2
-//                 Request *request = [self->_requestUrlBuilder dbRequest];
-//                 //TODO: create enum
-//                 [request setStatus:[[NSNumber alloc] initWithInt:2]];
-//                 [[DatabaseManager shared] insertRequest:request];
-//             }
-//           }];
   _isFirstEventOfSession = NO;
   _isFirstEventOpen = NO;
 }

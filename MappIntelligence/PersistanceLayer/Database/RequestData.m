@@ -98,8 +98,7 @@
         [request sendRequestWith: [r urlForBatchSupprot:NO] andCompletition:^(NSError * _Nonnull error) {
             if(error) {
                 [self->_logger logObj:error forDescription:kMappIntelligenceLogLevelDescriptionDebug];
-                //TODO: add enum for status
-                [[DatabaseManager shared] updateStatusOfRequestWithId: (int)[r.uniqueId integerValue] andStatus:2];
+                [[DatabaseManager shared] updateStatusOfRequestWithId: (int)[r.uniqueId integerValue] andStatus:FAILED];
             } else {
                 //remove request from DB
                 [[DatabaseManager shared] deleteRequest:r.uniqueId.intValue];

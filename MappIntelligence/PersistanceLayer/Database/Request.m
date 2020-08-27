@@ -42,7 +42,7 @@
         }
         self.domain = domain;
         self.track_ids = trackids;
-        self.status = [[NSNumber alloc] initWithInt:0];
+        self.status = ACTIVE;
     }
     
     return self;
@@ -57,7 +57,19 @@
         self.uniqueId = @([keyedValues[key_id] integerValue]);
         self.domain = keyedValues[key_domain] ;
         self.track_ids = keyedValues[key_ids];
-        self.status = @([keyedValues[key_status] integerValue]);
+        switch ([keyedValues[key_status] integerValue]) {
+            case 0:
+                self.status = ACTIVE;
+                break;
+            case 1:
+                self.status = SENT;
+                break;
+            case 2:
+                self.status = FAILED;
+                break;
+            default:
+                break;
+        }
         NSString *dateString =  keyedValues[key_date];
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
@@ -86,7 +98,7 @@
     }
     
     if (self.status) {
-        keyedValues[key_status] = self.status;
+        keyedValues[key_status] = [NSNumber numberWithInt:(int)self.status] ;
     }
     
     if (self.parameters) {
