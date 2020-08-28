@@ -78,7 +78,7 @@
     }
 }
 
-- (NSDictionary *)dictionaryWithValuesForKeys:(NSArray * _Nullable)keys
+- (NSDictionary *)dictionaryWithValuesForKeys
 {
     NSMutableDictionary *keyedValues = [[NSMutableDictionary alloc] init];
     
@@ -97,7 +97,7 @@
         keyedValues[key_ids] = self.track_ids;
     }
     
-    if (self.status) {
+    if (self.status >= ACTIVE && self.status <= FAILED) {
         keyedValues[key_status] = [NSNumber numberWithInt:(int)self.status] ;
     }
     
@@ -107,18 +107,21 @@
     }
     
     if (self.date) {
-        keyedValues[key_date] = self.date;
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+        keyedValues[key_date] = [dateFormatter stringFromDate:self.date];
     }
     
     return keyedValues;
 }
 
-- (void)print {
+- (NSString*)print {
     NSString* request = [[NSString alloc] initWithFormat:@"ID: %@ and domain: %@ and ids: %@ and date: %@ and paramters: ", self.uniqueId, self.domain, self.track_ids, self.date];
     for(Parameter* parameter in self.parameters) {
         request = [request stringByAppendingString:[parameter print]];
     }
     NSLog(@"%@", request);
+    return request;
 }
 
 - (NSMutableArray<NSURLQueryItem *> *)convertParamtersWith: (BOOL)batch {

@@ -28,8 +28,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)initWithKeyedValues:(NSDictionary *)keyedValues;
 - (instancetype)initWithParamters:(NSArray<NSURLQueryItem *> *)parameters andDomain: (NSString*) domain andTrackIds: (NSString*) trackids;
-- (NSDictionary *)dictionaryWithValuesForKeys:(NSArray * _Nullable)keys;
-- (void)print;
+- (NSDictionary *)dictionaryWithValuesForKeys;
+- (NSString*)print;
 - (NSURL*)urlForBatchSupprot: (BOOL)option;
 
 @end

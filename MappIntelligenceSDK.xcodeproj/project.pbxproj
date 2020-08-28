@@ -38,6 +38,9 @@
 		A33B3700246047C8005EA9AE /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A33B36FF246047C8005EA9AE /* libz.tbd */; };
 		A3423CEF24615A8900B36F5F /* MappIntelligence.h in Resources */ = {isa = PBXBuildFile; fileRef = A334861B23BF3E2300D0EB5F /* MappIntelligence.h */; };
 		A3423CF024615A8900B36F5F /* MappIntelligence.m in Resources */ = {isa = PBXBuildFile; fileRef = A334861C23BF3E2300D0EB5F /* MappIntelligence.m */; };
+		A357221924F8F17B005F9DE1 /* ParameterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A357221824F8F17B005F9DE1 /* ParameterTest.m */; };
+		A357221B24F933A1005F9DE1 /* RequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A357221A24F933A1005F9DE1 /* RequestTest.m */; };
+		A357221D24F95742005F9DE1 /* RequestDataTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A357221C24F95742005F9DE1 /* RequestDataTest.m */; };
 		A35C78C82452E6FF00D36144 /* MappIntelligencetvOS.m in Sources */ = {isa = PBXBuildFile; fileRef = A35C78C72452E6FF00D36144 /* MappIntelligencetvOS.m */; };
 		A35C78C92452E6FF00D36144 /* MappIntelligencetvOS.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A35C78C62452E6FF00D36144 /* MappIntelligencetvOS.h */; };
 		A35C79052452FBFC00D36144 /* MappIntelligence.m in Sources */ = {isa = PBXBuildFile; fileRef = A334861C23BF3E2300D0EB5F /* MappIntelligence.m */; };
@@ -241,6 +244,9 @@
 		A33B36F62460249F005EA9AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A33B36FF246047C8005EA9AE /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/lib/libz.tbd; sourceTree = DEVELOPER_DIR; };
 		A33C1D3A24508C990049D5E5 /* LICENSE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
+		A357221824F8F17B005F9DE1 /* ParameterTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ParameterTest.m; sourceTree = "<group>"; };
+		A357221A24F933A1005F9DE1 /* RequestTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RequestTest.m; sourceTree = "<group>"; };
+		A357221C24F95742005F9DE1 /* RequestDataTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RequestDataTest.m; sourceTree = "<group>"; };
 		A35C78C42452E6FF00D36144 /* libMappIntelligencetvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMappIntelligencetvOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A35C78C62452E6FF00D36144 /* MappIntelligencetvOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MappIntelligencetvOS.h; sourceTree = "<group>"; };
 		A35C78C72452E6FF00D36144 /* MappIntelligencetvOS.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MappIntelligencetvOS.m; sourceTree = "<group>"; };
@@ -358,6 +364,9 @@
 			isa = PBXGroup;
 			children = (
 				A31C6F1F24D9A9B200166585 /* DatabaseManagerTests.m */,
+				A357221824F8F17B005F9DE1 /* ParameterTest.m */,
+				A357221A24F933A1005F9DE1 /* RequestTest.m */,
+				A357221C24F95742005F9DE1 /* RequestDataTest.m */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -995,11 +1004,14 @@
 				A32EE09F243B574E00EDC5B8 /* UIFlowObserverTests.m in Sources */,
 				A31C6F1D24D9A0F300166585 /* RequestBatchSupportUrlBuilderTests.m in Sources */,
 				A3A7255D243E07A100671DB2 /* URLSizeMonitorTests.m in Sources */,
+				A357221D24F95742005F9DE1 /* RequestDataTest.m in Sources */,
 				A3A72557243DBF1000671DB2 /* PropertiesTests.m in Sources */,
 				BCBE5C3A23F698EF002125C1 /* DefaultTrackerTests.m in Sources */,
+				A357221924F8F17B005F9DE1 /* ParameterTest.m in Sources */,
 				A3A7255B243DEA0500671DB2 /* RequestUrlBuilderTests.m in Sources */,
 				A32EE0A2243CB97200EDC5B8 /* MappIntelligenceDefaultConfigTest.m in Sources */,
 				A31D7A4F243CC0F200386A1C /* TrackerRequestTests.m in Sources */,
+				A357221B24F933A1005F9DE1 /* RequestTest.m in Sources */,
 				A31C6F2024D9A9B200166585 /* DatabaseManagerTests.m in Sources */,
 				A3A72559243DC22C00671DB2 /* RequestTrackerBuilderTests.m in Sources */,
 				BCBE5BFB23EB1798002125C1 /* MappIntelligenceSDKLoggerTest.m in Sources */,

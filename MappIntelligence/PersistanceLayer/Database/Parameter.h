@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, readwrite) NSNumber *request_uniqueId; // double, Meters
 
 - (instancetype)initWithKeyedValues:(NSDictionary *)keyedValues;
-- (NSDictionary *)dictionaryWithValuesForKeys:(NSArray *)keys;
+- (NSDictionary *)dictionaryWithValuesForKeys;
 - (NSString*)print;
 
 @end

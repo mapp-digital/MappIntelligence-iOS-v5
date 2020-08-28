@@ -47,7 +47,7 @@
     }
 }
 
-- (NSDictionary *)dictionaryWithValuesForKeys:(NSArray *)keys
+- (NSDictionary *)dictionaryWithValuesForKeys
 {
     NSMutableDictionary *keyedValues = [[NSMutableDictionary alloc] init];
     
