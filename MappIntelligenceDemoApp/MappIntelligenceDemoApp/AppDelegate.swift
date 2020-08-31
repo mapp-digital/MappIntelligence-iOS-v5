@@ -14,8 +14,19 @@ var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        MappIntelligence.shared()?.initWithConfiguration([794940687426749], onTrackdomain: "http://tracker-int-01.webtrekk.net")
-        //MappIntelligence.shared()?.initWithConfiguration([], onTrackdomain: "")
+        let bundles = Bundle.allBundles
+        var path = ""
+        for bundle in bundles {
+            if bundle.path(forResource: "SetupForLocalTesting", ofType: "plist") != nil {
+                path = bundle.path(forResource: "SetupForLocalTesting", ofType: "plist") ?? ""
+            }
+        }
+        let dict = NSDictionary(contentsOfFile: path) as Dictionary?
+        let number = NSNumber(long: (dict?["track_ids" as NSObject] as? NSNumber)?.intValue ?? 0)
+        let array = [number]
+        
+        MappIntelligence.shared()?.initWithConfiguration(array, onTrackdomain: dict["domain"]);
+        
         MappIntelligence.shared()?.logLevel = .all
         MappIntelligence.shared()?.batchSupportEnabled = true;
         MappIntelligence.shared()?.batchSupportSize = 150;

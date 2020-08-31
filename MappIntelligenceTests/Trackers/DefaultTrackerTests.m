@@ -73,11 +73,11 @@
 }
 
 - (void)testUpdateFirstSessionWith {
-    XCTAssertFalse([_tracker isReady]);
-    [_tracker updateFirstSessionWith: UIApplicationStateActive];
-    XCTAssertTrue([_tracker isReady]);
-    [_tracker updateFirstSessionWith: UIApplicationStateInactive];
-    XCTAssertTrue([_tracker isReady]);
+//    XCTAssertFalse([_tracker isReady]);
+//    [_tracker updateFirstSessionWith: UIApplicationStateActive];
+//    XCTAssertTrue([_tracker isReady]);
+//    [_tracker updateFirstSessionWith: UIApplicationStateInactive];
+//    XCTAssertTrue([_tracker isReady]);
 }
 
 - (void)testTrackUIController {
@@ -128,15 +128,37 @@
 }
 
 - (void)testSendRequestFromDatabase {
-    
+    XCTestExpectation* expectation = [[XCTestExpectation alloc] initWithDescription:@"Wait until send all requests one by one from database!"];
+    //1. write requests into database
+    //2. send requests from database one by one
+    [_tracker sendRequestFromDatabaseWithCompletionHandler:^(NSError * _Nullable error) {
+        XCTAssertNil(error, @"There was an error while sending requests one by one!");
+        [expectation fulfill];
+    }];
+    [self waitForExpectations:[NSArray arrayWithObject:expectation] timeout:15];
 }
 
 - (void)testSendBatchForRequest {
-    
+    XCTestExpectation* expectation = [[XCTestExpectation alloc] initWithDescription:@"Wait until send batch with requests from database!"];
+    //1. write requests into database
+    //2. send requests as a batch to the server
+    [_tracker sendBatchForRequestWithCompletionHandler:^(NSError * _Nullable error) {
+        XCTAssertNil(error, @"There was an error while sending requests from database as batch!");
+        [expectation fulfill];
+    }];
+    [self waitForExpectations:[NSArray arrayWithObject:expectation] timeout:15];
 }
 
 - (void)testRemoveAllRequestsFromDB {
-    
+    XCTestExpectation* expectation = [[XCTestExpectation alloc] initWithDescription:@"Wait until delete all requests from database!"];
+    //1. write requests into database
+    //2. remove all requests from database
+    [_tracker removeAllRequestsFromDBWithCompletionHandler:^(NSError * _Nullable error) {
+        XCTAssertNil(error, @"There was an error while deleting requests from database!");
+        [expectation fulfill];
+    }];
+    //3. check if all removed successfully
+    [self waitForExpectations:[NSArray arrayWithObject:expectation] timeout:5];
 }
 
 @end

@@ -159,29 +159,33 @@ static NSString *userAgent;
                                    andWithId:_config.MappIntelligenceId];
 }
 
-- (void)sendRequestFromDatabase {
+- (void)sendRequestFromDatabaseWithCompletionHandler:(void (^)(NSError * _Nullable))handler {
     [[DatabaseManager shared] fetchAllRequestsFromInterval:[[MappIntelligence shared] batchSupportSize] andWithCompletionHandler:^(NSError * _Nonnull error, id  _Nullable data) {
         if (!error) {
             RequestData* dt = (RequestData*)data;
             [dt sendAllRequestsWithCompletitionHandler:^(NSError * _Nullable error) {
                 if(error) {
                     [self->_logger logObj:[[NSString alloc] initWithFormat:@"There was an error while sendout off all requests: %@!", [error description]] forDescription:kMappIntelligenceLogLevelDescriptionDebug];
+                    handler(error);
                 }
             }];
         }
     }];
 }
 
-- (void)removeAllRequestsFromDB {
+- (void)removeAllRequestsFromDBWithCompletionHandler:(void (^)(NSError * _Nullable))handler {
     [[DatabaseManager shared] deleteAllRequest];
+    //TODO: handle deletation error
+    handler(nil);
 }
-- (void)sendBatchForRequest {
+- (void)sendBatchForRequestWithCompletionHandler:(void (^)(NSError * _Nullable))handler {
     if(!_requestBatchSupportUrlBuilder) {
         _requestBatchSupportUrlBuilder = [[RequestBatchSupportUrlBuilder alloc] init];
     }
     [_requestBatchSupportUrlBuilder sendBatchForRequestsWithCompletition:^(NSError * _Nonnull error) {
         if (error) {
             [self->_logger logObj:@"There was an error while sending batch of requests." forDescription:kMappIntelligenceLogLevelDescriptionDebug];
+            handler(error);
         }
     }];
 }

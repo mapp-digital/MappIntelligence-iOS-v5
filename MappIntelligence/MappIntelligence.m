@@ -120,9 +120,13 @@ static MappIntelligenceDefaultConfig *config = nil;
         }
         if (config.batchSupport == YES) {
             //TODO: add timeout to this methods
-            [self->tracker sendBatchForRequest];
+            [self->tracker sendBatchForRequestWithCompletionHandler:^(NSError * _Nullable error) {
+                //error is already obtain at one level lower
+            }];
         } else {
-            [self->tracker sendRequestFromDatabase];
+            [self->tracker sendRequestFromDatabaseWithCompletionHandler:^(NSError * _Nullable error) {
+                //error is already obtain in one level lower
+            }];
         }
     }];
     [self initTimerForRequestsSendout];
@@ -131,9 +135,13 @@ static MappIntelligenceDefaultConfig *config = nil;
 - (void)initTimerForRequestsSendout {
     _timerForSendRequests = [NSTimer scheduledTimerWithTimeInterval: [config requestsInterval] repeats:YES block:^(NSTimer * _Nonnull timer) {
         if (config.batchSupport == YES) {
-            [self->tracker sendBatchForRequest];
+            [self->tracker sendBatchForRequestWithCompletionHandler:^(NSError * _Nullable error) {
+                //error is already obtain in one level lower
+            }];
         } else {
-            [self->tracker sendRequestFromDatabase];
+            [self->tracker sendRequestFromDatabaseWithCompletionHandler:^(NSError * _Nullable error) {
+                //error is already obtain in one level lower
+            }];
         }
     }];
 }
@@ -196,10 +204,14 @@ static MappIntelligenceDefaultConfig *config = nil;
     [_logger logObj: [[NSString alloc] initWithFormat:@"You are opting out with status %d", status] forDescription:kMappIntelligenceLogLevelDescriptionDebug];
     if (value) {
         //send data and remove it from DB
-        [tracker sendBatchForRequest];
+        [tracker sendBatchForRequestWithCompletionHandler:^(NSError * _Nullable error) {
+            //error is already obtain in one level lower
+        }];
     } else {
         //just remove data from DB, and do not send it
-        [tracker removeAllRequestsFromDB];
+        [tracker removeAllRequestsFromDBWithCompletionHandler:^(NSError * _Nullable error) {
+            //error is already obtain in one level lower
+        }];
     }
 }
 

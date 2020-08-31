@@ -33,7 +33,7 @@
 - (void)initHibernate;
 - (void)reset;
 - (void)initializeTracking;
-- (void)sendRequestFromDatabase;
-- (void)sendBatchForRequest;
-- (void)removeAllRequestsFromDB;
+- (void)sendRequestFromDatabaseWithCompletionHandler: (void (^_Nullable)(NSError * _Nullable error))handler;
+- (void)sendBatchForRequestWithCompletionHandler: (void (^_Nullable)(NSError * _Nullable error))handler;
+- (void)removeAllRequestsFromDBWithCompletionHandler: (void (^_Nullable)(NSError * _Nullable error))handler;
 @end
