@@ -163,7 +163,11 @@ static NSString *userAgent;
     [[DatabaseManager shared] fetchAllRequestsFromInterval:[[MappIntelligence shared] batchSupportSize] andWithCompletionHandler:^(NSError * _Nonnull error, id  _Nullable data) {
         if (!error) {
             RequestData* dt = (RequestData*)data;
-            [dt sendAllRequests];
+            [dt sendAllRequestsWithCompletitionHandler:^(NSError * _Nullable error) {
+                if(error) {
+                    [self->_logger logObj:[[NSString alloc] initWithFormat:@"There was an error while sendout off all requests: %@!", [error description]] forDescription:kMappIntelligenceLogLevelDescriptionDebug];
+                }
+            }];
         }
     }];
 }
@@ -232,12 +236,9 @@ static NSString *userAgent;
                        [self->_conditionUntilGetFNS lock];
                        while (!self->_isReady)
                          [self->_conditionUntilGetFNS wait];
-                       //dispatch_async(dispatch_get_main_queue(), ^(void) {
-                         // Run UI Updates
                          [self enqueueRequestForEvent:event];
                          [self->_conditionUntilGetFNS signal];
                          [self->_conditionUntilGetFNS unlock];
-                       //});
                      });
         
         return NULL;

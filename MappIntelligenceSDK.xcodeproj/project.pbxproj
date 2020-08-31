@@ -41,6 +41,12 @@
 		A357221924F8F17B005F9DE1 /* ParameterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A357221824F8F17B005F9DE1 /* ParameterTest.m */; };
 		A357221B24F933A1005F9DE1 /* RequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A357221A24F933A1005F9DE1 /* RequestTest.m */; };
 		A357221D24F95742005F9DE1 /* RequestDataTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A357221C24F95742005F9DE1 /* RequestDataTest.m */; };
+		A357222024FD10AD005F9DE1 /* PagePropertiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A357221F24FD10AD005F9DE1 /* PagePropertiesTests.m */; };
+		A357222224FD1ABB005F9DE1 /* PageViewEventTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A357222124FD1ABB005F9DE1 /* PageViewEventTests.m */; };
+		A357222424FD236B005F9DE1 /* SetupForLocalTesting.plist in Resources */ = {isa = PBXBuildFile; fileRef = A357222324FD236B005F9DE1 /* SetupForLocalTesting.plist */; };
+		A357222524FD236B005F9DE1 /* SetupForLocalTesting.plist in Resources */ = {isa = PBXBuildFile; fileRef = A357222324FD236B005F9DE1 /* SetupForLocalTesting.plist */; };
+		A357222624FD236B005F9DE1 /* SetupForLocalTesting.plist in Resources */ = {isa = PBXBuildFile; fileRef = A357222324FD236B005F9DE1 /* SetupForLocalTesting.plist */; };
+		A357222724FD236B005F9DE1 /* SetupForLocalTesting.plist in Resources */ = {isa = PBXBuildFile; fileRef = A357222324FD236B005F9DE1 /* SetupForLocalTesting.plist */; };
 		A35C78C82452E6FF00D36144 /* MappIntelligencetvOS.m in Sources */ = {isa = PBXBuildFile; fileRef = A35C78C72452E6FF00D36144 /* MappIntelligencetvOS.m */; };
 		A35C78C92452E6FF00D36144 /* MappIntelligencetvOS.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A35C78C62452E6FF00D36144 /* MappIntelligencetvOS.h */; };
 		A35C79052452FBFC00D36144 /* MappIntelligence.m in Sources */ = {isa = PBXBuildFile; fileRef = A334861C23BF3E2300D0EB5F /* MappIntelligence.m */; };
@@ -247,6 +253,9 @@
 		A357221824F8F17B005F9DE1 /* ParameterTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ParameterTest.m; sourceTree = "<group>"; };
 		A357221A24F933A1005F9DE1 /* RequestTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RequestTest.m; sourceTree = "<group>"; };
 		A357221C24F95742005F9DE1 /* RequestDataTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RequestDataTest.m; sourceTree = "<group>"; };
+		A357221F24FD10AD005F9DE1 /* PagePropertiesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PagePropertiesTests.m; sourceTree = "<group>"; };
+		A357222124FD1ABB005F9DE1 /* PageViewEventTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PageViewEventTests.m; sourceTree = "<group>"; };
+		A357222324FD236B005F9DE1 /* SetupForLocalTesting.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = SetupForLocalTesting.plist; sourceTree = "<group>"; };
 		A35C78C42452E6FF00D36144 /* libMappIntelligencetvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMappIntelligencetvOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A35C78C62452E6FF00D36144 /* MappIntelligencetvOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MappIntelligencetvOS.h; sourceTree = "<group>"; };
 		A35C78C72452E6FF00D36144 /* MappIntelligencetvOS.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MappIntelligencetvOS.m; sourceTree = "<group>"; };
@@ -429,6 +438,7 @@
 		A32EE09C243B56FC00EDC5B8 /* Events */ = {
 			isa = PBXGroup;
 			children = (
+				A357222124FD1ABB005F9DE1 /* PageViewEventTests.m */,
 			);
 			name = Events;
 			sourceTree = "<group>";
@@ -454,6 +464,7 @@
 		A334860F23BF3E2300D0EB5F = {
 			isa = PBXGroup;
 			children = (
+				A357222324FD236B005F9DE1 /* SetupForLocalTesting.plist */,
 				A33C1D3A24508C990049D5E5 /* LICENSE.md */,
 				A30E3EC62444A3970047D7A6 /* MappIntelligence.podspec */,
 				A30E3EC42444A0B70047D7A6 /* .oclint.yml */,
@@ -537,6 +548,14 @@
 				A33B36F62460249F005EA9AE /* Info.plist */,
 			);
 			path = "MappIntelligenceSDK-tvOS";
+			sourceTree = "<group>";
+		};
+		A357221E24FD1013005F9DE1 /* Properties */ = {
+			isa = PBXGroup;
+			children = (
+				A357221F24FD10AD005F9DE1 /* PagePropertiesTests.m */,
+			);
+			path = Properties;
 			sourceTree = "<group>";
 		};
 		A35C78C52452E6FF00D36144 /* MappIntelligencetvOS */ = {
@@ -627,6 +646,7 @@
 		BCEA32C023E979FD003AF806 /* MappIntelligenceTests */ = {
 			isa = PBXGroup;
 			children = (
+				A357221E24FD1013005F9DE1 /* Properties */,
 				A31D7A4C243CBE1A00386A1C /* Network */,
 				A31D7A4B243CBDE500386A1C /* Log */,
 				A32EE0A0243CB94F00EDC5B8 /* PersistanceLayer */,
@@ -913,6 +933,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A357222424FD236B005F9DE1 /* SetupForLocalTesting.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -920,6 +941,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A357222624FD236B005F9DE1 /* SetupForLocalTesting.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -927,6 +949,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A357222724FD236B005F9DE1 /* SetupForLocalTesting.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -935,6 +958,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A3423CEF24615A8900B36F5F /* MappIntelligence.h in Resources */,
+				A357222524FD236B005F9DE1 /* SetupForLocalTesting.plist in Resources */,
 				A3423CF024615A8900B36F5F /* MappIntelligence.m in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1008,12 +1032,14 @@
 				A3A72557243DBF1000671DB2 /* PropertiesTests.m in Sources */,
 				BCBE5C3A23F698EF002125C1 /* DefaultTrackerTests.m in Sources */,
 				A357221924F8F17B005F9DE1 /* ParameterTest.m in Sources */,
+				A357222224FD1ABB005F9DE1 /* PageViewEventTests.m in Sources */,
 				A3A7255B243DEA0500671DB2 /* RequestUrlBuilderTests.m in Sources */,
 				A32EE0A2243CB97200EDC5B8 /* MappIntelligenceDefaultConfigTest.m in Sources */,
 				A31D7A4F243CC0F200386A1C /* TrackerRequestTests.m in Sources */,
 				A357221B24F933A1005F9DE1 /* RequestTest.m in Sources */,
 				A31C6F2024D9A9B200166585 /* DatabaseManagerTests.m in Sources */,
 				A3A72559243DC22C00671DB2 /* RequestTrackerBuilderTests.m in Sources */,
+				A357222024FD10AD005F9DE1 /* PagePropertiesTests.m in Sources */,
 				BCBE5BFB23EB1798002125C1 /* MappIntelligenceSDKLoggerTest.m in Sources */,
 				A3A7255F243F154900671DB2 /* MappIntelligenceTests.m in Sources */,
 			);

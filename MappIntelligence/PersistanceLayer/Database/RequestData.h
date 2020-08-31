@@ -17,9 +17,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)initWithRequests:(NSArray <Request *> *)requests;
 - (instancetype)initWithKeyedValues:(NSDictionary * _Nullable)keyedValues;
-- (NSDictionary *)dictionaryWithValuesForKeys:(NSArray *)keys;
-- (void) sendAllRequests;
-- (void)print;
+- (NSDictionary *)dictionaryWithValues;
+- (void) sendAllRequestsWithCompletitionHandler: (void(^)(NSError* _Nullable))completionHandler;
+- (NSString*)print;
 
 @end
 

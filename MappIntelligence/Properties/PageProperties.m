@@ -19,7 +19,7 @@
     }
     return  self;
 }
-//TODO: investigate do we need request
+
 - (NSMutableArray<NSURLQueryItem*>*)asQueryItemsFor:(TrackerRequest *)request {
     NSMutableArray<NSURLQueryItem*>* items = [[NSMutableArray alloc] init];
     if (_details) {

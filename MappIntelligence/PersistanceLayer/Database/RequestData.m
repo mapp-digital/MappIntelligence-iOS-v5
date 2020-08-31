@@ -11,7 +11,7 @@
 #import "MappIntelligenceLogger.h"
 #import "DatabaseManager.h"
 
-#define KEY_REGIONS @"regions"
+#define KEY_REQUESTS @"requests"
 
 @interface RequestData ()
 
@@ -55,8 +55,8 @@
 - (void)setValuesForKeysWithDictionary:(NSDictionary *)keyedValues
 {
     if (keyedValues) {
-        
-        NSArray *regions = keyedValues[KEY_REGIONS];
+        self.requests = [[NSMutableArray alloc] init];
+        NSArray *regions = keyedValues[KEY_REQUESTS];
         
         for (NSDictionary *regionDictionary in regions) {
             
@@ -67,7 +67,7 @@
     }
 }
 
-- (NSDictionary *)dictionaryWithValuesForKeys:(NSArray *)keys
+- (NSDictionary *)dictionaryWithValues
 {
     NSMutableDictionary *keyedValues = [[NSMutableDictionary alloc] init];
     
@@ -75,33 +75,37 @@
     
     for (Request *request in self.requests) {
         
-        [requestsDictionaries addObject:[request dictionaryWithValuesForKeys:nil]];
+        [requestsDictionaries addObject:[request dictionaryWithValuesForKeys]];
     }
     
     if ([requestsDictionaries count]) {
         
-        keyedValues[KEY_REGIONS] = requestsDictionaries;
+        keyedValues[KEY_REQUESTS] = requestsDictionaries;
     }
     
     return keyedValues;
 }
 
-- (void)print {
+- (NSString*)print {
+    NSMutableString* requests = [[NSMutableString alloc] initWithString:@""];
     for (Request* request in self.requests) {
-        [request print];
+        [requests appendString:[request print]];
     }
+    return requests;
 }
 
-- (void)sendAllRequests {
+- (void)sendAllRequestsWithCompletitionHandler:(void (^)(NSError* ))completionHandler {
     for (Request* r in _requests) {
         TrackerRequest *request = [[TrackerRequest alloc] init];
         [request sendRequestWith: [r urlForBatchSupprot:NO] andCompletition:^(NSError * _Nonnull error) {
             if(error) {
                 [self->_logger logObj:error forDescription:kMappIntelligenceLogLevelDescriptionDebug];
                 [[DatabaseManager shared] updateStatusOfRequestWithId: (int)[r.uniqueId integerValue] andStatus:FAILED];
+                completionHandler(error);
             } else {
                 //remove request from DB
                 [[DatabaseManager shared] deleteRequest:r.uniqueId.intValue];
+                completionHandler(nil);
             }
         }];
     }

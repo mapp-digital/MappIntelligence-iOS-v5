@@ -9,6 +9,8 @@
 #import <XCTest/XCTest.h>
 #import <UIKit/UIKit.h>
 #import "DefaultTracker.h"
+#import "Enviroment.h"
+#import "MappIntelligence.h"
 
 @interface DefaultTrackerTests : XCTestCase
 
@@ -21,6 +23,19 @@
 - (void)setUp {
     [super setUp];
     _tracker = [DefaultTracker sharedInstance];
+    NSArray<NSBundle*> *bundles = [NSBundle allBundles];
+    NSString* path = @"";
+    for (NSBundle* bundle in bundles) {
+        if ([bundle pathForResource:@"SetupForLocalTesting" ofType:@"plist"]) {
+            path = [bundle pathForResource:@"SetupForLocalTesting" ofType:@"plist"];
+        }
+    }
+    XCTAssertTrue(![path isEqualToString:@""], @"There is no plist file with domain and track ids!");
+    NSDictionary* dict = [NSDictionary dictionaryWithContentsOfFile:path];
+    XCTAssertNotNil(dict, @"Dictionary does not contain domain or track id!");
+    NSNumber *number = [NSNumber numberWithLong:[[dict valueForKey:@"track_ids"] longValue]];
+    NSArray* array = @[number];
+    [[MappIntelligence shared] initWithConfiguration: array  onTrackdomain:[dict valueForKey:@"domain"]];
 }
 
 - (void)tearDown {
@@ -43,12 +58,26 @@
     XCTAssertEqual(generatedEverID.length, 19, @"Ever ID should have 19 digits");
 }
 
+- (void)testGenerateUserAgent {
+    NSString* generatedUserAgent = [_tracker generateUserAgent];
+    Enviroment *env = [[Enviroment alloc] init];
+    NSString *properties = [env.operatingSystemName
+        stringByAppendingFormat:@" %@; %@; %@", env.operatingSystemVersionString,
+                                env.deviceModelString,
+                                NSLocale.currentLocale.localeIdentifier];
+
+    NSString* currentUserAgent =
+        [[NSString alloc] initWithFormat:@"Tracking Library %@ (%@))",
+                                         MappIntelligence.version, properties];
+    XCTAssertTrue([generatedUserAgent isEqualToString:currentUserAgent], @"The genereted user agent is not correct!");
+}
+
 - (void)testUpdateFirstSessionWith {
-//    XCTAssertFalse([_tracker isReady]);
-//    [_tracker updateFirstSessionWith: UIApplicationStateActive];
-//    XCTAssertTrue([_tracker isReady]);
-//    [_tracker updateFirstSessionWith: UIApplicationStateInactive];
-//    XCTAssertTrue([_tracker isReady]);
+    XCTAssertFalse([_tracker isReady]);
+    [_tracker updateFirstSessionWith: UIApplicationStateActive];
+    XCTAssertTrue([_tracker isReady]);
+    [_tracker updateFirstSessionWith: UIApplicationStateInactive];
+    XCTAssertTrue([_tracker isReady]);
 }
 
 - (void)testTrackUIController {
@@ -64,6 +93,17 @@
     [_tracker updateFirstSessionWith: UIApplicationStateActive];
     [_tracker trackWith: @"testName"];
     XCTAssertTrue([_tracker isReady]);
+}
+
+- (void)testTrackWithPageEvent {
+    NSMutableDictionary* details = [@{@20: @"cp20Override"} copy];
+    NSMutableDictionary* groups = [@{@15: @"testGroups"} copy];
+    NSString* internalSearch = @"testSearchTerm";
+    PageProperties* pageProperties = [[PageProperties alloc] initWith:details andWithGroup:groups andWithSearch:internalSearch];
+    PageViewEvent* pageViewEvent = [[PageViewEvent alloc] initWith:pageProperties];
+    NSError* error = [_tracker trackWithEvent:pageViewEvent];
+    //TODO: add reasonable error or it will return null always
+    XCTAssertNil(error, @"There was an error while tracking page view event!");
 }
 
 - (void)testInitHibernate {
@@ -87,5 +127,16 @@
     XCTAssertFalse([previousEverId isEqualToString: nextEverId]);
 }
 
+- (void)testSendRequestFromDatabase {
+    
+}
+
+- (void)testSendBatchForRequest {
+    
+}
+
+- (void)testRemoveAllRequestsFromDB {
+    
+}
 
 @end

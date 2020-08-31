@@ -139,4 +139,25 @@
     RequestUrlBuilder* builder = [[RequestUrlBuilder alloc] initWithUrl:[[NSURL alloc] initWithString:_domain] andWithId:_track_ids];
     return [builder createURLFromParametersWith:[self convertParamtersWith:option]];
 }
+
+- (BOOL)isEqualToRequest:(Request *)request {
+    return [self.uniqueId isEqualToNumber:request.uniqueId] &&
+    [self.domain isEqualToString:request.domain] &&
+    [self.track_ids isEqualToString:request.track_ids] &&
+    [[NSNumber numberWithInt:(int)self.status] isEqualToNumber:[NSNumber numberWithInt:(int)request.status]] &&
+    ( (self.parameters == nil && request.parameters == nil)? YES : [self.parameters isEqualToArray:request.parameters]) &&
+    [self.date isEqualToDate:request.date];
+}
+
+- (BOOL)isEqual:(id)other
+{
+    if (other == self) {
+        return YES;
+    } else if (![other isKindOfClass:[Request class]]) {
+        return NO;
+    } else {
+        return [self isEqualToRequest:(Request *)other];
+    }
+}
+
 @end
