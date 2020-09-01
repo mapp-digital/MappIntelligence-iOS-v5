@@ -15,6 +15,7 @@
 		A32AEA53242B605F00BC7B46 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32AEA52242B605F00BC7B46 /* NotificationController.swift */; };
 		A32AEA55242B606000BC7B46 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A32AEA54242B606000BC7B46 /* Assets.xcassets */; };
 		A32AEA5A242B606000BC7B46 /* MappIntelligenceWatchOSDemoApp.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = A32AEA3D242B605B00BC7B46 /* MappIntelligenceWatchOSDemoApp.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A357222924FE8048005F9DE1 /* SetupForLocalTesting.plist in Resources */ = {isa = PBXBuildFile; fileRef = A357222824FE8048005F9DE1 /* SetupForLocalTesting.plist */; };
 		A35C78F02452F81500D36144 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35C78EF2452F81500D36144 /* AppDelegate.swift */; };
 		A35C78F22452F81500D36144 /* ViewControllerTV.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35C78F12452F81500D36144 /* ViewControllerTV.swift */; };
 		A35C78F52452F81500D36144 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A35C78F32452F81500D36144 /* Main.storyboard */; };
@@ -88,6 +89,7 @@
 		A32AEA57242B606000BC7B46 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		A32AEA63242B6F7500BC7B46 /* MappIntelligenceWatchOSDemoApp Extension-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MappIntelligenceWatchOSDemoApp Extension-Bridging-Header.h"; sourceTree = "<group>"; };
 		A32AEA68242B716100BC7B46 /* libMappIntelligenceWatchOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libMappIntelligenceWatchOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A357222824FE8048005F9DE1 /* SetupForLocalTesting.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = SetupForLocalTesting.plist; path = ../SetupForLocalTesting.plist; sourceTree = "<group>"; };
 		A35C78ED2452F81500D36144 /* MappIntelligenceTvOSDemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MappIntelligenceTvOSDemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A35C78EF2452F81500D36144 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A35C78F12452F81500D36144 /* ViewControllerTV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerTV.swift; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 		BCA1738523D5D25C00B31430 = {
 			isa = PBXGroup;
 			children = (
+				A357222824FE8048005F9DE1 /* SetupForLocalTesting.plist */,
 				BCA1739023D5D25C00B31430 /* MappIntelligenceDemoApp */,
 				A32AEA3E242B605B00BC7B46 /* MappIntelligenceWatchOSDemoApp */,
 				A32AEA4D242B605F00BC7B46 /* MappIntelligenceWatchOSDemoApp Extension */,
@@ -387,6 +390,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BCA1739E23D5D25E00B31430 /* LaunchScreen.storyboard in Resources */,
+				A357222924FE8048005F9DE1 /* SetupForLocalTesting.plist in Resources */,
 				BCA1739B23D5D25E00B31430 /* Assets.xcassets in Resources */,
 				BCA1739923D5D25C00B31430 /* Main.storyboard in Resources */,
 			);

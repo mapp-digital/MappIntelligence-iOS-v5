@@ -22,10 +22,9 @@ var window: UIWindow?
             }
         }
         let dict = NSDictionary(contentsOfFile: path) as Dictionary?
-        let number = NSNumber(long: (dict?["track_ids" as NSObject] as? NSNumber)?.intValue ?? 0)
-        let array = [number]
-        
-        MappIntelligence.shared()?.initWithConfiguration(array, onTrackdomain: dict["domain"]);
+        let array = [(dict?["track_ids" as NSObject]?.intValue) ?? 0]
+        let domain = dict?["domain" as NSObject];
+        MappIntelligence.shared()?.initWithConfiguration(array, onTrackdomain: domain as! String);
         
         MappIntelligence.shared()?.logLevel = .all
         MappIntelligence.shared()?.batchSupportEnabled = true;
