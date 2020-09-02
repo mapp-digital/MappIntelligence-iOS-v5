@@ -146,7 +146,7 @@
         XCTAssertNil(error, @"There was an error while sending requests from database as batch!");
         [expectation fulfill];
     }];
-    [self waitForExpectations:[NSArray arrayWithObject:expectation] timeout:15];
+    [self waitForExpectations:[NSArray arrayWithObject:expectation] timeout:25];
 }
 
 - (void)testRemoveAllRequestsFromDB {

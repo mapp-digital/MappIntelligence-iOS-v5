@@ -76,9 +76,11 @@ NSString *const StorageErrorDescriptionGeneralError = @"General Error";
 
 + (instancetype)shared {
   static DatabaseManager *sharedInstance = nil;
-
   static dispatch_once_t onceToken;
-  dispatch_once(&onceToken, ^{
+    
+    if (sharedInstance) return sharedInstance;
+  
+    dispatch_once(&onceToken, ^{
     sharedInstance = [[DatabaseManager alloc] init];
   });
 
@@ -169,9 +171,9 @@ NSString *const StorageErrorDescriptionGeneralError = @"General Error";
 
 - (void)deleteDataBaseWithCompletionHandler:
     (StorageManagerCompletionHandler)completionHandler {
-  dispatch_queue_t queue = dispatch_queue_create("Remove DB", NULL);
+  //dispatch_queue_t queue = dispatch_queue_create("Remove DB", NULL);
 
-  dispatch_async(queue, ^{
+  dispatch_async(_executionQueue, ^{
 
     NSFileManager *fileManager = [NSFileManager defaultManager];
 
@@ -681,9 +683,9 @@ dispatch_async(_executionQueue, ^{
                 andCompletitionHandler:
                     (StorageManagerCompletionHandler)completionHandler {
 
-  dispatch_queue_t queue = dispatch_queue_create("Fetch Resulats", NULL);
+  //dispatch_queue_t queue = dispatch_queue_create("Fetch Resulats", NULL);
 
-  dispatch_async(queue, ^{
+  dispatch_async(_executionQueue, ^{
 
     NSMutableArray *parameters = nil;
 
@@ -766,9 +768,9 @@ dispatch_async(_executionQueue, ^{
 
 - (void)removeOldRequestsWithCompletitionHandler:
     (StorageManagerCompletionHandler)completionHandler {
-  dispatch_queue_t queue = dispatch_queue_create("Remove DB", NULL);
+  //dispatch_queue_t queue = dispatch_queue_create("Remove DB", NULL);
 
-  dispatch_async(queue, ^{
+  dispatch_async(_executionQueue, ^{
 
     NSMutableArray *requestIds = nil;
 
