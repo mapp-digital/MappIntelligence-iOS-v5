@@ -109,6 +109,11 @@
             }
         }];
     }
+    if (_requests.count == 0) {
+        NSError *error = [[NSError alloc] initWithDomain:@"ItemCountError" code:0 userInfo:nil];
+        completionHandler(error);
+    }
+    
 }
 
 #pragma mark - Getters

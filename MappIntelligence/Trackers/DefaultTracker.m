@@ -166,8 +166,8 @@ static NSString *userAgent;
             [dt sendAllRequestsWithCompletitionHandler:^(NSError * _Nullable error) {
                 if(error) {
                     [self->_logger logObj:[[NSString alloc] initWithFormat:@"There was an error while sendout off all requests: %@!", [error description]] forDescription:kMappIntelligenceLogLevelDescriptionDebug];
-                    handler(error);
                 }
+                handler(error);
             }];
         }
     }];
@@ -185,8 +185,9 @@ static NSString *userAgent;
     [_requestBatchSupportUrlBuilder sendBatchForRequestsWithCompletition:^(NSError * _Nonnull error) {
         if (error) {
             [self->_logger logObj:@"There was an error while sending batch of requests." forDescription:kMappIntelligenceLogLevelDescriptionDebug];
-            handler(error);
+            
         }
+        handler(error);
     }];
 }
 

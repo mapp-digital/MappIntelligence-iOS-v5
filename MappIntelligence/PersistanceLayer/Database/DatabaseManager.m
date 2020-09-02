@@ -578,7 +578,10 @@ dispatch_async(_executionQueue, ^{
 
     NSError *error;
 
-    if (sqlite3_open(dbPath, &self->_requestsDB) == SQLITE_OK) {
+    if (sqlite3_open_v2(dbPath, &self->_requestsDB,
+    SQLITE_OPEN_CREATE | SQLITE_OPEN_READWRITE |
+        SQLITE_OPEN_FULLMUTEX,
+    NULL) == SQLITE_OK) {
 
       NSString *querySQL = [[NSString alloc]
           initWithFormat:
@@ -688,7 +691,10 @@ dispatch_async(_executionQueue, ^{
 
     NSError *error;
 
-    if (sqlite3_open(dbPath, &self->_requestsDB) == SQLITE_OK) {
+    if (sqlite3_open_v2(dbPath, &self->_requestsDB,
+    SQLITE_OPEN_CREATE | SQLITE_OPEN_READWRITE |
+        SQLITE_OPEN_FULLMUTEX,
+    NULL) == SQLITE_OK) {
 
       NSString *querySQL = [[NSString alloc]
           initWithFormat:@"SELECT rowid, * FROM PARAMETERS_TABLE WHERE "
@@ -770,7 +776,9 @@ dispatch_async(_executionQueue, ^{
 
     NSError *error;
 
-    if (sqlite3_open(dbPath, &self->_requestsDB) == SQLITE_OK) {
+    if (sqlite3_open_v2(dbPath, &self->_requestsDB, SQLITE_OPEN_CREATE | SQLITE_OPEN_READWRITE |
+           SQLITE_OPEN_FULLMUTEX,
+       NULL) == SQLITE_OK) {
       // TODO: change it to be 14 days, this is only for testing purpose
       NSString *querySQL = @"SELECT ID FROM REQUESTS_TABLE WHERE "
                            @"datetime(DATE, '+14 days') <= datetime('now','localtime');";
