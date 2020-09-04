@@ -242,4 +242,48 @@
     }];
 }
 
+- (void)testSequentialRequestInsert {
+    [self measureBlock:^{
+        XCTestExpectation* expectation = [[XCTestExpectation alloc] initWithDescription:@"Wait until all inserts finish!"];
+        
+        NSURLQueryItem* item1 = [[NSURLQueryItem alloc] initWithName:@"parameter1Name" value:@"parameter1Value"];
+        NSURLQueryItem* item2 = [[NSURLQueryItem alloc] initWithName:@"parameter2Name" value:@"parameter2Value"];
+        NSArray* array = [NSArray arrayWithObjects:item1, item2, nil];
+        Request* request = [[Request alloc] initWithParamters:array andDomain:@"https://q3.webtrekk.net" andTrackIds:@"385255285199574"];
+        
+        for (int i=0; i<10000; i++) {
+            [_dbManager insertRequest:request];
+        }
+
+        dispatch_queue_t queue = [_dbManager getExecutionQueue];
+        dispatch_sync(queue, ^{
+            [expectation fulfill];
+        });
+        [self waitForExpectations:[NSArray arrayWithObject:expectation] timeout:50];
+    }];
+}
+
+- (void)testBatchRequestsInsert {
+    [self measureBlock:^{
+        XCTestExpectation* expectation = [[XCTestExpectation alloc] initWithDescription:@"Wait until db opearion is finished!"];
+
+        NSURLQueryItem* item1 = [[NSURLQueryItem alloc] initWithName:@"parameter1Name" value:@"parameter1Value"];
+        NSURLQueryItem* item2 = [[NSURLQueryItem alloc] initWithName:@"parameter2Name" value:@"parameter2Value"];
+        NSArray* array = [NSArray arrayWithObjects:item1, item2, nil];
+        
+        Request* request = [[Request alloc] initWithParamters:array andDomain:@"https://q3.webtrekk.net" andTrackIds:@"385255285199574"];
+        
+        NSMutableArray *requests = [[NSMutableArray alloc] init];
+        for (int i=0; i<10000; i++) {
+            [requests addObject:request];
+        }
+        [_dbManager insertRequests:requests];
+        dispatch_queue_t queue = [_dbManager getExecutionQueue];
+        dispatch_sync(queue, ^{
+            [expectation fulfill];
+        });
+        [self waitForExpectations:[NSArray arrayWithObject:expectation] timeout:50];
+    }];
+}
+
 @end

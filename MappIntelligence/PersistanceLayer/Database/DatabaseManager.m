@@ -399,14 +399,16 @@ dispatch_async(_executionQueue, ^{
 
 - (BOOL)insertRequest:(Request *)request {
   BOOL success = YES;
-
+  
   if (request) {
       dispatch_async(_executionQueue, ^{
-
+    char *cError;
     sqlite3_stmt *sql_statement;
       const char *dbPath = [self.databasePath UTF8String];
           NSLog(@"DB: %d", self->_requestsDB == nil);
           if (sqlite3_open(dbPath, &self->_requestsDB) == SQLITE_OK) {
+    
+              sqlite3_exec(self->_requestsDB, "BEGIN TRANSACTION", NULL, NULL, &cError);
 
       NSString *insertSQL =
           [NSString stringWithFormat:@"INSERT INTO REQUESTS_TABLE (DOMAIN, "
@@ -452,7 +454,7 @@ dispatch_async(_executionQueue, ^{
       //[self deleteTooOldRequests];
         sqlite3_exec(self->_requestsDB, "END TRANSACTION", NULL, NULL, NULL);
       sqlite3_finalize(sql_statement);
-        //sqlite3_close(self->_requestsDB);
+        sqlite3_close(self->_requestsDB);
 
     } else {
 
@@ -470,9 +472,6 @@ dispatch_async(_executionQueue, ^{
   if (parameter) {
 
     sqlite3_stmt *sql_statement;
-    const char *dbPath = [self.databasePath UTF8String];
-
-    if (sqlite3_open(dbPath, &_requestsDB) == SQLITE_OK) {
 
       NSString *insertSQL = [NSString
           stringWithFormat:@"INSERT INTO PARAMETERS_TABLE (name, VALUE, "
@@ -494,14 +493,9 @@ dispatch_async(_executionQueue, ^{
         success = NO;
       }
 
-      if (sqlite3_reset(sql_statement) != SQLITE_OK) {
+      if (sqlite3_finalize(sql_statement) != SQLITE_OK) {
         return NO;
       }
-
-    } else {
-
-      success = NO;
-    }
   }
 
   return success;
@@ -926,5 +920,9 @@ dispatch_async(_executionQueue, ^{
                            stringByAppendingPathComponent:DB_DIR_PATH]];
   }
   return _dbFolderDirectoryPath;
+}
+
+-(dispatch_queue_t)getExecutionQueue {
+    return _executionQueue;
 }
 @end
