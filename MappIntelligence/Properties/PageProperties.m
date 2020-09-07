@@ -24,24 +24,12 @@
     NSMutableArray<NSURLQueryItem*>* items = [[NSMutableArray alloc] init];
     if (_details) {
         for(NSString* key in _details) {
-            NSString* value = @"";
-            if ([_details[key] count] > 1) {
-                value = [_details[key] componentsJoinedByString:@";"];
-            } else {
-                value = _details[key];
-            }
-            [items addObject:[[NSURLQueryItem alloc] initWithName:[NSString stringWithFormat:@"cp%@",key] value: value]];
+            [items addObject:[[NSURLQueryItem alloc] initWithName:[NSString stringWithFormat:@"cp%@",key] value: [_details[key] componentsJoinedByString:@";"]]];
         }
     }
     if (_groups) {
         for(NSString* key in _groups) {
-            NSString* value = @"";
-            if ([_groups[key] count] > 1) {
-                value = [_groups[key] componentsJoinedByString:@";"];
-            } else {
-                value = _groups[key];
-            }
-            [items addObject:[[NSURLQueryItem alloc] initWithName:[NSString stringWithFormat:@"cg%@",key] value: value]];
+            [items addObject:[[NSURLQueryItem alloc] initWithName:[NSString stringWithFormat:@"cg%@",key] value: [_groups[key] componentsJoinedByString:@";"]]];
         }
     }
     if (_internalSearch) {
