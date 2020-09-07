@@ -24,15 +24,33 @@
     NSMutableArray<NSURLQueryItem*>* items = [[NSMutableArray alloc] init];
     if (_details) {
         for(NSString* key in _details) {
-            [items addObject:[[NSURLQueryItem alloc] initWithName:[NSString stringWithFormat:@"cp%@",key] value: _details[key]]];
+            NSString* value = @"";
+            if ([_details[key] count] > 1) {
+                value = [_details[key] componentsJoinedByString:@";"];
+            } else {
+                value = _details[key];
+            }
+            [items addObject:[[NSURLQueryItem alloc] initWithName:[NSString stringWithFormat:@"cp%@",key] value: value]];
         }
     }
     if (_groups) {
         for(NSString* key in _groups) {
-            [items addObject:[[NSURLQueryItem alloc] initWithName:[NSString stringWithFormat:@"cg%@",key] value: _groups[key]]];
+            NSString* value = @"";
+            if ([_groups[key] count] > 1) {
+                value = [_groups[key] componentsJoinedByString:@";"];
+            } else {
+                value = _groups[key];
+            }
+            [items addObject:[[NSURLQueryItem alloc] initWithName:[NSString stringWithFormat:@"cg%@",key] value: value]];
         }
     }
     if (_internalSearch) {
+//        NSString* value = @"";
+//        if ([_internalSearch count] > 1) {
+//            value = [_internalSearch componentsJoinedByString:@";"];
+//        } else {
+//            value = _internalSearch;
+//        }
         [items addObject:[[NSURLQueryItem alloc] initWithName:@"is" value:_internalSearch]];
     }
     return items;

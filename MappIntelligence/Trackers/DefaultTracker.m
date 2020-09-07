@@ -264,9 +264,16 @@ static NSString *userAgent;
     return error;
   }
   if ([name length] > 255) {
-    [_logger logObj:@"Content ID contains more than 255 characters, and that "
-                    @"part will be cutted automatically."
+      NSString *msg =
+      @"Content ID contains more than 255 characters, and that part will be cutted automatically.";
+    [_logger logObj:msg
         forDescription:kMappIntelligenceLogLevelDescriptionWarning];
+      NSString *domain = @"com.mapp.mappIntelligenceSDK.ErrorDomain";
+      NSString *desc = NSLocalizedString(msg, @"");
+      NSDictionary *userInfo = @{NSLocalizedDescriptionKey : desc};
+      NSError *error =
+          [NSError errorWithDomain:domain code:-101 userInfo:userInfo];
+      return error;
   }
   if (![_defaults stringForKey:isFirstEventOfApp]) {
     [_defaults setBool:YES forKey:isFirstEventOfApp];
