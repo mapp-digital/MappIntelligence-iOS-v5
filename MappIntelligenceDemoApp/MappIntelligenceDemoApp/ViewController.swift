@@ -52,6 +52,10 @@ class ViewController: UIViewController {
     @IBAction func optIn(_ sender: Any) {
         MappIntelligence.shared()?.optOut(with: false, andSendCurrentData: false)
     }
+    @IBAction func sendActionEvent(_ sender: Any) {
+        let pageProps = PageProperties([20: ["cp20Override", "cp21Override", "cp22Override"]], andWithGroup: [10: ["test"]], andWithSearch: "testSearchTerm");
+        MappIntelligence.shared()?.trackAction(with: ActionEvent(ActionProperties("Test", andDetails:[20: ["ck20Override", "ck21Override", "cp22Override"]]), andPageProperties: pageProps))
+    }
     
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {

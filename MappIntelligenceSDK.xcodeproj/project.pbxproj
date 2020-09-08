@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8F06D2B82507953700CC86C8 /* ActionEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F06D2B62507953700CC86C8 /* ActionEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8F06D2B92507953700CC86C8 /* ActionEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F06D2B72507953700CC86C8 /* ActionEvent.m */; };
+		8F06D2BC25079B1800CC86C8 /* ActionProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F06D2BA25079B1800CC86C8 /* ActionProperties.h */; };
+		8F06D2BD25079B1800CC86C8 /* ActionProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F06D2BB25079B1800CC86C8 /* ActionProperties.m */; };
+		8F210C7A2507C80800AE1AD9 /* ActionEvent.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 8F06D2B62507953700CC86C8 /* ActionEvent.h */; };
+		8F210C7B2507C83500AE1AD9 /* ActionProperties.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 8F06D2BA25079B1800CC86C8 /* ActionProperties.h */; };
 		A31C6F1D24D9A0F300166585 /* RequestBatchSupportUrlBuilderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A31C6F1C24D9A0F300166585 /* RequestBatchSupportUrlBuilderTests.m */; };
 		A31C6F2024D9A9B200166585 /* DatabaseManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A31C6F1F24D9A9B200166585 /* DatabaseManagerTests.m */; };
 		A31D7A4F243CC0F200386A1C /* TrackerRequestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A31D7A4E243CC0F200386A1C /* TrackerRequestTests.m */; };
@@ -198,6 +204,8 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				8F210C7B2507C83500AE1AD9 /* ActionProperties.h in Copy Files */,
+				8F210C7A2507C80800AE1AD9 /* ActionEvent.h in Copy Files */,
 				A337446824C84A100096259B /* Properties.h in Copy Files */,
 				A337446724C84A060096259B /* TrackingEvent.h in Copy Files */,
 				A337446624C849F00096259B /* TrackerRequest.h in Copy Files */,
@@ -222,6 +230,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8F06D2B62507953700CC86C8 /* ActionEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ActionEvent.h; sourceTree = "<group>"; };
+		8F06D2B72507953700CC86C8 /* ActionEvent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ActionEvent.m; sourceTree = "<group>"; };
+		8F06D2BA25079B1800CC86C8 /* ActionProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ActionProperties.h; sourceTree = "<group>"; };
+		8F06D2BB25079B1800CC86C8 /* ActionProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ActionProperties.m; sourceTree = "<group>"; };
 		A30E3EC0244491F30047D7A6 /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .travis.yml; sourceTree = "<group>"; };
 		A30E3EC224449ED90047D7A6 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A30E3EC42444A0B70047D7A6 /* .oclint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .oclint.yml; sourceTree = "<group>"; };
@@ -528,6 +540,8 @@
 			children = (
 				A337445A24C1A12A0096259B /* PageProperties.h */,
 				A337445B24C1A12A0096259B /* PageProperties.m */,
+				8F06D2BA25079B1800CC86C8 /* ActionProperties.h */,
+				8F06D2BB25079B1800CC86C8 /* ActionProperties.m */,
 			);
 			path = Properties;
 			sourceTree = "<group>";
@@ -602,6 +616,8 @@
 			children = (
 				A380D1FD241296FD009E2CD8 /* PageViewEvent.h */,
 				A380D1FE241296FD009E2CD8 /* PageViewEvent.m */,
+				8F06D2B62507953700CC86C8 /* ActionEvent.h */,
+				8F06D2B72507953700CC86C8 /* ActionEvent.m */,
 			);
 			path = Events;
 			sourceTree = "<group>";
@@ -688,6 +704,7 @@
 				A337446224C844AE0096259B /* MappIntelligenceSDK.h in Headers */,
 				A334863423BF3FAD00D0EB5F /* MappIntelligence.h in Headers */,
 				A3CC5486248FC418006215FD /* DatabaseManager.h in Headers */,
+				8F06D2B82507953700CC86C8 /* ActionEvent.h in Headers */,
 				A380D1FF241296FD009E2CD8 /* PageViewEvent.h in Headers */,
 				A337446024C8404B0096259B /* PageViewEvent.m in Headers */,
 				A3D9836F24B3311100AF0CD8 /* RequestBatchSupportUrlBuilder.m in Headers */,
@@ -698,6 +715,7 @@
 				A36CD7D123F447D0004E3E2D /* Properties.h in Headers */,
 				A380D2102413ED35009E2CD8 /* RequestUrlBuilder.h in Headers */,
 				A36CD7CD23F44594004E3E2D /* TrackerRequest.h in Headers */,
+				8F06D2BC25079B1800CC86C8 /* ActionProperties.h in Headers */,
 				BCCAE6D2240D2E16005E9FD6 /* MappIntelligenceDefaultConfig.h in Headers */,
 				A3CC548E249125F0006215FD /* Request.h in Headers */,
 				A380D21424141B55009E2CD8 /* URLSizeMonitor.h in Headers */,
@@ -1001,6 +1019,7 @@
 				BCBE5C0923F29E49002125C1 /* DefaultTracker.m in Sources */,
 				A380D200241296FD009E2CD8 /* PageViewEvent.m in Sources */,
 				A36CD7CE23F44594004E3E2D /* TrackerRequest.m in Sources */,
+				8F06D2B92507953700CC86C8 /* ActionEvent.m in Sources */,
 				BCEAE6B823BF5A8B007F410D /* MappIntelligenceLogger.m in Sources */,
 				A380D2112413ED35009E2CD8 /* RequestUrlBuilder.m in Sources */,
 				A380D2092412D8F2009E2CD8 /* RequestTrackerBuilder.m in Sources */,
@@ -1018,6 +1037,7 @@
 				A337445D24C1A12A0096259B /* PageProperties.m in Sources */,
 				A380D2052412B0AB009E2CD8 /* Enviroment.m in Sources */,
 				A3CC548F249125F0006215FD /* Request.m in Sources */,
+				8F06D2BD25079B1800CC86C8 /* ActionProperties.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -33,12 +33,6 @@
         }
     }
     if (_internalSearch) {
-//        NSString* value = @"";
-//        if ([_internalSearch count] > 1) {
-//            value = [_internalSearch componentsJoinedByString:@";"];
-//        } else {
-//            value = _internalSearch;
-//        }
         [items addObject:[[NSURLQueryItem alloc] initWithName:@"is" value:_internalSearch]];
     }
     return items;

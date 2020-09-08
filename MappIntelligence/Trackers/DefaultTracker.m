@@ -249,6 +249,32 @@ static NSString *userAgent;
         return NULL;
 }
 
+- (NSError *)trackAction:(ActionEvent *)event {
+    if (![_defaults stringForKey:isFirstEventOfApp]) {
+        [_defaults setBool:YES forKey:isFirstEventOfApp];
+        [_defaults synchronize];
+        _isFirstEventOpen = YES;
+        _isFirstEventOfSession = YES;
+      } else {
+        _isFirstEventOpen = NO;
+      }
+    #ifdef TARGET_OS_WATCH
+        _isReady = YES;
+    #endif
+      dispatch_async(_queue,
+                     ^(void) {
+                       // Background Thread
+                       [self->_conditionUntilGetFNS lock];
+                       while (!self->_isReady)
+                         [self->_conditionUntilGetFNS wait];
+                         [self enqueueRequestForEvent:event];
+                         [self->_conditionUntilGetFNS signal];
+                         [self->_conditionUntilGetFNS unlock];
+                     });
+        
+        return NULL;
+}
+
 - (NSError *_Nullable)trackWith:(NSString *)name {
   if ([_config.MappIntelligenceId isEqual:@""] ||
       [_config.serverUrl.absoluteString isEqual:@""]) {

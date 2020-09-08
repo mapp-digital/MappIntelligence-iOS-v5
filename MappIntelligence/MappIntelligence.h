@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "PageViewEvent.h"
+#import "ActionEvent.h"
 
 @class MappIntelligence;
 
@@ -72,6 +73,16 @@ MappIntelligence.shared()?.trackPageWithEvent(with: PageViewEvent(PageProperties
 @return the error which may happen through process of tracking, if returns nil there is no error.
 */
 - (NSError *_Nullable)trackPageWithEvent:(PageViewEvent  *_Nullable)event;
+
+/**
+@brief Method which will track action event which you create from action properties and page properties.
+@param event - action event which can contain details, groups and seach term.
+<pre><code>
+MappIntelligence.shared()?.trackActionWithEvent(with: PageViewEvent(PageProperties([20: "cp20Override"], andWithGroup: nil, andWithSearch: "testSearchTerm")))
+</code></pre>
+@return the error which may happen through process of tracking, if returns nil there is no error.
+*/
+- (NSError *_Nullable)trackActionWithEvent: (ActionEvent *_Nullable)event;
 
 /**
 @brief Method which will initialize your domain and track id which identify your tracking server where data will be stored.
