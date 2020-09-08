@@ -31,10 +31,10 @@
 @synthesize requestPerQueue = _requestPerQueue;
 @synthesize requestsInterval = _requestsInterval;
 @synthesize optOut = _optOut;
-/** Tracking domain is MANDATORY field */
+/**  Track domain is MANDATORY field */
 @synthesize trackDomain;
 
-/** Track ID is a mandatory field and must be entered at least one for the
+/** TrackID is a mandatory field and must be entered at least one for the
  * configuration to be saved */
 @synthesize trackIDs;
 @synthesize viewControllerAutoTracking;
@@ -134,7 +134,7 @@
                                               [self getLogLevelFor:[_logger logLevel]]])
       forDescription:kMappIntelligenceLogLevelDescriptionInfo];
   [self validateTrackingIDs:self.trackIDs];
-  [_logger logObj:([@"Track IDs: "
+  [_logger logObj:([@"TrackIDs: "
                       stringByAppendingFormat:@"%@", self.trackIDs])
       forDescription:kMappIntelligenceLogLevelDescriptionInfo];
   [self trackDomainValidation:self.trackDomain];
@@ -154,14 +154,14 @@
 
 - (void)validateNumberOfRequestsPerQueue:(NSInteger)numberOfRequests {
   if (numberOfRequests > 10000) {
-    [_logger logObj:@"Number of requests can't be grater than 10000, will be "
+    [_logger logObj:@"Number of requests cannot exceed 10000, will be "
                     @"returned to "
                     @"default (100)."
         forDescription:kMappIntelligenceLogLevelDescriptionError];
     self.requestPerQueue = 100;
   }
     if (numberOfRequests < 100) {
-      [_logger logObj:@"Number of requests can't be lower than 100, will be "
+      [_logger logObj:@"Number of requests cannot be lower than 100, will be "
                       @"returned to "
                       @"default (100)."
           forDescription:kMappIntelligenceLogLevelDescriptionError];
@@ -171,7 +171,7 @@
 
 - (void)validateRequestTimeInterval:(NSInteger)timeInterval {
   if (timeInterval > 3600.0) {
-    [_logger logObj:@"Request time interval can't be more than 3600 seconds "
+    [_logger logObj:@"Request time interval cannot be more than 3600 seconds "
                     @"(60 minutes), will be reset to default (15 minutes)."
         forDescription:kMappIntelligenceLogLevelDescriptionError];
       self.requestsInterval = 900.0;
@@ -189,7 +189,7 @@
       return false;
   }
   if (!components) {
-    [_logger logObj:@"You must enter a valid url format for tracking domain!"
+    [_logger logObj:@"You must enter a valid url format for track domain!"
         forDescription:kMappIntelligenceLogLevelDescriptionError];
   } else if (!components.scheme) {
     if (([trackingDomain rangeOfString:@"https://"].location == NSNotFound) ||
@@ -205,7 +205,7 @@
 - (void)validateTrackingIDs:(NSArray *)validTrackingIDs {
   NSArray *tempTrackingIDs;
     if ([validTrackingIDs count] == 0) {
-        [_logger logObj:@"You must enter at least one track ID, track ID list cannot be empty!"
+        [_logger logObj:@"You must enter at least one trackID, trackID list cannot be empty!"
         forDescription:kMappIntelligenceLogLevelDescriptionError];
     }
   if (validTrackingIDs != nil) {
@@ -214,7 +214,7 @@
   if ([[tempTrackingIDs lastObject] isEqual:@""] ||
       [[tempTrackingIDs lastObject] isEqual:@","] ||
       [[tempTrackingIDs lastObject] isEqual:@" "]) {
-      [_logger logObj:@"Tracking IDs can not contain blank spaces or empty strings!"
+      [_logger logObj:@"TrackIDs cannot contain blank spaces or empty strings!"
       forDescription:kMappIntelligenceLogLevelDescriptionError];
   }
 }

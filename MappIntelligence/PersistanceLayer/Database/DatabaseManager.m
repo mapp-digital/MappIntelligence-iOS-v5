@@ -906,7 +906,7 @@ dispatch_async(_executionQueue, ^{
         initWithString:[cachesDirecotry
                            stringByAppendingPathComponent:DB_PATH]];
   }
-  NSLog(@"Database path: %@", _databasePath);
+  //NSLog(@"Database path: %@", _databasePath);
   return _databasePath;
 }
 

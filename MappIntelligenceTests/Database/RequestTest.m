@@ -38,7 +38,7 @@
 - (void)testInitWithKeyedValues {
     XCTAssertTrue([_request.uniqueId isEqualToNumber:@123456], @"Request ID is not same as we set it into test!");
     XCTAssertTrue([_request.domain isEqualToString:@"www.domain.com"], @"Request domain is not same as we set it into test!");
-    XCTAssertTrue([_request.track_ids isEqualToString:@"12,34"], @"Request track ids is not same as we set it into test!");
+    XCTAssertTrue([_request.track_ids isEqualToString:@"12,34"], @"Request trackIDs is not same as we set it into test!");
     XCTAssertTrue((_request.status == ACTIVE), @"Request status is not same as we set it into test!");
     XCTAssertTrue([_request.date isEqualToDate:_date], @"Request date is not same as we set it into test!");
 }
@@ -58,7 +58,7 @@
     _request = [[Request alloc] initWithParamters:parametrs andDomain:@"www.domain.com" andTrackIds:@"12,34"];
     
     XCTAssertTrue([_request.domain isEqualToString:@"www.domain.com"], @"Request domain is not same as we set it into test!");
-    XCTAssertTrue([_request.track_ids isEqualToString:@"12,34"], @"Request track ids is not same as we set it into test!");
+    XCTAssertTrue([_request.track_ids isEqualToString:@"12,34"], @"Request trackIDs is not same as we set it into test!");
     XCTAssertTrue([[_request.parameters[0] value] isEqual:@"6089777"], @"Request parameters is not same as we set it into test!");
     XCTAssertTrue([[_request.parameters[1] value] isEqual:@"1"], @"Request parameters is not same as we set it into test!");
     XCTAssertTrue([[_request.parameters[2] value] isEqual:@"1"], @"Request parameters is not same as we set it into test!");

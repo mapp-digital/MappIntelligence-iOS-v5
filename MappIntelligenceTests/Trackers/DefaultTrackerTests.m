@@ -30,9 +30,9 @@
             path = [bundle pathForResource:@"SetupForLocalTesting" ofType:@"plist"];
         }
     }
-    XCTAssertTrue(![path isEqualToString:@""], @"There is no plist file with domain and track ids!");
+    XCTAssertTrue(![path isEqualToString:@""], @"There is no plist file with domain and trackIDs!");
     NSDictionary* dict = [NSDictionary dictionaryWithContentsOfFile:path];
-    XCTAssertNotNil(dict, @"Dictionary does not contain domain or track id!");
+    XCTAssertNotNil(dict, @"Dictionary does not contain domain or trackID!");
     NSNumber *number = [NSNumber numberWithLong:[[dict valueForKey:@"track_ids"] longValue]];
     NSArray* array = @[number];
     [[MappIntelligence shared] initWithConfiguration: array  onTrackdomain:[dict valueForKey:@"domain"]];

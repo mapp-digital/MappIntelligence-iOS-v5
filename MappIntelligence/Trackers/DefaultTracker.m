@@ -165,7 +165,7 @@ static NSString *userAgent;
             RequestData* dt = (RequestData*)data;
             [dt sendAllRequestsWithCompletitionHandler:^(NSError * _Nullable error) {
                 if(error) {
-                    [self->_logger logObj:[[NSString alloc] initWithFormat:@"There was an error while sendout off all requests: %@!", [error description]] forDescription:kMappIntelligenceLogLevelDescriptionDebug];
+                    [self->_logger logObj:[[NSString alloc] initWithFormat:@"An error occurred while sending track requests to Mapp Intelligence: %@!", [error description]] forDescription:kMappIntelligenceLogLevelDescriptionDebug];
                 }
                 handler(error);
             }];
@@ -184,7 +184,7 @@ static NSString *userAgent;
     }
     [_requestBatchSupportUrlBuilder sendBatchForRequestsWithCompletition:^(NSError * _Nonnull error) {
         if (error) {
-            [self->_logger logObj:@"There was an error while sending batch of requests." forDescription:kMappIntelligenceLogLevelDescriptionDebug];
+            [self->_logger logObj:@"An error occurred while sending batch requests to Mapp Intelligence." forDescription:kMappIntelligenceLogLevelDescriptionDebug];
             
         }
         handler(error);
@@ -212,7 +212,7 @@ static NSString *userAgent;
   [[DefaultTracker sharedDefaults] setValue:tmpEverId forKey:everId];
 
   if ([everId isEqual:[[NSNull alloc] init]]) {
-    @throw @"Can't generate ever id";
+    @throw @"Cannot generate ever id";
   }
   return tmpEverId;
 }
@@ -253,7 +253,7 @@ static NSString *userAgent;
   if ([_config.MappIntelligenceId isEqual:@""] ||
       [_config.serverUrl.absoluteString isEqual:@""]) {
     NSString *msg =
-        @"Request cannot be sent without a track domain and track ID.";
+        @"Request cannot be sent without a track domain and trackID.";
     [_logger logObj:msg
         forDescription:kMappIntelligenceLogLevelDescriptionError];
     NSString *domain = @"com.mapp.mappIntelligenceSDK.ErrorDomain";
@@ -265,7 +265,7 @@ static NSString *userAgent;
   }
   if ([name length] > 255) {
       NSString *msg =
-      @"Content ID contains more than 255 characters, and that part will be cutted automatically.";
+      @"ContentID contains more than 255 characters … will be cut automatically.";
     [_logger logObj:msg
         forDescription:kMappIntelligenceLogLevelDescriptionWarning];
       NSString *domain = @"com.mapp.mappIntelligenceSDK.ErrorDomain";
