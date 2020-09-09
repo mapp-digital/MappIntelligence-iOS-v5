@@ -15,7 +15,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nullable) NSString* name;
 @property (nullable) NSMutableDictionary* details;
-@property (nullable) NSMutableDictionary* groups;
 
 -(instancetype)initWith: (NSString* _Nullable) name andDetails: (NSMutableDictionary* _Nullable) details;
 -(NSMutableArray<NSURLQueryItem*>*)asQueryItemsFor: (TrackerRequest*)request;

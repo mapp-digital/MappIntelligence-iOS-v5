@@ -75,7 +75,7 @@ MappIntelligence.shared()?.trackPageWithEvent(with: PageViewEvent(PageProperties
 - (NSError *_Nullable)trackPageWithEvent:(PageViewEvent  *_Nullable)event;
 
 /**
-@brief Method which will track action event which you create from action properties and page properties.
+@brief Method which will track action event created from action properties and page properties.
 @param event - action event which can contain details, groups and seach term.
 <pre><code>
 MappIntelligence.shared()?.trackActionWithEvent(with: PageViewEvent(PageProperties([20: "cp20Override"], andWithGroup: nil, andWithSearch: "testSearchTerm")))

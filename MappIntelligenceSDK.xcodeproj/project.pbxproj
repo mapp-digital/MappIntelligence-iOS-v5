@@ -13,6 +13,8 @@
 		8F06D2BD25079B1800CC86C8 /* ActionProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F06D2BB25079B1800CC86C8 /* ActionProperties.m */; };
 		8F210C7A2507C80800AE1AD9 /* ActionEvent.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 8F06D2B62507953700CC86C8 /* ActionEvent.h */; };
 		8F210C7B2507C83500AE1AD9 /* ActionProperties.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 8F06D2BA25079B1800CC86C8 /* ActionProperties.h */; };
+		8FBACD932508C2BF005AC7A9 /* ActionPropertiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FBACD922508C2BF005AC7A9 /* ActionPropertiesTests.m */; };
+		8FBACD942508D04F005AC7A9 /* ActionEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F06D2B72507953700CC86C8 /* ActionEvent.m */; };
 		A31C6F1D24D9A0F300166585 /* RequestBatchSupportUrlBuilderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A31C6F1C24D9A0F300166585 /* RequestBatchSupportUrlBuilderTests.m */; };
 		A31C6F2024D9A9B200166585 /* DatabaseManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A31C6F1F24D9A9B200166585 /* DatabaseManagerTests.m */; };
 		A31D7A4F243CC0F200386A1C /* TrackerRequestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A31D7A4E243CC0F200386A1C /* TrackerRequestTests.m */; };
@@ -234,6 +236,7 @@
 		8F06D2B72507953700CC86C8 /* ActionEvent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ActionEvent.m; sourceTree = "<group>"; };
 		8F06D2BA25079B1800CC86C8 /* ActionProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ActionProperties.h; sourceTree = "<group>"; };
 		8F06D2BB25079B1800CC86C8 /* ActionProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ActionProperties.m; sourceTree = "<group>"; };
+		8FBACD922508C2BF005AC7A9 /* ActionPropertiesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ActionPropertiesTests.m; sourceTree = "<group>"; };
 		A30E3EC0244491F30047D7A6 /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .travis.yml; sourceTree = "<group>"; };
 		A30E3EC224449ED90047D7A6 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A30E3EC42444A0B70047D7A6 /* .oclint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .oclint.yml; sourceTree = "<group>"; };
@@ -568,6 +571,7 @@
 			isa = PBXGroup;
 			children = (
 				A357221F24FD10AD005F9DE1 /* PagePropertiesTests.m */,
+				8FBACD922508C2BF005AC7A9 /* ActionPropertiesTests.m */,
 			);
 			path = Properties;
 			sourceTree = "<group>";
@@ -988,6 +992,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8FBACD942508D04F005AC7A9 /* ActionEvent.m in Sources */,
 				A337445F24C840410096259B /* PageViewEvent.m in Sources */,
 				A3D9837024B3311D00AF0CD8 /* RequestBatchSupportUrlBuilder.m in Sources */,
 				A36C6E0B24323F22008A9CB6 /* TrackerRequest.m in Sources */,
@@ -1055,6 +1060,7 @@
 				A357222224FD1ABB005F9DE1 /* PageViewEventTests.m in Sources */,
 				A3A7255B243DEA0500671DB2 /* RequestUrlBuilderTests.m in Sources */,
 				A32EE0A2243CB97200EDC5B8 /* MappIntelligenceDefaultConfigTest.m in Sources */,
+				8FBACD932508C2BF005AC7A9 /* ActionPropertiesTests.m in Sources */,
 				A31D7A4F243CC0F200386A1C /* TrackerRequestTests.m in Sources */,
 				A357221B24F933A1005F9DE1 /* RequestTest.m in Sources */,
 				A31C6F2024D9A9B200166585 /* DatabaseManagerTests.m in Sources */,

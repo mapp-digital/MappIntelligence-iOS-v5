@@ -13,6 +13,8 @@
 #import "URLSizeMonitor.h"
 #import "DatabaseManager.h"
 #import "PageViewEvent.h"
+#import "ActionEvent.h"
+#import "TrackingEvent.h"
 #if TARGET_OS_WATCH
 #import <WatchKit/WatchKit.h>
 #endif
@@ -37,7 +39,7 @@
 - (instancetype)init {
   self = [super init];
   if (self) {
-    _logger = [[MappIntelligenceLogger alloc] init];
+    _logger = [MappIntelligenceLogger shared];
     _sizeMonitor = [[URLSizeMonitor alloc] init];
   }
   return self;
@@ -154,6 +156,9 @@
     
     if ([event isKindOfClass:PageViewEvent.class]) {
         PageProperties* prop = ((PageViewEvent*)event).pageProperties;
+        [parametrs addObjectsFromArray:[prop asQueryItemsFor:request]];
+    } else if ([event isKindOfClass:ActionEvent.class]) {
+        ActionProperties* prop = ((ActionEvent*)event).actionProperties;
         [parametrs addObjectsFromArray:[prop asQueryItemsFor:request]];
     }
 
