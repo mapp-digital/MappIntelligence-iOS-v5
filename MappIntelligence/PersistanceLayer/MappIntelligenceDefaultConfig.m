@@ -31,11 +31,10 @@
 @synthesize requestPerQueue = _requestPerQueue;
 @synthesize requestsInterval = _requestsInterval;
 @synthesize optOut = _optOut;
-/**  Track domain is MANDATORY field */
+/**  Track domain is a mandatory field */
 @synthesize trackDomain;
 
-/** TrackID is a mandatory field and must be entered at least one for the
- * configuration to be saved */
+/** TrackID is a mandatory field. At least one must be entered to start tracking.*/
 @synthesize trackIDs;
 @synthesize viewControllerAutoTracking;
 @synthesize logLevel;
@@ -105,11 +104,11 @@
   if (trackIDs == nil) {
     return;
   }
-  [_logger logObj:([@"Auto Tracking is enabled: "
+  [_logger logObj:([@"Autotracking is enabled: "
                       stringByAppendingFormat:self.autoTracking ? @"Yes"
                                                                 : @"No"])
       forDescription:kMappIntelligenceLogLevelDescriptionInfo];
-  [_logger logObj:([@"Batch Support is enabled: "
+  [_logger logObj:([@"Batch support is enabled: "
                       stringByAppendingFormat:self.batchSupport ? @"Yes"
                                                                 : @"No"])
       forDescription:kMappIntelligenceLogLevelDescriptionInfo];
@@ -129,7 +128,7 @@
                               stringWithFormat:@"%f",
                                                (self.requestsInterval / 60.0)]])
       forDescription:kMappIntelligenceLogLevelDescriptionInfo];
-  [_logger logObj:([@"Log Level is:  "
+  [_logger logObj:([@"Log level is:  "
                       stringByAppendingFormat:@"%@",
                                               [self getLogLevelFor:[_logger logLevel]]])
       forDescription:kMappIntelligenceLogLevelDescriptionInfo];

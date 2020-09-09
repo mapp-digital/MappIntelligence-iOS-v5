@@ -116,7 +116,7 @@ static MappIntelligenceDefaultConfig *config = nil;
     
     [[DatabaseManager shared] removeOldRequestsWithCompletitionHandler:^(NSError * _Nonnull error, id  _Nullable data) {
         if (!error) {
-            [self->_logger logObj:@"Remove older requests from 14 days" forDescription:kMappIntelligenceLogLevelDescriptionDebug];
+            [self->_logger logObj:@"Remove requests that are older than 14 days." forDescription:kMappIntelligenceLogLevelDescriptionDebug];
         }
         if (config.batchSupport == YES) {
             //TODO: add timeout to this methods

@@ -212,7 +212,7 @@ static NSString *userAgent;
   [[DefaultTracker sharedDefaults] setValue:tmpEverId forKey:everId];
 
   if ([everId isEqual:[[NSNull alloc] init]]) {
-    @throw @"Cannot generate ever id";
+    @throw @"Cannot generate everID";
   }
   return tmpEverId;
 }
@@ -265,7 +265,7 @@ static NSString *userAgent;
   }
   if ([name length] > 255) {
       NSString *msg =
-      @"ContentID contains more than 255 characters … will be cut automatically.";
+      @"ContentID contains more than 255 characters and that part will be cutted automatically.";
     [_logger logObj:msg
         forDescription:kMappIntelligenceLogLevelDescriptionWarning];
       NSString *domain = @"com.mapp.mappIntelligenceSDK.ErrorDomain";

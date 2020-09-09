@@ -46,7 +46,7 @@ typedef NS_ENUM(NSInteger, logLevel) {
 
 #if !TARGET_OS_WATCH
 /**
-@brief Method to collect the name of the current UIViewController and write request into the database that will store the request before it is sent to the track server.
+@brief Method to collect the name of the current UIViewController and use it as page name in Mapp Intelligence
 <pre><code>
 MappIntelligence.shared()?.trackPage(self)
 </code></pre>
@@ -55,21 +55,21 @@ MappIntelligence.shared()?.trackPage(self)
 - (NSError *_Nullable)trackPage:(UIViewController *_Nullable)controller;
 #endif
 /**
-@brief Method to specify the page name.
+@brief Method to specify a custom page name for the analyses in Mapp Intelligence.
 @param name - String value of the page name.
 <pre><code>
 MappIntelligence.shared()?.trackPageWith("testString")
 </code></pre>
-@return the error which may happen through process of tracking, if returns nil there is no error.
+@return Error that can happen while tracking. Returns nil if no error was detected.
 */
 - (NSError *_Nullable)trackPageWith:(NSString *_Nullable)name;
 /**
-@brief Method which will track page event which you create from page properties.
+@brief Method to track additional page information.
 @param event - page event which can contain details, groups and seach term.
 <pre><code>
 MappIntelligence.shared()?.trackPage(with: PageViewEvent(PageProperties([20: ["cp20Override", "cp21Override", "cp22Override"]], andWithGroup: [10: ["test"]], andWithSearch: "testSearchTerm")))
 </code></pre>
-@return the error which may happen through process of tracking, if returns nil there is no error.
+@return Error that can happen while tracking. Returns nil if no error was detected.
 */
 - (NSError *_Nullable)trackPageWithEvent:(PageViewEvent  *_Nullable)event;
 
