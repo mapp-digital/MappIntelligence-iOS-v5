@@ -153,14 +153,14 @@ static NSString *userAgent;
   _config.serverUrl = [[NSURL alloc] initWithString:[MappIntelligence getUrl]];
   _config.MappIntelligenceId = [MappIntelligence getId];
   _config.requestInterval = [[MappIntelligence shared] requestTimeout];
-  _config.requestPerQueue = [[MappIntelligence shared] batchSupportSize];
+    _config.requestPerQueue = ([[MappIntelligence shared] batchSupportEnabled]) ? [[MappIntelligence shared] batchSupportSize] : 100;
   _requestUrlBuilder =
       [[RequestUrlBuilder alloc] initWithUrl:_config.serverUrl
                                    andWithId:_config.MappIntelligenceId];
 }
 
 - (void)sendRequestFromDatabaseWithCompletionHandler:(void (^)(NSError * _Nullable))handler {
-    [[DatabaseManager shared] fetchAllRequestsFromInterval:[[MappIntelligence shared] batchSupportSize] andWithCompletionHandler:^(NSError * _Nonnull error, id  _Nullable data) {
+    [[DatabaseManager shared] fetchAllRequestsFromInterval: _config.requestPerQueue andWithCompletionHandler:^(NSError * _Nonnull error, id  _Nullable data) {
         if (!error) {
             RequestData* dt = (RequestData*)data;
             [dt sendAllRequestsWithCompletitionHandler:^(NSError * _Nullable error) {
@@ -268,12 +268,8 @@ static NSString *userAgent;
       @"ContentID contains more than 255 characters and that part will be cutted automatically.";
     [_logger logObj:msg
         forDescription:kMappIntelligenceLogLevelDescriptionWarning];
-      NSString *domain = @"com.mapp.mappIntelligenceSDK.ErrorDomain";
-      NSString *desc = NSLocalizedString(msg, @"");
-      NSDictionary *userInfo = @{NSLocalizedDescriptionKey : desc};
-      NSError *error =
-          [NSError errorWithDomain:domain code:-101 userInfo:userInfo];
-      return error;
+      NSRange range = NSMakeRange(0, 254);
+      name =  [name substringWithRange:range];
   }
   if (![_defaults stringForKey:isFirstEventOfApp]) {
     [_defaults setBool:YES forKey:isFirstEventOfApp];

@@ -40,7 +40,7 @@ class ConfigurationViewController: UIViewController, UIPickerViewDelegate, UIPic
         setupToolBarForNumberPadKeyboard()
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
                self.view.addGestureRecognizer(tapGesture)
-        //MappIntelligence.shared()?.trackPage(self)
+        MappIntelligence.shared()?.trackPage(self)
         MappIntelligence.shared()?.trackPage(with: "testCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringName")
 //        for i in [Int](0...10000) {
 //            MappIntelligence.shared()?.trackPage(with: String(format: "request_numero:_%d", i))

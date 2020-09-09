@@ -27,8 +27,8 @@ var window: UIWindow?
         MappIntelligence.shared()?.initWithConfiguration(array, onTrackdomain: domain as! String);
         
         MappIntelligence.shared()?.logLevel = .all
-        MappIntelligence.shared()?.batchSupportEnabled = true;
-        MappIntelligence.shared()?.batchSupportSize = 150;
+        //MappIntelligence.shared()?.batchSupportEnabled = true;
+        //MappIntelligence.shared()?.batchSupportSize = 150;
         MappIntelligence.shared()?.requestTimeout = 1 * 60;
 
         // Override point for customization after application launch.
