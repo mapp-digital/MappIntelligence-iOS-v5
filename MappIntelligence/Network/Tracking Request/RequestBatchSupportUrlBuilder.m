@@ -68,7 +68,7 @@
 
 - (NSArray<NSString *> *)createBatchWith:(RequestData *)data {
   NSMutableArray *array = [[NSMutableArray alloc] init];
-    if(!data.requests) {
+    if(data.requests.count == 0) {
         return array;
     }
   NSMutableString *body = [[NSMutableString alloc] init];

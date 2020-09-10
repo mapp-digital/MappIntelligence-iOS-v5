@@ -16,11 +16,18 @@ class ViewControllerTV: UIViewController {
     }
 
     @IBAction func trackViewController(_ sender: Any) {
-        MappIntelligencetvOS.shared()?.trackPage(self)
+        let params:NSMutableDictionary = [20: ["cp20Override", "cp21Override", "cp22Override"]]
+        let categories:NSMutableDictionary = [10: ["test"]]
+        let searchTerm = "testSearchTerm"
+        MappIntelligencetvOS.shared()?.trackPage(with: self, andWith: PageProperties(pageParams: params, andWithPageCategory: categories, andWithSearch: searchTerm))
     }
     
     @IBAction func trackCustomString(_ sender: Any) {
-        MappIntelligencetvOS.shared()?.trackPage(with:  "customString")
+        let customName = "the custom name of page"
+        let params:NSMutableDictionary = [20: ["cp20Override", "cp21Override", "cp22Override"]]
+        let categories:NSMutableDictionary = [10: ["test"]]
+        let searchTerm = "testSearchTerm"
+        MappIntelligencetvOS.shared()?.trackPage(withName: customName, andWith: PageProperties(pageParams: params, andWithPageCategory: categories, andWithSearch: searchTerm))
     }
 }
 
