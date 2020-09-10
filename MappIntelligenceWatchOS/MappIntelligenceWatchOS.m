@@ -63,7 +63,7 @@
 }
 
 - (NSError *)trackPageWithName:(NSString *)name andWithPageProperties:(PageProperties *)properties {
-    [_mappIntelligence trackPageWithName:name andWithPageProperties:properties];
+    return [_mappIntelligence trackPageWithName:name andWithPageProperties:properties];
 }
 
 - (void)reset {
