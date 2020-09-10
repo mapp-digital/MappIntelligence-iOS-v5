@@ -15,7 +15,7 @@
 - (instancetype)initWithName:(NSString *)name andWithProperties:(PageProperties *)properties {
     self = [super init];
     _pageProperties = properties;
-    _pageName = @"defaultName";
+    _pageName = name;
     return self;
 }
 
