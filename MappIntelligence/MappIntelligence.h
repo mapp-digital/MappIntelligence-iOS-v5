@@ -46,28 +46,31 @@ typedef NS_ENUM(NSInteger, logLevel) {
 
 #if !TARGET_OS_WATCH
 /**
-@brief Method to collect the name of the current UIViewController and use it as page name in Mapp Intelligence
+@brief Method to collect the name of the current UIViewController and track additional page information.
+@param controller - current ui view controller.
+@param properties - properties can contain parameters, categories and search terms.
 <pre><code>
-MappIntelligence.shared()?.trackPage(self)
+ let params:NSMutableDictionary = [20: ["cp20Override", "cp21Override", "cp22Override"]]
+ let categories:NSMutableDictionary = [10: ["test"]]
+ let searchTerm = "testSearchTerm"
+ 
+ MappIntelligence.shared()?.trackPage(with: self, andWith: PageProperties(pageParams: params, andWithPageCategory: categories, andWithSearch: searchTerm))
 </code></pre>
 @return Error in case of a failure. Returns nil if no error was detected.
 */
 - (NSError *_Nullable)trackPageWithViewController:(UIViewController *_Nonnull)controller andWithPageProperties:(PageProperties  *_Nullable)properties;
 #endif
 /**
-@brief Method to specify a custom page name for the analyses in Mapp Intelligence.
-@param name - String value of the page name.
-<pre><code>
-MappIntelligence.shared()?.trackPageWith("testString")
-</code></pre>
-@return Error that can happen while tracking. Returns nil if no error was detected.
-*/
-- (NSError *_Nullable)trackPageWith:(NSString *_Nullable)name;
-/**
 @brief Method to track additional page information.
-@param properties - page event which can contain details, groups and seach term.
+@param name - custom page name.
+@param properties - properties can contain details, groups and seach term.
 <pre><code>
-MappIntelligence.shared()?.trackPage(with: PageViewEvent(PageProperties([20: ["cp20Override", "cp21Override", "cp22Override"]], andWithGroup: [10: ["test"]], andWithSearch: "testSearchTerm")))
+ let customName = "the custom name of page"
+ let params:NSMutableDictionary = [20: ["cp20Override", "cp21Override", "cp22Override"]]
+ let categories:NSMutableDictionary = [10: ["test"]]
+ let searchTerm = "testSearchTerm"
+ 
+ MappIntelligence.shared()?.trackPage(withName: customName, andWith: PageProperties(pageParams: params, andWithPageCategory: categories, andWithSearch: searchTerm))
 </code></pre>
 @return Error that can happen while tracking. Returns nil if no error was detected.
 */

@@ -46,7 +46,7 @@ class ConfigurationViewController: UIViewController, UIPickerViewDelegate, UIPic
         let params:NSMutableDictionary = [20: ["cp20Override", "cp21Override", "cp22Override"]]
         let categories:NSMutableDictionary = [10: ["test"]]
         let searchTerm = "testSearchTerm"
-        MappIntelligence.shared()?.trackPage(withName: customName, andWith: nil)
+        MappIntelligence.shared()?.trackPage(withName: customName, andWith: PageProperties(pageParams: params, andWithPageCategory: categories, andWithSearch: searchTerm))
         
         //or you can use this
         MappIntelligence.shared()?.trackPage(with: self, andWith: PageProperties(pageParams: params, andWithPageCategory: categories, andWithSearch: searchTerm))
