@@ -39,7 +39,7 @@ typedef NS_ENUM(NSInteger, logWatchOSLevel) {
 @param trackIDs - Array of your trackIDs. The information can be provided by your account manager.
 @param trackDomain - String value of your track domain. The information can be provided by your account manager.
 <pre><code>
-MappIntelligence.shared()?.initWithConfiguration([12345678, 8783291721], onTrackdomain: "www.mappIntelligence-trackDomain.com")
+MappIntelligenceWatchOS.shared()?.initWithConfiguration([12345678, 8783291721], onTrackdomain: "www.mappIntelligence-trackDomain.com")
 </code></pre>
 */
 - (void)initWithConfiguration:(NSArray *_Nonnull)trackIDs
@@ -55,7 +55,7 @@ MappIntelligence.shared()?.initWithConfiguration([12345678, 8783291721], onTrack
  let categories:NSMutableDictionary = [10: ["test"]]
  let searchTerm = "testSearchTerm"
  
- MappIntelligence.shared()?.trackPage(withName: customName, andWith: PageProperties(pageParams: params, andWithPageCategory: categories, andWithSearch: searchTerm))
+ MappIntelligenceWatchOS.shared()?.trackPage(withName: customName, andWith: PageProperties(pageParams: params, andWithPageCategory: categories, andWithSearch: searchTerm))
 </code></pre>
 @return Error that can happen while tracking. Returns nil if no error was detected.
 */
