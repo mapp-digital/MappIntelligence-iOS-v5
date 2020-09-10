@@ -23,7 +23,7 @@
 - (void)setUp {
     _details = [@{@20: @[@"1 element"]} copy];
     _actionname = @"TestAction";
-    _actionProperties = [[ActionProperties alloc] initWith: _actionname andDetails:_details];
+    _actionProperties = [[ActionProperties alloc] initWithName:@"TestAction" andDetails:_details];
 }
 
 - (void)tearDown {

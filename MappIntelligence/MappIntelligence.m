@@ -11,6 +11,9 @@
 #import "MappIntelligenceLogger.h"
 #import "DatabaseManager.h"
 #import "RequestData.h"
+#import "ActionEvent.h"
+#import "ActionProperties.h"
+
 
 @interface MappIntelligence ()
 
@@ -92,7 +95,10 @@ static MappIntelligenceDefaultConfig *config = nil;
     return [tracker trackWithEvent:event];
 }
 
-- (NSError *)trackActionWithEvent: (ActionEvent *)event {
+- (NSError *)trackCustomEventWithEventName: (NSString *)name andProperties: (NSMutableDictionary *)properties {
+    ActionProperties *actionProperties = [[ActionProperties alloc] initWithName:name andDetails:properties];
+    ActionEvent *event = [[ActionEvent alloc] initWithPageName:@"0" andActionProperties:actionProperties];
+    
     if ([config optOut]) {
          [_logger logObj:@"You are opted out and you have no ability to track anymore." forDescription:kMappIntelligenceLogLevelDescriptionDebug];
         return NULL;

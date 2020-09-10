@@ -12,12 +12,10 @@
 
 @synthesize pageName = _pageName;
 
-- (instancetype)initWith:(ActionProperties *)actionProperties
-       andPageProperties:(PageProperties *)pageProperties {
+- (instancetype)initWithPageName:(NSString *)name andActionProperties:(ActionProperties *)actionProperties {
     self = [super init];
     _actionProperties = actionProperties;
-    _pageProperties = pageProperties;
-    _pageName = @"defaultName";
+    _pageName = name;
     return self;
 }
 

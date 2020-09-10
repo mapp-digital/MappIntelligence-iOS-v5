@@ -16,9 +16,9 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ActionEvent : TrackingEvent
 
 @property (nonatomic, nonnull) ActionProperties* actionProperties;
-@property (nonatomic, nonnull) PageProperties* pageProperties;
 
--(instancetype)initWith: (ActionProperties*) actionProperties andPageProperties:(PageProperties*) pageProperties;
+-(instancetype)initWithPageName: (NSString *)name andActionProperties: (ActionProperties*) actionProperties;
+
 @end
 
 NS_ASSUME_NONNULL_END

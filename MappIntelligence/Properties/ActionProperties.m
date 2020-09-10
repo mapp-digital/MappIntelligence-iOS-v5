@@ -10,7 +10,7 @@
 
 @implementation ActionProperties
 
-- (instancetype)initWith:(NSString *)name andDetails:(NSMutableDictionary *)details {
+- (instancetype)initWithName:(NSString *)name andDetails:(NSMutableDictionary *)details {
     self = [self init];
     if (self) {
         _name = name;

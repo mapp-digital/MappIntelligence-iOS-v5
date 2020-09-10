@@ -53,8 +53,7 @@ class ViewController: UIViewController {
         MappIntelligence.shared()?.optOut(with: false, andSendCurrentData: false)
     }
     @IBAction func sendActionEvent(_ sender: Any) {
-        let pageProps = PageProperties([20: ["cp20Override", "cp21Override", "cp22Override"]], andWithGroup: [10: ["test"]], andWithSearch: "testSearchTerm");
-        MappIntelligence.shared()?.trackAction(with: ActionEvent(ActionProperties("Test", andDetails:[20: ["ck20Override", "ck21Override", "ck22Override"]]), andPageProperties: pageProps))
+        MappIntelligence.shared()?.trackCustomEvent(withEventName: "TestEvent", andProperties: [20:["ck20Override","ck21Override"]])
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
