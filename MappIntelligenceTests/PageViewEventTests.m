@@ -22,11 +22,11 @@
 @implementation PageViewEventTests
 
 - (void)setUp {
-    _details = [@{@20: @"cp20Override"} copy];
-    _groups = [@{@15: @"testGroups"} copy];
+    _details = [@{@20: @[@"cp20Override"]} copy];
+    _groups = [@{@15: @[@"testGroups"]} copy];
     _internalSearch = @"testSearchTerm";
-    _pageProperties = [[PageProperties alloc] initWith:_details andWithGroup:_groups andWithSearch:_internalSearch];
-    _pageViewEvent = [[PageViewEvent alloc] initWith:_pageProperties];
+    _pageProperties = [[PageProperties alloc] initWithPageParams:_details andWithPageCategory:_groups andWithSearch:_internalSearch];
+    _pageViewEvent = [[PageViewEvent alloc] initWithName:@"test custom name" andWithProperties:_pageProperties];
 }
 
 - (void)tearDown {

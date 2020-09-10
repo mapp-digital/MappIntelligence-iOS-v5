@@ -32,7 +32,7 @@ typedef NS_ENUM(NSInteger, logLevel) {
 @property (nonatomic, readwrite) BOOL batchSupportEnabled;
 @property (nonatomic, readwrite) NSInteger batchSupportSize;
 /**
- MappIntelignece instance
+ MappIntelligence instance
  @brief Method to get a singleton instance of MappIntelligence
  <pre><code>
  let mappInteligenceSingleton = MappIntelligence.shared()
@@ -52,7 +52,6 @@ MappIntelligence.shared()?.trackPage(self)
 </code></pre>
 @return Error in case of a failure. Returns nil if no error was detected.
 */
-- (NSError *_Nullable)trackPage:(UIViewController *_Nullable)controller;
 - (NSError *_Nullable)trackPageWithViewController:(UIViewController *_Nonnull)controller andWithPageProperties:(PageProperties  *_Nullable)properties;
 #endif
 /**

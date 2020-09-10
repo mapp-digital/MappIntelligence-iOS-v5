@@ -96,11 +96,11 @@
 }
 
 - (void)testTrackWithPageEvent {
-    NSMutableDictionary* details = [@{@20: @"cp20Override"} copy];
-    NSMutableDictionary* groups = [@{@15: @"testGroups"} copy];
+    NSMutableDictionary* details = [@{@20: @[@"cp20Override"]} copy];
+    NSMutableDictionary* groups = [@{@15: @[@"testGroups"]} copy];
     NSString* internalSearch = @"testSearchTerm";
-    PageProperties* pageProperties = [[PageProperties alloc] initWith:details andWithGroup:groups andWithSearch:internalSearch];
-    PageViewEvent* pageViewEvent = [[PageViewEvent alloc] initWith:pageProperties];
+    PageProperties* pageProperties = [[PageProperties alloc] initWithPageParams:details andWithPageCategory:groups andWithSearch:internalSearch];
+    PageViewEvent* pageViewEvent = [[PageViewEvent alloc] initWithName:@"the custom name" andWithProperties:pageProperties];
     NSError* error = [_tracker trackWithEvent:pageViewEvent];
     //TODO: add reasonable error or it will return null always
     XCTAssertNil(error, @"There was an error while tracking page view event!");

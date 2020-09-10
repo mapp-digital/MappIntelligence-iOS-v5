@@ -23,10 +23,10 @@
 @implementation PagePropertiesTests
 
 - (void)setUp {
-    _details = [@{@20: @"cp20Override"} copy];
-    _groups = [@{@15: @"testGroups"} copy];
+    _details = [@{@20: @[@"cp20Override"]} copy];
+    _groups = [@{@15: @[@"testGroups"]} copy];
     _internalSearch = @"testSearchTerm";
-    _pageProperties = [[PageProperties alloc] initWith:_details andWithGroup:_groups andWithSearch:_internalSearch];
+    _pageProperties = [[PageProperties alloc] initWithPageParams:_details andWithPageCategory:_groups andWithSearch:_internalSearch];
 }
 
 - (void)tearDown {
@@ -38,7 +38,7 @@
 
 - (void)testInitWithDetailsAndGroup {
     XCTAssertTrue([_pageProperties.details isEqualToDictionary:_details], @"The details from page properties is not same as it is used for creation!");
-    XCTAssertTrue([_pageProperties.details isEqualToDictionary:_groups], @"The groups from page properties is not same as it is used for creation!");
+    XCTAssertTrue([_pageProperties.groups isEqualToDictionary:_groups], @"The groups from page properties is not same as it is used for creation!");
     XCTAssertTrue([_pageProperties.internalSearch isEqualToString:_internalSearch], @"The internal search from page properties is not same as it is used for creation!");
 }
 
@@ -47,12 +47,12 @@
     NSMutableArray<NSURLQueryItem*>* expectedItems = [[NSMutableArray alloc] init];
     if (_details) {
         for(NSString* key in _details) {
-            [expectedItems addObject:[[NSURLQueryItem alloc] initWithName:[NSString stringWithFormat:@"cp%@",key] value: _details[key]]];
+            [expectedItems addObject:[[NSURLQueryItem alloc] initWithName:[NSString stringWithFormat:@"cp%@",key] value: [_details[key] componentsJoinedByString:@";"]]];
         }
     }
     if (_groups) {
         for(NSString* key in _groups) {
-            [expectedItems addObject:[[NSURLQueryItem alloc] initWithName:[NSString stringWithFormat:@"cg%@",key] value: _groups[key]]];
+            [expectedItems addObject:[[NSURLQueryItem alloc] initWithName:[NSString stringWithFormat:@"cg%@",key] value: [_groups[key] componentsJoinedByString:@";"]]];
         }
     }
     [expectedItems addObject:[[NSURLQueryItem alloc] initWithName:@"is" value:_internalSearch]];

@@ -117,6 +117,9 @@
                     }];
                 }
             }
+            if ([dt requests].count == 0) {
+                [expectation fulfill];
+            }
         } else {
             XCTAssertTrue(NO, @"The database return error!");
         }
@@ -203,13 +206,14 @@
     NSArray* array = [NSArray arrayWithObjects:item1, item2, nil];
     Request* request = [[Request alloc] initWithParamters:array andDomain:@"https://q3.webtrekk.net" andTrackIds:@"385255285199574"];
     [_dbManager insertRequest:request];
+    usleep(3000000);
     [_dbManager fetchAllRequestsFromInterval:15*100 andWithCompletionHandler:^(NSError * _Nonnull error, id  _Nullable data) {
         if (!error) {
             RequestData* dt = (RequestData*)data;
             for (Request* r in dt.requests) {
                 if ([r.parameters[0].name isEqualToString:@"parameter1NameStatusUpdate"] && ([r status] == ACTIVE)) {
                     [self->_dbManager updateStatusOfRequestWithId:[r.uniqueId intValue] andStatus:FAILED];
-                    usleep(1000000);
+                    usleep(3000000);
                     [self->_dbManager fetchAllRequestsFromInterval:15*100 andWithCompletionHandler:^(NSError * _Nonnull error, id  _Nullable data) {
                         BOOL testRequestFlag = NO;
                         if (!error) {
@@ -217,10 +221,12 @@
                             for (Request* r in dt.requests) {
                                 if ([r.parameters[0].name isEqualToString:@"parameter1NameStatusUpdate"] && ([r status] == FAILED)) {
                                     testRequestFlag = YES;
+                                    XCTAssertTrue(testRequestFlag, @"The request is not written into database!");
+                                    [expectation fulfill];
                                     break;
                                 }
                             }
-                            XCTAssertTrue(testRequestFlag, @"The request is not written into database!");
+                            
                         } else {
                             XCTAssertTrue(NO, @"The database return error!");
                         }
@@ -243,7 +249,6 @@
 }
 
 - (void)testSequentialRequestInsert {
-    [self measureBlock:^{
         XCTestExpectation* expectation = [[XCTestExpectation alloc] initWithDescription:@"Wait until all inserts finish!"];
         
         NSURLQueryItem* item1 = [[NSURLQueryItem alloc] initWithName:@"parameter1Name" value:@"parameter1Value"];
@@ -260,11 +265,9 @@
             [expectation fulfill];
         });
         [self waitForExpectations:[NSArray arrayWithObject:expectation] timeout:50];
-    }];
 }
 
 - (void)testBatchRequestsInsert {
-    [self measureBlock:^{
         XCTestExpectation* expectation = [[XCTestExpectation alloc] initWithDescription:@"Wait until db opearion is finished!"];
 
         NSURLQueryItem* item1 = [[NSURLQueryItem alloc] initWithName:@"parameter1Name" value:@"parameter1Value"];
@@ -283,7 +286,6 @@
             [expectation fulfill];
         });
         [self waitForExpectations:[NSArray arrayWithObject:expectation] timeout:50];
-    }];
 }
 
 @end

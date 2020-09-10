@@ -567,8 +567,8 @@ dispatch_async(_executionQueue, ^{
 //TODO: select count of request and make logic around it
   dispatch_async(_executionQueue, ^{
 
-    NSMutableArray *requests = nil;
-    NSMutableArray *requestIds = nil;
+    NSMutableArray *requests = [NSMutableArray new];
+    NSMutableArray *requestIds = [NSMutableArray new];
 
     const char *dbPath = [self.databasePath UTF8String];
 
@@ -603,9 +603,12 @@ dispatch_async(_executionQueue, ^{
               initWithUTF8String:(const char *)sqlite3_column_text(
                                      sql_statement, 3)];
           int status = sqlite3_column_double(sql_statement, 4);
-          NSString *date = [[NSString alloc]
+            NSString *date = [[NSDate date] description];
+            if(sqlite3_column_text(sql_statement, 5) != NULL) {
+                date = [[NSString alloc]
               initWithUTF8String:(const char *)sqlite3_column_text(
                                      sql_statement, 5)];
+            }
 
           NSDictionary *keyedValues = @{
             @"id" : @(uniqueId),
@@ -906,7 +909,7 @@ dispatch_async(_executionQueue, ^{
         initWithString:[cachesDirecotry
                            stringByAppendingPathComponent:DB_PATH]];
   }
-  //NSLog(@"Database path: %@", _databasePath);
+  NSLog(@"Database path: %@", _databasePath);
   return _databasePath;
 }
 
