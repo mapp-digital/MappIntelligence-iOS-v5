@@ -10,11 +10,11 @@
 
 @implementation PageProperties
 
--(instancetype)initWith:(NSMutableDictionary *)details andWithGroup:(NSMutableDictionary *)groups andWithSearch:(NSString *)internalSearch {
+-(instancetype)initWithPageParams: (NSMutableDictionary* _Nullable) parameters andWithPageCategory: (NSMutableDictionary* _Nullable) category andWithSearch: (NSString* _Nullable)internalSearch {
     self = [self init];
     if (self) {
-        _details = details;
-        _groups = groups;
+        _details = parameters;
+        _groups = category;
         _internalSearch = internalSearch;
     }
     return  self;

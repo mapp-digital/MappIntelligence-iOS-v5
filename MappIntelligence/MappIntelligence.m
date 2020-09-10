@@ -11,6 +11,7 @@
 #import "MappIntelligenceLogger.h"
 #import "DatabaseManager.h"
 #import "RequestData.h"
+#import <UIKit/UIKit.h>
 
 @interface MappIntelligence ()
 
@@ -74,6 +75,15 @@ static MappIntelligenceDefaultConfig *config = nil;
     }
   return [tracker track:controller];
 }
+
+- (NSError *)trackPageWithViewController:(UIViewController *)controller andWithPageProperties:(PageProperties* )properties {
+    if ([config optOut]) {
+         [_logger logObj:@"You are opted-out. No track requests are sent to the server anymore." forDescription:kMappIntelligenceLogLevelDescriptionDebug];
+        return NULL;
+    }
+    NSString* name = NSStringFromClass([controller class]);
+    return [tracker trackWithEvent:[[PageViewEvent alloc] initWithName:name andWithProperties:properties]];
+}
 #endif
 
 - (NSError *_Nullable)trackPageWith:(NSString *)name {
@@ -90,6 +100,14 @@ static MappIntelligenceDefaultConfig *config = nil;
         return NULL;
     }
     return [tracker trackWithEvent:event];
+}
+
+- (NSError *)trackPageWithName: (NSString *_Nonnull) name andWithPageProperties:(PageProperties  *_Nullable)properties {
+    if ([config optOut]) {
+         [_logger logObj:@"You are opted-out. No track requests are sent to the server anymore." forDescription:kMappIntelligenceLogLevelDescriptionDebug];
+        return NULL;
+    }
+    return [tracker trackWithEvent:[[PageViewEvent alloc] initWithName:name andWithProperties:properties]];
 }
 
 - (void)initWithConfiguration:(NSArray *)trackIDs

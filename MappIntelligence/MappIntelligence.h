@@ -53,6 +53,7 @@ MappIntelligence.shared()?.trackPage(self)
 @return Error in case of a failure. Returns nil if no error was detected.
 */
 - (NSError *_Nullable)trackPage:(UIViewController *_Nullable)controller;
+- (NSError *_Nullable)trackPageWithViewController:(UIViewController *_Nonnull)controller andWithPageProperties:(PageProperties  *_Nullable)properties;
 #endif
 /**
 @brief Method to specify a custom page name for the analyses in Mapp Intelligence.
@@ -65,13 +66,13 @@ MappIntelligence.shared()?.trackPageWith("testString")
 - (NSError *_Nullable)trackPageWith:(NSString *_Nullable)name;
 /**
 @brief Method to track additional page information.
-@param event - page event which can contain details, groups and seach term.
+@param properties - page event which can contain details, groups and seach term.
 <pre><code>
 MappIntelligence.shared()?.trackPage(with: PageViewEvent(PageProperties([20: ["cp20Override", "cp21Override", "cp22Override"]], andWithGroup: [10: ["test"]], andWithSearch: "testSearchTerm")))
 </code></pre>
 @return Error that can happen while tracking. Returns nil if no error was detected.
 */
-- (NSError *_Nullable)trackPageWithEvent:(PageViewEvent  *_Nullable)event;
+- (NSError *_Nullable)trackPageWithName: (NSString *_Nonnull) name andWithPageProperties:(PageProperties  *_Nullable)properties;
 
 /**
 @brief Method to initialize tracking. Please specify your track domain and trackID.
