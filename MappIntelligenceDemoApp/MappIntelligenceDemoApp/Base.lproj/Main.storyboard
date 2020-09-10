@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -40,20 +40,97 @@
                                     <action selector="resetInstance:" destination="BYZ-38-t0r" eventType="touchUpInside" id="b7u-8U-bRz"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xSO-ND-ecO">
+                                <rect key="frame" x="20" y="744" width="374" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="pWR-xJ-aDf"/>
+                                </constraints>
+                                <state key="normal" title="Print all requests from database"/>
+                                <connections>
+                                    <action selector="printAllRequests:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BAU-l4-4KI"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bKq-ZH-pWy">
+                                <rect key="frame" x="339" y="702" width="65" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="65" id="lFE-U4-UNt"/>
+                                    <constraint firstAttribute="height" constant="34" id="zd8-54-b6k"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nI1-uY-hDE">
+                                <rect key="frame" x="20" y="704" width="304" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="iip-gA-SK6"/>
+                                </constraints>
+                                <state key="normal" title="Remove request from database by id:"/>
+                                <connections>
+                                    <action selector="removeRequestFromDatabase:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XUy-gW-OoZ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X2d-qc-or2">
+                                <rect key="frame" x="20" y="58" width="374" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="gsU-R4-2vA"/>
+                                </constraints>
+                                <state key="normal" title="Opt out and send all data"/>
+                                <connections>
+                                    <action selector="optOutAndSendData:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SNM-VN-olB"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yzy-Xb-HdJ">
+                                <rect key="frame" x="20" y="96" width="374" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="aYn-uO-v0h"/>
+                                </constraints>
+                                <state key="normal" title="Opt out and just remove all data"/>
+                                <connections>
+                                    <action selector="optOutAndDontSendData:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HWJ-29-JhF"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="clZ-DQ-KH4">
+                                <rect key="frame" x="20" y="134" width="374" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="qqd-7a-guD"/>
+                                </constraints>
+                                <state key="normal" title="Opt In"/>
+                                <connections>
+                                    <action selector="optIn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="qxX-S8-5Gm"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="yzy-Xb-HdJ" firstAttribute="top" secondItem="X2d-qc-or2" secondAttribute="bottom" constant="8" id="3ow-Wa-aRb"/>
+                            <constraint firstItem="xSO-ND-ecO" firstAttribute="top" secondItem="nI1-uY-hDE" secondAttribute="bottom" constant="10" id="443-rc-vKv"/>
+                            <constraint firstItem="X2d-qc-or2" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="14" id="CAX-dw-iZV"/>
                             <constraint firstItem="NT4-Kt-2Ux" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Fk8-bD-oBz"/>
+                            <constraint firstItem="clZ-DQ-KH4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="HcK-CE-vph"/>
+                            <constraint firstItem="xSO-ND-ecO" firstAttribute="top" secondItem="bKq-ZH-pWy" secondAttribute="bottom" constant="8" id="Kvg-Po-qdh"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="yzy-Xb-HdJ" secondAttribute="trailing" constant="20" id="Red-u9-LJC"/>
                             <constraint firstItem="QvL-lF-keq" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="SfV-Pt-LNZ"/>
                             <constraint firstItem="wgy-Jv-PY3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="UQF-bQ-1Qr"/>
                             <constraint firstItem="NT4-Kt-2Ux" firstAttribute="top" secondItem="wgy-Jv-PY3" secondAttribute="bottom" constant="20" id="VMB-yM-BQK"/>
+                            <constraint firstItem="xSO-ND-ecO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Wax-Fb-dzY"/>
+                            <constraint firstItem="X2d-qc-or2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="WoN-d4-df9"/>
+                            <constraint firstItem="wgy-Jv-PY3" firstAttribute="top" secondItem="xSO-ND-ecO" secondAttribute="bottom" constant="8" id="aBY-Wa-g15"/>
+                            <constraint firstItem="yzy-Xb-HdJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="bNA-vg-550"/>
+                            <constraint firstItem="clZ-DQ-KH4" firstAttribute="top" secondItem="yzy-Xb-HdJ" secondAttribute="bottom" constant="8" id="c4b-r6-7q4"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="wgy-Jv-PY3" secondAttribute="trailing" constant="10" id="fO0-9U-0Hp"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="clZ-DQ-KH4" secondAttribute="trailing" constant="20" id="hD0-Ks-6Bb"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="xSO-ND-ecO" secondAttribute="trailing" constant="20" id="iAu-ri-a1B"/>
+                            <constraint firstItem="bKq-ZH-pWy" firstAttribute="leading" secondItem="nI1-uY-hDE" secondAttribute="trailing" constant="15" id="ifj-YY-K97"/>
                             <constraint firstItem="NT4-Kt-2Ux" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="kci-9w-Wzt"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="X2d-qc-or2" secondAttribute="trailing" constant="20" id="ltH-MX-cub"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bKq-ZH-pWy" secondAttribute="trailing" constant="10" id="p8C-1e-iNo"/>
                             <constraint firstItem="QvL-lF-keq" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="r42-H5-w8S"/>
+                            <constraint firstItem="nI1-uY-hDE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="tLb-6q-UGr"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="requestIDTextField" destination="bKq-ZH-pWy" id="HBk-wb-g14"/>
                         <segue destination="WJg-jf-2Rr" kind="presentation" identifier="toSettingsScreen" id="cnw-K1-wLY"/>
                     </connections>
                 </viewController>
@@ -116,7 +193,7 @@
                                     <action selector="setRequestTime:" destination="WJg-jf-2Rr" eventType="editingDidEnd" id="hK1-O9-txA"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Set Tracking Domain" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GwC-eU-cBZ">
+                            <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Set Track Domain" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GwC-eU-cBZ">
                                 <rect key="frame" x="20" y="305.66666666666669" width="374" height="34"/>
                                 <accessibility key="accessibilityConfiguration" label="trackingDomainTextField"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -145,7 +222,7 @@
                                     <action selector="setLogLevel:" destination="WJg-jf-2Rr" eventType="editingDidEnd" id="OhE-pq-eQL"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Set Tracking IDs" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I1g-mz-glS">
+                            <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Set trackIDs" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="I1g-mz-glS">
                                 <rect key="frame" x="20" y="349.66666666666669" width="374" height="34"/>
                                 <accessibility key="accessibilityConfiguration" label="trackingIdsTextField"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>

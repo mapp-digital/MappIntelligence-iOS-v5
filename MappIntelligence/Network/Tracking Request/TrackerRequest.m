@@ -43,27 +43,48 @@
       forDescription:kMappIntelligenceLogLevelDescriptionInfo];
 
   [self createUrlSession];
-    
+
   [[_urlSession
         dataTaskWithURL:url
       completionHandler:^(NSData *_Nullable data,
                           NSURLResponse *_Nullable response,
                           NSError *_Nullable error) {
-        if (error) {
-//          [self->_loger logObj:[[NSString alloc]
-//                                   initWithFormat:
-//                                       @"Error while executing request: %@",
-//                                       [error description]]
-//                forDescription:kMappIntelligenceLogLevelDescriptionError];
-          return;
+        if (!error) {
+          [self->_loger logObj:[[NSString alloc]
+                                   initWithFormat:
+                                       @"Response from tracking server: %@",
+                                       [response description]]
+                forDescription:kMappIntelligenceLogLevelDescriptionDebug];
         }
-        [self->_loger logObj:[[NSString alloc]
-                                 initWithFormat:
-                                     @"Response from tracking server: %@",
-                                     [response description]]
-              forDescription:kMappIntelligenceLogLevelDescriptionDebug];
         handler(error);
       }] resume];
+}
+
+- (void)sendRequestWith:(NSURL *)url andBody:(NSString*)body andCompletition:(nonnull void (^)(NSError * _Nonnull))handler {
+  [_loger logObj:[[NSString alloc]
+                     initWithFormat:@"Tracking Request: %@ with body: %@", [url absoluteURL], body]
+      forDescription:kMappIntelligenceLogLevelDescriptionInfo];
+
+  [self createUrlSession];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
+        cachePolicy:NSURLRequestUseProtocolCachePolicy
+    timeoutInterval:60.0];
+    [request addValue:@"text/plain; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
+    [request addValue:@"text/plain; charset=utf-8" forHTTPHeaderField:@"Accept"];
+
+    [request setHTTPMethod:@"POST"];
+    [request setHTTPBody:[body dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:NO]];
+    
+    [[_urlSession dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        if (!error) {
+            [self->_loger logObj:[[NSString alloc]
+                                  initWithFormat:
+                                  @"Response from tracking server for sended batch support: %@",
+                                  [response description]]
+                  forDescription:kMappIntelligenceLogLevelDescriptionDebug];
+        }
+        handler(error);
+    }] resume];
 }
 
 - (void)createUrlSession {

@@ -16,6 +16,7 @@
 #define key_autoTracking @"auto_tracking"
 #define key_requestPerQueue @"request_per_batch"
 #define key_batchSupport @"batch_support"
+#define key_optOut @"optOut"
 #define key_viewControllerAutoTracking @"view_controller_auto_tracking"
 #define key_MappIntelligence_default_configuration @"defaultConfiguration"
 
@@ -26,22 +27,47 @@
 @implementation MappIntelligenceDefaultConfig : NSObject
 
 @synthesize autoTracking;
-@synthesize batchSupport;
-@synthesize requestPerQueue;
-@synthesize requestsInterval;
-/** Tracking domain is MANDATORY field */
+@synthesize batchSupport = _batchSupport;
+@synthesize requestPerQueue = _requestPerQueue;
+@synthesize requestsInterval = _requestsInterval;
+@synthesize optOut = _optOut;
+/**  Track domain is a mandatory field */
 @synthesize trackDomain;
 
-/** Track ID is a mandatory field and must be entered at least one for the
- * configuration to be saved */
+/** TrackID is a mandatory field. At least one must be entered to start tracking.*/
 @synthesize trackIDs;
 @synthesize viewControllerAutoTracking;
 @synthesize logLevel;
 
 - (instancetype)init {
 
-  self = [super init];
-  _logger = [MappIntelligenceLogger shared];
+    if (self = [super init]) {
+      _logger = [MappIntelligenceLogger shared];
+        NSLog(@"requestInterval: %f and case: %d", [[NSUserDefaults standardUserDefaults]
+        doubleForKey:key_requestsInterval], [[NSUserDefaults standardUserDefaults]
+                                             doubleForKey:key_requestsInterval] != 0);
+        self.requestsInterval =
+            ([[NSUserDefaults standardUserDefaults]
+                 doubleForKey:key_requestsInterval] != 0)
+                ? (double)[[NSUserDefaults standardUserDefaults]
+                      doubleForKey:key_requestsInterval]
+                : 15 * 60;
+        self.optOut =
+            (![[NSUserDefaults standardUserDefaults] doubleForKey:key_optOut])
+                ? NO
+                : [[NSUserDefaults standardUserDefaults]
+                      doubleForKey:key_optOut];
+        self.batchSupport = (![[NSUserDefaults standardUserDefaults]
+                                doubleForKey:key_batchSupport])
+                                ? NO
+                                : [[NSUserDefaults standardUserDefaults]
+                                      doubleForKey:key_batchSupport];
+        self.requestPerQueue = (![[NSUserDefaults standardUserDefaults]
+                                   doubleForKey:key_requestPerQueue])
+                                   ? 100
+                                   : [[NSUserDefaults standardUserDefaults]
+                                         doubleForKey:key_requestPerQueue];
+    }
   return self;
 }
 
@@ -78,11 +104,11 @@
   if (trackIDs == nil) {
     return;
   }
-  [_logger logObj:([@"Auto Tracking is enabled: "
+  [_logger logObj:([@"Autotracking is enabled: "
                       stringByAppendingFormat:self.autoTracking ? @"Yes"
                                                                 : @"No"])
       forDescription:kMappIntelligenceLogLevelDescriptionInfo];
-  [_logger logObj:([@"Batch Support is enabled: "
+  [_logger logObj:([@"Batch support is enabled: "
                       stringByAppendingFormat:self.batchSupport ? @"Yes"
                                                                 : @"No"])
       forDescription:kMappIntelligenceLogLevelDescriptionInfo];
@@ -102,12 +128,12 @@
                               stringWithFormat:@"%f",
                                                (self.requestsInterval / 60.0)]])
       forDescription:kMappIntelligenceLogLevelDescriptionInfo];
-  [_logger logObj:([@"Log Level is:  "
+  [_logger logObj:([@"Log level is:  "
                       stringByAppendingFormat:@"%@",
                                               [self getLogLevelFor:[_logger logLevel]]])
       forDescription:kMappIntelligenceLogLevelDescriptionInfo];
   [self validateTrackingIDs:self.trackIDs];
-  [_logger logObj:([@"Track IDs: "
+  [_logger logObj:([@"TrackIDs: "
                       stringByAppendingFormat:@"%@", self.trackIDs])
       forDescription:kMappIntelligenceLogLevelDescriptionInfo];
   [self trackDomainValidation:self.trackDomain];
@@ -127,20 +153,27 @@
 
 - (void)validateNumberOfRequestsPerQueue:(NSInteger)numberOfRequests {
   if (numberOfRequests > 10000) {
-    [_logger logObj:@"Number of requests can't be grater than 10000, will be "
+    [_logger logObj:@"Number of requests cannot exceed 10000, will be "
                     @"returned to "
-                    @"default (10)."
+                    @"default (100)."
         forDescription:kMappIntelligenceLogLevelDescriptionError];
-    self.requestPerQueue = 10;
+    self.requestPerQueue = 100;
   }
+    if (numberOfRequests < 100) {
+      [_logger logObj:@"Number of requests cannot be lower than 100, will be "
+                      @"returned to "
+                      @"default (100)."
+          forDescription:kMappIntelligenceLogLevelDescriptionError];
+      self.requestPerQueue = 100;
+    }
 }
 
 - (void)validateRequestTimeInterval:(NSInteger)timeInterval {
   if (timeInterval > 3600.0) {
-    [_logger logObj:@"Request time interval can't be more than 3600 seconds "
+    [_logger logObj:@"Request time interval cannot be more than 3600 seconds "
                     @"(60 minutes), will be reset to default (15 minutes)."
         forDescription:kMappIntelligenceLogLevelDescriptionError];
-    self.requestsInterval = 900.0;
+      self.requestsInterval = 900.0;
   }
 }
 
@@ -155,7 +188,7 @@
       return false;
   }
   if (!components) {
-    [_logger logObj:@"You must enter a valid url format for tracking domain!"
+    [_logger logObj:@"You must enter a valid url format for track domain!"
         forDescription:kMappIntelligenceLogLevelDescriptionError];
   } else if (!components.scheme) {
     if (([trackingDomain rangeOfString:@"https://"].location == NSNotFound) ||
@@ -171,7 +204,7 @@
 - (void)validateTrackingIDs:(NSArray *)validTrackingIDs {
   NSArray *tempTrackingIDs;
     if ([validTrackingIDs count] == 0) {
-        [_logger logObj:@"You must enter at least one track ID, track ID list cannot be empty!"
+        [_logger logObj:@"You must enter at least one trackID, trackID list cannot be empty!"
         forDescription:kMappIntelligenceLogLevelDescriptionError];
     }
   if (validTrackingIDs != nil) {
@@ -180,7 +213,7 @@
   if ([[tempTrackingIDs lastObject] isEqual:@""] ||
       [[tempTrackingIDs lastObject] isEqual:@","] ||
       [[tempTrackingIDs lastObject] isEqual:@" "]) {
-      [_logger logObj:@"Tracking IDs can not contain blank spaces or empty strings!"
+      [_logger logObj:@"TrackIDs cannot contain blank spaces or empty strings!"
       forDescription:kMappIntelligenceLogLevelDescriptionError];
   }
 }
@@ -188,5 +221,29 @@
 - (void)setLogLevel:(MappIntelligenceLogLevelDescription)logLevel {
   [_logger setLogLevel:logLevel];
 }
+- (void)setRequestsInterval:(NSTimeInterval)requestsInterval {
+    _requestsInterval = requestsInterval;
+    [[NSUserDefaults standardUserDefaults] setDouble:requestsInterval forKey:key_requestsInterval];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+- (void)setOptOut:(BOOL)optOut {
+    _optOut = optOut;
+    [[NSUserDefaults standardUserDefaults] setBool:optOut forKey:key_optOut];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+- (BOOL)optOut {
+    return _optOut;
+}
 
+- (void)setRequestPerQueue:(NSInteger)requestPerQueue {
+    _requestPerQueue = requestPerQueue;
+    [[NSUserDefaults standardUserDefaults] setInteger:requestPerQueue forKey:key_requestPerQueue];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (void)setBatchSupport:(BOOL)batchSupport {
+    _batchSupport = batchSupport;
+    [[NSUserDefaults standardUserDefaults] setBool:batchSupport forKey:key_batchSupport];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
 @end

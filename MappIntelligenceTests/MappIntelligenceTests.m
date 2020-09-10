@@ -50,12 +50,12 @@
     [_instance initWithConfiguration:@[@12345464, @6677777777] onTrackdomain:_testTrackDomain];
 }
 
-- (void)testTrackController {
-    UIViewController *controller = [[UIViewController alloc] init];
-    XCTAssertNil([_instance trackPage:controller], "There is no error while tracking controller.");
-}
-
-- (void)testTrackCustomName {
-    XCTAssertNil([_instance trackPageWith:@"customPageName"], "There is no error while tracking custom page name.");
-}
+//- (void)testTrackController {
+//    UIViewController *controller = [[UIViewController alloc] init];
+//    XCTAssertNil([_instance trackPage:controller], "There is no error while tracking controller.");
+//}
+//
+//- (void)testTrackCustomName {
+//    XCTAssertNil([_instance trackPageWith:@"customPageName"], "There is no error while tracking custom page name.");
+//}
 @end

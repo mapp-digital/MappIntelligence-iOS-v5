@@ -11,6 +11,8 @@
 #import "Properties.h"
 #import "MappIntelligence.h"
 #import "URLSizeMonitor.h"
+#import "DatabaseManager.h"
+#import "PageViewEvent.h"
 #if TARGET_OS_WATCH
 #import <WatchKit/WatchKit.h>
 #endif
@@ -148,12 +150,22 @@
   [parametrs addObject:[NSURLQueryItem queryItemWithName:@"eor" value:@"1"]];
   [_sizeMonitor setCurrentRequestSize:[_sizeMonitor currentRequestSize] +
                                      5]; // add for end of the request
+    
+    
+    if ([event isKindOfClass:PageViewEvent.class]) {
+        PageProperties* prop = ((PageViewEvent*)event).pageProperties;
+        [parametrs addObjectsFromArray:[prop asQueryItemsFor:request]];
+    }
 
   url = [self createURLFromParametersWith:parametrs];
+  _dbRequest = [[Request alloc] initWithParamters:parametrs
+                                        andDomain:[MappIntelligence getUrl]
+                                      andTrackIds:_mappIntelligenceId];
   return url;
 }
 
 - (NSURL *)createURLFromParametersWith:(NSArray<NSURLQueryItem *> *)parameters {
+    
   NSURLComponents *urlComponents = [[NSURLComponents alloc] initWithURL:_baseUrl
                                                 resolvingAgainstBaseURL:YES];
   if (!urlComponents) {

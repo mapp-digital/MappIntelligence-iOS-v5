@@ -46,4 +46,17 @@
     NSURL *url = [_builder urlForRequest:request];
     XCTAssertNotNil(url);
 }
+
+- (void)testcreateURLFromParametersWith {
+    //1. create parameters
+    NSURLQueryItem* item1 = [[NSURLQueryItem alloc] initWithName:@"parameter1Name" value:@"parameter1Value"];
+    NSURLQueryItem* item2 = [[NSURLQueryItem alloc] initWithName:@"parameter2Name" value:@"parameter2Value"];
+    NSArray* array = [NSArray arrayWithObjects:item1, item2, nil];
+    
+    //2. test url
+    NSURL* url = [_builder createURLFromParametersWith:array];
+    XCTAssertNotNil(url);
+    XCTAssertNotNil(url.scheme);
+    XCTAssertNotNil(url.host);
+}
 @end

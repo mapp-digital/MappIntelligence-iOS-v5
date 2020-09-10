@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "PageProperties.h"
 
 typedef NS_ENUM(NSInteger, logWatchOSLevel) {
   allWatchOSLogs = 1,     // All logs of the above.
@@ -25,17 +26,46 @@ typedef NS_ENUM(NSInteger, logWatchOSLevel) {
 @property (nonatomic, readwrite) logWatchOSLevel logLevelWatchOS;
 /**
  MappIntelignece instance
- @brief Method for gets a singleton instance of MappInteligence.
- <pre><code>
+ @brief Method to get a singleton instance of MappIntelligence
+ @code
  MappIntelligenceWatchOS *mappIntelligenceWatchOS = [MappIntelligenceWatchOS shared];
- </code></pre>
+ @endcode
  @return MappIntelligence an Instance Type of MappIntelligence.
  */
 + (nullable instancetype)shared;
 
+/**
+@brief Method to initialize tracking. Please specify your track domain and trackID.
+@param trackIDs - Array of your trackIDs. The information can be provided by your account manager.
+@param trackDomain - String value of your track domain. The information can be provided by your account manager.
+@code
+MappIntelligenceWatchOS.shared()?.initWithConfiguration([12345678, 8783291721], onTrackdomain: "www.mappIntelligence-trackDomain.com")
+@endcode
+*/
 - (void)initWithConfiguration:(NSArray *_Nonnull)trackIDs
                     onTrackdomain:(NSString *_Nonnull)trackDomain;
-- (void)trackPageWith:(NSString *_Nullable)name;
+
+/**
+@brief Method to track additional page information.
+@param name - custom page name.
+@param properties - properties can contain details, groups and seach term.
+@code
+ let customName = "the custom name of page"
+ let params:NSMutableDictionary = [20: ["cp20Override", "cp21Override", "cp22Override"]]
+ let categories:NSMutableDictionary = [10: ["test"]]
+ let searchTerm = "testSearchTerm"
+ 
+ MappIntelligenceWatchOS.shared()?.trackPage(withName: customName, andWith: PageProperties(pageParams: params, andWithPageCategory: categories, andWithSearch: searchTerm))
+@endcode
+@return Error that can happen while tracking. Returns nil if no error was detected.
+*/
+- (NSError *_Nullable)trackPageWithName: (NSString *_Nonnull) name andWithPageProperties:(PageProperties  *_Nullable)properties;
+/**
+@brief Method to reset the MappIntelligence singleton. This method will set the default empty values for trackID and track domain. Please ensure to provide new trackIDs and track domain.
+@code
+MappIntelligenceWatchOS.shared()?.reset()
+@endcode
+*/
 - (void)reset;
 
 @end

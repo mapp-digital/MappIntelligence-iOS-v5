@@ -9,12 +9,16 @@
 #import "MappIntelligence.h"
 #import "MappIntelligenceDefaultConfig.h"
 #import "MappIntelligenceLogger.h"
+#import "DatabaseManager.h"
+#import "RequestData.h"
+#import <UIKit/UIKit.h>
 
 @interface MappIntelligence ()
 
 @property MappIntelligenceDefaultConfig *configuration;
 @property DefaultTracker *tracker;
 @property MappIntelligenceLogger *logger;
+@property NSTimer* timerForSendRequests;
 
 @end
 
@@ -30,6 +34,7 @@ static MappIntelligenceDefaultConfig *config = nil;
     sharedInstance = [super init];
     config = [[MappIntelligenceDefaultConfig alloc] init];
     _logger = [MappIntelligenceLogger shared];
+      [DatabaseManager shared];
   }
   return sharedInstance;
 }
@@ -64,12 +69,45 @@ static MappIntelligenceDefaultConfig *config = nil;
 
 #if !TARGET_OS_WATCH
 - (NSError *_Nullable)trackPage:(UIViewController *)controller {
+    if ([config optOut]) {
+        [_logger logObj:@"You are opted-out. No track requests are sent to the server anymore." forDescription:kMappIntelligenceLogLevelDescriptionDebug];
+        return NULL;
+    }
   return [tracker track:controller];
+}
+
+- (NSError *)trackPageWithViewController:(UIViewController *)controller andWithPageProperties:(PageProperties* )properties {
+    if ([config optOut]) {
+         [_logger logObj:@"You are opted-out. No track requests are sent to the server anymore." forDescription:kMappIntelligenceLogLevelDescriptionDebug];
+        return NULL;
+    }
+    NSString* name = NSStringFromClass([controller class]);
+    return [tracker trackWithEvent:[[PageViewEvent alloc] initWithName:name andWithProperties:properties]];
 }
 #endif
 
 - (NSError *_Nullable)trackPageWith:(NSString *)name {
+    if ([config optOut]) {
+         [_logger logObj:@"You are opted-out. No track requests are sent to the server anymore." forDescription:kMappIntelligenceLogLevelDescriptionDebug];
+        return NULL;
+    }
   return [tracker trackWith:name];
+}
+
+- (NSError *)trackPageWithEvent:(PageViewEvent *)event {
+    if ([config optOut]) {
+         [_logger logObj:@"You are opted-out. No track requests are sent to the server anymore." forDescription:kMappIntelligenceLogLevelDescriptionDebug];
+        return NULL;
+    }
+    return [tracker trackWithEvent:event];
+}
+
+- (NSError *)trackPageWithName: (NSString *_Nonnull) name andWithPageProperties:(PageProperties  *_Nullable)properties {
+    if ([config optOut]) {
+         [_logger logObj:@"You are opted-out. No track requests are sent to the server anymore." forDescription:kMappIntelligenceLogLevelDescriptionDebug];
+        return NULL;
+    }
+    return [tracker trackWithEvent:[[PageViewEvent alloc] initWithName:name andWithProperties:properties]];
 }
 
 - (void)initWithConfiguration:(NSArray *)trackIDs
@@ -88,11 +126,42 @@ static MappIntelligenceDefaultConfig *config = nil;
   [config setBatchSupport:batchSupport];
   [config setViewControllerAutoTracking:viewControllerAutoTracking];
   [config setRequestPerQueue:numberOfRequestInQueue];
-  [config setRequestsInterval:requestTimeout];
+  //[config setRequestsInterval:requestTimeout];
   [config logConfig];
 
   tracker = [DefaultTracker sharedInstance];
   [tracker initializeTracking];
+    
+    [[DatabaseManager shared] removeOldRequestsWithCompletitionHandler:^(NSError * _Nonnull error, id  _Nullable data) {
+        if (!error) {
+            [self->_logger logObj:@"Remove requests that are older than 14 days." forDescription:kMappIntelligenceLogLevelDescriptionDebug];
+        }
+        if (config.batchSupport == YES) {
+            //TODO: add timeout to this methods
+            [self->tracker sendBatchForRequestWithCompletionHandler:^(NSError * _Nullable error) {
+                //error is already obtain at one level lower
+            }];
+        } else {
+            [self->tracker sendRequestFromDatabaseWithCompletionHandler:^(NSError * _Nullable error) {
+                //error is already obtain in one level lower
+            }];
+        }
+    }];
+    [self initTimerForRequestsSendout];
+}
+
+- (void)initTimerForRequestsSendout {
+    _timerForSendRequests = [NSTimer scheduledTimerWithTimeInterval: [config requestsInterval] repeats:YES block:^(NSTimer * _Nonnull timer) {
+        if (config.batchSupport == YES) {
+            [self->tracker sendBatchForRequestWithCompletionHandler:^(NSError * _Nullable error) {
+                //error is already obtain in one level lower
+            }];
+        } else {
+            [self->tracker sendRequestFromDatabaseWithCompletionHandler:^(NSError * _Nullable error) {
+                //error is already obtain in one level lower
+            }];
+        }
+    }];
 }
 
 - (void)initWithConfiguration:(NSArray *_Nonnull)trackIDs onTrackdomain:(NSString *_Nonnull)trackDomain  {
@@ -100,21 +169,31 @@ static MappIntelligenceDefaultConfig *config = nil;
                                                           [NSNumber class]];
     NSArray *filtered = [trackIDs filteredArrayUsingPredicate:p];
     if(filtered.count != trackIDs.count) {
-        [_logger logObj:@"Track Identifiers can only contain NSNumbers. Initialization is stopped!" forDescription:kMappIntelligenceLogLevelDescriptionFault];
+        [_logger logObj:@"trackID can only contain NSNumbers. Initialization is stopped!" forDescription:kMappIntelligenceLogLevelDescriptionFault];
         return;
     }
     //default values for tequest timeout is 45 and for log level it is .none
-    [self initWithConfiguration:trackIDs onTrackdomain:trackDomain withAutotrackingEnabled:YES requestTimeout:45 numberOfRequests:10 batchSupportEnabled:YES viewControllerAutoTrackingEnabled:YES andLogLevel: none];
+    [self initWithConfiguration:trackIDs onTrackdomain:trackDomain withAutotrackingEnabled:YES requestTimeout:15*60 numberOfRequests:10 batchSupportEnabled:NO viewControllerAutoTrackingEnabled:YES andLogLevel: none];
 }
 
 - (void)setRequestTimeout:(NSTimeInterval)requestTimeout {
   [config setRequestsInterval:requestTimeout];
   [config logConfig];
+  if (_timerForSendRequests) {
+    [_timerForSendRequests invalidate];
+    _timerForSendRequests = nil;
+    [self initTimerForRequestsSendout];
+  }
 }
 
 - (void)setLogLevel:(logLevel)logLevel {
   [config setLogLevel:(MappIntelligenceLogLevelDescription)logLevel];
   [config logConfig];
+}
+
+- (void) setBatchSupportEnabled:(BOOL)batchSupportEnabled {
+    [config setBatchSupport:batchSupportEnabled];
+    [config logConfig];
 }
 
 - (NSTimeInterval)requestTimeout {
@@ -125,13 +204,48 @@ static MappIntelligenceDefaultConfig *config = nil;
   return (logLevel)[config logLevel];
 }
 
+- (BOOL)batchSupportEnabled {
+    return [config batchSupport];
+}
+
 - (void)reset {
     sharedInstance = NULL;
     sharedInstance = [self init];
-    [_logger logObj:@"Reset Mapp Inteligence Instance."
+    [_logger logObj:@"Reset Mapp Intelligence Instance."
         forDescription:kMappIntelligenceLogLevelDescriptionDebug];
     [config logConfig];
     [tracker reset];
+}
+
+- (void)optOutWith:(BOOL)status andSendCurrentData:(BOOL)value {
+    [config setOptOut:status];
+    [_logger logObj: [[NSString alloc] initWithFormat:@"You are opting out with status %d", status] forDescription:kMappIntelligenceLogLevelDescriptionDebug];
+    if (value) {
+        //send data and remove it from DB
+        [tracker sendBatchForRequestWithCompletionHandler:^(NSError * _Nullable error) {
+            //error is already obtain in one level lower
+        }];
+    } else {
+        //just remove data from DB, and do not send it
+        [tracker removeAllRequestsFromDBWithCompletionHandler:^(NSError * _Nullable error) {
+            //error is already obtain in one level lower
+        }];
+    }
+}
+
+- (void)printAllRequestFromDatabase {
+    [[DatabaseManager shared] fetchAllRequestsFromInterval:[config requestPerQueue] andWithCompletionHandler: ^(NSError * _Nonnull error, id  _Nullable data) {
+        if (!error) {
+            RequestData* dt = (RequestData*)data;
+            [dt print];
+        } else {
+            NSLog(@"error while fetching requests from local database!");
+        }
+    }];
+}
+
+- (void)removeRequestFromDatabaseWithID: (int)ID; {
+    [[DatabaseManager shared] deleteRequest:ID];
 }
 
 @end

@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "PageViewEvent.h"
+
+@class MappIntelligence;
 
 typedef NS_ENUM(NSInteger, logLevel) {
   all = 1,     // All logs of the above.
@@ -26,12 +29,14 @@ typedef NS_ENUM(NSInteger, logLevel) {
 
 @property (nonatomic, readwrite) NSTimeInterval requestTimeout;
 @property (nonatomic, readwrite) logLevel logLevel;
+@property (nonatomic, readwrite) BOOL batchSupportEnabled;
+@property (nonatomic, readwrite) NSInteger batchSupportSize;
 /**
- MappIntelignece instance
- @brief Method for gets a singleton instance of MappInteligence.
- <pre><code>
- MappIntelligence *mappIntelligence = [MappIntelligence shared];
- </code></pre>
+ MappIntelligence instance
+ @brief Method to get a singleton instance of MappIntelligence
+ @code
+ let mappInteligenceSingleton = MappIntelligence.shared()
+ @endcode
  @return MappIntelligence an Instance Type of MappIntelligence.
  */
 + (nullable instancetype)shared;
@@ -40,13 +45,66 @@ typedef NS_ENUM(NSInteger, logLevel) {
 + (NSString *_Nonnull)getId;
 
 #if !TARGET_OS_WATCH
-- (NSError *_Nullable)trackPage:(UIViewController *_Nullable)controller;
+/**
+@brief Method to collect the name of the current UIViewController and track additional page information.
+@param controller - current ui view controller.
+@param properties - properties can contain parameters, categories and search terms.
+@code
+ let params:NSMutableDictionary = [20: ["cp20Override", "cp21Override", "cp22Override"]]
+ let categories:NSMutableDictionary = [10: ["test"]]
+ let searchTerm = "testSearchTerm"
+ 
+ MappIntelligence.shared()?.trackPage(with: self, andWith: PageProperties(pageParams: params, andWithPageCategory: categories, andWithSearch: searchTerm))
+@endcode
+@return Error in case of a failure. Returns nil if no error was detected.
+*/
+- (NSError *_Nullable)trackPageWithViewController:(UIViewController *_Nonnull)controller andWithPageProperties:(PageProperties  *_Nullable)properties;
 #endif
-- (NSError *_Nullable)trackPageWith:(NSString *_Nullable)name;
+/**
+@brief Method to track additional page information.
+@param name - custom page name.
+@param properties - properties can contain details, groups and seach term.
+@code
+ let customName = "the custom name of page"
+ let params:NSMutableDictionary = [20: ["cp20Override", "cp21Override", "cp22Override"]]
+ let categories:NSMutableDictionary = [10: ["test"]]
+ let searchTerm = "testSearchTerm"
+ 
+ MappIntelligence.shared()?.trackPage(withName: customName, andWith: PageProperties(pageParams: params, andWithPageCategory: categories, andWithSearch: searchTerm))
+@endcode
+@return Error that can happen while tracking. Returns nil if no error was detected.
+*/
+- (NSError *_Nullable)trackPageWithName: (NSString *_Nonnull) name andWithPageProperties:(PageProperties  *_Nullable)properties;
 
+/**
+@brief Method to initialize tracking. Please specify your track domain and trackID.
+@param trackIDs - Array of your trackIDs. The information can be provided by your account manager.
+@param trackDomain - String value of your track domain. The information can be provided by your account manager.
+@code
+MappIntelligence.shared()?.initWithConfiguration([12345678, 8783291721], onTrackdomain: "www.mappIntelligence-trackDomain.com")
+@endcode
+*/
 - (void)initWithConfiguration:(NSArray *_Nonnull)trackIDs
                     onTrackdomain:(NSString *_Nonnull)trackDomain;
-
+/**
+@brief Method to reset the MappIntelligence singleton. This method will set the default empty values for trackID and track domain. Please ensure to provide new trackIDs and track domain.
+@code
+MappIntelligence.shared()?.reset()
+@endcode
+*/
 - (void)reset;
+/**
+@brief Method to opt-out of tracking. In case of opt-out, no data will be sent to Mapp Intelligence anymore.
+@param status - opt-out if true, false enables tracking.
+@param value - If set to true, all track requests currently stored in the database will be sent to MappIntelligence. If set to false, opt-out of tracking will be executed immediately and remaining data in the database will be lost.
+@code
+MappIntelligence.shared()?.optOut(with: false, andSendCurrentData: false)
+@endcode
+ */
+- (void)optOutWith:(BOOL) status andSendCurrentData:(BOOL) value;
+
+//testable methods
+- (void) printAllRequestFromDatabase;
+- (void) removeRequestFromDatabaseWithID: (int)ID;
 
 @end

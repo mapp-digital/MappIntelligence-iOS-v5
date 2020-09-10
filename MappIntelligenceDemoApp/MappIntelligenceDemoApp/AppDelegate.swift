@@ -14,9 +14,22 @@ var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-//        MappIntelligence.shared()?.initWithConfiguration([385255285199574], onTrackdomain: "https://q3.webtrekk.net")
-        MappIntelligence.shared()?.initWithConfiguration([], onTrackdomain: "")
+        let bundles = Bundle.allBundles
+        var path = ""
+        for bundle in bundles {
+            if bundle.path(forResource: "SetupForLocalTesting", ofType: "plist") != nil {
+                path = bundle.path(forResource: "SetupForLocalTesting", ofType: "plist") ?? ""
+            }
+        }
+        let dict = NSDictionary(contentsOfFile: path) as Dictionary?
+        let array = [(dict?["track_ids" as NSObject]?.intValue) ?? 0]
+        let domain = dict?["domain" as NSObject];
+        MappIntelligence.shared()?.initWithConfiguration(array, onTrackdomain: domain as! String);
+        
         MappIntelligence.shared()?.logLevel = .all
+        MappIntelligence.shared()?.batchSupportEnabled = true;
+        MappIntelligence.shared()?.batchSupportSize = 150;
+        MappIntelligence.shared()?.requestTimeout = 1 * 60;
 
         // Override point for customization after application launch.
         return true

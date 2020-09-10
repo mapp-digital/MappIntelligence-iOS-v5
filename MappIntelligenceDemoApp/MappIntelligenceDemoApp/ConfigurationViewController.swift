@@ -40,8 +40,16 @@ class ConfigurationViewController: UIViewController, UIPickerViewDelegate, UIPic
         setupToolBarForNumberPadKeyboard()
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
                self.view.addGestureRecognizer(tapGesture)
-        //MappIntelligence.shared()?.trackPage(self)
-        MappIntelligence.shared()?.trackPage(with: "testCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringNametestCustomStringName")
+        
+       // MappIntelligence.shared()?.trackPage(with: PageViewEvent())
+        let customName = "the custom name of page"
+        let params:NSMutableDictionary = [20: ["cp20Override", "cp21Override", "cp22Override"]]
+        let categories:NSMutableDictionary = [10: ["test"]]
+        let searchTerm = "testSearchTerm"
+        MappIntelligence.shared()?.trackPage(withName: customName, andWith: PageProperties(pageParams: params, andWithPageCategory: categories, andWithSearch: searchTerm))
+        
+        //or you can use this
+        MappIntelligence.shared()?.trackPage(with: self, andWith: PageProperties(pageParams: params, andWithPageCategory: categories, andWithSearch: searchTerm))
     }
     
     @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
