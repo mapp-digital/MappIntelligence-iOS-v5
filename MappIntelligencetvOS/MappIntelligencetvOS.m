@@ -60,12 +60,12 @@
     return (logTvOSLevel)[_mappIntelligence logLevel];
 }
 
--(void)trackPageWith:(NSString *)name {
-    [_mappIntelligence trackPageWith:name];
+- (NSError *)trackPageWithName:(NSString *)name andWithPageProperties:(PageProperties *)properties {
+    return [_mappIntelligence trackPageWithName:name andWithPageProperties:properties];
 }
 
-- (void)trackPage:(UIViewController *)controller {
-    [_mappIntelligence trackPage:controller];
+- (NSError *)trackPageWithViewController:(UIViewController *)controller andWithPageProperties:(PageProperties *)properties {
+    return [_mappIntelligence trackPageWithViewController:controller andWithPageProperties:properties];
 }
 
 - (void)reset {

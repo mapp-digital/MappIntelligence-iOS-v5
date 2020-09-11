@@ -30,7 +30,12 @@ class InterfaceController: WKInterfaceController {
     }
 
     @IBAction func TrackPage() {
-        MappIntelligenceWatchOS.shared()?.trackPage(with: "trackWatchOSTestPageName")
+        let customName = "the custom name of page"
+        let params:NSMutableDictionary = [20: ["cp20Override", "cp21Override", "cp22Override"]]
+        let categories:NSMutableDictionary = [10: ["test"]]
+        let searchTerm = "testSearchTerm"
+        
+        MappIntelligenceWatchOS.shared()?.trackPage(withName: customName, andWith: PageProperties(pageParams: params, andWithPageCategory: categories, andWithSearch: searchTerm))
     }
     @IBAction func reset() {
         MappIntelligenceWatchOS.shared()?.reset()

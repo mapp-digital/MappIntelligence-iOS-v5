@@ -11,9 +11,7 @@
 #import "MappIntelligenceLogger.h"
 #import "DatabaseManager.h"
 #import "RequestData.h"
-#import "ActionEvent.h"
-#import "ActionProperties.h"
-
+#import <UIKit/UIKit.h>
 
 @interface MappIntelligence ()
 
@@ -72,16 +70,25 @@ static MappIntelligenceDefaultConfig *config = nil;
 #if !TARGET_OS_WATCH
 - (NSError *_Nullable)trackPage:(UIViewController *)controller {
     if ([config optOut]) {
-        [_logger logObj:@"You are opted out and you have no ability to track anymore." forDescription:kMappIntelligenceLogLevelDescriptionDebug];
+        [_logger logObj:@"You are opted-out. No track requests are sent to the server anymore." forDescription:kMappIntelligenceLogLevelDescriptionDebug];
         return NULL;
     }
   return [tracker track:controller];
+}
+
+- (NSError *)trackPageWithViewController:(UIViewController *)controller andWithPageProperties:(PageProperties* )properties {
+    if ([config optOut]) {
+         [_logger logObj:@"You are opted-out. No track requests are sent to the server anymore." forDescription:kMappIntelligenceLogLevelDescriptionDebug];
+        return NULL;
+    }
+    NSString* name = NSStringFromClass([controller class]);
+    return [tracker trackWithEvent:[[PageViewEvent alloc] initWithName:name andWithProperties:properties]];
 }
 #endif
 
 - (NSError *_Nullable)trackPageWith:(NSString *)name {
     if ([config optOut]) {
-         [_logger logObj:@"You are opted out and you have no ability to track anymore." forDescription:kMappIntelligenceLogLevelDescriptionDebug];
+         [_logger logObj:@"You are opted-out. No track requests are sent to the server anymore." forDescription:kMappIntelligenceLogLevelDescriptionDebug];
         return NULL;
     }
   return [tracker trackWith:name];
@@ -89,10 +96,18 @@ static MappIntelligenceDefaultConfig *config = nil;
 
 - (NSError *)trackPageWithEvent:(PageViewEvent *)event {
     if ([config optOut]) {
-         [_logger logObj:@"You are opted out and you have no ability to track anymore." forDescription:kMappIntelligenceLogLevelDescriptionDebug];
+         [_logger logObj:@"You are opted-out. No track requests are sent to the server anymore." forDescription:kMappIntelligenceLogLevelDescriptionDebug];
         return NULL;
     }
     return [tracker trackWithEvent:event];
+}
+
+- (NSError *)trackPageWithName: (NSString *_Nonnull) name andWithPageProperties:(PageProperties  *_Nullable)properties {
+    if ([config optOut]) {
+         [_logger logObj:@"You are opted-out. No track requests are sent to the server anymore." forDescription:kMappIntelligenceLogLevelDescriptionDebug];
+        return NULL;
+    }
+    return [tracker trackWithEvent:[[PageViewEvent alloc] initWithName:name andWithProperties:properties]];
 }
 
 - (NSError *)trackCustomEventWithEventName: (NSString *)name andProperties: (NSMutableDictionary *)properties {
@@ -130,7 +145,7 @@ static MappIntelligenceDefaultConfig *config = nil;
     
     [[DatabaseManager shared] removeOldRequestsWithCompletitionHandler:^(NSError * _Nonnull error, id  _Nullable data) {
         if (!error) {
-            [self->_logger logObj:@"Remove older requests from 14 days" forDescription:kMappIntelligenceLogLevelDescriptionDebug];
+            [self->_logger logObj:@"Remove requests that are older than 14 days." forDescription:kMappIntelligenceLogLevelDescriptionDebug];
         }
         if (config.batchSupport == YES) {
             //TODO: add timeout to this methods
@@ -165,7 +180,7 @@ static MappIntelligenceDefaultConfig *config = nil;
                                                           [NSNumber class]];
     NSArray *filtered = [trackIDs filteredArrayUsingPredicate:p];
     if(filtered.count != trackIDs.count) {
-        [_logger logObj:@"Track Identifiers can only contain NSNumbers. Initialization is stopped!" forDescription:kMappIntelligenceLogLevelDescriptionFault];
+        [_logger logObj:@"trackID can only contain NSNumbers. Initialization is stopped!" forDescription:kMappIntelligenceLogLevelDescriptionFault];
         return;
     }
     //default values for tequest timeout is 45 and for log level it is .none
@@ -207,7 +222,7 @@ static MappIntelligenceDefaultConfig *config = nil;
 - (void)reset {
     sharedInstance = NULL;
     sharedInstance = [self init];
-    [_logger logObj:@"Reset Mapp Inteligence Instance."
+    [_logger logObj:@"Reset Mapp Intelligence Instance."
         forDescription:kMappIntelligenceLogLevelDescriptionDebug];
     [config logConfig];
     [tracker reset];
@@ -235,7 +250,7 @@ static MappIntelligenceDefaultConfig *config = nil;
             RequestData* dt = (RequestData*)data;
             [dt print];
         } else {
-            NSLog(@"error while fetching requests!");
+            NSLog(@"error while fetching requests from local database!");
         }
     }];
 }

@@ -32,11 +32,11 @@ typedef NS_ENUM(NSInteger, logLevel) {
 @property (nonatomic, readwrite) BOOL batchSupportEnabled;
 @property (nonatomic, readwrite) NSInteger batchSupportSize;
 /**
- MappIntelignece instance
- @brief Method for gets a singleton instance of MappInteligence.
- <pre><code>
+ MappIntelligence instance
+ @brief Method to get a singleton instance of MappIntelligence
+ @code
  let mappInteligenceSingleton = MappIntelligence.shared()
- </code></pre>
+ @endcode
  @return MappIntelligence an Instance Type of MappIntelligence.
  */
 + (nullable instancetype)shared;
@@ -46,68 +46,72 @@ typedef NS_ENUM(NSInteger, logLevel) {
 
 #if !TARGET_OS_WATCH
 /**
-@brief Method which will collect the name of current UIViewController, write request into database which will be sent to the the your tracking server.
-<pre><code>
-MappIntelligence.shared()?.trackPage(self)
-</code></pre>
-@return the error which may happen through process of tracking, if returns nil there is no error.
+@brief Method to collect the name of the current UIViewController and track additional page information.
+@param controller - current ui view controller.
+@param properties - properties can contain parameters, categories and search terms.
+@code
+ let params:NSMutableDictionary = [20: ["cp20Override", "cp21Override", "cp22Override"]]
+ let categories:NSMutableDictionary = [10: ["test"]]
+ let searchTerm = "testSearchTerm"
+ 
+ MappIntelligence.shared()?.trackPage(with: self, andWith: PageProperties(pageParams: params, andWithPageCategory: categories, andWithSearch: searchTerm))
+@endcode
+@return Error in case of a failure. Returns nil if no error was detected.
 */
-- (NSError *_Nullable)trackPage:(UIViewController *_Nullable)controller;
+- (NSError *_Nullable)trackPageWithViewController:(UIViewController *_Nonnull)controller andWithPageProperties:(PageProperties  *_Nullable)properties;
 #endif
 /**
-@brief Method which will track the name which you specify.
-@param name - the name represented as a sting value which need to be track.
-<pre><code>
-MappIntelligence.shared()?.trackPageWith("testString")
-</code></pre>
-@return the error which may happen through process of tracking, if returns nil there is no error.
+@brief Method to track additional page information.
+@param name - custom page name.
+@param properties - properties can contain details, groups and seach term.
+@code
+ let customName = "the custom name of page"
+ let params:NSMutableDictionary = [20: ["cp20Override", "cp21Override", "cp22Override"]]
+ let categories:NSMutableDictionary = [10: ["test"]]
+ let searchTerm = "testSearchTerm"
+ 
+ MappIntelligence.shared()?.trackPage(withName: customName, andWith: PageProperties(pageParams: params, andWithPageCategory: categories, andWithSearch: searchTerm))
+@endcode
+@return Error that can happen while tracking. Returns nil if no error was detected.
 */
-- (NSError *_Nullable)trackPageWith:(NSString *_Nullable)name;
-/**
-@brief Method which will track page event which you create from page properties.
-@param event - page event which can contain details, groups and seach term.
-<pre><code>
-MappIntelligence.shared()?.trackPageWithEvent(with: PageViewEvent(PageProperties([20: "cp20Override"], andWithGroup: nil, andWithSearch: "testSearchTerm")))
-</code></pre>
-@return the error which may happen through process of tracking, if returns nil there is no error.
-*/
-- (NSError *_Nullable)trackPageWithEvent:(PageViewEvent  *_Nullable)event;
+- (NSError *_Nullable)trackPageWithName: (NSString *_Nonnull) name andWithPageProperties:(PageProperties  *_Nullable)properties;
+
 
 /**
 @brief Method which will track action event created from action properties and page properties.
 @param name - name of event as string
 @param properties - dictionary with key value pairs of properties for one event, each property can have multiple values
-<pre><code>
+@code
  MappIntelligence.shared()?.trackCustomEvent(withEventName: "TestEvent", andProperties: [20:["ck20Override","ck21Override"]])
-</code></pre>
+@endcode
 @return the error which may happen through process of tracking, if returns nil there is no error.
 */
 - (NSError *_Nullable)trackCustomEventWithEventName: (NSString *_Nonnull)name andProperties: (NSDictionary *_Nullable)properties;
 
 /**
-@brief Method which will initialize your domain and track id which identify your tracking server where data will be stored.
-@param trackIDs - array of numbers which represent your track ids for your tracking server, that information as domain also will be provided to you by your account manager.
-@param trackDomain - string value which represent domain of your track server. For example: "www.mappIntelligence-trackDomain.com"
-<pre><code>
+@brief Method to initialize tracking. Please specify your track domain and trackID.
+@param trackIDs - Array of your trackIDs. The information can be provided by your account manager.
+@param trackDomain - String value of your track domain. The information can be provided by your account manager.
+@code
 MappIntelligence.shared()?.initWithConfiguration([12345678, 8783291721], onTrackdomain: "www.mappIntelligence-trackDomain.com")
-</code></pre>
+@endcode
 */
 - (void)initWithConfiguration:(NSArray *_Nonnull)trackIDs
                     onTrackdomain:(NSString *_Nonnull)trackDomain;
 /**
-@brief Method which will reset MappIntelligence singleton and allow you to create new one. This metod will set defaut empty value for domain and track ids so you must initialise it again with new values.
-<pre><code>
+@brief Method to reset the MappIntelligence singleton. This method will set the default empty values for trackID and track domain. Please ensure to provide new trackIDs and track domain.
+@code
 MappIntelligence.shared()?.reset()
-</code></pre>
+@endcode
 */
 - (void)reset;
 /**
-@brief Method which will make opt out from MappIntelligence tracking server and will not send data anymore.
-@param status - true will opt out, false will make opt in.
-@param value - true - will send all request which is currently present in database, false will just opt out/in you but it will not send any data.
-<pre><code>
+@brief Method to opt-out of tracking. In case of opt-out, no data will be sent to Mapp Intelligence anymore.
+@param status - opt-out if true, false enables tracking.
+@param value - If set to true, all track requests currently stored in the database will be sent to MappIntelligence. If set to false, opt-out of tracking will be executed immediately and remaining data in the database will be lost.
+@code
 MappIntelligence.shared()?.optOut(with: false, andSendCurrentData: false)
-</code></pre>
+@endcode
  */
 - (void)optOutWith:(BOOL) status andSendCurrentData:(BOOL) value;
 

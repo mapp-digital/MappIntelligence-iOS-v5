@@ -128,8 +128,8 @@ NSString *const StorageErrorDescriptionGeneralError = @"General Error";
                                              code:0
                                          userInfo:userInfo];
         }
-          NSLog(@"Create Database with status: %d", sqlite3_exec(self->_requestsDB, sql_statement_parameters, NULL,
-                                                                 NULL, &errorMsg));
+          //NSLog(@"Create Database with status: %d", sqlite3_exec(self->_requestsDB, sql_statement_parameters, NULL,
+          //                                                       NULL, &errorMsg));
         if (sqlite3_exec(self->_requestsDB, sql_statement_parameters, NULL,
                          NULL, &errorMsg) != SQLITE_OK) {
 
@@ -158,7 +158,7 @@ NSString *const StorageErrorDescriptionGeneralError = @"General Error";
 
       if (completionHandler) {
           const char *dbPath = [self.databasePath UTF8String];
-          NSLog(@"open database with: %d and requestDB: %d", sqlite3_open(dbPath, &self->_requestsDB), self->_requestsDB == NULL);
+          //NSLog(@"open database with: %d and requestDB: %d", sqlite3_open(dbPath, &self->_requestsDB), self->_requestsDB == NULL);
           if (sqlite3_open(dbPath, &self->_requestsDB) != SQLITE_OK) {
               NSLog(@"Failed to open database!");
           }
@@ -405,7 +405,7 @@ dispatch_async(_executionQueue, ^{
     char *cError;
     sqlite3_stmt *sql_statement;
       const char *dbPath = [self.databasePath UTF8String];
-          NSLog(@"DB: %d", self->_requestsDB == nil);
+          //NSLog(@"DB: %d", self->_requestsDB == nil);
           if (sqlite3_open(dbPath, &self->_requestsDB) == SQLITE_OK) {
     
               sqlite3_exec(self->_requestsDB, "BEGIN TRANSACTION", NULL, NULL, &cError);
@@ -567,8 +567,8 @@ dispatch_async(_executionQueue, ^{
 //TODO: select count of request and make logic around it
   dispatch_async(_executionQueue, ^{
 
-    NSMutableArray *requests = nil;
-    NSMutableArray *requestIds = nil;
+    NSMutableArray *requests = [NSMutableArray new];
+    NSMutableArray *requestIds = [NSMutableArray new];
 
     const char *dbPath = [self.databasePath UTF8String];
 
@@ -603,9 +603,12 @@ dispatch_async(_executionQueue, ^{
               initWithUTF8String:(const char *)sqlite3_column_text(
                                      sql_statement, 3)];
           int status = sqlite3_column_double(sql_statement, 4);
-          NSString *date = [[NSString alloc]
+            NSString *date = [[NSDate date] description];
+            if(sqlite3_column_text(sql_statement, 5) != NULL) {
+                date = [[NSString alloc]
               initWithUTF8String:(const char *)sqlite3_column_text(
                                      sql_statement, 5)];
+            }
 
           NSDictionary *keyedValues = @{
             @"id" : @(uniqueId),
@@ -906,7 +909,7 @@ dispatch_async(_executionQueue, ^{
         initWithString:[cachesDirecotry
                            stringByAppendingPathComponent:DB_PATH]];
   }
-  NSLog(@"Database path: %@", _databasePath);
+  //NSLog(@"Database path: %@", _databasePath);
   return _databasePath;
 }
 

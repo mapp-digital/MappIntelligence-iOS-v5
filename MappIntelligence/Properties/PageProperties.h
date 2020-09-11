@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable) NSMutableDictionary* details;
 @property (nullable) NSMutableDictionary* groups;
 
--(instancetype)initWith: (NSMutableDictionary* _Nullable) details andWithGroup: (NSMutableDictionary* _Nullable) groups andWithSearch: (NSString* _Nullable)internalSearch;
+-(instancetype)initWithPageParams: (NSMutableDictionary* _Nullable) parameters andWithPageCategory: (NSMutableDictionary* _Nullable) category andWithSearch: (NSString* _Nullable)internalSearch;
 
 -(NSMutableArray<NSURLQueryItem*>*)asQueryItemsFor: (TrackerRequest*)request;
 

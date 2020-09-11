@@ -49,9 +49,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             while let presentedViewController = topController.presentedViewController {
                 topController = presentedViewController
             }
-
-            // topController should now be your topmost view controller
-            MappIntelligence.shared()?.trackPage(topController)
         }
     }
 

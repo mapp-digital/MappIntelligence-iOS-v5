@@ -62,8 +62,8 @@
     return (logWatchOSLevel)[_mappIntelligence logLevel];
 }
 
--(void)trackPageWith:(NSString *)name {
-    [_mappIntelligence trackPageWith:name];
+- (NSError *)trackPageWithName:(NSString *)name andWithPageProperties:(PageProperties *)properties {
+    return [_mappIntelligence trackPageWithName:name andWithPageProperties:properties];
 }
 
 - (void)reset {

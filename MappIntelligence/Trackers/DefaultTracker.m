@@ -153,19 +153,19 @@ static NSString *userAgent;
   _config.serverUrl = [[NSURL alloc] initWithString:[MappIntelligence getUrl]];
   _config.MappIntelligenceId = [MappIntelligence getId];
   _config.requestInterval = [[MappIntelligence shared] requestTimeout];
-  _config.requestPerQueue = [[MappIntelligence shared] batchSupportSize];
+    _config.requestPerQueue = ([[MappIntelligence shared] batchSupportEnabled]) ? [[MappIntelligence shared] batchSupportSize] : 100;
   _requestUrlBuilder =
       [[RequestUrlBuilder alloc] initWithUrl:_config.serverUrl
                                    andWithId:_config.MappIntelligenceId];
 }
 
 - (void)sendRequestFromDatabaseWithCompletionHandler:(void (^)(NSError * _Nullable))handler {
-    [[DatabaseManager shared] fetchAllRequestsFromInterval:[[MappIntelligence shared] batchSupportSize] andWithCompletionHandler:^(NSError * _Nonnull error, id  _Nullable data) {
+    [[DatabaseManager shared] fetchAllRequestsFromInterval: _config.requestPerQueue andWithCompletionHandler:^(NSError * _Nonnull error, id  _Nullable data) {
         if (!error) {
             RequestData* dt = (RequestData*)data;
             [dt sendAllRequestsWithCompletitionHandler:^(NSError * _Nullable error) {
                 if(error) {
-                    [self->_logger logObj:[[NSString alloc] initWithFormat:@"There was an error while sendout off all requests: %@!", [error description]] forDescription:kMappIntelligenceLogLevelDescriptionDebug];
+                    [self->_logger logObj:[[NSString alloc] initWithFormat:@"An error occurred while sending track requests to Mapp Intelligence: %@!", [error description]] forDescription:kMappIntelligenceLogLevelDescriptionDebug];
                 }
                 handler(error);
             }];
@@ -184,7 +184,7 @@ static NSString *userAgent;
     }
     [_requestBatchSupportUrlBuilder sendBatchForRequestsWithCompletition:^(NSError * _Nonnull error) {
         if (error) {
-            [self->_logger logObj:@"There was an error while sending batch of requests." forDescription:kMappIntelligenceLogLevelDescriptionDebug];
+            [self->_logger logObj:@"An error occurred while sending batch requests to Mapp Intelligence." forDescription:kMappIntelligenceLogLevelDescriptionDebug];
             
         }
         handler(error);
@@ -212,7 +212,7 @@ static NSString *userAgent;
   [[DefaultTracker sharedDefaults] setValue:tmpEverId forKey:everId];
 
   if ([everId isEqual:[[NSNull alloc] init]]) {
-    @throw @"Can't generate ever id";
+    @throw @"Cannot generate everID";
   }
   return tmpEverId;
 }
@@ -279,7 +279,7 @@ static NSString *userAgent;
   if ([_config.MappIntelligenceId isEqual:@""] ||
       [_config.serverUrl.absoluteString isEqual:@""]) {
     NSString *msg =
-        @"Request cannot be sent without a track domain and track ID.";
+        @"Request cannot be sent without a track domain and trackID.";
     [_logger logObj:msg
         forDescription:kMappIntelligenceLogLevelDescriptionError];
     NSString *domain = @"com.mapp.mappIntelligenceSDK.ErrorDomain";
@@ -291,15 +291,11 @@ static NSString *userAgent;
   }
   if ([name length] > 255) {
       NSString *msg =
-      @"Content ID contains more than 255 characters, and that part will be cutted automatically.";
+      @"ContentID contains more than 255 characters and that part will be cutted automatically.";
     [_logger logObj:msg
         forDescription:kMappIntelligenceLogLevelDescriptionWarning];
-      NSString *domain = @"com.mapp.mappIntelligenceSDK.ErrorDomain";
-      NSString *desc = NSLocalizedString(msg, @"");
-      NSDictionary *userInfo = @{NSLocalizedDescriptionKey : desc};
-      NSError *error =
-          [NSError errorWithDomain:domain code:-101 userInfo:userInfo];
-      return error;
+      NSRange range = NSMakeRange(0, 254);
+      name =  [name substringWithRange:range];
   }
   if (![_defaults stringForKey:isFirstEventOfApp]) {
     [_defaults setBool:YES forKey:isFirstEventOfApp];

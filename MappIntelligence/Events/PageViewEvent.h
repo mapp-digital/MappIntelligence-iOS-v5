@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface PageViewEvent : TrackingEvent
 
 @property (nonatomic, nonnull) PageProperties* pageProperties;
--(instancetype)initWith: (PageProperties*) properties;
+-(instancetype)initWithName: (NSString*) name andWithProperties: (PageProperties*) properties;
 
 @end
 

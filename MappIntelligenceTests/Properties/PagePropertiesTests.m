@@ -26,7 +26,7 @@
     _details = [@{@20: @[@"cp20Override"]} copy];
     _groups = [@{@15: @[@"testGroups"]} copy];
     _internalSearch = @"testSearchTerm";
-    _pageProperties = [[PageProperties alloc] initWith:_details andWithGroup:_groups andWithSearch:_internalSearch];
+    _pageProperties = [[PageProperties alloc] initWithPageParams:_details andWithPageCategory:_groups andWithSearch:_internalSearch];
 }
 
 - (void)tearDown {
