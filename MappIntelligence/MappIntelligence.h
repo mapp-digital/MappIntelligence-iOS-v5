@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "PageViewEvent.h"
+#import "ActionProperties.h"
+#import "SessionProperties.h"
 
 @class MappIntelligence;
 
@@ -48,17 +50,19 @@ typedef NS_ENUM(NSInteger, logLevel) {
 /**
 @brief Method to collect the name of the current UIViewController and track additional page information.
 @param controller - current ui view controller.
-@param properties - properties can contain parameters, categories and search terms.
+@param pageProperties - properties can contain parameters, categories and search terms.
+@param sessionProperties - session properties
 @code
  let params:NSMutableDictionary = [20: ["cp20Override", "cp21Override", "cp22Override"]]
  let categories:NSMutableDictionary = [10: ["test"]]
  let searchTerm = "testSearchTerm"
+ let sessionProperties = SessionProperties(witProperties: [10: ["sessionpar1"]])
  
- MappIntelligence.shared()?.trackPage(with: self, andWith: PageProperties(pageParams: params, andWithPageCategory: categories, andWithSearch: searchTerm))
+ MappIntelligence.shared()?.trackPage(with: self, pageProperties: PageProperties(pageParams: params, andWithPageCategory: categories, andWithSearch: searchTerm), sessionProperties: sessionProperties)
 @endcode
 @return Error in case of a failure. Returns nil if no error was detected.
 */
-- (NSError *_Nullable)trackPageWithViewController:(UIViewController *_Nonnull)controller andWithPageProperties:(PageProperties  *_Nullable)properties;
+- (NSError *_Nullable)trackPageWithViewController:(UIViewController *_Nonnull)controller pageProperties:(PageProperties  *_Nullable)pageProperties sessionProperties:(SessionProperties *_Nullable) sessionProperties;
 #endif
 /**
 @brief Method to track additional page information.
@@ -69,25 +73,23 @@ typedef NS_ENUM(NSInteger, logLevel) {
  let params:NSMutableDictionary = [20: ["cp20Override", "cp21Override", "cp22Override"]]
  let categories:NSMutableDictionary = [10: ["test"]]
  let searchTerm = "testSearchTerm"
- 
- MappIntelligence.shared()?.trackPage(withName: customName, andWith: PageProperties(pageParams: params, andWithPageCategory: categories, andWithSearch: searchTerm))
+ let sessionProperties = SessionProperties(witProperties: [10: ["sessionpar1"]])
+
+ MappIntelligence.shared()?.trackPage(withName: customName, pageProperties: PageProperties(pageParams: params, andWithPageCategory: categories, andWithSearch: searchTerm), sessionProperties: sessionProperties)
 @endcode
 @return Error that can happen while tracking. Returns nil if no error was detected.
 */
-- (NSError *_Nullable)trackPageWithName: (NSString *_Nonnull) name andWithPageProperties:(PageProperties  *_Nullable)properties;
-
-
+- (NSError *_Nullable)trackPageWithName: (NSString *_Nonnull) name pageProperties:(PageProperties  *_Nullable)pageProperties sessionProperties: (SessionProperties *_Nullable) sessionProperties;
 /**
 @brief Method which will track action event created from action properties and page properties.
-@param name - name of event as string
-@param properties - dictionary with key value pairs of properties for one event, each property can have multiple values
+@param actionProperties - action properties for one event, each property can have multiple values
+@param sessionProperties - session properties for one event, each property can have multiple values
 @code
  MappIntelligence.shared()?.trackCustomEvent(withEventName: "TestEvent", andProperties: [20:["ck20Override","ck21Override"]])
 @endcode
 @return the error which may happen through process of tracking, if returns nil there is no error.
 */
-- (NSError *_Nullable)trackCustomEventWithEventName: (NSString *_Nonnull)name andProperties: (NSDictionary *_Nullable)properties;
-
+- (NSError *_Nullable) trackCustomEventWithActionProperties: (ActionProperties *_Nullable) actionProperties sessionProperties: (SessionProperties *_Nullable) sessionProperties;
 /**
 @brief Method to initialize tracking. Please specify your track domain and trackID.
 @param trackIDs - Array of your trackIDs. The information can be provided by your account manager.

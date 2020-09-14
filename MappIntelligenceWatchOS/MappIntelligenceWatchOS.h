@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "PageProperties.h"
+#import "SessionProperties.h"
+#import "ActionProperties.h"
 
 typedef NS_ENUM(NSInteger, logWatchOSLevel) {
   allWatchOSLogs = 1,     // All logs of the above.
@@ -59,7 +61,7 @@ MappIntelligenceWatchOS.shared()?.initWithConfiguration([12345678, 8783291721], 
 @endcode
 @return Error that can happen while tracking. Returns nil if no error was detected.
 */
-- (NSError *_Nullable)trackPageWithName: (NSString *_Nonnull) name andWithPageProperties:(PageProperties  *_Nullable)properties;
+- (NSError *_Nullable)trackPageWithName: (NSString *_Nonnull) name pageProperties:(PageProperties  *_Nullable)pageProperties sessionProperties: (SessionProperties *_Nullable) sessionProperties;
 /**
 @brief Method to reset the MappIntelligence singleton. This method will set the default empty values for trackID and track domain. Please ensure to provide new trackIDs and track domain.
 @code

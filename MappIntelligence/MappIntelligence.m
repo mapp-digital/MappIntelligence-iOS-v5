@@ -76,13 +76,13 @@ static MappIntelligenceDefaultConfig *config = nil;
   return [tracker track:controller];
 }
 
-- (NSError *)trackPageWithViewController:(UIViewController *)controller andWithPageProperties:(PageProperties* )properties {
+- (NSError *_Nullable)trackPageWithViewController:(UIViewController *_Nonnull)controller pageProperties:(PageProperties  *_Nullable)pageProperties sessionProperties:(SessionProperties *_Nullable) sessionProperties; {
     if ([config optOut]) {
          [_logger logObj:@"You are opted-out. No track requests are sent to the server anymore." forDescription:kMappIntelligenceLogLevelDescriptionDebug];
         return NULL;
     }
     NSString* name = NSStringFromClass([controller class]);
-    return [tracker trackWithEvent:[[PageViewEvent alloc] initWithName:name andWithProperties:properties]];
+    return [tracker trackWithEvent:[[PageViewEvent alloc] initWithName:name pageProperties:pageProperties sessionProperties:sessionProperties]];
 }
 #endif
 
@@ -102,23 +102,20 @@ static MappIntelligenceDefaultConfig *config = nil;
     return [tracker trackWithEvent:event];
 }
 
-- (NSError *)trackPageWithName: (NSString *_Nonnull) name andWithPageProperties:(PageProperties  *_Nullable)properties {
+- (NSError *_Nullable)trackPageWithName: (NSString *_Nonnull) name pageProperties:(PageProperties  *_Nullable)pageProperties sessionProperties: (SessionProperties *_Nullable) sessionProperties {
     if ([config optOut]) {
          [_logger logObj:@"You are opted-out. No track requests are sent to the server anymore." forDescription:kMappIntelligenceLogLevelDescriptionDebug];
         return NULL;
     }
-    return [tracker trackWithEvent:[[PageViewEvent alloc] initWithName:name andWithProperties:properties]];
+    return [tracker trackWithEvent:[[PageViewEvent alloc] initWithName:name pageProperties:pageProperties sessionProperties:sessionProperties]];
 }
 
-- (NSError *)trackCustomEventWithEventName: (NSString *)name andProperties: (NSMutableDictionary *)properties {
-    ActionProperties *actionProperties = [[ActionProperties alloc] initWithName:name andDetails:properties];
-    ActionEvent *event = [[ActionEvent alloc] initWithPageName:@"0" andActionProperties:actionProperties];
-    
+- (NSError *_Nullable) trackCustomEventWithActionProperties: (ActionProperties *_Nullable) actionProperties sessionProperties: (SessionProperties *_Nullable) sessionProperties {
     if ([config optOut]) {
          [_logger logObj:@"You are opted out and you have no ability to track anymore." forDescription:kMappIntelligenceLogLevelDescriptionDebug];
         return NULL;
     }
-    return [tracker trackAction:event];
+    return [tracker trackAction:[[ActionEvent alloc] initWithPageName:@"0" actionProperties:actionProperties sessionProperties:sessionProperties]];
 }
 
 - (void)initWithConfiguration:(NSArray *)trackIDs

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8F4420EE250F7BA6003961F3 /* SessionProperties.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 8FDF7111250BA9CB00818E51 /* SessionProperties.h */; };
+		8F4420EF250F969B003961F3 /* SessionProperties.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8FDF7111250BA9CB00818E51 /* SessionProperties.h */; };
+		8F4420F0250F96AB003961F3 /* ActionProperties.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8FDF7105250B9E4D00818E51 /* ActionProperties.h */; };
 		8FDF7107250B9E4D00818E51 /* ActionProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FDF7105250B9E4D00818E51 /* ActionProperties.h */; };
 		8FDF7108250B9E4D00818E51 /* ActionProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FDF7106250B9E4D00818E51 /* ActionProperties.m */; };
 		8FDF710B250B9E5B00818E51 /* ActionEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FDF7109250B9E5B00818E51 /* ActionEvent.m */; };
@@ -15,6 +18,8 @@
 		8FDF710E250BA22700818E51 /* ActionEvent.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 8FDF710A250B9E5B00818E51 /* ActionEvent.h */; };
 		8FDF710F250BA24200818E51 /* ActionProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FDF7106250B9E4D00818E51 /* ActionProperties.m */; };
 		8FDF7110250BA24B00818E51 /* ActionEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FDF7109250B9E5B00818E51 /* ActionEvent.m */; };
+		8FDF7113250BA9CB00818E51 /* SessionProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FDF7111250BA9CB00818E51 /* SessionProperties.h */; };
+		8FDF7114250BA9CB00818E51 /* SessionProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FDF7112250BA9CB00818E51 /* SessionProperties.m */; };
 		A31C6F1D24D9A0F300166585 /* RequestBatchSupportUrlBuilderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A31C6F1C24D9A0F300166585 /* RequestBatchSupportUrlBuilderTests.m */; };
 		A31C6F2024D9A9B200166585 /* DatabaseManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A31C6F1F24D9A9B200166585 /* DatabaseManagerTests.m */; };
 		A31D7A4F243CC0F200386A1C /* TrackerRequestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A31D7A4E243CC0F200386A1C /* TrackerRequestTests.m */; };
@@ -206,6 +211,8 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				8F4420F0250F96AB003961F3 /* ActionProperties.h in CopyFiles */,
+				8F4420EF250F969B003961F3 /* SessionProperties.h in CopyFiles */,
 				A3258BFB250A76A100039B92 /* Properties.h in CopyFiles */,
 				A3258BFA250A769700039B92 /* TrackingEvent.h in CopyFiles */,
 				A3258BF9250A768C00039B92 /* TrackerRequest.h in CopyFiles */,
@@ -220,6 +227,7 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				8F4420EE250F7BA6003961F3 /* SessionProperties.h in Copy Files */,
 				8FDF710E250BA22700818E51 /* ActionEvent.h in Copy Files */,
 				8FDF710D250BA22100818E51 /* ActionProperties.h in Copy Files */,
 				A337446824C84A100096259B /* Properties.h in Copy Files */,
@@ -254,6 +262,8 @@
 		8FDF7106250B9E4D00818E51 /* ActionProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionProperties.m; sourceTree = "<group>"; };
 		8FDF7109250B9E5B00818E51 /* ActionEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionEvent.m; sourceTree = "<group>"; };
 		8FDF710A250B9E5B00818E51 /* ActionEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionEvent.h; sourceTree = "<group>"; };
+		8FDF7111250BA9CB00818E51 /* SessionProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SessionProperties.h; sourceTree = "<group>"; };
+		8FDF7112250BA9CB00818E51 /* SessionProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SessionProperties.m; sourceTree = "<group>"; };
 		A30E3EC0244491F30047D7A6 /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .travis.yml; sourceTree = "<group>"; };
 		A30E3EC224449ED90047D7A6 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A30E3EC42444A0B70047D7A6 /* .oclint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .oclint.yml; sourceTree = "<group>"; };
@@ -562,6 +572,8 @@
 				8FDF7106250B9E4D00818E51 /* ActionProperties.m */,
 				A337445A24C1A12A0096259B /* PageProperties.h */,
 				A337445B24C1A12A0096259B /* PageProperties.m */,
+				8FDF7111250BA9CB00818E51 /* SessionProperties.h */,
+				8FDF7112250BA9CB00818E51 /* SessionProperties.m */,
 			);
 			path = Properties;
 			sourceTree = "<group>";
@@ -737,6 +749,7 @@
 				A380D2102413ED35009E2CD8 /* RequestUrlBuilder.h in Headers */,
 				A36CD7CD23F44594004E3E2D /* TrackerRequest.h in Headers */,
 				BCCAE6D2240D2E16005E9FD6 /* MappIntelligenceDefaultConfig.h in Headers */,
+				8FDF7113250BA9CB00818E51 /* SessionProperties.h in Headers */,
 				A3CC548E249125F0006215FD /* Request.h in Headers */,
 				A380D21424141B55009E2CD8 /* URLSizeMonitor.h in Headers */,
 				A3EAFF612418E02F009D5108 /* UIFlowObserver.h in Headers */,
@@ -1053,6 +1066,7 @@
 				A3CC549324912AA8006215FD /* RequestData.m in Sources */,
 				A380D20D2413D317009E2CD8 /* Configuration.m in Sources */,
 				A36CD7D223F447D0004E3E2D /* Properties.m in Sources */,
+				8FDF7114250BA9CB00818E51 /* SessionProperties.m in Sources */,
 				A380D21524141B55009E2CD8 /* URLSizeMonitor.m in Sources */,
 				A3CC5487248FC418006215FD /* DatabaseManager.m in Sources */,
 				8FDF7108250B9E4D00818E51 /* ActionProperties.m in Sources */,

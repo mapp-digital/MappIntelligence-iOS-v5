@@ -53,7 +53,9 @@ class ViewController: UIViewController {
         MappIntelligence.shared()?.optOut(with: false, andSendCurrentData: false)
     }
     @IBAction func sendActionEvent(_ sender: Any) {
-        MappIntelligence.shared()?.trackCustomEvent(withEventName: "TestEvent", andProperties: [20:["ck20Override","ck21Override"]])
+        let actionProperties = ActionProperties(name: "TestAction", andDetails: [20:["ck20Override","ck21Override"]])
+        let sessionProperties = SessionProperties(witProperties: [10: ["sessionpar1"]])
+        MappIntelligence.shared()?.trackCustomEvent(with: actionProperties, sessionProperties: sessionProperties)
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {

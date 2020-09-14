@@ -12,9 +12,10 @@
 
 @synthesize pageName = _pageName;
 
-- (instancetype)initWithName:(NSString *)name andWithProperties:(PageProperties *)properties {
+- (instancetype)initWithName:(NSString *)name pageProperties:(PageProperties *)pageProperties sessionProperties: (SessionProperties *_Nullable) sessionProperties {
     self = [super init];
-    _pageProperties = properties;
+    _pageProperties = pageProperties;
+    _sessionProperties = sessionProperties;
     _pageName = name;
     return self;
 }

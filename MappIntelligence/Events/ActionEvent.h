@@ -10,14 +10,16 @@
 #import "TrackingEvent.h"
 #import "PageProperties.h"
 #import "ActionProperties.h"
+#import "SessionProperties.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ActionEvent : TrackingEvent
 
 @property (nonatomic, nonnull) ActionProperties* actionProperties;
+@property (nonatomic, nullable) SessionProperties *sessionProperties;
 
--(instancetype)initWithPageName: (NSString *)name andActionProperties: (ActionProperties*) actionProperties;
+-(instancetype)initWithPageName: (NSString *)name actionProperties: (ActionProperties*) actionProperties sessionProperties: (SessionProperties *_Nullable)sessionProperties;
 
 @end
 

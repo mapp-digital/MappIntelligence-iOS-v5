@@ -26,7 +26,7 @@
     _groups = [@{@15: @[@"testGroups"]} copy];
     _internalSearch = @"testSearchTerm";
     _pageProperties = [[PageProperties alloc] initWithPageParams:_details andWithPageCategory:_groups andWithSearch:_internalSearch];
-    _pageViewEvent = [[PageViewEvent alloc] initWithName:@"test custom name" andWithProperties:_pageProperties];
+    _pageViewEvent = [[PageViewEvent alloc] initWithName:@"test custom name" pageProperties:_pageProperties sessionProperties:nil];
 }
 
 - (void)tearDown {

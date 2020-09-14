@@ -157,9 +157,17 @@
     if ([event isKindOfClass:PageViewEvent.class]) {
         PageProperties* prop = ((PageViewEvent*)event).pageProperties;
         [parametrs addObjectsFromArray:[prop asQueryItemsFor:request]];
+        if (properties.isFirstEventOfSession) {
+            SessionProperties *session = ((PageViewEvent*)event).sessionProperties;
+            [parametrs addObjectsFromArray:[session asQueryItemsFor: request]];
+        }
     } else if ([event isKindOfClass:ActionEvent.class]) {
         ActionProperties* prop = ((ActionEvent*)event).actionProperties;
         [parametrs addObjectsFromArray:[prop asQueryItemsFor:request]];
+        if (properties.isFirstEventOfSession) {
+            SessionProperties *session = ((ActionEvent*)event).sessionProperties;
+            [parametrs addObjectsFromArray:[session asQueryItemsFor: request]];
+        }
     }
 
   url = [self createURLFromParametersWith:parametrs];
