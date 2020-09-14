@@ -51,7 +51,7 @@ typedef NS_ENUM(NSInteger, logLevel) {
 @brief Method to collect the name of the current UIViewController and track additional page information.
 @param controller - current ui view controller.
 @param pageProperties - properties can contain parameters, categories and search terms.
-@param sessionProperties - session properties
+@param sessionProperties - contains properties for session, each property can have multiple values
 @code
  let params:NSMutableDictionary = [20: ["cp20Override", "cp21Override", "cp22Override"]]
  let categories:NSMutableDictionary = [10: ["test"]]
@@ -67,7 +67,8 @@ typedef NS_ENUM(NSInteger, logLevel) {
 /**
 @brief Method to track additional page information.
 @param name - custom page name.
-@param properties - properties can contain details, groups and seach term.
+@param pageProperties - properties can contain details, groups and seach term.
+@param sessionProperties - contains properties for session, each property can have multiple values
 @code
  let customName = "the custom name of page"
  let params:NSMutableDictionary = [20: ["cp20Override", "cp21Override", "cp22Override"]]
@@ -85,8 +86,9 @@ typedef NS_ENUM(NSInteger, logLevel) {
 @param actionProperties - action properties for one event, each property can have multiple values
 @param sessionProperties - session properties for one event, each property can have multiple values
 @code
- MappIntelligence.shared()?.trackCustomEvent(withEventName: "TestEvent", andProperties: [20:["ck20Override","ck21Override"]])
-@endcode
+ let actionProperties = ActionProperties(name: "TestAction", andDetails: [20:["ck20Override","ck21Override"]])
+ let sessionProperties = SessionProperties(witProperties: [10: ["sessionpar1"]])
+ MappIntelligence.shared()?.trackCustomEvent(with: actionProperties, sessionProperties: sessionProperties)@endcode
 @return the error which may happen through process of tracking, if returns nil there is no error.
 */
 - (NSError *_Nullable) trackCustomEventWithActionProperties: (ActionProperties *_Nullable) actionProperties sessionProperties: (SessionProperties *_Nullable) sessionProperties;
