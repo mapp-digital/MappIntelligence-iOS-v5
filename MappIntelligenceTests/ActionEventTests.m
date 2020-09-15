@@ -13,6 +13,9 @@
 @property NSMutableDictionary* details;
 @property ActionEvent* actionEvent;
 @property ActionProperties* actionProperties;
+@property NSMutableDictionary *sessionDictionary;
+@property SessionProperties *sessionProperties;
+
 @end
 
 @implementation ActionEventTests
@@ -20,16 +23,23 @@
 - (void)setUp {
     _details = [@{@20: @"ck20Override"} copy];
     _actionProperties = [[ActionProperties alloc] initWithName: @"TestEvent" andDetails: _details];
-    _actionEvent = [[ActionEvent alloc] initWithPageName:@"0" andActionProperties:_actionProperties];
+    _sessionDictionary = [@{@10: @[@"sessionpar1"]} copy];
+    _sessionProperties =  [[SessionProperties alloc] initWitProperties: _sessionDictionary];
+    _actionEvent = [[ActionEvent alloc] initWithPageName:@"0" actionProperties:_actionProperties sessionProperties:_sessionProperties];
 }
 
 - (void)tearDown {
-
+    _actionEvent = nil;
+    _details = nil;
+    _sessionProperties = nil;
+    _actionProperties = nil;
+    _sessionDictionary = nil;
 }
 
-- (void)testExample {
-    // This is an example of a functional test case.
-    // Use XCTAssert and related functions to verify your tests produce the correct results.
+- (void)testInitWithProperties {
+    XCTAssertTrue([[_actionEvent actionProperties] isEqual:_actionProperties], @"Action properties is not the same as it used for creation of action event!");
+    XCTAssertTrue([[_actionEvent sessionProperties] isEqual:_sessionProperties], @"Session properties is not the same as it used for creation of action event!");
+
 }
 
 - (void)testPerformanceExample {

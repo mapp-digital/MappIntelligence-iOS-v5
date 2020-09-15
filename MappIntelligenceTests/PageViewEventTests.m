@@ -13,10 +13,11 @@
 
 @property PageViewEvent* pageViewEvent;
 @property PageProperties* pageProperties;
+@property SessionProperties *sessionProperties;
 @property NSString* internalSearch;
 @property NSMutableDictionary* details;
 @property NSMutableDictionary* groups;
-
+@property NSMutableDictionary *sessionDictionary;
 @end
 
 @implementation PageViewEventTests
@@ -26,7 +27,9 @@
     _groups = [@{@15: @[@"testGroups"]} copy];
     _internalSearch = @"testSearchTerm";
     _pageProperties = [[PageProperties alloc] initWithPageParams:_details andWithPageCategory:_groups andWithSearch:_internalSearch];
-    _pageViewEvent = [[PageViewEvent alloc] initWithName:@"test custom name" pageProperties:_pageProperties sessionProperties:nil];
+    _sessionDictionary = [@{@10: @[@"sessionpar1"]} copy];
+    _sessionProperties =  [[SessionProperties alloc] initWitProperties: _sessionDictionary];
+    _pageViewEvent = [[PageViewEvent alloc] initWithName:@"test custom name" pageProperties:_pageProperties sessionProperties:_sessionProperties];
 }
 
 - (void)tearDown {
@@ -35,10 +38,14 @@
     _internalSearch = nil;
     _details = nil;
     _groups = nil;
+    _sessionDictionary = nil;
+    _sessionProperties = nil;
 }
 
 - (void)testInitWithProperties {
     XCTAssertTrue([[_pageViewEvent pageProperties] isEqual:_pageProperties], @"Page properties is not the same as it used for creation of page view event!");
+    XCTAssertTrue([[_pageViewEvent sessionProperties] isEqual:_sessionProperties], @"Session properties is not the same as it used for creation of page view event!");
+
 }
 
 - (void)testPerformanceExample {
