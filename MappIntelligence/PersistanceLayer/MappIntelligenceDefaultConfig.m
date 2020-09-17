@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "MappIntelligenceDefaultConfig.h"
 #import "MappIntelligenceLogger.h"
+
 #define key_trackIDs @"track_ids"
 #define key_trackDomain @"track_domain"
 #define key_logLevel @"log_level"
@@ -20,11 +21,18 @@
 #define key_viewControllerAutoTracking @"view_controller_auto_tracking"
 #define key_MappIntelligence_default_configuration @"defaultConfiguration"
 
+NSTimeInterval const requestIntervalDefault = 15*60;
+BOOL const optOutDefault = NO;
+BOOL const batchSupportDefault = NO;
+NSInteger const requestPerQueueDefault = 100;
+
 @interface MappIntelligenceDefaultConfig ()
 @property (nonnull) MappIntelligenceLogger *logger;
 @end
 
 @implementation MappIntelligenceDefaultConfig : NSObject
+
+
 
 @synthesize autoTracking;
 @synthesize batchSupport = _batchSupport;
@@ -43,28 +51,25 @@
 
     if (self = [super init]) {
       _logger = [MappIntelligenceLogger shared];
-        NSLog(@"requestInterval: %f and case: %d", [[NSUserDefaults standardUserDefaults]
-        doubleForKey:key_requestsInterval], [[NSUserDefaults standardUserDefaults]
-                                             doubleForKey:key_requestsInterval] != 0);
         self.requestsInterval =
             ([[NSUserDefaults standardUserDefaults]
                  doubleForKey:key_requestsInterval] != 0)
                 ? (double)[[NSUserDefaults standardUserDefaults]
                       doubleForKey:key_requestsInterval]
-                : 15 * 60;
+                : requestIntervalDefault;
         self.optOut =
             (![[NSUserDefaults standardUserDefaults] doubleForKey:key_optOut])
-                ? NO
+                ? optOutDefault
                 : [[NSUserDefaults standardUserDefaults]
                       doubleForKey:key_optOut];
         self.batchSupport = (![[NSUserDefaults standardUserDefaults]
                                 doubleForKey:key_batchSupport])
-                                ? NO
+                                ? batchSupportDefault
                                 : [[NSUserDefaults standardUserDefaults]
                                       doubleForKey:key_batchSupport];
         self.requestPerQueue = (![[NSUserDefaults standardUserDefaults]
                                    doubleForKey:key_requestPerQueue])
-                                   ? 100
+                                   ? requestPerQueueDefault
                                    : [[NSUserDefaults standardUserDefaults]
                                          doubleForKey:key_requestPerQueue];
     }
@@ -153,27 +158,27 @@
 
 - (void)validateNumberOfRequestsPerQueue:(NSInteger)numberOfRequests {
   if (numberOfRequests > 10000) {
-    [_logger logObj:@"Number of requests cannot exceed 10000, will be "
+    [_logger logObj: [NSString stringWithFormat: @"Number of requests cannot exceed 10000, will be "
                     @"returned to "
-                    @"default (100)."
+                      @"default (%ld).", (long)requestPerQueueDefault]
         forDescription:kMappIntelligenceLogLevelDescriptionError];
-    self.requestPerQueue = 100;
+    self.requestPerQueue = requestPerQueueDefault;
   }
     if (numberOfRequests < 100) {
-      [_logger logObj:@"Number of requests cannot be lower than 100, will be "
+      [_logger logObj:[NSString stringWithFormat: @"Number of requests cannot be lower than 100, will be "
                       @"returned to "
-                      @"default (100)."
+                       @"default (%ld).", (long)requestPerQueueDefault]
           forDescription:kMappIntelligenceLogLevelDescriptionError];
-      self.requestPerQueue = 100;
+      self.requestPerQueue = requestPerQueueDefault;
     }
 }
 
 - (void)validateRequestTimeInterval:(NSInteger)timeInterval {
   if (timeInterval > 3600.0) {
-    [_logger logObj:@"Request time interval cannot be more than 3600 seconds "
-                    @"(60 minutes), will be reset to default (15 minutes)."
+    [_logger logObj:[NSString stringWithFormat: @"Request time interval cannot be more than 3600 seconds "
+                     @"(60 minutes), will be reset to default (%f minutes).", requestIntervalDefault/60]
         forDescription:kMappIntelligenceLogLevelDescriptionError];
-      self.requestsInterval = 900.0;
+      self.requestsInterval = requestIntervalDefault;
   }
 }
 
@@ -245,5 +250,21 @@
     _batchSupport = batchSupport;
     [[NSUserDefaults standardUserDefaults] setBool:batchSupport forKey:key_batchSupport];
     [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (void) reset {
+    self.requestsInterval = requestIntervalDefault;
+    self.optOut = optOutDefault;
+    self.batchSupport = batchSupportDefault;
+    self.requestPerQueue = requestIntervalDefault;
+}
+
+- (BOOL) isConfiguredForTracking {
+    if (self.trackDomain && self.trackIDs) {
+        return YES;
+    }
+    [_logger logObj:@"Mapp Intelligence is not configured properly for tracking. Missing track domain or trackid!" forDescription:kMappIntelligenceLogLevelDescriptionDebug];
+
+    return NO;
 }
 @end

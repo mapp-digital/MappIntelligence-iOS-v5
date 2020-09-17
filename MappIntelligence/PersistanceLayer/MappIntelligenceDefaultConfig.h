@@ -8,8 +8,14 @@
 #import "Config.h"
 #import "DefaultTracker.h"
 
+extern NSTimeInterval const requestIntervalDefault;
+extern BOOL const optOutDefault;
+extern BOOL const batchSupportDefault;
+extern NSInteger const requestPerQueueDefault;
+
 @interface MappIntelligenceDefaultConfig : NSObject <Config, NSCoding>
 
 - (void)logConfig;
-
+- (void) reset;
+- (BOOL) isConfiguredForTracking;
 @end

@@ -178,7 +178,11 @@
 }
 
 - (NSURL *)createURLFromParametersWith:(NSArray<NSURLQueryItem *> *)parameters {
-    
+    if (!_baseUrl) {
+        [_logger logObj:@"BaseUrl not set"
+            forDescription:kMappIntelligenceLogLevelDescriptionError];
+        return NULL;
+    }
   NSURLComponents *urlComponents = [[NSURLComponents alloc] initWithURL:_baseUrl
                                                 resolvingAgainstBaseURL:YES];
   if (!urlComponents) {

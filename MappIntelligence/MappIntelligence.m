@@ -73,12 +73,18 @@ static MappIntelligenceDefaultConfig *config = nil;
         [_logger logObj:@"You are opted-out. No track requests are sent to the server anymore." forDescription:kMappIntelligenceLogLevelDescriptionDebug];
         return NULL;
     }
+    if (![config isConfiguredForTracking]) {
+        return NULL;
+    }
   return [tracker track:controller];
 }
 
 - (NSError *_Nullable)trackPageWithViewController:(UIViewController *_Nonnull)controller pageProperties:(PageProperties  *_Nullable)pageProperties sessionProperties:(SessionProperties *_Nullable) sessionProperties; {
     if ([config optOut]) {
          [_logger logObj:@"You are opted-out. No track requests are sent to the server anymore." forDescription:kMappIntelligenceLogLevelDescriptionDebug];
+        return NULL;
+    }
+    if (![config isConfiguredForTracking]) {
         return NULL;
     }
     NSString* name = NSStringFromClass([controller class]);
@@ -91,12 +97,18 @@ static MappIntelligenceDefaultConfig *config = nil;
          [_logger logObj:@"You are opted-out. No track requests are sent to the server anymore." forDescription:kMappIntelligenceLogLevelDescriptionDebug];
         return NULL;
     }
+    if (![config isConfiguredForTracking]) {
+        return NULL;
+    }
   return [tracker trackWith:name];
 }
 
 - (NSError *)trackPageWithEvent:(PageViewEvent *)event {
     if ([config optOut]) {
          [_logger logObj:@"You are opted-out. No track requests are sent to the server anymore." forDescription:kMappIntelligenceLogLevelDescriptionDebug];
+        return NULL;
+    }
+    if (![config isConfiguredForTracking]) {
         return NULL;
     }
     return [tracker trackWithEvent:event];
@@ -107,12 +119,18 @@ static MappIntelligenceDefaultConfig *config = nil;
          [_logger logObj:@"You are opted-out. No track requests are sent to the server anymore." forDescription:kMappIntelligenceLogLevelDescriptionDebug];
         return NULL;
     }
+    if (![config isConfiguredForTracking]) {
+        return NULL;
+    }
     return [tracker trackWithEvent:[[PageViewEvent alloc] initWithName:name pageProperties:pageProperties sessionProperties:sessionProperties]];
 }
 
 - (NSError *_Nullable) trackCustomEventWithActionProperties: (ActionProperties *_Nullable) actionProperties sessionProperties: (SessionProperties *_Nullable) sessionProperties {
     if ([config optOut]) {
          [_logger logObj:@"You are opted out and you have no ability to track anymore." forDescription:kMappIntelligenceLogLevelDescriptionDebug];
+        return NULL;
+    }
+    if (![config isConfiguredForTracking]) {
         return NULL;
     }
     return [tracker trackAction:[[ActionEvent alloc] initWithPageName:@"0" actionProperties:actionProperties sessionProperties:sessionProperties]];
@@ -181,7 +199,8 @@ static MappIntelligenceDefaultConfig *config = nil;
         return;
     }
     //default values for tequest timeout is 45 and for log level it is .none
-    [self initWithConfiguration:trackIDs onTrackdomain:trackDomain withAutotrackingEnabled:YES requestTimeout:15*60 numberOfRequests:10 batchSupportEnabled:NO viewControllerAutoTrackingEnabled:YES andLogLevel: none];
+    [self initWithConfiguration:trackIDs onTrackdomain:trackDomain withAutotrackingEnabled:YES requestTimeout: requestIntervalDefault numberOfRequests:requestPerQueueDefault
+            batchSupportEnabled:batchSupportDefault viewControllerAutoTrackingEnabled:YES andLogLevel: none];
 }
 
 - (void)setRequestTimeout:(NSTimeInterval)requestTimeout {
@@ -221,8 +240,10 @@ static MappIntelligenceDefaultConfig *config = nil;
     sharedInstance = [self init];
     [_logger logObj:@"Reset Mapp Intelligence Instance."
         forDescription:kMappIntelligenceLogLevelDescriptionDebug];
+    [config reset];
     [config logConfig];
     [tracker reset];
+    [_logger logObj:@"Resetting the SDK sets all configuration options to the default values. Please initialize tracking by specifying your trackdomain and trackID after calling reset" forDescription:kMappIntelligenceLogLevelDescriptionInfo];
 }
 
 - (void)optOutWith:(BOOL)status andSendCurrentData:(BOOL)value {
