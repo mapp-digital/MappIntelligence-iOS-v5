@@ -109,8 +109,9 @@
             }
         }];
     }
-    completionHandler(nil);
-}
+    if (_requests.count == 0) {
+        completionHandler(nil);
+    }}
 
 #pragma mark - Getters
 

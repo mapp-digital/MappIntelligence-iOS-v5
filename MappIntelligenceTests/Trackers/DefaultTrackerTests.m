@@ -100,7 +100,7 @@
     NSMutableDictionary* groups = [@{@15: @[@"testGroups"]} copy];
     NSString* internalSearch = @"testSearchTerm";
     NSMutableDictionary* sessionDictionary = [@{@10: @[@"sessionpar1"]} copy];
-    SessionProperties* sessionProperties =  [[SessionProperties alloc] initWitProperties: sessionDictionary];
+    SessionProperties* sessionProperties =  [[SessionProperties alloc] initWithProperties: sessionDictionary];
     PageProperties* pageProperties = [[PageProperties alloc] initWithPageParams:details andWithPageCategory:groups andWithSearch:internalSearch];
     PageViewEvent* pageViewEvent = [[PageViewEvent alloc] initWithName:@"the custom name" pageProperties:pageProperties sessionProperties:sessionProperties ];
     NSError* error = [_tracker trackWithEvent:pageViewEvent];
@@ -108,14 +108,14 @@
     XCTAssertNil(error, @"There was an error while tracking page view event!");
 }
 
-- (void) testTrackAction {
-    NSMutableDictionary* details = [@{@20: @[@"1 element"]} copy];
+- (void) testTrackWithAction {
+    NSMutableDictionary* properties = [@{@20: @[@"1 element"]} copy];
     NSString* actionname = @"TestAction";
     NSMutableDictionary* sessionDictionary = [@{@10: @[@"sessionpar1"]} copy];
-    SessionProperties* sessionProperties =  [[SessionProperties alloc] initWitProperties: sessionDictionary];
+    SessionProperties* sessionProperties =  [[SessionProperties alloc] initWithProperties: sessionDictionary];
     
-    ActionProperties* actionProperties = [[ActionProperties alloc] initWithName:actionname andDetails:details];
-    ActionEvent *actionEvent = [[ActionEvent alloc] initWithPageName:@"0" actionProperties:actionProperties sessionProperties:sessionProperties];
+    ActionProperties* actionProperties = [[ActionProperties alloc] initWithProperties:properties];
+    ActionEvent *actionEvent = [[ActionEvent alloc] initWithName: actionname pageName:@"0" actionProperties:actionProperties sessionProperties:sessionProperties];
     NSError* error = [_tracker trackAction:actionEvent];
     XCTAssertNil(error, @"There was an error while tracking action event!");
 }

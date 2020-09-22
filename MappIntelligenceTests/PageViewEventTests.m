@@ -28,7 +28,7 @@
     _internalSearch = @"testSearchTerm";
     _pageProperties = [[PageProperties alloc] initWithPageParams:_details andWithPageCategory:_groups andWithSearch:_internalSearch];
     _sessionDictionary = [@{@10: @[@"sessionpar1"]} copy];
-    _sessionProperties =  [[SessionProperties alloc] initWitProperties: _sessionDictionary];
+    _sessionProperties =  [[SessionProperties alloc] initWithProperties: _sessionDictionary];
     _pageViewEvent = [[PageViewEvent alloc] initWithName:@"test custom name" pageProperties:_pageProperties sessionProperties:_sessionProperties];
 }
 

@@ -63,6 +63,9 @@
               handler(error);
               }];
         }
+        if (bodies.count == 0) {
+            handler(nil);
+        }
     }];
 }
 

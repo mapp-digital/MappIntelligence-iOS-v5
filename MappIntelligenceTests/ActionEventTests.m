@@ -22,10 +22,10 @@
 
 - (void)setUp {
     _details = [@{@20: @"ck20Override"} copy];
-    _actionProperties = [[ActionProperties alloc] initWithName: @"TestEvent" andDetails: _details];
+    _actionProperties = [[ActionProperties alloc] initWithProperties: _details];
     _sessionDictionary = [@{@10: @[@"sessionpar1"]} copy];
-    _sessionProperties =  [[SessionProperties alloc] initWitProperties: _sessionDictionary];
-    _actionEvent = [[ActionEvent alloc] initWithPageName:@"0" actionProperties:_actionProperties sessionProperties:_sessionProperties];
+    _sessionProperties =  [[SessionProperties alloc] initWithProperties: _sessionDictionary];
+    _actionEvent = [[ActionEvent alloc] initWithName:@"TestAction" pageName:@"0" actionProperties:_actionProperties sessionProperties:_sessionProperties];
 }
 
 - (void)tearDown {

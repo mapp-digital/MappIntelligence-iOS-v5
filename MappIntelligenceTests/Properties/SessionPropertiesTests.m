@@ -19,7 +19,7 @@
 
 - (void)setUp {
     _sessionDictionary = [@{@10: @[@"sessionpar1"]} copy];
-    _sessionProperties =  [[SessionProperties alloc] initWitProperties: _sessionDictionary];
+    _sessionProperties =  [[SessionProperties alloc] initWithProperties: _sessionDictionary];
 }
 
 - (void)tearDown {

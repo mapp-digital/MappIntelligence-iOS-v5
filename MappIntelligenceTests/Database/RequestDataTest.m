@@ -107,11 +107,12 @@
 - (void)testSendAllRequests {
     XCTestExpectation* expectation = [[XCTestExpectation alloc] initWithDescription:@"Wait until delete requests from database!"];
     _requestData = [[RequestData alloc] initWithKeyedValues:_keyedValues];
+    NSLog(@"%@",_keyedValues);
     [_requestData sendAllRequestsWithCompletitionHandler:^(NSError * _Nullable error) {
         XCTAssertNil(error, @"There was an error wile sending all all requests!");
         [expectation fulfill];
     }];
-    [self waitForExpectations:[NSArray arrayWithObject:expectation] timeout:5];
+    [self waitForExpectations:[NSArray arrayWithObject:expectation] timeout:25];
 }
 
 - (void)testPerformanceExample {
