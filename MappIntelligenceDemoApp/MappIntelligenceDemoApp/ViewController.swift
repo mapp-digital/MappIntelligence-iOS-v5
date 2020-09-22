@@ -68,8 +68,6 @@ class ViewController: UIViewController {
         let actionProperties = ActionProperties(properties:  [20:["ck20Override","ck21Override"]])
         let sessionProperties = SessionProperties(properties: [10: ["sessionpar1"]])
         MappIntelligence.shared()?.trackCustomEvent(withName: "TestAction", actionProperties: actionProperties, sessionProperties: sessionProperties)
-//        MappIntelligence.shared()?.trackPage(withName: "Custom Page NameCustom Page NameCustom Page NameCustom Page NameCustom Page NameCustom Page NameCustom Page NameCustom Page NameCustom Page NameCustom Page NameCustom Page NameCustom Page NameCustom Page NameCustom Page NameCustom Page NameCustom Page NameCustom Page NameCustom Page NameCustom Page NameCustom Page NameCustom Page NameCustom Page NameCustom Page NameCustom Page NameCustom Page NameCustom Page NameCustom Page NameCustom Page NameCustom Page NameCustom Page NameCustom Page NameCustom Page NameCustom Page NameCustom Page NameCustom Page NameCustom Page NameCustom Page NameCustom Page NameCustom Page NameCustom Page NameCustom Page NameCustom Page NameCustom Page NameCustom Page NameCustom Page NameCustom Page NameCustom Page NameCustom Page NameCustom Page NameCustom Page Name", pageProperties: nil, sessionProperties: nil)
-        
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
