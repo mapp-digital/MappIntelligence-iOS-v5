@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SessionProperties : NSObject
 @property (nullable) NSMutableDictionary* properties;
--(instancetype)initWitProperties: (NSMutableDictionary* _Nullable) properties;
+-(instancetype)initWithProperties: (NSMutableDictionary* _Nullable) properties;
 -(NSMutableArray<NSURLQueryItem*>*)asQueryItemsFor: (TrackerRequest*)request;
 @end
 

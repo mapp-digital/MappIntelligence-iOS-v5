@@ -162,8 +162,7 @@
             [parametrs addObjectsFromArray:[session asQueryItemsFor: request]];
         }
     } else if ([event isKindOfClass:ActionEvent.class]) {
-        ActionProperties* prop = ((ActionEvent*)event).actionProperties;
-        [parametrs addObjectsFromArray:[prop asQueryItemsFor:request]];
+        [parametrs addObjectsFromArray:[(ActionEvent*)event asQueryItems]];
         if (properties.isFirstEventOfSession) {
             SessionProperties *session = ((ActionEvent*)event).sessionProperties;
             [parametrs addObjectsFromArray:[session asQueryItemsFor: request]];

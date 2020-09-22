@@ -10,7 +10,7 @@
 
 @implementation SessionProperties
 
--(instancetype)initWitProperties: (NSMutableDictionary* _Nullable) properties {
+-(instancetype)initWithProperties: (NSMutableDictionary* _Nullable) properties {
     self = [self init];
     if (self) {
         _properties = properties;

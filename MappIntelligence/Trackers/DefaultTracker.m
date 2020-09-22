@@ -350,7 +350,7 @@ static NSString *userAgent;
     Request *r = [self->_requestUrlBuilder dbRequest];
     [r setStatus:ACTIVE];
     BOOL status = [[DatabaseManager shared] insertRequest:r];
-    NSLog(@"request written with success: %d", status);
+    [_logger logObj:[NSString stringWithFormat: @"request written with success: %d", status] forDescription:kMappIntelligenceLogLevelDescriptionDebug];
   _isFirstEventOfSession = NO;
   _isFirstEventOpen = NO;
 }

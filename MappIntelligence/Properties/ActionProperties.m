@@ -10,24 +10,19 @@
 
 @implementation ActionProperties
 
-- (instancetype)initWithName:(NSString *)name andDetails:(NSMutableDictionary *)details {
+-(instancetype)initWithProperties: (NSMutableDictionary* _Nullable) properties {
     self = [self init];
     if (self) {
-        _name = name;
-        _details = details;
+        _properties = properties;
     }
     return  self;
 }
 
-- (NSMutableArray<NSURLQueryItem *> *)asQueryItemsFor:(TrackerRequest *)request {
+- (NSMutableArray<NSURLQueryItem *> *)asQueryItems {
     NSMutableArray<NSURLQueryItem*>* items = [[NSMutableArray alloc] init];
-    if (_name) {
-        [items addObject:[[NSURLQueryItem alloc] initWithName:@"ct" value:_name]];
-    }
-    
-    if (_details) {
-        for(NSString* key in _details) {
-            [items addObject:[[NSURLQueryItem alloc] initWithName:[NSString stringWithFormat:@"ck%@",key] value: [_details[key] componentsJoinedByString:@";"]]];
+    if (_properties) {
+        for(NSString* key in _properties) {
+            [items addObject:[[NSURLQueryItem alloc] initWithName:[NSString stringWithFormat:@"ck%@",key] value: [_properties[key] componentsJoinedByString:@";"]]];
         }
     }
     return items;

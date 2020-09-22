@@ -82,16 +82,18 @@ typedef NS_ENUM(NSInteger, logLevel) {
 */
 - (NSError *_Nullable)trackPageWithName: (NSString *_Nonnull) name pageProperties:(PageProperties  *_Nullable)pageProperties sessionProperties: (SessionProperties *_Nullable) sessionProperties;
 /**
-@brief Method which will track action event created from action properties and page properties.
+@brief Method which will track action event created from action properties and session properties.
+@param name - custom event name
 @param actionProperties - action properties for one event, each property can have multiple values
 @param sessionProperties - session properties for one event, each property can have multiple values
 @code
- let actionProperties = ActionProperties(name: "TestAction", andDetails: [20:["ck20Override","ck21Override"]])
- let sessionProperties = SessionProperties(witProperties: [10: ["sessionpar1"]])
- MappIntelligence.shared()?.trackCustomEvent(with: actionProperties, sessionProperties: sessionProperties)@endcode
+ let actionProperties = ActionProperties(properties:  [20:["ck20Override","ck21Override"]])
+ let sessionProperties = SessionProperties(properties: [10: ["sessionpar1"]])
+ MappIntelligence.shared()?.trackCustomEvent(withName: "TestAction", actionProperties: actionProperties, sessionProperties: sessionProperties)
+ @endcode
 @return the error which may happen through process of tracking, if returns nil there is no error.
 */
-- (NSError *_Nullable) trackCustomEventWithActionProperties: (ActionProperties *_Nullable) actionProperties sessionProperties: (SessionProperties *_Nullable) sessionProperties;
+- (NSError *_Nullable) trackCustomEventWithName:(NSString *_Nonnull) name  actionProperties: (ActionProperties *_Nullable) actionProperties sessionProperties: (SessionProperties *_Nullable) sessionProperties;
 /**
 @brief Method to initialize tracking. Please specify your track domain and trackID.
 @param trackIDs - Array of your trackIDs. The information can be provided by your account manager.

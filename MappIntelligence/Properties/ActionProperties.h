@@ -13,11 +13,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ActionProperties : NSObject
 
-@property (nullable) NSString* name;
-@property (nullable) NSMutableDictionary* details;
+@property (nullable) NSMutableDictionary* properties;
 
--(instancetype)initWithName: (NSString* _Nullable) name andDetails: (NSMutableDictionary* _Nullable) details;
--(NSMutableArray<NSURLQueryItem*>*)asQueryItemsFor: (TrackerRequest*)request;
+-(instancetype)initWithProperties: (NSMutableDictionary* _Nullable) properties;
+-(NSMutableArray<NSURLQueryItem*>*)asQueryItems;
 
 @end
 

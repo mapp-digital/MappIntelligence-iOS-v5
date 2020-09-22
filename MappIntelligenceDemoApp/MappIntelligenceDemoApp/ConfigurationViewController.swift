@@ -46,7 +46,7 @@ class ConfigurationViewController: UIViewController, UIPickerViewDelegate, UIPic
         let params:NSMutableDictionary = [20: ["cp20Override", "cp21Override", "cp22Override"]]
         let categories:NSMutableDictionary = [10: ["test"]]
         let searchTerm = "testSearchTerm"
-        let sessionProperties = SessionProperties(witProperties: [10: ["sessionpar1"]])
+        let sessionProperties = SessionProperties(properties: [10: ["sessionpar1"]])
 
         MappIntelligence.shared()?.trackPage(withName: customName, pageProperties: PageProperties(pageParams: params, andWithPageCategory: categories, andWithSearch: searchTerm), sessionProperties: sessionProperties)
         //or you can use this

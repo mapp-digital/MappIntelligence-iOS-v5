@@ -16,11 +16,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ActionEvent : TrackingEvent
 
+@property (nullable) NSString* name;
 @property (nonatomic, nonnull) ActionProperties* actionProperties;
 @property (nonatomic, nullable) SessionProperties *sessionProperties;
 
--(instancetype)initWithPageName: (NSString *)name actionProperties: (ActionProperties*) actionProperties sessionProperties: (SessionProperties *_Nullable)sessionProperties;
-
+-(instancetype)initWithName: (NSString *)name pageName: (NSString *)pageName actionProperties: (ActionProperties*) actionProperties sessionProperties: (SessionProperties *_Nullable)sessionProperties;
+-(NSMutableArray<NSURLQueryItem*>*)asQueryItems;
 @end
 
 NS_ASSUME_NONNULL_END
