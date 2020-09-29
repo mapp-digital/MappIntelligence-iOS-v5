@@ -43,7 +43,7 @@ class ConfigurationViewController: UIViewController, UIPickerViewDelegate, UIPic
         
        // MappIntelligence.shared()?.trackPage(with: PageViewEvent())
         let customName = "the custom name of page"
-        let params:NSMutableDictionary = [20: ["cp20Override", "cp21Override", "cp22Override"]]
+        let params:[NSNumber : [String]] = [20: ["cp20Override", "cp21Override", "cp22Override"]]
         let categories:NSMutableDictionary = [10: ["test"]]
         let searchTerm = "testSearchTerm"
         let sessionProperties = SessionProperties(properties: [10: ["sessionpar1"]])

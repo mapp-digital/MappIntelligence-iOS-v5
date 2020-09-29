@@ -10,7 +10,7 @@
 
 @implementation ActionProperties
 
--(instancetype)initWithProperties: (NSMutableDictionary* _Nullable) properties {
+-(instancetype)initWithProperties: (NSDictionary<NSNumber* ,NSArray<NSString*>*>* _Nullable) properties {
     self = [self init];
     if (self) {
         _properties = properties;
@@ -21,7 +21,7 @@
 - (NSMutableArray<NSURLQueryItem *> *)asQueryItems {
     NSMutableArray<NSURLQueryItem*>* items = [[NSMutableArray alloc] init];
     if (_properties) {
-        for(NSString* key in _properties) {
+        for(NSNumber* key in _properties) {
             [items addObject:[[NSURLQueryItem alloc] initWithName:[NSString stringWithFormat:@"ck%@",key] value: [_properties[key] componentsJoinedByString:@";"]]];
         }
     }

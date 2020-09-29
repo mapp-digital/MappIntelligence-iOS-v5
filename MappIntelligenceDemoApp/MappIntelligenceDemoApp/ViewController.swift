@@ -66,7 +66,7 @@ class ViewController: UIViewController {
     }
     @IBAction func sendActionEvent(_ sender: Any) {
         let actionProperties = ActionProperties(properties:  [20:["ck20Override","ck21Override"]])
-        let sessionProperties = SessionProperties(properties: [10: ["sessionpar1"]])
+        let sessionProperties = SessionProperties(properties: [10: ["018", "Over"]])
         MappIntelligence.shared()?.trackCustomEvent(withName: "TestAction", actionProperties: actionProperties, sessionProperties: sessionProperties)
     }
     

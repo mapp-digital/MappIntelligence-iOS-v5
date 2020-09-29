@@ -53,7 +53,7 @@ typedef NS_ENUM(NSInteger, logLevel) {
 @param pageProperties - properties can contain parameters, categories and search terms.
 @param sessionProperties - contains properties for session, each property can have multiple values
 @code
- let params:NSMutableDictionary = [20: ["cp20Override", "cp21Override", "cp22Override"]]
+ let params:[NSNumber:[String]] = [20: ["cp20Override", "cp21Override", "cp22Override"]]
  let categories:NSMutableDictionary = [10: ["test"]]
  let searchTerm = "testSearchTerm"
  let sessionProperties = SessionProperties(witProperties: [10: ["sessionpar1"]])
@@ -71,7 +71,7 @@ typedef NS_ENUM(NSInteger, logLevel) {
 @param sessionProperties - contains properties for session, each property can have multiple values
 @code
  let customName = "the custom name of page"
- let params:NSMutableDictionary = [20: ["cp20Override", "cp21Override", "cp22Override"]]
+ let params:[NSNumber:[String]] = [20: ["cp20Override", "cp21Override", "cp22Override"]]
  let categories:NSMutableDictionary = [10: ["test"]]
  let searchTerm = "testSearchTerm"
  let sessionProperties = SessionProperties(witProperties: [10: ["sessionpar1"]])

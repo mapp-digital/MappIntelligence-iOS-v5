@@ -50,14 +50,16 @@ MappIntelligenceWatchOS.shared()?.initWithConfiguration([12345678, 8783291721], 
 /**
 @brief Method to track additional page information.
 @param name - custom page name.
-@param properties - properties can contain details, groups and seach term.
+@param pageProperties - properties can contain details, groups and seach term.
+@param sessionProperties - contains properties for session, each property can have multiple values
 @code
  let customName = "the custom name of page"
- let params:NSMutableDictionary = [20: ["cp20Override", "cp21Override", "cp22Override"]]
+ let params:[NSNumber:[String]] = [20: ["cp20Override", "cp21Override", "cp22Override"]]
  let categories:NSMutableDictionary = [10: ["test"]]
  let searchTerm = "testSearchTerm"
+ let sessionProperties = SessionProperties(witProperties: [10: ["sessionpar1"]])
  
- MappIntelligenceWatchOS.shared()?.trackPage(withName: customName, andWith: PageProperties(pageParams: params, andWithPageCategory: categories, andWithSearch: searchTerm))
+ MappIntelligenceWatchOS.shared()?.trackPage(withName: customName, pageProperties: PageProperties(pageParams: params, andWithPageCategory: categories, andWithSearch: searchTerm), sessionProperties: sessionProperties)
 @endcode
 @return Error that can happen while tracking. Returns nil if no error was detected.
 */

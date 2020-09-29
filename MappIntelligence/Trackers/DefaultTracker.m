@@ -157,6 +157,15 @@ static NSString *userAgent;
   _requestUrlBuilder =
       [[RequestUrlBuilder alloc] initWithUrl:_config.serverUrl
                                    andWithId:_config.MappIntelligenceId];
+    if(_queue) {
+        Properties *properties = [self generateRequestProperties];
+        if (properties.isAppUpdated) {
+            ActionProperties *actionProperties = [[ActionProperties alloc] initWithProperties:nil];
+            SessionProperties *sessionProperties = [[SessionProperties alloc] initWithProperties: @{@815:@[@"1"]}];
+            ActionEvent *updateEvent = [[ActionEvent alloc] initWithName:@"app_updated" pageName:@"0" actionProperties:actionProperties sessionProperties:sessionProperties];
+            [self trackAction: updateEvent];
+        }
+    }
 }
 
 - (void)sendRequestFromDatabaseWithCompletionHandler:(void (^)(NSError * _Nullable))handler {

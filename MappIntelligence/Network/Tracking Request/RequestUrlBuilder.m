@@ -157,16 +157,20 @@
     if ([event isKindOfClass:PageViewEvent.class]) {
         PageProperties* prop = ((PageViewEvent*)event).pageProperties;
         [parametrs addObjectsFromArray:[prop asQueryItemsFor:request]];
-        if (properties.isFirstEventOfSession) {
-            SessionProperties *session = ((PageViewEvent*)event).sessionProperties;
-            [parametrs addObjectsFromArray:[session asQueryItemsFor: request]];
-        }
+        SessionProperties *session = ((PageViewEvent*)event).sessionProperties;
+        [parametrs addObjectsFromArray:[session asQueryItemsFor: request]];
     } else if ([event isKindOfClass:ActionEvent.class]) {
         [parametrs addObjectsFromArray:[(ActionEvent*)event asQueryItems]];
-        if (properties.isFirstEventOfSession) {
-            SessionProperties *session = ((ActionEvent*)event).sessionProperties;
-            [parametrs addObjectsFromArray:[session asQueryItemsFor: request]];
+        SessionProperties *session = ((ActionEvent*)event).sessionProperties;
+        [parametrs addObjectsFromArray:[session asQueryItemsFor: request]];
+    }
+    
+    if (properties.isFirstEventOfSession) {
+        if (properties.appVersion) {
+            [parametrs addObject:[NSURLQueryItem queryItemWithName:@"cs804" value: properties.appVersion]];
         }
+        [parametrs addObject:[NSURLQueryItem queryItemWithName:@"cs805" value: properties.buildVersion]];
+        [parametrs addObject:[NSURLQueryItem queryItemWithName:@"cs821" value: properties.isFirstEventOfApp ? @"1": @"0"]];
     }
 
   url = [self createURLFromParametersWith:parametrs];

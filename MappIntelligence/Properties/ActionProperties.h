@@ -13,9 +13,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ActionProperties : NSObject
 
-@property (nullable) NSMutableDictionary* properties;
+@property (nullable) NSDictionary<NSNumber* ,NSArray<NSString*>*>* properties;
 
--(instancetype)initWithProperties: (NSMutableDictionary* _Nullable) properties;
+-(instancetype)initWithProperties: (NSDictionary<NSNumber* ,NSArray<NSString*>*>* _Nullable) properties;
 -(NSMutableArray<NSURLQueryItem*>*)asQueryItems;
 
 @end

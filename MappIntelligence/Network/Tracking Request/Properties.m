@@ -8,6 +8,9 @@
 
 #import "Properties.h"
 
+static NSString *const appVersonKey = @"kAppVersion";
+static NSString *const buildVersonKey = @"kBuildVersion";
+
 @implementation Properties
 
 - (instancetype)initWithEverID:(NSString *)eid
@@ -21,6 +24,28 @@
   self.timestamp = stamp;
   self.userAgent = agent;
   return self;
+}
+
+- (NSString *) getAppVersion {
+    return NSBundle.mainBundle.infoDictionary[@"CFBundleShortVersionString"];
+}
+
+- (NSString *) getBuildVersion {
+    return NSBundle.mainBundle.infoDictionary[@"CFBundleVersion"];
+}
+
+- (BOOL) isAppUpdated {
+    NSString *previousVersion = [[NSUserDefaults standardUserDefaults] stringForKey:appVersonKey];
+    if (!previousVersion) {
+        [[NSUserDefaults standardUserDefaults] setObject:self.appVersion forKey:appVersonKey];
+        return NO;
+    }
+    if ([previousVersion isEqual:self.appVersion]) {
+        return NO;
+    } else {
+        [[NSUserDefaults standardUserDefaults] setObject:self.appVersion forKey:appVersonKey];
+        return YES;
+    }
 }
 
 @end
