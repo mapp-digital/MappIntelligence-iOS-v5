@@ -426,7 +426,7 @@ static NSString *userAgent;
 
 - (void) checkIfAppUpdated {
     Properties *properties = [self generateRequestProperties];
-    if (!properties.isAppUpdated) {
+    if (properties.isAppUpdated) {
         ActionProperties *actionProperties = [[ActionProperties alloc] initWithProperties:nil];
         SessionProperties *sessionProperties = [[SessionProperties alloc] initWithProperties: @{@815:@[@"1"]}];
         ActionEvent *updateEvent = [[ActionEvent alloc] initWithName:@"app_updated" pageName:@"0" actionProperties:actionProperties sessionProperties:sessionProperties];
