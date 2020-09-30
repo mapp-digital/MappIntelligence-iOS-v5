@@ -30,6 +30,7 @@ var window: UIWindow?
         MappIntelligence.shared()?.batchSupportEnabled = true;
         MappIntelligence.shared()?.batchSupportSize = 150;
         MappIntelligence.shared()?.requestTimeout = 1 * 60;
+        MappIntelligence.shared()?.requestPerQueue = 300;
 
         // Override point for customization after application launch.
         return true

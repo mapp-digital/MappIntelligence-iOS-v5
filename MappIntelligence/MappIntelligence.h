@@ -33,6 +33,7 @@ typedef NS_ENUM(NSInteger, logLevel) {
 @property (nonatomic, readwrite) logLevel logLevel;
 @property (nonatomic, readwrite) BOOL batchSupportEnabled;
 @property (nonatomic, readwrite) NSInteger batchSupportSize;
+@property (nonatomic, readwrite) NSInteger requestPerQueue;
 /**
  MappIntelligence instance
  @brief Method to get a singleton instance of MappIntelligence

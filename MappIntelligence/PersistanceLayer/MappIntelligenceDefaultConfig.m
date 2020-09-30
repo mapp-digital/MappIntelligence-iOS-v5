@@ -25,6 +25,7 @@ NSTimeInterval const requestIntervalDefault = 15*60;
 BOOL const optOutDefault = NO;
 BOOL const batchSupportDefault = NO;
 NSInteger const requestPerQueueDefault = 100;
+NSInteger const batchSupportSizeDefault = 5000;
 
 @interface MappIntelligenceDefaultConfig ()
 @property (nonnull) MappIntelligenceLogger *logger;

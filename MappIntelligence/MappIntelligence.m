@@ -34,7 +34,8 @@ static MappIntelligenceDefaultConfig *config = nil;
     sharedInstance = [super init];
     config = [[MappIntelligenceDefaultConfig alloc] init];
     _logger = [MappIntelligenceLogger shared];
-      [DatabaseManager shared];
+      _batchSupportSize = batchSupportSizeDefault;
+
   }
   return sharedInstance;
 }
@@ -222,6 +223,15 @@ static MappIntelligenceDefaultConfig *config = nil;
 - (void) setBatchSupportEnabled:(BOOL)batchSupportEnabled {
     [config setBatchSupport:batchSupportEnabled];
     [config logConfig];
+}
+
+- (NSInteger) requestPerQueue {
+    return config.requestPerQueue;
+}
+
+- (void) setRequestPerQueue:(NSInteger)requestPerQueue {
+    [config setRequestPerQueue:requestPerQueue];
+    [tracker initializeTracking];
 }
 
 - (NSTimeInterval)requestTimeout {
