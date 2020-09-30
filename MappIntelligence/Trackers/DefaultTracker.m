@@ -157,15 +157,6 @@ static NSString *userAgent;
   _requestUrlBuilder =
       [[RequestUrlBuilder alloc] initWithUrl:_config.serverUrl
                                    andWithId:_config.MappIntelligenceId];
-    if(_queue) {
-        Properties *properties = [self generateRequestProperties];
-        if (properties.isAppUpdated) {
-            ActionProperties *actionProperties = [[ActionProperties alloc] initWithProperties:nil];
-            SessionProperties *sessionProperties = [[SessionProperties alloc] initWithProperties: @{@815:@[@"1"]}];
-            ActionEvent *updateEvent = [[ActionEvent alloc] initWithName:@"app_updated" pageName:@"0" actionProperties:actionProperties sessionProperties:sessionProperties];
-            [self trackAction: updateEvent];
-        }
-    }
 }
 
 - (void)sendRequestFromDatabaseWithCompletionHandler:(void (^)(NSError * _Nullable))handler {
@@ -390,6 +381,7 @@ static NSString *userAgent;
 - (void)updateFirstSessionWith:(UIApplicationState)state {
   if (state == UIApplicationStateInactive) {
     _isFirstEventOfSession = YES;
+     [self checkIfAppUpdated];
   } else {
     _isFirstEventOfSession = NO;
   }
@@ -409,6 +401,7 @@ static NSString *userAgent;
   if ([date timeIntervalSinceDate:[_defaults objectForKey:appHibernationDate]] >
       30 * 60) {
     _isFirstEventOfSession = YES;
+    [self checkIfAppUpdated];
   } else {
     _isFirstEventOfSession = NO;
   }
@@ -429,6 +422,16 @@ static NSString *userAgent;
   [_defaults removeObjectForKey:isFirstEventOfApp];
   [_defaults synchronize];
   everID = [self getNewEverID];
+}
+
+- (void) checkIfAppUpdated {
+    Properties *properties = [self generateRequestProperties];
+    if (!properties.isAppUpdated) {
+        ActionProperties *actionProperties = [[ActionProperties alloc] initWithProperties:nil];
+        SessionProperties *sessionProperties = [[SessionProperties alloc] initWithProperties: @{@815:@[@"1"]}];
+        ActionEvent *updateEvent = [[ActionEvent alloc] initWithName:@"app_updated" pageName:@"0" actionProperties:actionProperties sessionProperties:sessionProperties];
+        [self trackAction: updateEvent];
+    }
 }
 
 @end
