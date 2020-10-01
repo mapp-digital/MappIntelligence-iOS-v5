@@ -231,6 +231,7 @@ static MappIntelligenceDefaultConfig *config = nil;
 
 - (void) setRequestPerQueue:(NSInteger)requestPerQueue {
     [config setRequestPerQueue:requestPerQueue];
+    [config logConfig];
     [tracker initializeTracking];
 }
 
