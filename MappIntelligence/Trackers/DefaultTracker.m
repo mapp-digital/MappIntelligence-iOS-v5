@@ -152,7 +152,7 @@ static NSString *userAgent;
 - (void)initializeTracking {
   _config.serverUrl = [[NSURL alloc] initWithString:[MappIntelligence getUrl]];
   _config.MappIntelligenceId = [MappIntelligence getId];
-  _config.requestInterval = [[MappIntelligence shared] requestTimeout];
+  _config.requestInterval = [[MappIntelligence shared] requestInterval];
     _config.requestPerQueue = ([[MappIntelligence shared] batchSupportEnabled]) ? [[MappIntelligence shared] batchSupportSize] : [[MappIntelligence shared] requestPerQueue];
   _requestUrlBuilder =
       [[RequestUrlBuilder alloc] initWithUrl:_config.serverUrl

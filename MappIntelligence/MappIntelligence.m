@@ -141,7 +141,7 @@ static MappIntelligenceDefaultConfig *config = nil;
 - (void)initWithConfiguration:(NSArray *)trackIDs
                         onTrackdomain:(NSString *)trackDomain
               withAutotrackingEnabled:(BOOL)autoTracking
-                       requestTimeout:(NSTimeInterval)requestTimeout
+                       requestInterval:(NSTimeInterval)requestInterval
                      numberOfRequests:(NSInteger)numberOfRequestInQueue
                   batchSupportEnabled:(BOOL)batchSupport
     viewControllerAutoTrackingEnabled:(BOOL)viewControllerAutoTracking
@@ -154,7 +154,7 @@ static MappIntelligenceDefaultConfig *config = nil;
   [config setBatchSupport:batchSupport];
   [config setViewControllerAutoTracking:viewControllerAutoTracking];
   [config setRequestPerQueue:numberOfRequestInQueue];
-  //[config setRequestsInterval:requestTimeout];
+  //[config setRequestsInterval:requestInterval];
   [config logConfig];
 
   tracker = [DefaultTracker sharedInstance];
@@ -201,12 +201,12 @@ static MappIntelligenceDefaultConfig *config = nil;
         return;
     }
     //default values for tequest timeout is 45 and for log level it is .none
-    [self initWithConfiguration:trackIDs onTrackdomain:trackDomain withAutotrackingEnabled:YES requestTimeout: requestIntervalDefault numberOfRequests:requestPerQueueDefault
+    [self initWithConfiguration:trackIDs onTrackdomain:trackDomain withAutotrackingEnabled:YES requestInterval: requestIntervalDefault numberOfRequests:requestPerQueueDefault
             batchSupportEnabled:batchSupportDefault viewControllerAutoTrackingEnabled:YES andLogLevel: none];
 }
 
-- (void)setRequestTimeout:(NSTimeInterval)requestTimeout {
-  [config setRequestsInterval:requestTimeout];
+- (void)setRequestInterval:(NSTimeInterval)requestInterval {
+  [config setRequestsInterval:requestInterval];
   [config logConfig];
   if (_timerForSendRequests) {
     [_timerForSendRequests invalidate];
@@ -235,7 +235,7 @@ static MappIntelligenceDefaultConfig *config = nil;
     [tracker initializeTracking];
 }
 
-- (NSTimeInterval)requestTimeout {
+- (NSTimeInterval)requestInterval {
   return [config requestsInterval];
 }
 
@@ -258,16 +258,23 @@ static MappIntelligenceDefaultConfig *config = nil;
     [_logger logObj:@"Resetting the SDK sets all configuration options to the default values. Please initialize tracking by specifying your trackdomain and trackID after calling reset" forDescription:kMappIntelligenceLogLevelDescriptionInfo];
 }
 
-- (void)optOutWith:(BOOL)status andSendCurrentData:(BOOL)value {
-    [config setOptOut:status];
-    [_logger logObj: [[NSString alloc] initWithFormat:@"You are opting out with status %d", status] forDescription:kMappIntelligenceLogLevelDescriptionDebug];
+- (void)optIn {
+    [config setOptOut:NO];
+    [_logger logObj: @"You are opted-in. Tracking started." forDescription:kMappIntelligenceLogLevelDescriptionDebug];
+}
+
+
+- (void)optOutAndSendCurrentData:(BOOL)value {
+    [config setOptOut:YES];
     if (value) {
         //send data and remove it from DB
+        [_logger logObj: @"You are opted-out. Current data is sent to trackserver." forDescription:kMappIntelligenceLogLevelDescriptionDebug];
         [tracker sendBatchForRequestWithCompletionHandler:^(NSError * _Nullable error) {
             //error is already obtain in one level lower
         }];
     } else {
         //just remove data from DB, and do not send it
+        [_logger logObj: @"You are opted-out. Current data is deleted." forDescription:kMappIntelligenceLogLevelDescriptionDebug];
         [tracker removeAllRequestsFromDBWithCompletionHandler:^(NSError * _Nullable error) {
             //error is already obtain in one level lower
         }];

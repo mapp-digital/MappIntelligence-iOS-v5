@@ -24,7 +24,7 @@ typedef NS_ENUM(NSInteger, logWatchOSLevel) {
 };
 @interface MappIntelligenceWatchOS : NSObject
 
-@property (nonatomic, readwrite) NSTimeInterval requestTimeout;
+@property (nonatomic, readwrite) NSTimeInterval requestInterval;
 @property (nonatomic, readwrite) logWatchOSLevel logLevelWatchOS;
 /**
  MappIntelignece instance
@@ -50,7 +50,7 @@ MappIntelligenceWatchOS.shared()?.initWithConfiguration([12345678, 8783291721], 
 /**
 @brief Method to track additional page information.
 @param name - custom page name.
-@param properties - properties can contain details, groups and seach term.
+@param pageProperties - pageProperties can contain details, groups and seach term.
 @code
  let customName = "the custom name of page"
  let params:NSMutableDictionary = [20: ["cp20Override", "cp21Override", "cp22Override"]]

@@ -44,16 +44,16 @@
     [_mappIntelligence initWithConfiguration:trackIDs onTrackdomain:trackDomain];
 }
 
-- (void)setRequestTimeout:(NSTimeInterval)requestTimeout {
-    [_mappIntelligence setRequestTimeout:requestTimeout];
+- (void)setRequestInterval:(NSTimeInterval)requestInterval {
+    [_mappIntelligence setRequestInterval:requestInterval];
 }
 
 - (void)setLogLevelTVOS:(logTvOSLevel)logLevelTVOS {
     [_mappIntelligence setLogLevel: (logLevel)logLevelTVOS];
 }
 
-- (NSTimeInterval)requestTimeout {
-    return [_mappIntelligence requestTimeout];
+- (NSTimeInterval)requestInterval {
+    return [_mappIntelligence requestInterval];
 }
 
 - (logTvOSLevel)logLevelTVOS {

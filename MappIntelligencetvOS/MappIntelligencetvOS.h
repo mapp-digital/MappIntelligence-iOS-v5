@@ -25,7 +25,7 @@ typedef NS_ENUM(NSInteger, logTvOSLevel) {
 @interface MappIntelligencetvOS : NSObject
 
 
-@property (nonatomic, readwrite) NSTimeInterval requestTimeout;
+@property (nonatomic, readwrite) NSTimeInterval requestInterval;
 @property (nonatomic, readwrite) logTvOSLevel logLevelTVOS;
 /**
  MappIntelignece instance
