@@ -429,7 +429,7 @@ static NSString *userAgent;
     if (properties.isAppUpdated) {
         ActionProperties *actionProperties = [[ActionProperties alloc] initWithProperties:nil];
         SessionProperties *sessionProperties = [[SessionProperties alloc] initWithProperties: @{@815:@[@"1"]}];
-        ActionEvent *updateEvent = [[ActionEvent alloc] initWithName:@"app_updated" pageName:@"0" actionProperties:actionProperties sessionProperties:sessionProperties];
+        ActionEvent *updateEvent = [[ActionEvent alloc] initWithName:@"webtrekk_ignore" pageName:@"0" actionProperties:actionProperties sessionProperties:sessionProperties];
         [self trackAction: updateEvent];
     }
 }
