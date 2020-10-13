@@ -9,7 +9,6 @@
 #import "MappIntelligenceWatchOS.h"
 #import <WatchKit/WatchKit.h>
 #import "MappIntelligence.h"
-#import "DefaultTracker.h"
 
 @interface MappIntelligenceWatchOS ()
 

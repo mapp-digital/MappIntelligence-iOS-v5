@@ -8,7 +8,6 @@
 
 #import "MappIntelligencetvOS.h"
 #import "MappIntelligence.h"
-#import "DefaultTracker.h"
 
 @interface MappIntelligencetvOS ()
 
