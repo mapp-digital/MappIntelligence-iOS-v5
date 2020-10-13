@@ -429,7 +429,7 @@ static NSString *userAgent;
 
 - (void) checkIfAppUpdated {
     Properties *properties = [self generateRequestProperties];
-    if (!properties.isAppUpdated && _queue) {
+    if (properties.isAppUpdated && _queue) {
         _isFirstEventOfSession = YES;
         ActionProperties *actionProperties = [[ActionProperties alloc] initWithProperties:nil];
         SessionProperties *sessionProperties = [[SessionProperties alloc] initWithProperties: @{@815:@[@"1"]}];
