@@ -29,10 +29,11 @@ typedef NS_ENUM(NSInteger, logLevel) {
 @interface MappIntelligence : NSObject {
 }
 
-@property (nonatomic, readwrite) NSTimeInterval requestTimeout;
+@property (nonatomic, readwrite) NSTimeInterval requestInterval;
 @property (nonatomic, readwrite) logLevel logLevel;
 @property (nonatomic, readwrite) BOOL batchSupportEnabled;
 @property (nonatomic, readwrite) NSInteger batchSupportSize;
+@property (nonatomic, readwrite) NSInteger requestPerQueue;
 /**
  MappIntelligence instance
  @brief Method to get a singleton instance of MappIntelligence
@@ -111,15 +112,24 @@ MappIntelligence.shared()?.reset()
 @endcode
 */
 - (void)reset;
+
+/**
+@brief Method to opt-in for tracking. This enables tracking.
+@code
+MappIntelligence.shared()?.optIn()
+@endcode
+ */
+-(void) optIn;
+
+
 /**
 @brief Method to opt-out of tracking. In case of opt-out, no data will be sent to Mapp Intelligence anymore.
-@param status - opt-out if true, false enables tracking.
 @param value - If set to true, all track requests currently stored in the database will be sent to MappIntelligence. If set to false, opt-out of tracking will be executed immediately and remaining data in the database will be lost.
 @code
 MappIntelligence.shared()?.optOut(with: false, andSendCurrentData: false)
 @endcode
  */
-- (void)optOutWith:(BOOL) status andSendCurrentData:(BOOL) value;
+- (void)optOutAndSendCurrentData:(BOOL) value;
 
 //testable methods
 - (void) printAllRequestFromDatabase;

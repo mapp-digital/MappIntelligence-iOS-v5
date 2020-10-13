@@ -17,6 +17,7 @@ class InterfaceController: WKInterfaceController {
         // Configure interface objects here.
         MappIntelligenceWatchOS.shared()?.initWithConfiguration([385255285199574 as UInt64, 5555555555 as UInt64], onTrackdomain: "https://q3.webtrekk.net")
         MappIntelligenceWatchOS.shared()?.logLevelWatchOS = .allWatchOSLogs
+        MappIntelligenceWatchOS.shared()?.requestInterval = 60;
     }
     
     override func willActivate() {
@@ -41,5 +42,16 @@ class InterfaceController: WKInterfaceController {
     }
     @IBAction func InitAgain() {
         MappIntelligenceWatchOS.shared()?.initWithConfiguration([385255285199574 as UInt64], onTrackdomain: "https://q3.webtrekk.net")
+    }
+    @IBAction func trackAction() {
+        let actionProperties = ActionProperties(properties:  [20:["ck20Override","ck21Override"]])
+        let sessionProperties = SessionProperties(properties: [10: ["sessionpar1"]])
+        MappIntelligenceWatchOS.shared()?.trackCustomEvent(withName: "TestAction", actionProperties: actionProperties, sessionProperties: sessionProperties)
+    }
+    @IBAction func optIn() {
+        MappIntelligenceWatchOS.shared()?.optIn()
+    }
+    @IBAction func optOut() {
+        MappIntelligenceWatchOS.shared()?.optOutAndSendCurrentData(true)
     }
 }

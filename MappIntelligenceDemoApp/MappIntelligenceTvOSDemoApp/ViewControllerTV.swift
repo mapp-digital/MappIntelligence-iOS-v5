@@ -16,18 +16,31 @@ class ViewControllerTV: UIViewController {
     }
 
     @IBAction func trackViewController(_ sender: Any) {
-        let params:NSMutableDictionary = [20: ["cp20Override", "cp21Override", "cp22Override"]]
+        let params:[NSNumber:[String]] = [20: ["cp20Override", "cp21Override", "cp22Override"]]
         let categories:NSMutableDictionary = [10: ["test"]]
         let searchTerm = "testSearchTerm"
-        MappIntelligencetvOS.shared()?.trackPage(with: self, andWith: PageProperties(pageParams: params, andWithPageCategory: categories, andWithSearch: searchTerm))
+        MappIntelligencetvOS.shared()?.trackPage(with: self, pageProperties: PageProperties(pageParams: params, andWithPageCategory: categories, andWithSearch: searchTerm), sessionProperties: nil)
     }
     
     @IBAction func trackCustomString(_ sender: Any) {
         let customName = "the custom name of page"
-        let params:NSMutableDictionary = [20: ["cp20Override", "cp21Override", "cp22Override"]]
+        let params:[NSNumber:[String]] = [20: ["cp20Override", "cp21Override", "cp22Override"]]
         let categories:NSMutableDictionary = [10: ["test"]]
         let searchTerm = "testSearchTerm"
-        MappIntelligencetvOS.shared()?.trackPage(withName: customName, andWith: PageProperties(pageParams: params, andWithPageCategory: categories, andWithSearch: searchTerm))
+        let sessionProperties = SessionProperties(properties: [10: ["sessionpar1"]])
+
+        MappIntelligencetvOS.shared()?.trackPage(withName: customName, pageProperties: PageProperties(pageParams: params, andWithPageCategory: categories, andWithSearch: searchTerm), sessionProperties: sessionProperties)
+    }
+    @IBAction func trackAction(_ sender: Any) {
+        let actionProperties = ActionProperties(properties:  [20:["ck20Override","ck21Override"]])
+        let sessionProperties = SessionProperties(properties: [10: ["sessionpar1"]])
+        MappIntelligencetvOS.shared()?.trackCustomEvent(withName: "TestAction", actionProperties: actionProperties, sessionProperties: sessionProperties)
+    }
+    @IBAction func optIn(_ sender: Any) {
+        MappIntelligencetvOS.shared()?.optIn()
+    }
+    @IBAction func optOut(_ sender: Any) {
+        MappIntelligencetvOS.shared()?.optOutAndSendCurrentData(true)
     }
 }
 

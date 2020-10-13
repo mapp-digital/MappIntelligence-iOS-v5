@@ -39,10 +39,10 @@ class ViewController: UIViewController {
         
     }
     @IBAction func optOutAndSendData(_ sender: Any) {
-        MappIntelligence.shared()?.optOut(with: true, andSendCurrentData: true)
+        MappIntelligence.shared()?.optOutAndSendCurrentData(true)
     }
     @IBAction func optOutAndDontSendData(_ sender: Any) {
-        MappIntelligence.shared()?.optOut(with: true, andSendCurrentData: false)
+        MappIntelligence.shared()?.optOutAndSendCurrentData(false)
     }
     
     @IBAction func resetInstance(_ sender: Any) {
@@ -58,11 +58,11 @@ class ViewController: UIViewController {
         let array = [(dict?["track_ids" as NSObject]?.intValue) ?? 0]
         let domain = dict?["domain" as NSObject];
         MappIntelligence.shared()?.initWithConfiguration(array, onTrackdomain: domain as! String);
-        MappIntelligence.shared()?.requestTimeout = 1 * 60;
+        MappIntelligence.shared()?.requestInterval = 1 * 60;
     }
     
     @IBAction func optIn(_ sender: Any) {
-        MappIntelligence.shared()?.optOut(with: false, andSendCurrentData: false)
+        MappIntelligence.shared()?.optIn()
     }
     @IBAction func sendActionEvent(_ sender: Any) {
         let actionProperties = ActionProperties(properties:  [20:["ck20Override","ck21Override"]])

@@ -13,6 +13,11 @@
 		8F4420EE250F7BA6003961F3 /* SessionProperties.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 8FDF7111250BA9CB00818E51 /* SessionProperties.h */; };
 		8F4420EF250F969B003961F3 /* SessionProperties.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8FDF7111250BA9CB00818E51 /* SessionProperties.h */; };
 		8F4420F0250F96AB003961F3 /* ActionProperties.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8FDF7105250B9E4D00818E51 /* ActionProperties.h */; };
+		8F5F85172535BAB000A39882 /* ActionProperties.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8FDF7105250B9E4D00818E51 /* ActionProperties.h */; };
+		8F5F851F2535BAB300A39882 /* SessionProperties.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8FDF7111250BA9CB00818E51 /* SessionProperties.h */; };
+		8F5F85322535BCDD00A39882 /* ActionProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FDF7106250B9E4D00818E51 /* ActionProperties.m */; };
+		8F5F853A2535BCE100A39882 /* SessionProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FDF7112250BA9CB00818E51 /* SessionProperties.m */; };
+		8F5F85422535BCEB00A39882 /* ActionEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FDF7109250B9E5B00818E51 /* ActionEvent.m */; };
 		8F80C047252355B500E1F650 /* SessionProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FDF7112250BA9CB00818E51 /* SessionProperties.m */; };
 		8FDF7107250B9E4D00818E51 /* ActionProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FDF7105250B9E4D00818E51 /* ActionProperties.h */; };
 		8FDF7108250B9E4D00818E51 /* ActionProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FDF7106250B9E4D00818E51 /* ActionProperties.m */; };
@@ -251,6 +256,8 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				8F5F851F2535BAB300A39882 /* SessionProperties.h in CopyFiles */,
+				8F5F85172535BAB000A39882 /* ActionProperties.h in CopyFiles */,
 				A3258C00250AA13A00039B92 /* Properties.h in CopyFiles */,
 				A3258BFF250AA13100039B92 /* TrackingEvent.h in CopyFiles */,
 				A3258BFE250AA12000039B92 /* TrackerRequest.h in CopyFiles */,
@@ -1134,6 +1141,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F5F85422535BCEB00A39882 /* ActionEvent.m in Sources */,
+				8F5F853A2535BCE100A39882 /* SessionProperties.m in Sources */,
+				8F5F85322535BCDD00A39882 /* ActionProperties.m in Sources */,
 				A3258C01250AA15100039B92 /* PageProperties.m in Sources */,
 				A337445E24C840370096259B /* PageViewEvent.m in Sources */,
 				A3D9837124B3312600AF0CD8 /* RequestBatchSupportUrlBuilder.m in Sources */,

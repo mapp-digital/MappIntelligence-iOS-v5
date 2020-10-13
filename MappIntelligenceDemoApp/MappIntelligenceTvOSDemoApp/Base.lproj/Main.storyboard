@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.AppleTV.Storyboard" version="3.0" toolsVersion="15705" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder.AppleTV.Storyboard" version="3.0" toolsVersion="17156" targetRuntime="AppleTV" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="appleTV" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <deployment identifier="tvOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,8 +20,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YSQ-Em-hYN">
-                                <rect key="frame" x="747" y="238" width="427" height="86"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YSQ-Em-hYN">
+                                <rect key="frame" x="737" y="238" width="447" height="86"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="86" id="qND-5s-0ck"/>
                                 </constraints>
@@ -30,8 +31,8 @@
                                     <action selector="trackViewController:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="vWO-hi-MSC"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qxk-lL-0Us">
-                                <rect key="frame" x="747" y="348" width="427" height="86"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qxk-lL-0Us">
+                                <rect key="frame" x="737" y="348" width="447" height="86"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="86" id="vxW-zO-4OX"/>
                                 </constraints>
@@ -41,17 +42,64 @@
                                     <action selector="trackCustomString:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="nqs-Fs-h9f"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DKX-aM-2of">
+                                <rect key="frame" x="737" y="458" width="447" height="86"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="86" id="bUA-Oq-PJR"/>
+                                </constraints>
+                                <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                <state key="normal" title="Track Action"/>
+                                <connections>
+                                    <action selector="trackAction:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="GdB-1g-1HC"/>
+                                    <action selector="trackCustomString:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="xZn-Ij-JLM"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fks-Pp-33Q">
+                                <rect key="frame" x="737" y="568" width="447" height="86"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="86" id="Mk7-O9-Rt2"/>
+                                </constraints>
+                                <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                <state key="normal" title="Opt in"/>
+                                <connections>
+                                    <action selector="optIn:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="MNf-RZ-ypH"/>
+                                    <action selector="trackAction:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="UXH-fS-UXb"/>
+                                    <action selector="trackCustomString:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="kuI-rv-h5B"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HDU-4l-Yf7">
+                                <rect key="frame" x="737" y="678" width="447" height="86"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="86" id="eRc-tl-rH6"/>
+                                </constraints>
+                                <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                <state key="normal" title="Opt out"/>
+                                <connections>
+                                    <action selector="optOut:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="Ppf-Wl-5Vt"/>
+                                    <action selector="trackAction:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="yUW-h4-qaS"/>
+                                    <action selector="trackCustomString:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="N9p-mu-0R2"/>
+                                </connections>
+                            </button>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="wu6-TO-1qx"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="YSQ-Em-hYN" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="178" id="0K9-am-Utz"/>
+                            <constraint firstItem="DKX-aM-2of" firstAttribute="top" secondItem="Qxk-lL-0Us" secondAttribute="bottom" constant="24" id="3Pc-mP-3wn"/>
+                            <constraint firstItem="HDU-4l-Yf7" firstAttribute="leading" secondItem="wu6-TO-1qx" secondAttribute="leading" constant="657" id="9Zp-xW-7kG"/>
+                            <constraint firstItem="HDU-4l-Yf7" firstAttribute="top" secondItem="fks-Pp-33Q" secondAttribute="bottom" constant="24" id="APN-wj-sTH"/>
                             <constraint firstItem="Qxk-lL-0Us" firstAttribute="top" secondItem="YSQ-Em-hYN" secondAttribute="bottom" constant="24" id="Apz-sg-5xn"/>
+                            <constraint firstItem="fks-Pp-33Q" firstAttribute="top" secondItem="DKX-aM-2of" secondAttribute="bottom" constant="24" id="Bel-BW-4uC"/>
+                            <constraint firstItem="fks-Pp-33Q" firstAttribute="leading" secondItem="wu6-TO-1qx" secondAttribute="leading" constant="657" id="EPj-DC-VsR"/>
+                            <constraint firstItem="wu6-TO-1qx" firstAttribute="trailing" secondItem="DKX-aM-2of" secondAttribute="trailing" constant="656" id="N4T-c5-U26"/>
+                            <constraint firstItem="wu6-TO-1qx" firstAttribute="trailing" secondItem="fks-Pp-33Q" secondAttribute="trailing" constant="656" id="UFY-kP-bUJ"/>
+                            <constraint firstItem="wu6-TO-1qx" firstAttribute="trailing" secondItem="HDU-4l-Yf7" secondAttribute="trailing" constant="656" id="Zxc-rk-hLT"/>
+                            <constraint firstItem="DKX-aM-2of" firstAttribute="leading" secondItem="wu6-TO-1qx" secondAttribute="leading" constant="657" id="cRt-Jh-vcY"/>
                             <constraint firstItem="Qxk-lL-0Us" firstAttribute="leading" secondItem="wu6-TO-1qx" secondAttribute="leading" constant="657" id="dSM-ec-fSY"/>
                             <constraint firstItem="wu6-TO-1qx" firstAttribute="trailing" secondItem="YSQ-Em-hYN" secondAttribute="trailing" constant="656" id="dtl-uT-neg"/>
                             <constraint firstItem="wu6-TO-1qx" firstAttribute="trailing" secondItem="Qxk-lL-0Us" secondAttribute="trailing" constant="656" id="jPk-ol-IPw"/>
                             <constraint firstItem="YSQ-Em-hYN" firstAttribute="leading" secondItem="wu6-TO-1qx" secondAttribute="leading" constant="657" id="qDd-PD-t0O"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="wu6-TO-1qx"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

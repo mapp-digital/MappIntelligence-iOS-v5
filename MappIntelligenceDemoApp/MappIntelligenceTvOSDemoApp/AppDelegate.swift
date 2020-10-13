@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         MappIntelligencetvOS.shared()?.initWithConfiguration([385255285199574], onTrackdomain: "https://q3.webtrekk.net")
         MappIntelligencetvOS.shared()?.logLevelTVOS = .allTvOSLogs
+        MappIntelligencetvOS.shared()?.requestInterval = 60;
         return true
     }
 

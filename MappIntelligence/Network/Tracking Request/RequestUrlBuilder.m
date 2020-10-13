@@ -149,10 +149,6 @@
     [parametrs
         addObject:[NSURLQueryItem queryItemWithName:@"la" value:language]];
   }
-  [parametrs addObject:[NSURLQueryItem queryItemWithName:@"eor" value:@"1"]];
-  [_sizeMonitor setCurrentRequestSize:[_sizeMonitor currentRequestSize] +
-                                     5]; // add for end of the request
-    
     
     if ([event isKindOfClass:PageViewEvent.class]) {
         PageProperties* prop = ((PageViewEvent*)event).pageProperties;
@@ -172,7 +168,10 @@
         [parametrs addObject:[NSURLQueryItem queryItemWithName:@"cs805" value: properties.buildVersion]];
         [parametrs addObject:[NSURLQueryItem queryItemWithName:@"cs821" value: properties.isFirstEventOfApp ? @"1": @"0"]];
     }
-
+    [parametrs addObject:[NSURLQueryItem queryItemWithName:@"eor" value:@"1"]];
+    [_sizeMonitor setCurrentRequestSize:[_sizeMonitor currentRequestSize] +
+                                       5]; // add for end of the request
+    
   url = [self createURLFromParametersWith:parametrs];
   _dbRequest = [[Request alloc] initWithParamters:parametrs
                                         andDomain:[MappIntelligence getUrl]

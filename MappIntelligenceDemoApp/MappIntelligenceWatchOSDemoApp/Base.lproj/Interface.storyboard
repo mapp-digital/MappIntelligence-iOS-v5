@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="15705" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="17156" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
     <device id="watch38"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="15501"/>
+        <deployment identifier="watchOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="17034"/>
     </dependencies>
     <scenes>
         <!--Interface Controller-->
@@ -26,10 +27,25 @@
                                 <action selector="InitAgain" destination="AgC-eL-Hgc" id="7Sr-ZI-5XP"/>
                             </connections>
                         </button>
+                        <button width="1" alignment="left" title="TrackAction" id="hcg-nB-MfL">
+                            <connections>
+                                <action selector="trackAction" destination="AgC-eL-Hgc" id="VZs-AD-1aj"/>
+                            </connections>
+                        </button>
+                        <button width="1" alignment="left" title="Opt in" id="d2A-fR-QMA">
+                            <connections>
+                                <action selector="optIn" destination="AgC-eL-Hgc" id="IJI-nq-QdM"/>
+                            </connections>
+                        </button>
+                        <button width="1" alignment="left" title="Opt out" id="tz2-d5-k2j">
+                            <connections>
+                                <action selector="optOut" destination="AgC-eL-Hgc" id="71L-0o-PFL"/>
+                            </connections>
+                        </button>
                     </items>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="220" y="345"/>
+            <point key="canvasLocation" x="220" y="349"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">

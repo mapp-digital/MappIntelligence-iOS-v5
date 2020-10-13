@@ -132,6 +132,9 @@ static NSString *userAgent;
     [self generateUserAgent];
     [self initializeTracking];
       _queue = dispatch_queue_create("Inserting Requests", NULL);
+#if TARGET_OS_TV
+      [self checkIfAppUpdated];
+#endif
   }
   return sharedTracker;
 }
@@ -152,8 +155,8 @@ static NSString *userAgent;
 - (void)initializeTracking {
   _config.serverUrl = [[NSURL alloc] initWithString:[MappIntelligence getUrl]];
   _config.MappIntelligenceId = [MappIntelligence getId];
-  _config.requestInterval = [[MappIntelligence shared] requestTimeout];
-    _config.requestPerQueue = ([[MappIntelligence shared] batchSupportEnabled]) ? [[MappIntelligence shared] batchSupportSize] : 100;
+  _config.requestInterval = [[MappIntelligence shared] requestInterval];
+    _config.requestPerQueue = ([[MappIntelligence shared] batchSupportEnabled]) ? [[MappIntelligence shared] batchSupportSize] : [[MappIntelligence shared] requestPerQueue];
   _requestUrlBuilder =
       [[RequestUrlBuilder alloc] initWithUrl:_config.serverUrl
                                    andWithId:_config.MappIntelligenceId];
@@ -386,7 +389,7 @@ static NSString *userAgent;
     _isFirstEventOfSession = NO;
   }
   [self fireSignal];
-    
+//  [self checkIfAppUpdated];
 }
 #else
 - (void)updateFirstSessionWith:(WKApplicationState)state {
@@ -401,10 +404,10 @@ static NSString *userAgent;
   if ([date timeIntervalSinceDate:[_defaults objectForKey:appHibernationDate]] >
       30 * 60) {
     _isFirstEventOfSession = YES;
-    [self checkIfAppUpdated];
   } else {
     _isFirstEventOfSession = NO;
   }
+  [self checkIfAppUpdated];
   [self fireSignal];
 }
 #endif
@@ -426,7 +429,8 @@ static NSString *userAgent;
 
 - (void) checkIfAppUpdated {
     Properties *properties = [self generateRequestProperties];
-    if (properties.isAppUpdated) {
+    if (!properties.isAppUpdated && _queue) {
+        _isFirstEventOfSession = YES;
         ActionProperties *actionProperties = [[ActionProperties alloc] initWithProperties:nil];
         SessionProperties *sessionProperties = [[SessionProperties alloc] initWithProperties: @{@815:@[@"1"]}];
         ActionEvent *updateEvent = [[ActionEvent alloc] initWithName:@"webtrekk_ignore" pageName:@"0" actionProperties:actionProperties sessionProperties:sessionProperties];

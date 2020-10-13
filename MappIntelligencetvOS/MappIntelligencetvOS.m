@@ -44,31 +44,60 @@
     [_mappIntelligence initWithConfiguration:trackIDs onTrackdomain:trackDomain];
 }
 
-- (void)setRequestTimeout:(NSTimeInterval)requestTimeout {
-    [_mappIntelligence setRequestTimeout:requestTimeout];
-}
-
 - (void)setLogLevelTVOS:(logTvOSLevel)logLevelTVOS {
     [_mappIntelligence setLogLevel: (logLevel)logLevelTVOS];
-}
-
-- (NSTimeInterval)requestTimeout {
-    return [_mappIntelligence requestTimeout];
 }
 
 - (logTvOSLevel)logLevelTVOS {
     return (logTvOSLevel)[_mappIntelligence logLevel];
 }
 
-- (NSError *_Nullable)trackPageWithName: (NSString *_Nonnull) name pageProperties:(PageProperties  *_Nullable)properties sessionProperties: (SessionProperties *_Nullable) sessionProperties {
-    return [_mappIntelligence trackPageWithName:name pageProperties:pageProperties  sessionProperties:sessionProperties];
+- (NSTimeInterval)requestInterval {
+    return [_mappIntelligence requestInterval];
 }
 
-- (NSError *)trackPageWithViewController:(UIViewController *)controller andWithPageProperties:(PageProperties *)properties {
-    return [_mappIntelligence trackPageWithViewController:controller andWithPageProperties:properties];
+- (void)setRequestInterval:(NSTimeInterval)requestInterval {
+    [_mappIntelligence setRequestInterval:requestInterval];
+}
+
+- (BOOL)batchSupportEnabled {
+    return [_mappIntelligence batchSupportEnabled];
+}
+
+- (void) setBatchSupportEnabled:(BOOL)batchSupportEnabled {
+    [_mappIntelligence setBatchSupportEnabled:batchSupportEnabled];
+}
+
+- (NSInteger) requestPerQueue {
+    return [_mappIntelligence requestPerQueue];
+}
+
+- (void) setRequestPerQueue:(NSInteger)requestPerQueue {
+    [_mappIntelligence setRequestPerQueue:requestPerQueue];
+}
+
+- (NSError *_Nullable)trackPageWithName: (NSString *_Nonnull) name pageProperties:(PageProperties  *_Nullable)properties sessionProperties: (SessionProperties *_Nullable) sessionProperties {
+    return [_mappIntelligence trackPageWithName:name pageProperties:properties  sessionProperties:sessionProperties];
+}
+
+- (NSError *_Nullable)trackPageWithViewController:(UIViewController *_Nonnull)controller pageProperties:(PageProperties  *_Nullable)pageProperties sessionProperties:(SessionProperties *_Nullable) sessionProperties {
+    return [_mappIntelligence trackPageWithViewController:controller pageProperties:pageProperties sessionProperties:sessionProperties];
+}
+
+- (NSError *_Nullable) trackCustomEventWithName:(NSString *_Nonnull) name  actionProperties: (ActionProperties *_Nullable) actionProperties sessionProperties: (SessionProperties *_Nullable) sessionProperties {
+    return [_mappIntelligence trackCustomEventWithName:name actionProperties:actionProperties sessionProperties:sessionProperties];
 }
 
 - (void)reset {
     [_mappIntelligence reset];
 }
+
+- (void) optIn {
+    [_mappIntelligence optIn];
+}
+
+- (void)optOutAndSendCurrentData:(BOOL) value {
+    [_mappIntelligence optOutAndSendCurrentData:value];
+}
+
 @end
