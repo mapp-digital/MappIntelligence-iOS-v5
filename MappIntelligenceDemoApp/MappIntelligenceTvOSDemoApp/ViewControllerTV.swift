@@ -42,5 +42,8 @@ class ViewControllerTV: UIViewController {
     @IBAction func optOut(_ sender: Any) {
         MappIntelligencetvOS.shared()?.optOutAndSendCurrentData(true)
     }
+    @IBAction func reset(_ sender: Any) {
+        MappIntelligencetvOS.shared()?.reset()
+    }
 }
 
