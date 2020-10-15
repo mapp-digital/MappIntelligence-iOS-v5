@@ -484,13 +484,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		A32EE09B243B56B200EDC5B8 /* Utility */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Utility;
-			sourceTree = "<group>";
-		};
 		A32EE09C243B56FC00EDC5B8 /* Events */ = {
 			isa = PBXGroup;
 			children = (
@@ -717,7 +710,6 @@
 				A32EE0A0243CB94F00EDC5B8 /* PersistanceLayer */,
 				A32EE09D243B570D00EDC5B8 /* Trackers */,
 				A32EE09C243B56FC00EDC5B8 /* Events */,
-				A32EE09B243B56B200EDC5B8 /* Utility */,
 				BCEA32C123E979FD003AF806 /* Info.plist */,
 				A3A7255E243F154900671DB2 /* MappIntelligenceTests.m */,
 			);
