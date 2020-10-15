@@ -51,7 +51,6 @@
                                 <state key="normal" title="Track Action"/>
                                 <connections>
                                     <action selector="trackAction:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="GdB-1g-1HC"/>
-                                    <action selector="trackCustomString:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="xZn-Ij-JLM"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fks-Pp-33Q">
@@ -63,8 +62,6 @@
                                 <state key="normal" title="Opt in"/>
                                 <connections>
                                     <action selector="optIn:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="MNf-RZ-ypH"/>
-                                    <action selector="trackAction:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="UXH-fS-UXb"/>
-                                    <action selector="trackCustomString:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="kuI-rv-h5B"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HDU-4l-Yf7">
@@ -76,8 +73,6 @@
                                 <state key="normal" title="Opt out"/>
                                 <connections>
                                     <action selector="optOut:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="Ppf-Wl-5Vt"/>
-                                    <action selector="trackAction:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="yUW-h4-qaS"/>
-                                    <action selector="trackCustomString:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="N9p-mu-0R2"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cxe-XZ-am3">
@@ -88,10 +83,7 @@
                                 <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
                                 <state key="normal" title="Reset"/>
                                 <connections>
-                                    <action selector="optOut:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="AE4-nE-Hv1"/>
                                     <action selector="reset:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="A1k-Mx-kqh"/>
-                                    <action selector="trackAction:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="Gmr-LU-kgf"/>
-                                    <action selector="trackCustomString:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="kAD-yF-AoJ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2i4-j6-4Vx">
@@ -103,10 +95,6 @@
                                 <state key="normal" title="Init again"/>
                                 <connections>
                                     <action selector="initAgain:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="dhf-sc-IeH"/>
-                                    <action selector="optOut:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="cU7-Sw-8he"/>
-                                    <action selector="reset:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="9Ic-S5-46C"/>
-                                    <action selector="trackAction:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="m7y-EO-mpz"/>
-                                    <action selector="trackCustomString:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="VZn-6F-PsQ"/>
                                 </connections>
                             </button>
                         </subviews>
