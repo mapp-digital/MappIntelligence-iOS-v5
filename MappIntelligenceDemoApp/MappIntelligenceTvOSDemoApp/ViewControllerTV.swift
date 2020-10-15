@@ -45,5 +45,8 @@ class ViewControllerTV: UIViewController {
     @IBAction func reset(_ sender: Any) {
         MappIntelligencetvOS.shared()?.reset()
     }
+    @IBAction func initAgain(_ sender: Any) {
+        MappIntelligencetvOS.shared()?.initWithConfiguration([385255285199574], onTrackdomain: "https://q3.webtrekk.net")
+    }
 }
 
