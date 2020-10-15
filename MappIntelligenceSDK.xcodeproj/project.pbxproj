@@ -75,10 +75,6 @@
 		A357221D24F95742005F9DE1 /* RequestDataTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A357221C24F95742005F9DE1 /* RequestDataTest.m */; };
 		A357222024FD10AD005F9DE1 /* PagePropertiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A357221F24FD10AD005F9DE1 /* PagePropertiesTests.m */; };
 		A357222224FD1ABB005F9DE1 /* PageViewEventTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A357222124FD1ABB005F9DE1 /* PageViewEventTests.m */; };
-		A357222424FD236B005F9DE1 /* SetupForLocalTesting.plist in Resources */ = {isa = PBXBuildFile; fileRef = A357222324FD236B005F9DE1 /* SetupForLocalTesting.plist */; };
-		A357222524FD236B005F9DE1 /* SetupForLocalTesting.plist in Resources */ = {isa = PBXBuildFile; fileRef = A357222324FD236B005F9DE1 /* SetupForLocalTesting.plist */; };
-		A357222624FD236B005F9DE1 /* SetupForLocalTesting.plist in Resources */ = {isa = PBXBuildFile; fileRef = A357222324FD236B005F9DE1 /* SetupForLocalTesting.plist */; };
-		A357222724FD236B005F9DE1 /* SetupForLocalTesting.plist in Resources */ = {isa = PBXBuildFile; fileRef = A357222324FD236B005F9DE1 /* SetupForLocalTesting.plist */; };
 		A35C78C82452E6FF00D36144 /* MappIntelligencetvOS.m in Sources */ = {isa = PBXBuildFile; fileRef = A35C78C72452E6FF00D36144 /* MappIntelligencetvOS.m */; };
 		A35C78C92452E6FF00D36144 /* MappIntelligencetvOS.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A35C78C62452E6FF00D36144 /* MappIntelligencetvOS.h */; };
 		A35C79052452FBFC00D36144 /* MappIntelligence.m in Sources */ = {isa = PBXBuildFile; fileRef = A334861C23BF3E2300D0EB5F /* MappIntelligence.m */; };
@@ -311,7 +307,6 @@
 		A357221C24F95742005F9DE1 /* RequestDataTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RequestDataTest.m; sourceTree = "<group>"; };
 		A357221F24FD10AD005F9DE1 /* PagePropertiesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PagePropertiesTests.m; sourceTree = "<group>"; };
 		A357222124FD1ABB005F9DE1 /* PageViewEventTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PageViewEventTests.m; sourceTree = "<group>"; };
-		A357222324FD236B005F9DE1 /* SetupForLocalTesting.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = SetupForLocalTesting.plist; sourceTree = "<group>"; };
 		A35C78C42452E6FF00D36144 /* libMappIntelligencetvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMappIntelligencetvOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A35C78C62452E6FF00D36144 /* MappIntelligencetvOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MappIntelligencetvOS.h; sourceTree = "<group>"; };
 		A35C78C72452E6FF00D36144 /* MappIntelligencetvOS.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MappIntelligencetvOS.m; sourceTree = "<group>"; };
@@ -336,6 +331,7 @@
 		A380D20F2413ED35009E2CD8 /* RequestUrlBuilder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RequestUrlBuilder.m; sourceTree = "<group>"; };
 		A380D21224141B55009E2CD8 /* URLSizeMonitor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = URLSizeMonitor.h; sourceTree = "<group>"; };
 		A380D21324141B55009E2CD8 /* URLSizeMonitor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = URLSizeMonitor.m; sourceTree = "<group>"; };
+		A38F82E3253874380021577B /* SetupForLocalTesting.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = SetupForLocalTesting.plist; sourceTree = "<group>"; };
 		A3A72556243DBF1000671DB2 /* PropertiesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PropertiesTests.m; sourceTree = "<group>"; };
 		A3A72558243DC22C00671DB2 /* RequestTrackerBuilderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RequestTrackerBuilderTests.m; sourceTree = "<group>"; };
 		A3A7255A243DEA0500671DB2 /* RequestUrlBuilderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RequestUrlBuilderTests.m; sourceTree = "<group>"; };
@@ -514,7 +510,7 @@
 		A334860F23BF3E2300D0EB5F = {
 			isa = PBXGroup;
 			children = (
-				A357222324FD236B005F9DE1 /* SetupForLocalTesting.plist */,
+				A38F82E3253874380021577B /* SetupForLocalTesting.plist */,
 				A33C1D3A24508C990049D5E5 /* LICENSE.md */,
 				A30E3EC62444A3970047D7A6 /* MappIntelligence.podspec */,
 				A30E3EC42444A0B70047D7A6 /* .oclint.yml */,
@@ -993,7 +989,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A357222424FD236B005F9DE1 /* SetupForLocalTesting.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1001,7 +996,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A357222624FD236B005F9DE1 /* SetupForLocalTesting.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1009,7 +1003,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A357222724FD236B005F9DE1 /* SetupForLocalTesting.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1018,7 +1011,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A3423CEF24615A8900B36F5F /* MappIntelligence.h in Resources */,
-				A357222524FD236B005F9DE1 /* SetupForLocalTesting.plist in Resources */,
 				A3423CF024615A8900B36F5F /* MappIntelligence.m in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
