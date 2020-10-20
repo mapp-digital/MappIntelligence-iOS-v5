@@ -25,6 +25,16 @@ The MappIntelligence SDK allows you to track user activities, screen flow and me
 
 `github "mapp-digital/MappIntelligence-iOS-v5"`
 
+[Swift Package Manager](https://swift.org/package-manager/)(*Swift Package Manager*):
+
+The *Swift Package Manager* is a tool for automating the distribution of Swift code and is integrated into the swift compiler. It is in early development, but Alamofire does support its use on supported platforms.
+
+Once you have your Swift package set up, adding MappIntelligence as a dependency is as easy as adding it to the dependencies value of your Package.swift.
+
+dependencies: [
+    .package(url: "https://github.com/mapp-digital/MappIntelligence-iOS-v5.git", .upToNextMajor(from: "5.0.0-beta4"))
+]
+
 # OCLint
 
 We use Oclint from [OCLint](http://oclint.org). 
