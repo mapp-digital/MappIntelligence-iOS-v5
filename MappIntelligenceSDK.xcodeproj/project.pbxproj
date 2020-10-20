@@ -19,6 +19,24 @@
 		8F5F853A2535BCE100A39882 /* SessionProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FDF7112250BA9CB00818E51 /* SessionProperties.m */; };
 		8F5F85422535BCEB00A39882 /* ActionEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FDF7109250B9E5B00818E51 /* ActionEvent.m */; };
 		8F80C047252355B500E1F650 /* SessionProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FDF7112250BA9CB00818E51 /* SessionProperties.m */; };
+		8FA11817253ED0A3000AE887 /* PageProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = A337445A24C1A12A0096259B /* PageProperties.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FA1181F253ED0A3000AE887 /* PageProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = A337445A24C1A12A0096259B /* PageProperties.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FA11827253ED0A4000AE887 /* PageProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = A337445A24C1A12A0096259B /* PageProperties.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FA1183D253ED0C6000AE887 /* TrackerRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = A36CD7CB23F44594004E3E2D /* TrackerRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FA11845253ED0C7000AE887 /* TrackerRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = A36CD7CB23F44594004E3E2D /* TrackerRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FA1184D253ED0C7000AE887 /* TrackerRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = A36CD7CB23F44594004E3E2D /* TrackerRequest.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FA1186E253ED264000AE887 /* TrackingEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = A380D1F82411478C009E2CD8 /* TrackingEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FA1187A253ED264000AE887 /* TrackingEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = A380D1F82411478C009E2CD8 /* TrackingEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FA11882253ED265000AE887 /* TrackingEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = A380D1F82411478C009E2CD8 /* TrackingEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FA11898253ED2EC000AE887 /* Properties.h in Headers */ = {isa = PBXBuildFile; fileRef = A36CD7CF23F447D0004E3E2D /* Properties.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FA118A4253ED2ED000AE887 /* Properties.h in Headers */ = {isa = PBXBuildFile; fileRef = A36CD7CF23F447D0004E3E2D /* Properties.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FA118AC253ED2ED000AE887 /* Properties.h in Headers */ = {isa = PBXBuildFile; fileRef = A36CD7CF23F447D0004E3E2D /* Properties.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FA118C2253ED320000AE887 /* ActionProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FDF7105250B9E4D00818E51 /* ActionProperties.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FA118CA253ED321000AE887 /* ActionProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FDF7105250B9E4D00818E51 /* ActionProperties.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FA118D2253ED321000AE887 /* ActionProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FDF7105250B9E4D00818E51 /* ActionProperties.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FA11927253ED3B7000AE887 /* SessionProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FDF7111250BA9CB00818E51 /* SessionProperties.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FA1192F253ED3B7000AE887 /* SessionProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FDF7111250BA9CB00818E51 /* SessionProperties.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FA11937253ED3B8000AE887 /* SessionProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FDF7111250BA9CB00818E51 /* SessionProperties.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8FDBFDEE253DCCE300610090 /* PageViewEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = A380D1FD241296FD009E2CD8 /* PageViewEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8FDBFDF6253DCCE300610090 /* PageViewEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = A380D1FD241296FD009E2CD8 /* PageViewEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8FDBFDFE253DCCE400610090 /* PageViewEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = A380D1FD241296FD009E2CD8 /* PageViewEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -774,8 +792,14 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8FA11845253ED0C7000AE887 /* TrackerRequest.h in Headers */,
+				8FA1181F253ED0A3000AE887 /* PageProperties.h in Headers */,
+				8FA1187A253ED264000AE887 /* TrackingEvent.h in Headers */,
+				8FA118CA253ED321000AE887 /* ActionProperties.h in Headers */,
 				8FDBFDF6253DCCE300610090 /* PageViewEvent.h in Headers */,
 				A33B36E72460246F005EA9AE /* MappIntelligenceSDK_watchOS.h in Headers */,
+				8FA1192F253ED3B7000AE887 /* SessionProperties.h in Headers */,
+				8FA118A4253ED2ED000AE887 /* Properties.h in Headers */,
 				A3E8274F2461B6F200952606 /* MappIntelligenceWatchOS.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -784,8 +808,14 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8FA1184D253ED0C7000AE887 /* TrackerRequest.h in Headers */,
+				8FA11827253ED0A4000AE887 /* PageProperties.h in Headers */,
+				8FA11882253ED265000AE887 /* TrackingEvent.h in Headers */,
+				8FA118D2253ED321000AE887 /* ActionProperties.h in Headers */,
 				8FDBFDFE253DCCE400610090 /* PageViewEvent.h in Headers */,
 				A33B36F72460249F005EA9AE /* MappIntelligenceSDK_tvOS.h in Headers */,
+				8FA11937253ED3B8000AE887 /* SessionProperties.h in Headers */,
+				8FA118AC253ED2ED000AE887 /* Properties.h in Headers */,
 				A3E827502461B72700952606 /* MappIntelligencetvOS.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -794,8 +824,14 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8FA1183D253ED0C6000AE887 /* TrackerRequest.h in Headers */,
+				8FA11817253ED0A3000AE887 /* PageProperties.h in Headers */,
+				8FA1186E253ED264000AE887 /* TrackingEvent.h in Headers */,
+				8FA118C2253ED320000AE887 /* ActionProperties.h in Headers */,
 				8FDBFDEE253DCCE300610090 /* PageViewEvent.h in Headers */,
 				A35C795F2457679000D36144 /* MappIntelligenceSDK_iOS.h in Headers */,
+				8FA11927253ED3B7000AE887 /* SessionProperties.h in Headers */,
+				8FA11898253ED2EC000AE887 /* Properties.h in Headers */,
 				A3E8274E2461B6B700952606 /* MappIntelligence.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
