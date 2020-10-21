@@ -87,5 +87,11 @@ class ViewController: UIViewController {
     @objc func tap() {
         self.requestIDTextField.endEditing(true)
     }
+    
+    func testUserProperties() {
+        let b = Birthday(day: 11, month: 11, year: 11)
+        let up = UserProperties()
+        up.birthday = Birthday(day: 11, month: 11, year: 11)
+    }
 }
 

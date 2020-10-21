@@ -11,6 +11,7 @@
 #import "PageViewEvent.h"
 #import "ActionProperties.h"
 #import "SessionProperties.h"
+#import "UserProperties.h"
 
 @class MappIntelligence;
 

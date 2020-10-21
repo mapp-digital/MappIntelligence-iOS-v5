@@ -19,6 +19,11 @@
 		8F5F853A2535BCE100A39882 /* SessionProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FDF7112250BA9CB00818E51 /* SessionProperties.m */; };
 		8F5F85422535BCEB00A39882 /* ActionEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FDF7109250B9E5B00818E51 /* ActionEvent.m */; };
 		8F80C047252355B500E1F650 /* SessionProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FDF7112250BA9CB00818E51 /* SessionProperties.m */; };
+		8FA11962253EDC82000AE887 /* UserProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FA11960253EDC82000AE887 /* UserProperties.h */; };
+		8FA11963253EDC82000AE887 /* UserProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FA11961253EDC82000AE887 /* UserProperties.m */; };
+		8FA11964253EDC82000AE887 /* UserProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FA11961253EDC82000AE887 /* UserProperties.m */; };
+		8FA11965253EDC82000AE887 /* UserProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FA11961253EDC82000AE887 /* UserProperties.m */; };
+		8FAF2D3F25405DFE007AA438 /* UserProperties.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 8FA11960253EDC82000AE887 /* UserProperties.h */; };
 		8FDF7107250B9E4D00818E51 /* ActionProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FDF7105250B9E4D00818E51 /* ActionProperties.h */; };
 		8FDF7108250B9E4D00818E51 /* ActionProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FDF7106250B9E4D00818E51 /* ActionProperties.m */; };
 		8FDF710B250B9E5B00818E51 /* ActionEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FDF7109250B9E5B00818E51 /* ActionEvent.m */; };
@@ -232,6 +237,7 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				8FAF2D3F25405DFE007AA438 /* UserProperties.h in Copy Files */,
 				8F4420EE250F7BA6003961F3 /* SessionProperties.h in Copy Files */,
 				8FDF710E250BA22700818E51 /* ActionEvent.h in Copy Files */,
 				8FDF710D250BA22100818E51 /* ActionProperties.h in Copy Files */,
@@ -268,6 +274,8 @@
 		8F143ED82510AD830024CF24 /* ActionEventTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionEventTests.m; sourceTree = "<group>"; };
 		8F143EDA2510AECA0024CF24 /* ActionPropertiesTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionPropertiesTests.m; sourceTree = "<group>"; };
 		8F143EDC2510B3220024CF24 /* SessionPropertiesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SessionPropertiesTests.m; sourceTree = "<group>"; };
+		8FA11960253EDC82000AE887 /* UserProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserProperties.h; sourceTree = "<group>"; };
+		8FA11961253EDC82000AE887 /* UserProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserProperties.m; sourceTree = "<group>"; };
 		8FDF7105250B9E4D00818E51 /* ActionProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionProperties.h; sourceTree = "<group>"; };
 		8FDF7106250B9E4D00818E51 /* ActionProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionProperties.m; sourceTree = "<group>"; };
 		8FDF7109250B9E5B00818E51 /* ActionEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionEvent.m; sourceTree = "<group>"; };
@@ -578,6 +586,8 @@
 				A337445B24C1A12A0096259B /* PageProperties.m */,
 				8FDF7111250BA9CB00818E51 /* SessionProperties.h */,
 				8FDF7112250BA9CB00818E51 /* SessionProperties.m */,
+				8FA11960253EDC82000AE887 /* UserProperties.h */,
+				8FA11961253EDC82000AE887 /* UserProperties.m */,
 			);
 			path = Properties;
 			sourceTree = "<group>";
@@ -745,6 +755,7 @@
 				8FDF710C250B9E5B00818E51 /* ActionEvent.h in Headers */,
 				A380D1FF241296FD009E2CD8 /* PageViewEvent.h in Headers */,
 				A337446024C8404B0096259B /* PageViewEvent.m in Headers */,
+				8FA11962253EDC82000AE887 /* UserProperties.h in Headers */,
 				A3D9836F24B3311100AF0CD8 /* RequestBatchSupportUrlBuilder.m in Headers */,
 				A3852A95249389060090F47B /* DatabaseManager.m in Headers */,
 				BCCAE6D0240D29A9005E9FD6 /* MappIntelligenceLogger.m in Headers */,
@@ -1022,6 +1033,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8FA11964253EDC82000AE887 /* UserProperties.m in Sources */,
 				8F80C047252355B500E1F650 /* SessionProperties.m in Sources */,
 				8FDF7110250BA24B00818E51 /* ActionEvent.m in Sources */,
 				8FDF710F250BA24200818E51 /* ActionProperties.m in Sources */,
@@ -1053,6 +1065,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8FA11963253EDC82000AE887 /* UserProperties.m in Sources */,
 				A3CC548B249125DD006215FD /* Parameter.m in Sources */,
 				BCBE5C0923F29E49002125C1 /* DefaultTracker.m in Sources */,
 				A380D200241296FD009E2CD8 /* PageViewEvent.m in Sources */,
@@ -1125,6 +1138,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8FA11965253EDC82000AE887 /* UserProperties.m in Sources */,
 				8F5F85422535BCEB00A39882 /* ActionEvent.m in Sources */,
 				8F5F853A2535BCE100A39882 /* SessionProperties.m in Sources */,
 				8F5F85322535BCDD00A39882 /* ActionProperties.m in Sources */,
