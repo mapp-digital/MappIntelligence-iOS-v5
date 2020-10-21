@@ -77,12 +77,12 @@
     [_mappIntelligence setRequestPerQueue:requestPerQueue];
 }
 
-- (NSError *_Nullable)trackPageWithName: (NSString *_Nonnull) name pageProperties:(PageProperties  *_Nullable)pageProperties sessionProperties: (SessionProperties *_Nullable) sessionProperties {
-    return [_mappIntelligence trackPageWithName:name pageProperties:pageProperties sessionProperties:sessionProperties];
+- (NSError *_Nullable)trackPageWithName: (NSString *_Nonnull) name pageProperties:(PageProperties  *_Nullable)pageProperties sessionProperties: (SessionProperties *_Nullable) sessionProperties userProperties: (UserProperties *_Nullable) userProperties {
+    return [_mappIntelligence trackPageWithName:name pageProperties:pageProperties sessionProperties:sessionProperties userProperties:userProperties];
 }
 
-- (NSError *_Nullable) trackCustomEventWithName:(NSString *_Nonnull) name  actionProperties: (ActionProperties *_Nullable) actionProperties sessionProperties: (SessionProperties *_Nullable) sessionProperties {
-    return [_mappIntelligence trackCustomEventWithName:name actionProperties:actionProperties sessionProperties:sessionProperties];
+- (NSError *_Nullable) trackCustomEventWithName:(NSString *_Nonnull) name  actionProperties: (ActionProperties *_Nullable) actionProperties sessionProperties: (SessionProperties *_Nullable) sessionProperties  userProperties: (UserProperties *_Nullable) userProperties {
+    return [_mappIntelligence trackCustomEventWithName:name actionProperties:actionProperties sessionProperties:sessionProperties userProperties:userProperties];
 }
 
 - (void)reset {

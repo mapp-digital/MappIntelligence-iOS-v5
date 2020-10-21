@@ -24,6 +24,8 @@
 		8FA11964253EDC82000AE887 /* UserProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FA11961253EDC82000AE887 /* UserProperties.m */; };
 		8FA11965253EDC82000AE887 /* UserProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FA11961253EDC82000AE887 /* UserProperties.m */; };
 		8FAF2D3F25405DFE007AA438 /* UserProperties.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 8FA11960253EDC82000AE887 /* UserProperties.h */; };
+		8FAF2D772540875A007AA438 /* UserProperties.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8FA11960253EDC82000AE887 /* UserProperties.h */; };
+		8FAF2D7F2540875E007AA438 /* UserProperties.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8FA11960253EDC82000AE887 /* UserProperties.h */; };
 		8FDF7107250B9E4D00818E51 /* ActionProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FDF7105250B9E4D00818E51 /* ActionProperties.h */; };
 		8FDF7108250B9E4D00818E51 /* ActionProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FDF7106250B9E4D00818E51 /* ActionProperties.m */; };
 		8FDF710B250B9E5B00818E51 /* ActionEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FDF7109250B9E5B00818E51 /* ActionEvent.m */; };
@@ -221,6 +223,7 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				8FAF2D772540875A007AA438 /* UserProperties.h in CopyFiles */,
 				8F4420F0250F96AB003961F3 /* ActionProperties.h in CopyFiles */,
 				8F4420EF250F969B003961F3 /* SessionProperties.h in CopyFiles */,
 				A3258BFB250A76A100039B92 /* Properties.h in CopyFiles */,
@@ -258,6 +261,7 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				8FAF2D7F2540875E007AA438 /* UserProperties.h in CopyFiles */,
 				8F5F851F2535BAB300A39882 /* SessionProperties.h in CopyFiles */,
 				8F5F85172535BAB000A39882 /* ActionProperties.h in CopyFiles */,
 				A3258C00250AA13A00039B92 /* Properties.h in CopyFiles */,

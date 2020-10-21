@@ -64,7 +64,7 @@ typedef NS_ENUM(NSInteger, logLevel) {
 @endcode
 @return Error in case of a failure. Returns nil if no error was detected.
 */
-- (NSError *_Nullable)trackPageWithViewController:(UIViewController *_Nonnull)controller pageProperties:(PageProperties  *_Nullable)pageProperties sessionProperties:(SessionProperties *_Nullable) sessionProperties;
+- (NSError *_Nullable)trackPageWithViewController:(UIViewController *_Nonnull)controller pageProperties:(PageProperties  *_Nullable)pageProperties sessionProperties:(SessionProperties *_Nullable) sessionProperties  userProperties: (UserProperties *_Nullable) userProperties;
 #endif
 /**
 @brief Method to track additional page information.
@@ -82,7 +82,7 @@ typedef NS_ENUM(NSInteger, logLevel) {
 @endcode
 @return Error that can happen while tracking. Returns nil if no error was detected.
 */
-- (NSError *_Nullable)trackPageWithName: (NSString *_Nonnull) name pageProperties:(PageProperties  *_Nullable)pageProperties sessionProperties: (SessionProperties *_Nullable) sessionProperties;
+- (NSError *_Nullable)trackPageWithName: (NSString *_Nonnull) name pageProperties:(PageProperties  *_Nullable)pageProperties sessionProperties: (SessionProperties *_Nullable) sessionProperties  userProperties: (UserProperties *_Nullable) userProperties;
 /**
 @brief Method which will track action event created from action properties and session properties.
 @param name - custom event name
@@ -95,7 +95,7 @@ typedef NS_ENUM(NSInteger, logLevel) {
  @endcode
 @return the error which may happen through process of tracking, if returns nil there is no error.
 */
-- (NSError *_Nullable) trackCustomEventWithName:(NSString *_Nonnull) name  actionProperties: (ActionProperties *_Nullable) actionProperties sessionProperties: (SessionProperties *_Nullable) sessionProperties;
+- (NSError *_Nullable) trackCustomEventWithName:(NSString *_Nonnull) name actionProperties: (ActionProperties *_Nullable) actionProperties sessionProperties: (SessionProperties *_Nullable) sessionProperties  userProperties: (UserProperties *_Nullable) userProperties;
 /**
 @brief Method to initialize tracking. Please specify your track domain and trackID.
 @param trackIDs - Array of your trackIDs. The information can be provided by your account manager.
