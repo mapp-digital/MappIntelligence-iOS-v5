@@ -14,6 +14,7 @@
 @property PageViewEvent* pageViewEvent;
 @property PageProperties* pageProperties;
 @property SessionProperties *sessionProperties;
+@property UserProperties *userProperties;
 @property NSString* internalSearch;
 @property NSMutableDictionary* details;
 @property NSMutableDictionary* groups;
@@ -29,7 +30,9 @@
     _pageProperties = [[PageProperties alloc] initWithPageParams:_details andWithPageCategory:_groups andWithSearch:_internalSearch];
     _sessionDictionary = [@{@10: @[@"sessionpar1"]} copy];
     _sessionProperties =  [[SessionProperties alloc] initWithProperties: _sessionDictionary];
-    _pageViewEvent = [[PageViewEvent alloc] initWithName:@"test custom name" pageProperties:_pageProperties sessionProperties:_sessionProperties];
+    _userProperties = [[UserProperties alloc] init];
+    _userProperties.city = @"Berlin";
+    _pageViewEvent = [[PageViewEvent alloc] initWithName:@"test custom name" pageProperties:_pageProperties sessionProperties:_sessionProperties userProperties:_userProperties];
 }
 
 - (void)tearDown {

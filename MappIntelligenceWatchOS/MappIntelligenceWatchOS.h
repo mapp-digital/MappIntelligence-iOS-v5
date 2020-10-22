@@ -56,11 +56,14 @@ MappIntelligenceWatchOS.shared()?.initWithConfiguration([12345678, 8783291721], 
 @brief Method to track additional page information.
 @param name - custom page name.
 @param pageProperties - pageProperties can contain details, groups and seach term.
+@param userProperties - customer related data
+
 @code
  let customName = "the custom name of page"
  let params:NSMutableDictionary = [20: ["cp20Override", "cp21Override", "cp22Override"]]
  let categories:NSMutableDictionary = [10: ["test"]]
  let searchTerm = "testSearchTerm"
+ let userProperties = UserProperties(customProperties:[20:["Test"]])
  
  MappIntelligenceWatchOS.shared()?.trackPage(withName: customName, andWith: PageProperties(pageParams: params, andWithPageCategory: categories, andWithSearch: searchTerm))
 @endcode
@@ -73,9 +76,13 @@ MappIntelligenceWatchOS.shared()?.initWithConfiguration([12345678, 8783291721], 
 @param name - custom event name
 @param actionProperties - action properties for one event, each property can have multiple values
 @param sessionProperties - session properties for one event, each property can have multiple values
+@param userProperties - customer related data
+
 @code
  let actionProperties = ActionProperties(properties:  [20:["ck20Override","ck21Override"]])
  let sessionProperties = SessionProperties(properties: [10: ["sessionpar1"]])
+ let userProperties = UserProperties(customProperties:[20:["Test"]])
+ 
  MappIntelligenceWatchOS.shared()?.trackCustomEvent(withName: "TestAction", actionProperties: actionProperties, sessionProperties: sessionProperties)
  @endcode
 @return the error which may happen through process of tracking, if returns nil there is no error.

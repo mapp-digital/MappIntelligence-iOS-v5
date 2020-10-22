@@ -155,10 +155,14 @@
         [parametrs addObjectsFromArray:[prop asQueryItemsFor:request]];
         SessionProperties *session = ((PageViewEvent*)event).sessionProperties;
         [parametrs addObjectsFromArray:[session asQueryItemsFor: request]];
+        UserProperties *userProperties = ((PageViewEvent*)event).userProperties;
+        [parametrs addObjectsFromArray:[userProperties asQueryItems]];
     } else if ([event isKindOfClass:ActionEvent.class]) {
         [parametrs addObjectsFromArray:[(ActionEvent*)event asQueryItems]];
         SessionProperties *session = ((ActionEvent*)event).sessionProperties;
         [parametrs addObjectsFromArray:[session asQueryItemsFor: request]];
+        UserProperties *userProperties = ((ActionEvent*)event).userProperties;
+        [parametrs addObjectsFromArray:[userProperties asQueryItems]];
     }
     
     if (properties.isFirstEventOfSession) {

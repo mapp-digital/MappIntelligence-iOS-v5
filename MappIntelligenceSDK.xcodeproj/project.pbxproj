@@ -36,6 +36,7 @@
 		8FDF7110250BA24B00818E51 /* ActionEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FDF7109250B9E5B00818E51 /* ActionEvent.m */; };
 		8FDF7113250BA9CB00818E51 /* SessionProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FDF7111250BA9CB00818E51 /* SessionProperties.h */; };
 		8FDF7114250BA9CB00818E51 /* SessionProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FDF7112250BA9CB00818E51 /* SessionProperties.m */; };
+		8FFDEA3B254225D800E069F7 /* UserPropertiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFDEA3A254225D800E069F7 /* UserPropertiesTests.m */; };
 		A31C6F1D24D9A0F300166585 /* RequestBatchSupportUrlBuilderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A31C6F1C24D9A0F300166585 /* RequestBatchSupportUrlBuilderTests.m */; };
 		A31C6F2024D9A9B200166585 /* DatabaseManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A31C6F1F24D9A9B200166585 /* DatabaseManagerTests.m */; };
 		A31D7A4F243CC0F200386A1C /* TrackerRequestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A31D7A4E243CC0F200386A1C /* TrackerRequestTests.m */; };
@@ -286,6 +287,7 @@
 		8FDF710A250B9E5B00818E51 /* ActionEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionEvent.h; sourceTree = "<group>"; };
 		8FDF7111250BA9CB00818E51 /* SessionProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SessionProperties.h; sourceTree = "<group>"; };
 		8FDF7112250BA9CB00818E51 /* SessionProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SessionProperties.m; sourceTree = "<group>"; };
+		8FFDEA3A254225D800E069F7 /* UserPropertiesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserPropertiesTests.m; sourceTree = "<group>"; };
 		A30E3EC0244491F30047D7A6 /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .travis.yml; sourceTree = "<group>"; };
 		A30E3EC224449ED90047D7A6 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A30E3EC42444A0B70047D7A6 /* .oclint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .oclint.yml; sourceTree = "<group>"; };
@@ -620,6 +622,7 @@
 				8F143EDA2510AECA0024CF24 /* ActionPropertiesTests.m */,
 				A357221F24FD10AD005F9DE1 /* PagePropertiesTests.m */,
 				8F143EDC2510B3220024CF24 /* SessionPropertiesTests.m */,
+				8FFDEA3A254225D800E069F7 /* UserPropertiesTests.m */,
 			);
 			path = Properties;
 			sourceTree = "<group>";
@@ -1115,6 +1118,7 @@
 				A31D7A4F243CC0F200386A1C /* TrackerRequestTests.m in Sources */,
 				A357221B24F933A1005F9DE1 /* RequestTest.m in Sources */,
 				8F143EDB2510AECA0024CF24 /* ActionPropertiesTests.m in Sources */,
+				8FFDEA3B254225D800E069F7 /* UserPropertiesTests.m in Sources */,
 				A31C6F2024D9A9B200166585 /* DatabaseManagerTests.m in Sources */,
 				A3A72559243DC22C00671DB2 /* RequestTrackerBuilderTests.m in Sources */,
 				A357222024FD10AD005F9DE1 /* PagePropertiesTests.m in Sources */,

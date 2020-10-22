@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef struct Birthdays {
+typedef struct Birthday {
     int day;
     int month;
     int year;
@@ -28,7 +28,6 @@ typedef NS_ENUM(NSInteger, Gender) {
 @property Birthday birthday;
 @property (nullable) NSString *city;
 @property (nullable) NSString *country;
-@property (nullable) NSDictionary<NSNumber* ,NSArray<NSString*>*> *details;
 @property (nullable) NSString *emailAddress;
 @property (nullable) NSString *emailReceiverId;
 @property (nullable) NSString *firstName;
@@ -40,8 +39,10 @@ typedef NS_ENUM(NSInteger, Gender) {
 @property (nullable) NSString *street;
 @property (nullable) NSString *streetNumber;
 @property (nullable) NSString *zipCode;
+@property (nullable) NSDictionary<NSNumber* ,NSArray<NSString*>*>* customProperties;
 
--(NSMutableArray<NSURLQueryItem*>*)asQueryItems;
+- (instancetype)initWithCustomProperties: (NSDictionary<NSNumber* ,NSArray<NSString*>*>* _Nullable) properties;
+- (NSMutableArray<NSURLQueryItem*>*)asQueryItems;
 
 @end
 

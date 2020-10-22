@@ -67,7 +67,14 @@ class ViewController: UIViewController {
     @IBAction func sendActionEvent(_ sender: Any) {
         let actionProperties = ActionProperties(properties:  [20:["ck20Override","ck21Override"]])
         let sessionProperties = SessionProperties(properties: [10: ["018", "Over"]])
-        MappIntelligence.shared()?.trackCustomEvent(withName: "TestAction", actionProperties: actionProperties, sessionProperties: sessionProperties, userProperties: nil)
+        let userProperties = UserProperties()
+        userProperties.customProperties = [20:["Test"]]
+        userProperties.birthday = Birthday(day: 12, month: 0, year: 1993)
+        userProperties.city = "Paris"
+        userProperties.country = "France"
+        userProperties.customerId = "CustomerID"
+        userProperties.gender = .female
+        MappIntelligence.shared()?.trackCustomEvent(withName: "TestAction", actionProperties: actionProperties, sessionProperties: sessionProperties, userProperties: userProperties)
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
@@ -86,12 +93,6 @@ class ViewController: UIViewController {
     
     @objc func tap() {
         self.requestIDTextField.endEditing(true)
-    }
-    
-    func testUserProperties() {
-        let b = Birthday(day: 11, month: 11, year: 11)
-        let up = UserProperties()
-        up.birthday = Birthday(day: 11, month: 11, year: 11)
     }
 }
 

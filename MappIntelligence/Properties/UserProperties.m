@@ -11,21 +11,29 @@
 
 @implementation UserProperties
 
-- (instancetype)init {
+- (instancetype)initWithCustomProperties: (NSDictionary<NSNumber* ,NSArray<NSString*>*>* _Nullable) properties {
     self = [super init];
     if (self) {
-        
+        _customProperties = properties;
     }
     return self;
 }
 
 - (NSMutableArray<NSURLQueryItem*>*)asQueryItems {
     NSMutableArray<NSURLQueryItem*>* items = [[NSMutableArray alloc] init];
+    
+    if (_customProperties) {
+        _customProperties = [self filterCustomDict:_customProperties];
+        for(NSNumber* key in _customProperties) {
+            [items addObject:[[NSURLQueryItem alloc] initWithName:[NSString stringWithFormat:@"uc%@",key] value: [_customProperties[key] componentsJoinedByString:@";"]]];
+        }
+    }
+    
     if (_birthday.day && _birthday.month && _birthday.year) {
         [items addObject:[[NSURLQueryItem alloc] initWithName:@"uc707" value: [self getBirthday]]];
     }
     if (_city) {
-        [items addObject:[[NSURLQueryItem alloc] initWithName:@"uc709" value:_city]];
+        [items addObject:[[NSURLQueryItem alloc] initWithName:@"uc708" value:_city]];
     }
     if (_country) {
         [items addObject:[[NSURLQueryItem alloc] initWithName:@"uc709" value:_country]];
@@ -68,9 +76,20 @@
 
 - (NSString *) getBirthday {
     if (_birthday.day && _birthday.month && _birthday.year) {
-        return [NSString stringWithFormat:@"%4d%2d%2d", _birthday.year, _birthday.month, _birthday.day];
+        return [NSString stringWithFormat:@"%4d%02d%02d", _birthday.year, _birthday.month, _birthday.day];
     }
     return @"";
+}
+
+- (NSDictionary<NSNumber* ,NSArray<NSString*>*> *) filterCustomDict: (NSDictionary<NSNumber* ,NSArray<NSString*>*> *) dict{
+    NSMutableDictionary *result = [[NSMutableDictionary alloc] init];
+    for (NSNumber *idx in dict) {
+        if (idx.intValue < 500 && idx.intValue > 0) {
+            [result setObject:dict[idx] forKey:idx];
+        }
+    }
+    return result;
+    
 }
 
 @end

@@ -15,6 +15,7 @@
 @property ActionProperties* actionProperties;
 @property NSMutableDictionary *sessionDictionary;
 @property SessionProperties *sessionProperties;
+@property UserProperties *userProperties;
 
 @end
 
@@ -25,7 +26,9 @@
     _actionProperties = [[ActionProperties alloc] initWithProperties: _details];
     _sessionDictionary = [@{@10: @[@"sessionpar1"]} copy];
     _sessionProperties =  [[SessionProperties alloc] initWithProperties: _sessionDictionary];
-    _actionEvent = [[ActionEvent alloc] initWithName:@"TestAction" pageName:@"0" actionProperties:_actionProperties sessionProperties:_sessionProperties];
+    _userProperties = [[UserProperties alloc] init];
+    _userProperties.city = @"Berlin";
+    _actionEvent = [[ActionEvent alloc] initWithName:@"TestAction" pageName:@"0" actionProperties:_actionProperties sessionProperties:_sessionProperties userProperties:_userProperties];
 }
 
 - (void)tearDown {
@@ -39,6 +42,7 @@
 - (void)testInitWithProperties {
     XCTAssertTrue([[_actionEvent actionProperties] isEqual:_actionProperties], @"Action properties is not the same as it used for creation of action event!");
     XCTAssertTrue([[_actionEvent sessionProperties] isEqual:_sessionProperties], @"Session properties is not the same as it used for creation of action event!");
+    XCTAssertTrue([[_actionEvent userProperties] isEqual:_userProperties], @"User properties is not the same as it used for creation of action event!");
 
 }
 
