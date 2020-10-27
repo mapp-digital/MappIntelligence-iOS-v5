@@ -78,6 +78,12 @@
 		A338B79925470A1F00E50C28 /* Product.m in Sources */ = {isa = PBXBuildFile; fileRef = A338B79725470A1F00E50C28 /* Product.m */; };
 		A338B79A25470A1F00E50C28 /* Product.m in Sources */ = {isa = PBXBuildFile; fileRef = A338B79725470A1F00E50C28 /* Product.m */; };
 		A338B79B25470A1F00E50C28 /* Product.m in Sources */ = {isa = PBXBuildFile; fileRef = A338B79725470A1F00E50C28 /* Product.m */; };
+		A338B7B12548744900E50C28 /* EcommerceProperties.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A338B7892546FD1E00E50C28 /* EcommerceProperties.h */; };
+		A338B7B92548745400E50C28 /* EcommerceProperties.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A338B7892546FD1E00E50C28 /* EcommerceProperties.h */; };
+		A338B7CC254874D300E50C28 /* Product.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A338B79625470A1F00E50C28 /* Product.h */; };
+		A338B7D4254874DA00E50C28 /* Product.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A338B79625470A1F00E50C28 /* Product.h */; };
+		A338B7E72548752200E50C28 /* EcommerceProperties.h in Copy Files */ = {isa = PBXBuildFile; fileRef = A338B7892546FD1E00E50C28 /* EcommerceProperties.h */; };
+		A338B7EF2548752B00E50C28 /* Product.h in Copy Files */ = {isa = PBXBuildFile; fileRef = A338B79625470A1F00E50C28 /* Product.h */; };
 		A33B36E72460246F005EA9AE /* MappIntelligenceSDK_watchOS.h in Headers */ = {isa = PBXBuildFile; fileRef = A33B36E52460246F005EA9AE /* MappIntelligenceSDK_watchOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A33B36EB24602482005EA9AE /* libMappIntelligenceWatchOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A32AEA25242A6F4600BC7B46 /* libMappIntelligenceWatchOS.a */; };
 		A33B36F72460249F005EA9AE /* MappIntelligenceSDK_tvOS.h in Headers */ = {isa = PBXBuildFile; fileRef = A33B36F52460249F005EA9AE /* MappIntelligenceSDK_tvOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -232,6 +238,8 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				A338B7CC254874D300E50C28 /* Product.h in CopyFiles */,
+				A338B7B12548744900E50C28 /* EcommerceProperties.h in CopyFiles */,
 				8FAF2D772540875A007AA438 /* UserProperties.h in CopyFiles */,
 				8F4420F0250F96AB003961F3 /* ActionProperties.h in CopyFiles */,
 				8F4420EF250F969B003961F3 /* SessionProperties.h in CopyFiles */,
@@ -249,6 +257,8 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				A338B7EF2548752B00E50C28 /* Product.h in Copy Files */,
+				A338B7E72548752200E50C28 /* EcommerceProperties.h in Copy Files */,
 				8FAF2D3F25405DFE007AA438 /* UserProperties.h in Copy Files */,
 				8F4420EE250F7BA6003961F3 /* SessionProperties.h in Copy Files */,
 				8FDF710E250BA22700818E51 /* ActionEvent.h in Copy Files */,
@@ -270,6 +280,8 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				A338B7D4254874DA00E50C28 /* Product.h in CopyFiles */,
+				A338B7B92548745400E50C28 /* EcommerceProperties.h in CopyFiles */,
 				8FAF2D7F2540875E007AA438 /* UserProperties.h in CopyFiles */,
 				8F5F851F2535BAB300A39882 /* SessionProperties.h in CopyFiles */,
 				8F5F85172535BAB000A39882 /* ActionProperties.h in CopyFiles */,
@@ -969,7 +981,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1130;
-				LastUpgradeCheck = 1130;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "Mapp Digital US, LLC";
 				TargetAttributes = {
 					A32AEA24242A6F4600BC7B46 = {
@@ -1247,7 +1259,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LERY366S7C;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1263,7 +1275,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LERY366S7C;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -1299,6 +1311,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1359,6 +1372,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1397,7 +1411,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				HEADER_SEARCH_PATHS = "($SRCROOT)/**";
 				INFOPLIST_FILE = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1424,7 +1438,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				HEADER_SEARCH_PATHS = "($SRCROOT)/**";
 				INFOPLIST_FILE = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1572,7 +1586,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 9.0;
+				TVOS_DEPLOYMENT_TARGET = 12.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -1606,7 +1620,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 9.0;
+				TVOS_DEPLOYMENT_TARGET = 12.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -1623,7 +1637,7 @@
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 9.0;
+				TVOS_DEPLOYMENT_TARGET = 12.0;
 			};
 			name = Debug;
 		};
@@ -1638,7 +1652,7 @@
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 9.0;
+				TVOS_DEPLOYMENT_TARGET = 12.0;
 			};
 			name = Release;
 		};
@@ -1657,7 +1671,7 @@
 				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "MappIntelligenceSDK-iOS/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1692,7 +1706,7 @@
 				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "MappIntelligenceSDK-iOS/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

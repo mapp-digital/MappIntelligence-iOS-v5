@@ -12,6 +12,7 @@
 #import "SessionProperties.h"
 #import "ActionProperties.h"
 #import "UserProperties.h"
+#import "EcommerceProperties.h"
 
 typedef NS_ENUM(NSInteger, logTvOSLevel) {
   allTvOSLogs = 1,     // All logs of the above.
@@ -72,7 +73,7 @@ MappIntelligencetvOS.shared()?.initWithConfiguration([12345678, 8783291721], onT
 @endcode
 @return Error in case of a failure. Returns nil if no error was detected.
 */
-- (NSError *_Nullable)trackPageWithViewController:(UIViewController *_Nonnull)controller pageProperties:(PageProperties  *_Nullable)pageProperties sessionProperties:(SessionProperties *_Nullable) sessionProperties userProperties: (UserProperties *_Nullable) userProperties;
+- (NSError *_Nullable)trackPageWithViewController:(UIViewController *_Nonnull)controller pageProperties:(PageProperties  *_Nullable)pageProperties sessionProperties:(SessionProperties *_Nullable) sessionProperties userProperties: (UserProperties *_Nullable) userProperties ecommerceProperties: (EcommerceProperties *_Nullable) ecommerceProperties;
 
 /**
 @brief Method to track additional page information.
@@ -93,7 +94,7 @@ MappIntelligencetvOS.shared()?.initWithConfiguration([12345678, 8783291721], onT
 @endcode
 @return Error that can happen while tracking. Returns nil if no error was detected.
 */
-- (NSError *_Nullable)trackPageWithName: (NSString *_Nonnull) name pageProperties:(PageProperties  *_Nullable)pageProperties sessionProperties: (SessionProperties *_Nullable) sessionProperties userProperties: (UserProperties *_Nullable) userProperties;
+- (NSError *_Nullable)trackPageWithName: (NSString *_Nonnull) name pageProperties:(PageProperties  *_Nullable)pageProperties sessionProperties: (SessionProperties *_Nullable) sessionProperties userProperties: (UserProperties *_Nullable) userProperties ecommerceProperties: (EcommerceProperties *_Nullable) ecommerceProperties;
 
 /**
 @brief Method which will track action event created from action properties and session properties.

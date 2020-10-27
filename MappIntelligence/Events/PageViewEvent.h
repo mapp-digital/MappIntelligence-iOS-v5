@@ -13,6 +13,7 @@
 #import "TrackingEvent.h"
 #import "SessionProperties.h"
 #import "UserProperties.h"
+#import "EcommerceProperties.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -21,8 +22,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, nonnull) PageProperties* pageProperties;
 @property (nonatomic, nullable) SessionProperties *sessionProperties;
 @property (nonatomic, nullable) UserProperties *userProperties;
+@property (nonatomic, nullable) EcommerceProperties *ecommerceProperties;
 
-- (instancetype)initWithName:(NSString *)name pageProperties:(PageProperties *)pageProperties sessionProperties: (SessionProperties *_Nullable) sessionProperties userProperties: (UserProperties *_Nullable)userProperties;
+- (instancetype)initWithName:(NSString *)name pageProperties:(PageProperties *)pageProperties sessionProperties: (SessionProperties *_Nullable) sessionProperties userProperties: (UserProperties *_Nullable)userProperties ecommerceProperties: (EcommerceProperties *_Nullable) ecommerceProperties;
 @end
 
 NS_ASSUME_NONNULL_END
