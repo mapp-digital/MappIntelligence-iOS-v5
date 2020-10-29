@@ -11,6 +11,7 @@
 #import "PageProperties.h"
 #import "ActionProperties.h"
 #import "SessionProperties.h"
+#import "AdvertisementProperties.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -19,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable) NSString* name;
 @property (nonatomic, nonnull) ActionProperties* actionProperties;
 @property (nonatomic, nullable) SessionProperties *sessionProperties;
+@property (nonatomic, nullable) AdvertisementProperties *advertisementProperties;
 
 -(instancetype)initWithName: (NSString *)name pageName: (NSString *)pageName actionProperties: (ActionProperties*) actionProperties sessionProperties: (SessionProperties *_Nullable)sessionProperties;
 -(NSMutableArray<NSURLQueryItem*>*)asQueryItems;
