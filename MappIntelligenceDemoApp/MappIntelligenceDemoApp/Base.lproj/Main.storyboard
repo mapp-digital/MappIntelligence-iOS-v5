@@ -107,6 +107,16 @@
                                     <action selector="sendActionEvent:" destination="BYZ-38-t0r" eventType="touchUpInside" id="swD-rz-cOn"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tX1-Ya-atP">
+                                <rect key="frame" x="20" y="212" width="374" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="zLP-ns-A7S"/>
+                                </constraints>
+                                <state key="normal" title="Send ecommerce event"/>
+                                <connections>
+                                    <action selector="sendEcommerceEvent:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GfJ-fg-zDu"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -118,8 +128,10 @@
                             <constraint firstItem="hJO-Rf-ihI" firstAttribute="top" secondItem="clZ-DQ-KH4" secondAttribute="bottom" constant="8" id="8LK-m8-yY3"/>
                             <constraint firstItem="X2d-qc-or2" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="14" id="CAX-dw-iZV"/>
                             <constraint firstItem="NT4-Kt-2Ux" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Fk8-bD-oBz"/>
+                            <constraint firstItem="tX1-Ya-atP" firstAttribute="top" secondItem="hJO-Rf-ihI" secondAttribute="bottom" constant="10" id="HbI-z0-8Z9"/>
                             <constraint firstItem="clZ-DQ-KH4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="HcK-CE-vph"/>
                             <constraint firstItem="xSO-ND-ecO" firstAttribute="top" secondItem="bKq-ZH-pWy" secondAttribute="bottom" constant="8" id="Kvg-Po-qdh"/>
+                            <constraint firstItem="tX1-Ya-atP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="NOD-iM-fGh"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="yzy-Xb-HdJ" secondAttribute="trailing" constant="20" id="Red-u9-LJC"/>
                             <constraint firstItem="QvL-lF-keq" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="SfV-Pt-LNZ"/>
                             <constraint firstItem="wgy-Jv-PY3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="UQF-bQ-1Qr"/>
@@ -137,6 +149,7 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="X2d-qc-or2" secondAttribute="trailing" constant="20" id="ltH-MX-cub"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bKq-ZH-pWy" secondAttribute="trailing" constant="10" id="p8C-1e-iNo"/>
                             <constraint firstItem="QvL-lF-keq" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="r42-H5-w8S"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="tX1-Ya-atP" secondAttribute="trailing" constant="20" id="sbD-wS-sua"/>
                             <constraint firstItem="nI1-uY-hDE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="tLb-6q-UGr"/>
                         </constraints>
                     </view>

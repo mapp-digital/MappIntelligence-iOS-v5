@@ -77,6 +77,21 @@ class ViewController: UIViewController {
         MappIntelligence.shared()?.trackCustomEvent(withName: "TestAction", actionProperties: actionProperties, sessionProperties: sessionProperties, userProperties: userProperties)
     }
     
+    @IBAction func sendEcommerceEvent(_ sender: Any) {
+        let ecommerceProperties = EcommerceProperties(customProperties: [540 : ["ecommerce1", "ecommerce2"]])
+        let product1 = Product()
+        product1.name = "Product1Name"
+        product1.price = "20$"
+        product1.quantity = 34
+        let product2 = Product()
+        let product3 = Product()
+        product3.price = "348$"
+        ecommerceProperties.products = [product1, product2, product3];
+        ecommerceProperties.currencyCode = "$"
+        ecommerceProperties.paymentMethod = "creditCard"
+        MappIntelligence.shared()?.trackPage(with: self, pageProperties: nil, sessionProperties: nil, userProperties: nil, ecommerceProperties: ecommerceProperties)
+    }
+    
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             if self.view.frame.origin.y == 0 {
