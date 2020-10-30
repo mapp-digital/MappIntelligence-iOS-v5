@@ -75,16 +75,16 @@
     [_mappIntelligence setRequestPerQueue:requestPerQueue];
 }
 
-- (NSError *_Nullable)trackPageWithName: (NSString *_Nonnull) name pageProperties:(PageProperties  *_Nullable)properties sessionProperties: (SessionProperties *_Nullable) sessionProperties {
-    return [_mappIntelligence trackPageWithName:name pageProperties:properties  sessionProperties:sessionProperties];
+- (NSError *_Nullable)trackPageWithName: (NSString *_Nonnull) name pageProperties:(PageProperties  *_Nullable)properties sessionProperties: (SessionProperties *_Nullable) sessionProperties userProperties: (UserProperties *) userProperties ecommerceProperties: (EcommerceProperties *_Nullable) ecommerceProperties {
+    return [_mappIntelligence trackPageWithName:name pageProperties:properties  sessionProperties:sessionProperties userProperties:userProperties ecommerceProperties: ecommerceProperties];
 }
 
-- (NSError *_Nullable)trackPageWithViewController:(UIViewController *_Nonnull)controller pageProperties:(PageProperties  *_Nullable)pageProperties sessionProperties:(SessionProperties *_Nullable) sessionProperties {
-    return [_mappIntelligence trackPageWithViewController:controller pageProperties:pageProperties sessionProperties:sessionProperties];
+- (NSError *_Nullable)trackPageWithViewController:(UIViewController *_Nonnull)controller pageProperties:(PageProperties  *_Nullable)pageProperties sessionProperties:(SessionProperties *_Nullable) sessionProperties userProperties: (UserProperties *) userProperties ecommerceProperties: (EcommerceProperties *_Nullable) ecommerceProperties {
+    return [_mappIntelligence trackPageWithViewController:controller pageProperties:pageProperties sessionProperties:sessionProperties userProperties:userProperties ecommerceProperties: ecommerceProperties];
 }
 
-- (NSError *_Nullable) trackCustomEventWithName:(NSString *_Nonnull) name  actionProperties: (ActionProperties *_Nullable) actionProperties sessionProperties: (SessionProperties *_Nullable) sessionProperties {
-    return [_mappIntelligence trackCustomEventWithName:name actionProperties:actionProperties sessionProperties:sessionProperties];
+- (NSError *_Nullable) trackCustomEventWithName:(NSString *_Nonnull) name  actionProperties: (ActionProperties *_Nullable) actionProperties sessionProperties: (SessionProperties *_Nullable) sessionProperties userProperties: (UserProperties *) userProperties{
+    return [_mappIntelligence trackCustomEventWithName:name actionProperties:actionProperties sessionProperties:sessionProperties userProperties:userProperties];
 }
 
 - (void)reset {

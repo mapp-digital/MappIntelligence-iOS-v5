@@ -153,12 +153,19 @@
     if ([event isKindOfClass:PageViewEvent.class]) {
         PageProperties* prop = ((PageViewEvent*)event).pageProperties;
         [parametrs addObjectsFromArray:[prop asQueryItemsFor:request]];
-        SessionProperties *session = ((PageViewEvent*)event).sessionProperties;
+        PageViewEvent* pgEvent = ((PageViewEvent*)event);
+        SessionProperties *session = pgEvent.sessionProperties;
         [parametrs addObjectsFromArray:[session asQueryItemsFor: request]];
+        UserProperties *userProperties = pgEvent.userProperties;
+        [parametrs addObjectsFromArray:[userProperties asQueryItems]];
+        EcommerceProperties *ecommerceProperties = pgEvent.ecommerceProperties;
+        [parametrs addObjectsFromArray:[ecommerceProperties asQueryItems]];
     } else if ([event isKindOfClass:ActionEvent.class]) {
         [parametrs addObjectsFromArray:[(ActionEvent*)event asQueryItems]];
         SessionProperties *session = ((ActionEvent*)event).sessionProperties;
         [parametrs addObjectsFromArray:[session asQueryItemsFor: request]];
+        UserProperties *userProperties = ((ActionEvent*)event).userProperties;
+        [parametrs addObjectsFromArray:[userProperties asQueryItems]];
     }
     
     if (properties.isFirstEventOfSession) {

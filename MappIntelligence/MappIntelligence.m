@@ -80,7 +80,7 @@ static MappIntelligenceDefaultConfig *config = nil;
   return [tracker track:controller];
 }
 
-- (NSError *_Nullable)trackPageWithViewController:(UIViewController *_Nonnull)controller pageProperties:(PageProperties  *_Nullable)pageProperties sessionProperties:(SessionProperties *_Nullable) sessionProperties; {
+- (NSError *_Nullable)trackPageWithViewController:(UIViewController *_Nonnull)controller pageProperties:(PageProperties  *_Nullable)pageProperties sessionProperties:(SessionProperties *_Nullable) sessionProperties userProperties: (UserProperties *_Nullable) userProperties ecommerceProperties: (EcommerceProperties *_Nullable) ecommerceProperties {
     if ([config optOut]) {
          [_logger logObj:@"You are opted-out. No track requests are sent to the server anymore." forDescription:kMappIntelligenceLogLevelDescriptionDebug];
         return NULL;
@@ -89,7 +89,7 @@ static MappIntelligenceDefaultConfig *config = nil;
         return NULL;
     }
     NSString* name = NSStringFromClass([controller class]);
-    return [tracker trackWithEvent:[[PageViewEvent alloc] initWithName:name pageProperties:pageProperties sessionProperties:sessionProperties]];
+    return [tracker trackWithEvent:[[PageViewEvent alloc] initWithName:name pageProperties:pageProperties sessionProperties:sessionProperties userProperties:userProperties ecommerceProperties:ecommerceProperties]];
 }
 #endif
 
@@ -115,7 +115,7 @@ static MappIntelligenceDefaultConfig *config = nil;
     return [tracker trackWithEvent:event];
 }
 
-- (NSError *_Nullable)trackPageWithName: (NSString *_Nonnull) name pageProperties:(PageProperties  *_Nullable)pageProperties sessionProperties: (SessionProperties *_Nullable) sessionProperties {
+- (NSError *_Nullable)trackPageWithName: (NSString *_Nonnull) name pageProperties:(PageProperties  *_Nullable)pageProperties sessionProperties: (SessionProperties *_Nullable) sessionProperties userProperties: (UserProperties *_Nullable) userProperties ecommerceProperties: (EcommerceProperties *_Nullable) ecommerceProperties {
     if ([config optOut]) {
          [_logger logObj:@"You are opted-out. No track requests are sent to the server anymore." forDescription:kMappIntelligenceLogLevelDescriptionDebug];
         return NULL;
@@ -123,10 +123,10 @@ static MappIntelligenceDefaultConfig *config = nil;
     if (![config isConfiguredForTracking]) {
         return NULL;
     }
-    return [tracker trackWithEvent:[[PageViewEvent alloc] initWithName:name pageProperties:pageProperties sessionProperties:sessionProperties]];
+    return [tracker trackWithEvent:[[PageViewEvent alloc] initWithName:name pageProperties:pageProperties sessionProperties:sessionProperties userProperties:userProperties ecommerceProperties:ecommerceProperties]];
 }
 
-- (NSError *_Nullable) trackCustomEventWithName:(NSString *_Nonnull) name  actionProperties: (ActionProperties *_Nullable) actionProperties sessionProperties: (SessionProperties *_Nullable) sessionProperties {
+- (NSError *_Nullable) trackCustomEventWithName:(NSString *_Nonnull) name actionProperties: (ActionProperties *_Nullable) actionProperties sessionProperties: (SessionProperties *_Nullable) sessionProperties userProperties: (UserProperties *_Nullable) userProperties{
     if ([config optOut]) {
          [_logger logObj:@"You are opted out and you have no ability to track anymore." forDescription:kMappIntelligenceLogLevelDescriptionDebug];
         return NULL;
@@ -134,7 +134,7 @@ static MappIntelligenceDefaultConfig *config = nil;
     if (![config isConfiguredForTracking]) {
         return NULL;
     }
-    ActionEvent *actionEvent = [[ActionEvent alloc] initWithName:name pageName:@"0" actionProperties:actionProperties sessionProperties:sessionProperties];
+    ActionEvent *actionEvent = [[ActionEvent alloc] initWithName:name pageName:@"0" actionProperties:actionProperties sessionProperties:sessionProperties userProperties:userProperties];
     return [tracker trackAction: actionEvent];
 }
 

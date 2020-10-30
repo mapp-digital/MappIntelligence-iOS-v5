@@ -48,9 +48,9 @@ class ConfigurationViewController: UIViewController, UIPickerViewDelegate, UIPic
         let searchTerm = "testSearchTerm"
         let sessionProperties = SessionProperties(properties: [10: ["sessionpar1"]])
 
-        MappIntelligence.shared()?.trackPage(withName: customName, pageProperties: PageProperties(pageParams: params, andWithPageCategory: categories, andWithSearch: searchTerm), sessionProperties: sessionProperties)
+        MappIntelligence.shared()?.trackPage(withName: customName, pageProperties: PageProperties(pageParams: params, andWithPageCategory: categories, andWithSearch: searchTerm), sessionProperties: sessionProperties, userProperties: nil, ecommerceProperties: nil)
         //or you can use this
-        MappIntelligence.shared()?.trackPage(with: self, pageProperties: PageProperties(pageParams: params, andWithPageCategory: categories, andWithSearch: searchTerm), sessionProperties: sessionProperties)
+        MappIntelligence.shared()?.trackPage(with: self, pageProperties: PageProperties(pageParams: params, andWithPageCategory: categories, andWithSearch: searchTerm), sessionProperties: sessionProperties, userProperties: nil, ecommerceProperties: nil)
     }
     
     @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {

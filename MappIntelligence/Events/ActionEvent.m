@@ -12,10 +12,18 @@
 
 @synthesize pageName = _pageName;
 
--(instancetype)initWithName: (NSString *)name pageName: (NSString *)pageName actionProperties: (ActionProperties*) actionProperties sessionProperties: (SessionProperties *_Nullable)sessionProperties {
+-(instancetype) initWithName:(NSString *)name actionProperties: (ActionProperties*) actionProperties {
+    self = [super init];
+    _name = name;
+    _actionProperties = actionProperties;
+    return self;
+}
+
+-(instancetype)initWithName: (NSString *)name pageName: (NSString *)pageName actionProperties: (ActionProperties*) actionProperties sessionProperties: (SessionProperties *_Nullable)sessionProperties userProperties: (UserProperties *_Nullable) userProperties {
     self = [super init];
     _actionProperties = actionProperties;
     _sessionProperties = sessionProperties;
+    _userProperties = userProperties;
     _pageName = pageName;
     _name = name;
     return self;

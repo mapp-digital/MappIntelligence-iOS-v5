@@ -102,7 +102,7 @@
     NSMutableDictionary* sessionDictionary = [@{@10: @[@"sessionpar1"]} copy];
     SessionProperties* sessionProperties =  [[SessionProperties alloc] initWithProperties: sessionDictionary];
     PageProperties* pageProperties = [[PageProperties alloc] initWithPageParams:details andWithPageCategory:groups andWithSearch:internalSearch];
-    PageViewEvent* pageViewEvent = [[PageViewEvent alloc] initWithName:@"the custom name" pageProperties:pageProperties sessionProperties:sessionProperties ];
+    PageViewEvent* pageViewEvent = [[PageViewEvent alloc] initWithName:@"the custom name" pageProperties:pageProperties sessionProperties:sessionProperties userProperties:nil];
     NSError* error = [_tracker trackWithEvent:pageViewEvent];
     //TODO: add reasonable error or it will return null always
     XCTAssertNil(error, @"There was an error while tracking page view event!");
@@ -115,7 +115,7 @@
     SessionProperties* sessionProperties =  [[SessionProperties alloc] initWithProperties: sessionDictionary];
     
     ActionProperties* actionProperties = [[ActionProperties alloc] initWithProperties:properties];
-    ActionEvent *actionEvent = [[ActionEvent alloc] initWithName: actionname pageName:@"0" actionProperties:actionProperties sessionProperties:sessionProperties];
+    ActionEvent *actionEvent = [[ActionEvent alloc] initWithName: actionname pageName:@"0" actionProperties:actionProperties sessionProperties:sessionProperties userProperties:nil];
     NSError* error = [_tracker trackAction:actionEvent];
     XCTAssertNil(error, @"There was an error while tracking action event!");
 }

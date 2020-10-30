@@ -35,7 +35,7 @@ class InterfaceController: WKInterfaceController {
         let params:[NSNumber:[String]] = [20: ["cp20Override", "cp21Override", "cp22Override"]]
         let categories:NSMutableDictionary = [10: ["test"]]
         let searchTerm = "testSearchTerm"
-        MappIntelligenceWatchOS.shared()?.trackPage(withName: customName, pageProperties: PageProperties(pageParams: params, andWithPageCategory: categories, andWithSearch: searchTerm), sessionProperties: nil)
+        MappIntelligenceWatchOS.shared()?.trackPage(withName: customName, pageProperties: PageProperties(pageParams: params, andWithPageCategory: categories, andWithSearch: searchTerm), sessionProperties: nil, userProperties: nil, ecommerceProperties: nil)
     }
     @IBAction func reset() {
         MappIntelligenceWatchOS.shared()?.reset()
@@ -46,7 +46,14 @@ class InterfaceController: WKInterfaceController {
     @IBAction func trackAction() {
         let actionProperties = ActionProperties(properties:  [20:["ck20Override","ck21Override"]])
         let sessionProperties = SessionProperties(properties: [10: ["sessionpar1"]])
-        MappIntelligenceWatchOS.shared()?.trackCustomEvent(withName: "TestAction", actionProperties: actionProperties, sessionProperties: sessionProperties)
+        let userProperties = UserProperties()
+        userProperties.customProperties = [20:["Test"]]
+        userProperties.birthday = Birthday(day: 12, month: 0, year: 1993)
+        userProperties.city = "Paris"
+        userProperties.country = "France"
+        userProperties.customerId = "CustomerID"
+        userProperties.gender = .female
+        MappIntelligenceWatchOS.shared()?.trackCustomEvent(withName: "TestAction", actionProperties: actionProperties, sessionProperties: sessionProperties, userProperties: userProperties)
     }
     @IBAction func optIn() {
         MappIntelligenceWatchOS.shared()?.optIn()

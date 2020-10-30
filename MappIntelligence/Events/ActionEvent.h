@@ -11,18 +11,22 @@
 #import "PageProperties.h"
 #import "ActionProperties.h"
 #import "SessionProperties.h"
+#import "UserProperties.h"
 #import "AdvertisementProperties.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ActionEvent : TrackingEvent
 
-@property (nullable) NSString* name;
+@property (nonnull) NSString* name;
 @property (nonatomic, nonnull) ActionProperties* actionProperties;
 @property (nonatomic, nullable) SessionProperties *sessionProperties;
+@property (nonatomic, nullable) UserProperties *userProperties;
 @property (nonatomic, nullable) AdvertisementProperties *advertisementProperties;
 
--(instancetype)initWithName: (NSString *)name pageName: (NSString *)pageName actionProperties: (ActionProperties*) actionProperties sessionProperties: (SessionProperties *_Nullable)sessionProperties;
+-(instancetype) initWithName:(NSString *)name actionProperties: (ActionProperties*) actionProperties;
+
+-(instancetype)initWithName: (NSString *)name pageName: (NSString *)pageName actionProperties: (ActionProperties*) actionProperties sessionProperties: (SessionProperties *_Nullable)sessionProperties userProperties: (UserProperties *_Nullable)userProperties;
 -(NSMutableArray<NSURLQueryItem*>*)asQueryItems;
 @end
 
