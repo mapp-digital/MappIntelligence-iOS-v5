@@ -41,7 +41,9 @@ class ViewControllerTV: UIViewController {
         userProperties.country = "France"
         userProperties.customerId = "CustomerID"
         userProperties.gender = .female
-        MappIntelligencetvOS.shared()?.trackCustomEvent(withName: "TestAction", actionProperties: actionProperties, sessionProperties: sessionProperties,userProperties: userProperties)
+        let ecommerceProperties = EcommerceProperties()
+        ecommerceProperties.cuponValue = 99
+        MappIntelligencetvOS.shared()?.trackCustomEvent(withName: "TestAction", actionProperties: actionProperties, sessionProperties: sessionProperties,userProperties: userProperties, ecommerceProperties: ecommerceProperties)
     }
     @IBAction func trackEcommerce(_ sender: Any) {
         let ecommerceProperties = EcommerceProperties(customProperties: [540 : ["ecommerce1", "ecommerce2"]])

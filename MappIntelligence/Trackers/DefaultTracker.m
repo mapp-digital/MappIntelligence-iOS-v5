@@ -436,7 +436,7 @@ static NSString *userAgent;
         _isFirstEventOfSession = YES;
         ActionProperties *actionProperties = [[ActionProperties alloc] initWithProperties:nil];
         SessionProperties *sessionProperties = [[SessionProperties alloc] initWithProperties: @{@815:@[@"1"]}];
-        ActionEvent *updateEvent = [[ActionEvent alloc] initWithName:@"webtrekk_ignore" pageName:@"0" actionProperties:actionProperties sessionProperties:sessionProperties userProperties:nil];
+        ActionEvent *updateEvent = [[ActionEvent alloc] initWithName:@"webtrekk_ignore" pageName:@"0" actionProperties:actionProperties sessionProperties:sessionProperties userProperties:nil ecommerceProperties:nil];
         [self trackAction: updateEvent];
     }
 }

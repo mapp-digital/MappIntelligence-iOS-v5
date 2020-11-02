@@ -74,7 +74,9 @@ class ViewController: UIViewController {
         userProperties.country = "France"
         userProperties.customerId = "CustomerID"
         userProperties.gender = .female
-        MappIntelligence.shared()?.trackCustomEvent(withName: "TestAction", actionProperties: actionProperties, sessionProperties: sessionProperties, userProperties: userProperties)
+        let ecommerceProperties = EcommerceProperties()
+        ecommerceProperties.cuponValue = 33
+        MappIntelligence.shared()?.trackCustomEvent(withName: "TestAction", actionProperties: actionProperties, sessionProperties: sessionProperties, userProperties: userProperties, ecommerceProperties: ecommerceProperties)
     }
     
     @IBAction func sendEcommerceEvent(_ sender: Any) {

@@ -65,8 +65,8 @@ MappIntelligenceWatchOS.shared()?.initWithConfiguration([12345678, 8783291721], 
  let categories:NSMutableDictionary = [10: ["test"]]
  let searchTerm = "testSearchTerm"
  let userProperties = UserProperties(customProperties:[20:["Test"]])
- 
- MappIntelligenceWatchOS.shared()?.trackPage(withName: customName, andWith: PageProperties(pageParams: params, andWithPageCategory: categories, andWithSearch: searchTerm))
+ let ecommerceProperties = EcommerceProperties()
+ MappIntelligenceWatchOS.shared()?.trackPage(withName: customName, andWith: PageProperties(pageParams: params, andWithPageCategory: categories, andWithSearch: searchTerm) sessionProperties: nil userProperties: userProperties ecommerceProperties: ecommerceProperties)
 @endcode
 @return Error that can happen while tracking. Returns nil if no error was detected.
 */
@@ -83,12 +83,12 @@ MappIntelligenceWatchOS.shared()?.initWithConfiguration([12345678, 8783291721], 
  let actionProperties = ActionProperties(properties:  [20:["ck20Override","ck21Override"]])
  let sessionProperties = SessionProperties(properties: [10: ["sessionpar1"]])
  let userProperties = UserProperties(customProperties:[20:["Test"]])
- 
- MappIntelligenceWatchOS.shared()?.trackCustomEvent(withName: "TestAction", actionProperties: actionProperties, sessionProperties: sessionProperties)
+ let ecommerceProperties = EcommerceProperties()
+ MappIntelligenceWatchOS.shared()?.trackCustomEvent(withName: "TestAction", actionProperties: actionProperties, sessionProperties: sessionProperties userProperties: userProperties ecommerceProperties: ecommerceProperties)
  @endcode
 @return the error which may happen through process of tracking, if returns nil there is no error.
 */
-- (NSError *_Nullable) trackCustomEventWithName:(NSString *_Nonnull) name  actionProperties: (ActionProperties *_Nullable) actionProperties sessionProperties: (SessionProperties *_Nullable) sessionProperties userProperties: (UserProperties *_Nullable) userProperties ;
+- (NSError *_Nullable) trackCustomEventWithName:(NSString *_Nonnull) name  actionProperties: (ActionProperties *_Nullable) actionProperties sessionProperties: (SessionProperties *_Nullable) sessionProperties userProperties: (UserProperties *_Nullable) userProperties ecommerceProperties: (EcommerceProperties *_Nullable) ecommerceProperties;
 
 
 /**

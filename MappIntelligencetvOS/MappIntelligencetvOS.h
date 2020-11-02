@@ -89,8 +89,8 @@ MappIntelligencetvOS.shared()?.initWithConfiguration([12345678, 8783291721], onT
  let searchTerm = "testSearchTerm"
  let sessionProperties = SessionProperties(witProperties: [10: ["sessionpar1"]])
  let userProperties = UserProperties(customProperties:[20:["Test"]])
-
- MappIntelligencetvOS.shared()?.trackPage(withName: customName, pageProperties: PageProperties(pageParams: params, andWithPageCategory: categories, andWithSearch: searchTerm), sessionProperties: sessionProperties, userProperties: userProperties)
+ let ecommerceProperties = EcommerceProperties()
+ MappIntelligencetvOS.shared()?.trackPage(withName: customName, pageProperties: PageProperties(pageParams: params, andWithPageCategory: categories, andWithSearch: searchTerm), sessionProperties: sessionProperties, userProperties: userProperties ecommerceProperties: ecommerceProperties)
 @endcode
 @return Error that can happen while tracking. Returns nil if no error was detected.
 */
@@ -107,12 +107,12 @@ MappIntelligencetvOS.shared()?.initWithConfiguration([12345678, 8783291721], onT
  let actionProperties = ActionProperties(properties:  [20:["ck20Override","ck21Override"]])
  let sessionProperties = SessionProperties(properties: [10: ["sessionpar1"]])
  let userProperties = UserProperties(customProperties:[20:["Test"]])
-
- MappIntelligencetvOS.shared()?.trackCustomEvent(withName: "TestAction", actionProperties: actionProperties, sessionProperties: sessionProperties, userProperties: userProperties)
+ let ecommerceProperties = EcommerceProperties()
+ MappIntelligencetvOS.shared()?.trackCustomEvent(withName: "TestAction", actionProperties: actionProperties, sessionProperties: sessionProperties, userProperties: userProperties ecommerceProperties: ecommerceProperties)
  @endcode
 @return the error which may happen through process of tracking, if returns nil there is no error.
 */
-- (NSError *_Nullable) trackCustomEventWithName:(NSString *_Nonnull) name  actionProperties: (ActionProperties *_Nullable) actionProperties sessionProperties: (SessionProperties *_Nullable) sessionProperties userProperties: (UserProperties *_Nullable) userProperties;
+- (NSError *_Nullable) trackCustomEventWithName:(NSString *_Nonnull) name  actionProperties: (ActionProperties *_Nullable) actionProperties sessionProperties: (SessionProperties *_Nullable) sessionProperties userProperties: (UserProperties *_Nullable) userProperties ecommerceProperties: (EcommerceProperties *_Nullable) ecommerceProperties;
 
 /**
 @brief Method to reset the MappIntelligence singleton. This method will set the default empty values for trackID and track domain. Please ensure to provide new trackIDs and track domain.
