@@ -29,6 +29,7 @@
     _product.name = @"testName";
     XCTAssertTrue([_product.name isEqualToString:@"testName"], @"Product has no good name property!" );
     _product.price = @"55$";
+    NSComparisonResult result = [_product.price compare:@"55$" options:NSWidthInsensitiveSearch];
     XCTAssertTrue([_product.price isEqualToString:@"55$"], @"Product has no good price property!");
     _product.quantity = [[NSNumber alloc] initWithInteger:44];
     XCTAssertTrue([_product.quantity isEqualToNumber:[[NSNumber alloc] initWithInteger:44]], @"Product has no good quantity property!");
