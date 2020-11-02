@@ -15,6 +15,7 @@
 @property PageProperties* pageProperties;
 @property SessionProperties *sessionProperties;
 @property UserProperties *userProperties;
+@property EcommerceProperties *ecommerceProperties;
 @property NSString* internalSearch;
 @property NSMutableDictionary* details;
 @property NSMutableDictionary* groups;
@@ -32,7 +33,15 @@
     _sessionProperties =  [[SessionProperties alloc] initWithProperties: _sessionDictionary];
     _userProperties = [[UserProperties alloc] init];
     _userProperties.city = @"Berlin";
-    _pageViewEvent = [[PageViewEvent alloc] initWithName:@"test custom name" pageProperties:_pageProperties sessionProperties:_sessionProperties userProperties:_userProperties];
+    _ecommerceProperties = [[EcommerceProperties alloc] init];
+    Product* product1 = [[Product alloc] init];
+    product1.name = @"product1";
+    product1.price = @"33$";
+    product1.quantity = [[NSNumber alloc] initWithInteger:22];
+    Product* product2 = [[Product alloc] init];
+    product2.name = @"product2";
+    _ecommerceProperties.products = [[NSArray alloc] initWithObjects:product1, product2, nil];
+    _pageViewEvent = [[PageViewEvent alloc] initWithName:@"test custom name" pageProperties:_pageProperties sessionProperties:_sessionProperties userProperties:_userProperties ecommerceProperties:_ecommerceProperties];
 }
 
 - (void)tearDown {
@@ -43,6 +52,7 @@
     _groups = nil;
     _sessionDictionary = nil;
     _sessionProperties = nil;
+    _ecommerceProperties = nil;
 }
 
 - (void)testInitWithProperties {

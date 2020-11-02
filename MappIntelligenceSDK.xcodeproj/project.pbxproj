@@ -84,6 +84,9 @@
 		A338B7D4254874DA00E50C28 /* Product.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A338B79625470A1F00E50C28 /* Product.h */; };
 		A338B7E72548752200E50C28 /* EcommerceProperties.h in Copy Files */ = {isa = PBXBuildFile; fileRef = A338B7892546FD1E00E50C28 /* EcommerceProperties.h */; };
 		A338B7EF2548752B00E50C28 /* Product.h in Copy Files */ = {isa = PBXBuildFile; fileRef = A338B79625470A1F00E50C28 /* Product.h */; };
+		A338B803254C6C0A00E50C28 /* ProductTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A338B802254C6C0A00E50C28 /* ProductTests.m */; };
+		A338B813254C6D3A00E50C28 /* EcommercePropertiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A338B812254C6D3A00E50C28 /* EcommercePropertiesTests.m */; };
+		A338B81B254FFF3900E50C28 /* SetupForLocalTesting.plist in Resources */ = {isa = PBXBuildFile; fileRef = A38F82E3253874380021577B /* SetupForLocalTesting.plist */; };
 		A33B36E72460246F005EA9AE /* MappIntelligenceSDK_watchOS.h in Headers */ = {isa = PBXBuildFile; fileRef = A33B36E52460246F005EA9AE /* MappIntelligenceSDK_watchOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A33B36EB24602482005EA9AE /* libMappIntelligenceWatchOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A32AEA25242A6F4600BC7B46 /* libMappIntelligenceWatchOS.a */; };
 		A33B36F72460249F005EA9AE /* MappIntelligenceSDK_tvOS.h in Headers */ = {isa = PBXBuildFile; fileRef = A33B36F52460249F005EA9AE /* MappIntelligenceSDK_tvOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -332,6 +335,8 @@
 		A338B78A2546FD1E00E50C28 /* EcommerceProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EcommerceProperties.m; sourceTree = "<group>"; };
 		A338B79625470A1F00E50C28 /* Product.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Product.h; sourceTree = "<group>"; };
 		A338B79725470A1F00E50C28 /* Product.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Product.m; sourceTree = "<group>"; };
+		A338B802254C6C0A00E50C28 /* ProductTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProductTests.m; sourceTree = "<group>"; };
+		A338B812254C6D3A00E50C28 /* EcommercePropertiesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EcommercePropertiesTests.m; sourceTree = "<group>"; };
 		A33B36E32460246F005EA9AE /* MappIntelligenceSDK_watchOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MappIntelligenceSDK_watchOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A33B36E52460246F005EA9AE /* MappIntelligenceSDK_watchOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MappIntelligenceSDK_watchOS.h; sourceTree = "<group>"; };
 		A33B36E62460246F005EA9AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -651,6 +656,8 @@
 				A357221F24FD10AD005F9DE1 /* PagePropertiesTests.m */,
 				8F143EDC2510B3220024CF24 /* SessionPropertiesTests.m */,
 				8FFDEA3A254225D800E069F7 /* UserPropertiesTests.m */,
+				A338B802254C6C0A00E50C28 /* ProductTests.m */,
+				A338B812254C6D3A00E50C28 /* EcommercePropertiesTests.m */,
 			);
 			path = Properties;
 			sourceTree = "<group>";
@@ -1037,6 +1044,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A338B81B254FFF3900E50C28 /* SetupForLocalTesting.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1151,6 +1159,7 @@
 				A32EE0A2243CB97200EDC5B8 /* MappIntelligenceDefaultConfigTest.m in Sources */,
 				A31D7A4F243CC0F200386A1C /* TrackerRequestTests.m in Sources */,
 				A357221B24F933A1005F9DE1 /* RequestTest.m in Sources */,
+				A338B803254C6C0A00E50C28 /* ProductTests.m in Sources */,
 				8F143EDB2510AECA0024CF24 /* ActionPropertiesTests.m in Sources */,
 				8FFDEA3B254225D800E069F7 /* UserPropertiesTests.m in Sources */,
 				A31C6F2024D9A9B200166585 /* DatabaseManagerTests.m in Sources */,
@@ -1158,6 +1167,7 @@
 				A357222024FD10AD005F9DE1 /* PagePropertiesTests.m in Sources */,
 				BCBE5BFB23EB1798002125C1 /* MappIntelligenceSDKLoggerTest.m in Sources */,
 				A3A7255F243F154900671DB2 /* MappIntelligenceTests.m in Sources */,
+				A338B813254C6D3A00E50C28 /* EcommercePropertiesTests.m in Sources */,
 				8F143EDD2510B3220024CF24 /* SessionPropertiesTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

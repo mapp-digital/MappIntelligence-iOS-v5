@@ -44,7 +44,7 @@
         [items addObject:[[NSURLQueryItem alloc] initWithName:@"st" value:[self getStatus]]];
     }
     
-    
+    [items addObjectsFromArray:[self getUserPredefinedPropertiesAsQueryItems]];
     
     return items;
 }
@@ -116,18 +116,20 @@
 - (NSMutableArray<NSURLQueryItem *> *)getProductsAsQueryItems {
     NSMutableArray<NSURLQueryItem*>* items = [[NSMutableArray alloc] init];
     
-    NSMutableArray<NSString*>* productNames = [[NSMutableArray alloc] init];
-    NSMutableArray<NSString*>* productCosts = [[NSMutableArray alloc] init];
-    NSMutableArray<NSString*>* productQuantities = [[NSMutableArray alloc] init];
-    
-    for (Product* product in _products) {
-        [productNames addObject: product.name];
-        [productCosts addObject: product.price];
-        [productQuantities addObject: (product.quantity == NULL) ? @"" : [product.quantity stringValue]];
+    if(_products) {
+        NSMutableArray<NSString*>* productNames = [[NSMutableArray alloc] init];
+        NSMutableArray<NSString*>* productCosts = [[NSMutableArray alloc] init];
+        NSMutableArray<NSString*>* productQuantities = [[NSMutableArray alloc] init];
+        
+        for (Product* product in _products) {
+            [productNames addObject: product.name];
+            [productCosts addObject: product.price];
+            [productQuantities addObject: (product.quantity == NULL) ? @"" : [product.quantity stringValue]];
+        }
+        [items addObject:[[NSURLQueryItem alloc] initWithName:@"ba" value:[productNames componentsJoinedByString:@";"]]];
+        [items addObject:[[NSURLQueryItem alloc] initWithName:@"co" value:[productCosts componentsJoinedByString:@";"]]];
+        [items addObject:[[NSURLQueryItem alloc] initWithName:@"qn" value:[productQuantities componentsJoinedByString:@";"]]];
     }
-    [items addObject:[[NSURLQueryItem alloc] initWithName:@"ba" value:[productNames componentsJoinedByString:@";"]]];
-    [items addObject:[[NSURLQueryItem alloc] initWithName:@"co" value:[productCosts componentsJoinedByString:@";"]]];
-    [items addObject:[[NSURLQueryItem alloc] initWithName:@"qn" value:[productQuantities componentsJoinedByString:@";"]]];
     
     return items;
 }
