@@ -44,6 +44,8 @@
         [items addObject:[[NSURLQueryItem alloc] initWithName:@"st" value:[self getStatus]]];
     }
     
+    [items addObjectsFromArray:[self getUserPredefinedPropertiesAsQueryItems]];
+    
     return items;
 }
 
@@ -66,21 +68,68 @@
     }
 }
 
+- (NSMutableArray<NSURLQueryItem *> *)getUserPredefinedPropertiesAsQueryItems {
+    NSMutableArray<NSURLQueryItem*>* items = [[NSMutableArray alloc] init];
+    
+    if (_returningOrNewCustomer) {
+        [items addObject:[[NSURLQueryItem alloc] initWithName:@"cb560" value:_returningOrNewCustomer]];
+    }
+    if (_returnValue) {
+        [items addObject:[[NSURLQueryItem alloc] initWithName:@"cb561" value:[_returnValue stringValue]]];
+    }
+    if (_cancellationValue) {
+        [items addObject:[[NSURLQueryItem alloc] initWithName:@"cb562" value:[_cancellationValue stringValue] ]];
+    }
+    if (_cuponValue) {
+        [items addObject:[[NSURLQueryItem alloc] initWithName:@"cb563" value:[_cuponValue stringValue] ]];
+    }
+    if (_productAdvertiseID) {
+        [items addObject:[[NSURLQueryItem alloc] initWithName:@"cb675" value:[_productAdvertiseID stringValue] ]];
+    }
+    if (_productSoldOut) {
+        [items addObject:[[NSURLQueryItem alloc] initWithName:@"cb760" value:[_productSoldOut stringValue]]];
+    }
+    if (_paymentMethod) {
+        [items addObject:[[NSURLQueryItem alloc] initWithName:@"cb761" value:_paymentMethod]];
+    }
+    if (_shippingServiceProvider) {
+        [items addObject:[[NSURLQueryItem alloc] initWithName:@"cb762" value:_shippingServiceProvider]];
+    }
+    if (_shippingSpeed) {
+        [items addObject:[[NSURLQueryItem alloc] initWithName:@"cb763" value:_shippingSpeed]];
+    }
+    if (_shippingCost) {
+        [items addObject:[[NSURLQueryItem alloc] initWithName:@"cb764" value:[_shippingCost stringValue]]];
+    }
+    if (_markUp) {
+        [items addObject:[[NSURLQueryItem alloc] initWithName:@"cb765" value:[_markUp stringValue]]];
+    }
+    if (_productVariant) {
+        [items addObject:[[NSURLQueryItem alloc] initWithName:@"cb767" value:_productVariant]];
+    }
+    if (_appInstalled) {
+        [items addObject:[[NSURLQueryItem alloc] initWithName:@"cb900" value:[_appInstalled stringValue]]];
+    }
+    return items;
+}
+
 - (NSMutableArray<NSURLQueryItem *> *)getProductsAsQueryItems {
     NSMutableArray<NSURLQueryItem*>* items = [[NSMutableArray alloc] init];
     
-    NSMutableArray<NSString*>* productNames = [[NSMutableArray alloc] init];
-    NSMutableArray<NSString*>* productCosts = [[NSMutableArray alloc] init];
-    NSMutableArray<NSString*>* productQuantities = [[NSMutableArray alloc] init];
-    
-    for (Product* product in _products) {
-        [productNames addObject: product.name];
-        [productCosts addObject: product.price];
-        [productQuantities addObject: (product.quantity == NULL) ? @"" : [product.quantity stringValue]];
+    if(_products) {
+        NSMutableArray<NSString*>* productNames = [[NSMutableArray alloc] init];
+        NSMutableArray<NSString*>* productCosts = [[NSMutableArray alloc] init];
+        NSMutableArray<NSString*>* productQuantities = [[NSMutableArray alloc] init];
+        
+        for (Product* product in _products) {
+            [productNames addObject: product.name];
+            [productCosts addObject: product.price];
+            [productQuantities addObject: (product.quantity == NULL) ? @"" : [product.quantity stringValue]];
+        }
+        [items addObject:[[NSURLQueryItem alloc] initWithName:@"ba" value:[productNames componentsJoinedByString:@";"]]];
+        [items addObject:[[NSURLQueryItem alloc] initWithName:@"co" value:[productCosts componentsJoinedByString:@";"]]];
+        [items addObject:[[NSURLQueryItem alloc] initWithName:@"qn" value:[productQuantities componentsJoinedByString:@";"]]];
     }
-    [items addObject:[[NSURLQueryItem alloc] initWithName:@"ba" value:[productNames componentsJoinedByString:@";"]]];
-    [items addObject:[[NSURLQueryItem alloc] initWithName:@"co" value:[productCosts componentsJoinedByString:@";"]]];
-    [items addObject:[[NSURLQueryItem alloc] initWithName:@"qn" value:[productQuantities componentsJoinedByString:@";"]]];
     
     return items;
 }

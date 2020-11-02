@@ -32,6 +32,11 @@
                                 <action selector="trackAction" destination="AgC-eL-Hgc" id="VZs-AD-1aj"/>
                             </connections>
                         </button>
+                        <button width="1" alignment="left" title="TrackEcommerce" id="eED-pr-q4O">
+                            <connections>
+                                <action selector="trackEcommerce" destination="AgC-eL-Hgc" id="cb8-ec-nH2"/>
+                            </connections>
+                        </button>
                         <button width="1" alignment="left" title="Opt in" id="d2A-fR-QMA">
                             <connections>
                                 <action selector="optIn" destination="AgC-eL-Hgc" id="IJI-nq-QdM"/>

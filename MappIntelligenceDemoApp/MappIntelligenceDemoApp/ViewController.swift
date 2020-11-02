@@ -74,7 +74,29 @@ class ViewController: UIViewController {
         userProperties.country = "France"
         userProperties.customerId = "CustomerID"
         userProperties.gender = .female
-        MappIntelligence.shared()?.trackCustomEvent(withName: "TestAction", actionProperties: actionProperties, sessionProperties: sessionProperties, userProperties: userProperties)
+        let ecommerceProperties = EcommerceProperties()
+        ecommerceProperties.cuponValue = 33
+        MappIntelligence.shared()?.trackCustomEvent(withName: "TestAction", actionProperties: actionProperties, sessionProperties: sessionProperties, userProperties: userProperties, ecommerceProperties: ecommerceProperties, advertisementProperties: nil)
+    }
+    
+    @IBAction func sendEcommerceEvent(_ sender: Any) {
+        let ecommerceProperties = EcommerceProperties(customProperties: [540 : ["ecommerce1", "ecommerce2"]])
+        let product1 = Product()
+        product1.name = "Product1Name"
+        product1.price = "20$"
+        product1.quantity = 34
+        let product2 = Product()
+        let product3 = Product()
+        product3.price = "348$"
+        ecommerceProperties.products = [product1, product2, product3];
+        ecommerceProperties.currencyCode = "$"
+        ecommerceProperties.paymentMethod = "creditCard"
+        MappIntelligence.shared()?.trackPage(with: self, pageProperties: nil, sessionProperties: nil, userProperties: nil, ecommerceProperties: ecommerceProperties, advertisementProperties: nil)
+    }
+    
+    @IBAction func sendCampaignEvent(_ sender: Any) {
+        let advertisementProperties = AdvertisementProperties();
+        advertisementProperties.
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
@@ -93,12 +115,6 @@ class ViewController: UIViewController {
     
     @objc func tap() {
         self.requestIDTextField.endEditing(true)
-    }
-    
-    func testRefactor() {
-        let pageProperties = PageProperties()
-        let pageEvent = PageViewEvent(name: "Test name", pageProperties: pageProperties)
-        MappIntelligence.shared()?.trackPage(with: pageEvent)
     }
 }
 

@@ -24,10 +24,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, nullable) SessionProperties *sessionProperties;
 @property (nonatomic, nullable) UserProperties *userProperties;
 @property (nonatomic, nullable) EcommerceProperties *ecommerceProperties;
+@property (nonatomic, nullable) AdvertisementProperties *advertisementProperties;
 
 - (instancetype)initWithName:(NSString *)name pageProperties:(PageProperties *)pageProperties;
 
-- (instancetype)initWithName:(NSString *)name pageProperties:(PageProperties *)pageProperties sessionProperties: (SessionProperties *_Nullable) sessionProperties userProperties: (UserProperties *_Nullable)userProperties ecommerceProperties: (EcommerceProperties *_Nullable) ecommerceProperties;
+- (instancetype)initWithName:(NSString *)name pageProperties:(PageProperties *)pageProperties sessionProperties: (SessionProperties *_Nullable) sessionProperties userProperties: (UserProperties *_Nullable)userProperties ecommerceProperties: (EcommerceProperties *_Nullable) ecommerceProperties advertisementProperties: (AdvertisementProperties *_Nullable) advertisementProperties;
 @end
 
 NS_ASSUME_NONNULL_END

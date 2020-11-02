@@ -19,12 +19,13 @@
     return self;
 }
 
-- (instancetype)initWithName:(NSString *)name pageProperties:(PageProperties *)pageProperties sessionProperties: (SessionProperties *_Nullable) sessionProperties userProperties: (UserProperties *_Nullable) userProperties ecommerceProperties:(EcommerceProperties * _Nullable)ecommerceProperties {
+- (instancetype)initWithName:(NSString *)name pageProperties:(PageProperties *)pageProperties sessionProperties: (SessionProperties *_Nullable) sessionProperties userProperties: (UserProperties *_Nullable) userProperties ecommerceProperties:(EcommerceProperties * _Nullable)ecommerceProperties advertisementProperties: (AdvertisementProperties *_Nullable) advertisementProperties{
     self = [super init];
     _pageProperties = pageProperties;
     _sessionProperties = sessionProperties;
     _userProperties = userProperties;
     _ecommerceProperties = ecommerceProperties;
+    _advertisementProperties = advertisementProperties;
     _pageName = name;
     return self;
 }

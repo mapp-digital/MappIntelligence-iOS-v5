@@ -66,7 +66,7 @@ typedef NS_ENUM(NSInteger, logLevel) {
 @endcode
 @return Error in case of a failure. Returns nil if no error was detected.
 */
-- (NSError *_Nullable)trackPageWithViewController:(UIViewController *_Nonnull)controller pageProperties:(PageProperties  *_Nullable)pageProperties sessionProperties:(SessionProperties *_Nullable) sessionProperties  userProperties: (UserProperties *_Nullable) userProperties ecommerceProperties: (EcommerceProperties *_Nullable) ecommerceProperties;
+- (NSError *_Nullable)trackPageWithViewController:(UIViewController *_Nonnull)controller pageProperties:(PageProperties  *_Nullable)pageProperties sessionProperties:(SessionProperties *_Nullable) sessionProperties  userProperties: (UserProperties *_Nullable) userProperties ecommerceProperties: (EcommerceProperties *_Nullable) ecommerceProperties advertisementProperties: (AdvertisementProperties *_Nullable) advertisemementProperties;
 #endif
 /**
 @brief Method to track additional page information.
@@ -81,12 +81,13 @@ typedef NS_ENUM(NSInteger, logLevel) {
  let searchTerm = "testSearchTerm"
  let sessionProperties = SessionProperties(witProperties: [10: ["sessionpar1"]])
  let userProperties = UserProperties(customProperties:[20:["Test"]])
-
- MappIntelligence.shared()?.trackPage(withName: customName, pageProperties: PageProperties(pageParams: params, andWithPageCategory: categories, andWithSearch: searchTerm), sessionProperties: sessionProperties, userProperties: userProperties)
+ let ecommerceProperties = EcommerceProperties()
+ MappIntelligence.shared()?.trackPage(withName: customName, pageProperties: PageProperties(pageParams: params, andWithPageCategory: categories, andWithSearch: searchTerm), sessionProperties: sessionProperties, userProperties: userProperties ecommerceProperties: ecommerceProperties)
 @endcode
 @return Error that can happen while tracking. Returns nil if no error was detected.
 */
-- (NSError *_Nullable)trackPageWithName: (NSString *_Nonnull) name pageProperties:(PageProperties  *_Nullable)pageProperties sessionProperties: (SessionProperties *_Nullable) sessionProperties  userProperties: (UserProperties *_Nullable) userProperties ecommerceProperties: (EcommerceProperties *_Nullable) ecommerceProperties;
+- (NSError *_Nullable)trackPageWithName: (NSString *_Nonnull) name pageProperties:(PageProperties  *_Nullable)pageProperties sessionProperties: (SessionProperties *_Nullable) sessionProperties  userProperties: (UserProperties *_Nullable) userProperties ecommerceProperties: (EcommerceProperties *_Nullable) ecommerceProperties advertisementProperties: (AdvertisementProperties *_Nullable) advertisemementProperties;
+
 /**
 @brief Method which will track action event created from action properties and session properties.
 @param name - custom event name
@@ -97,11 +98,13 @@ typedef NS_ENUM(NSInteger, logLevel) {
  let actionProperties = ActionProperties(properties:  [20:["ck20Override","ck21Override"]])
  let sessionProperties = SessionProperties(properties: [10: ["sessionpar1"]])
  let userProperties = UserProperties(customProperties:[20:["Test"]])
- MappIntelligence.shared()?.trackCustomEvent(withName: "TestAction", actionProperties: actionProperties, sessionProperties: sessionProperties, userProperties: userProperties)
+ let ecommerceProperties = EcommerceProperties()
+ MappIntelligence.shared()?.trackCustomEvent(withName: "TestAction", actionProperties: actionProperties, sessionProperties: sessionProperties, userProperties: userProperties ecommerceProperties: ecommerceProperties)
  @endcode
 @return the error which may happen through process of tracking, if returns nil there is no error.
 */
-- (NSError *_Nullable) trackCustomEventWithName:(NSString *_Nonnull) name actionProperties: (ActionProperties *_Nullable) actionProperties sessionProperties: (SessionProperties *_Nullable) sessionProperties  userProperties: (UserProperties *_Nullable) userProperties;
+- (NSError *_Nullable) trackCustomEventWithName:(NSString *_Nonnull) name actionProperties: (ActionProperties *_Nullable) actionProperties sessionProperties: (SessionProperties *_Nullable) sessionProperties  userProperties: (UserProperties *_Nullable) userProperties ecommerceProperties: (EcommerceProperties *_Nullable) ecommerceProperties advertisementProperties: (AdvertisementProperties *_Nullable) advertisemementProperties;
+
 /**
 @brief Method to initialize tracking. Please specify your track domain and trackID.
 @param trackIDs - Array of your trackIDs. The information can be provided by your account manager.
@@ -142,6 +145,4 @@ MappIntelligence.shared()?.optOut(with: false, andSendCurrentData: false)
 - (void) printAllRequestFromDatabase;
 - (void) removeRequestFromDatabaseWithID: (int)ID;
 
-- (NSError *_Nullable)trackPageWith:(NSString *_Nonnull)name;
-- (NSError *_Nullable)trackPageWithEvent:(PageViewEvent *_Nonnull)event;
 @end

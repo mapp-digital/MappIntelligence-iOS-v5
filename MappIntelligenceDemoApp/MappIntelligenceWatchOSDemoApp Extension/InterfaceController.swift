@@ -53,8 +53,26 @@ class InterfaceController: WKInterfaceController {
         userProperties.country = "France"
         userProperties.customerId = "CustomerID"
         userProperties.gender = .female
-        MappIntelligenceWatchOS.shared()?.trackCustomEvent(withName: "TestAction", actionProperties: actionProperties, sessionProperties: sessionProperties, userProperties: userProperties)
+        let ecommerceProperties = EcommerceProperties()
+        ecommerceProperties.cuponValue = 23
+        MappIntelligenceWatchOS.shared()?.trackCustomEvent(withName: "TestAction", actionProperties: actionProperties, sessionProperties: sessionProperties, userProperties: userProperties, ecommerceProperties: ecommerceProperties)
     }
+    
+    @IBAction func trackEcommerce() {
+        let ecommerceProperties = EcommerceProperties(customProperties: [540 : ["ecommerce1", "ecommerce2"]])
+        let product1 = Product()
+        product1.name = "Product1Name"
+        product1.price = "20$"
+        product1.quantity = 34
+        let product2 = Product()
+        let product3 = Product()
+        product3.price = "348$"
+        ecommerceProperties.products = [product1, product2, product3];
+        ecommerceProperties.currencyCode = "$"
+        ecommerceProperties.paymentMethod = "creditCard"
+        MappIntelligenceWatchOS.shared()?.trackPage(withName: "TestEcommerce", pageProperties: nil, sessionProperties: nil, userProperties: nil, ecommerceProperties: ecommerceProperties)
+    }
+    
     @IBAction func optIn() {
         MappIntelligenceWatchOS.shared()?.optIn()
     }
