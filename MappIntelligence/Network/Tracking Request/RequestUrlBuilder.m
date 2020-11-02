@@ -26,6 +26,7 @@
 @property NSString *mappIntelligenceId;
 @property URLSizeMonitor *sizeMonitor;
 @property MappIntelligenceLogger *logger;
+@property NSMutableArray *campaignsToIgnore;
 
 - (NSURL *)buildBaseUrlwithServer:(NSURL *)serverUrl
                         andWithId:(NSString *)mappIntelligenceId;
@@ -41,6 +42,7 @@
   if (self) {
     _logger = [MappIntelligenceLogger shared];
     _sizeMonitor = [[URLSizeMonitor alloc] init];
+      _campaignsToIgnore = [[NSMutableArray alloc] init];
   }
   return self;
 }
@@ -161,8 +163,9 @@
         EcommerceProperties *ecommerceProperties = pgEvent.ecommerceProperties;
         [parametrs addObjectsFromArray:[ecommerceProperties asQueryItems]];
         AdvertisementProperties *advertisementProperties = ((PageViewEvent*)event).advertisementProperties;
-        [parametrs addObjectsFromArray:[advertisementProperties asQueryItems]];
-
+        if ([self sendCampaignData:advertisementProperties]) {
+            [parametrs addObjectsFromArray:[advertisementProperties asQueryItems]];
+        }
     } else if ([event isKindOfClass:ActionEvent.class]) {
         [parametrs addObjectsFromArray:[(ActionEvent*)event asQueryItems]];
         SessionProperties *session = ((ActionEvent*)event).sessionProperties;
@@ -170,8 +173,9 @@
         UserProperties *userProperties = ((ActionEvent*)event).userProperties;
         [parametrs addObjectsFromArray:[userProperties asQueryItems]];
         AdvertisementProperties *advertisementProperties = ((ActionEvent*)event).advertisementProperties;
-        [parametrs addObjectsFromArray:[advertisementProperties asQueryItems]];
-
+        if ([self sendCampaignData:advertisementProperties]) {
+            [parametrs addObjectsFromArray:[advertisementProperties asQueryItems]];
+        }
     }
     
     if (properties.isFirstEventOfSession) {
@@ -266,6 +270,19 @@
   //    }
 
   return [str stringByAddingPercentEncodingWithAllowedCharacters:csValue];
+}
+
+-(BOOL) sendCampaignData: (AdvertisementProperties *) advertisementProperties {
+    if(advertisementProperties.oncePerSession) {
+        AdvertisementProperties *c = [advertisementProperties copy];
+        if(![_campaignsToIgnore containsObject:c]) {
+            [_campaignsToIgnore addObject: c];
+            return YES;
+        } else {
+            return NO;
+        }
+    }
+    return YES;
 }
 
 @end

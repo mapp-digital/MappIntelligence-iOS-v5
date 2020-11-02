@@ -24,6 +24,8 @@
 		8F5F853A2535BCE100A39882 /* SessionProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FDF7112250BA9CB00818E51 /* SessionProperties.m */; };
 		8F5F85422535BCEB00A39882 /* ActionEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FDF7109250B9E5B00818E51 /* ActionEvent.m */; };
 		8F80C047252355B500E1F650 /* SessionProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FDF7112250BA9CB00818E51 /* SessionProperties.m */; };
+		8F995E6525507F3E00B918DD /* AdvertisementProperties.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8F423EDA254B17D900DE191D /* AdvertisementProperties.h */; };
+		8F995E6D25507F4400B918DD /* AdvertisementProperties.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8F423EDA254B17D900DE191D /* AdvertisementProperties.h */; };
 		8FA11962253EDC82000AE887 /* UserProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FA11960253EDC82000AE887 /* UserProperties.h */; };
 		8FA11963253EDC82000AE887 /* UserProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FA11961253EDC82000AE887 /* UserProperties.m */; };
 		8FA11964253EDC82000AE887 /* UserProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FA11961253EDC82000AE887 /* UserProperties.m */; };
@@ -246,6 +248,7 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				8F995E6525507F3E00B918DD /* AdvertisementProperties.h in CopyFiles */,
 				A338B7CC254874D300E50C28 /* Product.h in CopyFiles */,
 				A338B7B12548744900E50C28 /* EcommerceProperties.h in CopyFiles */,
 				8FAF2D772540875A007AA438 /* UserProperties.h in CopyFiles */,
@@ -289,6 +292,7 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				8F995E6D25507F4400B918DD /* AdvertisementProperties.h in CopyFiles */,
 				A338B7D4254874DA00E50C28 /* Product.h in CopyFiles */,
 				A338B7B92548745400E50C28 /* EcommerceProperties.h in CopyFiles */,
 				8FAF2D7F2540875E007AA438 /* UserProperties.h in CopyFiles */,

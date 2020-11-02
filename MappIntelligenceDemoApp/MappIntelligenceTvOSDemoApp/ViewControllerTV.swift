@@ -19,7 +19,7 @@ class ViewControllerTV: UIViewController {
         let params:[NSNumber:[String]] = [20: ["cp20Override", "cp21Override", "cp22Override"]]
         let categories:NSMutableDictionary = [10: ["test"]]
         let searchTerm = "testSearchTerm"
-        MappIntelligencetvOS.shared()?.trackPage(with: self, pageProperties: PageProperties(pageParams: params, andWithPageCategory: categories, andWithSearch: searchTerm), sessionProperties: nil, userProperties: nil, ecommerceProperties: nil)
+        MappIntelligencetvOS.shared()?.trackPage(with: self, pageProperties: PageProperties(pageParams: params, andWithPageCategory: categories, andWithSearch: searchTerm), sessionProperties: nil, userProperties: nil, ecommerceProperties: nil, advertisementProperties: nil)
     }
     
     @IBAction func trackCustomString(_ sender: Any) {
@@ -29,7 +29,7 @@ class ViewControllerTV: UIViewController {
         let searchTerm = "testSearchTerm"
         let sessionProperties = SessionProperties(properties: [10: ["sessionpar1"]])
 
-        MappIntelligencetvOS.shared()?.trackPage(withName: customName, pageProperties: PageProperties(pageParams: params, andWithPageCategory: categories, andWithSearch: searchTerm), sessionProperties: sessionProperties, userProperties: nil, ecommerceProperties: nil )
+        MappIntelligencetvOS.shared()?.trackPage(withName: customName, pageProperties: PageProperties(pageParams: params, andWithPageCategory: categories, andWithSearch: searchTerm), sessionProperties: sessionProperties, userProperties: nil, ecommerceProperties: nil, advertisementProperties: nil)
     }
     @IBAction func trackAction(_ sender: Any) {
         let actionProperties = ActionProperties(properties:  [20:["ck20Override","ck21Override"]])
@@ -43,7 +43,7 @@ class ViewControllerTV: UIViewController {
         userProperties.gender = .female
         let ecommerceProperties = EcommerceProperties()
         ecommerceProperties.cuponValue = 99
-        MappIntelligencetvOS.shared()?.trackCustomEvent(withName: "TestAction", actionProperties: actionProperties, sessionProperties: sessionProperties,userProperties: userProperties, ecommerceProperties: ecommerceProperties)
+        MappIntelligencetvOS.shared()?.trackCustomEvent(withName: "TestAction", actionProperties: actionProperties, sessionProperties: sessionProperties,userProperties: userProperties, ecommerceProperties: ecommerceProperties, advertisementProperties: nil)
     }
     @IBAction func trackEcommerce(_ sender: Any) {
         let ecommerceProperties = EcommerceProperties(customProperties: [540 : ["ecommerce1", "ecommerce2"]])
@@ -57,7 +57,16 @@ class ViewControllerTV: UIViewController {
         ecommerceProperties.products = [product1, product2, product3];
         ecommerceProperties.currencyCode = "$"
         ecommerceProperties.paymentMethod = "creditCard"
-        MappIntelligencetvOS.shared()?.trackPage(with: self, pageProperties: nil, sessionProperties: nil, userProperties: nil, ecommerceProperties: ecommerceProperties)
+        MappIntelligencetvOS.shared()?.trackPage(with: self, pageProperties: nil, sessionProperties: nil, userProperties: nil, ecommerceProperties: ecommerceProperties, advertisementProperties: nil)
+    }
+    @IBAction func trackCampaign(_ sender: Any) {
+        let advertisementProperties = AdvertisementProperties("en.internal.newsletter.2017.05")
+        advertisementProperties.mediaCode = "abc"
+        advertisementProperties.oncePerSession = true
+        advertisementProperties.action = .view
+        advertisementProperties.customProperties = [1: ["ECOMM"]]
+        
+        MappIntelligencetvOS.shared()?.trackCustomEvent(withName: "TestCampaign", actionProperties: nil, sessionProperties: nil, userProperties: nil, ecommerceProperties: nil, advertisementProperties: advertisementProperties)
     }
     @IBAction func optIn(_ sender: Any) {
         MappIntelligencetvOS.shared()?.optIn()

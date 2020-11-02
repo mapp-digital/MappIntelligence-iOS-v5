@@ -35,7 +35,7 @@ class InterfaceController: WKInterfaceController {
         let params:[NSNumber:[String]] = [20: ["cp20Override", "cp21Override", "cp22Override"]]
         let categories:NSMutableDictionary = [10: ["test"]]
         let searchTerm = "testSearchTerm"
-        MappIntelligenceWatchOS.shared()?.trackPage(withName: customName, pageProperties: PageProperties(pageParams: params, andWithPageCategory: categories, andWithSearch: searchTerm), sessionProperties: nil, userProperties: nil, ecommerceProperties: nil)
+        MappIntelligenceWatchOS.shared()?.trackPage(withName: customName, pageProperties: PageProperties(pageParams: params, andWithPageCategory: categories, andWithSearch: searchTerm), sessionProperties: nil, userProperties: nil, ecommerceProperties: nil, advertisementProperties: nil)
     }
     @IBAction func reset() {
         MappIntelligenceWatchOS.shared()?.reset()
@@ -55,7 +55,7 @@ class InterfaceController: WKInterfaceController {
         userProperties.gender = .female
         let ecommerceProperties = EcommerceProperties()
         ecommerceProperties.cuponValue = 23
-        MappIntelligenceWatchOS.shared()?.trackCustomEvent(withName: "TestAction", actionProperties: actionProperties, sessionProperties: sessionProperties, userProperties: userProperties, ecommerceProperties: ecommerceProperties)
+        MappIntelligenceWatchOS.shared()?.trackCustomEvent(withName: "TestAction", actionProperties: actionProperties, sessionProperties: sessionProperties, userProperties: userProperties, ecommerceProperties: ecommerceProperties, advertisementProperties: nil)
     }
     
     @IBAction func trackEcommerce() {
@@ -70,9 +70,18 @@ class InterfaceController: WKInterfaceController {
         ecommerceProperties.products = [product1, product2, product3];
         ecommerceProperties.currencyCode = "$"
         ecommerceProperties.paymentMethod = "creditCard"
-        MappIntelligenceWatchOS.shared()?.trackPage(withName: "TestEcommerce", pageProperties: nil, sessionProperties: nil, userProperties: nil, ecommerceProperties: ecommerceProperties)
+        MappIntelligenceWatchOS.shared()?.trackPage(withName: "TestEcommerce", pageProperties: nil, sessionProperties: nil, userProperties: nil, ecommerceProperties: ecommerceProperties, advertisementProperties: nil)
     }
     
+    @IBAction func trackCampaign() {
+        let advertisementProperties = AdvertisementProperties("en.internal.newsletter.2017.05")
+        advertisementProperties.mediaCode = "abc"
+        advertisementProperties.oncePerSession = true
+        advertisementProperties.action = .view
+        advertisementProperties.customProperties = [1: ["ECOMM"]]
+        
+        MappIntelligenceWatchOS.shared()?.trackCustomEvent(withName: "TestCampaign", actionProperties: nil, sessionProperties: nil, userProperties: nil, ecommerceProperties: nil, advertisementProperties: advertisementProperties)
+    }
     @IBAction func optIn() {
         MappIntelligenceWatchOS.shared()?.optIn()
     }
