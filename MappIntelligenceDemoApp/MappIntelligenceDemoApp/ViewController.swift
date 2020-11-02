@@ -95,8 +95,13 @@ class ViewController: UIViewController {
     }
     
     @IBAction func sendCampaignEvent(_ sender: Any) {
-        let advertisementProperties = AdvertisementProperties();
-        advertisementProperties.
+        let advertisementProperties = AdvertisementProperties("en.internal.newsletter.2017.05")
+        advertisementProperties.mediaCode = "abc"
+        advertisementProperties.oncePerSession = true
+        advertisementProperties.action = .view
+        advertisementProperties.customProperties = [1: ["ECOMM"]]
+        
+        MappIntelligence.shared()?.trackCustomEvent(withName: "TestCampaign", actionProperties: nil, sessionProperties: nil, userProperties: nil, ecommerceProperties: nil, advertisementProperties: advertisementProperties)
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {

@@ -160,12 +160,18 @@
         [parametrs addObjectsFromArray:[userProperties asQueryItems]];
         EcommerceProperties *ecommerceProperties = pgEvent.ecommerceProperties;
         [parametrs addObjectsFromArray:[ecommerceProperties asQueryItems]];
+        AdvertisementProperties *advertisementProperties = ((PageViewEvent*)event).advertisementProperties;
+        [parametrs addObjectsFromArray:[advertisementProperties asQueryItems]];
+
     } else if ([event isKindOfClass:ActionEvent.class]) {
         [parametrs addObjectsFromArray:[(ActionEvent*)event asQueryItems]];
         SessionProperties *session = ((ActionEvent*)event).sessionProperties;
         [parametrs addObjectsFromArray:[session asQueryItemsFor: request]];
         UserProperties *userProperties = ((ActionEvent*)event).userProperties;
         [parametrs addObjectsFromArray:[userProperties asQueryItems]];
+        AdvertisementProperties *advertisementProperties = ((ActionEvent*)event).advertisementProperties;
+        [parametrs addObjectsFromArray:[advertisementProperties asQueryItems]];
+
     }
     
     if (properties.isFirstEventOfSession) {
@@ -222,7 +228,7 @@
   NSMutableArray<NSString *> *componentsArray = [[NSMutableArray alloc] init];
   for (NSURLQueryItem *object in parameters) {
     NSString *value = [object value];
-    if (![[object name] isEqual:@"p"]) {
+    if (![[object name] isEqual:@"p"] && ![[object name] isEqual:@"mc"] ) {
       value = [self codeString:[object value]];
     }
     [componentsArray

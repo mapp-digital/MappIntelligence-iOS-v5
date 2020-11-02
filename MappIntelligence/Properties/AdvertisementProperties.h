@@ -8,14 +8,23 @@
 
 #import <Foundation/Foundation.h>
 
+
+typedef NS_ENUM(NSInteger, CampaignAction) {
+    click,
+    view
+};
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface AdvertisementProperties : NSObject
 @property (nullable) NSString *campaignId;
-@property (nullable) NSString *action;
+@property CampaignAction action;
+@property (nullable) NSString *mediaCode;
+@property BOOL oncePerSession;
+@property (nullable) NSDictionary<NSNumber* ,NSArray<NSString*>*>* customProperties;
 
-@property (nullable) NSDictionary<NSNumber* ,NSArray<NSString*>*>* properties;
--(NSMutableArray<NSURLQueryItem*>*)asQueryItems;
+- (instancetype)initWith: (NSString *) campaignId;
+- (NSMutableArray<NSURLQueryItem*>*)asQueryItems;
 
 @end
 

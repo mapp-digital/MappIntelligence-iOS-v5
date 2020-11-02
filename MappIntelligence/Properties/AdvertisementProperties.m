@@ -10,19 +10,32 @@
 
 @implementation AdvertisementProperties
 
+- (instancetype)initWith: (NSString *) campaignId {
+    self = [super init];
+    _campaignId = campaignId;
+    return self;
+}
 
 - (NSMutableArray<NSURLQueryItem *> *)asQueryItems {
     NSMutableArray<NSURLQueryItem*>* items = [[NSMutableArray alloc] init];
+    
+    NSString *mediaCode = _mediaCode ? _mediaCode : @"wt_mc";
     if (_campaignId) {
-        [items addObject:[[NSURLQueryItem alloc] initWithName:@"mc" value:_campaignId ]];
+        [items addObject:[[NSURLQueryItem alloc] initWithName:@"mc" value: [NSString stringWithFormat:@"%@%@%@",mediaCode, @"%3D",_campaignId] ]];
+    } else {
+        [items addObject:[[NSURLQueryItem alloc] initWithName:@"mc" value:mediaCode]];
     }
     
     if (_action) {
-        [items addObject:[[NSURLQueryItem alloc] initWithName:@"mca" value:_action]];
+        NSString *actionString = [NSString stringWithFormat:@"%@", _action == 0 ? @"c": @"v"];
+        [items addObject:[[NSURLQueryItem alloc] initWithName:@"mca" value: actionString]];
+    } else {
+        [items addObject:[[NSURLQueryItem alloc] initWithName:@"mca" value:@"c"]];
+
     }
-    if (_properties) {
-        for(NSNumber* key in _properties) {
-            [items addObject:[[NSURLQueryItem alloc] initWithName:[NSString stringWithFormat:@"cc%@",key] value: [_properties[key] componentsJoinedByString:@";"]]];
+    if (_customProperties) {
+        for(NSNumber* key in _customProperties) {
+            [items addObject:[[NSURLQueryItem alloc] initWithName:[NSString stringWithFormat:@"cc%@",key] value: [_customProperties[key] componentsJoinedByString:@";"]]];
         }
     }
     return items;
