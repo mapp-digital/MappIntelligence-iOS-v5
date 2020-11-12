@@ -26,6 +26,7 @@
 		8F80C047252355B500E1F650 /* SessionProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FDF7112250BA9CB00818E51 /* SessionProperties.m */; };
 		8F995E6525507F3E00B918DD /* AdvertisementProperties.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8F423EDA254B17D900DE191D /* AdvertisementProperties.h */; };
 		8F995E6D25507F4400B918DD /* AdvertisementProperties.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8F423EDA254B17D900DE191D /* AdvertisementProperties.h */; };
+		8F9C7F70255A851400CB95EF /* AdvertisementPropertiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F9C7F6F255A851400CB95EF /* AdvertisementPropertiesTests.m */; };
 		8FA11962253EDC82000AE887 /* UserProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FA11960253EDC82000AE887 /* UserProperties.h */; };
 		8FA11963253EDC82000AE887 /* UserProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FA11961253EDC82000AE887 /* UserProperties.m */; };
 		8FA11964253EDC82000AE887 /* UserProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FA11961253EDC82000AE887 /* UserProperties.m */; };
@@ -43,6 +44,10 @@
 		8FDF7110250BA24B00818E51 /* ActionEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FDF7109250B9E5B00818E51 /* ActionEvent.m */; };
 		8FDF7113250BA9CB00818E51 /* SessionProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FDF7111250BA9CB00818E51 /* SessionProperties.h */; };
 		8FDF7114250BA9CB00818E51 /* SessionProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FDF7112250BA9CB00818E51 /* SessionProperties.m */; };
+		8FEC887825598E6500E24EDC /* DeepLink.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FEC887625598E6500E24EDC /* DeepLink.h */; };
+		8FEC887925598E6500E24EDC /* DeepLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FEC887725598E6500E24EDC /* DeepLink.m */; };
+		8FEC887A25598E6500E24EDC /* DeepLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FEC887725598E6500E24EDC /* DeepLink.m */; };
+		8FEC887B25598E6500E24EDC /* DeepLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FEC887725598E6500E24EDC /* DeepLink.m */; };
 		8FFDEA3B254225D800E069F7 /* UserPropertiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFDEA3A254225D800E069F7 /* UserPropertiesTests.m */; };
 		A31C6F1D24D9A0F300166585 /* RequestBatchSupportUrlBuilderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A31C6F1C24D9A0F300166585 /* RequestBatchSupportUrlBuilderTests.m */; };
 		A31C6F2024D9A9B200166585 /* DatabaseManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A31C6F1F24D9A9B200166585 /* DatabaseManagerTests.m */; };
@@ -314,6 +319,7 @@
 		8F143EDC2510B3220024CF24 /* SessionPropertiesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SessionPropertiesTests.m; sourceTree = "<group>"; };
 		8F423ED9254B17D900DE191D /* AdvertisementProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvertisementProperties.m; sourceTree = "<group>"; };
 		8F423EDA254B17D900DE191D /* AdvertisementProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvertisementProperties.h; sourceTree = "<group>"; };
+		8F9C7F6F255A851400CB95EF /* AdvertisementPropertiesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AdvertisementPropertiesTests.m; sourceTree = "<group>"; };
 		8FA11960253EDC82000AE887 /* UserProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserProperties.h; sourceTree = "<group>"; };
 		8FA11961253EDC82000AE887 /* UserProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserProperties.m; sourceTree = "<group>"; };
 		8FDF7105250B9E4D00818E51 /* ActionProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionProperties.h; sourceTree = "<group>"; };
@@ -322,6 +328,8 @@
 		8FDF710A250B9E5B00818E51 /* ActionEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionEvent.h; sourceTree = "<group>"; };
 		8FDF7111250BA9CB00818E51 /* SessionProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SessionProperties.h; sourceTree = "<group>"; };
 		8FDF7112250BA9CB00818E51 /* SessionProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SessionProperties.m; sourceTree = "<group>"; };
+		8FEC887625598E6500E24EDC /* DeepLink.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeepLink.h; sourceTree = "<group>"; };
+		8FEC887725598E6500E24EDC /* DeepLink.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DeepLink.m; sourceTree = "<group>"; };
 		8FFDEA3A254225D800E069F7 /* UserPropertiesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserPropertiesTests.m; sourceTree = "<group>"; };
 		A30E3EC0244491F30047D7A6 /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .travis.yml; sourceTree = "<group>"; };
 		A30E3EC224449ED90047D7A6 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -476,6 +484,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8FEC887525598E4E00E24EDC /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				8FEC887625598E6500E24EDC /* DeepLink.h */,
+				8FEC887725598E6500E24EDC /* DeepLink.m */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
 		A31C6F1E24D9A42F00166585 /* Database */ = {
 			isa = PBXGroup;
 			children = (
@@ -601,6 +618,7 @@
 		A334861A23BF3E2300D0EB5F /* MappIntelligence */ = {
 			isa = PBXGroup;
 			children = (
+				8FEC887525598E4E00E24EDC /* Features */,
 				A337445924C1A1110096259B /* Properties */,
 				A380D2012412B095009E2CD8 /* Utility */,
 				A380D1FC241296E1009E2CD8 /* Events */,
@@ -672,6 +690,7 @@
 				8FFDEA3A254225D800E069F7 /* UserPropertiesTests.m */,
 				A338B802254C6C0A00E50C28 /* ProductTests.m */,
 				A338B812254C6D3A00E50C28 /* EcommercePropertiesTests.m */,
+				8F9C7F6F255A851400CB95EF /* AdvertisementPropertiesTests.m */,
 			);
 			path = Properties;
 			sourceTree = "<group>";
@@ -828,6 +847,7 @@
 				A3EAFF612418E02F009D5108 /* UIFlowObserver.h in Headers */,
 				A380D20C2413D317009E2CD8 /* Configuration.h in Headers */,
 				A338B79825470A1F00E50C28 /* Product.h in Headers */,
+				8FEC887825598E6500E24EDC /* DeepLink.h in Headers */,
 				A3CC548A249125DD006215FD /* Parameter.h in Headers */,
 				A337445C24C1A12A0096259B /* PageProperties.h in Headers */,
 				A338B78B2546FD1E00E50C28 /* EcommerceProperties.h in Headers */,
@@ -1106,6 +1126,7 @@
 				A36C6E092432393A008A9CB6 /* UIFlowObserver.m in Sources */,
 				A36C6E0824323931008A9CB6 /* Configuration.m in Sources */,
 				A338B79A25470A1F00E50C28 /* Product.m in Sources */,
+				8FEC887A25598E6500E24EDC /* DeepLink.m in Sources */,
 				A36C6E072432392A008A9CB6 /* Enviroment.m in Sources */,
 				A36C6E0624323917008A9CB6 /* RequestUrlBuilder.m in Sources */,
 				A3CC549A249151E3006215FD /* Request.m in Sources */,
@@ -1141,6 +1162,7 @@
 				A3D9835324AE298200AF0CD8 /* RequestBatchSupportUrlBuilder.m in Sources */,
 				A380D1FB2411478C009E2CD8 /* TrackingEvent.m in Sources */,
 				A338B79925470A1F00E50C28 /* Product.m in Sources */,
+				8FEC887925598E6500E24EDC /* DeepLink.m in Sources */,
 				8FDF710B250B9E5B00818E51 /* ActionEvent.m in Sources */,
 				A3EAFF622418E02F009D5108 /* UIFlowObserver.m in Sources */,
 				A3CC549324912AA8006215FD /* RequestData.m in Sources */,
@@ -1183,6 +1205,7 @@
 				A3A72559243DC22C00671DB2 /* RequestTrackerBuilderTests.m in Sources */,
 				A357222024FD10AD005F9DE1 /* PagePropertiesTests.m in Sources */,
 				BCBE5BFB23EB1798002125C1 /* MappIntelligenceSDKLoggerTest.m in Sources */,
+				8F9C7F70255A851400CB95EF /* AdvertisementPropertiesTests.m in Sources */,
 				A3A7255F243F154900671DB2 /* MappIntelligenceTests.m in Sources */,
 				A338B813254C6D3A00E50C28 /* EcommercePropertiesTests.m in Sources */,
 				8F143EDD2510B3220024CF24 /* SessionPropertiesTests.m in Sources */,
@@ -1220,6 +1243,7 @@
 				A35C79102452FCD600D36144 /* TrackingEvent.m in Sources */,
 				A35C79112452FCD600D36144 /* URLSizeMonitor.m in Sources */,
 				A338B79B25470A1F00E50C28 /* Product.m in Sources */,
+				8FEC887B25598E6500E24EDC /* DeepLink.m in Sources */,
 				A35C790A2452FCB700D36144 /* Enviroment.m in Sources */,
 				A35C790B2452FCB700D36144 /* Configuration.m in Sources */,
 				A3CC549B249151E5006215FD /* Request.m in Sources */,
