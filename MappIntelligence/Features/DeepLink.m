@@ -9,48 +9,56 @@
 #import "DeepLink.h"
 #import "ActionEvent.h"
 #import "MappIntelligenceLogger.h"
+#import "DefaultTracker.h"
+
+NSString *const MappUrlDomain = @"MAPP_URLDomain";
+NSString *const UrlErrorDescriptionInvalid = @"Url is invalid";
 
 @implementation DeepLink
 
-
-//previous version sent with next request
-+ (void)trackDeepLinkFrom:(NSUserActivity *) activity {
-    if (activity.activityType == NSUserActivityTypeBrowsingWeb) {
-
-        //extract properties
-        NSURL *url = activity.webpageURL;
-        NSURLComponents *components = [[NSURLComponents alloc] initWithURL:url resolvingAgainstBaseURL:YES];
-        NSArray *queryItems = components.queryItems;
++ (NSError *)trackFrom:(NSURL *) url {
         
-        NSString *campaignId;
-        NSString *everId;
-        //validate
-        for (NSURLQueryItem *item in queryItems) {
-            if ([item.name isEqualToString:@"eid"]) {
-                
-            }
-            if ([item.name isEqualToString:@"mc"]) {
-                campaignId = item.value;
-            }
+    AdvertisementProperties *advertisementProperties = [[AdvertisementProperties alloc] init];
+    NSMutableDictionary *campaignParameters = [[NSMutableDictionary alloc] init];
+
+    //extract properties
+    NSURLComponents *components = [[NSURLComponents alloc] initWithURL:url resolvingAgainstBaseURL:YES];
+    NSArray *queryItems = components.queryItems;
+
+    for (NSURLQueryItem *item in queryItems) {
+        if ([item.name isEqualToString:@"wt_mc"]) {
+            advertisementProperties.campaignId = item.value;
         }
-        if (campaignId ) {
-            ActionEvent *deepLinkEvent = [[ActionEvent alloc] init];
-            deepLinkEvent.name = @"???";
-            deepLinkEvent.pageName = @"???";
-            AdvertisementProperties *advertisementProperties = [[AdvertisementProperties alloc] initWith: @"CampaignID???"];
-            deepLinkEvent.advertisementProperties = advertisementProperties;
-        } else {
-            [MappIntelligenceLogger.shared logObj:@"Cannot succesfully parse deeplink url" forDescription: kMappIntelligenceLogLevelDescriptionDebug];
+        if ([DeepLink isCampaignParameter: item.name]) {
+            int idx = [[item.name substringFromIndex:5] intValue];
+            NSNumber *key = [NSNumber numberWithInt:idx];
+            NSArray *value = [NSArray arrayWithObject:item.value];
+            if(key) {
+                [campaignParameters setObject:value forKey:key];
+            }
         }
     }
-    
-    //send action with campaign properties
+    if (advertisementProperties.campaignId) {
+        ActionEvent *deepLinkEvent = [[ActionEvent alloc] init];
+        advertisementProperties.customProperties = campaignParameters;
+        deepLinkEvent.name = @"wt_ignore";
+        deepLinkEvent.pageName = @"0";
+        deepLinkEvent.advertisementProperties = advertisementProperties;
+        return [[DefaultTracker sharedInstance] trackAction:deepLinkEvent];
+    } else {
+        [MappIntelligenceLogger.shared logObj:@"Cannot succesfully parse deeplink url. No campaign parameter!" forDescription: kMappIntelligenceLogLevelDescriptionDebug];
+        return [[NSError alloc] initWithDomain:MappUrlDomain code:0 userInfo:@{NSLocalizedDescriptionKey:UrlErrorDescriptionInvalid}];
+    }
 }
 
-+ (BOOL) validate:(NSString *) everId {
-    
-    return NO;
++ (BOOL) isCampaignParameter: (NSString *) key {
+    NSRegularExpression *regexp = [[NSRegularExpression alloc] initWithPattern:@"^wt_cc" options:0 error:nil];
+    long n = [regexp numberOfMatchesInString:key options:0 range:NSMakeRange(0, key.length)];
+    if (n > 0) {
+        return YES;
+    } else {
+        return NO;
+    }
 }
-
 
 @end

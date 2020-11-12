@@ -95,6 +95,10 @@ class ViewController: UIViewController {
     }
     
     @IBAction func sendCampaignEvent(_ sender: Any) {
+//        let url = URL(string: "https://www.test.com/index.php?wt_mc=abc&wt_cc1=Test2")
+//        MappIntelligence.shared()?.trackUrl(url)
+//        return
+//        
         let advertisementProperties = AdvertisementProperties("en.internal.newsletter.2017.05")
         advertisementProperties.mediaCode = "abc"
         advertisementProperties.oncePerSession = true

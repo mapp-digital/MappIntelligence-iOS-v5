@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface DeepLink : NSObject
 
-+ (void)trackDeepLinkFrom:(NSUserActivity *) activity;
++ (NSError *)trackFrom:(NSURL *) url;
 
 @end
 

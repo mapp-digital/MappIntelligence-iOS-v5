@@ -11,6 +11,7 @@
 #import "MappIntelligenceLogger.h"
 #import "DatabaseManager.h"
 #import "RequestData.h"
+#import "DeepLink.h"
 #import <UIKit/UIKit.h>
 
 @interface MappIntelligence ()
@@ -137,6 +138,11 @@ static MappIntelligenceDefaultConfig *config = nil;
     ActionEvent *actionEvent = [[ActionEvent alloc] initWithName:name pageName:@"0" actionProperties:actionProperties sessionProperties:sessionProperties userProperties:userProperties ecommerceProperties:ecommerceProperties advertisementProperties:advertisemementProperties];
     return [tracker trackAction: actionEvent];
 }
+
+- (NSError *_Nullable) trackUrl:(NSURL *) url {
+    return [DeepLink trackFrom:url];
+}
+
 
 - (void)initWithConfiguration:(NSArray *)trackIDs
                         onTrackdomain:(NSString *)trackDomain

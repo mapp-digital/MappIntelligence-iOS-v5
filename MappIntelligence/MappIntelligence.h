@@ -105,6 +105,9 @@ typedef NS_ENUM(NSInteger, logLevel) {
 */
 - (NSError *_Nullable) trackCustomEventWithName:(NSString *_Nonnull) name actionProperties: (ActionProperties *_Nullable) actionProperties sessionProperties: (SessionProperties *_Nullable) sessionProperties  userProperties: (UserProperties *_Nullable) userProperties ecommerceProperties: (EcommerceProperties *_Nullable) ecommerceProperties advertisementProperties: (AdvertisementProperties *_Nullable) advertisemementProperties;
 
+
+- (NSError *_Nullable) trackUrl:(NSURL *) url;
+
 /**
 @brief Method to initialize tracking. Please specify your track domain and trackID.
 @param trackIDs - Array of your trackIDs. The information can be provided by your account manager.

@@ -58,7 +58,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
     }
-
-
+    
+    @available(iOS 13.0, *)
+    func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
+        MappIntelligence.shared()?.trackUrl(userActivity.webpageURL)
+    }
 }
 
