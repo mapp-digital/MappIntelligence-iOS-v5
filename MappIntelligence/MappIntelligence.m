@@ -139,8 +139,8 @@ static MappIntelligenceDefaultConfig *config = nil;
     return [tracker trackAction: actionEvent];
 }
 
-- (NSError *_Nullable) trackUrl:(NSURL *) url {
-    return [DeepLink trackFrom:url];
+- (NSError *_Nullable) trackUrl:(NSURL *) url withMediaCode:(NSString *_Nullable) mediaCode {
+    return [DeepLink trackFromUrl:url withMediaCode:mediaCode];
 }
 
 

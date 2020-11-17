@@ -61,7 +61,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     @available(iOS 13.0, *)
     func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
-        MappIntelligence.shared()?.trackUrl(userActivity.webpageURL)
+        MappIntelligence.shared()?.trackUrl(userActivity.webpageURL, withMediaCode: nil)
     }
 }
 

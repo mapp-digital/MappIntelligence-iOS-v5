@@ -15,6 +15,8 @@
 #import "PageViewEvent.h"
 #import "ActionEvent.h"
 #import "TrackingEvent.h"
+#import "DeepLink.h"
+
 #if TARGET_OS_WATCH
 #import <WatchKit/WatchKit.h>
 #endif
@@ -162,9 +164,16 @@
         [parametrs addObjectsFromArray:[userProperties asQueryItems]];
         EcommerceProperties *ecommerceProperties = pgEvent.ecommerceProperties;
         [parametrs addObjectsFromArray:[ecommerceProperties asQueryItems]];
+        
         AdvertisementProperties *advertisementProperties = ((PageViewEvent*)event).advertisementProperties;
-        if ([self sendCampaignData:advertisementProperties]) {
+        if (advertisementProperties && [self sendCampaignData:advertisementProperties]) {
             [parametrs addObjectsFromArray:[advertisementProperties asQueryItems]];
+        } else {
+            AdvertisementProperties *saved = [DeepLink loadCampaign];
+            if (saved) {
+                [parametrs addObjectsFromArray:[saved asQueryItems]];
+                [DeepLink deleteCampaign];
+            }
         }
     } else if ([event isKindOfClass:ActionEvent.class]) {
         [parametrs addObjectsFromArray:[(ActionEvent*)event asQueryItems]];
@@ -172,6 +181,8 @@
         [parametrs addObjectsFromArray:[session asQueryItemsFor: request]];
         UserProperties *userProperties = ((ActionEvent*)event).userProperties;
         [parametrs addObjectsFromArray:[userProperties asQueryItems]];
+        EcommerceProperties *ecommerceProperties = ((ActionEvent*)event).ecommerceProperties;
+        [parametrs addObjectsFromArray:[ecommerceProperties asQueryItems]];
         AdvertisementProperties *advertisementProperties = ((ActionEvent*)event).advertisementProperties;
         if ([self sendCampaignData:advertisementProperties]) {
             [parametrs addObjectsFromArray:[advertisementProperties asQueryItems]];

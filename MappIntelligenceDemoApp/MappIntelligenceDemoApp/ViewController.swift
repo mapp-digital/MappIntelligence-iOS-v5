@@ -18,11 +18,11 @@ class ViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.tap)))
         self.view.isUserInteractionEnabled = true
-
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        MappIntelligence.shared()?.trackPage(with: self, pageProperties: nil, sessionProperties: nil, userProperties: nil, ecommerceProperties: nil, advertisementProperties: nil)
     }
     @IBAction func removeRequestFromDatabase(_ sender: Any) {
         guard let requestID = Int32(requestIDTextField.text ?? "0") else {return}
@@ -95,10 +95,6 @@ class ViewController: UIViewController {
     }
     
     @IBAction func sendCampaignEvent(_ sender: Any) {
-//        let url = URL(string: "https://www.test.com/index.php?wt_mc=abc&wt_cc1=Test2")
-//        MappIntelligence.shared()?.trackUrl(url)
-//        return
-//        
         let advertisementProperties = AdvertisementProperties("en.internal.newsletter.2017.05")
         advertisementProperties.mediaCode = "abc"
         advertisementProperties.oncePerSession = true

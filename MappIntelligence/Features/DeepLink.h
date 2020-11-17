@@ -7,12 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AdvertisementProperties.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface DeepLink : NSObject
 
-+ (NSError *)trackFrom:(NSURL *) url;
++ (AdvertisementProperties *_Nullable) loadCampaign;
++ (NSError *_Nullable) deleteCampaign;
++ (NSError *_Nullable)trackFromUrl:(NSURL *_Nullable) url withMediaCode: (NSString *_Nullable) mediaCode;
 
 @end
 

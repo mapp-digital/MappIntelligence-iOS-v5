@@ -106,7 +106,16 @@ typedef NS_ENUM(NSInteger, logLevel) {
 - (NSError *_Nullable) trackCustomEventWithName:(NSString *_Nonnull) name actionProperties: (ActionProperties *_Nullable) actionProperties sessionProperties: (SessionProperties *_Nullable) sessionProperties  userProperties: (UserProperties *_Nullable) userProperties ecommerceProperties: (EcommerceProperties *_Nullable) ecommerceProperties advertisementProperties: (AdvertisementProperties *_Nullable) advertisemementProperties;
 
 
-- (NSError *_Nullable) trackUrl:(NSURL *) url;
+/**
+@brief Method which will track campaign parameters from url
+@param url - url object with campaign parameters
+@param mediaCode - custom media code, if nil "wt_mc" is used as default
+@code
+ MappIntelligence.shared()?.trackUrl(userActivity.webpageURL, withMediaCode: nil)
+@endcode
+@return the error which may happen through process of tracking, if returns nil there is no error.
+ */
+- (NSError *_Nullable) trackUrl:(NSURL *_Nullable) url withMediaCode:(NSString *_Nullable) mediaCode;
 
 /**
 @brief Method to initialize tracking. Please specify your track domain and trackID.
