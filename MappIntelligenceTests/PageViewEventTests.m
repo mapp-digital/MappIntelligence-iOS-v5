@@ -12,7 +12,7 @@
 @interface PageViewEventTests : XCTestCase
 
 @property PageViewEvent* pageViewEvent;
-@property PageProperties* pageProperties;
+@property MIPageProperties* pageProperties;
 @property SessionProperties *sessionProperties;
 @property UserProperties *userProperties;
 @property EcommerceProperties *ecommerceProperties;
@@ -29,7 +29,7 @@
     _details = [@{@20: @[@"cp20Override"]} copy];
     _groups = [@{@15: @[@"testGroups"]} copy];
     _internalSearch = @"testSearchTerm";
-    _pageProperties = [[PageProperties alloc] initWithPageParams:_details andWithPageCategory:_groups andWithSearch:_internalSearch];
+    _pageProperties = [[MIPageProperties alloc] initWithPageParams:_details andWithPageCategory:_groups andWithSearch:_internalSearch];
     _sessionDictionary = [@{@10: @[@"sessionpar1"]} copy];
     _sessionProperties =  [[SessionProperties alloc] initWithProperties: _sessionDictionary];
     _userProperties = [[UserProperties alloc] init];

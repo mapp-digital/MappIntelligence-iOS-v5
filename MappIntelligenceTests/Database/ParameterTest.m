@@ -7,18 +7,18 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "Parameter.h"
+#import "MIParameter.h"
 
 @interface ParameterTest : XCTestCase
 
-@property Parameter* parameter;
+@property MIParameter* parameter;
 
 @end
 
 @implementation ParameterTest
 
 - (void)setUp {
-    _parameter = [[Parameter alloc] init];
+    _parameter = [[MIParameter alloc] init];
 }
 
 - (void)tearDown {
@@ -32,7 +32,7 @@
       @"value" : @"parameterValue",
         @"request_table_id" : @123
     };
-    _parameter = [[Parameter alloc] initWithKeyedValues:keyedValues];
+    _parameter = [[MIParameter alloc] initWithKeyedValues:keyedValues];
     XCTAssertTrue([_parameter.uniqueId isEqualToNumber:@1234], @"Parameter ID is not correct!");
     XCTAssertTrue([_parameter.name isEqualToString:@"parameterName"], @"Parameter name is not correct!");
     XCTAssertTrue([_parameter.value isEqualToString:@"parameterValue"], @"Parameter value is not correct!");
@@ -46,7 +46,7 @@
       @"value" : @"parameterValue",
         @"request_table_id" : @123
     };
-    _parameter = [[Parameter alloc] initWithKeyedValues:keyedValues];
+    _parameter = [[MIParameter alloc] initWithKeyedValues:keyedValues];
     NSDictionary *newKeyedValues = [_parameter dictionaryWithValuesForKeys];
     XCTAssertTrue([keyedValues isEqualToDictionary:newKeyedValues], "The created dictictionary is not the same with base one!");
 }
@@ -58,7 +58,7 @@
       @"value" : @"parameterValue",
         @"request_table_id" : @123
     };
-    _parameter = [[Parameter alloc] initWithKeyedValues:keyedValues];
+    _parameter = [[MIParameter alloc] initWithKeyedValues:keyedValues];
     NSString *printDescription = [_parameter print];
     XCTAssertTrue([printDescription isEqualToString: @"\n\n name: parameterName, value: parameterValue"], "The printed description not the same as it initialy setup!");
 }

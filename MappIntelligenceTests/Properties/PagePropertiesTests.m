@@ -7,13 +7,13 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "PageProperties.h"
+#import "MIPageProperties.h"
 #import "TrackerRequest.h"
 #import "DefaultTracker.h"
 
 @interface PagePropertiesTests : XCTestCase
 
-@property PageProperties* pageProperties;
+@property MIPageProperties* pageProperties;
 @property NSString* internalSearch;
 @property NSMutableDictionary* details;
 @property NSMutableDictionary* groups;
@@ -26,7 +26,7 @@
     _details = [@{@20: @[@"cp20Override"]} copy];
     _groups = [@{@15: @[@"testGroups"]} copy];
     _internalSearch = @"testSearchTerm";
-    _pageProperties = [[PageProperties alloc] initWithPageParams:_details andWithPageCategory:_groups andWithSearch:_internalSearch];
+    _pageProperties = [[MIPageProperties alloc] initWithPageParams:_details andWithPageCategory:_groups andWithSearch:_internalSearch];
 }
 
 - (void)tearDown {

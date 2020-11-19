@@ -9,7 +9,7 @@
 #import <XCTest/XCTest.h>
 #import "TrackerRequest.h"
 #import "TrackingEvent.h"
-#import "Properties.h"
+#import "MIProperties.h"
 
 @interface TrackerRequestTests : XCTestCase
 
@@ -34,7 +34,7 @@
 
 - (void)testInitWithEventAndProperties {
     TrackingEvent *event = [[TrackingEvent alloc] init];
-    Properties *properties = [[Properties alloc] init];
+    MIProperties *properties = [[MIProperties alloc] init];
     _request = [[TrackerRequest alloc] initWithEvent:event andWithProperties:properties];
     XCTAssertNotNil(_request);
     XCTAssertNotNil([_request event]);

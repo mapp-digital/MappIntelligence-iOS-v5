@@ -6,7 +6,7 @@
 //  Copyright © 2020 Mapp Digital US, LLC. All rights reserved.
 //
 #import "Config.h"
-#import "DefaultTracker.h"
+#import "MIDefaultTracker.h"
 
 extern NSTimeInterval const requestIntervalDefault;
 extern BOOL const optOutDefault;

@@ -7,11 +7,11 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "URLSizeMonitor.h"
+#import "MIURLSizeMonitor.h"
 
 @interface URLSizeMonitorTests : XCTestCase
 
-@property URLSizeMonitor* sizeMonitor;
+@property MIURLSizeMonitor* sizeMonitor;
 
 @end
 
@@ -19,7 +19,7 @@
 
 - (void)setUp {
     [super setUp];
-    _sizeMonitor = [[URLSizeMonitor alloc] init];
+    _sizeMonitor = [[MIURLSizeMonitor alloc] init];
 }
 
 - (void)tearDown {

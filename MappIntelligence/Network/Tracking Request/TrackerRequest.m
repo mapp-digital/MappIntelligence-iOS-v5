@@ -30,7 +30,7 @@
 }
 
 - (instancetype)initWithEvent:(TrackingEvent *)event
-            andWithProperties:(Properties *)properties {
+            andWithProperties:(MIProperties *)properties {
   self = [self init];
   [self setEvent:event];
   [self setProperties:properties];

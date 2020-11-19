@@ -9,11 +9,11 @@
 #import <XCTest/XCTest.h>
 #import "TrackerRequest.h"
 #import "DefaultTracker.h"
-#import "ActionProperties.h"
+#import "MIActionProperties.h"
 
 
 @interface ActionPropertiesTests : XCTestCase
-@property ActionProperties* actionProperties;
+@property MIActionProperties* actionProperties;
 @property NSMutableDictionary* properties;
 @property NSString *actionname;
 @end
@@ -23,7 +23,7 @@
 - (void)setUp {
     _properties = [@{@20: @[@"1 element"]} copy];
     _actionname = @"TestAction";
-    _actionProperties = [[ActionProperties alloc] initWithProperties:_properties];
+    _actionProperties = [[MIActionProperties alloc] initWithProperties:_properties];
 }
 
 - (void)tearDown {

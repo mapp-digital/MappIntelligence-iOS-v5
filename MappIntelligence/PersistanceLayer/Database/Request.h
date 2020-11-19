@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Parameter.h"
+#import "MIParameter.h"
 
 typedef NS_ENUM(NSInteger, REQUEST_STATUS) {
     ACTIVE,
@@ -24,7 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong, readwrite) NSString *track_ids; // string
 @property (nonatomic, readwrite)  REQUEST_STATUS status; // integer
 @property (nonatomic, strong, readwrite) NSDate *date; // integer
-@property (nonatomic, strong, readwrite) NSMutableArray<Parameter*> *parameters;
+@property (nonatomic, strong, readwrite) NSMutableArray<MIParameter*> *parameters;
 
 - (instancetype)initWithKeyedValues:(NSDictionary *)keyedValues;
 - (instancetype)initWithParamters:(NSArray<NSURLQueryItem *> *)parameters andDomain: (NSString*) domain andTrackIds: (NSString*) trackids;

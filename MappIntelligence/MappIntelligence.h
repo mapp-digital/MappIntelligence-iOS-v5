@@ -8,10 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "PageViewEvent.h"
-#import "ActionProperties.h"
-#import "SessionProperties.h"
-#import "UserProperties.h"
+#import "MIPageViewEvent.h"
+#import "MIActionProperties.h"
+#import "MISessionProperties.h"
+#import "MIUserProperties.h"
 
 @class MappIntelligence;
 
@@ -59,14 +59,14 @@ typedef NS_ENUM(NSInteger, logLevel) {
  let params:[NSNumber:[String]] = [20: ["cp20Override", "cp21Override", "cp22Override"]]
  let categories:NSMutableDictionary = [10: ["test"]]
  let searchTerm = "testSearchTerm"
- let sessionProperties = SessionProperties(witProperties: [10: ["sessionpar1"]])
- let userProperties = UserProperties(customProperties:[20:["Test"]])
+ let sessionProperties = MISessionProperties(witProperties: [10: ["sessionpar1"]])
+ let userProperties = MIUserProperties(customProperties:[20:["Test"]])
 
- MappIntelligence.shared()?.trackPage(with: self, pageProperties: PageProperties(pageParams: params, andWithPageCategory: categories, andWithSearch: searchTerm), sessionProperties: sessionProperties, userProperties: userProperties)
+ MappIntelligence.shared()?.trackPage(with: self, pageProperties: MIPageProperties(pageParams: params, andWithPageCategory: categories, andWithSearch: searchTerm), sessionProperties: sessionProperties, userProperties: userProperties)
 @endcode
 @return Error in case of a failure. Returns nil if no error was detected.
 */
-- (NSError *_Nullable)trackPageWithViewController:(UIViewController *_Nonnull)controller pageProperties:(PageProperties  *_Nullable)pageProperties sessionProperties:(SessionProperties *_Nullable) sessionProperties  userProperties: (UserProperties *_Nullable) userProperties ecommerceProperties: (EcommerceProperties *_Nullable) ecommerceProperties advertisementProperties: (AdvertisementProperties *_Nullable) advertisemementProperties;
+- (NSError *_Nullable)trackPageWithViewController:(UIViewController *_Nonnull)controller pageProperties:(MIPageProperties  *_Nullable)pageProperties sessionProperties:(MISessionProperties *_Nullable) sessionProperties  userProperties: (MIUserProperties *_Nullable) userProperties ecommerceProperties: (MIEcommerceProperties *_Nullable) ecommerceProperties advertisementProperties: (AdvertisementProperties *_Nullable) advertisemementProperties;
 #endif
 /**
 @brief Method to track additional page information.
@@ -79,14 +79,14 @@ typedef NS_ENUM(NSInteger, logLevel) {
  let params:[NSNumber:[String]] = [20: ["cp20Override", "cp21Override", "cp22Override"]]
  let categories:NSMutableDictionary = [10: ["test"]]
  let searchTerm = "testSearchTerm"
- let sessionProperties = SessionProperties(witProperties: [10: ["sessionpar1"]])
- let userProperties = UserProperties(customProperties:[20:["Test"]])
- let ecommerceProperties = EcommerceProperties()
- MappIntelligence.shared()?.trackPage(withName: customName, pageProperties: PageProperties(pageParams: params, andWithPageCategory: categories, andWithSearch: searchTerm), sessionProperties: sessionProperties, userProperties: userProperties ecommerceProperties: ecommerceProperties)
+ let sessionProperties = MISessionProperties(witProperties: [10: ["sessionpar1"]])
+ let userProperties = MIUserProperties(customProperties:[20:["Test"]])
+ let ecommerceProperties = MIEcommerceProperties()
+ MappIntelligence.shared()?.trackPage(withName: customName, pageProperties: MIPageProperties(pageParams: params, andWithPageCategory: categories, andWithSearch: searchTerm), sessionProperties: sessionProperties, userProperties: userProperties ecommerceProperties: ecommerceProperties)
 @endcode
 @return Error that can happen while tracking. Returns nil if no error was detected.
 */
-- (NSError *_Nullable)trackPageWithName: (NSString *_Nonnull) name pageProperties:(PageProperties  *_Nullable)pageProperties sessionProperties: (SessionProperties *_Nullable) sessionProperties  userProperties: (UserProperties *_Nullable) userProperties ecommerceProperties: (EcommerceProperties *_Nullable) ecommerceProperties advertisementProperties: (AdvertisementProperties *_Nullable) advertisemementProperties;
+- (NSError *_Nullable)trackPageWithName: (NSString *_Nonnull) name pageProperties:(MIPageProperties  *_Nullable)pageProperties sessionProperties: (MISessionProperties *_Nullable) sessionProperties  userProperties: (MIUserProperties *_Nullable) userProperties ecommerceProperties: (MIEcommerceProperties *_Nullable) ecommerceProperties advertisementProperties: (AdvertisementProperties *_Nullable) advertisemementProperties;
 
 /**
 @brief Method which will track action event created from action properties and session properties.
@@ -96,14 +96,14 @@ typedef NS_ENUM(NSInteger, logLevel) {
 @param userProperties - customer related data
 @code
  let actionProperties = ActionProperties(properties:  [20:["ck20Override","ck21Override"]])
- let sessionProperties = SessionProperties(properties: [10: ["sessionpar1"]])
- let userProperties = UserProperties(customProperties:[20:["Test"]])
- let ecommerceProperties = EcommerceProperties()
+ let sessionProperties = MISessionProperties(properties: [10: ["sessionpar1"]])
+ let userProperties = MIUserProperties(customProperties:[20:["Test"]])
+ let ecommerceProperties = MIEcommerceProperties()
  MappIntelligence.shared()?.trackCustomEvent(withName: "TestAction", actionProperties: actionProperties, sessionProperties: sessionProperties, userProperties: userProperties ecommerceProperties: ecommerceProperties)
  @endcode
 @return the error which may happen through process of tracking, if returns nil there is no error.
 */
-- (NSError *_Nullable) trackCustomEventWithName:(NSString *_Nonnull) name actionProperties: (ActionProperties *_Nullable) actionProperties sessionProperties: (SessionProperties *_Nullable) sessionProperties  userProperties: (UserProperties *_Nullable) userProperties ecommerceProperties: (EcommerceProperties *_Nullable) ecommerceProperties advertisementProperties: (AdvertisementProperties *_Nullable) advertisemementProperties;
+- (NSError *_Nullable) trackCustomEventWithName:(NSString *_Nonnull) name actionProperties: (MIActionProperties *_Nullable) actionProperties sessionProperties: (MISessionProperties *_Nullable) sessionProperties  userProperties: (MIUserProperties *_Nullable) userProperties ecommerceProperties: (MIEcommerceProperties *_Nullable) ecommerceProperties advertisementProperties: (AdvertisementProperties *_Nullable) advertisemementProperties;
 
 
 /**

@@ -65,22 +65,22 @@ class ViewController: UIViewController {
         MappIntelligence.shared()?.optIn()
     }
     @IBAction func sendActionEvent(_ sender: Any) {
-        let actionProperties = ActionProperties(properties:  [20:["ck20Override","ck21Override"]])
-        let sessionProperties = SessionProperties(properties: [10: ["018", "Over"]])
-        let userProperties = UserProperties()
+        let actionProperties = MIActionProperties(properties:  [20:["ck20Override","ck21Override"]])
+        let sessionProperties = MISessionProperties(properties: [10: ["018", "Over"]])
+        let userProperties = MIUserProperties()
         userProperties.customProperties = [20:["Test"]]
         userProperties.birthday = Birthday(day: 12, month: 0, year: 1993)
         userProperties.city = "Paris"
         userProperties.country = "France"
         userProperties.customerId = "CustomerID"
         userProperties.gender = .female
-        let ecommerceProperties = EcommerceProperties()
+        let ecommerceProperties = MIEcommerceProperties()
         ecommerceProperties.cuponValue = 33
         MappIntelligence.shared()?.trackCustomEvent(withName: "TestAction", actionProperties: actionProperties, sessionProperties: sessionProperties, userProperties: userProperties, ecommerceProperties: ecommerceProperties, advertisementProperties: nil)
     }
     
     @IBAction func sendEcommerceEvent(_ sender: Any) {
-        let ecommerceProperties = EcommerceProperties(customProperties: [540 : ["ecommerce1", "ecommerce2"]])
+        let ecommerceProperties = MIEcommerceProperties(customProperties: [540 : ["ecommerce1", "ecommerce2"]])
         let product1 = Product()
         product1.name = "Product1Name"
         product1.price = "20$"

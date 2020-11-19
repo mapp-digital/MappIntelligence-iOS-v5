@@ -8,17 +8,17 @@
 
 #import <Foundation/Foundation.h>
 #import "TrackingEvent.h"
-#import "Properties.h"
+#import "MIProperties.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface TrackerRequest : NSObject
 
 @property TrackingEvent *event;
-@property Properties *properties;
+@property MIProperties *properties;
 
 - (instancetype)initWithEvent:(TrackingEvent *)event
-            andWithProperties:(Properties *)properties;
+            andWithProperties:(MIProperties *)properties;
 - (void)sendRequestWith:(NSURL *)url
         andCompletition:(void (^)(NSError *error))handler;
 - (void)sendRequestWith:(NSURL *)url andBody:(NSString*)body andCompletition:(void (^)(NSError *error))handler;

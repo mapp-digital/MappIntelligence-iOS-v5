@@ -7,11 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "PageProperties.h"
-#import "SessionProperties.h"
-#import "ActionProperties.h"
-#import "UserProperties.h"
-#import "EcommerceProperties.h"
+#import "MIPageProperties.h"
+#import "MISessionProperties.h"
+#import "MIActionProperties.h"
+#import "MIUserProperties.h"
+#import "MIEcommerceProperties.h"
 #import "AdvertisementProperties.h"
 
 typedef NS_ENUM(NSInteger, logWatchOSLevel) {
@@ -65,13 +65,13 @@ MappIntelligenceWatchOS.shared()?.initWithConfiguration([12345678, 8783291721], 
  let params:NSMutableDictionary = [20: ["cp20Override", "cp21Override", "cp22Override"]]
  let categories:NSMutableDictionary = [10: ["test"]]
  let searchTerm = "testSearchTerm"
- let userProperties = UserProperties(customProperties:[20:["Test"]])
- let ecommerceProperties = EcommerceProperties()
+ let userProperties = MIUserProperties(customProperties:[20:["Test"]])
+ let ecommerceProperties = MIEcommerceProperties()
  MappIntelligenceWatchOS.shared()?.trackPage(withName: customName, andWith: PageProperties(pageParams: params, andWithPageCategory: categories, andWithSearch: searchTerm) sessionProperties: nil userProperties: userProperties ecommerceProperties: ecommerceProperties)
 @endcode
 @return Error that can happen while tracking. Returns nil if no error was detected.
 */
-- (NSError *_Nullable)trackPageWithName: (NSString *_Nonnull) name pageProperties:(PageProperties  *_Nullable)pageProperties sessionProperties: (SessionProperties *_Nullable) sessionProperties userProperties: (UserProperties *_Nullable) userProperties ecommerceProperties: (EcommerceProperties *_Nullable) ecommerceProperties advertisementProperties: (AdvertisementProperties *_Nullable) advertisemementProperties;
+- (NSError *_Nullable)trackPageWithName: (NSString *_Nonnull) name pageProperties:(MIPageProperties  *_Nullable)pageProperties sessionProperties: (MISessionProperties *_Nullable) sessionProperties userProperties: (MIUserProperties *_Nullable) userProperties ecommerceProperties: (MIEcommerceProperties *_Nullable) ecommerceProperties advertisementProperties: (AdvertisementProperties *_Nullable) advertisemementProperties;
 
 /**
 @brief Method which will track action event created from action properties and session properties.
@@ -82,14 +82,14 @@ MappIntelligenceWatchOS.shared()?.initWithConfiguration([12345678, 8783291721], 
 
 @code
  let actionProperties = ActionProperties(properties:  [20:["ck20Override","ck21Override"]])
- let sessionProperties = SessionProperties(properties: [10: ["sessionpar1"]])
- let userProperties = UserProperties(customProperties:[20:["Test"]])
- let ecommerceProperties = EcommerceProperties()
+ let sessionProperties = MISessionProperties(properties: [10: ["sessionpar1"]])
+ let userProperties = MIUserProperties(customProperties:[20:["Test"]])
+ let ecommerceProperties = MIEcommerceProperties()
  MappIntelligenceWatchOS.shared()?.trackCustomEvent(withName: "TestAction", actionProperties: actionProperties, sessionProperties: sessionProperties userProperties: userProperties ecommerceProperties: ecommerceProperties)
  @endcode
 @return the error which may happen through process of tracking, if returns nil there is no error.
 */
-- (NSError *_Nullable) trackCustomEventWithName:(NSString *_Nonnull) name  actionProperties: (ActionProperties *_Nullable) actionProperties sessionProperties: (SessionProperties *_Nullable) sessionProperties userProperties: (UserProperties *_Nullable) userProperties ecommerceProperties: (EcommerceProperties *_Nullable) ecommerceProperties advertisementProperties: (AdvertisementProperties *_Nullable) advertisemementProperties;
+- (NSError *_Nullable) trackCustomEventWithName:(NSString *_Nonnull) name  actionProperties: (MIActionProperties *_Nullable) actionProperties sessionProperties: (MISessionProperties *_Nullable) sessionProperties userProperties: (MIUserProperties *_Nullable) userProperties ecommerceProperties: (MIEcommerceProperties *_Nullable) ecommerceProperties advertisementProperties: (AdvertisementProperties *_Nullable) advertisemementProperties;
 
 
 /**

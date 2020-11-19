@@ -35,7 +35,7 @@ class InterfaceController: WKInterfaceController {
         let params:[NSNumber:[String]] = [20: ["cp20Override", "cp21Override", "cp22Override"]]
         let categories:NSMutableDictionary = [10: ["test"]]
         let searchTerm = "testSearchTerm"
-        MappIntelligenceWatchOS.shared()?.trackPage(withName: customName, pageProperties: PageProperties(pageParams: params, andWithPageCategory: categories, andWithSearch: searchTerm), sessionProperties: nil, userProperties: nil, ecommerceProperties: nil, advertisementProperties: nil)
+        MappIntelligenceWatchOS.shared()?.trackPage(withName: customName, pageProperties: MIPageProperties(pageParams: params, andWithPageCategory: categories, andWithSearch: searchTerm), sessionProperties: nil, userProperties: nil, ecommerceProperties: nil, advertisementProperties: nil)
     }
     @IBAction func reset() {
         MappIntelligenceWatchOS.shared()?.reset()
@@ -44,22 +44,22 @@ class InterfaceController: WKInterfaceController {
         MappIntelligenceWatchOS.shared()?.initWithConfiguration([385255285199574 as UInt64], onTrackdomain: "https://q3.webtrekk.net")
     }
     @IBAction func trackAction() {
-        let actionProperties = ActionProperties(properties:  [20:["ck20Override","ck21Override"]])
-        let sessionProperties = SessionProperties(properties: [10: ["sessionpar1"]])
-        let userProperties = UserProperties()
+        let actionProperties = MIActionProperties(properties:  [20:["ck20Override","ck21Override"]])
+        let sessionProperties = MISessionProperties(properties: [10: ["sessionpar1"]])
+        let userProperties = MIUserProperties()
         userProperties.customProperties = [20:["Test"]]
         userProperties.birthday = Birthday(day: 12, month: 0, year: 1993)
         userProperties.city = "Paris"
         userProperties.country = "France"
         userProperties.customerId = "CustomerID"
         userProperties.gender = .female
-        let ecommerceProperties = EcommerceProperties()
+        let ecommerceProperties = MIEcommerceProperties()
         ecommerceProperties.cuponValue = 23
         MappIntelligenceWatchOS.shared()?.trackCustomEvent(withName: "TestAction", actionProperties: actionProperties, sessionProperties: sessionProperties, userProperties: userProperties, ecommerceProperties: ecommerceProperties, advertisementProperties: nil)
     }
     
     @IBAction func trackEcommerce() {
-        let ecommerceProperties = EcommerceProperties(customProperties: [540 : ["ecommerce1", "ecommerce2"]])
+        let ecommerceProperties = MIEcommerceProperties(customProperties: [540 : ["ecommerce1", "ecommerce2"]])
         let product1 = Product()
         product1.name = "Product1Name"
         product1.price = "20$"

@@ -46,11 +46,11 @@ class ConfigurationViewController: UIViewController, UIPickerViewDelegate, UIPic
         let params:[NSNumber : [String]] = [20: ["cp20Override", "cp21Override", "cp22Override"]]
         let categories:NSMutableDictionary = [10: ["test"]]
         let searchTerm = "testSearchTerm"
-        let sessionProperties = SessionProperties(properties: [10: ["sessionpar1"]])
+        let sessionProperties = MISessionProperties(properties: [10: ["sessionpar1"]])
 
-        MappIntelligence.shared()?.trackPage(withName: customName, pageProperties: PageProperties(pageParams: params, andWithPageCategory: categories, andWithSearch: searchTerm), sessionProperties: sessionProperties, userProperties: nil, ecommerceProperties: nil, advertisementProperties: nil)
+        MappIntelligence.shared()?.trackPage(withName: customName, pageProperties: MIPageProperties(pageParams: params, andWithPageCategory: categories, andWithSearch: searchTerm), sessionProperties: sessionProperties, userProperties: nil, ecommerceProperties: nil, advertisementProperties: nil)
         //or you can use this
-        MappIntelligence.shared()?.trackPage(with: self, pageProperties: PageProperties(pageParams: params, andWithPageCategory: categories, andWithSearch: searchTerm), sessionProperties: sessionProperties, userProperties: nil, ecommerceProperties: nil, advertisementProperties: nil)
+        MappIntelligence.shared()?.trackPage(with: self, pageProperties: MIPageProperties(pageParams: params, andWithPageCategory: categories, andWithSearch: searchTerm), sessionProperties: sessionProperties, userProperties: nil, ecommerceProperties: nil, advertisementProperties: nil)
     }
     
     @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {

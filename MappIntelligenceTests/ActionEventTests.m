@@ -12,7 +12,7 @@
 @interface ActionEventTests : XCTestCase
 @property NSMutableDictionary* details;
 @property ActionEvent* actionEvent;
-@property ActionProperties* actionProperties;
+@property MIActionProperties* actionProperties;
 @property NSMutableDictionary *sessionDictionary;
 @property SessionProperties *sessionProperties;
 @property UserProperties *userProperties;
@@ -25,7 +25,7 @@
 
 - (void)setUp {
     _details = [@{@20: @"ck20Override"} copy];
-    _actionProperties = [[ActionProperties alloc] initWithProperties: _details];
+    _actionProperties = [[MIActionProperties alloc] initWithProperties: _details];
     _sessionDictionary = [@{@10: @[@"sessionpar1"]} copy];
     _sessionProperties =  [[SessionProperties alloc] initWithProperties: _sessionDictionary];
     _userProperties = [[UserProperties alloc] init];

@@ -7,11 +7,11 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "EcommerceProperties.h"
+#import "MIEcommerceProperties.h"
 
 @interface EcommercePropertiesTests : XCTestCase
 
-@property EcommerceProperties* ecommerceProperties;
+@property MIEcommerceProperties* ecommerceProperties;
 @property NSMutableDictionary* properties;
 @property NSArray<Product* >* products;
 @property NSNumber* cuponValue;
@@ -22,7 +22,7 @@
 
 - (void)setUp {
     _properties = [@{@1:@[@"testValue"]} copy];
-    _ecommerceProperties = [[EcommerceProperties alloc] initWithCustomProperties:_properties];
+    _ecommerceProperties = [[MIEcommerceProperties alloc] initWithCustomProperties:_properties];
     Product *product1 = [[Product alloc] init];
     product1.name = @"product1Name";
     product1.price = @"55$";

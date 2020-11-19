@@ -83,7 +83,7 @@
     return [_mappIntelligence trackPageWithViewController:controller pageProperties:pageProperties sessionProperties:sessionProperties userProperties:userProperties ecommerceProperties: ecommerceProperties advertisementProperties:advertisemementProperties];
 }
 
-- (NSError *_Nullable) trackCustomEventWithName:(NSString *_Nonnull) name  actionProperties: (ActionProperties *_Nullable) actionProperties sessionProperties: (SessionProperties *_Nullable) sessionProperties userProperties: (UserProperties *) userProperties ecommerceProperties:(EcommerceProperties * _Nullable)ecommerceProperties advertisementProperties: (AdvertisementProperties *_Nullable) advertisemementProperties{
+- (NSError *_Nullable) trackCustomEventWithName:(NSString *_Nonnull) name  actionProperties: (MIActionProperties *_Nullable) actionProperties sessionProperties: (SessionProperties *_Nullable) sessionProperties userProperties: (UserProperties *) userProperties ecommerceProperties:(EcommerceProperties * _Nullable)ecommerceProperties advertisementProperties: (AdvertisementProperties *_Nullable) advertisemementProperties{
     return [_mappIntelligence trackCustomEventWithName:name actionProperties:actionProperties sessionProperties:sessionProperties userProperties:userProperties ecommerceProperties:ecommerceProperties advertisementProperties:advertisemementProperties];
 }
 

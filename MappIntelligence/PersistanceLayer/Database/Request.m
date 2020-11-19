@@ -7,7 +7,7 @@
 //
 
 #import "Request.h"
-#import "RequestUrlBuilder.h"
+#import "MIRequestUrlBuilder.h"
 
 #define key_id @"id"
 #define key_domain @"track_domain"
@@ -38,7 +38,7 @@
     if (self) {
         self.parameters = [[NSMutableArray alloc] init];
         for (NSURLQueryItem* item in parameters) {
-            [self.parameters addObject:[[Parameter alloc] initWithKeyedValues: @{@"name" : item.name, @"value" : item.value}]];
+            [self.parameters addObject:[[MIParameter alloc] initWithKeyedValues: @{@"name" : item.name, @"value" : item.value}]];
         }
         self.domain = domain;
         self.track_ids = trackids;
@@ -117,7 +117,7 @@
 
 - (NSString*)print {
     NSString* request = [[NSString alloc] initWithFormat:@"ID: %@ and domain: %@ and ids: %@ and date: %@ and paramters: ", self.uniqueId, self.domain, self.track_ids, self.date];
-    for(Parameter* parameter in self.parameters) {
+    for(MIParameter* parameter in self.parameters) {
         request = [request stringByAppendingString:[parameter print]];
     }
     NSLog(@"%@", request);
@@ -126,7 +126,7 @@
 
 - (NSMutableArray<NSURLQueryItem *> *)convertParamtersWith: (BOOL)batch {
     NSMutableArray<NSURLQueryItem *> * array = [[NSMutableArray alloc] init];
-    for (Parameter* p in _parameters) {
+    for (MIParameter* p in _parameters) {
         if (batch && ([p.name isEqualToString:@"eid"] || [p.name isEqualToString:@"X-WT-UA"])) {
             continue;
         }
@@ -136,7 +136,7 @@
 }
 
 - (NSURL *)urlForBatchSupprot: (BOOL)option {
-    RequestUrlBuilder* builder = [[RequestUrlBuilder alloc] initWithUrl:[[NSURL alloc] initWithString:_domain] andWithId:_track_ids];
+    MIRequestUrlBuilder* builder = [[MIRequestUrlBuilder alloc] initWithUrl:[[NSURL alloc] initWithString:_domain] andWithId:_track_ids];
     return [builder createURLFromParametersWith:[self convertParamtersWith:option]];
 }
 

@@ -7,19 +7,19 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "DatabaseManager.h"
+#import "MIDatabaseManager.h"
 #import "RequestData.h"
 
 @interface DatabaseManagerTests : XCTestCase
 
-@property DatabaseManager* dbManager;
+@property MIDatabaseManager* dbManager;
 
 @end
 
 @implementation DatabaseManagerTests
 
 - (void)setUp {
-    _dbManager = [DatabaseManager shared];
+    _dbManager = [MIDatabaseManager shared];
 }
 
 - (void)tearDown {

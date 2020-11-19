@@ -1,0 +1,49 @@
+
+        
+    
+//
+//  MIEnviroment.m
+//  MappIntelligenceSDK
+//
+//  Created by Stefan Stevanovic on 3/6/20.
+//  Copyright © 2020 Mapp Digital US, LLC. All rights reserved.
+//
+
+#import "MIEnviroment.h"
+#import <UIKit/UIKit.h>
+#import <sys/utsname.h>
+#if TARGET_OS_WATCH
+#import <WatchKit/WatchKit.h>
+#endif
+
+#warning "This should be static class!"
+@implementation MIEnviroment
+
+- (NSString *)appVersion {
+  return NSBundle.mainBundle.infoDictionary[@"CFBundleShortVersionString"];
+}
+
+- (NSString *)deviceModelString {
+#if TARGET_IPHONE_SIMULATOR
+  return @"iPhone";
+#else
+  struct utsname systemInfo;
+  uname(&systemInfo);
+  return [NSString stringWithCString:systemInfo.machine
+                            encoding:NSUTF8StringEncoding];
+#endif
+}
+
+- (NSString *)operatingSystemName {
+#if TARGET_OS_WATCH
+  return [[WKInterfaceDevice currentDevice] systemName]; 
+#else
+    return [[UIDevice currentDevice] systemName];
+#endif
+}
+
+- (NSString *)operatingSystemVersionString {
+  return [[[NSProcessInfo alloc] init] operatingSystemVersionString];
+}
+
+@end

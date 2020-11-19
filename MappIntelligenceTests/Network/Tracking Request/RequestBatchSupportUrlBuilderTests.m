@@ -7,18 +7,18 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "RequestBatchSupportUrlBuilder.h"
+#import "MIRequestBatchSupportUrlBuilder.h"
 
 @interface RequestBatchSupportUrlBuilderTests : XCTestCase
 
-@property RequestBatchSupportUrlBuilder* batchUrlBuilder;
+@property MIRequestBatchSupportUrlBuilder* batchUrlBuilder;
 
 @end
 
 @implementation RequestBatchSupportUrlBuilderTests
 
 - (void)setUp {
-    _batchUrlBuilder = [[RequestBatchSupportUrlBuilder alloc] init];
+    _batchUrlBuilder = [[MIRequestBatchSupportUrlBuilder alloc] init];
 }
 
 - (void)tearDown {

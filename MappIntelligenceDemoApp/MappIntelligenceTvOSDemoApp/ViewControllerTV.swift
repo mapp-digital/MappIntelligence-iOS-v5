@@ -32,7 +32,7 @@ class ViewControllerTV: UIViewController {
         MappIntelligencetvOS.shared()?.trackPage(withName: customName, pageProperties: PageProperties(pageParams: params, andWithPageCategory: categories, andWithSearch: searchTerm), sessionProperties: sessionProperties, userProperties: nil, ecommerceProperties: nil, advertisementProperties: nil)
     }
     @IBAction func trackAction(_ sender: Any) {
-        let actionProperties = ActionProperties(properties:  [20:["ck20Override","ck21Override"]])
+        let actionProperties = MIActionProperties(properties:  [20:["ck20Override","ck21Override"]])
         let sessionProperties = SessionProperties(properties: [10: ["sessionpar1"]])
         let userProperties = UserProperties()
         userProperties.customProperties = [20:["Test"]]

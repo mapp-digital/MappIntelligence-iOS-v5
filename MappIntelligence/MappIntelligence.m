@@ -9,15 +9,15 @@
 #import "MappIntelligence.h"
 #import "MappIntelligenceDefaultConfig.h"
 #import "MappIntelligenceLogger.h"
-#import "DatabaseManager.h"
-#import "RequestData.h"
-#import "DeepLink.h"
+#import "MIDatabaseManager.h"
+#import "MIRequestData.h"
+#import "MIDeepLink.h"
 #import <UIKit/UIKit.h>
 
 @interface MappIntelligence ()
 
 @property MappIntelligenceDefaultConfig *configuration;
-@property DefaultTracker *tracker;
+@property MIDefaultTracker *tracker;
 @property MappIntelligenceLogger *logger;
 @property NSTimer* timerForSendRequests;
 
@@ -81,7 +81,7 @@ static MappIntelligenceDefaultConfig *config = nil;
   return [tracker track:controller];
 }
 
-- (NSError *_Nullable)trackPageWithViewController:(UIViewController *_Nonnull)controller pageProperties:(PageProperties  *_Nullable)pageProperties sessionProperties:(SessionProperties *_Nullable) sessionProperties userProperties: (UserProperties *_Nullable) userProperties ecommerceProperties: (EcommerceProperties *_Nullable) ecommerceProperties advertisementProperties:(AdvertisementProperties * _Nullable)advertisemementProperties{
+- (NSError *_Nullable)trackPageWithViewController:(UIViewController *_Nonnull)controller pageProperties:(MIPageProperties  *_Nullable)pageProperties sessionProperties:(MISessionProperties *_Nullable) sessionProperties userProperties: (MIUserProperties *_Nullable) userProperties ecommerceProperties: (MIEcommerceProperties *_Nullable) ecommerceProperties advertisementProperties:(AdvertisementProperties * _Nullable)advertisemementProperties{
     if ([config optOut]) {
          [_logger logObj:@"You are opted-out. No track requests are sent to the server anymore." forDescription:kMappIntelligenceLogLevelDescriptionDebug];
         return NULL;
@@ -90,7 +90,7 @@ static MappIntelligenceDefaultConfig *config = nil;
         return NULL;
     }
     NSString* name = NSStringFromClass([controller class]);
-    return [tracker trackWithEvent:[[PageViewEvent alloc] initWithName:name pageProperties:pageProperties sessionProperties:sessionProperties userProperties:userProperties ecommerceProperties:ecommerceProperties advertisementProperties:advertisemementProperties]];
+    return [tracker trackWithEvent:[[MIPageViewEvent alloc] initWithName:name pageProperties:pageProperties sessionProperties:sessionProperties userProperties:userProperties ecommerceProperties:ecommerceProperties advertisementProperties:advertisemementProperties]];
 }
 #endif
 
@@ -105,7 +105,7 @@ static MappIntelligenceDefaultConfig *config = nil;
   return [tracker trackWith:name];
 }
 
-- (NSError *)trackPageWithEvent:(PageViewEvent *)event {
+- (NSError *)trackPageWithEvent:(MIPageViewEvent *)event {
     if ([config optOut]) {
          [_logger logObj:@"You are opted-out. No track requests are sent to the server anymore." forDescription:kMappIntelligenceLogLevelDescriptionDebug];
         return NULL;
@@ -116,7 +116,7 @@ static MappIntelligenceDefaultConfig *config = nil;
     return [tracker trackWithEvent:event];
 }
 
-- (NSError *_Nullable)trackPageWithName: (NSString *_Nonnull) name pageProperties:(PageProperties  *_Nullable)pageProperties sessionProperties: (SessionProperties *_Nullable) sessionProperties userProperties: (UserProperties *_Nullable) userProperties ecommerceProperties: (EcommerceProperties *_Nullable) ecommerceProperties advertisementProperties:(AdvertisementProperties * _Nullable)advertisemementProperties {
+- (NSError *_Nullable)trackPageWithName: (NSString *_Nonnull) name pageProperties:(MIPageProperties  *_Nullable)pageProperties sessionProperties: (MISessionProperties *_Nullable) sessionProperties userProperties: (MIUserProperties *_Nullable) userProperties ecommerceProperties: (MIEcommerceProperties *_Nullable) ecommerceProperties advertisementProperties:(AdvertisementProperties * _Nullable)advertisemementProperties {
     if ([config optOut]) {
          [_logger logObj:@"You are opted-out. No track requests are sent to the server anymore." forDescription:kMappIntelligenceLogLevelDescriptionDebug];
         return NULL;
@@ -124,10 +124,10 @@ static MappIntelligenceDefaultConfig *config = nil;
     if (![config isConfiguredForTracking]) {
         return NULL;
     }
-    return [tracker trackWithEvent:[[PageViewEvent alloc] initWithName:name pageProperties:pageProperties sessionProperties:sessionProperties userProperties:userProperties ecommerceProperties:ecommerceProperties advertisementProperties:advertisemementProperties]];
+    return [tracker trackWithEvent:[[MIPageViewEvent alloc] initWithName:name pageProperties:pageProperties sessionProperties:sessionProperties userProperties:userProperties ecommerceProperties:ecommerceProperties advertisementProperties:advertisemementProperties]];
 }
 
-- (NSError *_Nullable) trackCustomEventWithName:(NSString *_Nonnull) name actionProperties: (ActionProperties *_Nullable) actionProperties sessionProperties: (SessionProperties *_Nullable) sessionProperties userProperties: (UserProperties *_Nullable) userProperties ecommerceProperties:(EcommerceProperties * _Nullable)ecommerceProperties advertisementProperties:(AdvertisementProperties * _Nullable)advertisemementProperties{
+- (NSError *_Nullable) trackCustomEventWithName:(NSString *_Nonnull) name actionProperties: (MIActionProperties *_Nullable) actionProperties sessionProperties: (MISessionProperties *_Nullable) sessionProperties userProperties: (MIUserProperties *_Nullable) userProperties ecommerceProperties:(MIEcommerceProperties * _Nullable)ecommerceProperties advertisementProperties:(AdvertisementProperties * _Nullable)advertisemementProperties{
     if ([config optOut]) {
          [_logger logObj:@"You are opted out and you have no ability to track anymore." forDescription:kMappIntelligenceLogLevelDescriptionDebug];
         return NULL;
@@ -135,12 +135,12 @@ static MappIntelligenceDefaultConfig *config = nil;
     if (![config isConfiguredForTracking]) {
         return NULL;
     }
-    ActionEvent *actionEvent = [[ActionEvent alloc] initWithName:name pageName:@"0" actionProperties:actionProperties sessionProperties:sessionProperties userProperties:userProperties ecommerceProperties:ecommerceProperties advertisementProperties:advertisemementProperties];
+    MIActionEvent *actionEvent = [[MIActionEvent alloc] initWithName:name pageName:@"0" actionProperties:actionProperties sessionProperties:sessionProperties userProperties:userProperties ecommerceProperties:ecommerceProperties advertisementProperties:advertisemementProperties];
     return [tracker trackAction: actionEvent];
 }
 
 - (NSError *_Nullable) trackUrl:(NSURL *) url withMediaCode:(NSString *_Nullable) mediaCode {
-    return [DeepLink trackFromUrl:url withMediaCode:mediaCode];
+    return [MIDeepLink trackFromUrl:url withMediaCode:mediaCode];
 }
 
 
@@ -163,10 +163,10 @@ static MappIntelligenceDefaultConfig *config = nil;
   //[config setRequestsInterval:requestInterval];
   [config logConfig];
 
-  tracker = [DefaultTracker sharedInstance];
+  tracker = [MIDefaultTracker sharedInstance];
   [tracker initializeTracking];
     
-    [[DatabaseManager shared] removeOldRequestsWithCompletitionHandler:^(NSError * _Nonnull error, id  _Nullable data) {
+    [[MIDatabaseManager shared] removeOldRequestsWithCompletitionHandler:^(NSError * _Nonnull error, id  _Nullable data) {
         if (!error) {
             [self->_logger logObj:@"Remove requests that are older than 14 days." forDescription:kMappIntelligenceLogLevelDescriptionDebug];
         }
@@ -288,9 +288,9 @@ static MappIntelligenceDefaultConfig *config = nil;
 }
 
 - (void)printAllRequestFromDatabase {
-    [[DatabaseManager shared] fetchAllRequestsFromInterval:[config requestPerQueue] andWithCompletionHandler: ^(NSError * _Nonnull error, id  _Nullable data) {
+    [[MIDatabaseManager shared] fetchAllRequestsFromInterval:[config requestPerQueue] andWithCompletionHandler: ^(NSError * _Nonnull error, id  _Nullable data) {
         if (!error) {
-            RequestData* dt = (RequestData*)data;
+            MIRequestData* dt = (MIRequestData*)data;
             [dt print];
         } else {
             NSLog(@"error while fetching requests from local database!");
@@ -299,7 +299,7 @@ static MappIntelligenceDefaultConfig *config = nil;
 }
 
 - (void)removeRequestFromDatabaseWithID: (int)ID; {
-    [[DatabaseManager shared] deleteRequest:ID];
+    [[MIDatabaseManager shared] deleteRequest:ID];
 }
 
 @end

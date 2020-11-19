@@ -10,7 +10,7 @@
 #import <UIKit/UIKit.h>
 #import "PageProperties.h"
 #import "SessionProperties.h"
-#import "ActionProperties.h"
+#import "MIActionProperties.h"
 #import "UserProperties.h"
 #import "EcommerceProperties.h"
 #import "AdvertisementProperties.h"
@@ -67,8 +67,8 @@ MappIntelligencetvOS.shared()?.initWithConfiguration([12345678, 8783291721], onT
  let params:[NSNumber:[String]] = [20: ["cp20Override", "cp21Override", "cp22Override"]]
  let categories:NSMutableDictionary = [10: ["test"]]
  let searchTerm = "testSearchTerm"
- let sessionProperties = SessionProperties(witProperties: [10: ["sessionpar1"]])
- let userProperties = UserProperties(customProperties:[20:["Test"]])
+ let sessionProperties = MISessionProperties(witProperties: [10: ["sessionpar1"]])
+ let userProperties = MIUserProperties(customProperties:[20:["Test"]])
 
  MappIntelligencetvOS.shared()?.trackPage(with: self, pageProperties: PageProperties(pageParams: params, andWithPageCategory: categories, andWithSearch: searchTerm), sessionProperties: sessionProperties, userProperties: userProperties)
 @endcode
@@ -88,9 +88,9 @@ MappIntelligencetvOS.shared()?.initWithConfiguration([12345678, 8783291721], onT
  let params:[NSNumber:[String]] = [20: ["cp20Override", "cp21Override", "cp22Override"]]
  let categories:NSMutableDictionary = [10: ["test"]]
  let searchTerm = "testSearchTerm"
- let sessionProperties = SessionProperties(witProperties: [10: ["sessionpar1"]])
- let userProperties = UserProperties(customProperties:[20:["Test"]])
- let ecommerceProperties = EcommerceProperties()
+ let sessionProperties = MISessionProperties(witProperties: [10: ["sessionpar1"]])
+ let userProperties = MIUserProperties(customProperties:[20:["Test"]])
+ let ecommerceProperties = MIEcommerceProperties()
  MappIntelligencetvOS.shared()?.trackPage(withName: customName, pageProperties: PageProperties(pageParams: params, andWithPageCategory: categories, andWithSearch: searchTerm), sessionProperties: sessionProperties, userProperties: userProperties ecommerceProperties: ecommerceProperties)
 @endcode
 @return Error that can happen while tracking. Returns nil if no error was detected.
@@ -106,14 +106,14 @@ MappIntelligencetvOS.shared()?.initWithConfiguration([12345678, 8783291721], onT
 
 @code
  let actionProperties = ActionProperties(properties:  [20:["ck20Override","ck21Override"]])
- let sessionProperties = SessionProperties(properties: [10: ["sessionpar1"]])
- let userProperties = UserProperties(customProperties:[20:["Test"]])
- let ecommerceProperties = EcommerceProperties()
+ let sessionProperties = MISessionProperties(properties: [10: ["sessionpar1"]])
+ let userProperties = MIUserProperties(customProperties:[20:["Test"]])
+ let ecommerceProperties = MIEcommerceProperties()
  MappIntelligencetvOS.shared()?.trackCustomEvent(withName: "TestAction", actionProperties: actionProperties, sessionProperties: sessionProperties, userProperties: userProperties ecommerceProperties: ecommerceProperties)
  @endcode
 @return the error which may happen through process of tracking, if returns nil there is no error.
 */
-- (NSError *_Nullable) trackCustomEventWithName:(NSString *_Nonnull) name  actionProperties: (ActionProperties *_Nullable) actionProperties sessionProperties: (SessionProperties *_Nullable) sessionProperties userProperties: (UserProperties *_Nullable) userProperties ecommerceProperties: (EcommerceProperties *_Nullable) ecommerceProperties  advertisementProperties: (AdvertisementProperties *_Nullable) advertisemementProperties;
+- (NSError *_Nullable) trackCustomEventWithName:(NSString *_Nonnull) name  actionProperties: (MIActionProperties *_Nullable) actionProperties sessionProperties: (SessionProperties *_Nullable) sessionProperties userProperties: (UserProperties *_Nullable) userProperties ecommerceProperties: (EcommerceProperties *_Nullable) ecommerceProperties  advertisementProperties: (AdvertisementProperties *_Nullable) advertisemementProperties;
 
 /**
 @brief Method to reset the MappIntelligence singleton. This method will set the default empty values for trackID and track domain. Please ensure to provide new trackIDs and track domain.

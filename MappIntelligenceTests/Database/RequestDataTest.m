@@ -7,11 +7,11 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "RequestData.h"
+#import "MIRequestData.h"
 
 @interface RequestDataTest : XCTestCase
 
-@property RequestData* requestData;
+@property MIRequestData* requestData;
 @property NSDate* date;
 @property NSDateFormatter* dateFormatter;
 @property Request* request1;
@@ -23,7 +23,7 @@
 @implementation RequestDataTest
 
 - (void)setUp {
-    _requestData = [[RequestData alloc] init];
+    _requestData = [[MIRequestData alloc] init];
     NSString *dateStr = @"2020-08-27 17:16:32";
     // Convert string to date object
     _dateFormatter = [[NSDateFormatter alloc] init];
@@ -78,19 +78,19 @@
     NSMutableArray<Request*>* requests = [[NSMutableArray alloc] init];
     [requests addObject:_request1];
     [requests addObject:_request2];
-    _requestData = [[RequestData alloc] initWithRequests:requests];
+    _requestData = [[MIRequestData alloc] initWithRequests:requests];
     XCTAssertTrue([[[_requestData requests] firstObject] isEqual:_request1], "The first request is not the same as we put into request data object!");
     XCTAssertTrue([[[_requestData requests] lastObject] isEqual:_request2], "The last request is not the same as we put into request data object!");
 }
 
 - (void)testInitWithKeyedValues {
-    _requestData = [[RequestData alloc] initWithKeyedValues:_keyedValues];
+    _requestData = [[MIRequestData alloc] initWithKeyedValues:_keyedValues];
     XCTAssertTrue([[[_requestData requests] firstObject] isEqual:_request1], "The first request is not the same as we put into request data object!");
     XCTAssertTrue([[[_requestData requests] lastObject] isEqual:_request2], "The last request is not the same as we put into request data object!");
 }
 
 - (void)testDictionaryWithValuesForKeys {
-    _requestData = [[RequestData alloc] initWithKeyedValues:_keyedValues];
+    _requestData = [[MIRequestData alloc] initWithKeyedValues:_keyedValues];
     
     NSDictionary* dictionaryForTest = [_requestData dictionaryWithValues];
     
@@ -98,7 +98,7 @@
 }
 
 - (void)testPrint {
-    _requestData = [[RequestData alloc] initWithKeyedValues:_keyedValues];
+    _requestData = [[MIRequestData alloc] initWithKeyedValues:_keyedValues];
     NSString* expectedString = @"ID: 123456 and domain: www.domain.com and ids: 12,34 and date: 2020-08-27 15:16:32 +0000 and paramters: ID: 7891234 and domain: www.domain.com and ids: 56,78 and date: 2020-08-27 15:16:32 +0000 and paramters: ";
     NSString* printedString = [_requestData print];
     XCTAssertTrue([expectedString isEqualToString:printedString], @"The printed string is not the same as we expect for requested data!");
@@ -106,7 +106,7 @@
 
 - (void)testSendAllRequests {
     XCTestExpectation* expectation = [[XCTestExpectation alloc] initWithDescription:@"Wait until delete requests from database!"];
-    _requestData = [[RequestData alloc] initWithKeyedValues:_keyedValues];
+    _requestData = [[MIRequestData alloc] initWithKeyedValues:_keyedValues];
     NSLog(@"%@",_keyedValues);
     [_requestData sendAllRequestsWithCompletitionHandler:^(NSError * _Nullable error) {
         XCTAssertNil(error, @"There was an error wile sending all all requests!");
