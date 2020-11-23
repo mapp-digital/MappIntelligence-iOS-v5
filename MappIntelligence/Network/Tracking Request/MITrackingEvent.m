@@ -6,11 +6,11 @@
 //  Copyright © 2020 Mapp Digital US, LLC. All rights reserved.
 //
 
-#import "TrackingEvent.h"
+#import "MITrackingEvent.h"
 #include <ifaddrs.h>
 #include <arpa/inet.h>
 
-@implementation TrackingEvent
+@implementation MITrackingEvent
 
 - (instancetype)init
 {

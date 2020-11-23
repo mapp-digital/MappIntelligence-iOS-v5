@@ -17,7 +17,7 @@ typedef NS_ENUM(NSInteger, REQUEST_STATUS) {
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface Request : NSObject
+@interface MIRequest : NSObject
 
 @property (nonatomic, strong, readwrite) NSNumber *uniqueId; // NSInteger
 @property (nonatomic, strong, readwrite) NSString *domain; // string

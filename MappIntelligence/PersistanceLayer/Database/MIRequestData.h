@@ -7,15 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Request.h"
+#import "MIRequest.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface MIRequestData : NSObject
 
-@property (nonatomic, strong, readonly) NSMutableArray <Request *> *requests;
+@property (nonatomic, strong, readonly) NSMutableArray <MIRequest *> *requests;
 
-- (instancetype)initWithRequests:(NSArray <Request *> *)requests;
+- (instancetype)initWithRequests:(NSArray <MIRequest *> *)requests;
 - (instancetype)initWithKeyedValues:(NSDictionary * _Nullable)keyedValues;
 - (NSDictionary *)dictionaryWithValues;
 - (void) sendAllRequestsWithCompletitionHandler: (void(^)(NSError* _Nullable))completionHandler;

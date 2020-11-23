@@ -6,9 +6,9 @@
 //  Copyright © 2020 Mapp Digital US, LLC. All rights reserved.
 //
 
-#import "AdvertisementProperties.h"
+#import "MIAdvertisementProperties.h"
 
-@implementation AdvertisementProperties
+@implementation MIAdvertisementProperties
 
 - (instancetype)initWith: (NSString *) campaignId {
     self = [super init];
@@ -42,7 +42,7 @@
 }
 
 - (id)copyWithZone:(NSZone *)zone {
-    AdvertisementProperties *adCopy = [[AdvertisementProperties alloc] init];
+    MIAdvertisementProperties *adCopy = [[MIAdvertisementProperties alloc] init];
     [adCopy setCampaignId:_campaignId];
     [adCopy setMediaCode:_mediaCode];
     [adCopy setAction:_action];
@@ -50,7 +50,7 @@
     [adCopy setOncePerSession:_oncePerSession];
     NSError *error;
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:adCopy requiringSecureCoding:YES error:&error];
-    adCopy = [NSKeyedUnarchiver unarchivedObjectOfClass:AdvertisementProperties.class fromData:data error:&error];
+    adCopy = [NSKeyedUnarchiver unarchivedObjectOfClass:MIAdvertisementProperties.class fromData:data error:&error];
     return adCopy;
 }
 - (void)encodeWithCoder:(nonnull NSCoder *)coder {
@@ -77,7 +77,7 @@
     if (other == self) {
         return YES;
     }
-    AdvertisementProperties *otherObj = (AdvertisementProperties *)other;
+    MIAdvertisementProperties *otherObj = (MIAdvertisementProperties *)other;
     if(self.action == otherObj.action &&
        self.oncePerSession == otherObj.oncePerSession &&
        [self.campaignId isEqual:otherObj.campaignId] &&

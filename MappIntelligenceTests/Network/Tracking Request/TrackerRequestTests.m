@@ -7,13 +7,13 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "TrackerRequest.h"
-#import "TrackingEvent.h"
+#import "MITrackerRequest.h"
+#import "MITrackingEvent.h"
 #import "MIProperties.h"
 
 @interface TrackerRequestTests : XCTestCase
 
-@property TrackerRequest *request;
+@property MITrackerRequest *request;
 
 @end
 
@@ -21,7 +21,7 @@
 
 - (void)setUp {
     [super setUp];
-    _request = [[TrackerRequest alloc] init];
+    _request = [[MITrackerRequest alloc] init];
 }
 
 - (void)tearDown {
@@ -33,9 +33,9 @@
 }
 
 - (void)testInitWithEventAndProperties {
-    TrackingEvent *event = [[TrackingEvent alloc] init];
+    MITrackingEvent *event = [[MITrackingEvent alloc] init];
     MIProperties *properties = [[MIProperties alloc] init];
-    _request = [[TrackerRequest alloc] initWithEvent:event andWithProperties:properties];
+    _request = [[MITrackerRequest alloc] initWithEvent:event andWithProperties:properties];
     XCTAssertNotNil(_request);
     XCTAssertNotNil([_request event]);
     XCTAssertNotNil([_request properties]);

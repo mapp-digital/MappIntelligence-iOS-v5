@@ -6,7 +6,7 @@
 //  Copyright © 2020 Mapp Digital US, LLC. All rights reserved.
 //
 
-#import "Request.h"
+#import "MIRequest.h"
 #import "MIRequestUrlBuilder.h"
 
 #define key_id @"id"
@@ -16,7 +16,7 @@
 #define key_date @"date"
 #define key_parameters @"parameters"
 
-@implementation Request
+@implementation MIRequest
 
 #pragma mark - Initialization
 
@@ -140,7 +140,7 @@
     return [builder createURLFromParametersWith:[self convertParamtersWith:option]];
 }
 
-- (BOOL)isEqualToRequest:(Request *)request {
+- (BOOL)isEqualToRequest:(MIRequest *)request {
     return [self.uniqueId isEqualToNumber:request.uniqueId] &&
     [self.domain isEqualToString:request.domain] &&
     [self.track_ids isEqualToString:request.track_ids] &&
@@ -153,10 +153,10 @@
 {
     if (other == self) {
         return YES;
-    } else if (![other isKindOfClass:[Request class]]) {
+    } else if (![other isKindOfClass:[MIRequest class]]) {
         return NO;
     } else {
-        return [self isEqualToRequest:(Request *)other];
+        return [self isEqualToRequest:(MIRequest *)other];
     }
 }
 

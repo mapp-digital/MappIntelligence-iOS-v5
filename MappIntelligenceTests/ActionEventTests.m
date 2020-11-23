@@ -7,17 +7,17 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "ActionEvent.h"
+#import "MIActionEvent.h"
 
 @interface ActionEventTests : XCTestCase
 @property NSMutableDictionary* details;
-@property ActionEvent* actionEvent;
+@property MIActionEvent* actionEvent;
 @property MIActionProperties* actionProperties;
 @property NSMutableDictionary *sessionDictionary;
-@property SessionProperties *sessionProperties;
-@property UserProperties *userProperties;
-@property EcommerceProperties *ecommerceProperties;
-@property AdvertisementProperties *advertisementProperties;
+@property MISessionProperties *sessionProperties;
+@property MIUserProperties *userProperties;
+@property MIEcommerceProperties *ecommerceProperties;
+@property MIAdvertisementProperties *advertisementProperties;
 
 @end
 
@@ -27,23 +27,23 @@
     _details = [@{@20: @"ck20Override"} copy];
     _actionProperties = [[MIActionProperties alloc] initWithProperties: _details];
     _sessionDictionary = [@{@10: @[@"sessionpar1"]} copy];
-    _sessionProperties =  [[SessionProperties alloc] initWithProperties: _sessionDictionary];
-    _userProperties = [[UserProperties alloc] init];
+    _sessionProperties =  [[MISessionProperties alloc] initWithProperties: _sessionDictionary];
+    _userProperties = [[MIUserProperties alloc] init];
     _userProperties.city = @"Berlin";
-    _ecommerceProperties = [[EcommerceProperties alloc] init];
-    Product* product1 = [[Product alloc] init];
+    _ecommerceProperties = [[MIEcommerceProperties alloc] init];
+    MIProduct* product1 = [[MIProduct alloc] init];
     product1.name = @"product1";
     product1.price = @"33$";
     product1.quantity = [[NSNumber alloc] initWithInteger:22];
-    Product* product2 = [[Product alloc] init];
+    MIProduct* product2 = [[MIProduct alloc] init];
     product2.name = @"product2";
     _ecommerceProperties.products = [[NSArray alloc] initWithObjects:product1, product2, nil];
-    _advertisementProperties = [[AdvertisementProperties alloc] initWith: @"en.internal.newsletter.2017.05"];
+    _advertisementProperties = [[MIAdvertisementProperties alloc] initWith: @"en.internal.newsletter.2017.05"];
     _advertisementProperties.mediaCode = @"abc";
     _advertisementProperties.oncePerSession = YES;
     _advertisementProperties.action = view;
     _advertisementProperties.customProperties = @{@1: @[@"ECOMM"]};
-    _actionEvent = [[ActionEvent alloc] initWithName:@"TestAction" pageName:@"0" actionProperties:_actionProperties sessionProperties:_sessionProperties userProperties:_userProperties ecommerceProperties:_ecommerceProperties advertisementProperties:_advertisementProperties];
+    _actionEvent = [[MIActionEvent alloc] initWithName:@"TestAction" pageName:@"0" actionProperties:_actionProperties sessionProperties:_sessionProperties userProperties:_userProperties ecommerceProperties:_ecommerceProperties advertisementProperties:_advertisementProperties];
 }
 
 - (void)tearDown {

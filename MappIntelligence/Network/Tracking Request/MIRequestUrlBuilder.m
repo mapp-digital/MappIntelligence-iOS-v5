@@ -14,7 +14,7 @@
 #import "MIDatabaseManager.h"
 #import "MIPageViewEvent.h"
 #import "MIActionEvent.h"
-#import "TrackingEvent.h"
+#import "MITrackingEvent.h"
 #import "MIDeepLink.h"
 
 #if TARGET_OS_WATCH
@@ -68,8 +68,8 @@
   return [tmpUrl URLByAppendingPathComponent:@"wt"];
 }
 
-- (NSURL *)urlForRequest:(TrackerRequest *)request {
-  TrackingEvent *event = [request event];
+- (NSURL *)urlForRequest:(MITrackerRequest *)request {
+    MITrackingEvent *event = [request event];
   NSString *pageNameOpt = [event pageName];
   NSURL *url;
 
@@ -165,11 +165,11 @@
         MIEcommerceProperties *ecommerceProperties = pgEvent.ecommerceProperties;
         [parametrs addObjectsFromArray:[ecommerceProperties asQueryItems]];
         
-        AdvertisementProperties *advertisementProperties = ((MIPageViewEvent*)event).advertisementProperties;
+        MIAdvertisementProperties *advertisementProperties = ((MIPageViewEvent*)event).advertisementProperties;
         if (advertisementProperties && [self sendCampaignData:advertisementProperties]) {
             [parametrs addObjectsFromArray:[advertisementProperties asQueryItems]];
         } else {
-            AdvertisementProperties *saved = [MIDeepLink loadCampaign];
+            MIAdvertisementProperties *saved = [MIDeepLink loadCampaign];
             if (saved) {
                 [parametrs addObjectsFromArray:[saved asQueryItems]];
                 [MIDeepLink deleteCampaign];
@@ -183,7 +183,7 @@
         [parametrs addObjectsFromArray:[userProperties asQueryItems]];
         MIEcommerceProperties *ecommerceProperties = ((MIActionEvent*)event).ecommerceProperties;
         [parametrs addObjectsFromArray:[ecommerceProperties asQueryItems]];
-        AdvertisementProperties *advertisementProperties = ((MIActionEvent*)event).advertisementProperties;
+        MIAdvertisementProperties *advertisementProperties = ((MIActionEvent*)event).advertisementProperties;
         if ([self sendCampaignData:advertisementProperties]) {
             [parametrs addObjectsFromArray:[advertisementProperties asQueryItems]];
         }
@@ -201,7 +201,7 @@
                                        5]; // add for end of the request
     
   url = [self createURLFromParametersWith:parametrs];
-  _dbRequest = [[Request alloc] initWithParamters:parametrs
+  _dbRequest = [[MIRequest alloc] initWithParamters:parametrs
                                         andDomain:[MappIntelligence getUrl]
                                       andTrackIds:_mappIntelligenceId];
   return url;
@@ -283,9 +283,9 @@
   return [str stringByAddingPercentEncodingWithAllowedCharacters:csValue];
 }
 
--(BOOL) sendCampaignData: (AdvertisementProperties *) advertisementProperties {
+-(BOOL) sendCampaignData: (MIAdvertisementProperties *) advertisementProperties {
     if(advertisementProperties.oncePerSession) {
-        AdvertisementProperties *c = [advertisementProperties copy];
+        MIAdvertisementProperties *c = [advertisementProperties copy];
         if(![_campaignsToIgnore containsObject:c]) {
             [_campaignsToIgnore addObject: c];
             return YES;

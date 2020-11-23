@@ -11,7 +11,7 @@
 #import "MIDefaultTracker.h"
 #import "MIDatabaseManager.h"
 #import "MIRequestData.h"
-#import "TrackerRequest.h"
+#import "MITrackerRequest.h"
 #import "MappIntelligenceLogger.h"
 
 @interface MIRequestBatchSupportUrlBuilder ()
@@ -45,7 +45,7 @@
         }
         MIRequestData* dt = (MIRequestData*)data;
         NSArray<NSString *>* bodies = [self createBatchWith:dt];
-        TrackerRequest *request = [[TrackerRequest alloc] init];
+        MITrackerRequest *request = [[MITrackerRequest alloc] init];
         for (NSString *body in bodies) {
           [request
               sendRequestWith:[[NSURL alloc] initWithString:self->_baseUrl]
@@ -83,7 +83,7 @@
         (requestsCount - i * 5000) > 5000 ? 5000 : (requestsCount - i * 5000);
     NSArray *subArray =
         [data.requests subarrayWithRange:NSMakeRange(i * 5000, length)];
-    for (Request *req in subArray) {
+    for (MIRequest *req in subArray) {
       [body appendString:@"wt?"];
       [body appendString:[[[req urlForBatchSupprot:YES] query] stringByReplacingOccurrencesOfString:@"\n" withString:@" "]];
       [body appendString:@"\n"];
@@ -91,7 +91,7 @@
     [array addObject:body];
     i++;
   } else {
-    for (Request *req in data.requests) {
+    for (MIRequest *req in data.requests) {
       [body appendString:@"wt?"];
       [body appendString:[[[req urlForBatchSupprot:YES] query] stringByReplacingOccurrencesOfString:@"\n" withString:@" "] ];
       [body appendString:@"\n"];
@@ -103,7 +103,7 @@
 
 -(NSArray* )getRequestIDs:(MIRequestData*) data {
     NSMutableArray* array = [[NSMutableArray alloc] init];
-    for (Request* req in data.requests) {
+    for (MIRequest* req in data.requests) {
         [array addObject:req.uniqueId];
     }
     return array;

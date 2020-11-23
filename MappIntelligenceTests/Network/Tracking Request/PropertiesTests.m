@@ -7,13 +7,13 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "Properties.h"
-#import "DefaultTracker.h"
+#import "MIProperties.h"
+#import "MIDefaultTracker.h"
 
 @interface PropertiesTests : XCTestCase
 
-@property Properties *properies;
-@property DefaultTracker *tracker;
+@property MIProperties *properies;
+@property MIDefaultTracker *tracker;
 
 @end
 
@@ -21,7 +21,7 @@
 
 - (void)setUp {
     [super setUp];
-    _tracker = [[DefaultTracker alloc] init];
+    _tracker = [[MIDefaultTracker alloc] init];
 }
 
 - (void)tearDown {
@@ -30,7 +30,7 @@
 
 - (void)testInit {
     NSString *everid = [_tracker generateEverId];
-    _properies = [[Properties alloc] initWithEverID:everid andSamplingRate:0 withTimeZone:[NSTimeZone localTimeZone] withTimestamp:[NSDate date] withUserAgent:@"Tracking Library"];
+    _properies = [[MIProperties alloc] initWithEverID:everid andSamplingRate:0 withTimeZone:[NSTimeZone localTimeZone] withTimestamp:[NSDate date] withUserAgent:@"Tracking Library"];
     XCTAssertNotNil(_properies);
     XCTAssertNotNil([_properies everId]);
     XCTAssertNotNil([_properies timestamp]);

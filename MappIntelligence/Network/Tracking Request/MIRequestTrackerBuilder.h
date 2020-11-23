@@ -8,9 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import "MIConfiguration.h"
-#import "TrackingEvent.h"
+#import "MITrackingEvent.h"
 #import "MIProperties.h"
-#import "TrackerRequest.h"
+#import "MITrackerRequest.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property MIConfiguration *configuration;
 
 - (instancetype)initWithConfoguration:(MIConfiguration *)conf;
-- (TrackerRequest *)createRequestWith:(TrackingEvent *)event
+- (MITrackerRequest *)createRequestWith:(MITrackingEvent *)event
                               andWith:(MIProperties *)properties;
 @end
 

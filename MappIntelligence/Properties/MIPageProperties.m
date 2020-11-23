@@ -20,7 +20,7 @@
     return  self;
 }
 
-- (NSMutableArray<NSURLQueryItem*>*)asQueryItemsFor:(TrackerRequest *)request {
+- (NSMutableArray<NSURLQueryItem*>*)asQueryItemsFor:(MITrackerRequest *)request {
     NSMutableArray<NSURLQueryItem*>* items = [[NSMutableArray alloc] init];
     if (_details) {
         for(NSNumber* key in _details) {

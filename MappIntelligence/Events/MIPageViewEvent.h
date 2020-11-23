@@ -10,25 +10,25 @@
 
 #import <Foundation/Foundation.h>
 #import "MIPageProperties.h"
-#import "TrackingEvent.h"
+#import "MITrackingEvent.h"
 #import "MISessionProperties.h"
 #import "MIUserProperties.h"
 #import "MIEcommerceProperties.h"
-#import "AdvertisementProperties.h"
+#import "MIAdvertisementProperties.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MIPageViewEvent : TrackingEvent
+@interface MIPageViewEvent : MITrackingEvent
 
 @property (nonatomic, nonnull) MIPageProperties* pageProperties;
 @property (nonatomic, nullable) MISessionProperties *sessionProperties;
 @property (nonatomic, nullable) MIUserProperties *userProperties;
 @property (nonatomic, nullable) MIEcommerceProperties *ecommerceProperties;
-@property (nonatomic, nullable) AdvertisementProperties *advertisementProperties;
+@property (nonatomic, nullable) MIAdvertisementProperties *advertisementProperties;
 
 - (instancetype)initWithName:(NSString *)name pageProperties:(MIPageProperties *)pageProperties;
 
-- (instancetype)initWithName:(NSString *)name pageProperties:(MIPageProperties *)pageProperties sessionProperties: (MISessionProperties *_Nullable) sessionProperties userProperties: (MIUserProperties *_Nullable)userProperties ecommerceProperties: (MIEcommerceProperties *_Nullable) ecommerceProperties advertisementProperties: (AdvertisementProperties *_Nullable) advertisementProperties;
+- (instancetype)initWithName:(NSString *)name pageProperties:(MIPageProperties *)pageProperties sessionProperties: (MISessionProperties *_Nullable) sessionProperties userProperties: (MIUserProperties *_Nullable)userProperties ecommerceProperties: (MIEcommerceProperties *_Nullable) ecommerceProperties advertisementProperties: (MIAdvertisementProperties *_Nullable) advertisementProperties;
 @end
 
 NS_ASSUME_NONNULL_END

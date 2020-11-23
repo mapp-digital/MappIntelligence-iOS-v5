@@ -12,7 +12,7 @@
 #import "MIActionProperties.h"
 #import "MIUserProperties.h"
 #import "MIEcommerceProperties.h"
-#import "AdvertisementProperties.h"
+#import "MIAdvertisementProperties.h"
 
 typedef NS_ENUM(NSInteger, logWatchOSLevel) {
   allWatchOSLogs = 1,     // All logs of the above.
@@ -71,7 +71,7 @@ MappIntelligenceWatchOS.shared()?.initWithConfiguration([12345678, 8783291721], 
 @endcode
 @return Error that can happen while tracking. Returns nil if no error was detected.
 */
-- (NSError *_Nullable)trackPageWithName: (NSString *_Nonnull) name pageProperties:(MIPageProperties  *_Nullable)pageProperties sessionProperties: (MISessionProperties *_Nullable) sessionProperties userProperties: (MIUserProperties *_Nullable) userProperties ecommerceProperties: (MIEcommerceProperties *_Nullable) ecommerceProperties advertisementProperties: (AdvertisementProperties *_Nullable) advertisemementProperties;
+- (NSError *_Nullable)trackPageWithName: (NSString *_Nonnull) name pageProperties:(MIPageProperties  *_Nullable)pageProperties sessionProperties: (MISessionProperties *_Nullable) sessionProperties userProperties: (MIUserProperties *_Nullable) userProperties ecommerceProperties: (MIEcommerceProperties *_Nullable) ecommerceProperties advertisementProperties: (MIAdvertisementProperties *_Nullable) advertisemementProperties;
 
 /**
 @brief Method which will track action event created from action properties and session properties.
@@ -89,7 +89,7 @@ MappIntelligenceWatchOS.shared()?.initWithConfiguration([12345678, 8783291721], 
  @endcode
 @return the error which may happen through process of tracking, if returns nil there is no error.
 */
-- (NSError *_Nullable) trackCustomEventWithName:(NSString *_Nonnull) name  actionProperties: (MIActionProperties *_Nullable) actionProperties sessionProperties: (MISessionProperties *_Nullable) sessionProperties userProperties: (MIUserProperties *_Nullable) userProperties ecommerceProperties: (MIEcommerceProperties *_Nullable) ecommerceProperties advertisementProperties: (AdvertisementProperties *_Nullable) advertisemementProperties;
+- (NSError *_Nullable) trackCustomEventWithName:(NSString *_Nonnull) name  actionProperties: (MIActionProperties *_Nullable) actionProperties sessionProperties: (MISessionProperties *_Nullable) sessionProperties userProperties: (MIUserProperties *_Nullable) userProperties ecommerceProperties: (MIEcommerceProperties *_Nullable) ecommerceProperties advertisementProperties: (MIAdvertisementProperties *_Nullable) advertisemementProperties;
 
 
 /**

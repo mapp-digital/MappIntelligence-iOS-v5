@@ -8,13 +8,13 @@
 
 #import <XCTest/XCTest.h>
 #import <UIKit/UIKit.h>
-#import "DefaultTracker.h"
-#import "Enviroment.h"
+#import "MiDefaultTracker.h"
+#import "MIEnviroment.h"
 #import "MappIntelligence.h"
 
 @interface DefaultTrackerTests : XCTestCase
 
-@property DefaultTracker *tracker;
+@property MIDefaultTracker *tracker;
 
 @end
 
@@ -22,7 +22,7 @@
 
 - (void)setUp {
     [super setUp];
-    _tracker = [DefaultTracker sharedInstance];
+    _tracker = [MIDefaultTracker sharedInstance];
     NSArray<NSBundle*> *bundles = [NSBundle allBundles];
     NSString* path = @"";
     for (NSBundle* bundle in bundles) {
@@ -60,7 +60,7 @@
 
 - (void)testGenerateUserAgent {
     NSString* generatedUserAgent = [_tracker generateUserAgent];
-    Enviroment *env = [[Enviroment alloc] init];
+    MIEnviroment *env = [[MIEnviroment alloc] init];
     NSString *properties = [env.operatingSystemName
         stringByAppendingFormat:@" %@; %@; %@", env.operatingSystemVersionString,
                                 env.deviceModelString,
@@ -100,10 +100,10 @@
     NSMutableDictionary* groups = [@{@15: @[@"testGroups"]} copy];
     NSString* internalSearch = @"testSearchTerm";
     NSMutableDictionary* sessionDictionary = [@{@10: @[@"sessionpar1"]} copy];
-    SessionProperties* sessionProperties =  [[SessionProperties alloc] initWithProperties: sessionDictionary];
-    PageProperties* pageProperties = [[PageProperties alloc] initWithPageParams:details andWithPageCategory:groups andWithSearch:internalSearch];
-    EcommerceProperties* ecommerceProperties = [[EcommerceProperties alloc] init];
-    PageViewEvent* pageViewEvent = [[PageViewEvent alloc] initWithName:@"the custom name" pageProperties:pageProperties sessionProperties:sessionProperties userProperties:nil ecommerceProperties:ecommerceProperties advertisementProperties:nil];
+    MISessionProperties* sessionProperties =  [[MISessionProperties alloc] initWithProperties: sessionDictionary];
+    MIPageProperties* pageProperties = [[MIPageProperties alloc] initWithPageParams:details andWithPageCategory:groups andWithSearch:internalSearch];
+    MIEcommerceProperties* ecommerceProperties = [[MIEcommerceProperties alloc] init];
+    MIPageViewEvent* pageViewEvent = [[MIPageViewEvent alloc] initWithName:@"the custom name" pageProperties:pageProperties sessionProperties:sessionProperties userProperties:nil ecommerceProperties:ecommerceProperties advertisementProperties:nil];
     NSError* error = [_tracker trackWithEvent:pageViewEvent];
     //TODO: add reasonable error or it will return null always
     XCTAssertNil(error, @"There was an error while tracking page view event!");
@@ -113,10 +113,10 @@
     NSMutableDictionary* properties = [@{@20: @[@"1 element"]} copy];
     NSString* actionname = @"TestAction";
     NSMutableDictionary* sessionDictionary = [@{@10: @[@"sessionpar1"]} copy];
-    SessionProperties* sessionProperties =  [[SessionProperties alloc] initWithProperties: sessionDictionary];
+    MISessionProperties* sessionProperties =  [[MISessionProperties alloc] initWithProperties: sessionDictionary];
     
     MIActionProperties* actionProperties = [[MIActionProperties alloc] initWithProperties:properties];
-    ActionEvent *actionEvent = [[ActionEvent alloc] initWithName: actionname pageName:@"0" actionProperties:actionProperties sessionProperties:sessionProperties userProperties:nil ecommerceProperties:nil advertisementProperties:nil];
+    MIActionEvent *actionEvent = [[MIActionEvent alloc] initWithName: actionname pageName:@"0" actionProperties:actionProperties sessionProperties:sessionProperties userProperties:nil ecommerceProperties:nil advertisementProperties:nil];
     NSError* error = [_tracker trackAction:actionEvent];
     XCTAssertNil(error, @"There was an error while tracking action event!");
 }
@@ -130,7 +130,7 @@
 }
 
 - (void)testinitializeTracking {
-    DefaultTracker *tracker = [[DefaultTracker alloc] init];
+    MIDefaultTracker *tracker = [[MIDefaultTracker alloc] init];
     XCTAssertNotNil(tracker);
     XCTAssertTrue([tracker generateEverId]);
 }

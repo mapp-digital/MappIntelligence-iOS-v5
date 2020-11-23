@@ -8,7 +8,7 @@
 
 #import <XCTest/XCTest.h>
 #import "MIDatabaseManager.h"
-#import "RequestData.h"
+#import "MIRequestData.h"
 
 @interface DatabaseManagerTests : XCTestCase
 
@@ -32,14 +32,14 @@
     NSURLQueryItem* item1 = [[NSURLQueryItem alloc] initWithName:@"parameter1Name" value:@"parameter1Value"];
     NSURLQueryItem* item2 = [[NSURLQueryItem alloc] initWithName:@"parameter2Name" value:@"parameter2Value"];
     NSArray* array = [NSArray arrayWithObjects:item1, item2, nil];
-    Request* request = [[Request alloc] initWithParamters:array andDomain:@"https://q3.webtrekk.net" andTrackIds:@"385255285199574"];
+    MIRequest* request = [[MIRequest alloc] initWithParamters:array andDomain:@"https://q3.webtrekk.net" andTrackIds:@"385255285199574"];
     [_dbManager insertRequest:request];
     usleep(1000000);
     [_dbManager fetchAllRequestsFromInterval:15*100 andWithCompletionHandler:^(NSError * _Nonnull error, id  _Nullable data) {
         BOOL testRequestFlag = NO;
         if (!error) {
-            RequestData* dt = (RequestData*)data;
-            for (Request* r in dt.requests) {
+            MIRequestData* dt = (MIRequestData*)data;
+            for (MIRequest* r in dt.requests) {
                 if ([r.parameters[0].name isEqualToString:@"parameter1Name"]) {
                     testRequestFlag = YES;
                 }
@@ -57,14 +57,14 @@
    NSURLQueryItem* item1 = [[NSURLQueryItem alloc] initWithName:@"parameter1Name" value:@"parameter1Value"];
    NSURLQueryItem* item2 = [[NSURLQueryItem alloc] initWithName:@"parameter2Name" value:@"parameter2Value"];
    NSArray* array = [NSArray arrayWithObjects:item1, item2, nil];
-   Request* request = [[Request alloc] initWithParamters:array andDomain:@"https://q3.webtrekk.net" andTrackIds:@"385255285199574"];
+    MIRequest* request = [[MIRequest alloc] initWithParamters:array andDomain:@"https://q3.webtrekk.net" andTrackIds:@"385255285199574"];
    [_dbManager insertRequest:request];
     usleep(1000000);
     [_dbManager fetchAllRequestsFromInterval:15*100 andWithCompletionHandler:^(NSError * _Nonnull error, id  _Nullable data) {
         BOOL testRequestFlag = NO;
         if (!error) {
-            RequestData* dt = (RequestData*)data;
-            for (Request* r in dt.requests) {
+            MIRequestData* dt = (MIRequestData*)data;
+            for (MIRequest* r in dt.requests) {
                 if ([r.parameters[0].name isEqualToString:@"parameter1Name"]) {
                     testRequestFlag = YES;
                     //remove request
@@ -73,8 +73,8 @@
                     [self->_dbManager fetchAllRequestsFromInterval:15*100 andWithCompletionHandler:^(NSError * _Nonnull error, id  _Nullable data) {
                         BOOL testRequestFlag = NO;
                         if (!error) {
-                            RequestData* dt = (RequestData*)data;
-                            for (Request* r in dt.requests) {
+                            MIRequestData* dt = (MIRequestData*)data;
+                            for (MIRequest* r in dt.requests) {
                                 if ([r.parameters[0].name isEqualToString:@"parameter1Name"]) {
                                     testRequestFlag = YES;
                                 }
@@ -98,18 +98,18 @@
     NSURLQueryItem* item1 = [[NSURLQueryItem alloc] initWithName:@"parameter1Name" value:@"parameter1Value"];
     NSURLQueryItem* item2 = [[NSURLQueryItem alloc] initWithName:@"parameter2Name" value:@"parameter2Value"];
     NSArray* array = [NSArray arrayWithObjects:item1, item2, nil];
-    Request* request = [[Request alloc] initWithParamters:array andDomain:@"https://q3.webtrekk.net" andTrackIds:@"385255285199574"];
+    MIRequest* request = [[MIRequest alloc] initWithParamters:array andDomain:@"https://q3.webtrekk.net" andTrackIds:@"385255285199574"];
     [_dbManager insertRequest:request];
     usleep(1000000);
     [_dbManager fetchAllRequestsFromInterval:15*100 andWithCompletionHandler:^(NSError * _Nonnull error, id  _Nullable data) {
         if (!error) {
-            RequestData* dt = (RequestData*)data;
-            for (Request* r in dt.requests) {
+            MIRequestData* dt = (MIRequestData*)data;
+            for (MIRequest* r in dt.requests) {
                 if ([r.parameters[0].name isEqualToString:@"parameter1Name"]) {
                     [self->_dbManager deleteAllRequest];
                     usleep(1000000);
                     [self->_dbManager fetchAllRequestsFromInterval:15*100 andWithCompletionHandler:^(NSError * _Nonnull error, id  _Nullable data) {
-                        RequestData* dt = (RequestData*)data;
+                        MIRequestData* dt = (MIRequestData*)data;
                         XCTAssertTrue([dt requests].count == 0, @"The whole database wasn't deleted!");
                         if ([dt requests].count == 0) {
                             [expectation fulfill];
@@ -138,12 +138,12 @@
     NSURLQueryItem* item1 = [[NSURLQueryItem alloc] initWithName:@"parameter1Name" value:@"parameter1Value"];
     NSURLQueryItem* item2 = [[NSURLQueryItem alloc] initWithName:@"parameter2Name" value:@"parameter2Value"];
     NSArray* array = [NSArray arrayWithObjects:item1, item2, nil];
-    Request* request1 = [[Request alloc] initWithParamters:array andDomain:@"https://q3.webtrekk.net" andTrackIds:@"385255285199574"];
+    MIRequest* request1 = [[MIRequest alloc] initWithParamters:array andDomain:@"https://q3.webtrekk.net" andTrackIds:@"385255285199574"];
     
     item1 = [[NSURLQueryItem alloc] initWithName:@"parameter1Name" value:@"parameter1ValueForRequest2"];
     item2 = [[NSURLQueryItem alloc] initWithName:@"parameter2Name" value:@"parameter2ValueForRequest2"];
     NSArray* array2 = [NSArray arrayWithObjects:item1, item2, nil];
-    Request* request2 = [[Request alloc] initWithParamters:array2 andDomain:@"https://q3.webtrekk.net" andTrackIds:@"385255285199574"];
+    MIRequest* request2 = [[MIRequest alloc] initWithParamters:array2 andDomain:@"https://q3.webtrekk.net" andTrackIds:@"385255285199574"];
     
     //2. insert two requests
     [_dbManager insertRequest:request1];
@@ -155,8 +155,8 @@
         BOOL testRequest2Flag = NO;
         NSMutableArray * requestIds = [[NSMutableArray alloc] init];
         if (!error) {
-            RequestData* dt = (RequestData*)data;
-            for (Request* r in dt.requests) {
+            MIRequestData* dt = (MIRequestData*)data;
+            for (MIRequest* r in dt.requests) {
                 if ([r.parameters[0].name isEqualToString:@"parameter1Name"]) {
                     testRequest1Flag = YES;
                     [requestIds addObject:r.uniqueId];
@@ -178,8 +178,8 @@
             BOOL testRequest1Flag = NO;
             BOOL testRequest2Flag = NO;
             if (!error) {
-                RequestData* dt = (RequestData*)data;
-                for (Request* r in dt.requests) {
+                MIRequestData* dt = (MIRequestData*)data;
+                for (MIRequest* r in dt.requests) {
                     if ([r.parameters[0].name isEqualToString:@"parameter1Name"]) {
                         testRequest1Flag = YES;
                     }
@@ -204,21 +204,21 @@
     NSURLQueryItem* item1 = [[NSURLQueryItem alloc] initWithName:@"parameter1NameStatusUpdate" value:@"parameter1Value"];
     NSURLQueryItem* item2 = [[NSURLQueryItem alloc] initWithName:@"parameter2Name" value:@"parameter2Value"];
     NSArray* array = [NSArray arrayWithObjects:item1, item2, nil];
-    Request* request = [[Request alloc] initWithParamters:array andDomain:@"https://q3.webtrekk.net" andTrackIds:@"385255285199574"];
+    MIRequest* request = [[MIRequest alloc] initWithParamters:array andDomain:@"https://q3.webtrekk.net" andTrackIds:@"385255285199574"];
     [_dbManager insertRequest:request];
     usleep(3000000);
     [_dbManager fetchAllRequestsFromInterval:15*100 andWithCompletionHandler:^(NSError * _Nonnull error, id  _Nullable data) {
         if (!error) {
-            RequestData* dt = (RequestData*)data;
-            for (Request* r in dt.requests) {
+            MIRequestData* dt = (MIRequestData*)data;
+            for (MIRequest* r in dt.requests) {
                 if ([r.parameters[0].name isEqualToString:@"parameter1NameStatusUpdate"] && ([r status] == ACTIVE)) {
                     [self->_dbManager updateStatusOfRequestWithId:[r.uniqueId intValue] andStatus:FAILED];
                     usleep(3000000);
                     [self->_dbManager fetchAllRequestsFromInterval:15*100 andWithCompletionHandler:^(NSError * _Nonnull error, id  _Nullable data) {
                         BOOL testRequestFlag = NO;
                         if (!error) {
-                            RequestData* dt = (RequestData*)data;
-                            for (Request* r in dt.requests) {
+                            MIRequestData* dt = (MIRequestData*)data;
+                            for (MIRequest* r in dt.requests) {
                                 if ([r.parameters[0].name isEqualToString:@"parameter1NameStatusUpdate"] && ([r status] == FAILED)) {
                                     testRequestFlag = YES;
                                     XCTAssertTrue(testRequestFlag, @"The request is not written into database!");

@@ -6,9 +6,9 @@
 //  Copyright © 2020 Mapp Digital US, LLC. All rights reserved.
 //
 
-#import "Product.h"
+#import "MIProduct.h"
 
-@implementation Product
+@implementation MIProduct
 
 - (NSString *)name {
     return (_name == NULL) ? @"" : _name;

@@ -7,7 +7,7 @@
 //
 
 #import "MIRequestData.h"
-#import "TrackerRequest.h"
+#import "MITrackerRequest.h"
 #import "MappIntelligenceLogger.h"
 #import "MIDatabaseManager.h"
 
@@ -60,7 +60,7 @@
         
         for (NSDictionary *regionDictionary in regions) {
             
-            Request *request = [[Request alloc] initWithKeyedValues:regionDictionary];
+            MIRequest *request = [[MIRequest alloc] initWithKeyedValues:regionDictionary];
             
             [self.requests addObject:request];
         }
@@ -73,7 +73,7 @@
     
     NSMutableArray *requestsDictionaries = [[NSMutableArray alloc] initWithCapacity:[self.regions count]];
     
-    for (Request *request in self.requests) {
+    for (MIRequest *request in self.requests) {
         
         [requestsDictionaries addObject:[request dictionaryWithValuesForKeys]];
     }
@@ -88,15 +88,15 @@
 
 - (NSString*)print {
     NSMutableString* requests = [[NSMutableString alloc] initWithString:@""];
-    for (Request* request in self.requests) {
+    for (MIRequest* request in self.requests) {
         [requests appendString:[request print]];
     }
     return requests;
 }
 
 - (void)sendAllRequestsWithCompletitionHandler:(void (^)(NSError* ))completionHandler {
-    for (Request* r in _requests) {
-        TrackerRequest *request = [[TrackerRequest alloc] init];
+    for (MIRequest* r in _requests) {
+        MITrackerRequest *request = [[MITrackerRequest alloc] init];
         [request sendRequestWith: [r urlForBatchSupprot:NO] andCompletition:^(NSError * _Nonnull error) {
             if(error) {
                 [self->_logger logObj:error forDescription:kMappIntelligenceLogLevelDescriptionDebug];

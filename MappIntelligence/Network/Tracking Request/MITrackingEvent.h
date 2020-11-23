@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface TrackingEvent : NSObject
+@interface MITrackingEvent : NSObject
 
 @property NSString *ipAddress;
 @property NSString *pageName;

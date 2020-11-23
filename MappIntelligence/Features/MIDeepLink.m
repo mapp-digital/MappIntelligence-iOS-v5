@@ -18,7 +18,7 @@ NSString *const UrlErrorDescriptionInvalid = @"Url is invalid";
 + (NSError *_Nullable)trackFromUrl:(NSURL *_Nullable) url withMediaCode: (NSString *_Nullable) mediaCode{
     
     NSString *mediaCodeTag = mediaCode ?: @"wt_mc";
-    AdvertisementProperties *advertisementProperties = [[AdvertisementProperties alloc] init];
+    MIAdvertisementProperties *advertisementProperties = [[MIAdvertisementProperties alloc] init];
     advertisementProperties.mediaCode = mediaCodeTag;
     
     NSMutableDictionary *campaignParameters = [[NSMutableDictionary alloc] init];
@@ -58,17 +58,17 @@ NSString *const UrlErrorDescriptionInvalid = @"Url is invalid";
     }
 }
 
-+ (NSError *_Nullable) saveToFile: (AdvertisementProperties *) campaign {
++ (NSError *_Nullable) saveToFile: (MIAdvertisementProperties *) campaign {
     NSError *error = nil;
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:campaign requiringSecureCoding:YES error:&error];
     [data writeToFile:[MIDeepLink filePath] options:NSDataWritingAtomic error:&error];
     return error;
 }
 
-+ (AdvertisementProperties *_Nullable) loadCampaign {
++ (MIAdvertisementProperties *_Nullable) loadCampaign {
     NSError *error = nil;
     NSData *fileData = [NSData dataWithContentsOfFile: [MIDeepLink filePath]];
-    AdvertisementProperties *properties = [NSKeyedUnarchiver unarchivedObjectOfClass:[AdvertisementProperties class] fromData:fileData error:&error];
+    MIAdvertisementProperties *properties = [NSKeyedUnarchiver unarchivedObjectOfClass:[MIAdvertisementProperties class] fromData:fileData error:&error];
     return properties;
 }
 

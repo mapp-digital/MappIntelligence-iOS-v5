@@ -8,7 +8,7 @@
 
 #import <XCTest/XCTest.h>
 #import "MappIntelligence.h"
-#import "DefaultTracker.h"
+#import "MIDefaultTracker.h"
 
 
 @interface MappIntelligenceTests : XCTestCase
@@ -43,9 +43,9 @@
 }
 
 - (void)testReset {
-    NSString *previousEverID = [[DefaultTracker sharedInstance] generateEverId];
+    NSString *previousEverID = [[MIDefaultTracker sharedInstance] generateEverId];
     [_instance reset];
-    NSString *newEverID = [[DefaultTracker sharedInstance] generateEverId];
+    NSString *newEverID = [[MIDefaultTracker sharedInstance] generateEverId];
     XCTAssertFalse([previousEverID isEqualToString:newEverID], "after reset, ever ids are different!");
     [_instance initWithConfiguration:@[@12345464, @6677777777] onTrackdomain:_testTrackDomain];
 }

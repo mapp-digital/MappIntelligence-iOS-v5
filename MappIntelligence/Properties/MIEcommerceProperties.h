@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Product.h"
+#import "MIProduct.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -20,7 +20,7 @@ typedef NS_ENUM(NSInteger, Status) {
 
 @interface MIEcommerceProperties : NSObject
 
-@property (nullable) NSArray<Product*>* products;
+@property (nullable) NSArray<MIProduct*>* products;
 @property (nullable) Status* status;
 @property (nullable) NSString* currencyCode;
 @property (nullable) NSString* orderNumber;

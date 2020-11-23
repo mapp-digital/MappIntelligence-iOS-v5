@@ -16,7 +16,7 @@ typedef NS_ENUM(NSInteger, CampaignAction) {
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface AdvertisementProperties : NSObject <NSCopying, NSSecureCoding>
+@interface MIAdvertisementProperties : NSObject <NSCopying, NSSecureCoding>
 @property (nullable) NSString *campaignId;
 @property CampaignAction action;
 @property (nullable) NSString *mediaCode;

@@ -7,8 +7,8 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "TrackerRequest.h"
-#import "DefaultTracker.h"
+#import "MITrackerRequest.h"
+#import "MIDefaultTracker.h"
 #import "MIActionProperties.h"
 
 

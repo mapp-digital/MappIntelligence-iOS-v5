@@ -7,18 +7,18 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "Product.h"
+#import "MIProduct.h"
 
 @interface ProductTests : XCTestCase
 
-@property Product* product;
+@property MIProduct* product;
 
 @end
 
 @implementation ProductTests
 
 - (void)setUp {
-    _product = [[Product alloc] init];
+    _product = [[MIProduct alloc] init];
 }
 
 - (void)tearDown {

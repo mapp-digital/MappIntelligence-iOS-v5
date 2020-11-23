@@ -7,17 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "TrackingEvent.h"
+#import "MITrackingEvent.h"
 #import "MIProperties.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface TrackerRequest : NSObject
+@interface MITrackerRequest : NSObject
 
-@property TrackingEvent *event;
+@property MITrackingEvent *event;
 @property MIProperties *properties;
 
-- (instancetype)initWithEvent:(TrackingEvent *)event
+- (instancetype)initWithEvent:(MITrackingEvent *)event
             andWithProperties:(MIProperties *)properties;
 - (void)sendRequestWith:(NSURL *)url
         andCompletition:(void (^)(NSError *error))handler;

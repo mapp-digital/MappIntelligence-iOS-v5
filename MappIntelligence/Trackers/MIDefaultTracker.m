@@ -18,7 +18,7 @@
 #import "MIEnviroment.h"
 #import "MIConfiguration.h"
 #import "MIRequestTrackerBuilder.h"
-#import "TrackerRequest.h"
+#import "MITrackerRequest.h"
 #import "MIRequestUrlBuilder.h"
 #import "MIUIFlowObserver.h"
 #import "MIDatabaseManager.h"
@@ -87,7 +87,7 @@ static int waiting_condition_key;
 
 @property MIConfiguration *config;
 @property MappIntelligenceLogger *logger;
-@property TrackingEvent *event;
+@property MITrackingEvent *event;
 @property MIRequestUrlBuilder *requestUrlBuilder;
 @property MIRequestBatchSupportUrlBuilder* requestBatchSupportUrlBuilder;
 @property NSUserDefaults* defaults;
@@ -97,7 +97,7 @@ static int waiting_condition_key;
 @property NSCondition *conditionUntilGetFNS;
 @property dispatch_queue_t queue;
 
-- (void)enqueueRequestForEvent:(TrackingEvent *)event;
+- (void)enqueueRequestForEvent:(MITrackingEvent *)event;
 - (MIProperties *)generateRequestProperties;
 
 @end
@@ -313,7 +313,7 @@ static NSString *userAgent;
       forDescription:kMappIntelligenceLogLevelDescriptionDebug];
 
   // create request with page event
-  TrackingEvent *event = [[TrackingEvent alloc] init];
+    MITrackingEvent *event = [[MITrackingEvent alloc] init];
   [event setPageName:name];
 #ifdef TARGET_OS_WATCH
     _isReady = YES;
@@ -335,7 +335,7 @@ static NSString *userAgent;
     return NULL;
 }
 
-- (void)enqueueRequestForEvent:(TrackingEvent *)event {
+- (void)enqueueRequestForEvent:(MITrackingEvent *)event {
   MIProperties *requestProperties = [self generateRequestProperties];
   requestProperties.locale = [NSLocale currentLocale];
 
@@ -346,11 +346,11 @@ static NSString *userAgent;
   MIRequestTrackerBuilder *builder =
       [[MIRequestTrackerBuilder alloc] initWithConfoguration:self.config];
 
-  TrackerRequest *request =
+    MITrackerRequest *request =
       [builder createRequestWith:event andWith:requestProperties];
 #warning "What is this for?"
   NSURL *requestUrl = [_requestUrlBuilder urlForRequest:request];
-    Request *r = [self->_requestUrlBuilder dbRequest];
+    MIRequest *r = [self->_requestUrlBuilder dbRequest];
     [r setStatus:ACTIVE];
     BOOL status = [[MIDatabaseManager shared] insertRequest:r];
     [_logger logObj:[NSString stringWithFormat: @"request written with success: %d", status] forDescription:kMappIntelligenceLogLevelDescriptionDebug];

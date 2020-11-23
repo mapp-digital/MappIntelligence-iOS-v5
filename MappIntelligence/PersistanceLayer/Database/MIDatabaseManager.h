@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Request.h"
+#import "MIRequest.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -16,7 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 typedef void(^StorageManagerCompletionHandler)(NSError *error, id _Nullable data);
 
 + (instancetype)shared;
-- (BOOL)insertRequest:(Request *)request;
+- (BOOL)insertRequest:(MIRequest *)request;
 - (NSError *)insertRequests:(NSArray *)requests;
 - (void)fetchAllRequestsFromInterval:(double)interval  andWithCompletionHandler:(StorageManagerCompletionHandler)completionHandler;
 - (BOOL)deleteRequest:(int)ID;

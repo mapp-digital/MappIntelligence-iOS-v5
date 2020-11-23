@@ -8,8 +8,8 @@
 
 #import <XCTest/XCTest.h>
 #import "MIPageProperties.h"
-#import "TrackerRequest.h"
-#import "DefaultTracker.h"
+#import "MITrackerRequest.h"
+#import "MIDefaultTracker.h"
 
 @interface PagePropertiesTests : XCTestCase
 
@@ -58,11 +58,11 @@
     [expectedItems addObject:[[NSURLQueryItem alloc] initWithName:@"is" value:_internalSearch]];
     
     //2.Create tracking request
-    TrackingEvent *event = [[TrackingEvent alloc] init];
+    MITrackingEvent *event = [[MITrackingEvent alloc] init];
     [event setPageName:@"testPageName"];
-    NSString *everid = [[[DefaultTracker alloc] init] generateEverId];
-    Properties *properies = [[Properties alloc] initWithEverID:everid andSamplingRate:0 withTimeZone:[NSTimeZone localTimeZone] withTimestamp:[NSDate date] withUserAgent:@"Tracking Library"];
-    TrackerRequest *request = [[TrackerRequest alloc] initWithEvent:event andWithProperties:properies];
+    NSString *everid = [[[MIDefaultTracker alloc] init] generateEverId];
+    MIProperties *properies = [[MIProperties alloc] initWithEverID:everid andSamplingRate:0 withTimeZone:[NSTimeZone localTimeZone] withTimestamp:[NSDate date] withUserAgent:@"Tracking Library"];
+    MITrackerRequest *request = [[MITrackerRequest alloc] initWithEvent:event andWithProperties:properies];
     
     //3.get resulted list of query items
     NSMutableArray<NSURLQueryItem*>* result = [_pageProperties asQueryItemsFor:request];

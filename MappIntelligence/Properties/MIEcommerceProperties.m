@@ -121,7 +121,7 @@
         NSMutableArray<NSString*>* productCosts = [[NSMutableArray alloc] init];
         NSMutableArray<NSString*>* productQuantities = [[NSMutableArray alloc] init];
         
-        for (Product* product in _products) {
+        for (MIProduct* product in _products) {
             [productNames addObject: product.name];
             [productCosts addObject: product.price];
             [productQuantities addObject: (product.quantity == NULL) ? @"" : [product.quantity stringValue]];

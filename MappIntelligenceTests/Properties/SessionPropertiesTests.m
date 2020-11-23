@@ -7,19 +7,19 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "SessionProperties.h"
-#import "DefaultTracker.h"
+#import "MISessionProperties.h"
+#import "MIDefaultTracker.h"
 
 @interface SessionPropertiesTests : XCTestCase
 @property NSMutableDictionary *sessionDictionary;
-@property SessionProperties *sessionProperties;
+@property MISessionProperties *sessionProperties;
 @end
 
 @implementation SessionPropertiesTests
 
 - (void)setUp {
     _sessionDictionary = [@{@10: @[@"sessionpar1"]} copy];
-    _sessionProperties =  [[SessionProperties alloc] initWithProperties: _sessionDictionary];
+    _sessionProperties =  [[MISessionProperties alloc] initWithProperties: _sessionDictionary];
 }
 
 - (void)tearDown {
@@ -41,11 +41,11 @@
     
 
     //2.Create tracking request
-     TrackingEvent *event = [[TrackingEvent alloc] init];
+    MITrackingEvent *event = [[MITrackingEvent alloc] init];
      [event setPageName:@"testPageName"];
-     NSString *everid = [[[DefaultTracker alloc] init] generateEverId];
-     Properties *properies = [[Properties alloc] initWithEverID:everid andSamplingRate:0 withTimeZone:[NSTimeZone localTimeZone] withTimestamp:[NSDate date] withUserAgent:@"Tracking Library"];
-     TrackerRequest *request = [[TrackerRequest alloc] initWithEvent:event andWithProperties:properies];
+     NSString *everid = [[[MIDefaultTracker alloc] init] generateEverId];
+    MIProperties *properies = [[MIProperties alloc] initWithEverID:everid andSamplingRate:0 withTimeZone:[NSTimeZone localTimeZone] withTimestamp:[NSDate date] withUserAgent:@"Tracking Library"];
+    MITrackerRequest *request = [[MITrackerRequest alloc] initWithEvent:event andWithProperties:properies];
      
      //3.get resulted list of query items
      NSMutableArray<NSURLQueryItem*>* result = [_sessionProperties asQueryItemsFor:request];

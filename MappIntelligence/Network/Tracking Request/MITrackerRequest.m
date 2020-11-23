@@ -6,17 +6,17 @@
 //  Copyright © 2020 Mapp Digital US, LLC. All rights reserved.
 //
 
-#import "TrackerRequest.h"
+#import "MITrackerRequest.h"
 #import "MappIntelligenceLogger.h"
 
-@interface TrackerRequest ()
+@interface MITrackerRequest ()
 
 @property MappIntelligenceLogger *loger;
 @property NSURLSession *urlSession;
 
 @end
 
-@implementation TrackerRequest
+@implementation MITrackerRequest
 
 - (instancetype)init {
   self = [super init];
@@ -29,7 +29,7 @@
   return self;
 }
 
-- (instancetype)initWithEvent:(TrackingEvent *)event
+- (instancetype)initWithEvent:(MITrackingEvent *)event
             andWithProperties:(MIProperties *)properties {
   self = [self init];
   [self setEvent:event];

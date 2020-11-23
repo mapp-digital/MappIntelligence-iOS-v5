@@ -7,17 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "TrackerRequest.h"
-#import "Request.h"
+#import "MITrackerRequest.h"
+#import "MIRequest.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface MIRequestUrlBuilder : NSObject
 
-@property Request *dbRequest;
+@property MIRequest *dbRequest;
 
 -(instancetype)initWithUrl: (NSURL*) serverUrl andWithId: (NSString*) mappIntelligenceId;
--(NSURL*)urlForRequest: (TrackerRequest*) request;
+-(NSURL*)urlForRequest: (MITrackerRequest*) request;
 - (NSURL *)createURLFromParametersWith:(NSArray<NSURLQueryItem *> *)parameters;
 @end
 

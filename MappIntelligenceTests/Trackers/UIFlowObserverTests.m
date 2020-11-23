@@ -8,14 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import <XCTest/XCTest.h>
-#import "DefaultTracker.h"
-#import "UIFlowObserver.h"
+#import "MIDefaultTracker.h"
+#import "MIUIFlowObserver.h"
 
 
 @interface UIFlowObserverTests : XCTestCase
 
-@property DefaultTracker *tracker;
-@property UIFlowObserver *observer;
+@property MIDefaultTracker *tracker;
+@property MIUIFlowObserver *observer;
 
 @end
 
@@ -23,8 +23,8 @@
 
 - (void)setUp {
     [super setUp];
-    _tracker = [DefaultTracker sharedInstance];
-    _observer = [[UIFlowObserver alloc] initWith:_tracker];
+    _tracker = [MIDefaultTracker sharedInstance];
+    _observer = [[MIUIFlowObserver alloc] initWith:_tracker];
 }
 
 - (void)tearDown {

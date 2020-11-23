@@ -12,7 +12,7 @@
 
 @synthesize pageName = _pageName;
 
--(instancetype)initWithName: (NSString *)name pageName: (NSString *)pageName actionProperties: (MIActionProperties*) actionProperties sessionProperties: (MISessionProperties *_Nullable)sessionProperties userProperties: (MIUserProperties *_Nullable) userProperties ecommerceProperties:(MIEcommerceProperties *_Nullable)ecommerceProperties  advertisementProperties: (AdvertisementProperties *_Nullable) advertisementProperties {
+-(instancetype)initWithName: (NSString *)name pageName: (NSString *)pageName actionProperties: (MIActionProperties*) actionProperties sessionProperties: (MISessionProperties *_Nullable)sessionProperties userProperties: (MIUserProperties *_Nullable) userProperties ecommerceProperties:(MIEcommerceProperties *_Nullable)ecommerceProperties  advertisementProperties: (MIAdvertisementProperties *_Nullable) advertisementProperties {
     self = [super init];
     _actionProperties = actionProperties;
     _sessionProperties = sessionProperties;

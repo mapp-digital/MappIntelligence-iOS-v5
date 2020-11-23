@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "TrackerRequest.h"
+#import "MITrackerRequest.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 -(instancetype)initWithPageParams: (NSDictionary<NSNumber* ,NSArray<NSString*>*>* _Nullable) parameters andWithPageCategory: (NSMutableDictionary* _Nullable) category andWithSearch: (NSString* _Nullable)internalSearch;
 
--(NSMutableArray<NSURLQueryItem*>*)asQueryItemsFor: (TrackerRequest*)request;
+-(NSMutableArray<NSURLQueryItem*>*)asQueryItemsFor: (MITrackerRequest*)request;
 
 @end
 

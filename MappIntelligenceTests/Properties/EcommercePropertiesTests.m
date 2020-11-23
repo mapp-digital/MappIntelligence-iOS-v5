@@ -13,7 +13,7 @@
 
 @property MIEcommerceProperties* ecommerceProperties;
 @property NSMutableDictionary* properties;
-@property NSArray<Product* >* products;
+@property NSArray<MIProduct* >* products;
 @property NSNumber* cuponValue;
 
 @end
@@ -23,11 +23,11 @@
 - (void)setUp {
     _properties = [@{@1:@[@"testValue"]} copy];
     _ecommerceProperties = [[MIEcommerceProperties alloc] initWithCustomProperties:_properties];
-    Product *product1 = [[Product alloc] init];
+    MIProduct *product1 = [[MIProduct alloc] init];
     product1.name = @"product1Name";
     product1.price = @"55$";
     product1.quantity = [NSNumber numberWithInt:33];
-    Product *product2 = [[Product alloc] init];
+    MIProduct *product2 = [[MIProduct alloc] init];
     product2.name = @"product2Name";
     product2.price = @"66$";
     product2.quantity = [NSNumber numberWithInt:44];
@@ -81,7 +81,7 @@
         NSMutableArray<NSString*>* productCosts = [[NSMutableArray alloc] init];
         NSMutableArray<NSString*>* productQuantities = [[NSMutableArray alloc] init];
         
-        for (Product* product in _products) {
+        for (MIProduct* product in _products) {
             [productNames addObject: product.name];
             [productCosts addObject: product.price];
             [productQuantities addObject: (product.quantity == NULL) ? @"" : [product.quantity stringValue]];

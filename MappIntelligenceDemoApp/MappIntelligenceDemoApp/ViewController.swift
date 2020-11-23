@@ -81,12 +81,12 @@ class ViewController: UIViewController {
     
     @IBAction func sendEcommerceEvent(_ sender: Any) {
         let ecommerceProperties = MIEcommerceProperties(customProperties: [540 : ["ecommerce1", "ecommerce2"]])
-        let product1 = Product()
+        let product1 = MIProduct()
         product1.name = "Product1Name"
         product1.price = "20$"
         product1.quantity = 34
-        let product2 = Product()
-        let product3 = Product()
+        let product2 = MIProduct()
+        let product3 = MIProduct()
         product3.price = "348$"
         ecommerceProperties.products = [product1, product2, product3];
         ecommerceProperties.currencyCode = "$"
@@ -95,7 +95,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func sendCampaignEvent(_ sender: Any) {
-        let advertisementProperties = AdvertisementProperties("en.internal.newsletter.2017.05")
+        let advertisementProperties = MIAdvertisementProperties("en.internal.newsletter.2017.05")
         advertisementProperties.mediaCode = "abc"
         advertisementProperties.oncePerSession = true
         advertisementProperties.action = .view

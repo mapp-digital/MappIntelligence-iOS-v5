@@ -7,18 +7,18 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "Properties.h"
-#import "TrackingEvent.h"
-#import "DefaultTracker.h"
-#import "Configuration.h"
-#import "RequestTrackerBuilder.h"
-#import "TrackerRequest.h"
+#import "MIProperties.h"
+#import "MITrackingEvent.h"
+#import "MIDefaultTracker.h"
+#import "MIConfiguration.h"
+#import "MIRequestTrackerBuilder.h"
+#import "MITrackerRequest.h"
 
 @interface RequestTrackerBuilderTests : XCTestCase
 
-@property DefaultTracker *tracker;
-@property Configuration *configuration;
-@property RequestTrackerBuilder *builder;
+@property MIDefaultTracker *tracker;
+@property MIConfiguration *configuration;
+@property MIRequestTrackerBuilder *builder;
 
 @end
 
@@ -26,11 +26,11 @@
 
 - (void)setUp {
     [super setUp];
-    _tracker = [[DefaultTracker alloc] init];
-    _configuration = [[Configuration alloc] init];
+    _tracker = [[MIDefaultTracker alloc] init];
+    _configuration = [[MIConfiguration alloc] init];
     [_configuration setServerUrl:[[NSURL alloc] initWithString:@"https://q3.webtrekk.net"]];
     [_configuration setMappIntelligenceId:@"385255285199574"];
-    _builder = [[RequestTrackerBuilder  alloc] initWithConfoguration:_configuration];
+    _builder = [[MIRequestTrackerBuilder  alloc] initWithConfoguration:_configuration];
 }
 
 - (void)tearDown {
@@ -44,13 +44,13 @@
 }
 
 - (void)testCreateRequestWith {
-    TrackingEvent *event = [[TrackingEvent alloc] init];
+    MITrackingEvent *event = [[MITrackingEvent alloc] init];
     NSString *everid = [_tracker generateEverId];
-    Properties *properies = [[Properties alloc] initWithEverID:everid andSamplingRate:0 withTimeZone:[NSTimeZone localTimeZone] withTimestamp:[NSDate date] withUserAgent:@"Tracking Library"];
+    MIProperties *properies = [[MIProperties alloc] initWithEverID:everid andSamplingRate:0 withTimeZone:[NSTimeZone localTimeZone] withTimestamp:[NSDate date] withUserAgent:@"Tracking Library"];
     XCTAssertNotNil(event);
     XCTAssertNotNil(properies);
     XCTAssertNotNil(_builder);
-    TrackerRequest *request = [_builder createRequestWith:event andWith:properies];
+    MITrackerRequest *request = [_builder createRequestWith:event andWith:properies];
     XCTAssertNotNil(request);
 }
 

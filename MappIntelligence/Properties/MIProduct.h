@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface Product : NSObject
+@interface MIProduct : NSObject
 
 @property (nonatomic, nullable) NSString* name;
 @property (nonatomic, nullable) NSString* price;

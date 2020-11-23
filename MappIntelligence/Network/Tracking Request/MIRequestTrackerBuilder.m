@@ -15,10 +15,10 @@
   return self;
 }
 
-- (TrackerRequest *)createRequestWith:(TrackingEvent *)event
+- (MITrackerRequest *)createRequestWith:(MITrackingEvent *)event
                               andWith:(MIProperties *)properties {
   return
-      [[TrackerRequest alloc] initWithEvent:event andWithProperties:properties];
+      [[MITrackerRequest alloc] initWithEvent:event andWithProperties:properties];
 }
 
 @end
