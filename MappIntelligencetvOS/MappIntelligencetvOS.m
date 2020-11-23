@@ -75,15 +75,15 @@
     [_mappIntelligence setRequestPerQueue:requestPerQueue];
 }
 
-- (NSError *_Nullable)trackPageWithName: (NSString *_Nonnull) name pageProperties:(PageProperties  *_Nullable)properties sessionProperties: (SessionProperties *_Nullable) sessionProperties userProperties: (UserProperties *) userProperties ecommerceProperties: (EcommerceProperties *_Nullable) ecommerceProperties  advertisementProperties: (AdvertisementProperties *_Nullable) advertisemementProperties {
+- (NSError *_Nullable)trackPageWithName: (NSString *_Nonnull) name pageProperties:(MIPageProperties  *_Nullable)properties sessionProperties: (MISessionProperties *_Nullable) sessionProperties userProperties: (MIUserProperties *) userProperties ecommerceProperties: (MIEcommerceProperties *_Nullable) ecommerceProperties  advertisementProperties: (MIAdvertisementProperties *_Nullable) advertisemementProperties {
     return [_mappIntelligence trackPageWithName:name pageProperties:properties  sessionProperties:sessionProperties userProperties:userProperties ecommerceProperties: ecommerceProperties advertisementProperties:advertisemementProperties];
 }
 
-- (NSError *_Nullable)trackPageWithViewController:(UIViewController *_Nonnull)controller pageProperties:(PageProperties  *_Nullable)pageProperties sessionProperties:(SessionProperties *_Nullable) sessionProperties userProperties: (UserProperties *) userProperties ecommerceProperties: (EcommerceProperties *_Nullable) ecommerceProperties  advertisementProperties: (AdvertisementProperties *_Nullable) advertisemementProperties {
+- (NSError *_Nullable)trackPageWithViewController:(UIViewController *_Nonnull)controller pageProperties:(MIPageProperties  *_Nullable)pageProperties sessionProperties:(MISessionProperties *_Nullable) sessionProperties userProperties: (MIUserProperties *) userProperties ecommerceProperties: (MIEcommerceProperties *_Nullable) ecommerceProperties  advertisementProperties: (MIAdvertisementProperties *_Nullable) advertisemementProperties {
     return [_mappIntelligence trackPageWithViewController:controller pageProperties:pageProperties sessionProperties:sessionProperties userProperties:userProperties ecommerceProperties: ecommerceProperties advertisementProperties:advertisemementProperties];
 }
 
-- (NSError *_Nullable) trackCustomEventWithName:(NSString *_Nonnull) name  actionProperties: (MIActionProperties *_Nullable) actionProperties sessionProperties: (SessionProperties *_Nullable) sessionProperties userProperties: (UserProperties *) userProperties ecommerceProperties:(EcommerceProperties * _Nullable)ecommerceProperties advertisementProperties: (AdvertisementProperties *_Nullable) advertisemementProperties{
+- (NSError *_Nullable) trackCustomEventWithName:(NSString *_Nonnull) name  actionProperties: (MIActionProperties *_Nullable) actionProperties sessionProperties: (MISessionProperties *_Nullable) sessionProperties userProperties: (MIUserProperties *) userProperties ecommerceProperties:(MIEcommerceProperties * _Nullable)ecommerceProperties advertisementProperties: (MIAdvertisementProperties *_Nullable) advertisemementProperties{
     return [_mappIntelligence trackCustomEventWithName:name actionProperties:actionProperties sessionProperties:sessionProperties userProperties:userProperties ecommerceProperties:ecommerceProperties advertisementProperties:advertisemementProperties];
 }
 

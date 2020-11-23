@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
     name: "MappIntelligence",
     platforms: [
-        .iOS(.v9),
+        .iOS(.v11),
         .tvOS(.v13),
         .watchOS(.v3)
     ],
@@ -31,6 +31,7 @@ let package = Package(
             ],
             linkerSettings: [
                 .linkedFramework("UIKit", .when(platforms: [.iOS, .tvOS])),
+                .linkedFramework("WatchKit", .when(platforms:[.watchOS]))
             ]
         ),
         .target(

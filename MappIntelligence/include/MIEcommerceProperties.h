@@ -1,0 +1,1 @@
+../Properties/MIEcommerceProperties.h

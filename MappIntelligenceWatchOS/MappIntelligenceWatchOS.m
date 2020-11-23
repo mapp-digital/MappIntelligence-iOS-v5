@@ -7,7 +7,9 @@
 //
 
 #import "MappIntelligenceWatchOS.h"
+#if TARGET_OS_WATCH
 #import <WatchKit/WatchKit.h>
+#endif
 #import "MappIntelligence.h"
 
 @interface MappIntelligenceWatchOS ()

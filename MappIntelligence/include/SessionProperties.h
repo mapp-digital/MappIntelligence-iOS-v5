@@ -1,1 +1,0 @@
-../Properties/SessionProperties.h
