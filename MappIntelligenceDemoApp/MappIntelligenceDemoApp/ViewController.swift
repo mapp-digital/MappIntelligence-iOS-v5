@@ -22,7 +22,6 @@ class ViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        MappIntelligence.shared()?.trackPage(with: self, pageProperties: nil, sessionProperties: nil, userProperties: nil, ecommerceProperties: nil, advertisementProperties: nil)
     }
     @IBAction func removeRequestFromDatabase(_ sender: Any) {
         guard let requestID = Int32(requestIDTextField.text ?? "0") else {return}
@@ -76,7 +75,14 @@ class ViewController: UIViewController {
         userProperties.gender = .female
         let ecommerceProperties = MIEcommerceProperties()
         ecommerceProperties.cuponValue = 33
-        MappIntelligence.shared()?.trackCustomEvent(withName: "TestAction", actionProperties: actionProperties, sessionProperties: sessionProperties, userProperties: userProperties, ecommerceProperties: ecommerceProperties, advertisementProperties: nil)
+        
+        let event = MIActionEvent(name: "TestAction")
+        event.userProperties = userProperties;
+        event.sessionProperties = sessionProperties;
+        event.actionProperties = actionProperties;
+        event.ecommerceProperties = ecommerceProperties;
+
+        MappIntelligence.shared()?.trackAction(event);
     }
     
     @IBAction func sendEcommerceEvent(_ sender: Any) {
@@ -91,7 +97,10 @@ class ViewController: UIViewController {
         ecommerceProperties.products = [product1, product2, product3];
         ecommerceProperties.currencyCode = "$"
         ecommerceProperties.paymentMethod = "creditCard"
-        MappIntelligence.shared()?.trackPage(with: self, pageProperties: nil, sessionProperties: nil, userProperties: nil, ecommerceProperties: ecommerceProperties, advertisementProperties: nil)
+        
+        let pageEvent = MIPageViewEvent()
+        pageEvent.ecommerceProperties = ecommerceProperties
+        MappIntelligence.shared()?.trackPage(with: self, andEvent: pageEvent)
     }
     
     @IBAction func sendCampaignEvent(_ sender: Any) {
@@ -101,7 +110,10 @@ class ViewController: UIViewController {
         advertisementProperties.action = .view
         advertisementProperties.customProperties = [1: ["ECOMM"]]
         
-        MappIntelligence.shared()?.trackCustomEvent(withName: "TestCampaign", actionProperties: nil, sessionProperties: nil, userProperties: nil, ecommerceProperties: nil, advertisementProperties: advertisementProperties)
+        let event = MIActionEvent(name: "TestCampaign")
+        event.advertisementProperties = advertisementProperties
+        
+        MappIntelligence.shared()?.trackAction(event)
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {

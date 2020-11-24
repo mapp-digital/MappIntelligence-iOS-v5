@@ -12,16 +12,14 @@
 
 @synthesize pageName = _pageName;
 
--(instancetype)initWithName: (NSString *)name pageName: (NSString *)pageName actionProperties: (MIActionProperties*) actionProperties sessionProperties: (MISessionProperties *_Nullable)sessionProperties userProperties: (MIUserProperties *_Nullable) userProperties ecommerceProperties:(MIEcommerceProperties *_Nullable)ecommerceProperties  advertisementProperties: (MIAdvertisementProperties *_Nullable) advertisementProperties {
+- (instancetype)initWithName:(NSString *)name {
     self = [super init];
-    _actionProperties = actionProperties;
-    _sessionProperties = sessionProperties;
-    _userProperties = userProperties;
-    _ecommerceProperties = ecommerceProperties;
-    _advertisementProperties = advertisementProperties;
-    _pageName = pageName;
     _name = name;
     return self;
+}
+
+- (NSString *)pageName {
+    return @"0";
 }
 
 -(NSMutableArray<NSURLQueryItem*>*)asQueryItems {

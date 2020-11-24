@@ -26,9 +26,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, nullable) MIEcommerceProperties *ecommerceProperties;
 @property (nonatomic, nullable) MIAdvertisementProperties *advertisementProperties;
 
-- (instancetype)initWithName:(NSString *)name pageProperties:(MIPageProperties *)pageProperties;
+- (instancetype)initWithName:(NSString *)name;
 
-- (instancetype)initWithName:(NSString *)name pageProperties:(MIPageProperties *)pageProperties sessionProperties: (MISessionProperties *_Nullable) sessionProperties userProperties: (MIUserProperties *_Nullable)userProperties ecommerceProperties: (MIEcommerceProperties *_Nullable) ecommerceProperties advertisementProperties: (MIAdvertisementProperties *_Nullable) advertisementProperties;
 @end
 
 NS_ASSUME_NONNULL_END

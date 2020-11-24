@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface MISessionProperties : NSObject
 @property (nullable) NSDictionary<NSNumber* ,NSArray<NSString*>*>* properties;
 -(instancetype)initWithProperties: (NSDictionary<NSNumber* ,NSArray<NSString*>*>* _Nullable) properties;
--(NSMutableArray<NSURLQueryItem*>*)asQueryItemsFor: (MITrackerRequest*)request;
+-(NSMutableArray<NSURLQueryItem*>*)asQueryItems;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -9,9 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "MIPageViewEvent.h"
-#import "MIActionProperties.h"
-#import "MISessionProperties.h"
-#import "MIUserProperties.h"
+#import "MIActionEvent.h"
 
 @class MappIntelligence;
 
@@ -49,62 +47,53 @@ typedef NS_ENUM(NSInteger, logLevel) {
 + (NSString *_Nonnull)getId;
 
 #if !TARGET_OS_WATCH
+
 /**
 @brief Method to collect the name of the current UIViewController and track additional page information.
 @param controller - current ui view controller.
-@param pageProperties - properties can contain parameters, categories and search terms.
-@param sessionProperties - contains properties for session, each property can have multiple values
-@param userProperties - customer related data
+@param event - page view event that can contain properties for page, session, ecommerce, action, advertisement and user
 @code
- let params:[NSNumber:[String]] = [20: ["cp20Override", "cp21Override", "cp22Override"]]
- let categories:NSMutableDictionary = [10: ["test"]]
- let searchTerm = "testSearchTerm"
- let sessionProperties = MISessionProperties(witProperties: [10: ["sessionpar1"]])
- let userProperties = MIUserProperties(customProperties:[20:["Test"]])
 
- MappIntelligence.shared()?.trackPage(with: self, pageProperties: MIPageProperties(pageParams: params, andWithPageCategory: categories, andWithSearch: searchTerm), sessionProperties: sessionProperties, userProperties: userProperties)
 @endcode
 @return Error in case of a failure. Returns nil if no error was detected.
 */
-- (NSError *_Nullable)trackPageWithViewController:(UIViewController *_Nonnull)controller pageProperties:(MIPageProperties  *_Nullable)pageProperties sessionProperties:(MISessionProperties *_Nullable) sessionProperties  userProperties: (MIUserProperties *_Nullable) userProperties ecommerceProperties: (MIEcommerceProperties *_Nullable) ecommerceProperties advertisementProperties: (MIAdvertisementProperties *_Nullable) advertisemementProperties;
+- (NSError *_Nullable)trackPageWithViewController:(UIViewController *_Nonnull)controller andEvent:(MIPageViewEvent*_Nonnull) event;
+
 #endif
-/**
-@brief Method to track additional page information.
-@param name - custom page name.
-@param pageProperties - properties can contain details, groups and seach term.
-@param sessionProperties - contains properties for session, each property can have multiple values
-@param userProperties - customer related data
-@code
- let customName = "the custom name of page"
- let params:[NSNumber:[String]] = [20: ["cp20Override", "cp21Override", "cp22Override"]]
- let categories:NSMutableDictionary = [10: ["test"]]
- let searchTerm = "testSearchTerm"
- let sessionProperties = MISessionProperties(witProperties: [10: ["sessionpar1"]])
- let userProperties = MIUserProperties(customProperties:[20:["Test"]])
- let ecommerceProperties = MIEcommerceProperties()
- MappIntelligence.shared()?.trackPage(withName: customName, pageProperties: MIPageProperties(pageParams: params, andWithPageCategory: categories, andWithSearch: searchTerm), sessionProperties: sessionProperties, userProperties: userProperties ecommerceProperties: ecommerceProperties)
-@endcode
-@return Error that can happen while tracking. Returns nil if no error was detected.
-*/
-- (NSError *_Nullable)trackPageWithName: (NSString *_Nonnull) name pageProperties:(MIPageProperties  *_Nullable)pageProperties sessionProperties: (MISessionProperties *_Nullable) sessionProperties  userProperties: (MIUserProperties *_Nullable) userProperties ecommerceProperties: (MIEcommerceProperties *_Nullable) ecommerceProperties advertisementProperties: (MIAdvertisementProperties *_Nullable) advertisemementProperties;
 
 /**
-@brief Method which will track action event created from action properties and session properties.
-@param name - custom event name
-@param actionProperties - action properties for one event, each property can have multiple values
-@param sessionProperties - session properties for one event, each property can have multiple values
-@param userProperties - customer related data
+@brief Method which will track any event
+@param event - event can be either MIActionEvent or MIPageViewEvent
 @code
- let actionProperties = ActionProperties(properties:  [20:["ck20Override","ck21Override"]])
- let sessionProperties = MISessionProperties(properties: [10: ["sessionpar1"]])
- let userProperties = MIUserProperties(customProperties:[20:["Test"]])
- let ecommerceProperties = MIEcommerceProperties()
- MappIntelligence.shared()?.trackCustomEvent(withName: "TestAction", actionProperties: actionProperties, sessionProperties: sessionProperties, userProperties: userProperties ecommerceProperties: ecommerceProperties)
+ let event = MIActionEvent(name: "TestAction")
+ MappIntelligence.shared()?.trackEvent(event);
  @endcode
 @return the error which may happen through process of tracking, if returns nil there is no error.
 */
-- (NSError *_Nullable) trackCustomEventWithName:(NSString *_Nonnull) name actionProperties: (MIActionProperties *_Nullable) actionProperties sessionProperties: (MISessionProperties *_Nullable) sessionProperties  userProperties: (MIUserProperties *_Nullable) userProperties ecommerceProperties: (MIEcommerceProperties *_Nullable) ecommerceProperties advertisementProperties: (MIAdvertisementProperties *_Nullable) advertisemementProperties;
+#warning "If we dont need this we shuld remove it"
+-(NSError *_Nullable) trackEvent:(MITrackingEvent *_Nonnull) event;
 
+/**
+@brief Method which will track page event
+@param event - page view event
+@code
+ let event = MIActionEvent(name: "TestAction")
+ MappIntelligence.shared()?.trackEvent(event);
+ @endcode
+@return the error which may happen through process of tracking, if returns nil there is no error.
+*/
+- (NSError *_Nullable) trackPage:(MIPageViewEvent *_Nonnull) event;
+
+/**
+@brief Method which will track action event
+@param event - action event
+@code
+ let event = MIActionEvent(name: "TestAction")
+ MappIntelligence.shared()?.trackAction(event);
+ @endcode
+@return the error which may happen through process of tracking, if returns nil there is no error.
+*/
+- (NSError *_Nullable) trackAction:(MIActionEvent *_Nonnull) event;
 
 /**
 @brief Method which will track campaign parameters from url
@@ -156,5 +145,7 @@ MappIntelligence.shared()?.optOut(with: false, andSendCurrentData: false)
 //testable methods
 - (void) printAllRequestFromDatabase;
 - (void) removeRequestFromDatabaseWithID: (int)ID;
+
+
 
 @end

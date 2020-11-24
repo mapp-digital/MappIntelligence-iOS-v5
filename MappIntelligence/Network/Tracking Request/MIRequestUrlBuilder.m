@@ -156,10 +156,10 @@
     
     if ([event isKindOfClass:MIPageViewEvent.class]) {
         MIPageProperties* prop = ((MIPageViewEvent*)event).pageProperties;
-        [parametrs addObjectsFromArray:[prop asQueryItemsFor:request]];
+        [parametrs addObjectsFromArray:[prop asQueryItems]];
         MIPageViewEvent* pgEvent = ((MIPageViewEvent*)event);
         MISessionProperties *session = pgEvent.sessionProperties;
-        [parametrs addObjectsFromArray:[session asQueryItemsFor: request]];
+        [parametrs addObjectsFromArray:[session asQueryItems]];
         MIUserProperties *userProperties = pgEvent.userProperties;
         [parametrs addObjectsFromArray:[userProperties asQueryItems]];
         MIEcommerceProperties *ecommerceProperties = pgEvent.ecommerceProperties;
@@ -178,7 +178,7 @@
     } else if ([event isKindOfClass:MIActionEvent.class]) {
         [parametrs addObjectsFromArray:[(MIActionEvent*)event asQueryItems]];
         MISessionProperties *session = ((MIActionEvent*)event).sessionProperties;
-        [parametrs addObjectsFromArray:[session asQueryItemsFor: request]];
+        [parametrs addObjectsFromArray:[session asQueryItems]];
         MIUserProperties *userProperties = ((MIActionEvent*)event).userProperties;
         [parametrs addObjectsFromArray:[userProperties asQueryItems]];
         MIEcommerceProperties *ecommerceProperties = ((MIActionEvent*)event).ecommerceProperties;

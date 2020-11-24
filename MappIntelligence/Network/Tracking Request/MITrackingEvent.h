@@ -17,6 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property NSDictionary *variables;
 @property NSObject *viewControllerType;
 
+
+
 @end
 
 NS_ASSUME_NONNULL_END

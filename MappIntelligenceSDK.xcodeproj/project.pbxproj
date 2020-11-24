@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8F0055A9256DB16B00E2CC3C /* MIActionEvent.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8FDF710A250B9E5B00818E51 /* MIActionEvent.h */; };
+		8F0055AA256DB16B00E2CC3C /* MIPageViewEvent.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A380D1FD241296FD009E2CD8 /* MIPageViewEvent.h */; };
+		8F0055C8256DB9B700E2CC3C /* MIActionEvent.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8FDF710A250B9E5B00818E51 /* MIActionEvent.h */; };
+		8F0055C9256DB9B700E2CC3C /* MIPageViewEvent.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A380D1FD241296FD009E2CD8 /* MIPageViewEvent.h */; };
 		8F143ED92510AD830024CF24 /* ActionEventTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F143ED82510AD830024CF24 /* ActionEventTests.m */; };
 		8F143EDB2510AECA0024CF24 /* ActionPropertiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F143EDA2510AECA0024CF24 /* ActionPropertiesTests.m */; };
 		8F143EDD2510B3220024CF24 /* SessionPropertiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F143EDC2510B3220024CF24 /* SessionPropertiesTests.m */; };
@@ -145,7 +149,7 @@
 		A36CD7CE23F44594004E3E2D /* MITrackerRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = A36CD7CC23F44594004E3E2D /* MITrackerRequest.m */; };
 		A36CD7D123F447D0004E3E2D /* MIProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = A36CD7CF23F447D0004E3E2D /* MIProperties.h */; };
 		A36CD7D223F447D0004E3E2D /* MIProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = A36CD7D023F447D0004E3E2D /* MIProperties.m */; };
-		A380D1FA2411478C009E2CD8 /* MITrackingEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = A380D1F82411478C009E2CD8 /* MITrackingEvent.h */; };
+		A380D1FA2411478C009E2CD8 /* MITrackingEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = A380D1F82411478C009E2CD8 /* MITrackingEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A380D1FB2411478C009E2CD8 /* MITrackingEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = A380D1F92411478C009E2CD8 /* MITrackingEvent.m */; };
 		A380D1FF241296FD009E2CD8 /* MIPageViewEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = A380D1FD241296FD009E2CD8 /* MIPageViewEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A380D200241296FD009E2CD8 /* MIPageViewEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = A380D1FE241296FD009E2CD8 /* MIPageViewEvent.m */; };
@@ -253,6 +257,8 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				8F0055A9256DB16B00E2CC3C /* MIActionEvent.h in CopyFiles */,
+				8F0055AA256DB16B00E2CC3C /* MIPageViewEvent.h in CopyFiles */,
 				8F995E6525507F3E00B918DD /* MIAdvertisementProperties.h in CopyFiles */,
 				A338B7CC254874D300E50C28 /* MIProduct.h in CopyFiles */,
 				A338B7B12548744900E50C28 /* MIEcommerceProperties.h in CopyFiles */,
@@ -297,6 +303,8 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				8F0055C8256DB9B700E2CC3C /* MIActionEvent.h in CopyFiles */,
+				8F0055C9256DB9B700E2CC3C /* MIPageViewEvent.h in CopyFiles */,
 				8F995E6D25507F4400B918DD /* MIAdvertisementProperties.h in CopyFiles */,
 				A338B7D4254874DA00E50C28 /* MIProduct.h in CopyFiles */,
 				A338B7B92548745400E50C28 /* MIEcommerceProperties.h in CopyFiles */,
@@ -828,6 +836,7 @@
 				A3CC5486248FC418006215FD /* MIDatabaseManager.h in Headers */,
 				8FDF7107250B9E4D00818E51 /* MIActionProperties.h in Headers */,
 				8FDF710C250B9E5B00818E51 /* MIActionEvent.h in Headers */,
+				A380D1FA2411478C009E2CD8 /* MITrackingEvent.h in Headers */,
 				A380D1FF241296FD009E2CD8 /* MIPageViewEvent.h in Headers */,
 				A337446024C8404B0096259B /* MIPageViewEvent.m in Headers */,
 				8FA11962253EDC82000AE887 /* MIUserProperties.h in Headers */,
@@ -836,7 +845,6 @@
 				A3852A95249389060090F47B /* MIDatabaseManager.m in Headers */,
 				BCCAE6D0240D29A9005E9FD6 /* MappIntelligenceLogger.m in Headers */,
 				A3CC549224912AA8006215FD /* MIRequestData.h in Headers */,
-				A380D1FA2411478C009E2CD8 /* MITrackingEvent.h in Headers */,
 				A36CD7D123F447D0004E3E2D /* MIProperties.h in Headers */,
 				A380D2102413ED35009E2CD8 /* MIRequestUrlBuilder.h in Headers */,
 				A36CD7CD23F44594004E3E2D /* MITrackerRequest.h in Headers */,

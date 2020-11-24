@@ -35,7 +35,11 @@ class InterfaceController: WKInterfaceController {
         let params:[NSNumber:[String]] = [20: ["cp20Override", "cp21Override", "cp22Override"]]
         let categories:NSMutableDictionary = [10: ["test"]]
         let searchTerm = "testSearchTerm"
-        MappIntelligenceWatchOS.shared()?.trackPage(withName: customName, pageProperties: MIPageProperties(pageParams: params, andWithPageCategory: categories, andWithSearch: searchTerm), sessionProperties: nil, userProperties: nil, ecommerceProperties: nil, advertisementProperties: nil)
+        
+        let pageEvent = MIPageViewEvent(name: customName)
+        pageEvent.pageProperties = MIPageProperties(pageParams: params, andWithPageCategory: categories, andWithSearch: searchTerm)
+        MappIntelligenceWatchOS.shared()?.trackPage(pageEvent)
+        //MappIntelligenceWatchOS.shared()?.trackPage(withName: customName, pageProperties: MIPageProperties(pageParams: params, andWithPageCategory: categories, andWithSearch: searchTerm), sessionProperties: nil, userProperties: nil, ecommerceProperties: nil, advertisementProperties: nil)
     }
     @IBAction func reset() {
         MappIntelligenceWatchOS.shared()?.reset()
@@ -46,6 +50,7 @@ class InterfaceController: WKInterfaceController {
     @IBAction func trackAction() {
         let actionProperties = MIActionProperties(properties:  [20:["ck20Override","ck21Override"]])
         let sessionProperties = MISessionProperties(properties: [10: ["sessionpar1"]])
+        
         let userProperties = MIUserProperties()
         userProperties.customProperties = [20:["Test"]]
         userProperties.birthday = Birthday(day: 12, month: 0, year: 1993)
@@ -53,9 +58,18 @@ class InterfaceController: WKInterfaceController {
         userProperties.country = "France"
         userProperties.customerId = "CustomerID"
         userProperties.gender = .female
+        
         let ecommerceProperties = MIEcommerceProperties()
         ecommerceProperties.cuponValue = 23
-        MappIntelligenceWatchOS.shared()?.trackCustomEvent(withName: "TestAction", actionProperties: actionProperties, sessionProperties: sessionProperties, userProperties: userProperties, ecommerceProperties: ecommerceProperties, advertisementProperties: nil)
+        
+        let actionEvent = MIActionEvent(name: "TestAction")
+        actionEvent.actionProperties = actionProperties
+        actionEvent.sessionProperties = sessionProperties
+        actionEvent.userProperties = userProperties
+        actionEvent.ecommerceProperties = ecommerceProperties
+        
+        MappIntelligenceWatchOS.shared()?.trackAction(actionEvent)
+        //MappIntelligenceWatchOS.shared()?.trackCustomEvent(withName: "TestAction", actionProperties: actionProperties, sessionProperties: sessionProperties, userProperties: userProperties, ecommerceProperties: ecommerceProperties, advertisementProperties: nil)
     }
     
     @IBAction func trackEcommerce() {
@@ -70,7 +84,11 @@ class InterfaceController: WKInterfaceController {
         ecommerceProperties.products = [product1, product2, product3];
         ecommerceProperties.currencyCode = "$"
         ecommerceProperties.paymentMethod = "creditCard"
-        MappIntelligenceWatchOS.shared()?.trackPage(withName: "TestEcommerce", pageProperties: nil, sessionProperties: nil, userProperties: nil, ecommerceProperties: ecommerceProperties, advertisementProperties: nil)
+        
+        let pageEvent = MIPageViewEvent(name: "TestEcommerce")
+        pageEvent.ecommerceProperties = ecommerceProperties
+        
+        MappIntelligenceWatchOS.shared()?.trackPage(pageEvent)
     }
     
     @IBAction func trackCampaign() {
@@ -80,7 +98,10 @@ class InterfaceController: WKInterfaceController {
         advertisementProperties.action = .view
         advertisementProperties.customProperties = [1: ["ECOMM"]]
         
-        MappIntelligenceWatchOS.shared()?.trackCustomEvent(withName: "TestCampaign", actionProperties: nil, sessionProperties: nil, userProperties: nil, ecommerceProperties: nil, advertisementProperties: advertisementProperties)
+        let actionEvent = MIActionEvent(name: "TestCampaign")
+        actionEvent.advertisementProperties = advertisementProperties
+        
+        MappIntelligenceWatchOS.shared()?.trackAction(actionEvent)
     }
     @IBAction func optIn() {
         MappIntelligenceWatchOS.shared()?.optIn()

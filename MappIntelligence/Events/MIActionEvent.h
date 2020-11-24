@@ -18,16 +18,16 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface MIActionEvent : MITrackingEvent
-
-@property (nullable) NSString* name;
+@property (nonnull) NSString* name;
 @property (nonatomic, nonnull) MIActionProperties* actionProperties;
 @property (nonatomic, nullable) MISessionProperties *sessionProperties;
 @property (nonatomic, nullable) MIUserProperties *userProperties;
 @property (nonatomic, nullable) MIEcommerceProperties *ecommerceProperties;
 @property (nonatomic, nullable) MIAdvertisementProperties *advertisementProperties;
 
--(instancetype)initWithName: (NSString *)name pageName: (NSString *)pageName actionProperties: (MIActionProperties*) actionProperties sessionProperties: (MISessionProperties *_Nullable)sessionProperties userProperties: (MIUserProperties *_Nullable)userProperties ecommerceProperties: (MIEcommerceProperties *_Nullable)ecommerceProperties advertisementProperties: (MIAdvertisementProperties *_Nullable) advertisementProperties;
--(NSMutableArray<NSURLQueryItem*>*)asQueryItems;
+- (instancetype)init NS_UNAVAILABLE;
+- (instancetype)initWithName:(NSString *)name;
+- (NSMutableArray<NSURLQueryItem*>*)asQueryItems;
 @end
 
 NS_ASSUME_NONNULL_END

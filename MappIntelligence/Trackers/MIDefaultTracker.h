@@ -29,8 +29,8 @@
 - (void)updateFirstSessionWith: (WKApplicationState) state;
 #endif
 - (NSError*_Nullable)trackWith:(NSString *_Nonnull)name;
-- (NSError*_Nullable)trackWithEvent:(MIPageViewEvent *_Nonnull)event;
-- (NSError *_Nullable)trackAction:(MIActionEvent *_Nonnull)event;
+- (NSError*_Nullable)trackWithEvent:(MITrackingEvent *_Nonnull)event;
+//- (NSError *_Nullable)trackAction:(MIActionEvent *_Nonnull)event;
 
 + (NSUserDefaults *_Nonnull)sharedDefaults;
 - (void)initHibernate;

@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 -(instancetype)initWithPageParams: (NSDictionary<NSNumber* ,NSArray<NSString*>*>* _Nullable) parameters andWithPageCategory: (NSMutableDictionary* _Nullable) category andWithSearch: (NSString* _Nullable)internalSearch;
 
--(NSMutableArray<NSURLQueryItem*>*)asQueryItemsFor: (MITrackerRequest*)request;
+-(NSMutableArray<NSURLQueryItem*>*)asQueryItems;
 
 @end
 

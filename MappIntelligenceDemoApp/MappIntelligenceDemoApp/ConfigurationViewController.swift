@@ -41,16 +41,18 @@ class ConfigurationViewController: UIViewController, UIPickerViewDelegate, UIPic
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
                self.view.addGestureRecognizer(tapGesture)
         
-       // MappIntelligence.shared()?.trackPage(with: PageViewEvent())
         let customName = "the custom name of page"
         let params:[NSNumber : [String]] = [20: ["cp20Override", "cp21Override", "cp22Override"]]
         let categories:NSMutableDictionary = [10: ["test"]]
         let searchTerm = "testSearchTerm"
-        let sessionProperties = MISessionProperties(properties: [10: ["sessionpar1"]])
 
-        MappIntelligence.shared()?.trackPage(withName: customName, pageProperties: MIPageProperties(pageParams: params, andWithPageCategory: categories, andWithSearch: searchTerm), sessionProperties: sessionProperties, userProperties: nil, ecommerceProperties: nil, advertisementProperties: nil)
+        let pageEvent = MIPageViewEvent(name: customName)
+        pageEvent.pageProperties = MIPageProperties(pageParams: params, andWithPageCategory: categories, andWithSearch: searchTerm)
+        pageEvent.sessionProperties = MISessionProperties(properties: [10: ["sessionpar1"]]);
+        
+        MappIntelligence.shared()?.trackPage(pageEvent)
         //or you can use this
-        MappIntelligence.shared()?.trackPage(with: self, pageProperties: MIPageProperties(pageParams: params, andWithPageCategory: categories, andWithSearch: searchTerm), sessionProperties: sessionProperties, userProperties: nil, ecommerceProperties: nil, advertisementProperties: nil)
+        MappIntelligence.shared()?.trackPage(with: self, andEvent:pageEvent)
     }
     
     @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {

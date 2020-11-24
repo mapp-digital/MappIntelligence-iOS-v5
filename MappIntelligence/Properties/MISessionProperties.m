@@ -18,7 +18,7 @@
     return  self;
 }
 
-- (NSMutableArray<NSURLQueryItem *> *)asQueryItemsFor:(MITrackerRequest *)request {
+- (NSMutableArray<NSURLQueryItem *> *)asQueryItems {
     NSMutableArray<NSURLQueryItem*>* items = [[NSMutableArray alloc] init];
     if (_properties) {
         for(NSNumber* key in _properties) {

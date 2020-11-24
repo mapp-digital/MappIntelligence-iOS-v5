@@ -226,34 +226,8 @@ static NSString *userAgent;
   return [self trackWith:CurrentSelectedCViewController];
 }
 #endif
-- (NSError *)trackWithEvent:(MIPageViewEvent *)event {
+- (NSError *)trackWithEvent:(MITrackingEvent *)event {
       if (![_defaults stringForKey:isFirstEventOfApp]) {
-        [_defaults setBool:YES forKey:isFirstEventOfApp];
-        [_defaults synchronize];
-        _isFirstEventOpen = YES;
-        _isFirstEventOfSession = YES;
-      } else {
-        _isFirstEventOpen = NO;
-      }
-    #ifdef TARGET_OS_WATCH
-        _isReady = YES;
-    #endif
-      dispatch_async(_queue,
-                     ^(void) {
-                       // Background Thread
-                       [self->_conditionUntilGetFNS lock];
-                       while (!self->_isReady)
-                         [self->_conditionUntilGetFNS wait];
-                         [self enqueueRequestForEvent:event];
-                         [self->_conditionUntilGetFNS signal];
-                         [self->_conditionUntilGetFNS unlock];
-                     });
-        
-        return NULL;
-}
-
-- (NSError *)trackAction:(MIActionEvent *)event {
-    if (![_defaults stringForKey:isFirstEventOfApp]) {
         [_defaults setBool:YES forKey:isFirstEventOfApp];
         [_defaults synchronize];
         _isFirstEventOpen = YES;
@@ -434,10 +408,9 @@ static NSString *userAgent;
     MIProperties *properties = [self generateRequestProperties];
     if (properties.isAppUpdated) {
         _isFirstEventOfSession = YES;
-        MIActionProperties *actionProperties = [[MIActionProperties alloc] initWithProperties:nil];
-        MISessionProperties *sessionProperties = [[MISessionProperties alloc] initWithProperties: @{@815:@[@"1"]}];
-        MIActionEvent *updateEvent = [[MIActionEvent alloc] initWithName:@"webtrekk_ignore" pageName:@"0" actionProperties:actionProperties sessionProperties:sessionProperties userProperties:nil ecommerceProperties:nil advertisementProperties:nil];
-        [self trackAction: updateEvent];
+        MIActionEvent *updateEvent = [[MIActionEvent alloc] initWithName:@"webtrekk_ignore"];
+        updateEvent.sessionProperties = [[MISessionProperties alloc] initWithProperties: @{@815:@[@"1"]}];
+        [self trackWithEvent: updateEvent];
     }
 }
 

@@ -7,12 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "MIPageProperties.h"
-#import "MISessionProperties.h"
-#import "MIActionProperties.h"
-#import "MIUserProperties.h"
-#import "MIEcommerceProperties.h"
-#import "MIAdvertisementProperties.h"
+#import "MIPageViewEvent.h"
+#import "MIActionEvent.h"
 
 typedef NS_ENUM(NSInteger, logWatchOSLevel) {
   allWatchOSLogs = 1,     // All logs of the above.
@@ -71,7 +67,7 @@ MappIntelligenceWatchOS.shared()?.initWithConfiguration([12345678, 8783291721], 
 @endcode
 @return Error that can happen while tracking. Returns nil if no error was detected.
 */
-- (NSError *_Nullable)trackPageWithName: (NSString *_Nonnull) name pageProperties:(MIPageProperties  *_Nullable)pageProperties sessionProperties: (MISessionProperties *_Nullable) sessionProperties userProperties: (MIUserProperties *_Nullable) userProperties ecommerceProperties: (MIEcommerceProperties *_Nullable) ecommerceProperties advertisementProperties: (MIAdvertisementProperties *_Nullable) advertisemementProperties;
+//- (NSError *_Nullable)trackPageWithName: (NSString *_Nonnull) name pageProperties:(MIPageProperties  *_Nullable)pageProperties sessionProperties: (MISessionProperties *_Nullable) sessionProperties userProperties: (MIUserProperties *_Nullable) userProperties ecommerceProperties: (MIEcommerceProperties *_Nullable) ecommerceProperties advertisementProperties: (MIAdvertisementProperties *_Nullable) advertisemementProperties;
 
 /**
 @brief Method which will track action event created from action properties and session properties.
@@ -89,9 +85,29 @@ MappIntelligenceWatchOS.shared()?.initWithConfiguration([12345678, 8783291721], 
  @endcode
 @return the error which may happen through process of tracking, if returns nil there is no error.
 */
-- (NSError *_Nullable) trackCustomEventWithName:(NSString *_Nonnull) name  actionProperties: (MIActionProperties *_Nullable) actionProperties sessionProperties: (MISessionProperties *_Nullable) sessionProperties userProperties: (MIUserProperties *_Nullable) userProperties ecommerceProperties: (MIEcommerceProperties *_Nullable) ecommerceProperties advertisementProperties: (MIAdvertisementProperties *_Nullable) advertisemementProperties;
+//- (NSError *_Nullable) trackCustomEventWithName:(NSString *_Nonnull) name  actionProperties: (MIActionProperties *_Nullable) actionProperties sessionProperties: (MISessionProperties *_Nullable) sessionProperties userProperties: (MIUserProperties *_Nullable) userProperties ecommerceProperties: (MIEcommerceProperties *_Nullable) ecommerceProperties advertisementProperties: (MIAdvertisementProperties *_Nullable) advertisemementProperties;
 
+/**
+@brief Method which will track page event
+@param event - page view event
+@code
+ let event = MIActionEvent(name: "TestAction")
+ MappIntelligenceWatchOS.shared()?.trackEvent(event);
+ @endcode
+@return the error which may happen through process of tracking, if returns nil there is no error.
+*/
+- (NSError *_Nullable) trackPage:(MIPageViewEvent *_Nonnull) event;
 
+/**
+@brief Method which will track action event
+@param event - action event
+@code
+ let event = MIActionEvent(name: "TestAction")
+ MappIntelligenceWatchOS.shared()?.trackAction(event);
+ @endcode
+@return the error which may happen through process of tracking, if returns nil there is no error.
+*/
+- (NSError *_Nullable) trackAction:(MIActionEvent *_Nonnull) event;
 /**
 @brief Method to reset the MappIntelligence singleton. This method will set the default empty values for trackID and track domain. Please ensure to provide new trackIDs and track domain.
 @code
