@@ -21,7 +21,7 @@ typedef NS_ENUM(NSInteger, Status) {
 @interface EcommerceProperties : NSObject
 
 @property (nullable) NSArray<Product*>* products;
-@property (nullable) Status* status;
+@property Status status;
 @property (nullable) NSString* currencyCode;
 @property (nullable) NSString* orderNumber;
 @property (nullable) NSString* orderValue;

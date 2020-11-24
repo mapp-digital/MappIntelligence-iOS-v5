@@ -80,7 +80,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func sendEcommerceEvent(_ sender: Any) {
-        let ecommerceProperties = EcommerceProperties(customProperties: [540 : ["ecommerce1", "ecommerce2"]])
+        let ecommerceProperties = EcommerceProperties(customProperties: [450 : ["ecommerce1", "ecommerce2"]])
         let product1 = Product()
         product1.name = "Product1Name"
         product1.price = "20$"
@@ -91,6 +91,7 @@ class ViewController: UIViewController {
         ecommerceProperties.products = [product1, product2, product3];
         ecommerceProperties.currencyCode = "$"
         ecommerceProperties.paymentMethod = "creditCard"
+        ecommerceProperties.status = .list
         MappIntelligence.shared()?.trackPage(with: self, pageProperties: nil, sessionProperties: nil, userProperties: nil, ecommerceProperties: ecommerceProperties)
     }
     

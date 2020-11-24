@@ -68,6 +68,10 @@
     }
 }
 
+- (void)setStatus:(Status *)status {
+    _status = status;
+}
+
 - (NSMutableArray<NSURLQueryItem *> *)getUserPredefinedPropertiesAsQueryItems {
     NSMutableArray<NSURLQueryItem*>* items = [[NSMutableArray alloc] init];
     
