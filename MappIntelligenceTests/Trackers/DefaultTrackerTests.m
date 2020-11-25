@@ -9,7 +9,7 @@
 #import <XCTest/XCTest.h>
 #import <UIKit/UIKit.h>
 #import "MiDefaultTracker.h"
-#import "MIEnviroment.h"
+#import "MIEnvironment.h"
 #import "MappIntelligence.h"
 
 @interface DefaultTrackerTests : XCTestCase
@@ -60,10 +60,9 @@
 
 - (void)testGenerateUserAgent {
     NSString* generatedUserAgent = [_tracker generateUserAgent];
-    MIEnviroment *env = [[MIEnviroment alloc] init];
-    NSString *properties = [env.operatingSystemName
-        stringByAppendingFormat:@" %@; %@; %@", env.operatingSystemVersionString,
-                                env.deviceModelString,
+    NSString *properties = [MIEnvironment.operatingSystemName
+        stringByAppendingFormat:@" %@; %@; %@", MIEnvironment.operatingSystemVersionString,
+                            MIEnvironment.deviceModelString,
                                 NSLocale.currentLocale.localeIdentifier];
 
     NSString* currentUserAgent =
@@ -103,7 +102,11 @@
     MISessionProperties* sessionProperties =  [[MISessionProperties alloc] initWithProperties: sessionDictionary];
     MIPageProperties* pageProperties = [[MIPageProperties alloc] initWithPageParams:details andWithPageCategory:groups andWithSearch:internalSearch];
     MIEcommerceProperties* ecommerceProperties = [[MIEcommerceProperties alloc] init];
-    MIPageViewEvent* pageViewEvent = [[MIPageViewEvent alloc] initWithName:@"the custom name" pageProperties:pageProperties sessionProperties:sessionProperties userProperties:nil ecommerceProperties:ecommerceProperties advertisementProperties:nil];
+    MIPageViewEvent* pageViewEvent = [[MIPageViewEvent alloc] initWithName:@"the custom name"];
+    pageViewEvent.pageProperties = pageProperties;
+    pageViewEvent.sessionProperties = sessionProperties;
+    pageViewEvent.ecommerceProperties = ecommerceProperties;
+    
     NSError* error = [_tracker trackWithEvent:pageViewEvent];
     //TODO: add reasonable error or it will return null always
     XCTAssertNil(error, @"There was an error while tracking page view event!");
@@ -116,8 +119,10 @@
     MISessionProperties* sessionProperties =  [[MISessionProperties alloc] initWithProperties: sessionDictionary];
     
     MIActionProperties* actionProperties = [[MIActionProperties alloc] initWithProperties:properties];
-    MIActionEvent *actionEvent = [[MIActionEvent alloc] initWithName: actionname pageName:@"0" actionProperties:actionProperties sessionProperties:sessionProperties userProperties:nil ecommerceProperties:nil advertisementProperties:nil];
-    NSError* error = [_tracker trackAction:actionEvent];
+    MIActionEvent *actionEvent = [[MIActionEvent alloc] initWithName: actionname];
+    actionEvent.actionProperties = actionProperties;
+    
+    NSError* error = [_tracker trackWithEvent:actionEvent];
     XCTAssertNil(error, @"There was an error while tracking action event!");
 }
 

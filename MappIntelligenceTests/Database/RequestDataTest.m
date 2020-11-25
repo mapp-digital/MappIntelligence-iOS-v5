@@ -31,7 +31,7 @@
     _date = [_dateFormatter dateFromString:dateStr];
     NSDictionary* keyedValues = @{
       @"id" : @123456,
-      @"track_domain" : @"www.domain.com",
+      @"track_domain" : @"https://www.domain.com",
       @"track_ids" : @"12,34",
       @"status" : @0,
       @"date" : [_dateFormatter stringFromDate:_date]
@@ -40,7 +40,7 @@
     
     keyedValues = @{
       @"id" : @7891234,
-      @"track_domain" : @"www.domain.com",
+      @"track_domain" : @"https://www.domain.com",
       @"track_ids" : @"56,78",
       @"status" : @0,
       @"date" : [_dateFormatter stringFromDate:_date]
@@ -50,14 +50,14 @@
     @"requests" :
             @[@{
                       @"id" : @123456,
-                      @"track_domain" : @"www.domain.com",
+                      @"track_domain" : @"https://www.domain.com",
                       @"track_ids" : @"12,34",
                       @"status" : @0,
                       @"date" : [_dateFormatter stringFromDate:_date]
                     },
                     @{
                       @"id" : @7891234,
-                      @"track_domain" : @"www.domain.com",
+                      @"track_domain" : @"https://www.domain.com",
                       @"track_ids" : @"56,78",
                       @"status" : @0,
                       @"date" : [_dateFormatter stringFromDate:_date]
@@ -99,7 +99,7 @@
 
 - (void)testPrint {
     _requestData = [[MIRequestData alloc] initWithKeyedValues:_keyedValues];
-    NSString* expectedString = @"ID: 123456 and domain: www.domain.com and ids: 12,34 and date: 2020-08-27 15:16:32 +0000 and paramters: ID: 7891234 and domain: www.domain.com and ids: 56,78 and date: 2020-08-27 15:16:32 +0000 and paramters: ";
+    NSString* expectedString = @"ID: 123456 and domain: https://www.domain.com and ids: 12,34 and date: 2020-08-27 15:16:32 +0000 and paramters: ID: 7891234 and domain: https://www.domain.com and ids: 56,78 and date: 2020-08-27 15:16:32 +0000 and paramters: ";
     NSString* printedString = [_requestData print];
     XCTAssertTrue([expectedString isEqualToString:printedString], @"The printed string is not the same as we expect for requested data!");
 }

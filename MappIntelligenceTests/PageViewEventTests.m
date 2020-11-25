@@ -48,7 +48,12 @@
     _advertisementProperties.action = view;
     _advertisementProperties.customProperties = @{@1: @[@"ECOMM"]};
     
-    _pageViewEvent = [[MIPageViewEvent alloc] initWithName:@"test custom name" pageProperties:_pageProperties sessionProperties:_sessionProperties userProperties:_userProperties ecommerceProperties:_ecommerceProperties advertisementProperties:_advertisementProperties];
+    _pageViewEvent = [[MIPageViewEvent alloc] initWithName:@"test custom name"];
+    _pageViewEvent.pageProperties = _pageProperties;
+    _pageViewEvent.sessionProperties = _sessionProperties;
+    _pageViewEvent.userProperties = _userProperties;
+    _pageViewEvent.advertisementProperties = _advertisementProperties;
+    _pageViewEvent.ecommerceProperties = _ecommerceProperties;
 }
 
 - (void)tearDown {

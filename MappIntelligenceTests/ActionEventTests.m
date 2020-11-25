@@ -43,7 +43,12 @@
     _advertisementProperties.oncePerSession = YES;
     _advertisementProperties.action = view;
     _advertisementProperties.customProperties = @{@1: @[@"ECOMM"]};
-    _actionEvent = [[MIActionEvent alloc] initWithName:@"TestAction" pageName:@"0" actionProperties:_actionProperties sessionProperties:_sessionProperties userProperties:_userProperties ecommerceProperties:_ecommerceProperties advertisementProperties:_advertisementProperties];
+    _actionEvent = [[MIActionEvent alloc] initWithName:@"TestAction"];
+    _actionEvent.actionProperties = _actionProperties;
+    _actionEvent.sessionProperties = _sessionProperties;
+    _actionEvent.userProperties = _userProperties;
+    _actionEvent.ecommerceProperties = _ecommerceProperties;
+    _actionEvent.advertisementProperties = _advertisementProperties;
 }
 
 - (void)tearDown {

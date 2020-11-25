@@ -65,7 +65,7 @@
     MITrackerRequest *request = [[MITrackerRequest alloc] initWithEvent:event andWithProperties:properies];
     
     //3.get resulted list of query items
-    NSMutableArray<NSURLQueryItem*>* result = [_pageProperties asQueryItemsFor:request];
+    NSMutableArray<NSURLQueryItem*>* result = [_pageProperties asQueryItems];
     
     XCTAssertTrue([expectedItems isEqualToArray:result], @"The expected query is not the same as ones from result!");
 }
