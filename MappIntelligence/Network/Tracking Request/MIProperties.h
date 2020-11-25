@@ -24,9 +24,6 @@ typedef NS_ENUM(NSInteger, ConnectionType) {
 
 @property NSUUID *advertisingId;
 @property BOOL advertisingTrackingEnabled;
-@property (readonly, getter=getAppVersion) NSString *appVersion;
-@property (readonly, getter=getBuildVersion) NSString *buildVersion;
-@property (readonly, getter=isAppUpdated) BOOL appUpdated;
 @property ConnectionType connectionType;
 @property NSString *everId;
 @property BOOL isFirstEventAfterAppUpdate;

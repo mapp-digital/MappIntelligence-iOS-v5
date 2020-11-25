@@ -5,7 +5,7 @@
 //  Created by Vladan Randjelovic on 17/01/2020.
 //  Copyright © 2020 Mapp Digital US, LLC. All rights reserved.
 //
-#import "Config.h"
+#import "MIConfig.h"
 #import "MIDefaultTracker.h"
 
 extern NSTimeInterval const requestIntervalDefault;
@@ -14,7 +14,7 @@ extern BOOL const batchSupportDefault;
 extern NSInteger const requestPerQueueDefault;
 extern NSInteger const batchSupportSizeDefault;
 
-@interface MappIntelligenceDefaultConfig : NSObject <Config, NSCoding>
+@interface MappIntelligenceDefaultConfig : NSObject <MIConfig, NSCoding>
 
 - (void)logConfig;
 - (void) reset;

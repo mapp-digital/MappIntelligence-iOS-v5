@@ -34,11 +34,22 @@
 
     }
     if (_customProperties) {
+        _customProperties = [self filterCustomDict:_customProperties];
         for(NSNumber* key in _customProperties) {
             [items addObject:[[NSURLQueryItem alloc] initWithName:[NSString stringWithFormat:@"cc%@",key] value: [_customProperties[key] componentsJoinedByString:@";"]]];
         }
     }
     return items;
+}
+
+- (NSDictionary<NSNumber* ,NSArray<NSString*>*> *) filterCustomDict: (NSDictionary<NSNumber* ,NSArray<NSString*>*> *) dict{
+    NSMutableDictionary *result = [[NSMutableDictionary alloc] init];
+    for (NSNumber *idx in dict) {
+        if (idx.intValue > 0) {
+            [result setObject:dict[idx] forKey:idx];
+        }
+    }
+    return result;
 }
 
 - (id)copyWithZone:(NSZone *)zone {

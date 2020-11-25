@@ -23,6 +23,7 @@
 - (NSMutableArray<NSURLQueryItem*>*)asQueryItems {
     NSMutableArray<NSURLQueryItem*>* items = [[NSMutableArray alloc] init];
     if (_details) {
+        _details = [self filterCustomDict:_details];
         for(NSNumber* key in _details) {
             [items addObject:[[NSURLQueryItem alloc] initWithName:[NSString stringWithFormat:@"cp%@",key] value: [_details[key] componentsJoinedByString:@";"]]];
         }
@@ -38,4 +39,13 @@
     return items;
 }
 
+- (NSDictionary<NSNumber* ,NSArray<NSString*>*> *) filterCustomDict: (NSDictionary<NSNumber* ,NSArray<NSString*>*> *) dict{
+    NSMutableDictionary *result = [[NSMutableDictionary alloc] init];
+    for (NSNumber *idx in dict) {
+        if (idx.intValue > 0) {
+            [result setObject:dict[idx] forKey:idx];
+        }
+    }
+    return result;
+}
 @end

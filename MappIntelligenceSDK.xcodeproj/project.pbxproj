@@ -123,7 +123,7 @@
 		A35C79072452FC1100D36144 /* MappIntelligenceDefaultConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD5E2C423CF38F300CE2092 /* MappIntelligenceDefaultConfig.m */; };
 		A35C79082452FC1100D36144 /* MappIntelligenceLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = BCEAE6B723BF5A8B007F410D /* MappIntelligenceLogger.m */; };
 		A35C79092452FC9D00D36144 /* MIRequestTrackerBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = A380D2072412D8F2009E2CD8 /* MIRequestTrackerBuilder.m */; };
-		A35C790A2452FCB700D36144 /* MIEnviroment.m in Sources */ = {isa = PBXBuildFile; fileRef = A380D2032412B0AB009E2CD8 /* MIEnviroment.m */; };
+		A35C790A2452FCB700D36144 /* MIEnvironment.m in Sources */ = {isa = PBXBuildFile; fileRef = A380D2032412B0AB009E2CD8 /* MIEnvironment.m */; };
 		A35C790B2452FCB700D36144 /* MIConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = A380D20B2413D317009E2CD8 /* MIConfiguration.m */; };
 		A35C790C2452FCB700D36144 /* MIUIFlowObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = A3EAFF602418E02F009D5108 /* MIUIFlowObserver.m */; };
 		A35C790D2452FCB700D36144 /* MIRequestUrlBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = A380D20F2413ED35009E2CD8 /* MIRequestUrlBuilder.m */; };
@@ -140,7 +140,7 @@
 		A36C6E0424323903008A9CB6 /* MIRequestTrackerBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = A380D2072412D8F2009E2CD8 /* MIRequestTrackerBuilder.m */; };
 		A36C6E052432390B008A9CB6 /* MITrackingEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = A380D1F92411478C009E2CD8 /* MITrackingEvent.m */; };
 		A36C6E0624323917008A9CB6 /* MIRequestUrlBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = A380D20F2413ED35009E2CD8 /* MIRequestUrlBuilder.m */; };
-		A36C6E072432392A008A9CB6 /* MIEnviroment.m in Sources */ = {isa = PBXBuildFile; fileRef = A380D2032412B0AB009E2CD8 /* MIEnviroment.m */; };
+		A36C6E072432392A008A9CB6 /* MIEnvironment.m in Sources */ = {isa = PBXBuildFile; fileRef = A380D2032412B0AB009E2CD8 /* MIEnvironment.m */; };
 		A36C6E0824323931008A9CB6 /* MIConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = A380D20B2413D317009E2CD8 /* MIConfiguration.m */; };
 		A36C6E092432393A008A9CB6 /* MIUIFlowObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = A3EAFF602418E02F009D5108 /* MIUIFlowObserver.m */; };
 		A36C6E0A24323F17008A9CB6 /* MIURLSizeMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = A380D21324141B55009E2CD8 /* MIURLSizeMonitor.m */; };
@@ -153,8 +153,8 @@
 		A380D1FB2411478C009E2CD8 /* MITrackingEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = A380D1F92411478C009E2CD8 /* MITrackingEvent.m */; };
 		A380D1FF241296FD009E2CD8 /* MIPageViewEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = A380D1FD241296FD009E2CD8 /* MIPageViewEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A380D200241296FD009E2CD8 /* MIPageViewEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = A380D1FE241296FD009E2CD8 /* MIPageViewEvent.m */; };
-		A380D2042412B0AB009E2CD8 /* MIEnviroment.h in Headers */ = {isa = PBXBuildFile; fileRef = A380D2022412B0AB009E2CD8 /* MIEnviroment.h */; };
-		A380D2052412B0AB009E2CD8 /* MIEnviroment.m in Sources */ = {isa = PBXBuildFile; fileRef = A380D2032412B0AB009E2CD8 /* MIEnviroment.m */; };
+		A380D2042412B0AB009E2CD8 /* MIEnvironment.h in Headers */ = {isa = PBXBuildFile; fileRef = A380D2022412B0AB009E2CD8 /* MIEnvironment.h */; };
+		A380D2052412B0AB009E2CD8 /* MIEnvironment.m in Sources */ = {isa = PBXBuildFile; fileRef = A380D2032412B0AB009E2CD8 /* MIEnvironment.m */; };
 		A380D2082412D8F2009E2CD8 /* MIRequestTrackerBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = A380D2062412D8F2009E2CD8 /* MIRequestTrackerBuilder.h */; };
 		A380D2092412D8F2009E2CD8 /* MIRequestTrackerBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = A380D2072412D8F2009E2CD8 /* MIRequestTrackerBuilder.m */; };
 		A380D20C2413D317009E2CD8 /* MIConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = A380D20A2413D317009E2CD8 /* MIConfiguration.h */; };
@@ -200,7 +200,7 @@
 		BCBE5C3A23F698EF002125C1 /* DefaultTrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBE5C3923F698EF002125C1 /* DefaultTrackerTests.m */; };
 		BCCAE6D0240D29A9005E9FD6 /* MappIntelligenceLogger.m in Headers */ = {isa = PBXBuildFile; fileRef = BCEAE6B723BF5A8B007F410D /* MappIntelligenceLogger.m */; };
 		BCCAE6D2240D2E16005E9FD6 /* MappIntelligenceDefaultConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = BCA1738123D5C12A00B31430 /* MappIntelligenceDefaultConfig.h */; };
-		BCD5E2C323CF309900CE2092 /* Config.h in Sources */ = {isa = PBXBuildFile; fileRef = BCD5E2C223CF309900CE2092 /* Config.h */; };
+		BCD5E2C323CF309900CE2092 /* MIConfig.h in Sources */ = {isa = PBXBuildFile; fileRef = BCD5E2C223CF309900CE2092 /* MIConfig.h */; };
 		BCD5E2C523CF38F300CE2092 /* MappIntelligenceDefaultConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD5E2C423CF38F300CE2092 /* MappIntelligenceDefaultConfig.m */; };
 		BCEAE6B823BF5A8B007F410D /* MappIntelligenceLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = BCEAE6B723BF5A8B007F410D /* MappIntelligenceLogger.m */; };
 /* End PBXBuildFile section */
@@ -392,8 +392,8 @@
 		A380D1F92411478C009E2CD8 /* MITrackingEvent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MITrackingEvent.m; sourceTree = "<group>"; };
 		A380D1FD241296FD009E2CD8 /* MIPageViewEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MIPageViewEvent.h; sourceTree = "<group>"; };
 		A380D1FE241296FD009E2CD8 /* MIPageViewEvent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MIPageViewEvent.m; sourceTree = "<group>"; };
-		A380D2022412B0AB009E2CD8 /* MIEnviroment.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MIEnviroment.h; sourceTree = "<group>"; };
-		A380D2032412B0AB009E2CD8 /* MIEnviroment.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MIEnviroment.m; sourceTree = "<group>"; };
+		A380D2022412B0AB009E2CD8 /* MIEnvironment.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MIEnvironment.h; sourceTree = "<group>"; };
+		A380D2032412B0AB009E2CD8 /* MIEnvironment.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MIEnvironment.m; sourceTree = "<group>"; };
 		A380D2062412D8F2009E2CD8 /* MIRequestTrackerBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MIRequestTrackerBuilder.h; sourceTree = "<group>"; };
 		A380D2072412D8F2009E2CD8 /* MIRequestTrackerBuilder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MIRequestTrackerBuilder.m; sourceTree = "<group>"; };
 		A380D20A2413D317009E2CD8 /* MIConfiguration.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MIConfiguration.h; sourceTree = "<group>"; };
@@ -427,7 +427,7 @@
 		BCBE5C0723F1A688002125C1 /* MIDefaultTracker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MIDefaultTracker.h; sourceTree = "<group>"; };
 		BCBE5C0823F29E49002125C1 /* MIDefaultTracker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MIDefaultTracker.m; sourceTree = "<group>"; };
 		BCBE5C3923F698EF002125C1 /* DefaultTrackerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = DefaultTrackerTests.m; path = MappIntelligenceTests/Trackers/DefaultTrackerTests.m; sourceTree = SOURCE_ROOT; };
-		BCD5E2C223CF309900CE2092 /* Config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
+		BCD5E2C223CF309900CE2092 /* MIConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MIConfig.h; sourceTree = "<group>"; };
 		BCD5E2C423CF38F300CE2092 /* MappIntelligenceDefaultConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MappIntelligenceDefaultConfig.m; sourceTree = "<group>"; };
 		BCEA32C123E979FD003AF806 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BCEAE6B523BF5912007F410D /* MappIntelligenceLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MappIntelligenceLogger.h; sourceTree = "<group>"; };
@@ -634,7 +634,7 @@
 				BCEAE6B923C32EDC007F410D /* PersistanceLayer */,
 				BCEAE6B423BF58A2007F410D /* Log */,
 				A334866D23BF567700D0EB5F /* Network */,
-				BCD5E2C223CF309900CE2092 /* Config.h */,
+				BCD5E2C223CF309900CE2092 /* MIConfig.h */,
 				A334861B23BF3E2300D0EB5F /* MappIntelligence.h */,
 				A334861C23BF3E2300D0EB5F /* MappIntelligence.m */,
 				A337446124C844580096259B /* MappIntelligenceSDK.h */,
@@ -756,8 +756,8 @@
 		A380D2012412B095009E2CD8 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
-				A380D2022412B0AB009E2CD8 /* MIEnviroment.h */,
-				A380D2032412B0AB009E2CD8 /* MIEnviroment.m */,
+				A380D2022412B0AB009E2CD8 /* MIEnvironment.h */,
+				A380D2032412B0AB009E2CD8 /* MIEnvironment.m */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -860,7 +860,7 @@
 				A337445C24C1A12A0096259B /* MIPageProperties.h in Headers */,
 				A338B78B2546FD1E00E50C28 /* MIEcommerceProperties.h in Headers */,
 				A3D9835224AE298200AF0CD8 /* MIRequestBatchSupportUrlBuilder.h in Headers */,
-				A380D2042412B0AB009E2CD8 /* MIEnviroment.h in Headers */,
+				A380D2042412B0AB009E2CD8 /* MIEnvironment.h in Headers */,
 				A380D2082412D8F2009E2CD8 /* MIRequestTrackerBuilder.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1135,7 +1135,7 @@
 				A36C6E0824323931008A9CB6 /* MIConfiguration.m in Sources */,
 				A338B79A25470A1F00E50C28 /* MIProduct.m in Sources */,
 				8FEC887A25598E6500E24EDC /* MIDeepLink.m in Sources */,
-				A36C6E072432392A008A9CB6 /* MIEnviroment.m in Sources */,
+				A36C6E072432392A008A9CB6 /* MIEnvironment.m in Sources */,
 				A36C6E0624323917008A9CB6 /* MIRequestUrlBuilder.m in Sources */,
 				A3CC549A249151E3006215FD /* MIRequest.m in Sources */,
 				A36C6E052432390B008A9CB6 /* MITrackingEvent.m in Sources */,
@@ -1181,10 +1181,10 @@
 				A3CC5487248FC418006215FD /* MIDatabaseManager.m in Sources */,
 				8FDF7108250B9E4D00818E51 /* MIActionProperties.m in Sources */,
 				BCD5E2C523CF38F300CE2092 /* MappIntelligenceDefaultConfig.m in Sources */,
-				BCD5E2C323CF309900CE2092 /* Config.h in Sources */,
+				BCD5E2C323CF309900CE2092 /* MIConfig.h in Sources */,
 				8F423EDB254B17D900DE191D /* MIAdvertisementProperties.m in Sources */,
 				A337445D24C1A12A0096259B /* MIPageProperties.m in Sources */,
-				A380D2052412B0AB009E2CD8 /* MIEnviroment.m in Sources */,
+				A380D2052412B0AB009E2CD8 /* MIEnvironment.m in Sources */,
 				A3CC548F249125F0006215FD /* MIRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1252,7 +1252,7 @@
 				A35C79112452FCD600D36144 /* MIURLSizeMonitor.m in Sources */,
 				A338B79B25470A1F00E50C28 /* MIProduct.m in Sources */,
 				8FEC887B25598E6500E24EDC /* MIDeepLink.m in Sources */,
-				A35C790A2452FCB700D36144 /* MIEnviroment.m in Sources */,
+				A35C790A2452FCB700D36144 /* MIEnvironment.m in Sources */,
 				A35C790B2452FCB700D36144 /* MIConfiguration.m in Sources */,
 				A3CC549B249151E5006215FD /* MIRequest.m in Sources */,
 				A35C790C2452FCB700D36144 /* MIUIFlowObserver.m in Sources */,

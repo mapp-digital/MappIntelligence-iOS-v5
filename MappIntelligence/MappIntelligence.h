@@ -62,18 +62,6 @@ typedef NS_ENUM(NSInteger, logLevel) {
 #endif
 
 /**
-@brief Method which will track any event
-@param event - event can be either MIActionEvent or MIPageViewEvent
-@code
- let event = MIActionEvent(name: "TestAction")
- MappIntelligence.shared()?.trackEvent(event);
- @endcode
-@return the error which may happen through process of tracking, if returns nil there is no error.
-*/
-#warning "If we dont need this we shuld remove it"
--(NSError *_Nullable) trackEvent:(MITrackingEvent *_Nonnull) event;
-
-/**
 @brief Method which will track page event
 @param event - page view event
 @code

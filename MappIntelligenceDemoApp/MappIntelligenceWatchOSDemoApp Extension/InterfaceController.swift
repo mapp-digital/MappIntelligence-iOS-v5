@@ -53,7 +53,7 @@ class InterfaceController: WKInterfaceController {
         
         let userProperties = MIUserProperties()
         userProperties.customProperties = [20:["Test"]]
-        userProperties.birthday = Birthday(day: 12, month: 0, year: 1993)
+        userProperties.birthday = MIBirthday(day: 12, month: 0, year: 1993)
         userProperties.city = "Paris"
         userProperties.country = "France"
         userProperties.customerId = "CustomerID"

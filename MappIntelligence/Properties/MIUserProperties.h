@@ -10,28 +10,27 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef struct Birthday {
+typedef struct MIBirthday {
     int day;
     int month;
     int year;
-} Birthday;
+} MIBirthday;
 
-typedef NS_ENUM(NSInteger, Gender) {
+typedef NS_ENUM(NSInteger, MIGender) {
     unknown,
     male,
     female
-    
 };
 
 @interface MIUserProperties : NSObject
 
-@property Birthday birthday;
+@property MIBirthday birthday;
 @property (nullable) NSString *city;
 @property (nullable) NSString *country;
 @property (nullable) NSString *emailAddress;
 @property (nullable) NSString *emailReceiverId;
 @property (nullable) NSString *firstName;
-@property Gender gender;
+@property MIGender gender;
 @property (nullable) NSString *customerId;
 @property (nullable) NSString *lastName;
 @property BOOL newsletterSubscribed;

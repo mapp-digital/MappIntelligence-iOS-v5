@@ -70,36 +70,6 @@ static MappIntelligenceDefaultConfig *config = nil;
 }
 
 #if !TARGET_OS_WATCH
-#warning "Is this obsolete?"
-//- (NSError *_Nullable)trackPage:(UIViewController *)controller {
-//    if ([config optOut]) {
-//        [_logger logObj:@"You are opted-out. No track requests are sent to the server anymore." forDescription:kMappIntelligenceLogLevelDescriptionDebug];
-//        return NULL;
-//    }
-//    if (![config isConfiguredForTracking]) {
-//        return NULL;
-//    }
-//  return [tracker track:controller];
-//}
-
-//- (NSError *_Nullable)trackPageWithViewController:(UIViewController *_Nonnull)controller pageProperties:(MIPageProperties  *_Nullable)pageProperties sessionProperties:(MISessionProperties *_Nullable) sessionProperties userProperties: (MIUserProperties *_Nullable) userProperties ecommerceProperties: (MIEcommerceProperties *_Nullable) ecommerceProperties advertisementProperties:(MIAdvertisementProperties * _Nullable)advertisemementProperties{
-//    if ([config optOut]) {
-//         [_logger logObj:@"You are opted-out. No track requests are sent to the server anymore." forDescription:kMappIntelligenceLogLevelDescriptionDebug];
-//        return NULL;
-//    }
-//    if (![config isConfiguredForTracking]) {
-//        return NULL;
-//    }
-//    NSString* name = NSStringFromClass([controller class]);
-//    MIPageViewEvent *event = [[MIPageViewEvent alloc] initWithName:name];
-//    event.pageProperties = pageProperties;
-//    event.sessionProperties = sessionProperties;
-//    event.advertisementProperties = advertisemementProperties;
-//    event.ecommerceProperties = ecommerceProperties;
-//    event.userProperties = userProperties;
-//    return [tracker trackWithEvent:event];
-//}
-
 - (NSError *_Nullable)trackPageWithViewController:(UIViewController *_Nonnull)controller andEvent:(MIPageViewEvent*_Nonnull) event {
     if (![self isTrackingEnabled]) {
         return nil;
@@ -280,22 +250,6 @@ static MappIntelligenceDefaultConfig *config = nil;
 - (void)removeRequestFromDatabaseWithID: (int)ID; {
     [[MIDatabaseManager shared] deleteRequest:ID];
 }
-
--(NSError *_Nullable) trackEvent:(MITrackingEvent *_Nonnull) event {
-    if (![self isTrackingEnabled]) {
-        return nil;
-    }
-    if (![event isKindOfClass:MIActionEvent.class] && ![event isKindOfClass:MIPageViewEvent.class]) {
-        [_logger logObj:@"Event must be MIActionEvent or MIPageViewEvent!" forDescription:kMappIntelligenceLogLevelDescriptionDebug];
-        return nil;
-    }
-    if ([event isKindOfClass:MIActionEvent.class]) {
-        event.pageName = @"0";
-    }
-    return [tracker trackWithEvent:event];
-}
-
-
 
 - (NSError *_Nullable) trackPage:(MIPageViewEvent *_Nonnull) event {
     if (![self isTrackingEnabled]) {

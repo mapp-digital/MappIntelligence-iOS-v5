@@ -25,15 +25,6 @@ typedef NS_ENUM(NSInteger, MappIntelligenceLogLevelDescription) {
       7, // None of the logs will be displayed
 };
 
-#warning "Do we need this logger from Apoxee :) ?"
-//#define INTERNAL_DEBUG // comment out to remove internal logs
-#ifdef INTERNAL_DEBUG
-#define AppLog(fmt, ...)                                                       \
-  NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__,                 \
-        ##__VA_ARGS__); // for Logging inside the SDK
-#else
-#define AppLog(...)
-#endif
 
 @interface MappIntelligenceLogger : NSObject
 

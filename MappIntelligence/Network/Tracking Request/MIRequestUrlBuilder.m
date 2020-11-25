@@ -16,6 +16,7 @@
 #import "MIActionEvent.h"
 #import "MITrackingEvent.h"
 #import "MIDeepLink.h"
+#import "MIEnvironment.h"
 
 #if TARGET_OS_WATCH
 #import <WatchKit/WatchKit.h>
@@ -190,10 +191,10 @@
     }
     
     if (properties.isFirstEventOfSession) {
-        if (properties.appVersion) {
-            [parametrs addObject:[NSURLQueryItem queryItemWithName:@"cs804" value: properties.appVersion]];
+        if (MIEnvironment.appVersion) {
+            [parametrs addObject:[NSURLQueryItem queryItemWithName:@"cs804" value: MIEnvironment.appVersion]];
         }
-        [parametrs addObject:[NSURLQueryItem queryItemWithName:@"cs805" value: properties.buildVersion]];
+        [parametrs addObject:[NSURLQueryItem queryItemWithName:@"cs805" value: MIEnvironment.buildVersion]];
         [parametrs addObject:[NSURLQueryItem queryItemWithName:@"cs821" value: properties.isFirstEventOfApp ? @"1": @"0"]];
     }
     [parametrs addObject:[NSURLQueryItem queryItemWithName:@"eor" value:@"1"]];

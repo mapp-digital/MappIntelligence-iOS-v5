@@ -16,6 +16,9 @@ NS_ASSUME_NONNULL_BEGIN
 + (NSString *)operatingSystemName;
 + (NSString *)operatingSystemVersionString;
 + (NSString *)appVersion;
++ (NSString *)buildVersion;
++ (BOOL)appUpdated;
+
 @end
 
 NS_ASSUME_NONNULL_END

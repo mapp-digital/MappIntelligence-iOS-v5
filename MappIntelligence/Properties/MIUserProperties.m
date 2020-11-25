@@ -93,8 +93,7 @@
     }
     return @"";
 }
-#warning "Do we need to check for this in all properties since NSNumber can be any number?"
-//ensures it returns positive integer value
+
 - (NSDictionary<NSNumber* ,NSArray<NSString*>*> *) filterCustomDict: (NSDictionary<NSNumber* ,NSArray<NSString*>*> *) dict{
     NSMutableDictionary *result = [[NSMutableDictionary alloc] init];
     for (NSNumber *idx in dict) {
@@ -103,7 +102,6 @@
         }
     }
     return result;
-    
 }
 
 - (NSMutableArray<NSURLQueryItem*>*) removeObjectWith:(NSString *) name from: (NSMutableArray<NSURLQueryItem*> *) items {

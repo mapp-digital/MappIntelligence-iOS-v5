@@ -1,5 +1,5 @@
 //
-//  Config.h
+//  MIConfig.h
 //  Webrekk
 //
 //  Created by Vladan Randjelovic on 15/01/2020.
@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "MappIntelligenceLogger.h"
 
-@protocol Config
+@protocol MIConfig
 
 // MappIntelligence default configuration parameters:
 

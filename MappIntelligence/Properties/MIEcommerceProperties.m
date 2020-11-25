@@ -137,12 +137,11 @@
 - (NSDictionary<NSNumber* ,NSArray<NSString*>*> *) filterCustomDict: (NSDictionary<NSNumber* ,NSArray<NSString*>*> *) dict{
     NSMutableDictionary *result = [[NSMutableDictionary alloc] init];
     for (NSNumber *idx in dict) {
-        if (idx.intValue < 500 && idx.intValue > 0) {
+        if (idx.intValue > 0) {
             [result setObject:dict[idx] forKey:idx];
         }
     }
     return result;
-    
 }
 
 @end

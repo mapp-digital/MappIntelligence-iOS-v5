@@ -15,7 +15,7 @@
 #import "MappIntelligenceLogger.h"
 #import "MappIntelligence.h"
 #import "MIProperties.h"
-#import "MIEnviroment.h"
+#import "MIEnvironment.h"
 #import "MIConfiguration.h"
 #import "MIRequestTrackerBuilder.h"
 #import "MITrackerRequest.h"
@@ -140,10 +140,10 @@ static NSString *userAgent;
 }
 
 - (NSString*)generateUserAgent {
-  MIEnviroment *env = [[MIEnviroment alloc] init];
-  NSString *properties = [env.operatingSystemName
-      stringByAppendingFormat:@" %@; %@; %@", env.operatingSystemVersionString,
-                              env.deviceModelString,
+//  MIEnvironment *env = [[MIEnviroment alloc] init];
+  NSString *properties = [MIEnvironment.operatingSystemName
+      stringByAppendingFormat:@" %@; %@; %@", MIEnvironment.operatingSystemVersionString,
+                            MIEnvironment.deviceModelString,
                               NSLocale.currentLocale.localeIdentifier];
 
   userAgent =
@@ -322,8 +322,7 @@ static NSString *userAgent;
 
     MITrackerRequest *request =
       [builder createRequestWith:event andWith:requestProperties];
-#warning "What is this for?"
-  NSURL *requestUrl = [_requestUrlBuilder urlForRequest:request];
+   [_requestUrlBuilder urlForRequest:request];
     MIRequest *r = [self->_requestUrlBuilder dbRequest];
     [r setStatus:ACTIVE];
     BOOL status = [[MIDatabaseManager shared] insertRequest:r];
@@ -405,8 +404,7 @@ static NSString *userAgent;
     if (!_queue) {
         return;
     }
-    MIProperties *properties = [self generateRequestProperties];
-    if (properties.isAppUpdated) {
+    if (MIEnvironment.appUpdated) {
         _isFirstEventOfSession = YES;
         MIActionEvent *updateEvent = [[MIActionEvent alloc] initWithName:@"webtrekk_ignore"];
         updateEvent.sessionProperties = [[MISessionProperties alloc] initWithProperties: @{@815:@[@"1"]}];

@@ -12,20 +12,8 @@
 
 @synthesize pageName = _pageName;
 
-- (instancetype)initWithName:(NSString *)name pageProperties:(MIPageProperties *)pageProperties {
+- (instancetype)initWithName:(NSString *)name {
     self = [super init];
-    _pageProperties = pageProperties;
-    _pageName = name;
-    return self;
-}
-
-- (instancetype)initWithName:(NSString *)name pageProperties:(MIPageProperties *)pageProperties sessionProperties: (MISessionProperties *_Nullable) sessionProperties userProperties: (MIUserProperties *_Nullable) userProperties ecommerceProperties:(MIEcommerceProperties * _Nullable)ecommerceProperties advertisementProperties: (MIAdvertisementProperties *_Nullable) advertisementProperties{
-    self = [super init];
-    _pageProperties = pageProperties;
-    _sessionProperties = sessionProperties;
-    _userProperties = userProperties;
-    _ecommerceProperties = ecommerceProperties;
-    _advertisementProperties = advertisementProperties;
     _pageName = name;
     return self;
 }
