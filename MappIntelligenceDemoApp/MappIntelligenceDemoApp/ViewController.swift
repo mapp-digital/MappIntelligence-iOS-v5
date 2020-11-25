@@ -91,7 +91,7 @@ class ViewController: UIViewController {
         ecommerceProperties.products = [product1, product2, product3];
         ecommerceProperties.currencyCode = "$"
         ecommerceProperties.paymentMethod = "creditCard"
-        ecommerceProperties.status = .list
+        ecommerceProperties.status = .addedToBasket
         MappIntelligence.shared()?.trackPage(with: self, pageProperties: nil, sessionProperties: nil, userProperties: nil, ecommerceProperties: ecommerceProperties)
     }
     
