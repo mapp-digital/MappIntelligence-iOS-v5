@@ -68,6 +68,7 @@ class ViewControllerTV: UIViewController {
         let product2 = MIProduct()
         let product3 = MIProduct()
         product3.price = "348$"
+        ecommerceProperties.status = .addedToBasket
         ecommerceProperties.products = [product1, product2, product3];
         ecommerceProperties.currencyCode = "$"
         ecommerceProperties.paymentMethod = "creditCard"

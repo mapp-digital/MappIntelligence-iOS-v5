@@ -12,6 +12,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 typedef NS_ENUM(NSInteger, Status) {
+    noneStatus,
     addedToBasket,
     purchased,
     viewed,
@@ -21,7 +22,7 @@ typedef NS_ENUM(NSInteger, Status) {
 @interface MIEcommerceProperties : NSObject
 
 @property (nullable) NSArray<MIProduct*>* products;
-@property (nullable) Status* status;
+@property Status status;
 @property (nullable) NSString* currencyCode;
 @property (nullable) NSString* orderNumber;
 @property (nullable) NSString* orderValue;
