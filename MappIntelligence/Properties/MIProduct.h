@@ -13,13 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface MIProduct : NSObject
 
 @property (nonatomic, nullable) NSString* name;
-@property (nonatomic, nullable) NSString* price;
+@property (nonatomic, nullable) NSNumber* cost;
 @property (nonatomic, nullable) NSNumber* quantity;
-//TODO: Do we need this here or at e-commerce properties? 
-//@property (nullable) Status* status;
-//@property (nullable) NSString* currencyCode;
-//@property (nullable) NSString* orderNumber;
-//@property (nullable) NSString* orderValue;
 
 @end
 

@@ -14,7 +14,4 @@
     return (_name == NULL) ? @"" : _name;
 }
 
-- (NSString *)price {
-    return (_price == NULL) ? @"" : _price;
-}
 @end

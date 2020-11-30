@@ -74,7 +74,7 @@ class ViewController: UIViewController {
         userProperties.customerId = "CustomerID"
         userProperties.gender = .female
         let ecommerceProperties = MIEcommerceProperties()
-        ecommerceProperties.cuponValue = 33
+        ecommerceProperties.couponValue = 33
         
         let event = MIActionEvent(name: "TestAction")
         event.userProperties = userProperties;
@@ -89,14 +89,14 @@ class ViewController: UIViewController {
         let ecommerceProperties = MIEcommerceProperties(customProperties: [540 : ["ecommerce1", "ecommerce2"]])
         let product1 = MIProduct()
         product1.name = "Product1Name"
-        product1.price = "20$"
+        product1.cost = 20
         product1.quantity = 34
         let product2 = MIProduct()
         let product3 = MIProduct()
-        product3.price = "348$"
+        product3.cost = 348
         ecommerceProperties.status = .addedToBasket
         ecommerceProperties.products = [product1, product2, product3];
-        ecommerceProperties.currencyCode = "$"
+        ecommerceProperties.currency = "EUR"
         ecommerceProperties.paymentMethod = "creditCard"
         
         let pageEvent = MIPageViewEvent()

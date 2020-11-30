@@ -15,22 +15,21 @@ typedef NS_ENUM(NSInteger, Status) {
     noneStatus,
     addedToBasket,
     purchased,
-    viewed,
-    list
+    viewed
 };
 
 @interface MIEcommerceProperties : NSObject
 
 @property (nullable) NSArray<MIProduct*>* products;
-@property Status status;
-@property (nullable) NSString* currencyCode;
-@property (nullable) NSString* orderNumber;
-@property (nullable) NSString* orderValue;
+@property (nonatomic) Status status;
+@property (nullable) NSString* currency;
+@property (nullable) NSString* orderID;
+@property (nullable) NSNumber* orderValue;
 //new values
 @property (nullable) NSString* returningOrNewCustomer;
 @property (nullable) NSNumber* returnValue;
 @property (nullable) NSNumber* cancellationValue;
-@property (nullable) NSNumber* cuponValue;
+@property (nullable) NSNumber* couponValue;
 @property (nullable) NSNumber* productAdvertiseID;
 @property (nullable) NSNumber* productSoldOut;
 @property (nullable) NSString* paymentMethod;
