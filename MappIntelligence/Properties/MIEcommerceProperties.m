@@ -124,8 +124,8 @@
         
         for (MIProduct* product in _products) {
             [productNames addObject: product.name];
-            [productCosts addObject: [product.cost stringValue]];
-            [productQuantities addObject: (product.quantity == NULL) ? @"" : [product.quantity stringValue]];
+            [productCosts addObject: (product.cost ? [product.cost stringValue] : @"")];
+            [productQuantities addObject: (product.quantity ? [product.quantity stringValue] : @"")];
         }
         [items addObject:[[NSURLQueryItem alloc] initWithName:@"ba" value:[productNames componentsJoinedByString:@";"]]];
         [items addObject:[[NSURLQueryItem alloc] initWithName:@"co" value:[productCosts componentsJoinedByString:@";"]]];
