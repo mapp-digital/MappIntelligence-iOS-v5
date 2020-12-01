@@ -14,11 +14,11 @@
 		8F143ED92510AD830024CF24 /* ActionEventTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F143ED82510AD830024CF24 /* ActionEventTests.m */; };
 		8F143EDB2510AECA0024CF24 /* ActionPropertiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F143EDA2510AECA0024CF24 /* ActionPropertiesTests.m */; };
 		8F143EDD2510B3220024CF24 /* SessionPropertiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F143EDC2510B3220024CF24 /* SessionPropertiesTests.m */; };
-		8F3BC308254BFF1D00076321 /* MIAdvertisementProperties.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 8F423EDA254B17D900DE191D /* MIAdvertisementProperties.h */; };
-		8F423EDB254B17D900DE191D /* MIAdvertisementProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F423ED9254B17D900DE191D /* MIAdvertisementProperties.m */; };
-		8F423EDC254B17D900DE191D /* MIAdvertisementProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F423ED9254B17D900DE191D /* MIAdvertisementProperties.m */; };
-		8F423EDD254B17D900DE191D /* MIAdvertisementProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F423ED9254B17D900DE191D /* MIAdvertisementProperties.m */; };
-		8F423EDE254B17D900DE191D /* MIAdvertisementProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F423EDA254B17D900DE191D /* MIAdvertisementProperties.h */; };
+		8F3BC308254BFF1D00076321 /* MICampaignProperties.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 8F423EDA254B17D900DE191D /* MICampaignProperties.h */; };
+		8F423EDB254B17D900DE191D /* MICampaignProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F423ED9254B17D900DE191D /* MICampaignProperties.m */; };
+		8F423EDC254B17D900DE191D /* MICampaignProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F423ED9254B17D900DE191D /* MICampaignProperties.m */; };
+		8F423EDD254B17D900DE191D /* MICampaignProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F423ED9254B17D900DE191D /* MICampaignProperties.m */; };
+		8F423EDE254B17D900DE191D /* MICampaignProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F423EDA254B17D900DE191D /* MICampaignProperties.h */; };
 		8F4420EE250F7BA6003961F3 /* MISessionProperties.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 8FDF7111250BA9CB00818E51 /* MISessionProperties.h */; };
 		8F4420EF250F969B003961F3 /* MISessionProperties.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8FDF7111250BA9CB00818E51 /* MISessionProperties.h */; };
 		8F4420F0250F96AB003961F3 /* MIActionProperties.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8FDF7105250B9E4D00818E51 /* MIActionProperties.h */; };
@@ -28,8 +28,8 @@
 		8F5F853A2535BCE100A39882 /* MISessionProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FDF7112250BA9CB00818E51 /* MISessionProperties.m */; };
 		8F5F85422535BCEB00A39882 /* MIActionEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FDF7109250B9E5B00818E51 /* MIActionEvent.m */; };
 		8F80C047252355B500E1F650 /* MISessionProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FDF7112250BA9CB00818E51 /* MISessionProperties.m */; };
-		8F995E6525507F3E00B918DD /* MIAdvertisementProperties.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8F423EDA254B17D900DE191D /* MIAdvertisementProperties.h */; };
-		8F995E6D25507F4400B918DD /* MIAdvertisementProperties.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8F423EDA254B17D900DE191D /* MIAdvertisementProperties.h */; };
+		8F995E6525507F3E00B918DD /* MICampaignProperties.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8F423EDA254B17D900DE191D /* MICampaignProperties.h */; };
+		8F995E6D25507F4400B918DD /* MICampaignProperties.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8F423EDA254B17D900DE191D /* MICampaignProperties.h */; };
 		8F9C7F70255A851400CB95EF /* AdvertisementPropertiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F9C7F6F255A851400CB95EF /* AdvertisementPropertiesTests.m */; };
 		8FA11962253EDC82000AE887 /* MIUserProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FA11960253EDC82000AE887 /* MIUserProperties.h */; };
 		8FA11963253EDC82000AE887 /* MIUserProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FA11961253EDC82000AE887 /* MIUserProperties.m */; };
@@ -259,7 +259,7 @@
 			files = (
 				8F0055A9256DB16B00E2CC3C /* MIActionEvent.h in CopyFiles */,
 				8F0055AA256DB16B00E2CC3C /* MIPageViewEvent.h in CopyFiles */,
-				8F995E6525507F3E00B918DD /* MIAdvertisementProperties.h in CopyFiles */,
+				8F995E6525507F3E00B918DD /* MICampaignProperties.h in CopyFiles */,
 				A338B7CC254874D300E50C28 /* MIProduct.h in CopyFiles */,
 				A338B7B12548744900E50C28 /* MIEcommerceProperties.h in CopyFiles */,
 				8FAF2D772540875A007AA438 /* MIUserProperties.h in CopyFiles */,
@@ -279,7 +279,7 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
-				8F3BC308254BFF1D00076321 /* MIAdvertisementProperties.h in Copy Files */,
+				8F3BC308254BFF1D00076321 /* MICampaignProperties.h in Copy Files */,
 				A338B7EF2548752B00E50C28 /* MIProduct.h in Copy Files */,
 				A338B7E72548752200E50C28 /* MIEcommerceProperties.h in Copy Files */,
 				8FAF2D3F25405DFE007AA438 /* MIUserProperties.h in Copy Files */,
@@ -305,7 +305,7 @@
 			files = (
 				8F0055C8256DB9B700E2CC3C /* MIActionEvent.h in CopyFiles */,
 				8F0055C9256DB9B700E2CC3C /* MIPageViewEvent.h in CopyFiles */,
-				8F995E6D25507F4400B918DD /* MIAdvertisementProperties.h in CopyFiles */,
+				8F995E6D25507F4400B918DD /* MICampaignProperties.h in CopyFiles */,
 				A338B7D4254874DA00E50C28 /* MIProduct.h in CopyFiles */,
 				A338B7B92548745400E50C28 /* MIEcommerceProperties.h in CopyFiles */,
 				8FAF2D7F2540875E007AA438 /* MIUserProperties.h in CopyFiles */,
@@ -325,8 +325,8 @@
 		8F143ED82510AD830024CF24 /* ActionEventTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionEventTests.m; sourceTree = "<group>"; };
 		8F143EDA2510AECA0024CF24 /* ActionPropertiesTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionPropertiesTests.m; sourceTree = "<group>"; };
 		8F143EDC2510B3220024CF24 /* SessionPropertiesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SessionPropertiesTests.m; sourceTree = "<group>"; };
-		8F423ED9254B17D900DE191D /* MIAdvertisementProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAdvertisementProperties.m; sourceTree = "<group>"; };
-		8F423EDA254B17D900DE191D /* MIAdvertisementProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAdvertisementProperties.h; sourceTree = "<group>"; };
+		8F423ED9254B17D900DE191D /* MICampaignProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MICampaignProperties.m; sourceTree = "<group>"; };
+		8F423EDA254B17D900DE191D /* MICampaignProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MICampaignProperties.h; sourceTree = "<group>"; };
 		8F9C7F6F255A851400CB95EF /* AdvertisementPropertiesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AdvertisementPropertiesTests.m; sourceTree = "<group>"; };
 		8FA11960253EDC82000AE887 /* MIUserProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MIUserProperties.h; sourceTree = "<group>"; };
 		8FA11961253EDC82000AE887 /* MIUserProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MIUserProperties.m; sourceTree = "<group>"; };
@@ -653,8 +653,8 @@
 		A337445924C1A1110096259B /* Properties */ = {
 			isa = PBXGroup;
 			children = (
-				8F423EDA254B17D900DE191D /* MIAdvertisementProperties.h */,
-				8F423ED9254B17D900DE191D /* MIAdvertisementProperties.m */,
+				8F423EDA254B17D900DE191D /* MICampaignProperties.h */,
+				8F423ED9254B17D900DE191D /* MICampaignProperties.m */,
 				8FDF7105250B9E4D00818E51 /* MIActionProperties.h */,
 				8FDF7106250B9E4D00818E51 /* MIActionProperties.m */,
 				A337445A24C1A12A0096259B /* MIPageProperties.h */,
@@ -841,7 +841,7 @@
 				A337446024C8404B0096259B /* MIPageViewEvent.m in Headers */,
 				8FA11962253EDC82000AE887 /* MIUserProperties.h in Headers */,
 				A3D9836F24B3311100AF0CD8 /* MIRequestBatchSupportUrlBuilder.m in Headers */,
-				8F423EDE254B17D900DE191D /* MIAdvertisementProperties.h in Headers */,
+				8F423EDE254B17D900DE191D /* MICampaignProperties.h in Headers */,
 				A3852A95249389060090F47B /* MIDatabaseManager.m in Headers */,
 				BCCAE6D0240D29A9005E9FD6 /* MappIntelligenceLogger.m in Headers */,
 				A3CC549224912AA8006215FD /* MIRequestData.h in Headers */,
@@ -1146,7 +1146,7 @@
 				A36C6E012432387F008A9CB6 /* MappIntelligenceLogger.m in Sources */,
 				A3CC549C249151E8006215FD /* MIRequestData.m in Sources */,
 				A36C6E0024323873008A9CB6 /* MIDefaultTracker.m in Sources */,
-				8F423EDC254B17D900DE191D /* MIAdvertisementProperties.m in Sources */,
+				8F423EDC254B17D900DE191D /* MICampaignProperties.m in Sources */,
 				A36C6DFF2432380A008A9CB6 /* MappIntelligence.m in Sources */,
 				A3CC5496249151DB006215FD /* MIDatabaseManager.m in Sources */,
 				A32AEA29242A6F4600BC7B46 /* MappIntelligenceWatchOS.m in Sources */,
@@ -1182,7 +1182,7 @@
 				8FDF7108250B9E4D00818E51 /* MIActionProperties.m in Sources */,
 				BCD5E2C523CF38F300CE2092 /* MappIntelligenceDefaultConfig.m in Sources */,
 				BCD5E2C323CF309900CE2092 /* MIConfig.h in Sources */,
-				8F423EDB254B17D900DE191D /* MIAdvertisementProperties.m in Sources */,
+				8F423EDB254B17D900DE191D /* MICampaignProperties.m in Sources */,
 				A337445D24C1A12A0096259B /* MIPageProperties.m in Sources */,
 				A380D2052412B0AB009E2CD8 /* MIEnvironment.m in Sources */,
 				A3CC548F249125F0006215FD /* MIRequest.m in Sources */,
@@ -1263,7 +1263,7 @@
 				A35C79082452FC1100D36144 /* MappIntelligenceLogger.m in Sources */,
 				A3CC549D249151E9006215FD /* MIRequestData.m in Sources */,
 				A35C79062452FC0800D36144 /* MIDefaultTracker.m in Sources */,
-				8F423EDD254B17D900DE191D /* MIAdvertisementProperties.m in Sources */,
+				8F423EDD254B17D900DE191D /* MICampaignProperties.m in Sources */,
 				A35C79052452FBFC00D36144 /* MappIntelligence.m in Sources */,
 				A3CC5497249151DC006215FD /* MIDatabaseManager.m in Sources */,
 				A35C78C82452E6FF00D36144 /* MappIntelligencetvOS.m in Sources */,

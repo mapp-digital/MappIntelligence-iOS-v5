@@ -105,14 +105,14 @@ class ViewController: UIViewController {
     }
     
     @IBAction func sendCampaignEvent(_ sender: Any) {
-        let advertisementProperties = MIAdvertisementProperties("en.internal.newsletter.2017.05")
-        advertisementProperties.mediaCode = "abc"
-        advertisementProperties.oncePerSession = true
-        advertisementProperties.action = .view
-        advertisementProperties.customProperties = [1: ["ECOMM"]]
+        let campaignProperties = MICampaignProperties("en.internal.newsletter.2017.05")
+        campaignProperties.mediaCode = "abc"
+        campaignProperties.oncePerSession = true
+        campaignProperties.action = .view
+        campaignProperties.customProperties = [1: ["ECOMM"]]
         
         let event = MIActionEvent(name: "TestCampaign")
-        event.advertisementProperties = advertisementProperties
+        event.campaignProperties = campaignProperties
         
         MappIntelligence.shared()?.trackAction(event)
     }

@@ -51,43 +51,6 @@ MappIntelligenceWatchOS.shared()?.initWithConfiguration([12345678, 8783291721], 
                     onTrackdomain:(NSString *_Nonnull)trackDomain;
 
 /**
-@brief Method to track additional page information.
-@param name - custom page name.
-@param pageProperties - pageProperties can contain details, groups and seach term.
-@param userProperties - customer related data
-
-@code
- let customName = "the custom name of page"
- let params:NSMutableDictionary = [20: ["cp20Override", "cp21Override", "cp22Override"]]
- let categories:NSMutableDictionary = [10: ["test"]]
- let searchTerm = "testSearchTerm"
- let userProperties = MIUserProperties(customProperties:[20:["Test"]])
- let ecommerceProperties = MIEcommerceProperties()
- MappIntelligenceWatchOS.shared()?.trackPage(withName: customName, andWith: PageProperties(pageParams: params, andWithPageCategory: categories, andWithSearch: searchTerm) sessionProperties: nil userProperties: userProperties ecommerceProperties: ecommerceProperties)
-@endcode
-@return Error that can happen while tracking. Returns nil if no error was detected.
-*/
-//- (NSError *_Nullable)trackPageWithName: (NSString *_Nonnull) name pageProperties:(MIPageProperties  *_Nullable)pageProperties sessionProperties: (MISessionProperties *_Nullable) sessionProperties userProperties: (MIUserProperties *_Nullable) userProperties ecommerceProperties: (MIEcommerceProperties *_Nullable) ecommerceProperties advertisementProperties: (MIAdvertisementProperties *_Nullable) advertisemementProperties;
-
-/**
-@brief Method which will track action event created from action properties and session properties.
-@param name - custom event name
-@param actionProperties - action properties for one event, each property can have multiple values
-@param sessionProperties - session properties for one event, each property can have multiple values
-@param userProperties - customer related data
-
-@code
- let actionProperties = ActionProperties(properties:  [20:["ck20Override","ck21Override"]])
- let sessionProperties = MISessionProperties(properties: [10: ["sessionpar1"]])
- let userProperties = MIUserProperties(customProperties:[20:["Test"]])
- let ecommerceProperties = MIEcommerceProperties()
- MappIntelligenceWatchOS.shared()?.trackCustomEvent(withName: "TestAction", actionProperties: actionProperties, sessionProperties: sessionProperties userProperties: userProperties ecommerceProperties: ecommerceProperties)
- @endcode
-@return the error which may happen through process of tracking, if returns nil there is no error.
-*/
-//- (NSError *_Nullable) trackCustomEventWithName:(NSString *_Nonnull) name  actionProperties: (MIActionProperties *_Nullable) actionProperties sessionProperties: (MISessionProperties *_Nullable) sessionProperties userProperties: (MIUserProperties *_Nullable) userProperties ecommerceProperties: (MIEcommerceProperties *_Nullable) ecommerceProperties advertisementProperties: (MIAdvertisementProperties *_Nullable) advertisemementProperties;
-
-/**
 @brief Method which will track page event
 @param event - page view event
 @code

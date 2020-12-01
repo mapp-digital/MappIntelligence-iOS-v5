@@ -166,11 +166,11 @@
         MIEcommerceProperties *ecommerceProperties = pgEvent.ecommerceProperties;
         [parametrs addObjectsFromArray:[ecommerceProperties asQueryItems]];
         
-        MIAdvertisementProperties *advertisementProperties = ((MIPageViewEvent*)event).advertisementProperties;
+        MICampaignProperties *advertisementProperties = ((MIPageViewEvent*)event).campaignProperties;
         if (advertisementProperties && [self sendCampaignData:advertisementProperties]) {
             [parametrs addObjectsFromArray:[advertisementProperties asQueryItems]];
         } else {
-            MIAdvertisementProperties *saved = [MIDeepLink loadCampaign];
+            MICampaignProperties *saved = [MIDeepLink loadCampaign];
             if (saved) {
                 [parametrs addObjectsFromArray:[saved asQueryItems]];
                 [MIDeepLink deleteCampaign];
@@ -184,7 +184,7 @@
         [parametrs addObjectsFromArray:[userProperties asQueryItems]];
         MIEcommerceProperties *ecommerceProperties = ((MIActionEvent*)event).ecommerceProperties;
         [parametrs addObjectsFromArray:[ecommerceProperties asQueryItems]];
-        MIAdvertisementProperties *advertisementProperties = ((MIActionEvent*)event).advertisementProperties;
+        MICampaignProperties *advertisementProperties = ((MIActionEvent*)event).campaignProperties;
         if ([self sendCampaignData:advertisementProperties]) {
             [parametrs addObjectsFromArray:[advertisementProperties asQueryItems]];
         }
@@ -244,7 +244,7 @@
   NSMutableArray<NSString *> *componentsArray = [[NSMutableArray alloc] init];
   for (NSURLQueryItem *object in parameters) {
     NSString *value = [object value];
-    if (![[object name] isEqual:@"p"] && ![[object name] isEqual:@"mc"] ) {
+    if (![[object name] isEqual:@"p"]) {
       value = [self codeString:[object value]];
     }
     [componentsArray
@@ -284,9 +284,9 @@
   return [str stringByAddingPercentEncodingWithAllowedCharacters:csValue];
 }
 
--(BOOL) sendCampaignData: (MIAdvertisementProperties *) advertisementProperties {
-    if(advertisementProperties.oncePerSession) {
-        MIAdvertisementProperties *c = [advertisementProperties copy];
+-(BOOL) sendCampaignData: (MICampaignProperties *) campaignProperties {
+    if(campaignProperties.oncePerSession) {
+        MICampaignProperties *c = [campaignProperties copy];
         if(![_campaignsToIgnore containsObject:c]) {
             [_campaignsToIgnore addObject: c];
             return YES;

@@ -18,8 +18,8 @@ NSString *const UrlErrorDescriptionInvalid = @"Url is invalid";
 + (NSError *_Nullable)trackFromUrl:(NSURL *_Nullable) url withMediaCode: (NSString *_Nullable) mediaCode{
     
     NSString *mediaCodeTag = mediaCode ?: @"wt_mc";
-    MIAdvertisementProperties *advertisementProperties = [[MIAdvertisementProperties alloc] init];
-    advertisementProperties.mediaCode = mediaCodeTag;
+    MICampaignProperties *campaignProperties = [[MICampaignProperties alloc] init];
+    campaignProperties.mediaCode = mediaCodeTag;
     
     NSMutableDictionary *campaignParameters = [[NSMutableDictionary alloc] init];
     NSURLComponents *components = [[NSURLComponents alloc] initWithURL:url resolvingAgainstBaseURL:YES];
@@ -27,7 +27,7 @@ NSString *const UrlErrorDescriptionInvalid = @"Url is invalid";
 
     for (NSURLQueryItem *item in queryItems) {
         if ([item.name isEqualToString:mediaCodeTag]) {
-            advertisementProperties.campaignId = item.value;
+            campaignProperties.campaignId = item.value;
         }
         if ([MIDeepLink isCampaignParameter: item.name]) {
             int idx = [[item.name substringFromIndex:5] intValue];
@@ -39,9 +39,9 @@ NSString *const UrlErrorDescriptionInvalid = @"Url is invalid";
         }
     }
 
-    if (advertisementProperties.campaignId) {
-        advertisementProperties.customProperties = campaignParameters;
-        return [MIDeepLink saveToFile:advertisementProperties];
+    if (campaignProperties.campaignId) {
+        campaignProperties.customProperties = campaignParameters;
+        return [MIDeepLink saveToFile:campaignProperties];
     } else {
         [MappIntelligenceLogger.shared logObj:@"Cannot succesfully parse deeplink url. No campaign parameter!" forDescription: kMappIntelligenceLogLevelDescriptionDebug];
         return [[NSError alloc] initWithDomain:MappUrlDomain code:0 userInfo:@{NSLocalizedDescriptionKey:UrlErrorDescriptionInvalid}];
@@ -58,17 +58,17 @@ NSString *const UrlErrorDescriptionInvalid = @"Url is invalid";
     }
 }
 
-+ (NSError *_Nullable) saveToFile: (MIAdvertisementProperties *) campaign {
++ (NSError *_Nullable) saveToFile: (MICampaignProperties *) campaign {
     NSError *error = nil;
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:campaign requiringSecureCoding:YES error:&error];
     [data writeToFile:[MIDeepLink filePath] options:NSDataWritingAtomic error:&error];
     return error;
 }
 
-+ (MIAdvertisementProperties *_Nullable) loadCampaign {
++ (MICampaignProperties *_Nullable) loadCampaign {
     NSError *error = nil;
     NSData *fileData = [NSData dataWithContentsOfFile: [MIDeepLink filePath]];
-    MIAdvertisementProperties *properties = [NSKeyedUnarchiver unarchivedObjectOfClass:[MIAdvertisementProperties class] fromData:fileData error:&error];
+    MICampaignProperties *properties = [NSKeyedUnarchiver unarchivedObjectOfClass:[MICampaignProperties class] fromData:fileData error:&error];
     return properties;
 }
 

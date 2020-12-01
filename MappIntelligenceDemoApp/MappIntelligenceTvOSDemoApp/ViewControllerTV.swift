@@ -48,7 +48,7 @@ class ViewControllerTV: UIViewController {
         userProperties.customerId = "CustomerID"
         userProperties.gender = .female
         let ecommerceProperties = MIEcommerceProperties()
-        ecommerceProperties.cuponValue = 99
+        ecommerceProperties.couponValue = 99
         
         let actionEvent = MIActionEvent(name: "TestAction")
         actionEvent.actionProperties = actionProperties
@@ -63,14 +63,14 @@ class ViewControllerTV: UIViewController {
         let ecommerceProperties = MIEcommerceProperties(customProperties: [540 : ["ecommerce1", "ecommerce2"]])
         let product1 = MIProduct()
         product1.name = "Product1Name"
-        product1.price = "20$"
+        product1.cost = 20
         product1.quantity = 34
         let product2 = MIProduct()
         let product3 = MIProduct()
-        product3.price = "348$"
+        product3.cost = 348
         ecommerceProperties.status = .addedToBasket
         ecommerceProperties.products = [product1, product2, product3];
-        ecommerceProperties.currencyCode = "$"
+        ecommerceProperties.currency = "$"
         ecommerceProperties.paymentMethod = "creditCard"
         
         let pageEvent = MIPageViewEvent()
@@ -80,14 +80,14 @@ class ViewControllerTV: UIViewController {
     }
 
     @IBAction func trackCampaign(_ sender: Any) {
-        let advertisementProperties = MIAdvertisementProperties("en.internal.newsletter.2017.05")
-        advertisementProperties.mediaCode = "abc"
-        advertisementProperties.oncePerSession = true
-        advertisementProperties.action = .view
-        advertisementProperties.customProperties = [1: ["ECOMM"]]
+        let campaignProperties = MICampaignProperties("en.internal.newsletter.2017.05")
+        campaignProperties.mediaCode = "abc"
+        campaignProperties.oncePerSession = true
+        campaignProperties.action = .view
+        campaignProperties.customProperties = [1: ["ECOMM"]]
         
         let actionEvent = MIActionEvent(name: "TestCampaign")
-        actionEvent.advertisementProperties = advertisementProperties
+        actionEvent.campaignProperties = campaignProperties
         MappIntelligencetvOS.shared()?.trackAction(actionEvent)
     }
     @IBAction func optIn(_ sender: Any) {

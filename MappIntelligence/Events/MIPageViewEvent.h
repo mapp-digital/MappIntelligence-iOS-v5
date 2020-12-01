@@ -14,7 +14,7 @@
 #import "MISessionProperties.h"
 #import "MIUserProperties.h"
 #import "MIEcommerceProperties.h"
-#import "MIAdvertisementProperties.h"
+#import "MICampaignProperties.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -24,7 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, nullable) MISessionProperties *sessionProperties;
 @property (nonatomic, nullable) MIUserProperties *userProperties;
 @property (nonatomic, nullable) MIEcommerceProperties *ecommerceProperties;
-@property (nonatomic, nullable) MIAdvertisementProperties *advertisementProperties;
+@property (nonatomic, nullable) MICampaignProperties *campaignProperties;
 
 - (instancetype)initWithName:(NSString *)name;
 

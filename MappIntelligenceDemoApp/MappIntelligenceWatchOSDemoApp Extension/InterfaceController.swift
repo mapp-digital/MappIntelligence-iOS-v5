@@ -93,14 +93,14 @@ class InterfaceController: WKInterfaceController {
     }
     
     @IBAction func trackCampaign() {
-        let advertisementProperties = MIAdvertisementProperties("en.internal.newsletter.2017.05")
-        advertisementProperties.mediaCode = "abc"
-        advertisementProperties.oncePerSession = true
-        advertisementProperties.action = .view
-        advertisementProperties.customProperties = [1: ["ECOMM"]]
+        let campaignProperties = MICampaignProperties("en.internal.newsletter.2017.05")
+        campaignProperties.mediaCode = "abc"
+        campaignProperties.oncePerSession = true
+        campaignProperties.action = .view
+        campaignProperties.customProperties = [1: ["ECOMM"]]
         
         let actionEvent = MIActionEvent(name: "TestCampaign")
-        actionEvent.advertisementProperties = advertisementProperties
+        actionEvent.campaignProperties = campaignProperties
         
         MappIntelligenceWatchOS.shared()?.trackAction(actionEvent)
     }
