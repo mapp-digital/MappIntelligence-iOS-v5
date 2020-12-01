@@ -4,7 +4,7 @@
 <dict>
 	<key>com.apple.developer.associated-domains</key>
 	<array>
-		<string>applinks:unilink-test.herokuapp.com</string>
+		<string>applinks:cdn.wbtrk.net</string>
 	</array>
 </dict>
 </plist>
