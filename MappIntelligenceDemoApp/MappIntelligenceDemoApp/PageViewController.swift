@@ -15,10 +15,10 @@ class PageViewController: UIViewController {
     }
     
     @IBAction func trackPage(_ sender: Any) {
-        MappIntelligence.shared()?.trackPage(with: self, andEvent: MIPageViewEvent())
+        MappIntelligence.shared()?.trackPage(with: self, andEvent: nil)
     }
-    @IBAction func trackCustomPage(_ sender: Any) {
-        
+
+    @IBAction func trackProduct(_ sender: Any) {
         let ecommerceProperties = MIEcommerceProperties(customProperties: [540 : ["ecommerce1", "ecommerce2"]])
         let product1 = MIProduct()
         product1.name = "Product1Name"
@@ -34,5 +34,35 @@ class PageViewController: UIViewController {
         
         let pageEvent = MIPageViewEvent()
         pageEvent.ecommerceProperties = ecommerceProperties
+        
+        MappIntelligence.shared()?.trackPage(pageEvent)
+    }
+    
+    @IBAction func trackCustomPage(_ sender: Any) {
+        
+        //page properties
+        let params:[NSNumber : [String]] = [20: ["cp20Override", "cp21Override", "cp22Override"]]
+        let categories:NSMutableDictionary = [10: ["test"]]
+        let searchTerm = "testSearchTerm"
+        let pageProperties = MIPageProperties(pageParams: params, andWithPageCategory: categories, andWithSearch: searchTerm)
+        
+        //user properties
+        let userProperties = MIUserProperties()
+        userProperties.customProperties = [20:["userParam1"]]
+        userProperties.birthday = MIBirthday(day: 12, month: 1, year: 1993)
+        userProperties.city = "Paris"
+        userProperties.country = "France"
+        userProperties.customerId = "CustomerID"
+        userProperties.gender = .female
+        
+        //sessionproperties
+        let sessionProperties = MISessionProperties(properties: [10: ["sessionParam1", "sessionParam2"]])
+              
+        let pageEvent = MIPageViewEvent(name: "the custom name of page")
+        pageEvent.pageProperties = pageProperties
+        pageEvent.userProperties = userProperties
+        pageEvent.sessionProperties = sessionProperties
+        
+        MappIntelligence.shared()?.trackPage(pageEvent)
     }
 }

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8F2836FC2576A89400FB4933 /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2836FB2576A89400FB4933 /* MenuTableViewController.swift */; };
 		8F2D1D4F257789FA008CB31D /* ActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2D1D4E257789FA008CB31D /* ActionViewController.swift */; };
 		8F2D1D5525778A07008CB31D /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2D1D5425778A07008CB31D /* PageViewController.swift */; };
 		8F2D1D6525778B82008CB31D /* ConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2D1D6425778B82008CB31D /* ConfigViewController.swift */; };
@@ -28,10 +27,8 @@
 		A35C79002452F83700D36144 /* libMappIntelligencetvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A35C78FF2452F83700D36144 /* libMappIntelligencetvOS.a */; };
 		A38A6AF4242CD74F00600D82 /* libMappIntelligenceWatchOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A38A6AF3242CD74F00600D82 /* libMappIntelligenceWatchOS.a */; };
 		A38F82C42538741B0021577B /* SetupForLocalTesting.plist in Resources */ = {isa = PBXBuildFile; fileRef = A38F82C32538741B0021577B /* SetupForLocalTesting.plist */; };
-		BC70672123D9A4FE00F3BDD8 /* ConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC70672023D9A4FE00F3BDD8 /* ConfigurationViewController.swift */; };
 		BCA1739223D5D25C00B31430 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA1739123D5D25C00B31430 /* AppDelegate.swift */; };
 		BCA1739423D5D25C00B31430 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA1739323D5D25C00B31430 /* SceneDelegate.swift */; };
-		BCA1739623D5D25C00B31430 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA1739523D5D25C00B31430 /* ViewController.swift */; };
 		BCA1739923D5D25C00B31430 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCA1739723D5D25C00B31430 /* Main.storyboard */; };
 		BCA1739B23D5D25E00B31430 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCA1739A23D5D25E00B31430 /* Assets.xcassets */; };
 		BCA1739E23D5D25E00B31430 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCA1739C23D5D25E00B31430 /* LaunchScreen.storyboard */; };
@@ -81,7 +78,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		8F2836FB2576A89400FB4933 /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		8F2D1D4E257789FA008CB31D /* ActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionViewController.swift; sourceTree = "<group>"; };
 		8F2D1D5425778A07008CB31D /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		8F2D1D6425778B82008CB31D /* ConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigViewController.swift; sourceTree = "<group>"; };
@@ -114,11 +110,9 @@
 		A38A6AF1242CD0C600600D82 /* libMappIntelligenceSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libMappIntelligenceSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A38A6AF3242CD74F00600D82 /* libMappIntelligenceWatchOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libMappIntelligenceWatchOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A38F82C32538741B0021577B /* SetupForLocalTesting.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SetupForLocalTesting.plist; sourceTree = "<group>"; };
-		BC70672023D9A4FE00F3BDD8 /* ConfigurationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationViewController.swift; sourceTree = "<group>"; };
 		BCA1738E23D5D25C00B31430 /* MappIntelligenceDemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MappIntelligenceDemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCA1739123D5D25C00B31430 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BCA1739323D5D25C00B31430 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		BCA1739523D5D25C00B31430 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		BCA1739823D5D25C00B31430 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BCA1739A23D5D25E00B31430 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BCA1739D23D5D25E00B31430 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -221,21 +215,18 @@
 		BCA1739023D5D25C00B31430 /* MappIntelligenceDemoApp */ = {
 			isa = PBXGroup;
 			children = (
-				8F2D1D6E25778F5F008CB31D /* CampaignViewController.swift */,
 				8FE0AF26255D6FB20037AE4A /* MappIntelligenceDemoApp.entitlements */,
 				BCA1739123D5D25C00B31430 /* AppDelegate.swift */,
 				BCA1739323D5D25C00B31430 /* SceneDelegate.swift */,
-				BCA1739523D5D25C00B31430 /* ViewController.swift */,
+				8F2D1D4E257789FA008CB31D /* ActionViewController.swift */,
+				8F2D1D5425778A07008CB31D /* PageViewController.swift */,
+				8F2D1D6425778B82008CB31D /* ConfigViewController.swift */,
+				8F2D1D6E25778F5F008CB31D /* CampaignViewController.swift */,
 				BCA1739723D5D25C00B31430 /* Main.storyboard */,
 				BCA1739A23D5D25E00B31430 /* Assets.xcassets */,
 				BCA1739C23D5D25E00B31430 /* LaunchScreen.storyboard */,
 				BCA1739F23D5D25E00B31430 /* Info.plist */,
-				BC70672023D9A4FE00F3BDD8 /* ConfigurationViewController.swift */,
 				BCD2AA4F24095FC7006AB210 /* MappIntelligenceDemoApp-Bridging-Header.h */,
-				8F2836FB2576A89400FB4933 /* MenuTableViewController.swift */,
-				8F2D1D4E257789FA008CB31D /* ActionViewController.swift */,
-				8F2D1D5425778A07008CB31D /* PageViewController.swift */,
-				8F2D1D6425778B82008CB31D /* ConfigViewController.swift */,
 			);
 			path = MappIntelligenceDemoApp;
 			sourceTree = "<group>";
@@ -441,11 +432,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BCA1739623D5D25C00B31430 /* ViewController.swift in Sources */,
 				8F2D1D5525778A07008CB31D /* PageViewController.swift in Sources */,
-				BC70672123D9A4FE00F3BDD8 /* ConfigurationViewController.swift in Sources */,
 				8F2D1D4F257789FA008CB31D /* ActionViewController.swift in Sources */,
-				8F2836FC2576A89400FB4933 /* MenuTableViewController.swift in Sources */,
 				BCA1739223D5D25C00B31430 /* AppDelegate.swift in Sources */,
 				8F2D1D6F25778F5F008CB31D /* CampaignViewController.swift in Sources */,
 				BCA1739423D5D25C00B31430 /* SceneDelegate.swift in Sources */,

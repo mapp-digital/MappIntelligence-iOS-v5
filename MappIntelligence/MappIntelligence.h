@@ -57,8 +57,7 @@ typedef NS_ENUM(NSInteger, logLevel) {
 @endcode
 @return Error in case of a failure. Returns nil if no error was detected.
 */
-#warning "Change to accept nil as page event"
-- (NSError *_Nullable)trackPageWithViewController:(UIViewController *_Nonnull)controller andEvent:(MIPageViewEvent*_Nonnull) event;
+- (NSError *_Nullable)trackPageWithViewController:(UIViewController *_Nonnull)controller andEvent:(MIPageViewEvent*_Nullable) event;
 
 #endif
 
