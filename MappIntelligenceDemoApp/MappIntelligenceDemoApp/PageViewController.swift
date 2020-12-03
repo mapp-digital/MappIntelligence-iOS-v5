@@ -32,7 +32,7 @@ class PageViewController: UIViewController {
         ecommerceProperties.currency = "EUR"
         ecommerceProperties.paymentMethod = "creditCard"
         
-        let pageEvent = MIPageViewEvent()
+        let pageEvent = MIPageViewEvent(name: "TrackProductTest")
         pageEvent.ecommerceProperties = ecommerceProperties
         
         MappIntelligence.shared()?.trackPage(pageEvent)
