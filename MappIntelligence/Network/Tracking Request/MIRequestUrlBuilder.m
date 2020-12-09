@@ -297,4 +297,112 @@
     return YES;
 }
 
+- (NSURL *)urlForWebRequest:(MITrackerRequest *)request withParams: (NSDictionary *) params{
+    MITrackingEvent *event = [request event];
+  NSString *pageNameOpt = [event pageName];
+  NSURL *url;
+
+  if (!pageNameOpt) {
+    [_logger logObj:@"Tracking event must contain a page name: %@"
+        forDescription:kMappIntelligenceLogLevelDescriptionError];
+    return url;
+  }
+
+  MIProperties *properties = [request properties];
+#if !TARGET_OS_WATCH
+  CGFloat scale = [[UIScreen mainScreen] scale];
+  NSString *screenSize = [[NSString alloc]
+      initWithFormat:@"%.fx%.f",
+                     [UIScreen mainScreen].bounds.size.width * scale,
+                     [UIScreen mainScreen].bounds.size.height * scale];
+#else
+  CGFloat scale = [[WKInterfaceDevice currentDevice] screenScale];
+  NSString *screenSize = [[NSString alloc]
+      initWithFormat:@"%.fx%.f",
+                     [[WKInterfaceDevice currentDevice] screenBounds]
+                             .size.width *
+                         scale,
+                     [[WKInterfaceDevice currentDevice] screenBounds]
+                             .size.height *
+                         scale];
+#endif
+  NSString *libraryVersionOriginal = [MappIntelligence version];
+  NSString *libraryVersionParced =
+      [self codeString:[libraryVersionOriginal
+                           stringByReplacingOccurrencesOfString:@"."
+                                                     withString:@""]];
+  _sizeMonitor = [[MIURLSizeMonitor alloc] init];
+
+  // begin cycle
+  NSMutableArray *parametrs = [[NSMutableArray alloc] init];
+  [_sizeMonitor setCurrentRequestSize:1024]; // reserve for non product items
+  NSString *pageName = [self codeString:pageNameOpt];
+
+  [parametrs
+      addObject:
+          [NSURLQueryItem
+              queryItemWithName:@"p"
+                          value:[_sizeMonitor
+                                    cutPParameterLegth:libraryVersionParced
+                                              pageName:pageName
+                                         andScreenSize:screenSize
+                                          andTimeStamp:
+                                              (properties.timestamp
+                                                   .timeIntervalSince1970 *
+                                               1000)]]];
+  [parametrs addObject:[NSURLQueryItem queryItemWithName:@"eid"
+                                                   value:properties.everId]];
+  [parametrs
+      addObject:[NSURLQueryItem
+                    queryItemWithName:@"fns"
+                                value:properties.isFirstEventOfSession ? @"1"
+                                                                       : @"0"]];
+  [parametrs
+      addObject:[NSURLQueryItem
+                    queryItemWithName:@"one"
+                                value:properties.isFirstEventOfApp ? @"1"
+                                                                   : @"0"]];
+
+  [parametrs
+      addObject:[NSURLQueryItem
+                    queryItemWithName:@"X-WT-UA"
+                                value:[[NSString alloc]
+                                          initWithFormat:@"%@",
+                                                         properties
+                                                             .userAgent]]];
+  [parametrs
+      addObject:[NSURLQueryItem
+                    queryItemWithName:@"X-WT-IP"
+                                value:[[NSString alloc]
+                                          initWithFormat:@"%@",
+                                                         event
+                                                             .ipAddress]]];
+  NSString *language = [[properties locale] objectForKey:NSLocaleLanguageCode];
+  if (language) {
+    [parametrs
+        addObject:[NSURLQueryItem queryItemWithName:@"la" value:language]];
+  }
+   
+    for(NSString *key in params) {
+        [parametrs addObject:[NSURLQueryItem queryItemWithName:key value:params[key]]];
+    }
+    
+    if (properties.isFirstEventOfSession) {
+        if (MIEnvironment.appVersion) {
+            [parametrs addObject:[NSURLQueryItem queryItemWithName:@"cs804" value: MIEnvironment.appVersion]];
+        }
+        [parametrs addObject:[NSURLQueryItem queryItemWithName:@"cs805" value: MIEnvironment.buildVersion]];
+        [parametrs addObject:[NSURLQueryItem queryItemWithName:@"cs821" value: properties.isFirstEventOfApp ? @"1": @"0"]];
+    }
+    [parametrs addObject:[NSURLQueryItem queryItemWithName:@"eor" value:@"1"]];
+    [_sizeMonitor setCurrentRequestSize:[_sizeMonitor currentRequestSize] +
+                                       5]; // add for end of the request
+    
+  url = [self createURLFromParametersWith:parametrs];
+  _dbRequest = [[MIRequest alloc] initWithParamters:parametrs
+                                        andDomain:[MappIntelligence getUrl]
+                                      andTrackIds:_mappIntelligenceId];
+  return url;
+}
+
 @end
