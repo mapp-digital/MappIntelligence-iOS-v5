@@ -297,7 +297,7 @@
     return YES;
 }
 
-- (NSURL *)urlForWebRequest:(MITrackerRequest *)request withParams: (NSDictionary *) params{
+- (NSURL *)urlForCustomRequest:(MITrackerRequest *)request{
     MITrackingEvent *event = [request event];
   NSString *pageNameOpt = [event pageName];
   NSURL *url;
@@ -383,8 +383,8 @@
         addObject:[NSURLQueryItem queryItemWithName:@"la" value:language]];
   }
    
-    for(NSString *key in params) {
-        [parametrs addObject:[NSURLQueryItem queryItemWithName:key value:params[key]]];
+    for(NSString *key in event.trackingParams) {
+        [parametrs addObject:[NSURLQueryItem queryItemWithName:key value:event.trackingParams[key]]];
     }
     
     if (properties.isFirstEventOfSession) {

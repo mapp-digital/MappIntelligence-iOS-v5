@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property NSDictionary *variables;
 @property NSObject *viewControllerType;
 
-
+@property NSDictionary<NSString *,NSString *> *trackingParams;
 
 @end
 

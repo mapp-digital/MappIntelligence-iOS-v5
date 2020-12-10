@@ -42,7 +42,7 @@ class ActionViewController: UIViewController {
         event.actionProperties = actionProperties;
         event.userProperties = userProperties
         event.sessionProperties = sessionProperties
-        
+
         MappIntelligence.shared()?.trackAction(event);
     }
 }

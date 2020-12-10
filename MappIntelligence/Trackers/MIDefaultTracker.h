@@ -30,8 +30,7 @@
 #endif
 - (NSError*_Nullable)trackWith:(NSString *_Nonnull)name;
 - (NSError*_Nullable)trackWithEvent:(MITrackingEvent *_Nonnull)event;
-//- (NSError *_Nullable)trackAction:(MIActionEvent *_Nonnull)event;
-- (NSError *)trackWithWebEvent:(MITrackingEvent *)event andWith: (NSDictionary *) params;
+- (NSError *_Nullable)trackWithCustomEvent:(MITrackingEvent *_Nonnull)event;
 
 + (NSUserDefaults *_Nonnull)sharedDefaults;
 - (void)initHibernate;

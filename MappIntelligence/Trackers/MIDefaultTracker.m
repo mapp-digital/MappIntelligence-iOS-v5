@@ -252,30 +252,30 @@ static NSString *userAgent;
         return NULL;
 }
 
-- (NSError *)trackWithWebEvent:(MITrackingEvent *)event andWith: (NSDictionary *) params {
-    if (![_defaults stringForKey:isFirstEventOfApp]) {
-      [_defaults setBool:YES forKey:isFirstEventOfApp];
-      [_defaults synchronize];
-      _isFirstEventOpen = YES;
-      _isFirstEventOfSession = YES;
-    } else {
-      _isFirstEventOpen = NO;
-    }
-  #ifdef TARGET_OS_WATCH
-      _isReady = YES;
-  #endif
-    dispatch_async(_queue,
-                   ^(void) {
-                     // Background Thread
-                     [self->_conditionUntilGetFNS lock];
-                     while (!self->_isReady)
-                       [self->_conditionUntilGetFNS wait];
-                       [self enqueueRequestForWebEvent:event andParams:params];
-                       [self->_conditionUntilGetFNS signal];
-                       [self->_conditionUntilGetFNS unlock];
-                   });
-      
-      return NULL;
+- (NSError *)trackWithCustomEvent:(MITrackingEvent *)event {
+      if (![_defaults stringForKey:isFirstEventOfApp]) {
+        [_defaults setBool:YES forKey:isFirstEventOfApp];
+        [_defaults synchronize];
+        _isFirstEventOpen = YES;
+        _isFirstEventOfSession = YES;
+      } else {
+        _isFirstEventOpen = NO;
+      }
+    #ifdef TARGET_OS_WATCH
+        _isReady = YES;
+    #endif
+      dispatch_async(_queue,
+                     ^(void) {
+                       // Background Thread
+                       [self->_conditionUntilGetFNS lock];
+                       while (!self->_isReady)
+                         [self->_conditionUntilGetFNS wait];
+                         [self enqueueRequestForCustomEvent:event];
+                         [self->_conditionUntilGetFNS signal];
+                         [self->_conditionUntilGetFNS unlock];
+                     });
+        
+        return NULL;
 }
 
 - (NSError *_Nullable)trackWith:(NSString *)name {
@@ -438,7 +438,7 @@ static NSString *userAgent;
     }
 }
 
-- (void)enqueueRequestForWebEvent:(MITrackingEvent *)event andParams: (NSDictionary *) params{
+- (void)enqueueRequestForCustomEvent:(MITrackingEvent *)event {
     MIProperties *requestProperties = [self generateRequestProperties];
     requestProperties.locale = [NSLocale currentLocale];
 
@@ -451,7 +451,7 @@ static NSString *userAgent;
 
       MITrackerRequest *request =
         [builder createRequestWith:event andWith:requestProperties];
-     [_requestUrlBuilder urlForWebRequest:request withParams:params];
+     [_requestUrlBuilder urlForCustomRequest:request];
       MIRequest *r = [self->_requestUrlBuilder dbRequest];
       [r setStatus:ACTIVE];
       BOOL status = [[MIDatabaseManager shared] insertRequest:r];

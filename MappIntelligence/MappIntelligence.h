@@ -134,6 +134,7 @@ MappIntelligence.shared()?.optOut(with: false, andSendCurrentData: false)
 - (void) printAllRequestFromDatabase;
 - (void) removeRequestFromDatabaseWithID: (int)ID;
 
-
+- (NSError *_Nullable) trackCustomPage: (NSString *_Nonnull)pageName trackingParams: (NSDictionary<NSString *, NSString*> *_Nullable) trackingParams;
+- (NSError *_Nullable) trackCustomEvent: (NSString *_Nonnull)eventName trackingParams: (NSDictionary<NSString *, NSString*> *_Nullable) trackingParams;
 
 @end

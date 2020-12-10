@@ -64,5 +64,10 @@ class PageViewController: UIViewController {
         pageEvent.sessionProperties = sessionProperties
         
         MappIntelligence.shared()?.trackPage(pageEvent)
+        
+        
+//        let cparams:[String:String] = ["cp10":"cp10Override",
+//                                       "cg10": "test"]
+//        MappIntelligence.shared()?.trackCustomPage("Test", trackingParams: cparams)
     }
 }

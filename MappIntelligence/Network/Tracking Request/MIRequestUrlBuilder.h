@@ -18,8 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 -(instancetype)initWithUrl: (NSURL*) serverUrl andWithId: (NSString*) mappIntelligenceId;
 -(NSURL*)urlForRequest: (MITrackerRequest*) request;
-- (NSURL *)urlForWebRequest:(MITrackerRequest *)request withParams: (NSDictionary *) params;
-- (NSURL *)createURLFromParametersWith:(NSArray<NSURLQueryItem *> *)parameters;
+-(NSURL *)urlForCustomRequest:(MITrackerRequest *)request;
 @end
 
 NS_ASSUME_NONNULL_END

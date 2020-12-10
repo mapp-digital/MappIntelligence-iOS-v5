@@ -8,6 +8,7 @@
 
 #import "MIWebViewTracker.h"
 #import "MIDefaultTracker.h"
+#import "MappIntelligence.h"
 
 NSString static *jsTag = @"MappIntelligenceiOSBridge";
 
@@ -65,14 +66,12 @@ NSString static *jsTag = @"MappIntelligenceiOSBridge";
 
 - (void) trackWebViewPageEventWith: (NSString *) name parameters: (NSString *) parameters {
     NSDictionary *params = [self getDict:parameters];
-    MIPageViewEvent *page = [[MIPageViewEvent alloc] initWithName:name];
-    [[MIDefaultTracker sharedInstance] trackWithWebEvent:page andWith:params];
+    [MappIntelligence.shared trackCustomPage:name trackingParams:params];
 }
 
 - (void) trackWebViewActionEventWith: (NSString *) name parameters: (NSString *) parameters {
     NSDictionary *params = [self getDict:parameters];
-    MIActionEvent *action = [[MIActionEvent alloc] initWithName:name];
-    [[MIDefaultTracker sharedInstance] trackWithWebEvent:action andWith:params];
+    [MappIntelligence.shared trackCustomEvent: name trackingParams:params];
 }
 
 - (NSDictionary *) getDict: (NSString *) data {
