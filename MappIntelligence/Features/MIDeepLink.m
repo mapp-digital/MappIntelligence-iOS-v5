@@ -21,9 +21,15 @@ NSString *const UrlErrorDescriptionInvalid = @"Url is invalid";
     MICampaignProperties *campaignProperties = [[MICampaignProperties alloc] init];
     campaignProperties.mediaCode = mediaCodeTag;
     
+    NSArray *queryItems = [[NSArray alloc] init];
     NSMutableDictionary *campaignParameters = [[NSMutableDictionary alloc] init];
-    NSURLComponents *components = [[NSURLComponents alloc] initWithURL:url resolvingAgainstBaseURL:YES];
-    NSArray *queryItems = components.queryItems;
+    @try {
+        NSURLComponents *components = [[NSURLComponents alloc] initWithURL:url resolvingAgainstBaseURL:YES];
+        queryItems = components.queryItems;
+    } @catch (NSException *exception) {
+        [MappIntelligenceLogger.shared logObj:@"Url is invalid!" forDescription: kMappIntelligenceLogLevelDescriptionError];
+    }
+    
 
     for (NSURLQueryItem *item in queryItems) {
         if ([item.name isEqualToString:mediaCodeTag]) {
