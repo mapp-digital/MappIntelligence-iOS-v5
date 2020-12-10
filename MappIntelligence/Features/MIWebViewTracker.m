@@ -61,22 +61,18 @@ NSString static *jsTag = @"MappIntelligenceiOSBridge";
             [self trackWebViewActionEventWith: message.body[1] parameters:message.body[2]];
         }
     }
-    
 }
 
 - (void) trackWebViewPageEventWith: (NSString *) name parameters: (NSString *) parameters {
     NSDictionary *params = [self getDict:parameters];
     MIPageViewEvent *page = [[MIPageViewEvent alloc] initWithName:name];
     [[MIDefaultTracker sharedInstance] trackWithWebEvent:page andWith:params];
-//    [self parseParams:params];
 }
 
 - (void) trackWebViewActionEventWith: (NSString *) name parameters: (NSString *) parameters {
     NSDictionary *params = [self getDict:parameters];
     MIActionEvent *action = [[MIActionEvent alloc] initWithName:name];
     [[MIDefaultTracker sharedInstance] trackWithWebEvent:action andWith:params];
-    
-//    [self parseParams:params];
 }
 
 - (NSDictionary *) getDict: (NSString *) data {
@@ -93,18 +89,4 @@ NSString static *jsTag = @"MappIntelligenceiOSBridge";
     return json;
 }
 
-- (void) parseParams: (NSDictionary *) params {
-    
-//    MIPageProperties *pageProperties = [[MIPageProperties alloc] init];
-//    MIActionProperties *actionProperties = [[MIActionProperties alloc] init];
-    NSLog(@"%@",params);
-    
-    for (NSString *key in params) {
-        NSString *type = [key substringToIndex:2];
-        NSString *index = [key substringFromIndex:2];
-        NSLog(@"%@",type);
-        NSLog(@"%@",index);
-    }
-    
-}
 @end
