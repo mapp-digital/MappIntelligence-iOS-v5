@@ -25,7 +25,7 @@ NSString static *jsTag = @"MappIntelligenceiOSBridge";
 
 -(WKWebViewConfiguration *_Nonnull) updateConfiguration: (WKWebViewConfiguration *_Nullable) configuration {
    
-    WKUserScript *userScript = [[WKUserScript alloc] initWithSource: self.injectScript injectionTime:WKUserScriptInjectionTimeAtDocumentEnd forMainFrameOnly:YES];
+    WKUserScript *userScript = [[WKUserScript alloc] initWithSource: self.injectScript injectionTime:WKUserScriptInjectionTimeAtDocumentStart forMainFrameOnly:YES];
     
     WKWebViewConfiguration *localConfiguration = configuration ?: [[WKWebViewConfiguration alloc] init];
     [localConfiguration.userContentController addUserScript:userScript];

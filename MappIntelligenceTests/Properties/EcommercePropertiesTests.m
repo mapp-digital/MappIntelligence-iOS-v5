@@ -25,16 +25,16 @@
     _ecommerceProperties = [[MIEcommerceProperties alloc] initWithCustomProperties:_properties];
     MIProduct *product1 = [[MIProduct alloc] init];
     product1.name = @"product1Name";
-    product1.price = @"55$";
+//    product1.price = @"55$";
     product1.quantity = [NSNumber numberWithInt:33];
     MIProduct *product2 = [[MIProduct alloc] init];
     product2.name = @"product2Name";
-    product2.price = @"66$";
+//    product2.price = @"66$";
     product2.quantity = [NSNumber numberWithInt:44];
     _products = [NSArray arrayWithObjects:product1, product2, nil];
     _ecommerceProperties.products = _products;
     _cuponValue = [NSNumber numberWithInt: 101];
-    _ecommerceProperties.cuponValue = _cuponValue;
+    _ecommerceProperties.couponValue = _cuponValue;
 }
 
 - (void)tearDown {
@@ -47,7 +47,7 @@
 - (void)testInitWithCustomProperties {
     XCTAssertTrue([_ecommerceProperties.customProperties isEqual:_properties], @"The custom properties are not correct!");
     XCTAssertTrue([_ecommerceProperties.products isEqual:_products], "The list of products is not correct!");
-    XCTAssertTrue([_ecommerceProperties.cuponValue isEqual:_cuponValue], "The cupon value is not correct!");
+    XCTAssertTrue([_ecommerceProperties.couponValue isEqual:_cuponValue], "The cupon value is not correct!");
 }
 
 - (void)testAsQueryItems {

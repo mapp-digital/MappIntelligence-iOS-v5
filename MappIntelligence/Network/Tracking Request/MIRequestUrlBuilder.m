@@ -382,7 +382,10 @@
     [parametrs
         addObject:[NSURLQueryItem queryItemWithName:@"la" value:language]];
   }
-   
+    if ([event isKindOfClass:MIActionEvent.class]) {
+        [parametrs addObjectsFromArray:[(MIActionEvent*)event asQueryItems]];
+    }
+    
     for(NSString *key in params) {
         [parametrs addObject:[NSURLQueryItem queryItemWithName:key value:params[key]]];
     }

@@ -17,7 +17,7 @@
 @property MISessionProperties *sessionProperties;
 @property MIUserProperties *userProperties;
 @property MIEcommerceProperties *ecommerceProperties;
-@property MIAdvertisementProperties *advertisementProperties;
+@property MICampaignProperties *advertisementProperties;
 
 @end
 
@@ -33,12 +33,12 @@
     _ecommerceProperties = [[MIEcommerceProperties alloc] init];
     MIProduct* product1 = [[MIProduct alloc] init];
     product1.name = @"product1";
-    product1.price = @"33$";
+   // product1.price = @"33$";
     product1.quantity = [[NSNumber alloc] initWithInteger:22];
     MIProduct* product2 = [[MIProduct alloc] init];
     product2.name = @"product2";
     _ecommerceProperties.products = [[NSArray alloc] initWithObjects:product1, product2, nil];
-    _advertisementProperties = [[MIAdvertisementProperties alloc] initWith: @"en.internal.newsletter.2017.05"];
+    _advertisementProperties = [[MICampaignProperties alloc] initWith: @"en.internal.newsletter.2017.05"];
     _advertisementProperties.mediaCode = @"abc";
     _advertisementProperties.oncePerSession = YES;
     _advertisementProperties.action = view;
@@ -48,7 +48,7 @@
     _actionEvent.sessionProperties = _sessionProperties;
     _actionEvent.userProperties = _userProperties;
     _actionEvent.ecommerceProperties = _ecommerceProperties;
-    _actionEvent.advertisementProperties = _advertisementProperties;
+    _actionEvent.campaignProperties = _advertisementProperties;
 }
 
 - (void)tearDown {
@@ -67,7 +67,7 @@
     XCTAssertTrue([[_actionEvent sessionProperties] isEqual:_sessionProperties], @"Session properties is not the same as it used for creation of action event!");
     XCTAssertTrue([[_actionEvent userProperties] isEqual:_userProperties], @"User properties is not the same as it used for creation of action event!");
     XCTAssertTrue([[_actionEvent ecommerceProperties] isEqual: _ecommerceProperties], @"Ecommerce properties is not the same as it used for creation of page view event!");
-    XCTAssertTrue([[_actionEvent advertisementProperties] isEqual: _advertisementProperties], @"Advertisement properties is not the same as it used for creation of page view event!");
+    XCTAssertTrue([[_actionEvent campaignProperties] isEqual: _advertisementProperties], @"Advertisement properties is not the same as it used for creation of page view event!");
 }
 
 - (void)testPerformanceExample {
