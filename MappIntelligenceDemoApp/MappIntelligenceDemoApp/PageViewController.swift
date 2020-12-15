@@ -24,8 +24,11 @@ class PageViewController: UIViewController {
         product1.name = "Product1Name"
         product1.cost = 20
         product1.quantity = 34
+        product1.categories = [1: "Shorts", 2: "Men", 44: "Clothes"]
         let product2 = MIProduct()
+        product2.categories = [1: "T-Shirts", 45: "Jackets"]
         let product3 = MIProduct()
+        product3.categories = [2: "Women", 46: "Winter"]
         product3.cost = 348
         ecommerceProperties.status = .addedToBasket
         ecommerceProperties.products = [product1, product2, product3];

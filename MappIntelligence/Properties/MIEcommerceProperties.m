@@ -108,9 +108,6 @@
     if (_productVariant) {
         [items addObject:[[NSURLQueryItem alloc] initWithName:@"cb767" value:_productVariant]];
     }
-    if (_appInstalled) {
-        [items addObject:[[NSURLQueryItem alloc] initWithName:@"cb900" value:[_appInstalled stringValue]]];
-    }
     return items;
 }
 
@@ -121,12 +118,27 @@
         NSMutableArray<NSString*>* productNames = [[NSMutableArray alloc] init];
         NSMutableArray<NSString*>* productCosts = [[NSMutableArray alloc] init];
         NSMutableArray<NSString*>* productQuantities = [[NSMutableArray alloc] init];
+        NSMutableArray* categoriesKeys = [[NSMutableArray alloc] init];
         
         for (MIProduct* product in _products) {
             [productNames addObject: product.name];
             [productCosts addObject: (product.cost ? [product.cost stringValue] : @"")];
             [productQuantities addObject: (product.quantity ? [product.quantity stringValue] : @"")];
+            [categoriesKeys addObjectsFromArray:product.categories.allKeys];
         }
+        
+        categoriesKeys = [[[NSSet setWithArray:categoriesKeys] allObjects] copy];
+        
+        NSMutableArray<NSString*>* tempCategories = [[NSMutableArray alloc] init];
+        for (NSNumber* key in categoriesKeys) {
+            [tempCategories removeAllObjects];
+            for (MIProduct* product in _products) {
+                NSString* tmpObject = [[[product categories] allKeys] containsObject:key] ? product.categories[key] : @"";
+                [tempCategories addObject: tmpObject];
+            }
+            [items addObject:[[NSURLQueryItem alloc] initWithName:[@"ca" stringByAppendingString:[key stringValue]] value:[tempCategories componentsJoinedByString:@";"]]];
+        }
+        
         [items addObject:[[NSURLQueryItem alloc] initWithName:@"ba" value:[productNames componentsJoinedByString:@";"]]];
         [items addObject:[[NSURLQueryItem alloc] initWithName:@"co" value:[productCosts componentsJoinedByString:@";"]]];
         [items addObject:[[NSURLQueryItem alloc] initWithName:@"qn" value:[productQuantities componentsJoinedByString:@";"]]];
@@ -134,6 +146,7 @@
     
     return items;
 }
+
 
 - (NSDictionary<NSNumber* ,NSArray<NSString*>*> *) filterCustomDict: (NSDictionary<NSNumber* ,NSArray<NSString*>*> *) dict{
     NSMutableDictionary *result = [[NSMutableDictionary alloc] init];
