@@ -19,7 +19,7 @@ class CampaignViewController: UIViewController {
         campaignProperties.mediaCode = "abc"
         campaignProperties.oncePerSession = true
         campaignProperties.action = .view
-        campaignProperties.customProperties = [12: ["camParam1"]]
+        campaignProperties.customProperties = [12: "camParam1"]
         
         let event = MIPageViewEvent(name: "TestCampaign")
         event.campaignProperties = campaignProperties

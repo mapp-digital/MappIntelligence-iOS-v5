@@ -10,7 +10,7 @@
 
 @implementation MIEcommerceProperties
 
-- (instancetype)initWithCustomProperties:(NSDictionary<NSNumber *,NSArray<NSString *> *> *)properties {
+- (instancetype)initWithCustomProperties:(NSDictionary<NSNumber *,NSString *> *)properties {
     self = [super init];
     if (self) {
         _customProperties = properties;
@@ -27,7 +27,7 @@
     if (_customProperties) {
         _customProperties = [self filterCustomDict:_customProperties];
         for(NSNumber* key in _customProperties) {
-            [items addObject:[[NSURLQueryItem alloc] initWithName:[NSString stringWithFormat:@"cb%@",key] value: [_customProperties[key] componentsJoinedByString:@";"]]];
+            [items addObject:[[NSURLQueryItem alloc] initWithName:[NSString stringWithFormat:@"cb%@",key] value: _customProperties[key]]];
         }
     }
     

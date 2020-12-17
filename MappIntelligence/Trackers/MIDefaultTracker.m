@@ -348,7 +348,7 @@ static NSString *userAgent;
 
     MITrackerRequest *request =
       [builder createRequestWith:event andWith:requestProperties];
-   [_requestUrlBuilder urlForRequest:request];
+   [_requestUrlBuilder urlForRequest:request withCustomData:NO];
     MIRequest *r = [self->_requestUrlBuilder dbRequest];
     [r setStatus:ACTIVE];
     BOOL status = [[MIDatabaseManager shared] insertRequest:r];
@@ -451,7 +451,7 @@ static NSString *userAgent;
 
       MITrackerRequest *request =
         [builder createRequestWith:event andWith:requestProperties];
-     [_requestUrlBuilder urlForCustomRequest:request];
+     [_requestUrlBuilder urlForRequest:request withCustomData:YES];
       MIRequest *r = [self->_requestUrlBuilder dbRequest];
       [r setStatus:ACTIVE];
       BOOL status = [[MIDatabaseManager shared] insertRequest:r];

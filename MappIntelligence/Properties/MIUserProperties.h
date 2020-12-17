@@ -38,9 +38,9 @@ typedef NS_ENUM(NSInteger, MIGender) {
 @property (nullable) NSString *street;
 @property (nullable) NSString *streetNumber;
 @property (nullable) NSString *zipCode;
-@property (nullable) NSDictionary<NSNumber* ,NSArray<NSString*>*>* customProperties;
+@property (nullable) NSDictionary<NSNumber* ,NSString*>* customProperties;
 
-- (instancetype)initWithCustomProperties: (NSDictionary<NSNumber* ,NSArray<NSString*>*>* _Nullable) properties;
+- (instancetype)initWithCustomProperties: (NSDictionary<NSNumber* ,NSString*>* _Nullable) properties;
 - (NSMutableArray<NSURLQueryItem*>*)asQueryItems;
 
 @end
