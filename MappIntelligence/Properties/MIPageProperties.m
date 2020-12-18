@@ -10,7 +10,7 @@
 
 @implementation MIPageProperties
 
--(instancetype)initWithPageParams: (NSDictionary<NSNumber* ,NSArray<NSString*>*>* _Nullable) parameters andWithPageCategory: (NSMutableDictionary* _Nullable) category andWithSearch: (NSString* _Nullable)internalSearch {
+-(instancetype)initWithPageParams: (NSDictionary<NSNumber* ,NSString*>* _Nullable) parameters andWithPageCategory: (NSMutableDictionary* _Nullable) category andWithSearch: (NSString* _Nullable)internalSearch {
     self = [self init];
     if (self) {
         _details = parameters;
@@ -25,7 +25,7 @@
     if (_details) {
         _details = [self filterCustomDict:_details];
         for(NSNumber* key in _details) {
-            [items addObject:[[NSURLQueryItem alloc] initWithName:[NSString stringWithFormat:@"cp%@",key] value: [_details[key] componentsJoinedByString:@";"]]];
+            [items addObject:[[NSURLQueryItem alloc] initWithName:[NSString stringWithFormat:@"cp%@",key] value: _details[key]]];
         }
     }
     if (_groups) {
@@ -39,7 +39,7 @@
     return items;
 }
 
-- (NSDictionary<NSNumber* ,NSArray<NSString*>*> *) filterCustomDict: (NSDictionary<NSNumber* ,NSArray<NSString*>*> *) dict{
+- (NSDictionary<NSNumber* ,NSArray<NSString*>*> *) filterCustomDict: (NSDictionary<NSNumber* ,NSString*> *) dict{
     NSMutableDictionary *result = [[NSMutableDictionary alloc] init];
     for (NSNumber *idx in dict) {
         if (idx.intValue > 0) {

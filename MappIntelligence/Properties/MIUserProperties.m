@@ -11,7 +11,7 @@
 
 @implementation MIUserProperties
 
-- (instancetype)initWithCustomProperties: (NSDictionary<NSNumber* ,NSArray<NSString*>*>* _Nullable) properties {
+- (instancetype)initWithCustomProperties: (NSDictionary<NSNumber* ,NSString*>* _Nullable) properties {
     self = [super init];
     if (self) {
         _customProperties = properties;
@@ -25,7 +25,7 @@
     if (_customProperties) {
         _customProperties = [self filterCustomDict:_customProperties];
         for(NSNumber* key in _customProperties) {
-            [items addObject:[[NSURLQueryItem alloc] initWithName:[NSString stringWithFormat:@"uc%@",key] value: [_customProperties[key] componentsJoinedByString:@";"]]];
+            [items addObject:[[NSURLQueryItem alloc] initWithName:[NSString stringWithFormat:@"uc%@",key] value: _customProperties[key]]];
         }
     }
     
@@ -94,7 +94,7 @@
     return @"";
 }
 
-- (NSDictionary<NSNumber* ,NSArray<NSString*>*> *) filterCustomDict: (NSDictionary<NSNumber* ,NSArray<NSString*>*> *) dict{
+- (NSDictionary<NSNumber* ,NSArray<NSString*>*> *) filterCustomDict: (NSDictionary<NSNumber* ,NSString*> *) dict{
     NSMutableDictionary *result = [[NSMutableDictionary alloc] init];
     for (NSNumber *idx in dict) {
         if (idx.intValue > 0) {

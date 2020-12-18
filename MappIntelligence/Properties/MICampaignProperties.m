@@ -36,7 +36,7 @@
     if (_customProperties) {
         _customProperties = [self filterCustomDict:_customProperties];
         for(NSNumber* key in _customProperties) {
-            [items addObject:[[NSURLQueryItem alloc] initWithName:[NSString stringWithFormat:@"cc%@",key] value: [_customProperties[key] componentsJoinedByString:@";"]]];
+            [items addObject:[[NSURLQueryItem alloc] initWithName:[NSString stringWithFormat:@"cc%@",key] value: _customProperties[key]]];
         }
     }
     return items;

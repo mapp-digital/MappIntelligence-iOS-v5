@@ -19,7 +19,7 @@ class CampaignViewController: UIViewController {
         campaignProperties.mediaCode = "abc"
         campaignProperties.oncePerSession = true
         campaignProperties.action = .view
-        campaignProperties.customProperties = [12: ["camParam1"]]
+        campaignProperties.customProperties = [12: "camParam1"]
         
         let event = MIPageViewEvent(name: "TestCampaign")
         event.campaignProperties = campaignProperties
@@ -34,7 +34,7 @@ class CampaignViewController: UIViewController {
     }
     
     @IBAction func testLink2(_ sender: Any) {
-        let url = URL(string: "https://testurl.com/?abc=email.newsletter.nov2020.thursday&wt_cc12=parameter12")
+        let url = URL(string: "https://testurl.com/?abc=email.newsletter.nov2020.thursday&wt_cc12=parameter12 13")
         
         MappIntelligence.shared()?.trackUrl(url, withMediaCode: "abc")
         MappIntelligence.shared()?.trackPage(with: self, andEvent: nil)

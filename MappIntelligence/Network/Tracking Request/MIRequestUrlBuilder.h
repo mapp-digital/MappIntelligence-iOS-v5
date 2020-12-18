@@ -17,8 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property MIRequest *dbRequest;
 
 -(instancetype)initWithUrl: (NSURL*) serverUrl andWithId: (NSString*) mappIntelligenceId;
--(NSURL*)urlForRequest: (MITrackerRequest*) request;
-- (NSURL *)createURLFromParametersWith:(NSArray<NSURLQueryItem *> *)parameters;
+-(NSURL *)urlForRequest:(MITrackerRequest *)request withCustomData: (BOOL) custom;
+-(NSURL *)createURLFromParametersWith:(NSArray<NSURLQueryItem *> *)parameters;
 @end
 
 NS_ASSUME_NONNULL_END

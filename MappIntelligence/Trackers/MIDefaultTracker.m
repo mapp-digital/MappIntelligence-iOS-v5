@@ -252,6 +252,32 @@ static NSString *userAgent;
         return NULL;
 }
 
+- (NSError *)trackWithCustomEvent:(MITrackingEvent *)event {
+      if (![_defaults stringForKey:isFirstEventOfApp]) {
+        [_defaults setBool:YES forKey:isFirstEventOfApp];
+        [_defaults synchronize];
+        _isFirstEventOpen = YES;
+        _isFirstEventOfSession = YES;
+      } else {
+        _isFirstEventOpen = NO;
+      }
+    #ifdef TARGET_OS_WATCH
+        _isReady = YES;
+    #endif
+      dispatch_async(_queue,
+                     ^(void) {
+                       // Background Thread
+                       [self->_conditionUntilGetFNS lock];
+                       while (!self->_isReady)
+                         [self->_conditionUntilGetFNS wait];
+                         [self enqueueRequestForCustomEvent:event];
+                         [self->_conditionUntilGetFNS signal];
+                         [self->_conditionUntilGetFNS unlock];
+                     });
+        
+        return NULL;
+}
+
 - (NSError *_Nullable)trackWith:(NSString *)name {
   if ([_config.MappIntelligenceId isEqual:@""] ||
       [_config.serverUrl.absoluteString isEqual:@""]) {
@@ -322,7 +348,7 @@ static NSString *userAgent;
 
     MITrackerRequest *request =
       [builder createRequestWith:event andWith:requestProperties];
-   [_requestUrlBuilder urlForRequest:request];
+   [_requestUrlBuilder urlForRequest:request withCustomData:NO];
     MIRequest *r = [self->_requestUrlBuilder dbRequest];
     [r setStatus:ACTIVE];
     BOOL status = [[MIDatabaseManager shared] insertRequest:r];
@@ -412,4 +438,25 @@ static NSString *userAgent;
     }
 }
 
+- (void)enqueueRequestForCustomEvent:(MITrackingEvent *)event {
+    MIProperties *requestProperties = [self generateRequestProperties];
+    requestProperties.locale = [NSLocale currentLocale];
+
+    [requestProperties setIsFirstEventOfApp:_isFirstEventOpen];
+    [requestProperties setIsFirstEventOfSession:_isFirstEventOfSession];
+    [requestProperties setIsFirstEventAfterAppUpdate:NO];
+
+    MIRequestTrackerBuilder *builder =
+        [[MIRequestTrackerBuilder alloc] initWithConfoguration:self.config];
+
+      MITrackerRequest *request =
+        [builder createRequestWith:event andWith:requestProperties];
+     [_requestUrlBuilder urlForRequest:request withCustomData:YES];
+      MIRequest *r = [self->_requestUrlBuilder dbRequest];
+      [r setStatus:ACTIVE];
+      BOOL status = [[MIDatabaseManager shared] insertRequest:r];
+      [_logger logObj:[NSString stringWithFormat: @"request written with success: %d", status] forDescription:kMappIntelligenceLogLevelDescriptionDebug];
+    _isFirstEventOfSession = NO;
+    _isFirstEventOpen = NO;
+}
 @end

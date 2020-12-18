@@ -279,4 +279,22 @@ static MappIntelligenceDefaultConfig *config = nil;
     }
     return YES;
 }
+
+- (NSError *_Nullable) trackCustomPage: (NSString *_Nonnull)pageName trackingParams: (NSDictionary<NSString *, NSString*> *_Nullable) trackingParams {
+    if (![self isTrackingEnabled]) {
+        return nil;
+    }
+    MIPageViewEvent *event = [[MIPageViewEvent alloc] initWithName:pageName];
+    event.trackingParams = trackingParams;
+  return [tracker trackWithCustomEvent:event];
+}
+
+- (NSError *_Nullable) trackCustomEvent: (NSString *_Nonnull)eventName trackingParams: (NSDictionary<NSString *, NSString*> *_Nullable) trackingParams {
+    if (![self isTrackingEnabled]) {
+        return nil;
+    }
+    MIActionEvent *event = [[MIActionEvent alloc] initWithName:eventName];
+    event.trackingParams = trackingParams;
+  return [tracker trackWithCustomEvent:event];
+}
 @end

@@ -21,7 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property MICampaignAction action;
 @property (nullable) NSString *mediaCode;
 @property BOOL oncePerSession;
-@property (nullable) NSDictionary<NSNumber* ,NSArray<NSString*>*>* customProperties;
+@property (nullable) NSDictionary<NSNumber* ,NSString*>* customProperties;
 
 - (instancetype)initWith: (NSString *) campaignId;
 - (NSMutableArray<NSURLQueryItem*>*)asQueryItems;

@@ -14,10 +14,10 @@ NS_ASSUME_NONNULL_BEGIN
 @interface MIPageProperties : NSObject
 
 @property (nullable) NSString* internalSearch;
-@property (nullable) NSDictionary<NSNumber* ,NSArray<NSString*>*> *details;
+@property (nullable) NSDictionary<NSNumber* ,NSString*> *details;
 @property (nullable) NSMutableDictionary* groups;
 
--(instancetype)initWithPageParams: (NSDictionary<NSNumber* ,NSArray<NSString*>*>* _Nullable) parameters andWithPageCategory: (NSMutableDictionary* _Nullable) category andWithSearch: (NSString* _Nullable)internalSearch;
+-(instancetype)initWithPageParams: (NSDictionary<NSNumber* ,NSString*>* _Nullable) parameters andWithPageCategory: (NSMutableDictionary* _Nullable) category andWithSearch: (NSString* _Nullable)internalSearch;
 
 -(NSMutableArray<NSURLQueryItem*>*)asQueryItems;
 

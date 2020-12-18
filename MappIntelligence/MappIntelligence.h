@@ -134,6 +134,20 @@ MappIntelligence.shared()?.optOut(with: false, andSendCurrentData: false)
 - (void) printAllRequestFromDatabase;
 - (void) removeRequestFromDatabaseWithID: (int)ID;
 
+/**
+ @brief Method to opt-out of tracking. In case of opt-out, no data will be sent to Mapp Intelligence anymore.
+ @param pageName - name of page/view being tracked
+ @param trackingParams - dictionary with key/value pairs of parameters that are bveing tracked
+ @return the error which may happen through process of tracking, if returns nil there is no error.
+ */
+- (NSError *_Nullable) trackCustomPage: (NSString *_Nonnull)pageName trackingParams: (NSDictionary<NSString *, NSString*> *_Nullable) trackingParams;
 
+/**
+ @brief Method which will track action event
+ @param eventName - name of action event
+ @param trackingParams - dictionary with key/value pairs of parameters that are bveing tracked
+ @return the error which may happen through process of tracking, if returns nil there is no error.
+ */
+- (NSError *_Nullable) trackCustomEvent: (NSString *_Nonnull)eventName trackingParams: (NSDictionary<NSString *, NSString*> *_Nullable) trackingParams;
 
 @end
