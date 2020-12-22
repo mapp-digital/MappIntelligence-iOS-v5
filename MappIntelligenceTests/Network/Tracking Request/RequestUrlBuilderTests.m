@@ -43,7 +43,7 @@
     NSString *everid = [_tracker generateEverId];
     MIProperties *properies = [[MIProperties alloc] initWithEverID:everid andSamplingRate:0 withTimeZone:[NSTimeZone localTimeZone] withTimestamp:[NSDate date] withUserAgent:@"Tracking Library"];
     MITrackerRequest *request = [[MITrackerRequest alloc] initWithEvent:event andWithProperties:properies];
-    NSURL *url = [_builder urlForRequest:request];
+    NSURL *url = [_builder urlForRequest:request withCustomData:NO];
     XCTAssertNotNil(url);
 }
 

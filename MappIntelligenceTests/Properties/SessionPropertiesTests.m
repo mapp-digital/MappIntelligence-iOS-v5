@@ -35,7 +35,7 @@
     NSMutableArray<NSURLQueryItem*>* expectedItems = [[NSMutableArray alloc] init];
     if (_sessionDictionary) {
         for(NSString* key in _sessionDictionary) {
-            [expectedItems addObject:[[NSURLQueryItem alloc] initWithName:[NSString stringWithFormat:@"cs%@",key] value: [_sessionDictionary[key] componentsJoinedByString:@";"]]];
+            [expectedItems addObject:[[NSURLQueryItem alloc] initWithName:[NSString stringWithFormat:@"cs%@",key] value: _sessionDictionary[key]]];
         }
     }
     

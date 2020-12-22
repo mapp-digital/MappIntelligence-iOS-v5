@@ -7,17 +7,17 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "MIAdvertisementProperties.h"
+#import "MICampaignProperties.h"
 
 @interface AdvertisementPropertiesTests : XCTestCase
-@property MIAdvertisementProperties* advertisementProperties;
+@property MICampaignProperties* advertisementProperties;
 @property NSMutableDictionary* properties;
 @end
 
 @implementation AdvertisementPropertiesTests
 
 - (void)setUp {
-    _advertisementProperties = [[MIAdvertisementProperties alloc] initWith: @"en.internal.newsletter.2017.05"];
+    _advertisementProperties = [[MICampaignProperties alloc] initWith: @"en.internal.newsletter.2017.05"];
     _advertisementProperties.mediaCode = @"abc";
     _advertisementProperties.oncePerSession = YES;
     _advertisementProperties.action = view;
@@ -35,7 +35,7 @@
 }
 
 - (void)testCopy {
-    MIAdvertisementProperties *comparable = [[MIAdvertisementProperties alloc] initWith: @"en.internal.newsletter.2017.05"];
+    MICampaignProperties *comparable = [[MICampaignProperties alloc] initWith: @"en.internal.newsletter.2017.05"];
     comparable.mediaCode = @"abc";
     comparable.oncePerSession = YES;
     comparable.action = view;

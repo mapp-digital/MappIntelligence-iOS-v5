@@ -39,7 +39,7 @@ typedef NS_ENUM(NSInteger, Status) {
 @property (nullable) NSNumber* markUp;
 @property (nullable) NSString* productVariant;
 
-@property (nullable) NSDictionary<NSNumber* ,NSArray<NSString*>*>* customProperties;
+@property (nullable) NSDictionary<NSNumber* ,NSString*>* customProperties;
 
 - (instancetype)initWithCustomProperties: (NSDictionary<NSNumber* ,NSString*>* _Nullable) properties;
 - (NSMutableArray<NSURLQueryItem*>*)asQueryItems;

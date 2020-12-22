@@ -17,7 +17,7 @@
 @implementation UserPropertiesTests
 
 - (void)setUp {
-    _parameters = [@{@20: @[@"1 element"]} copy];
+    _parameters = [@{@20: @"1 element"} copy];
     _userProperties = [[MIUserProperties alloc] initWithCustomProperties:_parameters];
 }
 
@@ -35,7 +35,7 @@
     NSMutableArray<NSURLQueryItem*>* expectedItems = [[NSMutableArray alloc] init];
     if (_parameters) {
         for(NSString* key in _parameters) {
-            [expectedItems addObject:[[NSURLQueryItem alloc] initWithName:[NSString stringWithFormat:@"uc%@",key] value: [_parameters[key] componentsJoinedByString:@";"]]];
+            [expectedItems addObject:[[NSURLQueryItem alloc] initWithName:[NSString stringWithFormat:@"uc%@",key] value: _parameters[key]]];
         }
     }
 

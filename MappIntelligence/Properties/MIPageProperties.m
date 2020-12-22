@@ -30,7 +30,7 @@
     }
     if (_groups) {
         for(NSString* key in _groups) {
-            [items addObject:[[NSURLQueryItem alloc] initWithName:[NSString stringWithFormat:@"cg%@",key] value: [_groups[key] componentsJoinedByString:@";"]]];
+            [items addObject:[[NSURLQueryItem alloc] initWithName:[NSString stringWithFormat:@"cg%@",key] value: _groups[key]]];
         }
     }
     if (_internalSearch) {
@@ -39,7 +39,7 @@
     return items;
 }
 
-- (NSDictionary<NSNumber* ,NSArray<NSString*>*> *) filterCustomDict: (NSDictionary<NSNumber* ,NSString*> *) dict{
+- (NSDictionary<NSNumber* ,NSString*> *) filterCustomDict: (NSDictionary<NSNumber* ,NSString*> *) dict{
     NSMutableDictionary *result = [[NSMutableDictionary alloc] init];
     for (NSNumber *idx in dict) {
         if (idx.intValue > 0) {

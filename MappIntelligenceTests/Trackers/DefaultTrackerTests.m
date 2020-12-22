@@ -95,10 +95,10 @@
 }
 
 - (void)testTrackWithPageEvent {
-    NSMutableDictionary* details = [@{@20: @[@"cp20Override"]} copy];
-    NSMutableDictionary* groups = [@{@15: @[@"testGroups"]} copy];
+    NSMutableDictionary* details = [@{@20: @"cp20Override"} copy];
+    NSMutableDictionary* groups = [@{@15: @"testGroups"} copy];
     NSString* internalSearch = @"testSearchTerm";
-    NSMutableDictionary* sessionDictionary = [@{@10: @[@"sessionpar1"]} copy];
+    NSMutableDictionary* sessionDictionary = [@{@10: @"sessionpar1"} copy];
     MISessionProperties* sessionProperties =  [[MISessionProperties alloc] initWithProperties: sessionDictionary];
     MIPageProperties* pageProperties = [[MIPageProperties alloc] initWithPageParams:details andWithPageCategory:groups andWithSearch:internalSearch];
     MIEcommerceProperties* ecommerceProperties = [[MIEcommerceProperties alloc] init];
@@ -113,9 +113,9 @@
 }
 
 - (void) testTrackWithAction {
-    NSMutableDictionary* properties = [@{@20: @[@"1 element"]} copy];
+    NSMutableDictionary* properties = [@{@20: @"1 element"} copy];
     NSString* actionname = @"TestAction";
-    NSMutableDictionary* sessionDictionary = [@{@10: @[@"sessionpar1"]} copy];
+    NSMutableDictionary* sessionDictionary = [@{@10: @"sessionpar1"} copy];
     MISessionProperties* sessionProperties =  [[MISessionProperties alloc] initWithProperties: sessionDictionary];
     
     MIActionProperties* actionProperties = [[MIActionProperties alloc] initWithProperties:properties];

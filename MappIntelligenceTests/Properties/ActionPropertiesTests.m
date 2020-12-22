@@ -21,7 +21,7 @@
 @implementation ActionPropertiesTests
 
 - (void)setUp {
-    _properties = [@{@20: @[@"1 element"]} copy];
+    _properties = [@{@20: @"1 element"} copy];
     _actionname = @"TestAction";
     _actionProperties = [[MIActionProperties alloc] initWithProperties:_properties];
 }
@@ -40,7 +40,7 @@
     NSMutableArray<NSURLQueryItem*>* expectedItems = [[NSMutableArray alloc] init];
     if (_properties) {
         for(NSString* key in _properties) {
-            [expectedItems addObject:[[NSURLQueryItem alloc] initWithName:[NSString stringWithFormat:@"ck%@",key] value: [_properties[key] componentsJoinedByString:@";"]]];
+            [expectedItems addObject:[[NSURLQueryItem alloc] initWithName:[NSString stringWithFormat:@"ck%@",key] value: _properties[key]]];
         }
     }
 

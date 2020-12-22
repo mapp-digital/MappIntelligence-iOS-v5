@@ -148,7 +148,7 @@
 }
 
 
-- (NSDictionary<NSNumber* ,NSArray<NSString*>*> *) filterCustomDict: (NSDictionary<NSNumber* ,NSArray<NSString*>*> *) dict{
+- (NSDictionary<NSNumber* ,NSString*> *) filterCustomDict: (NSDictionary<NSNumber* ,NSString*> *) dict{
     NSMutableDictionary *result = [[NSMutableDictionary alloc] init];
     for (NSNumber *idx in dict) {
         if (idx.intValue > 0) {

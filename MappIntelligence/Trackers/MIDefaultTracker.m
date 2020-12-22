@@ -433,7 +433,7 @@ static NSString *userAgent;
     if (MIEnvironment.appUpdated) {
         _isFirstEventOfSession = YES;
         MIActionEvent *updateEvent = [[MIActionEvent alloc] initWithName:@"webtrekk_ignore"];
-        updateEvent.sessionProperties = [[MISessionProperties alloc] initWithProperties: @{@815:@[@"1"]}];
+        updateEvent.sessionProperties = [[MISessionProperties alloc] initWithProperties: @{@815:@"1"}];
         [self trackWithEvent: updateEvent];
     }
 }
