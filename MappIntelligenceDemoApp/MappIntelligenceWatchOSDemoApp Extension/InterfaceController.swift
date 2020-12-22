@@ -33,7 +33,7 @@ class InterfaceController: WKInterfaceController {
     @IBAction func TrackPage() {
         let customName = "the custom name of page"
         let params:[NSNumber:String] = [20: "cp20Override;cp21Override;cp22Override"]
-        let categories:NSMutableDictionary = [10: ["test"]]
+        let categories:NSMutableDictionary = [10: "test"]
         let searchTerm = "testSearchTerm"
         
         let pageEvent = MIPageViewEvent(name: customName)

@@ -45,7 +45,7 @@ class PageViewController: UIViewController {
         
         //page properties
         let params:[NSNumber : String] = [20: "cp20Override;cp21Override;cp22Override"]
-        let categories:NSMutableDictionary = [10: ["test"]]
+        let categories:NSMutableDictionary = [10: "test"]
         let searchTerm = "testSearchTerm"
         let pageProperties = MIPageProperties(pageParams: params, andWithPageCategory: categories, andWithSearch: searchTerm)
         

@@ -38,9 +38,9 @@ NSString *const UrlErrorDescriptionInvalid = @"Url is invalid";
         if ([MIDeepLink isCampaignParameter: item.name]) {
             int idx = [[item.name substringFromIndex:5] intValue];
             NSNumber *key = [NSNumber numberWithInt:idx];
-            NSArray *value = [NSArray arrayWithObject:item.value];
+//            NSArray *value = [NSArray arrayWithObject:item.value];
             if(key && idx) {
-                [campaignParameters setObject:value forKey:key];
+                [campaignParameters setObject:item.value forKey:key];
             }
         }
     }

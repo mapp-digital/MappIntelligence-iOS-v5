@@ -16,8 +16,8 @@ class ViewControllerTV: UIViewController {
     }
 
     @IBAction func trackViewController(_ sender: Any) {
-        let params:[NSNumber:[String]] = [20: ["cp20Override", "cp21Override", "cp22Override"]]
-        let categories:NSMutableDictionary = [10: ["test"]]
+        let params:[NSNumber:String] = [20: "cp20Override;cp21Override;cp22Override"]
+        let categories:NSMutableDictionary = [10: "test"]
         let searchTerm = "testSearchTerm"
         let pageEvent = MIPageViewEvent()
         pageEvent.pageProperties = MIPageProperties(pageParams: params, andWithPageCategory: categories, andWithSearch: searchTerm)
@@ -26,10 +26,10 @@ class ViewControllerTV: UIViewController {
     
     @IBAction func trackCustomString(_ sender: Any) {
         let customName = "the custom name of page"
-        let params:[NSNumber:[String]] = [20: ["cp20Override", "cp21Override", "cp22Override"]]
-        let categories:NSMutableDictionary = [10: ["test"]]
+        let params:[NSNumber:String] = [20: "cp20Override;cp21Override;cp22Override"]
+        let categories:NSMutableDictionary = [10: "test"]
         let searchTerm = "testSearchTerm"
-        let sessionProperties = MISessionProperties(properties: [10: ["sessionpar1"]])
+        let sessionProperties = MISessionProperties(properties: [10: "sessionpar1"])
         let pageEvent = MIPageViewEvent(name: customName)
         pageEvent.pageProperties = MIPageProperties(pageParams: params, andWithPageCategory: categories, andWithSearch: searchTerm)
         pageEvent.sessionProperties = sessionProperties
@@ -38,10 +38,10 @@ class ViewControllerTV: UIViewController {
     }
 
     @IBAction func trackAction(_ sender: Any) {
-        let actionProperties = MIActionProperties(properties:  [20:["ck20Override","ck21Override"]])
-        let sessionProperties = MISessionProperties(properties: [10: ["sessionpar1"]])
+        let actionProperties = MIActionProperties(properties:  [20:"ck20Override;ck21Override"])
+        let sessionProperties = MISessionProperties(properties: [10: "sessionpar1"])
         let userProperties = MIUserProperties()
-        userProperties.customProperties = [20:["Test"]]
+        userProperties.customProperties = [20:"Test"]
         userProperties.birthday = MIBirthday(day: 12, month: 0, year: 1993)
         userProperties.city = "Paris"
         userProperties.country = "France"
@@ -60,7 +60,7 @@ class ViewControllerTV: UIViewController {
     }
 
     @IBAction func trackEcommerce(_ sender: Any) {
-        let ecommerceProperties = MIEcommerceProperties(customProperties: [540 : ["ecommerce1", "ecommerce2"]])
+        let ecommerceProperties = MIEcommerceProperties(customProperties: [540 : "ecommerce1;ecommerce2"])
         let product1 = MIProduct()
         product1.name = "Product1Name"
         product1.cost = 20
@@ -84,7 +84,7 @@ class ViewControllerTV: UIViewController {
         campaignProperties.mediaCode = "abc"
         campaignProperties.oncePerSession = true
         campaignProperties.action = .view
-        campaignProperties.customProperties = [1: ["ECOMM"]]
+        campaignProperties.customProperties = [1: "ECOMM"]
         
         let actionEvent = MIActionEvent(name: "TestCampaign")
         actionEvent.campaignProperties = campaignProperties
