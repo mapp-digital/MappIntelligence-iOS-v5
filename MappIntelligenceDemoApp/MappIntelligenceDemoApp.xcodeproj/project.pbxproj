@@ -27,6 +27,7 @@
 		A35C78F72452F81600D36144 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A35C78F62452F81600D36144 /* Assets.xcassets */; };
 		A35C78FA2452F81600D36144 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A35C78F82452F81600D36144 /* LaunchScreen.storyboard */; };
 		A35C79002452F83700D36144 /* libMappIntelligencetvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A35C78FF2452F83700D36144 /* libMappIntelligencetvOS.a */; };
+		A36E59CC259493A100BF8873 /* EcommerceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36E59CB259493A100BF8873 /* EcommerceViewController.swift */; };
 		A38A6AF4242CD74F00600D82 /* libMappIntelligenceWatchOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A38A6AF3242CD74F00600D82 /* libMappIntelligenceWatchOS.a */; };
 		A38F82C42538741B0021577B /* SetupForLocalTesting.plist in Resources */ = {isa = PBXBuildFile; fileRef = A38F82C32538741B0021577B /* SetupForLocalTesting.plist */; };
 		BCA1739223D5D25C00B31430 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA1739123D5D25C00B31430 /* AppDelegate.swift */; };
@@ -110,6 +111,7 @@
 		A35C78FB2452F81600D36144 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A35C78FF2452F83700D36144 /* libMappIntelligencetvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libMappIntelligencetvOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A35C79012452FA0500D36144 /* MappIntelligenceTvOSDemoApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MappIntelligenceTvOSDemoApp-Bridging-Header.h"; sourceTree = "<group>"; };
+		A36E59CB259493A100BF8873 /* EcommerceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EcommerceViewController.swift; sourceTree = "<group>"; };
 		A38A6AEF242CCFA100600D82 /* libMappIntelligenceSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libMappIntelligenceSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A38A6AF1242CD0C600600D82 /* libMappIntelligenceSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libMappIntelligenceSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A38A6AF3242CD74F00600D82 /* libMappIntelligenceWatchOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libMappIntelligenceWatchOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -228,6 +230,7 @@
 				8F2D1D6425778B82008CB31D /* ConfigViewController.swift */,
 				8F2D1D6E25778F5F008CB31D /* CampaignViewController.swift */,
 				8F3F67FD257EDF9F005F8AFC /* WebViewViewController.swift */,
+				A36E59CB259493A100BF8873 /* EcommerceViewController.swift */,
 				BCA1739723D5D25C00B31430 /* Main.storyboard */,
 				BCA1739A23D5D25E00B31430 /* Assets.xcassets */,
 				BCA1739C23D5D25E00B31430 /* LaunchScreen.storyboard */,
@@ -446,6 +449,7 @@
 				8F2D1D6F25778F5F008CB31D /* CampaignViewController.swift in Sources */,
 				BCA1739423D5D25C00B31430 /* SceneDelegate.swift in Sources */,
 				8F2D1D6525778B82008CB31D /* ConfigViewController.swift in Sources */,
+				A36E59CC259493A100BF8873 /* EcommerceViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
