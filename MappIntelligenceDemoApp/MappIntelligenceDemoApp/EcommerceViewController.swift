@@ -35,6 +35,7 @@ class EcommerceViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
     }
     
     @IBAction func trackEcommerceViewProduct(_ sender: Any) {
