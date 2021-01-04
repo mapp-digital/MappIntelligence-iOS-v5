@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8F23B5A9259B675B00BF9214 /* MediaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F23B5A8259B675B00BF9214 /* MediaViewController.swift */; };
+		8F23B5B3259CD0A700BF9214 /* MediaPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F23B5B2259CD0A700BF9214 /* MediaPlayerViewController.swift */; };
 		8F2D1D4F257789FA008CB31D /* ActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2D1D4E257789FA008CB31D /* ActionViewController.swift */; };
 		8F2D1D5525778A07008CB31D /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2D1D5425778A07008CB31D /* PageViewController.swift */; };
 		8F2D1D6525778B82008CB31D /* ConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2D1D6425778B82008CB31D /* ConfigViewController.swift */; };
@@ -80,6 +82,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8F23B5A8259B675B00BF9214 /* MediaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaViewController.swift; sourceTree = "<group>"; };
+		8F23B5B2259CD0A700BF9214 /* MediaPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaPlayerViewController.swift; sourceTree = "<group>"; };
 		8F2D1D4E257789FA008CB31D /* ActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionViewController.swift; sourceTree = "<group>"; };
 		8F2D1D5425778A07008CB31D /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		8F2D1D6425778B82008CB31D /* ConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigViewController.swift; sourceTree = "<group>"; };
@@ -228,6 +232,8 @@
 				8F2D1D6425778B82008CB31D /* ConfigViewController.swift */,
 				8F2D1D6E25778F5F008CB31D /* CampaignViewController.swift */,
 				8F3F67FD257EDF9F005F8AFC /* WebViewViewController.swift */,
+				8F23B5A8259B675B00BF9214 /* MediaViewController.swift */,
+				8F23B5B2259CD0A700BF9214 /* MediaPlayerViewController.swift */,
 				BCA1739723D5D25C00B31430 /* Main.storyboard */,
 				BCA1739A23D5D25E00B31430 /* Assets.xcassets */,
 				BCA1739C23D5D25E00B31430 /* LaunchScreen.storyboard */,
@@ -440,8 +446,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				8F3F67FE257EDF9F005F8AFC /* WebViewViewController.swift in Sources */,
+				8F23B5B3259CD0A700BF9214 /* MediaPlayerViewController.swift in Sources */,
 				8F2D1D5525778A07008CB31D /* PageViewController.swift in Sources */,
 				8F2D1D4F257789FA008CB31D /* ActionViewController.swift in Sources */,
+				8F23B5A9259B675B00BF9214 /* MediaViewController.swift in Sources */,
 				BCA1739223D5D25C00B31430 /* AppDelegate.swift in Sources */,
 				8F2D1D6F25778F5F008CB31D /* CampaignViewController.swift in Sources */,
 				BCA1739423D5D25C00B31430 /* SceneDelegate.swift in Sources */,

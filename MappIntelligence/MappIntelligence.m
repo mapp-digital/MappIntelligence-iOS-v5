@@ -269,6 +269,13 @@ static MappIntelligenceDefaultConfig *config = nil;
     return [tracker trackWithEvent:event];
 }
 
+- (NSError *_Nullable) trackMedia:(MIMediaEvent *_Nonnull) event {
+    if (![self isTrackingEnabled]) {
+        return nil;
+    }
+    return [tracker trackWithEvent:event];
+}
+
 -(BOOL) isTrackingEnabled {
     if ([config optOut]) {
          [_logger logObj:@"You are opted-out. No track requests are sent to the server anymore." forDescription:kMappIntelligenceLogLevelDescriptionDebug];

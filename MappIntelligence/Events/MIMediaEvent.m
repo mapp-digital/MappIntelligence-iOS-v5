@@ -10,4 +10,10 @@
 
 @implementation MIMediaEvent
 
+-(instancetype)initWith:(MIMediaProperties *)properties {
+    self = [super init];
+    _mediaProperties = properties;
+    return self;
+}
+
 @end

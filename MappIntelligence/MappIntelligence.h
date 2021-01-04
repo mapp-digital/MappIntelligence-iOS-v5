@@ -10,6 +10,7 @@
 #import <UIKit/UIKit.h>
 #import "MIPageViewEvent.h"
 #import "MIActionEvent.h"
+#import "MIMediaEvent.h"
 
 @class MappIntelligence;
 
@@ -82,6 +83,9 @@ typedef NS_ENUM(NSInteger, logLevel) {
 @return the error which may happen through process of tracking, if returns nil there is no error.
 */
 - (NSError *_Nullable) trackAction:(MIActionEvent *_Nonnull) event;
+
+- (NSError *_Nullable) trackMedia:(MIMediaEvent *_Nonnull) event;
+
 
 /**
 @brief Method which will track campaign parameters from url

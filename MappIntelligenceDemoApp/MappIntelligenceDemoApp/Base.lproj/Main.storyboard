@@ -153,6 +153,9 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <connections>
+                                            <segue destination="zVh-xA-w69" kind="show" id="YPX-BQ-PV2"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="65" id="lxt-En-fWB">
                                         <rect key="frame" x="0.0" y="353" width="320" height="65"/>
@@ -526,6 +529,96 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bqc-2s-KK5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1951" y="771"/>
+        </scene>
+        <!--Media Tracking-->
+        <scene sceneID="Hc6-OI-F5C">
+            <objects>
+                <viewController id="zVh-xA-w69" customClass="MediaViewController" customModule="MappIntelligenceDemoApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CfK-lS-aHT">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mw7-Jb-BUb">
+                                <rect key="frame" x="20" y="94" width="280" height="50"/>
+                                <color key="backgroundColor" name="Darkblue"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="QE7-xy-I1V"/>
+                                </constraints>
+                                <state key="normal" title="Test Media1">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="trackMedia1:" destination="zVh-xA-w69" eventType="touchUpInside" id="c2f-x5-0eA"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TTq-XK-8Eq">
+                                <rect key="frame" x="20" y="179" width="280" height="50"/>
+                                <color key="backgroundColor" name="Darkblue"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Qf7-hF-HET"/>
+                                </constraints>
+                                <state key="normal" title="Player Example">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="trackMedia1:" destination="zVh-xA-w69" eventType="touchUpInside" id="8Bx-5l-tRc"/>
+                                    <segue destination="XRx-cX-iDH" kind="show" id="2WP-1l-J9w"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="wzA-UG-jnq"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="mw7-Jb-BUb" firstAttribute="top" secondItem="wzA-UG-jnq" secondAttribute="top" constant="50" id="P5L-tX-BHT"/>
+                            <constraint firstItem="wzA-UG-jnq" firstAttribute="trailing" secondItem="mw7-Jb-BUb" secondAttribute="trailing" constant="20" id="Q5X-ir-Oli"/>
+                            <constraint firstItem="TTq-XK-8Eq" firstAttribute="top" secondItem="mw7-Jb-BUb" secondAttribute="bottom" constant="35" id="R13-TL-9Yk"/>
+                            <constraint firstItem="mw7-Jb-BUb" firstAttribute="leading" secondItem="wzA-UG-jnq" secondAttribute="leading" constant="20" id="X6h-ck-vHB"/>
+                            <constraint firstItem="TTq-XK-8Eq" firstAttribute="leading" secondItem="wzA-UG-jnq" secondAttribute="leading" constant="20" id="XJf-ah-x0l"/>
+                            <constraint firstItem="wzA-UG-jnq" firstAttribute="trailing" secondItem="TTq-XK-8Eq" secondAttribute="trailing" constant="20" id="wbI-cH-tln"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Media Tracking" id="bxl-be-2qR">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="oYo-VD-zgy"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nvp-qE-w1u" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2869" y="1688"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="XvS-sy-kL6">
+            <objects>
+                <viewController id="XRx-cX-iDH" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="UJQ-1x-HCX">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NSP-mZ-B98">
+                                <rect key="frame" x="0.0" y="44" width="320" height="250"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="250" id="ILF-R0-XGN"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bFP-iB-MWa">
+                                <rect key="frame" x="137" y="308" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="I4h-3V-tQU"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="I4h-3V-tQU" firstAttribute="trailing" secondItem="NSP-mZ-B98" secondAttribute="trailing" id="7v7-rc-wh0"/>
+                            <constraint firstItem="NSP-mZ-B98" firstAttribute="leading" secondItem="I4h-3V-tQU" secondAttribute="leading" id="MHS-ej-1YY"/>
+                            <constraint firstItem="NSP-mZ-B98" firstAttribute="top" secondItem="I4h-3V-tQU" secondAttribute="top" id="ZQt-yK-UXt"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="0xK-X4-GX0"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cet-oj-obX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2869" y="2443"/>
         </scene>
     </scenes>
     <resources>

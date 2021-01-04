@@ -15,14 +15,15 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MIMediaEvent : NSObject
+@interface MIMediaEvent : MITrackingEvent
 
 @property (nonatomic, nonnull) MIMediaProperties *mediaProperties;
 @property (nonatomic, nullable) MIActionProperties* actionProperties;
 @property (nonatomic, nullable) MISessionProperties *sessionProperties;
 @property (nonatomic, nullable) MIEcommerceProperties *ecommerceProperties;
 
-- (instancetype)initWithName:(NSString *)name;
+- (instancetype)init NS_UNAVAILABLE;
+- (instancetype)initWith:(MIMediaProperties *)properties;
 
 @end
 

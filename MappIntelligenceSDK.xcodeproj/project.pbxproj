@@ -20,10 +20,12 @@
 		8F23B54E2599236F00BF9214 /* MIMediaProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F23B54C2599236F00BF9214 /* MIMediaProperties.m */; };
 		8F23B54F2599236F00BF9214 /* MIMediaProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F23B54C2599236F00BF9214 /* MIMediaProperties.m */; };
 		8F23B5502599236F00BF9214 /* MIMediaProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F23B54C2599236F00BF9214 /* MIMediaProperties.m */; };
-		8F23B55A2599DCD000BF9214 /* MIMediaEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F23B5582599DCD000BF9214 /* MIMediaEvent.h */; };
+		8F23B55A2599DCD000BF9214 /* MIMediaEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F23B5582599DCD000BF9214 /* MIMediaEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8F23B55B2599DCD000BF9214 /* MIMediaEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F23B5592599DCD000BF9214 /* MIMediaEvent.m */; };
 		8F23B55C2599DCD000BF9214 /* MIMediaEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F23B5592599DCD000BF9214 /* MIMediaEvent.m */; };
 		8F23B55D2599DCD000BF9214 /* MIMediaEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F23B5592599DCD000BF9214 /* MIMediaEvent.m */; };
+		8F23B58D259B641F00BF9214 /* MIMediaEvent.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 8F23B5582599DCD000BF9214 /* MIMediaEvent.h */; };
+		8F23B595259B652600BF9214 /* MIMediaProperties.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 8F23B54B2599236F00BF9214 /* MIMediaProperties.h */; };
 		8F3BC308254BFF1D00076321 /* MICampaignProperties.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 8F423EDA254B17D900DE191D /* MICampaignProperties.h */; };
 		8F423EDB254B17D900DE191D /* MICampaignProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F423ED9254B17D900DE191D /* MICampaignProperties.m */; };
 		8F423EDC254B17D900DE191D /* MICampaignProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F423ED9254B17D900DE191D /* MICampaignProperties.m */; };
@@ -300,6 +302,8 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				8F23B595259B652600BF9214 /* MIMediaProperties.h in Copy Files */,
+				8F23B58D259B641F00BF9214 /* MIMediaEvent.h in Copy Files */,
 				8FD2C225258C0F19002A9ED4 /* MIParams.h in Copy Files */,
 				8FD2C226258C0F19002A9ED4 /* MIParamType.h in Copy Files */,
 				8F95516F25815A13005B8340 /* MIWebViewTracker.h in Copy Files */,
@@ -875,7 +879,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8F23B55A2599DCD000BF9214 /* MIMediaEvent.h in Headers */,
 				8FD2C20C258C0CCA002A9ED4 /* MIParamType.h in Headers */,
 				8FD2C1F8258C0CA8002A9ED4 /* MIParams.h in Headers */,
 				A337446224C844AE0096259B /* MappIntelligenceSDK.h in Headers */,
@@ -884,6 +887,7 @@
 				8FDF7107250B9E4D00818E51 /* MIActionProperties.h in Headers */,
 				8FDF710C250B9E5B00818E51 /* MIActionEvent.h in Headers */,
 				8F19B886257FD2DA0028358A /* MIWebViewTracker.h in Headers */,
+				8F23B55A2599DCD000BF9214 /* MIMediaEvent.h in Headers */,
 				A380D1FA2411478C009E2CD8 /* MITrackingEvent.h in Headers */,
 				A380D1FF241296FD009E2CD8 /* MIPageViewEvent.h in Headers */,
 				A337446024C8404B0096259B /* MIPageViewEvent.m in Headers */,

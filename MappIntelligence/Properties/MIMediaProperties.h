@@ -12,15 +12,18 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MIMediaProperties : NSObject
 
+@property (nonnull) NSString *name;
 @property (nonnull) NSString *action;
 @property double bandwith;
 @property NSTimeInterval duration;
 @property (nullable) NSMutableDictionary* groups;
-@property (nullable) NSString *name;
 @property NSTimeInterval position;
 @property BOOL soundIsMuted;
 @property double soundVolume;
+@property (nullable) NSDictionary<NSNumber* ,NSString*>* customProperties;
 
+- (instancetype)init NS_UNAVAILABLE;
+- (instancetype)initWith: (NSString *) name action: (NSString *)action postion: (NSTimeInterval) position duration: (NSTimeInterval) duration;
 -(NSMutableArray<NSURLQueryItem*>*)asQueryItems;
 
 @end

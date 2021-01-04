@@ -197,6 +197,13 @@
             if ([self sendCampaignData:advertisementProperties]) {
                 [parametrs addObjectsFromArray:[advertisementProperties asQueryItems]];
             }
+        } else if ([event isKindOfClass:MIMediaEvent.class]) {
+            MISessionProperties *session = ((MIMediaEvent*)event).sessionProperties;
+            [parametrs addObjectsFromArray:[session asQueryItems]];
+            MIActionProperties *actionProperties = ((MIMediaEvent*)event).actionProperties;
+            [parametrs addObjectsFromArray:[actionProperties asQueryItems]];
+            MIEcommerceProperties *ecommerceProperties = ((MIMediaEvent*)event).ecommerceProperties;
+            [parametrs addObjectsFromArray:[ecommerceProperties asQueryItems]];
         }
     }
     
