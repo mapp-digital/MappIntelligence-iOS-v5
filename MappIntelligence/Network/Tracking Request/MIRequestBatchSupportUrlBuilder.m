@@ -56,7 +56,7 @@
                   [self->_loger
                               logObj:[[NSString alloc]
                                          initWithFormat:
-                                             @"Batch request sent successfuly!"]
+                                             @"Batch request sent successfully"]
                       forDescription:kMappIntelligenceLogLevelDescriptionDebug];
                   [self->_dbManager removeRequestsDB:[self getRequestIDs:dt]];
                 }

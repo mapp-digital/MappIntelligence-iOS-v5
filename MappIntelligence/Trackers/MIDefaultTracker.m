@@ -294,7 +294,7 @@ static NSString *userAgent;
   }
   if ([name length] > 255) {
       NSString *msg =
-      @"ContentID contains more than 255 characters and that part will be cutted automatically.";
+      @"ContentID contains more than 255 characters, characters will be removed automatically.";
     [_logger logObj:msg
         forDescription:kMappIntelligenceLogLevelDescriptionWarning];
       NSRange range = NSMakeRange(0, 254);
