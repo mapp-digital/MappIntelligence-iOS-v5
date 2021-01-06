@@ -56,16 +56,21 @@ class EcommerceViewController: UIViewController {
     }
     
     @IBAction func trackEcommerceAddedToBasket(_ sender: Any) {
+        let ecommerceProperties1: MIEcommerceProperties =
+            MIEcommerceProperties(customProperties: [1 : "ProductParam1", 2 : "ProductParam2"])
         
         product1.quantity = 3
         product2.quantity = 2
         
-        ecommerceProperties.status = .addedToBasket
-        ecommerceProperties.products = [product1, product2]
+        ecommerceProperties1.status = .addedToBasket
+        ecommerceProperties1.products = [product1]
         
         let pageEvent = MIPageViewEvent(name: "TrackProductAddedToBasket")
-        pageEvent.ecommerceProperties = ecommerceProperties
+        pageEvent.ecommerceProperties = ecommerceProperties1
         
+        MappIntelligence.shared()?.trackPage(pageEvent)
+        
+        ecommerceProperties1.products = [product2]
         MappIntelligence.shared()?.trackPage(pageEvent)
     }
     
