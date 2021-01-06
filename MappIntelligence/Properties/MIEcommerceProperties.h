@@ -37,6 +37,7 @@ typedef NS_ENUM(NSInteger, Status) {
 @property (nullable) NSString* shippingSpeed;
 @property (nullable) NSNumber* shippingCost;
 @property (nullable) NSNumber* markUp;
+@property (nullable) NSString* orderStatus;
 @property (nullable) NSString* productVariant;
 
 @property (nullable) NSDictionary<NSNumber* ,NSString*>* customProperties;

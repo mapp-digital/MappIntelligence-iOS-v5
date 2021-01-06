@@ -27,7 +27,13 @@
     if (_customProperties) {
         _customProperties = [self filterCustomDict:_customProperties];
         for(NSNumber* key in _customProperties) {
-            [items addObject:[[NSURLQueryItem alloc] initWithName:[NSString stringWithFormat:@"cb%@",key] value: _customProperties[key]]];
+            NSMutableArray<NSString*>* customProps = [[_customProperties[key] componentsSeparatedByString:@";"] mutableCopy];
+            NSLog(@"product conut: %lu, status: %d", (unsigned long)[_products count], [customProps count] < [_products count]);
+            while ([customProps count] < [_products count]) {
+                [customProps addObject:@""];
+            }
+            NSString* propsValue = [customProps componentsJoinedByString:@";"];
+            [items addObject:[[NSURLQueryItem alloc] initWithName:[NSString stringWithFormat:@"cb%@",key] value: propsValue]];
         }
     }
     
@@ -105,6 +111,9 @@
     if (_markUp) {
         [items addObject:[[NSURLQueryItem alloc] initWithName:@"cb765" value:[_markUp stringValue]]];
     }
+    if (_orderStatus) {
+        [items addObject:[[NSURLQueryItem alloc] initWithName:@"cb766" value:_orderStatus]];
+    }
     if (_productVariant) {
         [items addObject:[[NSURLQueryItem alloc] initWithName:@"cb767" value:_productVariant]];
     }
@@ -141,7 +150,9 @@
         
         [items addObject:[[NSURLQueryItem alloc] initWithName:@"ba" value:[productNames componentsJoinedByString:@";"]]];
         [items addObject:[[NSURLQueryItem alloc] initWithName:@"co" value:[productCosts componentsJoinedByString:@";"]]];
-        [items addObject:[[NSURLQueryItem alloc] initWithName:@"qn" value:[productQuantities componentsJoinedByString:@";"]]];
+        if (_status != viewed) {
+            [items addObject:[[NSURLQueryItem alloc] initWithName:@"qn" value:[productQuantities componentsJoinedByString:@";"]]];
+        }
     }
     
     return items;

@@ -40,12 +40,18 @@ class EcommerceViewController: UIViewController {
     
     @IBAction func trackEcommerceViewProduct(_ sender: Any) {
         
-        ecommerceProperties.products = [product1, product2]
-        ecommerceProperties.status = .viewed
+        let ecommerceProperties1: MIEcommerceProperties =
+            MIEcommerceProperties(customProperties: [1 : "ProductParam1", 2 : "ProductParam2"])
+        
+        ecommerceProperties1.products = [product1]
+        ecommerceProperties1.status = .viewed
         
         let pageEvent = MIPageViewEvent(name: "TrackProductView")
-        pageEvent.ecommerceProperties = ecommerceProperties
+        pageEvent.ecommerceProperties = ecommerceProperties1
         
+        MappIntelligence.shared()?.trackPage(pageEvent)
+        
+        ecommerceProperties1.products = [product2]
         MappIntelligence.shared()?.trackPage(pageEvent)
     }
     
