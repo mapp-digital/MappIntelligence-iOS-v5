@@ -44,8 +44,15 @@
     if (_duration) {
         [items addObject:[[NSURLQueryItem alloc] initWithName:@"mt2" value: [NSString stringWithFormat:@"%f",_duration]]];
     }
-    NSString *muted = (_soundIsMuted) ? @"1": @"0";
-    
+    if ([_soundIsMuted isEqualToString:@"0"] || [_soundIsMuted isEqualToString:@"1"]) {
+        [items addObject:[[NSURLQueryItem alloc] initWithName:@"mut" value: _soundIsMuted]];
+    }
+    if (_soundVolume.doubleValue > 0) {
+        [items addObject:[[NSURLQueryItem alloc] initWithName:@"vol" value: _soundVolume.stringValue]];
+    }
+    if (_bandwith) {
+        [items addObject:[[NSURLQueryItem alloc] initWithName:@"bw" value: _bandwith.stringValue]];
+    }
     return items;
 }
 

@@ -18,7 +18,14 @@ class MediaViewController: UIViewController {
 
     @IBAction func trackMedia1(_ sender: Any) {
         let mediaProperties = MIMediaProperties("TestVideo", action: "view", postion: 12, duration: 120)
-        let mediaEvent = MIMediaEvent(mediaProperties)
+        let mediaEvent = MIMediaEvent(pageName: "Test", properties: mediaProperties)
+        MappIntelligence.shared()?.trackMedia(mediaEvent)
     }
     
+    @IBAction func trackMediaPlayer2(_ sender: Any) {
+
+        let vc = (storyboard?.instantiateViewController(withIdentifier: "MediaExample")) as! MediaPlayerViewController
+        vc.streamUrl = URL(string: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4")
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 }

@@ -14,12 +14,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonnull) NSString *name;
 @property (nonnull) NSString *action;
-@property double bandwith;
+@property (nullable) NSNumber *bandwith;
 @property NSTimeInterval duration;
 @property (nullable) NSMutableDictionary* groups;
 @property NSTimeInterval position;
-@property BOOL soundIsMuted;
-@property double soundVolume;
+@property (nullable)NSString *soundIsMuted;
+@property (nullable)NSNumber *soundVolume;
 @property (nullable) NSDictionary<NSNumber* ,NSString*>* customProperties;
 
 - (instancetype)init NS_UNAVAILABLE;

@@ -17,13 +17,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MIMediaEvent : MITrackingEvent
 
+
 @property (nonatomic, nonnull) MIMediaProperties *mediaProperties;
 @property (nonatomic, nullable) MIActionProperties* actionProperties;
 @property (nonatomic, nullable) MISessionProperties *sessionProperties;
 @property (nonatomic, nullable) MIEcommerceProperties *ecommerceProperties;
 
 - (instancetype)init NS_UNAVAILABLE;
-- (instancetype)initWith:(MIMediaProperties *)properties;
+- (instancetype)initWithPageName:(NSString *)name properties: (MIMediaProperties *)properties;
 
 @end
 

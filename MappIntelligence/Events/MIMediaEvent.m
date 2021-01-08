@@ -10,8 +10,11 @@
 
 @implementation MIMediaEvent
 
--(instancetype)initWith:(MIMediaProperties *)properties {
+@synthesize pageName = _pageName;
+
+- (instancetype)initWithPageName:(NSString *)name properties: (MIMediaProperties *)properties {
     self = [super init];
+    _pageName = name;
     _mediaProperties = properties;
     return self;
 }
