@@ -34,12 +34,12 @@
         [items addObject:[[NSURLQueryItem alloc] initWithName:@"uc707" value: [self getBirthday]]];
     }
     if (_city) {
-        items = [self removeObjectWith:@"uc708" from:items];
-        [items addObject:[[NSURLQueryItem alloc] initWithName:@"uc708" value:_city]];
+        items = [self removeObjectWith:@"uc709" from:items];
+        [items addObject:[[NSURLQueryItem alloc] initWithName:@"uc709" value:_city]];
     }
     if (_country) {
-        items = [self removeObjectWith:@"uc709" from:items];
-        [items addObject:[[NSURLQueryItem alloc] initWithName:@"uc709" value:_country]];
+        items = [self removeObjectWith:@"uc708" from:items];
+        [items addObject:[[NSURLQueryItem alloc] initWithName:@"uc708" value:_country]];
     }
     if (_emailAddress) {
         items = [self removeObjectWith:@"uc700" from:items];
