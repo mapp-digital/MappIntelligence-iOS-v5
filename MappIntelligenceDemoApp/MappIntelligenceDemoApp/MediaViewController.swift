@@ -12,8 +12,6 @@ class MediaViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
 
     @IBAction func trackMedia1(_ sender: Any) {
@@ -23,7 +21,6 @@ class MediaViewController: UIViewController {
     }
     
     @IBAction func trackMediaPlayer2(_ sender: Any) {
-
         let vc = (storyboard?.instantiateViewController(withIdentifier: "MediaExample")) as! MediaPlayerViewController
         vc.streamUrl = URL(string: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4")
         self.navigationController?.pushViewController(vc, animated: true)

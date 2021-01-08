@@ -16,6 +16,9 @@
 		8F143EDD2510B3220024CF24 /* SessionPropertiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F143EDC2510B3220024CF24 /* SessionPropertiesTests.m */; };
 		8F19B886257FD2DA0028358A /* MIWebViewTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F19B884257FD2DA0028358A /* MIWebViewTracker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8F19B887257FD2DA0028358A /* MIWebViewTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F19B885257FD2DA0028358A /* MIWebViewTracker.m */; };
+		8F1E0B7B25A89173006594B3 /* MIMediaTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F1E0B7925A89173006594B3 /* MIMediaTracker.h */; };
+		8F1E0B7C25A89173006594B3 /* MIMediaTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F1E0B7A25A89173006594B3 /* MIMediaTracker.m */; };
+		8F1E0B7D25A89173006594B3 /* MIMediaTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F1E0B7A25A89173006594B3 /* MIMediaTracker.m */; };
 		8F23B54D2599236F00BF9214 /* MIMediaProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F23B54B2599236F00BF9214 /* MIMediaProperties.h */; };
 		8F23B54E2599236F00BF9214 /* MIMediaProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F23B54C2599236F00BF9214 /* MIMediaProperties.m */; };
 		8F23B54F2599236F00BF9214 /* MIMediaProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F23B54C2599236F00BF9214 /* MIMediaProperties.m */; };
@@ -355,6 +358,8 @@
 		8F143EDC2510B3220024CF24 /* SessionPropertiesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SessionPropertiesTests.m; sourceTree = "<group>"; };
 		8F19B884257FD2DA0028358A /* MIWebViewTracker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MIWebViewTracker.h; sourceTree = "<group>"; };
 		8F19B885257FD2DA0028358A /* MIWebViewTracker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MIWebViewTracker.m; sourceTree = "<group>"; };
+		8F1E0B7925A89173006594B3 /* MIMediaTracker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MIMediaTracker.h; sourceTree = "<group>"; };
+		8F1E0B7A25A89173006594B3 /* MIMediaTracker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MIMediaTracker.m; sourceTree = "<group>"; };
 		8F23B54B2599236F00BF9214 /* MIMediaProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MIMediaProperties.h; sourceTree = "<group>"; };
 		8F23B54C2599236F00BF9214 /* MIMediaProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MIMediaProperties.m; sourceTree = "<group>"; };
 		8F23B5582599DCD000BF9214 /* MIMediaEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MIMediaEvent.h; sourceTree = "<group>"; };
@@ -537,6 +542,8 @@
 				8FEC887725598E6500E24EDC /* MIDeepLink.m */,
 				8F19B884257FD2DA0028358A /* MIWebViewTracker.h */,
 				8F19B885257FD2DA0028358A /* MIWebViewTracker.m */,
+				8F1E0B7925A89173006594B3 /* MIMediaTracker.h */,
+				8F1E0B7A25A89173006594B3 /* MIMediaTracker.m */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -899,6 +906,7 @@
 				A3CC549224912AA8006215FD /* MIRequestData.h in Headers */,
 				A36CD7D123F447D0004E3E2D /* MIProperties.h in Headers */,
 				A380D2102413ED35009E2CD8 /* MIRequestUrlBuilder.h in Headers */,
+				8F1E0B7B25A89173006594B3 /* MIMediaTracker.h in Headers */,
 				A36CD7CD23F44594004E3E2D /* MITrackerRequest.h in Headers */,
 				BCCAE6D2240D2E16005E9FD6 /* MappIntelligenceDefaultConfig.h in Headers */,
 				8FDF7113250BA9CB00818E51 /* MISessionProperties.h in Headers */,
@@ -1237,6 +1245,7 @@
 				A380D20D2413D317009E2CD8 /* MIConfiguration.m in Sources */,
 				A36CD7D223F447D0004E3E2D /* MIProperties.m in Sources */,
 				8FDF7114250BA9CB00818E51 /* MISessionProperties.m in Sources */,
+				8F1E0B7C25A89173006594B3 /* MIMediaTracker.m in Sources */,
 				A380D21524141B55009E2CD8 /* MIURLSizeMonitor.m in Sources */,
 				A3CC5487248FC418006215FD /* MIDatabaseManager.m in Sources */,
 				8FDF7108250B9E4D00818E51 /* MIActionProperties.m in Sources */,
@@ -1315,6 +1324,7 @@
 				A35C79112452FCD600D36144 /* MIURLSizeMonitor.m in Sources */,
 				A338B79B25470A1F00E50C28 /* MIProduct.m in Sources */,
 				8FEC887B25598E6500E24EDC /* MIDeepLink.m in Sources */,
+				8F1E0B7D25A89173006594B3 /* MIMediaTracker.m in Sources */,
 				A35C790A2452FCB700D36144 /* MIEnvironment.m in Sources */,
 				A35C790B2452FCB700D36144 /* MIConfiguration.m in Sources */,
 				8F23B5502599236F00BF9214 /* MIMediaProperties.m in Sources */,
