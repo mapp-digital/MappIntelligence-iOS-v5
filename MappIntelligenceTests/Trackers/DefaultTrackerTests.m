@@ -100,7 +100,7 @@
     NSString* internalSearch = @"testSearchTerm";
     NSMutableDictionary* sessionDictionary = [@{@10: @"sessionpar1"} copy];
     MISessionProperties* sessionProperties =  [[MISessionProperties alloc] initWithProperties: sessionDictionary];
-    MIPageProperties* pageProperties = [[MIPageProperties alloc] initWithPageParams:details andWithPageCategory:groups andWithSearch:internalSearch];
+    MIPageParameters* pageProperties = [[MIPageParameters alloc] initWithPageParams:details pageCategory:groups search:internalSearch];
     MIEcommerceProperties* ecommerceProperties = [[MIEcommerceProperties alloc] init];
     MIPageViewEvent* pageViewEvent = [[MIPageViewEvent alloc] initWithName:@"the custom name"];
     pageViewEvent.pageProperties = pageProperties;

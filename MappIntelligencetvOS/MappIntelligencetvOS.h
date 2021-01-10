@@ -62,7 +62,7 @@ MappIntelligencetvOS.shared()?.initWithConfiguration([12345678, 8783291721], onT
 @endcode
 @return Error in case of a failure. Returns nil if no error was detected.
 */
-- (NSError *_Nullable)trackPageWithViewController:(UIViewController *_Nonnull)controller andEvent:(MIPageViewEvent*_Nonnull) event;
+- (NSError *_Nullable)trackPageWithViewController:(UIViewController *_Nonnull)controller event:(MIPageViewEvent*_Nonnull) event;
 
 /**
 @brief Method which will track page event

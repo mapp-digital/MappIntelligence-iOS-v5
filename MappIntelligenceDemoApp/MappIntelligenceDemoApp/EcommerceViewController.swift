@@ -27,8 +27,8 @@ class EcommerceViewController: UIViewController {
         
     }()
     
-    let ecommerceProperties: MIEcommerceProperties = {
-            MIEcommerceProperties(customProperties: [1 : "ProductParam1;ProductParam1", 2 : "ProductParam2"])
+    let ecommerceParameters: MIEcommerceParameters = {
+        MIEcommerceParameters(customParameters: [1 : "ProductParam1;ProductParam1", 2 : "ProductParam2"])
     }()
 
     override func viewDidLoad() {
@@ -40,37 +40,37 @@ class EcommerceViewController: UIViewController {
     
     @IBAction func trackEcommerceViewProduct(_ sender: Any) {
         
-        let ecommerceProperties1: MIEcommerceProperties =
-            MIEcommerceProperties(customProperties: [1 : "ProductParam1", 2 : "ProductParam2"])
+        let ecommerceParameters1: MIEcommerceParameters =
+            MIEcommerceParameters(customParameters: [1 : "ProductParam1", 2 : "ProductParam2"])
         
-        ecommerceProperties1.products = [product1]
-        ecommerceProperties1.status = .viewed
+        ecommerceParameters1.products = [product1]
+        ecommerceParameters1.status = .viewed
         
         let pageEvent = MIPageViewEvent(name: "TrackProductView")
-        pageEvent.ecommerceProperties = ecommerceProperties1
+        pageEvent.ecommerceParameters = ecommerceParameters1
         
         MappIntelligence.shared()?.trackPage(pageEvent)
         
-        ecommerceProperties1.products = [product2]
+        ecommerceParameters1.products = [product2]
         MappIntelligence.shared()?.trackPage(pageEvent)
     }
     
     @IBAction func trackEcommerceAddedToBasket(_ sender: Any) {
-        let ecommerceProperties1: MIEcommerceProperties =
-            MIEcommerceProperties(customProperties: [1 : "ProductParam1", 2 : "ProductParam2"])
+        let ecommerceParameters1: MIEcommerceParameters =
+            MIEcommerceParameters(customParameters: [1 : "ProductParam1", 2 : "ProductParam2"])
         
         product1.quantity = 3
         product2.quantity = 2
         
-        ecommerceProperties1.status = .addedToBasket
-        ecommerceProperties1.products = [product1]
+        ecommerceParameters1.status = .addedToBasket
+        ecommerceParameters1.products = [product1]
         
         let pageEvent = MIPageViewEvent(name: "TrackProductAddedToBasket")
-        pageEvent.ecommerceProperties = ecommerceProperties1
+        pageEvent.ecommerceParameters = ecommerceParameters1
         
         MappIntelligence.shared()?.trackPage(pageEvent)
         
-        ecommerceProperties1.products = [product2]
+        ecommerceParameters1.products = [product2]
         MappIntelligence.shared()?.trackPage(pageEvent)
     }
     
@@ -79,29 +79,29 @@ class EcommerceViewController: UIViewController {
         product1.quantity = 3
         product2.quantity = 2
         
-        ecommerceProperties.products = [product1, product2]
-        ecommerceProperties.currency = "EUR"
-        ecommerceProperties.orderID = "1234nb5"
-        ecommerceProperties.paymentMethod = "Credit Card"
-        ecommerceProperties.shippingServiceProvider = "DHL"
-        ecommerceProperties.shippingSpeed = "express"
-        ecommerceProperties.shippingCost = 20
-        ecommerceProperties.couponValue = 10
-        ecommerceProperties.orderValue = calculateOrderValue()
-        ecommerceProperties.status = .purchased
+        ecommerceParameters.products = [product1, product2]
+        ecommerceParameters.currency = "EUR"
+        ecommerceParameters.orderID = "1234nb5"
+        ecommerceParameters.paymentMethod = "Credit Card"
+        ecommerceParameters.shippingServiceProvider = "DHL"
+        ecommerceParameters.shippingSpeed = "express"
+        ecommerceParameters.shippingCost = 20
+        ecommerceParameters.couponValue = 10
+        ecommerceParameters.orderValue = calculateOrderValue()
+        ecommerceParameters.status = .purchased
         
         let pageEvent = MIPageViewEvent(name: "TrackProductConfirmed")
-        pageEvent.ecommerceProperties = ecommerceProperties
+        pageEvent.ecommerceParameters = ecommerceParameters
         
         MappIntelligence.shared()?.trackPage(pageEvent)
     }
     
     func calculateOrderValue() -> NSNumber {
         var totalCost:NSNumber = 0.0
-        for product in ecommerceProperties.products ?? [] {
+        for product in ecommerceParameters.products ?? [] {
             totalCost = NSNumber(value: totalCost.doubleValue + ((product.cost?.doubleValue ?? 0) * (product.quantity?.doubleValue ?? 1)))
         }
-        totalCost = NSNumber(value: totalCost.doubleValue + (ecommerceProperties.shippingCost?.doubleValue ?? 0) - (ecommerceProperties.couponValue?.doubleValue ?? 0))
+        totalCost = NSNumber(value: totalCost.doubleValue + (ecommerceParameters.shippingCost?.doubleValue ?? 0) - (ecommerceParameters.couponValue?.doubleValue ?? 0))
         return totalCost
     }
 

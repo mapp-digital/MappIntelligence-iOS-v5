@@ -15,33 +15,33 @@ class ActionViewController: UIViewController {
 
     }
     @IBAction func trackAction(_ sender: Any) {
-        let actionProperties = MIActionProperties(properties:  [20:"ck20Param1;ck20Param2"])
+        let eventParameters = MIEventParameters(parameters: [20:"ck20Param1;ck20Param2"])
 
         let event = MIActionEvent(name: "TestAction")
-        event.actionProperties = actionProperties;
+        event.eventParameters = eventParameters;
 
         MappIntelligence.shared()?.trackAction(event);
     }
     
     @IBAction func trackCustomAction(_ sender: Any) {
-        let actionProperties = MIActionProperties(properties:  [20:"ck20Param1;ck20Param2"])
+        let eventParameters = MIEventParameters(parameters:  [20:"ck20Param1;ck20Param2"])
         
         //user properties
-        let userProperties = MIUserProperties()
-        userProperties.customProperties = [20:"userParam1"]
-        userProperties.birthday = MIBirthday(day: 12, month: 1, year: 1993)
-        userProperties.city = "Paris"
-        userProperties.country = "France"
-        userProperties.customerId = "CustomerID"
-        userProperties.gender = .female
+        let userCategories = MIUserCategories()
+        userCategories.customCategories = [20:"userParam1"]
+        userCategories.birthday = MIBirthday(day: 12, month: 1, year: 1993)
+        userCategories.city = "Paris"
+        userCategories.country = "France"
+        userCategories.customerId = "CustomerID"
+        userCategories.gender = .female
         
         //sessionproperties
-        let sessionProperties = MISessionProperties(properties: [10: "sessionParam1;sessionParam2"])
+        let sessionParameters = MISessionParameters(parameters: [10: "sessionParam1;sessionParam2"])
         
         let event = MIActionEvent(name: "TestAction")
-        event.actionProperties = actionProperties;
-        event.userProperties = userProperties
-        event.sessionProperties = sessionProperties
+        event.eventParameters = eventParameters;
+        event.userCategories = userCategories
+        event.sessionParameters = sessionParameters
 
         MappIntelligence.shared()?.trackAction(event);
     }

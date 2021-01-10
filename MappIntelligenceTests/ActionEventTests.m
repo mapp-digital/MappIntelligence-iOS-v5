@@ -15,9 +15,9 @@
 @property MIActionProperties* actionProperties;
 @property NSMutableDictionary *sessionDictionary;
 @property MISessionProperties *sessionProperties;
-@property MIUserProperties *userProperties;
+@property MIUserCategories *userProperties;
 @property MIEcommerceProperties *ecommerceProperties;
-@property MICampaignProperties *advertisementProperties;
+@property MICampaignParameters *advertisementProperties;
 
 @end
 
@@ -28,7 +28,7 @@
     _actionProperties = [[MIActionProperties alloc] initWithProperties: _details];
     _sessionDictionary = [@{@10: @[@"sessionpar1"]} copy];
     _sessionProperties =  [[MISessionProperties alloc] initWithProperties: _sessionDictionary];
-    _userProperties = [[MIUserProperties alloc] init];
+    _userProperties = [[MIUserCategories alloc] init];
     _userProperties.city = @"Berlin";
     _ecommerceProperties = [[MIEcommerceProperties alloc] init];
     MIProduct* product1 = [[MIProduct alloc] init];
@@ -37,7 +37,7 @@
     MIProduct* product2 = [[MIProduct alloc] init];
     product2.name = @"product2";
     _ecommerceProperties.products = [[NSArray alloc] initWithObjects:product1, product2, nil];
-    _advertisementProperties = [[MICampaignProperties alloc] initWith: @"en.internal.newsletter.2017.05"];
+    _advertisementProperties = [[MICampaignParameters alloc] initWith: @"en.internal.newsletter.2017.05"];
     _advertisementProperties.mediaCode = @"abc";
     _advertisementProperties.oncePerSession = YES;
     _advertisementProperties.action = view;

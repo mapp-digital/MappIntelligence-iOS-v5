@@ -18,7 +18,7 @@ typedef NS_ENUM(NSInteger, Status) {
     viewed
 };
 
-@interface MIEcommerceProperties : NSObject
+@interface MIEcommerceParameters : NSObject
 
 @property (nullable) NSArray<MIProduct*>* products;
 @property (nonatomic) Status status;
@@ -40,9 +40,9 @@ typedef NS_ENUM(NSInteger, Status) {
 @property (nullable) NSString* orderStatus;
 @property (nullable) NSString* productVariant;
 
-@property (nullable) NSDictionary<NSNumber* ,NSString*>* customProperties;
+@property (nullable) NSDictionary<NSNumber* ,NSString*>* customParameters;
 
-- (instancetype)initWithCustomProperties: (NSDictionary<NSNumber* ,NSString*>* _Nullable) properties;
+- (instancetype)initWithCustomParameters: (NSDictionary<NSNumber* ,NSString*>* _Nullable) parameters;
 - (NSMutableArray<NSURLQueryItem*>*)asQueryItems;
 
 @end

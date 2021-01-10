@@ -8,22 +8,22 @@
 
 #import <Foundation/Foundation.h>
 #import "MITrackingEvent.h"
-#import "MIPageProperties.h"
-#import "MIActionProperties.h"
-#import "MISessionProperties.h"
-#import "MIUserProperties.h"
-#import "MIEcommerceProperties.h"
-#import "MICampaignProperties.h"
+#import "MIPageParameters.h"
+#import "MIEventParameters.h"
+#import "MISessionParameters.h"
+#import "MIUserCategories.h"
+#import "MIEcommerceParameters.h"
+#import "MICampaignParameters.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface MIActionEvent : MITrackingEvent
 @property (nonnull) NSString* name;
-@property (nonatomic, nonnull) MIActionProperties* actionProperties;
-@property (nonatomic, nullable) MISessionProperties *sessionProperties;
-@property (nonatomic, nullable) MIUserProperties *userProperties;
-@property (nonatomic, nullable) MIEcommerceProperties *ecommerceProperties;
-@property (nonatomic, nullable) MICampaignProperties *campaignProperties;
+@property (nonatomic, nonnull) MIEventParameters* eventParameters;
+@property (nonatomic, nullable) MISessionParameters *sessionParameters;
+@property (nonatomic, nullable) MIUserCategories *userCategories;
+@property (nonatomic, nullable) MIEcommerceParameters *ecommerceParameters;
+@property (nonatomic, nullable) MICampaignParameters *campaignParameters;
 
 - (instancetype)init NS_UNAVAILABLE;
 - (instancetype)initWithName:(NSString *)name;

@@ -12,11 +12,11 @@
 @interface PageViewEventTests : XCTestCase
 
 @property MIPageViewEvent* pageViewEvent;
-@property MIPageProperties* pageProperties;
+@property MIPageParameters* pageProperties;
 @property MISessionProperties *sessionProperties;
-@property MIUserProperties *userProperties;
+@property MIUserCategories *userProperties;
 @property MIEcommerceProperties *ecommerceProperties;
-@property MICampaignProperties *advertisementProperties;
+@property MICampaignParameters *advertisementProperties;
 @property NSString* internalSearch;
 @property NSMutableDictionary* details;
 @property NSMutableDictionary* groups;
@@ -29,10 +29,10 @@
     _details = [@{@20: @[@"cp20Override"]} copy];
     _groups = [@{@15: @[@"testGroups"]} copy];
     _internalSearch = @"testSearchTerm";
-    _pageProperties = [[MIPageProperties alloc] initWithPageParams:_details andWithPageCategory:_groups andWithSearch:_internalSearch];
+    _pageProperties = [[MIPageParameters alloc] initWithPageParams:_details pageCategory:_groups search:_internalSearch];
     _sessionDictionary = [@{@10: @[@"sessionpar1"]} copy];
     _sessionProperties =  [[MISessionProperties alloc] initWithProperties: _sessionDictionary];
-    _userProperties = [[MIUserProperties alloc] init];
+    _userProperties = [[MIUserCategories alloc] init];
     _userProperties.city = @"Berlin";
     _ecommerceProperties = [[MIEcommerceProperties alloc] init];
     MIProduct* product1 = [[MIProduct alloc] init];
@@ -41,7 +41,7 @@
     MIProduct* product2 = [[MIProduct alloc] init];
     product2.name = @"product2";
     _ecommerceProperties.products = [[NSArray alloc] initWithObjects:product1, product2, nil];
-    _advertisementProperties = [[MICampaignProperties alloc] initWith: @"en.internal.newsletter.2017.05"];
+    _advertisementProperties = [[MICampaignParameters alloc] initWith: @"en.internal.newsletter.2017.05"];
     _advertisementProperties.mediaCode = @"abc";
     _advertisementProperties.oncePerSession = YES;
     _advertisementProperties.action = view;

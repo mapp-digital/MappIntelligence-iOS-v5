@@ -11,9 +11,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MISessionProperties : NSObject
-@property (nullable) NSDictionary<NSNumber* ,NSString*>* properties;
--(instancetype)initWithProperties: (NSDictionary<NSNumber* ,NSString*>* _Nullable) properties;
+@interface MISessionParameters : NSObject
+@property (nullable) NSDictionary<NSNumber* ,NSString*>* parameters;
+-(instancetype)initWithParameters: (NSDictionary<NSNumber* ,NSString*>* _Nullable) parameters;
 -(NSMutableArray<NSURLQueryItem*>*)asQueryItems;
 @end
 

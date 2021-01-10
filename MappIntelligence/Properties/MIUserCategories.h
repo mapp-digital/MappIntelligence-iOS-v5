@@ -1,5 +1,5 @@
 //
-//  MIUserProperties.h
+//  MIUserCategories.h
 //  MappIntelligenceSDK
 //
 //  Created by Miroljub Stoilkovic on 20/10/2020.
@@ -22,7 +22,7 @@ typedef NS_ENUM(NSInteger, MIGender) {
     female
 };
 
-@interface MIUserProperties : NSObject
+@interface MIUserCategories : NSObject
 
 @property MIBirthday birthday;
 @property (nullable) NSString *city;
@@ -38,7 +38,7 @@ typedef NS_ENUM(NSInteger, MIGender) {
 @property (nullable) NSString *street;
 @property (nullable) NSString *streetNumber;
 @property (nullable) NSString *zipCode;
-@property (nullable) NSDictionary<NSNumber* ,NSString*>* customProperties;
+@property (nullable) NSDictionary<NSNumber* ,NSString*>* customCategories;
 
 - (instancetype)initWithCustomProperties: (NSDictionary<NSNumber* ,NSString*>* _Nullable) properties;
 - (NSMutableArray<NSURLQueryItem*>*)asQueryItems;

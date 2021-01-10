@@ -16,12 +16,12 @@ typedef NS_ENUM(NSInteger, MICampaignAction) {
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MICampaignProperties : NSObject <NSCopying, NSSecureCoding>
+@interface MICampaignParameters : NSObject <NSCopying, NSSecureCoding>
 @property (nullable) NSString *campaignId;
 @property MICampaignAction action;
 @property (nullable) NSString *mediaCode;
 @property BOOL oncePerSession;
-@property (nullable) NSDictionary<NSNumber* ,NSString*>* customProperties;
+@property (nullable) NSDictionary<NSNumber* ,NSString*>* customParameters;
 
 - (instancetype)initWith: (NSString *) campaignId;
 - (NSMutableArray<NSURLQueryItem*>*)asQueryItems;

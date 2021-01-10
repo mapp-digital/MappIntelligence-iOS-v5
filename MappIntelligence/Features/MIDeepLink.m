@@ -18,7 +18,7 @@ NSString *const UrlErrorDescriptionInvalid = @"Url is invalid";
 + (NSError *_Nullable)trackFromUrl:(NSURL *_Nullable) url withMediaCode: (NSString *_Nullable) mediaCode{
     
     NSString *mediaCodeTag = mediaCode ?: @"wt_mc";
-    MICampaignProperties *campaignProperties = [[MICampaignProperties alloc] init];
+    MICampaignParameters *campaignProperties = [[MICampaignParameters alloc] init];
     campaignProperties.mediaCode = mediaCodeTag;
     
     NSArray *queryItems = [[NSArray alloc] init];
@@ -46,7 +46,7 @@ NSString *const UrlErrorDescriptionInvalid = @"Url is invalid";
     }
 
     if (campaignProperties.campaignId) {
-        campaignProperties.customProperties = campaignParameters;
+        campaignProperties.customParameters = campaignParameters;
         return [MIDeepLink saveToFile:campaignProperties];
     } else {
         [MappIntelligenceLogger.shared logObj:@"Cannot succesfully parse deeplink url. No campaign parameter!" forDescription: kMappIntelligenceLogLevelDescriptionDebug];
@@ -64,17 +64,17 @@ NSString *const UrlErrorDescriptionInvalid = @"Url is invalid";
     }
 }
 
-+ (NSError *_Nullable) saveToFile: (MICampaignProperties *) campaign {
++ (NSError *_Nullable) saveToFile: (MICampaignParameters *) campaign {
     NSError *error = nil;
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:campaign requiringSecureCoding:YES error:&error];
     [data writeToFile:[MIDeepLink filePath] options:NSDataWritingAtomic error:&error];
     return error;
 }
 
-+ (MICampaignProperties *_Nullable) loadCampaign {
++ (MICampaignParameters *_Nullable) loadCampaign {
     NSError *error = nil;
     NSData *fileData = [NSData dataWithContentsOfFile: [MIDeepLink filePath]];
-    MICampaignProperties *properties = [NSKeyedUnarchiver unarchivedObjectOfClass:[MICampaignProperties class] fromData:fileData error:&error];
+    MICampaignParameters *properties = [NSKeyedUnarchiver unarchivedObjectOfClass:[MICampaignParameters class] fromData:fileData error:&error];
     return properties;
 }
 

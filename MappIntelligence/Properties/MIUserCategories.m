@@ -1,20 +1,20 @@
 //
-//  MIUserProperties.m
+//  MIUserCategories.m
 //  MappIntelligenceSDK
 //
 //  Created by Miroljub Stoilkovic on 20/10/2020.
 //  Copyright © 2020 Mapp Digital US, LLC. All rights reserved.
 //
 
-#import "MIUserProperties.h"
+#import "MIUserCategories.h"
 
 
-@implementation MIUserProperties
+@implementation MIUserCategories
 
 - (instancetype)initWithCustomProperties: (NSDictionary<NSNumber* ,NSString*>* _Nullable) properties {
     self = [super init];
     if (self) {
-        _customProperties = properties;
+        _customCategories = properties;
     }
     return self;
 }
@@ -22,10 +22,10 @@
 - (NSMutableArray<NSURLQueryItem*>*)asQueryItems {
     NSMutableArray<NSURLQueryItem*>* items = [[NSMutableArray alloc] init];
     
-    if (_customProperties) {
-        _customProperties = [self filterCustomDict:_customProperties];
-        for(NSNumber* key in _customProperties) {
-            [items addObject:[[NSURLQueryItem alloc] initWithName:[NSString stringWithFormat:@"uc%@",key] value: _customProperties[key]]];
+    if (_customCategories) {
+        _customCategories = [self filterCustomDict:_customCategories];
+        for(NSNumber* key in _customCategories) {
+            [items addObject:[[NSURLQueryItem alloc] initWithName:[NSString stringWithFormat:@"uc%@",key] value: _customCategories[key]]];
         }
     }
     

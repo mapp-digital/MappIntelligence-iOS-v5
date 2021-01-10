@@ -165,21 +165,21 @@
         }
     } else {
         if ([event isKindOfClass:MIPageViewEvent.class]) {
-            MIPageProperties* prop = ((MIPageViewEvent*)event).pageProperties;
+            MIPageParameters* prop = ((MIPageViewEvent*)event).pageParameters;
             [parametrs addObjectsFromArray:[prop asQueryItems]];
             MIPageViewEvent* pgEvent = ((MIPageViewEvent*)event);
-            MISessionProperties *session = pgEvent.sessionProperties;
+            MISessionParameters *session = pgEvent.sessionParameters;
             [parametrs addObjectsFromArray:[session asQueryItems]];
-            MIUserProperties *userProperties = pgEvent.userProperties;
-            [parametrs addObjectsFromArray:[userProperties asQueryItems]];
-            MIEcommerceProperties *ecommerceProperties = pgEvent.ecommerceProperties;
-            [parametrs addObjectsFromArray:[ecommerceProperties asQueryItems]];
+            MIUserCategories *userCategories = pgEvent.userCategories;
+            [parametrs addObjectsFromArray:[userCategories asQueryItems]];
+            MIEcommerceParameters *ecommerceParameters = pgEvent.ecommerceParameters;
+            [parametrs addObjectsFromArray:[ecommerceParameters asQueryItems]];
             
-            MICampaignProperties *advertisementProperties = ((MIPageViewEvent*)event).campaignProperties;
+            MICampaignParameters *advertisementProperties = ((MIPageViewEvent*)event).campaignParameters;
             if (advertisementProperties && [self sendCampaignData:advertisementProperties]) {
                 [parametrs addObjectsFromArray:[advertisementProperties asQueryItems]];
             } else {
-                MICampaignProperties *saved = [MIDeepLink loadCampaign];
+                MICampaignParameters *saved = [MIDeepLink loadCampaign];
                 if (saved) {
                     [parametrs addObjectsFromArray:[saved asQueryItems]];
                     [MIDeepLink deleteCampaign];
@@ -187,13 +187,13 @@
             }
         } else if ([event isKindOfClass:MIActionEvent.class]) {
             [parametrs addObjectsFromArray:[(MIActionEvent*)event asQueryItems]];
-            MISessionProperties *session = ((MIActionEvent*)event).sessionProperties;
+            MISessionParameters *session = ((MIActionEvent*)event).sessionParameters;
             [parametrs addObjectsFromArray:[session asQueryItems]];
-            MIUserProperties *userProperties = ((MIActionEvent*)event).userProperties;
-            [parametrs addObjectsFromArray:[userProperties asQueryItems]];
-            MIEcommerceProperties *ecommerceProperties = ((MIActionEvent*)event).ecommerceProperties;
-            [parametrs addObjectsFromArray:[ecommerceProperties asQueryItems]];
-            MICampaignProperties *advertisementProperties = ((MIActionEvent*)event).campaignProperties;
+            MIUserCategories *userCategories = ((MIActionEvent*)event).userCategories;
+            [parametrs addObjectsFromArray:[userCategories asQueryItems]];
+            MIEcommerceParameters *ecommerceParameters = ((MIActionEvent*)event).ecommerceParameters;
+            [parametrs addObjectsFromArray:[ecommerceParameters asQueryItems]];
+            MICampaignParameters *advertisementProperties = ((MIActionEvent*)event).campaignParameters;
             if ([self sendCampaignData:advertisementProperties]) {
                 [parametrs addObjectsFromArray:[advertisementProperties asQueryItems]];
             }
@@ -294,9 +294,9 @@
   return [str stringByAddingPercentEncodingWithAllowedCharacters:csValue];
 }
 
--(BOOL) sendCampaignData: (MICampaignProperties *) campaignProperties {
+-(BOOL) sendCampaignData: (MICampaignParameters *) campaignProperties {
     if(campaignProperties.oncePerSession) {
-        MICampaignProperties *c = [campaignProperties copy];
+        MICampaignParameters *c = [campaignProperties copy];
         if(![_campaignsToIgnore containsObject:c]) {
             [_campaignsToIgnore addObject: c];
             return YES;

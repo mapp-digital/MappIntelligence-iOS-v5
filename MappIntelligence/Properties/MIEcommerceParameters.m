@@ -6,14 +6,14 @@
 //  Copyright © 2020 Mapp Digital US, LLC. All rights reserved.
 //
 
-#import "MIEcommerceProperties.h"
+#import "MIEcommerceParameters.h"
 
-@implementation MIEcommerceProperties
+@implementation MIEcommerceParameters
 
-- (instancetype)initWithCustomProperties:(NSDictionary<NSNumber *,NSString *> *)properties {
+- (instancetype)initWithCustomParameters:(NSDictionary<NSNumber *,NSString *> *)parameters {
     self = [super init];
     if (self) {
-        _customProperties = properties;
+        _customParameters = parameters;
     }
     return self;
 }
@@ -24,10 +24,10 @@
     
     [items addObjectsFromArray:[self getProductsAsQueryItems]];
     
-    if (_customProperties) {
-        _customProperties = [self filterCustomDict:_customProperties];
-        for(NSNumber* key in _customProperties) {
-            NSMutableArray<NSString*>* customProps = [[_customProperties[key] componentsSeparatedByString:@";"] mutableCopy];
+    if (_customParameters) {
+        _customParameters = [self filterCustomDict:_customParameters];
+        for(NSNumber* key in _customParameters) {
+            NSMutableArray<NSString*>* customProps = [[_customParameters[key] componentsSeparatedByString:@";"] mutableCopy];
             NSLog(@"product conut: %lu, status: %d", (unsigned long)[_products count], [customProps count] < [_products count]);
             while ([customProps count] < [_products count]) {
                 [customProps addObject:@""];

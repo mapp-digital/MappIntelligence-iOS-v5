@@ -15,11 +15,11 @@ class PageViewController: UIViewController {
     }
     
     @IBAction func trackPage(_ sender: Any) {
-        MappIntelligence.shared()?.trackPage(with: self, andEvent: nil)
+        MappIntelligence.shared()?.trackPage(with: self, event: nil)
     }
 
     @IBAction func trackProduct(_ sender: Any) {
-        let ecommerceProperties = MIEcommerceProperties(customProperties: [540 : "ecommerce1;ecommerce2"])
+        let ecommerceParameters = MIEcommerceParameters(customParameters: [540 : "ecommerce1;ecommerce2"])
         let product1 = MIProduct()
         product1.name = "Product1Name"
         product1.cost = 20
@@ -30,13 +30,13 @@ class PageViewController: UIViewController {
         let product3 = MIProduct()
         product3.categories = [2: "Women", 46: "Winter"]
         product3.cost = 348
-        ecommerceProperties.status = .addedToBasket
-        ecommerceProperties.products = [product1, product2, product3];
-        ecommerceProperties.currency = "EUR"
-        ecommerceProperties.paymentMethod = "creditCard"
+        ecommerceParameters.status = .addedToBasket
+        ecommerceParameters.products = [product1, product2, product3];
+        ecommerceParameters.currency = "EUR"
+        ecommerceParameters.paymentMethod = "creditCard"
         
         let pageEvent = MIPageViewEvent(name: "TrackProductTest")
-        pageEvent.ecommerceProperties = ecommerceProperties
+        pageEvent.ecommerceParameters = ecommerceParameters
         
         MappIntelligence.shared()?.trackPage(pageEvent)
     }
@@ -47,24 +47,24 @@ class PageViewController: UIViewController {
         let params:[NSNumber : String] = [20: "cp20Override;cp21Override;cp22Override"]
         let categories:NSMutableDictionary = [10: "test"]
         let searchTerm = "testSearchTerm"
-        let pageProperties = MIPageProperties(pageParams: params, andWithPageCategory: categories, andWithSearch: searchTerm)
+        let pageParameters = MIPageParameters(pageParams: params, pageCategory: categories, search: searchTerm)
         
         //user properties
-        let userProperties = MIUserProperties()
-        userProperties.customProperties = [20:"userParam1"]
-        userProperties.birthday = MIBirthday(day: 12, month: 1, year: 1993)
-        userProperties.city = "Paris"
-        userProperties.country = "France"
-        userProperties.customerId = "CustomerID"
-        userProperties.gender = .female
+        let userCategories = MIUserCategories()
+        userCategories.customCategories = [20:"userParam1"]
+        userCategories.birthday = MIBirthday(day: 12, month: 1, year: 1993)
+        userCategories.city = "Paris"
+        userCategories.country = "France"
+        userCategories.customerId = "CustomerID"
+        userCategories.gender = .female
         
         //sessionproperties
-        let sessionProperties = MISessionProperties(properties: [10: "sessionParam1;sessionParam2"])
+        let sessionParameters = MISessionParameters(parameters: [10: "sessionParam1;sessionParam2"])
               
         let pageEvent = MIPageViewEvent(name: "the custom name of page")
-        pageEvent.pageProperties = pageProperties
-        pageEvent.userProperties = userProperties
-        pageEvent.sessionProperties = sessionProperties
+        pageEvent.pageParameters = pageParameters
+        pageEvent.userCategories = userCategories
+        pageEvent.sessionParameters = sessionParameters
         
         MappIntelligence.shared()?.trackPage(pageEvent)
             

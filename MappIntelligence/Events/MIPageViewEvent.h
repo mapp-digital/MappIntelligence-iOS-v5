@@ -9,22 +9,22 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "MIPageProperties.h"
+#import "MIPageParameters.h"
 #import "MITrackingEvent.h"
-#import "MISessionProperties.h"
-#import "MIUserProperties.h"
-#import "MIEcommerceProperties.h"
-#import "MICampaignProperties.h"
+#import "MISessionParameters.h"
+#import "MIUserCategories.h"
+#import "MIEcommerceParameters.h"
+#import "MICampaignParameters.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface MIPageViewEvent : MITrackingEvent
 
-@property (nonatomic, nonnull) MIPageProperties* pageProperties;
-@property (nonatomic, nullable) MISessionProperties *sessionProperties;
-@property (nonatomic, nullable) MIUserProperties *userProperties;
-@property (nonatomic, nullable) MIEcommerceProperties *ecommerceProperties;
-@property (nonatomic, nullable) MICampaignProperties *campaignProperties;
+@property (nonatomic, nonnull) MIPageParameters* pageParameters;
+@property (nonatomic, nullable) MISessionParameters *sessionParameters;
+@property (nonatomic, nullable) MIUserCategories *userCategories;
+@property (nonatomic, nullable) MIEcommerceParameters *ecommerceParameters;
+@property (nonatomic, nullable) MICampaignParameters *campaignParameters;
 
 - (instancetype)initWithName:(NSString *)name;
 

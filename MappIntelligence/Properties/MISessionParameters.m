@@ -6,24 +6,24 @@
 //  Copyright © 2020 Mapp Digital US, LLC. All rights reserved.
 //
 
-#import "MISessionProperties.h"
+#import "MISessionParameters.h"
 
-@implementation MISessionProperties
+@implementation MISessionParameters
 
--(instancetype)initWithProperties: (NSDictionary<NSNumber* ,NSString*>* _Nullable) properties {
+-(instancetype)initWithParameters: (NSDictionary<NSNumber* ,NSString*>* _Nullable) parameters {
     self = [self init];
     if (self) {
-        _properties = properties;
+        _parameters = parameters;
     }
     return  self;
 }
 
 - (NSMutableArray<NSURLQueryItem *> *)asQueryItems {
     NSMutableArray<NSURLQueryItem*>* items = [[NSMutableArray alloc] init];
-    if (_properties) {
-        _properties = [self filterCustomDict:_properties];
-        for(NSNumber* key in _properties) {
-            [items addObject:[[NSURLQueryItem alloc] initWithName:[NSString stringWithFormat:@"cs%@",key] value: _properties[key]]];
+    if (_parameters) {
+        _parameters = [self filterCustomDict:_parameters];
+        for(NSNumber* key in _parameters) {
+            [items addObject:[[NSURLQueryItem alloc] initWithName:[NSString stringWithFormat:@"cs%@",key] value: _parameters[key]]];
         }
     }
     return items;

@@ -6,11 +6,11 @@
 //  Copyright © 2020 Mapp Digital US, LLC. All rights reserved.
 //
 
-#import "MIPageProperties.h"
+#import "MIPageParameters.h"
 
-@implementation MIPageProperties
+@implementation MIPageParameters
 
--(instancetype)initWithPageParams: (NSDictionary<NSNumber* ,NSString*>* _Nullable) parameters andWithPageCategory: (NSMutableDictionary* _Nullable) category andWithSearch: (NSString* _Nullable)internalSearch {
+-(instancetype)initWithPageParams: (NSDictionary<NSNumber* ,NSString*>* _Nullable) parameters pageCategory: (NSMutableDictionary* _Nullable) category search: (NSString* _Nullable)internalSearch {
     self = [self init];
     if (self) {
         _details = parameters;

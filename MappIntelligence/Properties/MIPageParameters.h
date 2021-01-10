@@ -1,5 +1,5 @@
 //
-//  MIPageProperties.h
+//  MIPageParameters.h
 //  MappIntelligenceSDK
 //
 //  Created by Stefan Stevanovic on 17/07/2020.
@@ -11,13 +11,13 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MIPageProperties : NSObject
+@interface MIPageParameters : NSObject
 
 @property (nullable) NSString* internalSearch;
 @property (nullable) NSDictionary<NSNumber* ,NSString*> *details;
 @property (nullable) NSMutableDictionary* groups;
 
--(instancetype)initWithPageParams: (NSDictionary<NSNumber* ,NSString*>* _Nullable) parameters andWithPageCategory: (NSMutableDictionary* _Nullable) category andWithSearch: (NSString* _Nullable)internalSearch;
+-(instancetype)initWithPageParams: (NSDictionary<NSNumber* ,NSString*>* _Nullable) parameters pageCategory: (NSMutableDictionary* _Nullable) category search: (NSString* _Nullable)internalSearch;
 
 -(NSMutableArray<NSURLQueryItem*>*)asQueryItems;
 

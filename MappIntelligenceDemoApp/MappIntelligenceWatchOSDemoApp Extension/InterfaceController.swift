@@ -37,7 +37,7 @@ class InterfaceController: WKInterfaceController {
         let searchTerm = "testSearchTerm"
         
         let pageEvent = MIPageViewEvent(name: customName)
-        pageEvent.pageProperties = MIPageProperties(pageParams: params, andWithPageCategory: categories, andWithSearch: searchTerm)
+        pageEvent.pageParameters = MIPageParameters(pageParams: params, pageCategory: categories, search: searchTerm)
         MappIntelligenceWatchOS.shared()?.trackPage(pageEvent)
         //MappIntelligenceWatchOS.shared()?.trackPage(withName: customName, pageProperties: MIPageProperties(pageParams: params, andWithPageCategory: categories, andWithSearch: searchTerm), sessionProperties: nil, userProperties: nil, ecommerceProperties: nil, advertisementProperties: nil)
     }
@@ -48,32 +48,32 @@ class InterfaceController: WKInterfaceController {
         MappIntelligenceWatchOS.shared()?.initWithConfiguration([385255285199574 as UInt64], onTrackdomain: "https://q3.webtrekk.net")
     }
     @IBAction func trackAction() {
-        let actionProperties = MIActionProperties(properties:  [20:"ck20Override;ck21Override"])
-        let sessionProperties = MISessionProperties(properties: [10: "sessionpar1"])
+        let actionProperties = MIEventParameters(parameters: [20:"ck20Override;ck21Override"])
+        let sessionParameters = MISessionParameters(parameters: [10: "sessionpar1"])
         
-        let userProperties = MIUserProperties()
-        userProperties.customProperties = [20:"Test"]
-        userProperties.birthday = MIBirthday(day: 12, month: 0, year: 1993)
-        userProperties.city = "Paris"
-        userProperties.country = "France"
-        userProperties.customerId = "CustomerID"
-        userProperties.gender = .female
+        let userCategories = MIUserCategories()
+        userCategories.customCategories = [20:"Test"]
+        userCategories.birthday = MIBirthday(day: 12, month: 0, year: 1993)
+        userCategories.city = "Paris"
+        userCategories.country = "France"
+        userCategories.customerId = "CustomerID"
+        userCategories.gender = .female
         
-        let ecommerceProperties = MIEcommerceProperties()
-        ecommerceProperties.couponValue = 23
+        let ecommerceParameters = MIEcommerceParameters()
+        ecommerceParameters.couponValue = 23
         
         let actionEvent = MIActionEvent(name: "TestAction")
-        actionEvent.actionProperties = actionProperties
-        actionEvent.sessionProperties = sessionProperties
-        actionEvent.userProperties = userProperties
-        actionEvent.ecommerceProperties = ecommerceProperties
+        actionEvent.eventParameters = actionProperties
+        actionEvent.sessionParameters = sessionParameters
+        actionEvent.userCategories = userCategories
+        actionEvent.ecommerceParameters = ecommerceParameters
         
         MappIntelligenceWatchOS.shared()?.trackAction(actionEvent)
         //MappIntelligenceWatchOS.shared()?.trackCustomEvent(withName: "TestAction", actionProperties: actionProperties, sessionProperties: sessionProperties, userProperties: userProperties, ecommerceProperties: ecommerceProperties, advertisementProperties: nil)
     }
     
     @IBAction func trackEcommerce() {
-        let ecommerceProperties = MIEcommerceProperties(customProperties: [540 : "ecommerce1;ecommerce2"])
+        let ecommerceParameters = MIEcommerceParameters(customParameters: [540 : "ecommerce1;ecommerce2"])
         let product1 = MIProduct()
         product1.name = "Product1Name"
         product1.cost = 20
@@ -81,26 +81,26 @@ class InterfaceController: WKInterfaceController {
         let product2 = MIProduct()
         let product3 = MIProduct()
         product3.cost = 348
-        ecommerceProperties.status = .addedToBasket
-        ecommerceProperties.products = [product1, product2, product3];
-        ecommerceProperties.currency = "EUR"
-        ecommerceProperties.paymentMethod = "creditCard"
+        ecommerceParameters.status = .addedToBasket
+        ecommerceParameters.products = [product1, product2, product3];
+        ecommerceParameters.currency = "EUR"
+        ecommerceParameters.paymentMethod = "creditCard"
         
         let pageEvent = MIPageViewEvent(name: "TestEcommerce")
-        pageEvent.ecommerceProperties = ecommerceProperties
+        pageEvent.ecommerceParameters = ecommerceParameters
         
         MappIntelligenceWatchOS.shared()?.trackPage(pageEvent)
     }
     
     @IBAction func trackCampaign() {
-        let campaignProperties = MICampaignProperties("en.internal.newsletter.2017.05")
+        let campaignProperties = MICampaignParameters("en.internal.newsletter.2017.05")
         campaignProperties.mediaCode = "abc"
         campaignProperties.oncePerSession = true
         campaignProperties.action = .view
-        campaignProperties.customProperties = [1: "ECOMM"]
+        campaignProperties.customParameters = [1: "ECOMM"]
         
         let actionEvent = MIActionEvent(name: "TestCampaign")
-        actionEvent.campaignProperties = campaignProperties
+        actionEvent.campaignParameters = campaignProperties
         
         MappIntelligenceWatchOS.shared()?.trackAction(actionEvent)
     }

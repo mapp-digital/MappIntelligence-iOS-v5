@@ -7,13 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "MICampaignProperties.h"
+#import "MICampaignParameters.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface MIDeepLink : NSObject
 
-+ (MICampaignProperties *_Nullable) loadCampaign;
++ (MICampaignParameters *_Nullable) loadCampaign;
 + (NSError *_Nullable) deleteCampaign;
 + (NSError *_Nullable)trackFromUrl:(NSURL *_Nullable) url withMediaCode: (NSString *_Nullable) mediaCode;
 

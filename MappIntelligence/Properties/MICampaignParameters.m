@@ -6,9 +6,9 @@
 //  Copyright © 2020 Mapp Digital US, LLC. All rights reserved.
 //
 
-#import "MICampaignProperties.h"
+#import "MICampaignParameters.h"
 
-@implementation MICampaignProperties
+@implementation MICampaignParameters
 
 - (instancetype)initWith: (NSString *) campaignId {
     self = [super init];
@@ -33,10 +33,10 @@
         [items addObject:[[NSURLQueryItem alloc] initWithName:@"mca" value:@"c"]];
 
     }
-    if (_customProperties) {
-        _customProperties = [self filterCustomDict:_customProperties];
-        for(NSNumber* key in _customProperties) {
-            [items addObject:[[NSURLQueryItem alloc] initWithName:[NSString stringWithFormat:@"cc%@",key] value: _customProperties[key]]];
+    if (_customParameters) {
+        _customParameters = [self filterCustomDict:_customParameters];
+        for(NSNumber* key in _customParameters) {
+            [items addObject:[[NSURLQueryItem alloc] initWithName:[NSString stringWithFormat:@"cc%@",key] value: _customParameters[key]]];
         }
     }
     return items;
@@ -53,22 +53,22 @@
 }
 
 - (id)copyWithZone:(NSZone *)zone {
-    MICampaignProperties *adCopy = [[MICampaignProperties alloc] init];
+    MICampaignParameters *adCopy = [[MICampaignParameters alloc] init];
     [adCopy setCampaignId:_campaignId];
     [adCopy setMediaCode:_mediaCode];
     [adCopy setAction:_action];
-    [adCopy setCustomProperties:_customProperties];
+    [adCopy setCustomParameters:_customParameters];
     [adCopy setOncePerSession:_oncePerSession];
     NSError *error;
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:adCopy requiringSecureCoding:YES error:&error];
-    adCopy = [NSKeyedUnarchiver unarchivedObjectOfClass:MICampaignProperties.class fromData:data error:&error];
+    adCopy = [NSKeyedUnarchiver unarchivedObjectOfClass:MICampaignParameters.class fromData:data error:&error];
     return adCopy;
 }
 - (void)encodeWithCoder:(nonnull NSCoder *)coder {
     [coder encodeObject:self.campaignId forKey:@"Campaign_ID"];
     [coder encodeObject:self.mediaCode forKey:@"Media_code"];
     [coder encodeInteger: self.action forKey:@"Action"];
-    [coder encodeObject:self.customProperties forKey:@"Custom_properties"];
+    [coder encodeObject:self.customParameters forKey:@"Custom_properties"];
     [coder encodeBool:self.oncePerSession forKey:@"Once_per_session"];
 }
 
@@ -78,7 +78,7 @@
         self.mediaCode = [coder decodeObjectForKey:@"Media_code"];
         self.action = [coder decodeIntegerForKey: @"Action"];
         NSSet *classes = [NSSet setWithObjects:NSArray.class, NSDictionary.class, NSNumber.class, NSString.class, nil];
-        self.customProperties = [coder decodeObjectOfClasses:classes forKey:@"Custom_properties"];
+        self.customParameters = [coder decodeObjectOfClasses:classes forKey:@"Custom_properties"];
         self.oncePerSession = [coder decodeBoolForKey:@"Once_per_session"];
     }
     return self;
@@ -88,11 +88,11 @@
     if (other == self) {
         return YES;
     }
-    MICampaignProperties *otherObj = (MICampaignProperties *)other;
+    MICampaignParameters *otherObj = (MICampaignParameters *)other;
     if(self.action == otherObj.action &&
        self.oncePerSession == otherObj.oncePerSession &&
        [self.campaignId isEqual:otherObj.campaignId] &&
-       [self.customProperties isEqual: otherObj.customProperties] &&
+       [self.customParameters isEqual: otherObj.customParameters] &&
        [self.mediaCode isEqual: otherObj.mediaCode]) {
         return YES;
     }

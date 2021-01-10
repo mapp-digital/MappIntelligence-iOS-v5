@@ -27,7 +27,7 @@
     if (_name) {
         [items addObject:[[NSURLQueryItem alloc] initWithName:@"ct" value:_name]];
     }
-    items = [NSMutableArray arrayWithArray:[items arrayByAddingObjectsFromArray:[_actionProperties asQueryItems]]];
+    items = [NSMutableArray arrayWithArray:[items arrayByAddingObjectsFromArray:[_eventParameters asQueryItems]]];
     return items;
 }
 

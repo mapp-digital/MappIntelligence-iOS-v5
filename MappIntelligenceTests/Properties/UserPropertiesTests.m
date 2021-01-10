@@ -1,5 +1,5 @@
 //
-//  MIUserProperties.m
+//  MIUserCategories.m
 //  MappIntelligenceTests
 //
 //  Created by Miroljub Stoilkovic on 22/10/2020.
@@ -7,10 +7,10 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "MIUserProperties.h"
+#import "MIUserCategories.h"
 
 @interface UserPropertiesTests : XCTestCase
-@property MIUserProperties* userProperties;
+@property MIUserCategories* userProperties;
 @property NSMutableDictionary* parameters;
 @end
 
@@ -18,7 +18,7 @@
 
 - (void)setUp {
     _parameters = [@{@20: @"1 element"} copy];
-    _userProperties = [[MIUserProperties alloc] initWithCustomProperties:_parameters];
+    _userProperties = [[MIUserCategories alloc] initWithCustomProperties:_parameters];
 }
 
 - (void)tearDown {
