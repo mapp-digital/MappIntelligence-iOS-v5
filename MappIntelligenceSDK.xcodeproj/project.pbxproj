@@ -14,8 +14,6 @@
 		8F143ED92510AD830024CF24 /* ActionEventTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F143ED82510AD830024CF24 /* ActionEventTests.m */; };
 		8F143EDB2510AECA0024CF24 /* ActionPropertiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F143EDA2510AECA0024CF24 /* ActionPropertiesTests.m */; };
 		8F143EDD2510B3220024CF24 /* SessionPropertiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F143EDC2510B3220024CF24 /* SessionPropertiesTests.m */; };
-		8F19B886257FD2DA0028358A /* MIWebViewTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F19B884257FD2DA0028358A /* MIWebViewTracker.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8F19B887257FD2DA0028358A /* MIWebViewTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F19B885257FD2DA0028358A /* MIWebViewTracker.m */; };
 		8F3BC308254BFF1D00076321 /* MICampaignParameters.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 8F423EDA254B17D900DE191D /* MICampaignParameters.h */; };
 		8F423EDB254B17D900DE191D /* MICampaignParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F423ED9254B17D900DE191D /* MICampaignParameters.m */; };
 		8F423EDC254B17D900DE191D /* MICampaignParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F423ED9254B17D900DE191D /* MICampaignParameters.m */; };
@@ -30,7 +28,6 @@
 		8F5F853A2535BCE100A39882 /* MISessionParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FDF7112250BA9CB00818E51 /* MISessionParameters.m */; };
 		8F5F85422535BCEB00A39882 /* MIActionEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FDF7109250B9E5B00818E51 /* MIActionEvent.m */; };
 		8F80C047252355B500E1F650 /* MISessionParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FDF7112250BA9CB00818E51 /* MISessionParameters.m */; };
-		8F95516F25815A13005B8340 /* MIWebViewTracker.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 8F19B884257FD2DA0028358A /* MIWebViewTracker.h */; };
 		8F995E6525507F3E00B918DD /* MICampaignParameters.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8F423EDA254B17D900DE191D /* MICampaignParameters.h */; };
 		8F995E6D25507F4400B918DD /* MICampaignParameters.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8F423EDA254B17D900DE191D /* MICampaignParameters.h */; };
 		8F9C7F70255A851400CB95EF /* AdvertisementPropertiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F9C7F6F255A851400CB95EF /* AdvertisementPropertiesTests.m */; };
@@ -294,7 +291,6 @@
 			files = (
 				8FD2C225258C0F19002A9ED4 /* MIParams.h in Copy Files */,
 				8FD2C226258C0F19002A9ED4 /* MIParamType.h in Copy Files */,
-				8F95516F25815A13005B8340 /* MIWebViewTracker.h in Copy Files */,
 				8F3BC308254BFF1D00076321 /* MICampaignParameters.h in Copy Files */,
 				A338B7EF2548752B00E50C28 /* MIProduct.h in Copy Files */,
 				A338B7E72548752200E50C28 /* MIEcommerceParameters.h in Copy Files */,
@@ -341,8 +337,6 @@
 		8F143ED82510AD830024CF24 /* ActionEventTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionEventTests.m; sourceTree = "<group>"; };
 		8F143EDA2510AECA0024CF24 /* ActionPropertiesTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionPropertiesTests.m; sourceTree = "<group>"; };
 		8F143EDC2510B3220024CF24 /* SessionPropertiesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SessionPropertiesTests.m; sourceTree = "<group>"; };
-		8F19B884257FD2DA0028358A /* MIWebViewTracker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MIWebViewTracker.h; sourceTree = "<group>"; };
-		8F19B885257FD2DA0028358A /* MIWebViewTracker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MIWebViewTracker.m; sourceTree = "<group>"; };
 		8F423ED9254B17D900DE191D /* MICampaignParameters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MICampaignParameters.m; sourceTree = "<group>"; };
 		8F423EDA254B17D900DE191D /* MICampaignParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MICampaignParameters.h; sourceTree = "<group>"; };
 		8F9C7F6F255A851400CB95EF /* AdvertisementPropertiesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AdvertisementPropertiesTests.m; sourceTree = "<group>"; };
@@ -519,8 +513,6 @@
 			children = (
 				8FEC887625598E6500E24EDC /* MIDeepLink.h */,
 				8FEC887725598E6500E24EDC /* MIDeepLink.m */,
-				8F19B884257FD2DA0028358A /* MIWebViewTracker.h */,
-				8F19B885257FD2DA0028358A /* MIWebViewTracker.m */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -866,7 +858,6 @@
 				A3CC5486248FC418006215FD /* MIDatabaseManager.h in Headers */,
 				8FDF7107250B9E4D00818E51 /* MIEventParameters.h in Headers */,
 				8FDF710C250B9E5B00818E51 /* MIActionEvent.h in Headers */,
-				8F19B886257FD2DA0028358A /* MIWebViewTracker.h in Headers */,
 				A380D1FA2411478C009E2CD8 /* MITrackingEvent.h in Headers */,
 				A380D1FF241296FD009E2CD8 /* MIPageViewEvent.h in Headers */,
 				A337446024C8404B0096259B /* MIPageViewEvent.m in Headers */,
@@ -1192,7 +1183,6 @@
 			files = (
 				8FA11963253EDC82000AE887 /* MIUserCategories.m in Sources */,
 				A3CC548B249125DD006215FD /* MIParameter.m in Sources */,
-				8F19B887257FD2DA0028358A /* MIWebViewTracker.m in Sources */,
 				BCBE5C0923F29E49002125C1 /* MIDefaultTracker.m in Sources */,
 				A380D200241296FD009E2CD8 /* MIPageViewEvent.m in Sources */,
 				A36CD7CE23F44594004E3E2D /* MITrackerRequest.m in Sources */,
