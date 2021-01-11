@@ -430,33 +430,19 @@
                                     <action selector="reset:" destination="7du-La-z9J" eventType="touchUpInside" id="xIq-H4-ATq"/>
                                 </connections>
                             </button>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="A6X-5g-N9N">
-                                <rect key="frame" x="251" y="344" width="51" height="31"/>
-                            </switch>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enable autotracking" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VV6-Ao-wPN">
-                                <rect key="frame" x="20" y="349" width="221" height="21"/>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
-                                <color key="textColor" name="Midgray"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="3Yx-Kw-rk7"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="AgT-SC-XaE" firstAttribute="top" secondItem="c89-Id-IY0" secondAttribute="bottom" constant="25" id="8Lz-QN-eyd"/>
-                            <constraint firstItem="A6X-5g-N9N" firstAttribute="top" secondItem="AgT-SC-XaE" secondAttribute="bottom" constant="50" id="BGA-vA-4nu"/>
-                            <constraint firstItem="A6X-5g-N9N" firstAttribute="leading" secondItem="VV6-Ao-wPN" secondAttribute="trailing" constant="10" id="Dku-TN-ItF"/>
                             <constraint firstItem="AgT-SC-XaE" firstAttribute="leading" secondItem="3Yx-Kw-rk7" secondAttribute="leading" constant="20" id="E6x-q8-9ga"/>
-                            <constraint firstItem="3Yx-Kw-rk7" firstAttribute="trailing" secondItem="A6X-5g-N9N" secondAttribute="trailing" constant="20" id="Jq1-uh-WFb"/>
                             <constraint firstItem="c89-Id-IY0" firstAttribute="top" secondItem="XU0-8e-ykb" secondAttribute="bottom" constant="25" id="PuD-Do-bdv"/>
                             <constraint firstItem="3Yx-Kw-rk7" firstAttribute="trailing" secondItem="XU0-8e-ykb" secondAttribute="trailing" constant="20" id="bLJ-LS-8bJ"/>
                             <constraint firstItem="XU0-8e-ykb" firstAttribute="leading" secondItem="3Yx-Kw-rk7" secondAttribute="leading" constant="20" id="bWH-zB-9ik"/>
                             <constraint firstItem="3Yx-Kw-rk7" firstAttribute="trailing" secondItem="c89-Id-IY0" secondAttribute="trailing" constant="20" id="cWP-sV-8fP"/>
-                            <constraint firstItem="VV6-Ao-wPN" firstAttribute="centerY" secondItem="A6X-5g-N9N" secondAttribute="centerY" id="fLs-7M-8iM"/>
                             <constraint firstItem="XU0-8e-ykb" firstAttribute="top" secondItem="3Yx-Kw-rk7" secondAttribute="top" constant="50" id="iMl-PT-ADZ"/>
                             <constraint firstItem="c89-Id-IY0" firstAttribute="leading" secondItem="3Yx-Kw-rk7" secondAttribute="leading" constant="20" id="qgh-t5-yLT"/>
                             <constraint firstItem="3Yx-Kw-rk7" firstAttribute="trailing" secondItem="AgT-SC-XaE" secondAttribute="trailing" constant="20" id="rSH-Ru-sjv"/>
-                            <constraint firstItem="VV6-Ao-wPN" firstAttribute="leading" secondItem="3Yx-Kw-rk7" secondAttribute="leading" constant="20" id="vE2-P8-bTM"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Configuration" id="xsO-Za-xMB">
@@ -577,9 +563,6 @@
     <resources>
         <namedColor name="Darkblue">
             <color red="0.019999999552965164" green="0.57300001382827759" blue="0.84299999475479126" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="Midgray">
-            <color red="0.53299999237060547" green="0.53299999237060547" blue="0.53299999237060547" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

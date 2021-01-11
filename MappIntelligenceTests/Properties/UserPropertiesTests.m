@@ -27,7 +27,7 @@
 }
 
 - (void)testInitWIthCustomParameters {
-    XCTAssertTrue([_userProperties.customProperties isEqualToDictionary:_parameters], @"The details from action properties is not same as it is used for creation!");
+    XCTAssertTrue([_userProperties.customCategories isEqualToDictionary:_parameters], @"The details from action properties is not same as it is used for creation!");
 }
 
 - (void)testAsQueryItemsForRequest {

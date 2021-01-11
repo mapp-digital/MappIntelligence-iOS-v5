@@ -9,11 +9,11 @@
 #import <XCTest/XCTest.h>
 #import "MITrackerRequest.h"
 #import "MIDefaultTracker.h"
-#import "MIActionProperties.h"
+#import "MIEventParameters.h"
 
 
 @interface ActionPropertiesTests : XCTestCase
-@property MIActionProperties* actionProperties;
+@property MIEventParameters* actionProperties;
 @property NSMutableDictionary* properties;
 @property NSString *actionname;
 @end
@@ -23,7 +23,7 @@
 - (void)setUp {
     _properties = [@{@20: @"1 element"} copy];
     _actionname = @"TestAction";
-    _actionProperties = [[MIActionProperties alloc] initWithProperties:_properties];
+    _actionProperties = [[MIEventParameters alloc] initWithParameters:_properties];
 }
 
 - (void)tearDown {
@@ -32,7 +32,7 @@
 }
 
 - (void)testInitWithNameAndDetails {
-    XCTAssertTrue([_actionProperties.properties isEqualToDictionary:_properties], @"The details from action properties is not same as it is used for creation!");
+    XCTAssertTrue([_actionProperties.parameters isEqualToDictionary:_properties], @"The details from action properties is not same as it is used for creation!");
 }
 
 - (void)testAsQueryItemsForRequest {

@@ -12,11 +12,11 @@
 @interface ActionEventTests : XCTestCase
 @property NSMutableDictionary* details;
 @property MIActionEvent* actionEvent;
-@property MIActionProperties* actionProperties;
+@property MIEventParameters* actionProperties;
 @property NSMutableDictionary *sessionDictionary;
-@property MISessionProperties *sessionProperties;
+@property MISessionParameters *sessionProperties;
 @property MIUserCategories *userProperties;
-@property MIEcommerceProperties *ecommerceProperties;
+@property MIEcommerceParameters *ecommerceProperties;
 @property MICampaignParameters *advertisementProperties;
 
 @end
@@ -25,12 +25,12 @@
 
 - (void)setUp {
     _details = [@{@20: @"ck20Override"} copy];
-    _actionProperties = [[MIActionProperties alloc] initWithProperties: _details];
+    _actionProperties = [[MIEventParameters alloc] initWithParameters: _details];
     _sessionDictionary = [@{@10: @[@"sessionpar1"]} copy];
-    _sessionProperties =  [[MISessionProperties alloc] initWithProperties: _sessionDictionary];
+    _sessionProperties =  [[MISessionParameters alloc] initWithParameters: _sessionDictionary];
     _userProperties = [[MIUserCategories alloc] init];
     _userProperties.city = @"Berlin";
-    _ecommerceProperties = [[MIEcommerceProperties alloc] init];
+    _ecommerceProperties = [[MIEcommerceParameters alloc] init];
     MIProduct* product1 = [[MIProduct alloc] init];
     product1.name = @"product1";
     product1.quantity = [[NSNumber alloc] initWithInteger:22];
@@ -41,13 +41,13 @@
     _advertisementProperties.mediaCode = @"abc";
     _advertisementProperties.oncePerSession = YES;
     _advertisementProperties.action = view;
-    _advertisementProperties.customProperties = @{@1: @[@"ECOMM"]};
+    _advertisementProperties.customParameters = @{@1: @[@"ECOMM"]};
     _actionEvent = [[MIActionEvent alloc] initWithName:@"TestAction"];
-    _actionEvent.actionProperties = _actionProperties;
-    _actionEvent.sessionProperties = _sessionProperties;
-    _actionEvent.userProperties = _userProperties;
-    _actionEvent.ecommerceProperties = _ecommerceProperties;
-    _actionEvent.campaignProperties = _advertisementProperties;
+    _actionEvent.eventParameters = _actionProperties;
+    _actionEvent.sessionParameters = _sessionProperties;
+    _actionEvent.userCategories = _userProperties;
+    _actionEvent.ecommerceParameters = _ecommerceProperties;
+    _actionEvent.campaignParameters = _advertisementProperties;
 }
 
 - (void)tearDown {
@@ -62,11 +62,11 @@
 }
 
 - (void)testInitWithProperties {
-    XCTAssertTrue([[_actionEvent actionProperties] isEqual:_actionProperties], @"Action properties is not the same as it used for creation of action event!");
-    XCTAssertTrue([[_actionEvent sessionProperties] isEqual:_sessionProperties], @"Session properties is not the same as it used for creation of action event!");
-    XCTAssertTrue([[_actionEvent userProperties] isEqual:_userProperties], @"User properties is not the same as it used for creation of action event!");
-    XCTAssertTrue([[_actionEvent ecommerceProperties] isEqual: _ecommerceProperties], @"Ecommerce properties is not the same as it used for creation of page view event!");
-    XCTAssertTrue([[_actionEvent campaignProperties] isEqual: _advertisementProperties], @"Advertisement properties is not the same as it used for creation of page view event!");
+    XCTAssertTrue([[_actionEvent eventParameters] isEqual:_actionProperties], @"Action properties is not the same as it used for creation of action event!");
+    XCTAssertTrue([[_actionEvent sessionParameters] isEqual:_sessionProperties], @"Session properties is not the same as it used for creation of action event!");
+    XCTAssertTrue([[_actionEvent userCategories] isEqual:_userProperties], @"User properties is not the same as it used for creation of action event!");
+    XCTAssertTrue([[_actionEvent ecommerceParameters] isEqual: _ecommerceProperties], @"Ecommerce properties is not the same as it used for creation of page view event!");
+    XCTAssertTrue([[_actionEvent campaignParameters] isEqual: _advertisementProperties], @"Advertisement properties is not the same as it used for creation of page view event!");
 }
 
 - (void)testPerformanceExample {

@@ -7,11 +7,11 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "MIEcommerceProperties.h"
+#import "MIEcommerceParameters.h"
 
 @interface EcommercePropertiesTests : XCTestCase
 
-@property MIEcommerceProperties* ecommerceProperties;
+@property MIEcommerceParameters* ecommerceProperties;
 @property NSMutableDictionary* properties;
 @property NSArray<MIProduct* >* products;
 @property NSNumber* cuponValue;
@@ -21,8 +21,8 @@
 @implementation EcommercePropertiesTests
 
 - (void)setUp {
-    _properties = [@{@1:@[@"testValue"]} copy];
-    _ecommerceProperties = [[MIEcommerceProperties alloc] initWithCustomProperties:_properties];
+    _properties = [@{@1:@"testValue;"} copy];
+    _ecommerceProperties = [[MIEcommerceParameters alloc] initWithCustomParameters:_properties];
     MIProduct *product1 = [[MIProduct alloc] init];
     product1.name = @"product1Name";
     product1.quantity = [NSNumber numberWithInt:33];
@@ -43,7 +43,7 @@
 }
 
 - (void)testInitWithCustomProperties {
-    XCTAssertTrue([_ecommerceProperties.customProperties isEqual:_properties], @"The custom properties are not correct!");
+    XCTAssertTrue([_ecommerceProperties.customParameters isEqual:_properties], @"The custom properties are not correct!");
     XCTAssertTrue([_ecommerceProperties.products isEqual:_products], "The list of products is not correct!");
     XCTAssertTrue([_ecommerceProperties.couponValue isEqual:_cuponValue], "The cupon value is not correct!");
 }

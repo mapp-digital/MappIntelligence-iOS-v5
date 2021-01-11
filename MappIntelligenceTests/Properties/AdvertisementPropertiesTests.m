@@ -23,7 +23,7 @@
     _advertisementProperties.action = view;
     
     _properties = [@{@1: @[@"ECOMM"]} copy];
-    _advertisementProperties.customProperties = _properties;
+    _advertisementProperties.customParameters = _properties;
 }
 
 - (void)tearDown {
@@ -31,7 +31,7 @@
 }
 
 - (void)testInitWithCustomProperties {
-    XCTAssertTrue([_advertisementProperties.customProperties isEqual:_properties], @"The custom properties are not correct!");
+    XCTAssertTrue([_advertisementProperties.customParameters isEqual:_properties], @"The custom properties are not correct!");
 }
 
 - (void)testCopy {
@@ -41,7 +41,7 @@
     comparable.action = view;
     
     _properties = [@{@1: @[@"ECOMM"]} copy];
-    comparable.customProperties = _properties;
+    comparable.customParameters = _properties;
     XCTAssertTrue([_advertisementProperties isEqual:comparable], @"Objects are not equal!");
 }
 

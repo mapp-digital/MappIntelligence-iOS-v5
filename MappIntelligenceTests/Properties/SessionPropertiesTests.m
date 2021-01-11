@@ -7,19 +7,19 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "MISessionProperties.h"
+#import "MISessionParameters.h"
 #import "MIDefaultTracker.h"
 
 @interface SessionPropertiesTests : XCTestCase
 @property NSMutableDictionary *sessionDictionary;
-@property MISessionProperties *sessionProperties;
+@property MISessionParameters *sessionProperties;
 @end
 
 @implementation SessionPropertiesTests
 
 - (void)setUp {
     _sessionDictionary = [@{@10: @[@"sessionpar1"]} copy];
-    _sessionProperties =  [[MISessionProperties alloc] initWithProperties: _sessionDictionary];
+    _sessionProperties =  [[MISessionParameters alloc] initWithParameters: _sessionDictionary];
 }
 
 - (void)tearDown {
@@ -27,7 +27,7 @@
 }
 
 - (void)testInitWithProperties {
-    XCTAssertTrue([_sessionProperties.properties isEqualToDictionary:_sessionDictionary], @"The dicitonary from session properties is not same as it is used for creation!");
+    XCTAssertTrue([_sessionProperties.parameters isEqualToDictionary:_sessionDictionary], @"The dicitonary from session properties is not same as it is used for creation!");
 }
 
 - (void)testAsQueryItemsForRequest {

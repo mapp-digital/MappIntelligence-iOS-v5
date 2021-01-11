@@ -99,13 +99,13 @@
     NSMutableDictionary* groups = [@{@15: @"testGroups"} copy];
     NSString* internalSearch = @"testSearchTerm";
     NSMutableDictionary* sessionDictionary = [@{@10: @"sessionpar1"} copy];
-    MISessionProperties* sessionProperties =  [[MISessionProperties alloc] initWithProperties: sessionDictionary];
+    MISessionParameters* sessionProperties =  [[MISessionParameters alloc] initWithParameters: sessionDictionary];
     MIPageParameters* pageProperties = [[MIPageParameters alloc] initWithPageParams:details pageCategory:groups search:internalSearch];
-    MIEcommerceProperties* ecommerceProperties = [[MIEcommerceProperties alloc] init];
+    MIEcommerceParameters* ecommerceProperties = [[MIEcommerceParameters alloc] init];
     MIPageViewEvent* pageViewEvent = [[MIPageViewEvent alloc] initWithName:@"the custom name"];
-    pageViewEvent.pageProperties = pageProperties;
-    pageViewEvent.sessionProperties = sessionProperties;
-    pageViewEvent.ecommerceProperties = ecommerceProperties;
+    pageViewEvent.pageParameters = pageProperties;
+    pageViewEvent.sessionParameters = sessionProperties;
+    pageViewEvent.ecommerceParameters = ecommerceProperties;
     
     NSError* error = [_tracker trackWithEvent:pageViewEvent];
     //TODO: add reasonable error or it will return null always
@@ -116,11 +116,11 @@
     NSMutableDictionary* properties = [@{@20: @"1 element"} copy];
     NSString* actionname = @"TestAction";
     NSMutableDictionary* sessionDictionary = [@{@10: @"sessionpar1"} copy];
-    MISessionProperties* sessionProperties =  [[MISessionProperties alloc] initWithProperties: sessionDictionary];
+    MISessionParameters* sessionProperties =  [[MISessionParameters alloc] initWithParameters: sessionDictionary];
     
-    MIActionProperties* actionProperties = [[MIActionProperties alloc] initWithProperties:properties];
+    MIEventParameters* actionProperties = [[MIEventParameters alloc] initWithParameters:properties];
     MIActionEvent *actionEvent = [[MIActionEvent alloc] initWithName: actionname];
-    actionEvent.actionProperties = actionProperties;
+    actionEvent.eventParameters = actionProperties;
     
     NSError* error = [_tracker trackWithEvent:actionEvent];
     XCTAssertNil(error, @"There was an error while tracking action event!");

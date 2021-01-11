@@ -13,9 +13,9 @@
 
 @property MIPageViewEvent* pageViewEvent;
 @property MIPageParameters* pageProperties;
-@property MISessionProperties *sessionProperties;
+@property MISessionParameters *sessionProperties;
 @property MIUserCategories *userProperties;
-@property MIEcommerceProperties *ecommerceProperties;
+@property MIEcommerceParameters *ecommerceProperties;
 @property MICampaignParameters *advertisementProperties;
 @property NSString* internalSearch;
 @property NSMutableDictionary* details;
@@ -31,10 +31,10 @@
     _internalSearch = @"testSearchTerm";
     _pageProperties = [[MIPageParameters alloc] initWithPageParams:_details pageCategory:_groups search:_internalSearch];
     _sessionDictionary = [@{@10: @[@"sessionpar1"]} copy];
-    _sessionProperties =  [[MISessionProperties alloc] initWithProperties: _sessionDictionary];
+    _sessionProperties =  [[MISessionParameters alloc] initWithParameters: _sessionDictionary];
     _userProperties = [[MIUserCategories alloc] init];
     _userProperties.city = @"Berlin";
-    _ecommerceProperties = [[MIEcommerceProperties alloc] init];
+    _ecommerceProperties = [[MIEcommerceParameters alloc] init];
     MIProduct* product1 = [[MIProduct alloc] init];
     product1.name = @"product1";
     product1.quantity = [[NSNumber alloc] initWithInteger:22];
@@ -45,14 +45,14 @@
     _advertisementProperties.mediaCode = @"abc";
     _advertisementProperties.oncePerSession = YES;
     _advertisementProperties.action = view;
-    _advertisementProperties.customProperties = @{@1: @[@"ECOMM"]};
+    _advertisementProperties.customParameters = @{@1: @[@"ECOMM"]};
     
     _pageViewEvent = [[MIPageViewEvent alloc] initWithName:@"test custom name"];
-    _pageViewEvent.pageProperties = _pageProperties;
-    _pageViewEvent.sessionProperties = _sessionProperties;
-    _pageViewEvent.userProperties = _userProperties;
-    _pageViewEvent.campaignProperties = _advertisementProperties;
-    _pageViewEvent.ecommerceProperties = _ecommerceProperties;
+    _pageViewEvent.pageParameters = _pageProperties;
+    _pageViewEvent.sessionParameters = _sessionProperties;
+    _pageViewEvent.userCategories = _userProperties;
+    _pageViewEvent.campaignParameters = _advertisementProperties;
+    _pageViewEvent.ecommerceParameters = _ecommerceProperties;
 }
 
 - (void)tearDown {
@@ -69,11 +69,11 @@
 }
 
 - (void)testInitWithProperties {
-    XCTAssertTrue([[_pageViewEvent pageProperties] isEqual:_pageProperties], @"Page properties is not the same as it used for creation of page view event!");
-    XCTAssertTrue([[_pageViewEvent sessionProperties] isEqual:_sessionProperties], @"Session properties is not the same as it used for creation of page view event!");
-    XCTAssertTrue([[_pageViewEvent userProperties] isEqual:_userProperties], @"User properties is not the same as it used for creation of page view event!");
-    XCTAssertTrue([[_pageViewEvent ecommerceProperties] isEqual: _ecommerceProperties], @"Ecommerce properties is not the same as it used for creation of page view event!");
-    XCTAssertTrue([[_pageViewEvent campaignProperties] isEqual: _advertisementProperties], @"Advertisement properties is not the same as it used for creation of page view event!");
+    XCTAssertTrue([[_pageViewEvent pageParameters] isEqual:_pageProperties], @"Page properties is not the same as it used for creation of page view event!");
+    XCTAssertTrue([[_pageViewEvent sessionParameters] isEqual:_sessionProperties], @"Session properties is not the same as it used for creation of page view event!");
+    XCTAssertTrue([[_pageViewEvent userCategories] isEqual:_userProperties], @"User properties is not the same as it used for creation of page view event!");
+    XCTAssertTrue([[_pageViewEvent ecommerceParameters] isEqual: _ecommerceProperties], @"Ecommerce properties is not the same as it used for creation of page view event!");
+    XCTAssertTrue([[_pageViewEvent campaignParameters] isEqual: _advertisementProperties], @"Advertisement properties is not the same as it used for creation of page view event!");
 }
 
 - (void)testPerformanceExample {
