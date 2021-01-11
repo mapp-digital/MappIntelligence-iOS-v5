@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "MIMediaProperties.h"
+#import "MIMediaParameters.h"
 #import "MIActionProperties.h"
 #import "MISessionProperties.h"
 #import "MIEcommerceProperties.h"
@@ -17,14 +17,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MIMediaEvent : MITrackingEvent
 
-
-@property (nonatomic, nonnull) MIMediaProperties *mediaProperties;
+@property (nonatomic, nonnull) MIMediaParameters *mediaParameters;
 @property (nonatomic, nullable) MIActionProperties* actionProperties;
 @property (nonatomic, nullable) MISessionProperties *sessionProperties;
 @property (nonatomic, nullable) MIEcommerceProperties *ecommerceProperties;
 
 - (instancetype)init NS_UNAVAILABLE;
-- (instancetype)initWithPageName:(NSString *)name properties: (MIMediaProperties *)properties;
+- (instancetype)initWithPageName:(NSString *)name parameters: (MIMediaParameters *)properties;
 
 @end
 

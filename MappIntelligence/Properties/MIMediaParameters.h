@@ -1,5 +1,5 @@
 //
-//  MIMediaProperties.h
+//  MIMediaParameters.h
 //  MappIntelligenceSDK
 //
 //  Created by Miroljub Stoilkovic on 27/12/2020.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MIMediaProperties : NSObject
+@interface MIMediaParameters : NSObject
 
 @property (nonnull) NSString *name;
 @property (nonnull) NSString *action;

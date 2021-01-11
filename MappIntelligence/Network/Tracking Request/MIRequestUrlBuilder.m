@@ -198,7 +198,7 @@
                 [parametrs addObjectsFromArray:[advertisementProperties asQueryItems]];
             }
         } else if ([event isKindOfClass:MIMediaEvent.class]) {
-            MIMediaProperties *media = ((MIMediaEvent*)event).mediaProperties;
+            MIMediaParameters *media = ((MIMediaEvent*)event).mediaParameters;
             [parametrs addObjectsFromArray:[media asQueryItems]];
             MISessionProperties *session = ((MIMediaEvent*)event).sessionProperties;
             [parametrs addObjectsFromArray:[session asQueryItems]];

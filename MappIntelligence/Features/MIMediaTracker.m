@@ -8,16 +8,25 @@
 
 #import "MIMediaTracker.h"
 
+
+@interface MIMediaTracker ()
+@property NSTimeInterval lastRequest;
+@end
+
 @implementation MIMediaTracker
 
 + (nullable instancetype)sharedInstance {
 
-  static MIWebViewTracker *shared = nil;
+  static MIMediaTracker *shared = nil;
   static dispatch_once_t onceToken;
   dispatch_once(&onceToken, ^{
-    shared = [[MIWebViewTracker alloc] init];
+    shared = [[MIMediaTracker alloc] init];
   });
   return shared;
+}
+
+-(BOOL) shouldTrack: (MIMediaEvent *) event {
+    return NO;
 }
 
 @end

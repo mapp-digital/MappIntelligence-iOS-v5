@@ -12,10 +12,10 @@
 
 @synthesize pageName = _pageName;
 
-- (instancetype)initWithPageName:(NSString *)name properties: (MIMediaProperties *)properties {
+- (instancetype)initWithPageName:(NSString *)name parameters: (MIMediaParameters *)parameters {
     self = [super init];
     _pageName = name;
-    _mediaProperties = properties;
+    _mediaParameters = parameters;
     return self;
 }
 

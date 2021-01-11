@@ -110,14 +110,14 @@ class MediaPlayerViewController: UIViewController {
         guard let position = player.currentItem?.currentTime().seconds else { return }
         guard let duration = player.currentItem?.duration.seconds else { return }
 
-        let mediaProperties = MIMediaProperties("TestVideoExample", action: action, postion: position, duration: duration)
+        let mediaProperties = MIMediaParameters("TestVideoExample", action: action, postion: position, duration: duration)
         mediaProperties.soundVolume = NSNumber(value: (AVAudioSession.sharedInstance().outputVolume) * 255.0)
         mediaProperties.soundIsMuted = AVAudioSession.sharedInstance().outputVolume == 0.0 ? "1" : "0"
         if bitrate != nil {
             mediaProperties.bandwith = bitrate
         }
             
-        let event = MIMediaEvent(pageName: "MediaViewController", properties: mediaProperties)
+        let event = MIMediaEvent(pageName: "MediaViewController", parameters: mediaProperties)
         MappIntelligence.shared()?.trackMedia(event)
     }
 }

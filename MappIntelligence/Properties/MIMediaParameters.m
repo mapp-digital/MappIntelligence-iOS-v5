@@ -1,14 +1,14 @@
 //
-//  MIMediaProperties.m
+//  MIMediaParameters.m
 //  MappIntelligenceSDK
 //
 //  Created by Miroljub Stoilkovic on 27/12/2020.
 //  Copyright © 2020 Mapp Digital US, LLC. All rights reserved.
 //
 
-#import "MIMediaProperties.h"
+#import "MIMediaParameters.h"
 
-@implementation MIMediaProperties
+@implementation MIMediaParameters
 
 - (instancetype)initWith: (NSString *) name action: (NSString *)action postion: (NSTimeInterval) position duration: (NSTimeInterval) duration {
     self = [super init];
