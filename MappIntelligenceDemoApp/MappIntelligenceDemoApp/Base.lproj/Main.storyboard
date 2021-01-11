@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="v0p-og-LCW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="v0p-og-LCW">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -465,7 +465,7 @@
                                 <rect key="frame" x="20" y="94" width="280" height="50"/>
                                 <color key="backgroundColor" name="Darkblue"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="DQs-8L-Se7"/>
+                                    <constraint firstAttribute="height" constant="50" id="yFM-bB-O6D"/>
                                 </constraints>
                                 <state key="normal" title="Track Page">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -474,24 +474,11 @@
                                     <action selector="trackPage:" destination="OQt-Ei-jeo" eventType="touchUpInside" id="f7i-HZ-oel"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xJq-AD-Alt">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8dv-nM-LHo">
                                 <rect key="frame" x="20" y="169" width="280" height="50"/>
                                 <color key="backgroundColor" name="Darkblue"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="Goz-KI-VjW"/>
-                                </constraints>
-                                <state key="normal" title="Track Product">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="trackProduct:" destination="OQt-Ei-jeo" eventType="touchUpInside" id="2bb-0U-ILg"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8dv-nM-LHo">
-                                <rect key="frame" x="20" y="244" width="280" height="50"/>
-                                <color key="backgroundColor" name="Darkblue"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="dDN-zq-ZsK"/>
+                                    <constraint firstAttribute="height" constant="50" id="O4E-Kr-Jgs"/>
                                 </constraints>
                                 <state key="normal" title="Track Custom Page">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -501,10 +488,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mTi-qR-vcf">
-                                <rect key="frame" x="20" y="319" width="280" height="50"/>
+                                <rect key="frame" x="20" y="244" width="280" height="50"/>
                                 <color key="backgroundColor" name="Darkblue"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="k60-e2-5Ls"/>
+                                    <constraint firstAttribute="height" constant="50" id="ajU-eH-bOi"/>
                                 </constraints>
                                 <state key="normal" title="Track Page with custom data">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -517,18 +504,15 @@
                         <viewLayoutGuide key="safeArea" id="s58-Tq-3r0"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="xJq-AD-Alt" firstAttribute="leading" secondItem="s58-Tq-3r0" secondAttribute="leading" constant="20" id="9Rk-9p-aVE"/>
-                            <constraint firstItem="s58-Tq-3r0" firstAttribute="trailing" secondItem="xJq-AD-Alt" secondAttribute="trailing" constant="20" id="A6b-WS-lrS"/>
-                            <constraint firstItem="6ud-t1-Mby" firstAttribute="leading" secondItem="s58-Tq-3r0" secondAttribute="leading" constant="20" id="Eyy-Wc-kp2"/>
-                            <constraint firstItem="xJq-AD-Alt" firstAttribute="top" secondItem="6ud-t1-Mby" secondAttribute="bottom" constant="25" id="Nli-8L-S7l"/>
-                            <constraint firstItem="s58-Tq-3r0" firstAttribute="trailing" secondItem="6ud-t1-Mby" secondAttribute="trailing" constant="20" id="RWH-Nv-u3D"/>
-                            <constraint firstItem="s58-Tq-3r0" firstAttribute="trailing" secondItem="mTi-qR-vcf" secondAttribute="trailing" constant="20" id="VO5-Qg-EL1"/>
-                            <constraint firstItem="mTi-qR-vcf" firstAttribute="leading" secondItem="s58-Tq-3r0" secondAttribute="leading" constant="20" id="Vtr-qz-BwH"/>
-                            <constraint firstItem="8dv-nM-LHo" firstAttribute="top" secondItem="xJq-AD-Alt" secondAttribute="bottom" constant="25" id="aZr-wg-7eg"/>
-                            <constraint firstItem="mTi-qR-vcf" firstAttribute="top" secondItem="8dv-nM-LHo" secondAttribute="bottom" constant="25" id="d8Y-C0-snH"/>
-                            <constraint firstItem="6ud-t1-Mby" firstAttribute="top" secondItem="s58-Tq-3r0" secondAttribute="top" constant="50" id="iAi-Db-afn"/>
-                            <constraint firstItem="8dv-nM-LHo" firstAttribute="leading" secondItem="s58-Tq-3r0" secondAttribute="leading" constant="20" id="j7R-q9-D7w"/>
-                            <constraint firstItem="s58-Tq-3r0" firstAttribute="trailing" secondItem="8dv-nM-LHo" secondAttribute="trailing" constant="20" id="lKP-Py-TXN"/>
+                            <constraint firstItem="8dv-nM-LHo" firstAttribute="top" secondItem="6ud-t1-Mby" secondAttribute="bottom" constant="25" id="168-B2-mUu"/>
+                            <constraint firstItem="s58-Tq-3r0" firstAttribute="trailing" secondItem="6ud-t1-Mby" secondAttribute="trailing" constant="20" id="2vb-8m-6RF"/>
+                            <constraint firstItem="s58-Tq-3r0" firstAttribute="trailing" secondItem="mTi-qR-vcf" secondAttribute="trailing" constant="20" id="SJo-4O-jnP"/>
+                            <constraint firstItem="6ud-t1-Mby" firstAttribute="top" secondItem="s58-Tq-3r0" secondAttribute="top" constant="50" id="UGC-zZ-3Vu"/>
+                            <constraint firstItem="s58-Tq-3r0" firstAttribute="trailing" secondItem="8dv-nM-LHo" secondAttribute="trailing" constant="20" id="VSD-rK-gMX"/>
+                            <constraint firstItem="mTi-qR-vcf" firstAttribute="leading" secondItem="s58-Tq-3r0" secondAttribute="leading" constant="20" id="aVw-vp-kYv"/>
+                            <constraint firstItem="8dv-nM-LHo" firstAttribute="leading" secondItem="s58-Tq-3r0" secondAttribute="leading" constant="20" id="b3z-Ab-1np"/>
+                            <constraint firstItem="mTi-qR-vcf" firstAttribute="top" secondItem="8dv-nM-LHo" secondAttribute="bottom" constant="25" id="fpY-Tf-Ehj"/>
+                            <constraint firstItem="6ud-t1-Mby" firstAttribute="leading" secondItem="s58-Tq-3r0" secondAttribute="leading" constant="20" id="ulC-iL-ECZ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Page Tracking" id="g0w-Jv-tzC">

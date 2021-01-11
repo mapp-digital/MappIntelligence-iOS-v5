@@ -29,7 +29,7 @@ var window: UIWindow?
         MappIntelligence.shared()?.logLevel = .all
         MappIntelligence.shared()?.batchSupportEnabled = true;
         MappIntelligence.shared()?.batchSupportSize = 150;
-        MappIntelligence.shared()?.requestInterval = 1;
+        MappIntelligence.shared()?.requestInterval = 60;
         MappIntelligence.shared()?.requestPerQueue = 300;
 
         // Override point for customization after application launch.

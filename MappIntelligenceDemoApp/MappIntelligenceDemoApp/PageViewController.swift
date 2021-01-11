@@ -17,29 +17,6 @@ class PageViewController: UIViewController {
     @IBAction func trackPage(_ sender: Any) {
         MappIntelligence.shared()?.trackPage(with: self, pageViewEvent: nil)
     }
-
-    @IBAction func trackProduct(_ sender: Any) {
-        let ecommerceParameters = MIEcommerceParameters(customParameters: [540 : "ecommerce1;ecommerce2"])
-        let product1 = MIProduct()
-        product1.name = "Product1Name"
-        product1.cost = 20
-        product1.quantity = 34
-        product1.categories = [1: "Shorts", 2: "Men", 44: "Clothes"]
-        let product2 = MIProduct()
-        product2.categories = [1: "T-Shirts", 45: "Jackets"]
-        let product3 = MIProduct()
-        product3.categories = [2: "Women", 46: "Winter"]
-        product3.cost = 348
-        ecommerceParameters.status = .addedToBasket
-        ecommerceParameters.products = [product1, product2, product3];
-        ecommerceParameters.currency = "EUR"
-        ecommerceParameters.paymentMethod = "creditCard"
-        
-        let pageEvent = MIPageViewEvent(name: "TrackProductTest")
-        pageEvent.ecommerceParameters = ecommerceParameters
-        
-        MappIntelligence.shared()?.trackPage(pageEvent)
-    }
     
     @IBAction func trackCustomPage(_ sender: Any) {
         
