@@ -15,16 +15,16 @@ class ActionViewController: UIViewController {
 
     }
     @IBAction func trackAction(_ sender: Any) {
-        let eventParameters = MIEventParameters(parameters: [20:"ck20Param1;ck20Param2"])
+        let eventParameters = MIEventParameters(parameters: [20:"ck20Param1"])
 
         let event = MIActionEvent(name: "TestAction")
-        event.eventParameters = eventParameters;
+        event.eventParameters = eventParameters
 
-        MappIntelligence.shared()?.trackAction(event);
+        MappIntelligence.shared()?.trackAction(event)
     }
     
     @IBAction func trackCustomAction(_ sender: Any) {
-        let eventParameters = MIEventParameters(parameters:  [20:"ck20Param1;ck20Param2"])
+        let eventParameters = MIEventParameters(parameters:  [20:"ck20Param1"])
         
         //user properties
         let userCategories = MIUserCategories()
@@ -36,13 +36,13 @@ class ActionViewController: UIViewController {
         userCategories.gender = .female
         
         //sessionproperties
-        let sessionParameters = MISessionParameters(parameters: [10: "sessionParam1;sessionParam2"])
+        let sessionParameters = MISessionParameters(parameters: [10: "sessionParam1"])
         
         let event = MIActionEvent(name: "TestAction")
-        event.eventParameters = eventParameters;
+        event.eventParameters = eventParameters
         event.userCategories = userCategories
         event.sessionParameters = sessionParameters
 
-        MappIntelligence.shared()?.trackAction(event);
+        MappIntelligence.shared()?.trackAction(event)
     }
 }

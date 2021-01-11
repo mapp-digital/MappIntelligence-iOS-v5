@@ -33,9 +33,9 @@ class ConfigViewController: UIViewController {
         }
         let dict = NSDictionary(contentsOfFile: path) as Dictionary?
         let array = [(dict?["track_ids" as NSObject]?.intValue) ?? 0]
-        let domain = dict?["domain" as NSObject];
-        MappIntelligence.shared()?.initWithConfiguration(array, onTrackdomain: domain as! String);
-        MappIntelligence.shared()?.requestInterval = 1 * 60;
+        let domain = dict?["domain" as NSObject]
+        MappIntelligence.shared()?.initWithConfiguration(array, onTrackdomain: domain as! String)
+        MappIntelligence.shared()?.requestInterval = 1 * 60
     }
     
 }

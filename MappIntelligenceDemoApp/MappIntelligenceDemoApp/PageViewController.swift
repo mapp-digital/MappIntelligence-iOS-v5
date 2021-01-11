@@ -21,7 +21,7 @@ class PageViewController: UIViewController {
     @IBAction func trackCustomPage(_ sender: Any) {
         
         //page properties
-        let params:[NSNumber : String] = [20: "cp20Override;cp21Override;cp22Override"]
+        let params:[NSNumber : String] = [20: "cp20Override"]
         let categories:NSMutableDictionary = [10: "test"]
         let searchTerm = "testSearchTerm"
         let pageParameters = MIPageParameters(pageParams: params, pageCategory: categories, search: searchTerm)
@@ -36,7 +36,7 @@ class PageViewController: UIViewController {
         userCategories.gender = .female
         
         //sessionproperties
-        let sessionParameters = MISessionParameters(parameters: [10: "sessionParam1;sessionParam2"])
+        let sessionParameters = MISessionParameters(parameters: [10: "sessionParam1"])
               
         let pageEvent = MIPageViewEvent(name: "the custom name of page")
         pageEvent.pageParameters = pageParameters

@@ -16,7 +16,7 @@ class ViewControllerTV: UIViewController {
     }
 
     @IBAction func trackViewController(_ sender: Any) {
-        let params:[NSNumber:String] = [20: "cp20Override;cp21Override;cp22Override"]
+        let params:[NSNumber:String] = [20: "cp20Override"]
         let categories:NSMutableDictionary = [10: "test"]
         let searchTerm = "testSearchTerm"
         let pageEvent = MIPageViewEvent()
@@ -26,7 +26,7 @@ class ViewControllerTV: UIViewController {
     
     @IBAction func trackCustomString(_ sender: Any) {
         let customName = "the custom name of page"
-        let params:[NSNumber:String] = [20: "cp20Override;cp21Override;cp22Override"]
+        let params:[NSNumber:String] = [20: "cp20Override"]
         let categories:NSMutableDictionary = [10: "test"]
         let searchTerm = "testSearchTerm"
         let sessionParameters = MISessionParameters(parameters: [10: "sessionpar1"])
@@ -38,7 +38,7 @@ class ViewControllerTV: UIViewController {
     }
 
     @IBAction func trackAction(_ sender: Any) {
-        let eventParameters = MIEventParameters(parameters: [20:"ck20Override;ck21Override"])
+        let eventParameters = MIEventParameters(parameters: [20:"ck20Override"])
         let sessionParameters = MISessionParameters(parameters: [10: "sessionpar1"])
         let userCategories = MIUserCategories()
         userCategories.customCategories = [20:"Test"]
@@ -68,8 +68,8 @@ class ViewControllerTV: UIViewController {
         let product2 = MIProduct()
         let product3 = MIProduct()
         product3.cost = 348
-        ecommerceParameters.status = .addedToBasket
-        ecommerceParameters.products = [product1, product2, product3];
+        ecommerceParameters.status = .purchased
+        ecommerceParameters.products = [product1, product2, product3]
         ecommerceParameters.currency = "$"
         ecommerceParameters.paymentMethod = "creditCard"
         

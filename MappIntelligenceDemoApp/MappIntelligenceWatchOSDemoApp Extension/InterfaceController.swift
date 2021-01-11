@@ -17,7 +17,7 @@ class InterfaceController: WKInterfaceController {
         // Configure interface objects here.
         MappIntelligenceWatchOS.shared()?.initWithConfiguration([385255285199574 as UInt64, 5555555555 as UInt64], onTrackdomain: "https://q3.webtrekk.net")
         MappIntelligenceWatchOS.shared()?.logLevelWatchOS = .allWatchOSLogs
-        MappIntelligenceWatchOS.shared()?.requestInterval = 60;
+        MappIntelligenceWatchOS.shared()?.requestInterval = 60
     }
     
     override func willActivate() {
@@ -32,14 +32,13 @@ class InterfaceController: WKInterfaceController {
 
     @IBAction func TrackPage() {
         let customName = "the custom name of page"
-        let params:[NSNumber:String] = [20: "cp20Override;cp21Override;cp22Override"]
+        let params:[NSNumber:String] = [20: "cp20Override"]
         let categories:NSMutableDictionary = [10: "test"]
         let searchTerm = "testSearchTerm"
         
         let pageEvent = MIPageViewEvent(name: customName)
         pageEvent.pageParameters = MIPageParameters(pageParams: params, pageCategory: categories, search: searchTerm)
         MappIntelligenceWatchOS.shared()?.trackPage(pageEvent)
-        //MappIntelligenceWatchOS.shared()?.trackPage(withName: customName, pageProperties: MIPageProperties(pageParams: params, andWithPageCategory: categories, andWithSearch: searchTerm), sessionProperties: nil, userProperties: nil, ecommerceProperties: nil, advertisementProperties: nil)
     }
     @IBAction func reset() {
         MappIntelligenceWatchOS.shared()?.reset()
@@ -48,7 +47,7 @@ class InterfaceController: WKInterfaceController {
         MappIntelligenceWatchOS.shared()?.initWithConfiguration([385255285199574 as UInt64], onTrackdomain: "https://q3.webtrekk.net")
     }
     @IBAction func trackAction() {
-        let actionProperties = MIEventParameters(parameters: [20:"ck20Override;ck21Override"])
+        let actionProperties = MIEventParameters(parameters: [20:"ck20Override"])
         let sessionParameters = MISessionParameters(parameters: [10: "sessionpar1"])
         
         let userCategories = MIUserCategories()
@@ -81,7 +80,7 @@ class InterfaceController: WKInterfaceController {
         let product2 = MIProduct()
         let product3 = MIProduct()
         product3.cost = 348
-        ecommerceParameters.status = .addedToBasket
+        ecommerceParameters.status = .purchased
         ecommerceParameters.products = [product1, product2, product3];
         ecommerceParameters.currency = "EUR"
         ecommerceParameters.paymentMethod = "creditCard"
