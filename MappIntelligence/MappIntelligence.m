@@ -70,7 +70,7 @@ static MappIntelligenceDefaultConfig *config = nil;
 }
 
 #if !TARGET_OS_WATCH
-- (NSError *_Nullable)trackPageWithViewController:(UIViewController *_Nonnull)controller event:(MIPageViewEvent*_Nullable) event {
+- (NSError *_Nullable)trackPageWithViewController:(UIViewController *_Nonnull)controller pageViewEvent:(MIPageViewEvent*_Nullable) event {
     if (![self isTrackingEnabled]) {
         return nil;
     }

@@ -15,7 +15,7 @@ class PageViewController: UIViewController {
     }
     
     @IBAction func trackPage(_ sender: Any) {
-        MappIntelligence.shared()?.trackPage(with: self, event: nil)
+        MappIntelligence.shared()?.trackPage(with: self, pageViewEvent: nil)
     }
 
     @IBAction func trackProduct(_ sender: Any) {
