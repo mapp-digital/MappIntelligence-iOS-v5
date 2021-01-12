@@ -21,7 +21,7 @@ class ViewControllerTV: UIViewController {
         let searchTerm = "testSearchTerm"
         let pageEvent = MIPageViewEvent()
         pageEvent.pageParameters = MIPageParameters(pageParams: params, pageCategory: categories, search: searchTerm)
-        MappIntelligencetvOS.shared()?.trackPage(with: self, event: pageEvent)
+        MappIntelligencetvOS.shared()?.trackPage(with: self, pageViewEvent: pageEvent)
     }
     
     @IBAction func trackCustomString(_ sender: Any) {
@@ -76,7 +76,7 @@ class ViewControllerTV: UIViewController {
         let pageEvent = MIPageViewEvent()
         pageEvent.ecommerceParameters = ecommerceParameters
         
-        MappIntelligencetvOS.shared()?.trackPage(with: self, event: pageEvent)
+        MappIntelligencetvOS.shared()?.trackPage(with: self, pageViewEvent: pageEvent)
     }
 
     @IBAction func trackCampaign(_ sender: Any) {
