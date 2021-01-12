@@ -10,7 +10,9 @@
 
 
 @interface MIMediaTracker ()
-@property NSTimeInterval lastRequest;
+@property (nonatomic, strong) NSDate *lastTrackedTime;
+@property (nonatomic, strong) NSDate *lastTrackedTimeLiveStream;
+@property MIMediaEvent *lastTrackedEvent;
 @end
 
 @implementation MIMediaTracker
@@ -26,7 +28,33 @@
 }
 
 -(BOOL) shouldTrack: (MIMediaEvent *) event {
-    return NO;
+    //invalid cases
+    if (event.mediaParameters.position >= event.mediaParameters.duration) {
+        return NO;
+    }
+
+    NSDate *now = [[NSDate alloc] init];
+    //check if media tracked is live stream
+    if (event.mediaParameters.duration == 0) {
+        if(_lastTrackedTimeLiveStream) {
+            NSTimeInterval allowedInterval = 60;
+            NSTimeInterval elapsed = [now timeIntervalSinceDate: _lastTrackedTimeLiveStream];
+            if (elapsed < allowedInterval) {
+                return NO;
+            }
+        }
+        _lastTrackedTimeLiveStream = now;
+    } else {
+        if(_lastTrackedTime) {
+            NSTimeInterval allowedInterval = 3;
+            NSTimeInterval elapsed = [now timeIntervalSinceDate: _lastTrackedTime];
+            if (elapsed < allowedInterval) {
+                return NO;
+            }
+        }
+        _lastTrackedTime = now;
+    }
+    return YES;
 }
 
 @end

@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface MIMediaTracker : NSObject
 
 + (nullable instancetype)sharedInstance;
+-(BOOL) shouldTrack: (MIMediaEvent *) event;
 
 @end
 

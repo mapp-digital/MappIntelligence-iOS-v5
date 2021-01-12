@@ -10,6 +10,7 @@
 
 #if !TARGET_OS_WATCH
 #import "MIWebViewTracker.h"
+#import "MIMediaTracker.h"
 #import "MIParams.h"
 #import "MIParamType.h"
 #endif

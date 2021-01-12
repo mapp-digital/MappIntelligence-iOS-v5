@@ -14,9 +14,11 @@
 		8F143ED92510AD830024CF24 /* ActionEventTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F143ED82510AD830024CF24 /* ActionEventTests.m */; };
 		8F143EDB2510AECA0024CF24 /* ActionPropertiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F143EDA2510AECA0024CF24 /* ActionPropertiesTests.m */; };
 		8F143EDD2510B3220024CF24 /* SessionPropertiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F143EDC2510B3220024CF24 /* SessionPropertiesTests.m */; };
+		8F15631C25ADB1D50012195D /* MIMediaTracker.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 8F1E0B7925A89173006594B3 /* MIMediaTracker.h */; };
+		8F15632B25ADB2AD0012195D /* MIMediaTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F1E0B7A25A89173006594B3 /* MIMediaTracker.m */; };
 		8F19B886257FD2DA0028358A /* MIWebViewTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F19B884257FD2DA0028358A /* MIWebViewTracker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8F19B887257FD2DA0028358A /* MIWebViewTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F19B885257FD2DA0028358A /* MIWebViewTracker.m */; };
-		8F1E0B7B25A89173006594B3 /* MIMediaTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F1E0B7925A89173006594B3 /* MIMediaTracker.h */; };
+		8F1E0B7B25A89173006594B3 /* MIMediaTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F1E0B7925A89173006594B3 /* MIMediaTracker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8F1E0B7C25A89173006594B3 /* MIMediaTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F1E0B7A25A89173006594B3 /* MIMediaTracker.m */; };
 		8F1E0B7D25A89173006594B3 /* MIMediaTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F1E0B7A25A89173006594B3 /* MIMediaTracker.m */; };
 		8F23B54D2599236F00BF9214 /* MIMediaParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F23B54B2599236F00BF9214 /* MIMediaParameters.h */; };
@@ -305,6 +307,7 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				8F15631C25ADB1D50012195D /* MIMediaTracker.h in Copy Files */,
 				8F23B595259B652600BF9214 /* MIMediaParameters.h in Copy Files */,
 				8F23B58D259B641F00BF9214 /* MIMediaEvent.h in Copy Files */,
 				8FD2C225258C0F19002A9ED4 /* MIParams.h in Copy Files */,
@@ -1197,6 +1200,7 @@
 				A36C6E0824323931008A9CB6 /* MIConfiguration.m in Sources */,
 				A338B79A25470A1F00E50C28 /* MIProduct.m in Sources */,
 				8FEC887A25598E6500E24EDC /* MIDeepLink.m in Sources */,
+				8F15632B25ADB2AD0012195D /* MIMediaTracker.m in Sources */,
 				A36C6E072432392A008A9CB6 /* MIEnvironment.m in Sources */,
 				A36C6E0624323917008A9CB6 /* MIRequestUrlBuilder.m in Sources */,
 				8F23B54F2599236F00BF9214 /* MIMediaParameters.m in Sources */,

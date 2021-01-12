@@ -17,6 +17,9 @@ class MediaPlayerViewController: UIViewController {
     var playerLayer: AVPlayerLayer!
     var isVideoPlaying = false
     var bitrate:NSNumber? = nil
+    var mediaName = "TestVideoExample"
+    var initiated = false
+    
     @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var postitionLabel: UILabel!
     @IBOutlet weak var timeSlider: UISlider!
@@ -39,6 +42,14 @@ class MediaPlayerViewController: UIViewController {
         
         videoView.layer.addSublayer(playerLayer!)
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if(!initiated) {
+            trackMediaWithAction(action: "init")
+            initiated = true
+        }
+    }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -54,13 +65,13 @@ class MediaPlayerViewController: UIViewController {
             sender.setTitle("Pause", for: .normal)
         }
         isVideoPlaying = !isVideoPlaying
-        
-        trackMedia()
+        let action = isVideoPlaying ? "play" : "pause"
+        trackMediaWithAction(action: action)
     }
     
     @IBAction func sliderValueChanged(_ sender: UISlider) {
         player.seek(to: CMTimeMake(value: Int64(sender.value*1000), timescale: 1000))
-        trackMedia()
+        trackMediaWithAction(action: "seek")
     }
 
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
@@ -100,15 +111,12 @@ class MediaPlayerViewController: UIViewController {
             if let bps = self?.player.currentItem?.accessLog()?.events.last?.observedBitrate {
                 self?.bitrate = NSNumber(value: bps)
             }
-            
         })
-        
     }
     
-    func trackMedia() {
-        let action = isVideoPlaying ? "play" : "pause"
+    func trackMediaWithAction(action:String) {
         guard let position = player.currentItem?.currentTime().seconds else { return }
-        guard let duration = player.currentItem?.duration.seconds else { return }
+        guard let duration = player.currentItem?.duration.seconds, duration == duration else { return }
 
         let mediaProperties = MIMediaParameters("TestVideoExample", action: action, postion: position, duration: duration)
         mediaProperties.soundVolume = NSNumber(value: (AVAudioSession.sharedInstance().outputVolume) * 255.0)
@@ -120,4 +128,9 @@ class MediaPlayerViewController: UIViewController {
         let event = MIMediaEvent(pageName: "MediaViewController", parameters: mediaProperties)
         MappIntelligence.shared()?.trackMedia(event)
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        trackMediaWithAction(action: "eof")
+    }
+
 }
