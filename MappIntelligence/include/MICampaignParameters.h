@@ -1,0 +1,1 @@
+../Properties/MICampaignParameters.h
