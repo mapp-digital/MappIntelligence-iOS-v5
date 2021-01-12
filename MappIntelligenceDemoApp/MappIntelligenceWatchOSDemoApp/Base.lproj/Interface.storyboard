@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="17156" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="17506" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
     <device id="watch38"/>
     <dependencies>
         <deployment identifier="watchOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="17034"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="17500"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
     </dependencies>
     <scenes>
         <!--Interface Controller-->
@@ -13,41 +14,50 @@
                 <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="MappIntelligenceWatchOSDemoApp" customModuleProvider="target">
                     <items>
                         <button width="1" alignment="left" title="TrackPage" id="eFx-aF-voU">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" name="Darkblue"/>
                             <connections>
                                 <action selector="TrackPage" destination="AgC-eL-Hgc" id="jRC-5w-60f"/>
                             </connections>
                         </button>
                         <button width="1" alignment="left" title="Reset" id="9Al-Td-v19">
+                            <color key="backgroundColor" name="Darkblue"/>
                             <connections>
                                 <action selector="reset" destination="AgC-eL-Hgc" id="Hx2-Gp-iQY"/>
                             </connections>
                         </button>
                         <button width="1" alignment="left" title="Init Again" id="6Oy-1d-yLh">
+                            <color key="backgroundColor" name="Darkblue"/>
                             <connections>
                                 <action selector="InitAgain" destination="AgC-eL-Hgc" id="7Sr-ZI-5XP"/>
                             </connections>
                         </button>
                         <button width="1" alignment="left" title="TrackAction" id="hcg-nB-MfL">
+                            <color key="backgroundColor" name="Darkblue"/>
                             <connections>
                                 <action selector="trackAction" destination="AgC-eL-Hgc" id="VZs-AD-1aj"/>
                             </connections>
                         </button>
                         <button width="1" alignment="left" title="TrackEcommerce" id="eED-pr-q4O">
+                            <color key="backgroundColor" name="Darkblue"/>
                             <connections>
                                 <action selector="trackEcommerce" destination="AgC-eL-Hgc" id="cb8-ec-nH2"/>
                             </connections>
                         </button>
                         <button width="1" alignment="left" title="TrackCampaign" id="N6a-3T-jTv">
+                            <color key="backgroundColor" name="Darkblue"/>
                             <connections>
                                 <action selector="trackCampaign" destination="AgC-eL-Hgc" id="XK8-i6-Any"/>
                             </connections>
                         </button>
                         <button width="1" alignment="left" title="Opt in" id="d2A-fR-QMA">
+                            <color key="backgroundColor" name="Darkblue"/>
                             <connections>
                                 <action selector="optIn" destination="AgC-eL-Hgc" id="IJI-nq-QdM"/>
                             </connections>
                         </button>
                         <button width="1" alignment="left" title="Opt out" id="tz2-d5-k2j">
+                            <color key="backgroundColor" name="Darkblue"/>
                             <connections>
                                 <action selector="optOut" destination="AgC-eL-Hgc" id="71L-0o-PFL"/>
                             </connections>
@@ -89,4 +99,9 @@
             <point key="canvasLocation" x="468" y="345"/>
         </scene>
     </scenes>
+    <resources>
+        <namedColor name="Darkblue">
+            <color red="0.019999999552965164" green="0.57300001382827759" blue="0.84299999475479126" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

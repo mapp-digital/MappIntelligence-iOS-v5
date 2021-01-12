@@ -75,7 +75,7 @@
     [_mappIntelligence setRequestPerQueue:requestPerQueue];
 }
 
-- (NSError *_Nullable)trackPageWithViewController:(UIViewController *_Nonnull)controller event:(MIPageViewEvent*_Nonnull) event {
+- (NSError *)trackPageWithViewController:(UIViewController *)controller pageViewEvent:(MIPageViewEvent *)event {
     return [_mappIntelligence trackPageWithViewController:controller pageViewEvent:event];
 }
 

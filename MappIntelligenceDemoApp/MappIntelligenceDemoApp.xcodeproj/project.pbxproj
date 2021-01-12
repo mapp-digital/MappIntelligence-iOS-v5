@@ -27,6 +27,7 @@
 		A35C78FA2452F81600D36144 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A35C78F82452F81600D36144 /* LaunchScreen.storyboard */; };
 		A35C79002452F83700D36144 /* libMappIntelligencetvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A35C78FF2452F83700D36144 /* libMappIntelligencetvOS.a */; };
 		A36E59CC259493A100BF8873 /* EcommerceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36E59CB259493A100BF8873 /* EcommerceViewController.swift */; };
+		A36E5A2C25AD9D8700BF8873 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCA1739A23D5D25E00B31430 /* Assets.xcassets */; };
 		A38A6AF4242CD74F00600D82 /* libMappIntelligenceWatchOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A38A6AF3242CD74F00600D82 /* libMappIntelligenceWatchOS.a */; };
 		A38F82C42538741B0021577B /* SetupForLocalTesting.plist in Resources */ = {isa = PBXBuildFile; fileRef = A38F82C32538741B0021577B /* SetupForLocalTesting.plist */; };
 		BCA1739223D5D25C00B31430 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA1739123D5D25C00B31430 /* AppDelegate.swift */; };
@@ -398,6 +399,7 @@
 			files = (
 				A35C78FA2452F81600D36144 /* LaunchScreen.storyboard in Resources */,
 				A35C78F72452F81600D36144 /* Assets.xcassets in Resources */,
+				A36E5A2C25AD9D8700BF8873 /* Assets.xcassets in Resources */,
 				A35C78F52452F81500D36144 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -28,7 +28,6 @@
         _customParameters = [self filterCustomDict:_customParameters];
         for(NSNumber* key in _customParameters) {
             NSMutableArray<NSString*>* customProps = [[_customParameters[key] componentsSeparatedByString:@";"] mutableCopy];
-            NSLog(@"product conut: %lu, status: %d", (unsigned long)[_products count], [customProps count] < [_products count]);
             while ([customProps count] < [_products count]) {
                 [customProps addObject:@""];
             }
