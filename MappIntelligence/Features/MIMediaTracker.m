@@ -13,6 +13,7 @@
 @property (nonatomic, strong) NSDate *lastTrackedTime;
 @property (nonatomic, strong) NSDate *lastTrackedTimeLiveStream;
 @property MIMediaEvent *lastTrackedEvent;
+@property NSString *lastAction;
 @end
 
 @implementation MIMediaTracker
@@ -29,7 +30,7 @@
 
 -(BOOL) shouldTrack: (MIMediaEvent *) event {
     //invalid cases
-    if (event.mediaParameters.position >= event.mediaParameters.duration) {
+    if (event.mediaParameters.position.doubleValue >= event.mediaParameters.duration.doubleValue) {
         return NO;
     }
 
@@ -39,19 +40,21 @@
         if(_lastTrackedTimeLiveStream) {
             NSTimeInterval allowedInterval = 60;
             NSTimeInterval elapsed = [now timeIntervalSinceDate: _lastTrackedTimeLiveStream];
-            if (elapsed < allowedInterval) {
+            if (elapsed < allowedInterval && [_lastAction isEqualToString:event.mediaParameters.action]) {
                 return NO;
             }
         }
+        _lastAction = event.mediaParameters.action;
         _lastTrackedTimeLiveStream = now;
     } else {
         if(_lastTrackedTime) {
             NSTimeInterval allowedInterval = 3;
             NSTimeInterval elapsed = [now timeIntervalSinceDate: _lastTrackedTime];
-            if (elapsed < allowedInterval) {
+            if (elapsed < allowedInterval && [_lastAction isEqualToString:event.mediaParameters.action]) {
                 return NO;
             }
         }
+        _lastAction = event.mediaParameters.action;
         _lastTrackedTime = now;
     }
     return YES;
