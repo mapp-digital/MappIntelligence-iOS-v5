@@ -15,15 +15,15 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonnull) NSString *name;
 @property (nonnull) NSString *action;
 @property (nullable) NSNumber *bandwith;
-@property NSTimeInterval duration;
+@property (nonnull) NSNumber *duration;
 @property (nullable) NSMutableDictionary* groups;
-@property NSTimeInterval position;
+@property (nonnull) NSNumber *position;
 @property (nullable)NSString *soundIsMuted;
 @property (nullable)NSNumber *soundVolume;
 @property (nullable) NSDictionary<NSNumber* ,NSString*>* customProperties;
 
 - (instancetype)init NS_UNAVAILABLE;
-- (instancetype)initWith: (NSString *) name action: (NSString *)action postion: (NSTimeInterval) position duration: (NSTimeInterval) duration;
+- (instancetype)initWith: (NSString *) name action: (NSString *)action postion: (NSNumber *) position duration: (NSNumber *) duration;
 -(NSMutableArray<NSURLQueryItem*>*)asQueryItems;
 
 @end

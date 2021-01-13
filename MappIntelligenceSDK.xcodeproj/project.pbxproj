@@ -44,6 +44,7 @@
 		8F5F85322535BCDD00A39882 /* MIActionProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FDF7106250B9E4D00818E51 /* MIActionProperties.m */; };
 		8F5F853A2535BCE100A39882 /* MISessionProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FDF7112250BA9CB00818E51 /* MISessionProperties.m */; };
 		8F5F85422535BCEB00A39882 /* MIActionEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FDF7109250B9E5B00818E51 /* MIActionEvent.m */; };
+		8F6165A825AEE5D80091BDB2 /* MediaParametersTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F6165A725AEE5D80091BDB2 /* MediaParametersTests.m */; };
 		8F80C047252355B500E1F650 /* MISessionProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FDF7112250BA9CB00818E51 /* MISessionProperties.m */; };
 		8F95516F25815A13005B8340 /* MIWebViewTracker.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 8F19B884257FD2DA0028358A /* MIWebViewTracker.h */; };
 		8F995E6525507F3E00B918DD /* MICampaignProperties.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8F423EDA254B17D900DE191D /* MICampaignProperties.h */; };
@@ -369,6 +370,7 @@
 		8F23B5592599DCD000BF9214 /* MIMediaEvent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MIMediaEvent.m; sourceTree = "<group>"; };
 		8F423ED9254B17D900DE191D /* MICampaignProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MICampaignProperties.m; sourceTree = "<group>"; };
 		8F423EDA254B17D900DE191D /* MICampaignProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MICampaignProperties.h; sourceTree = "<group>"; };
+		8F6165A725AEE5D80091BDB2 /* MediaParametersTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MediaParametersTests.m; sourceTree = "<group>"; };
 		8F9C7F6F255A851400CB95EF /* AdvertisementPropertiesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AdvertisementPropertiesTests.m; sourceTree = "<group>"; };
 		8FA11960253EDC82000AE887 /* MIUserProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MIUserProperties.h; sourceTree = "<group>"; };
 		8FA11961253EDC82000AE887 /* MIUserProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MIUserProperties.m; sourceTree = "<group>"; };
@@ -751,6 +753,7 @@
 				A338B802254C6C0A00E50C28 /* ProductTests.m */,
 				A338B812254C6D3A00E50C28 /* EcommercePropertiesTests.m */,
 				8F9C7F6F255A851400CB95EF /* AdvertisementPropertiesTests.m */,
+				8F6165A725AEE5D80091BDB2 /* MediaParametersTests.m */,
 			);
 			path = Properties;
 			sourceTree = "<group>";
@@ -1270,6 +1273,7 @@
 			files = (
 				A32EE09F243B574E00EDC5B8 /* UIFlowObserverTests.m in Sources */,
 				A31C6F1D24D9A0F300166585 /* RequestBatchSupportUrlBuilderTests.m in Sources */,
+				8F6165A825AEE5D80091BDB2 /* MediaParametersTests.m in Sources */,
 				A3A7255D243E07A100671DB2 /* URLSizeMonitorTests.m in Sources */,
 				A357221D24F95742005F9DE1 /* RequestDataTest.m in Sources */,
 				8F143ED92510AD830024CF24 /* ActionEventTests.m in Sources */,
