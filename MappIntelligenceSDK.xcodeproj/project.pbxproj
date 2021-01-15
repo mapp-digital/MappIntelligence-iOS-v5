@@ -38,6 +38,44 @@
 		8FAF2D3F25405DFE007AA438 /* MIUserCategories.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 8FA11960253EDC82000AE887 /* MIUserCategories.h */; };
 		8FAF2D772540875A007AA438 /* MIUserCategories.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8FA11960253EDC82000AE887 /* MIUserCategories.h */; };
 		8FAF2D7F2540875E007AA438 /* MIUserCategories.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8FA11960253EDC82000AE887 /* MIUserCategories.h */; };
+		8FCFD4FD25B18E3000EE8358 /* MICampaignParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F423EDA254B17D900DE191D /* MICampaignParameters.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FCFD50525B18E3000EE8358 /* MICampaignParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F423EDA254B17D900DE191D /* MICampaignParameters.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FCFD50D25B18E3100EE8358 /* MICampaignParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F423EDA254B17D900DE191D /* MICampaignParameters.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FCFD51C25B18EB000EE8358 /* MIEventParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FDF7105250B9E4D00818E51 /* MIEventParameters.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FCFD52425B18EB200EE8358 /* MIEventParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FDF7105250B9E4D00818E51 /* MIEventParameters.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FCFD52C25B18EB300EE8358 /* MIEventParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FDF7105250B9E4D00818E51 /* MIEventParameters.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FCFD52D25B18EB800EE8358 /* MIPageParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = A337445A24C1A12A0096259B /* MIPageParameters.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FCFD53525B18EB800EE8358 /* MIPageParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = A337445A24C1A12A0096259B /* MIPageParameters.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FCFD53625B18EB900EE8358 /* MIPageParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = A337445A24C1A12A0096259B /* MIPageParameters.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FCFD54525B18EC300EE8358 /* MISessionParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FDF7111250BA9CB00818E51 /* MISessionParameters.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FCFD54D25B18EC400EE8358 /* MISessionParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FDF7111250BA9CB00818E51 /* MISessionParameters.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FCFD54E25B18EC400EE8358 /* MISessionParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FDF7111250BA9CB00818E51 /* MISessionParameters.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FCFD55D25B18EF000EE8358 /* MIProduct.h in Headers */ = {isa = PBXBuildFile; fileRef = A338B79625470A1F00E50C28 /* MIProduct.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FCFD56525B18EF000EE8358 /* MIProduct.h in Headers */ = {isa = PBXBuildFile; fileRef = A338B79625470A1F00E50C28 /* MIProduct.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FCFD56625B18EF000EE8358 /* MIProduct.h in Headers */ = {isa = PBXBuildFile; fileRef = A338B79625470A1F00E50C28 /* MIProduct.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FCFD57525B18F0400EE8358 /* MIUserCategories.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FA11960253EDC82000AE887 /* MIUserCategories.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FCFD57D25B18F0400EE8358 /* MIUserCategories.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FA11960253EDC82000AE887 /* MIUserCategories.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FCFD57E25B18F0500EE8358 /* MIUserCategories.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FA11960253EDC82000AE887 /* MIUserCategories.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FCFD59425B18F1B00EE8358 /* MIEcommerceParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = A338B7892546FD1E00E50C28 /* MIEcommerceParameters.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FCFD59C25B18F1B00EE8358 /* MIEcommerceParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = A338B7892546FD1E00E50C28 /* MIEcommerceParameters.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FCFD59D25B18F1B00EE8358 /* MIEcommerceParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = A338B7892546FD1E00E50C28 /* MIEcommerceParameters.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FCFD5AC25B18F6700EE8358 /* MIActionEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FDF710A250B9E5B00818E51 /* MIActionEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FCFD5B425B18F6700EE8358 /* MIActionEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FDF710A250B9E5B00818E51 /* MIActionEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FCFD5BC25B18F6700EE8358 /* MIActionEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FDF710A250B9E5B00818E51 /* MIActionEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FCFD5C425B18F6E00EE8358 /* MIPageViewEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = A380D1FD241296FD009E2CD8 /* MIPageViewEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FCFD5CC25B18F6F00EE8358 /* MIPageViewEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = A380D1FD241296FD009E2CD8 /* MIPageViewEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FCFD5CD25B18F6F00EE8358 /* MIPageViewEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = A380D1FD241296FD009E2CD8 /* MIPageViewEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FCFD5DC25B18F7C00EE8358 /* MITrackingEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = A380D1F82411478C009E2CD8 /* MITrackingEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FCFD5E425B18F7C00EE8358 /* MITrackingEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = A380D1F82411478C009E2CD8 /* MITrackingEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FCFD5E525B18F7D00EE8358 /* MITrackingEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = A380D1F82411478C009E2CD8 /* MITrackingEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FCFD5F425B18FA300EE8358 /* MIParams.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FD2C1F6258C0CA8002A9ED4 /* MIParams.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FCFD5FC25B18FA400EE8358 /* MIParams.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FD2C1F6258C0CA8002A9ED4 /* MIParams.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FCFD60425B18FA400EE8358 /* MIParams.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FD2C1F6258C0CA8002A9ED4 /* MIParams.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FCFD60C25B18FAA00EE8358 /* MIParamType.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FD2C20A258C0CCA002A9ED4 /* MIParamType.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FCFD61425B18FAA00EE8358 /* MIParamType.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FD2C20A258C0CCA002A9ED4 /* MIParamType.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FCFD61525B18FAB00EE8358 /* MIParamType.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FD2C20A258C0CCA002A9ED4 /* MIParamType.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8FCFD64B25B1916F00EE8358 /* MIParams.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 8FD2C1F6258C0CA8002A9ED4 /* MIParams.h */; };
+		8FCFD64C25B1916F00EE8358 /* MIParamType.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 8FD2C20A258C0CCA002A9ED4 /* MIParamType.h */; };
 		8FD2C1F8258C0CA8002A9ED4 /* MIParams.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FD2C1F6258C0CA8002A9ED4 /* MIParams.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8FD2C1F9258C0CA8002A9ED4 /* MIParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD2C1F7258C0CA8002A9ED4 /* MIParams.m */; };
 		8FD2C1FA258C0CA8002A9ED4 /* MIParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD2C1F7258C0CA8002A9ED4 /* MIParams.m */; };
@@ -46,8 +84,6 @@
 		8FD2C20D258C0CCA002A9ED4 /* MIParamType.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD2C20B258C0CCA002A9ED4 /* MIParamType.m */; };
 		8FD2C20E258C0CCA002A9ED4 /* MIParamType.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD2C20B258C0CCA002A9ED4 /* MIParamType.m */; };
 		8FD2C20F258C0CCA002A9ED4 /* MIParamType.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD2C20B258C0CCA002A9ED4 /* MIParamType.m */; };
-		8FD2C225258C0F19002A9ED4 /* MIParams.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 8FD2C1F6258C0CA8002A9ED4 /* MIParams.h */; };
-		8FD2C226258C0F19002A9ED4 /* MIParamType.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 8FD2C20A258C0CCA002A9ED4 /* MIParamType.h */; };
 		8FDF7107250B9E4D00818E51 /* MIEventParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FDF7105250B9E4D00818E51 /* MIEventParameters.h */; };
 		8FDF7108250B9E4D00818E51 /* MIEventParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FDF7106250B9E4D00818E51 /* MIEventParameters.m */; };
 		8FDF710B250B9E5B00818E51 /* MIActionEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FDF7109250B9E5B00818E51 /* MIActionEvent.m */; };
@@ -289,8 +325,8 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
-				8FD2C225258C0F19002A9ED4 /* MIParams.h in Copy Files */,
-				8FD2C226258C0F19002A9ED4 /* MIParamType.h in Copy Files */,
+				8FCFD64B25B1916F00EE8358 /* MIParams.h in Copy Files */,
+				8FCFD64C25B1916F00EE8358 /* MIParamType.h in Copy Files */,
 				8F3BC308254BFF1D00076321 /* MICampaignParameters.h in Copy Files */,
 				A338B7EF2548752B00E50C28 /* MIProduct.h in Copy Files */,
 				A338B7E72548752200E50C28 /* MIEcommerceParameters.h in Copy Files */,
@@ -891,8 +927,20 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8FCFD5CC25B18F6F00EE8358 /* MIPageViewEvent.h in Headers */,
+				8FCFD59C25B18F1B00EE8358 /* MIEcommerceParameters.h in Headers */,
+				8FCFD53525B18EB800EE8358 /* MIPageParameters.h in Headers */,
 				A33B36E72460246F005EA9AE /* MappIntelligenceSDK_watchOS.h in Headers */,
+				8FCFD52425B18EB200EE8358 /* MIEventParameters.h in Headers */,
+				8FCFD57D25B18F0400EE8358 /* MIUserCategories.h in Headers */,
+				8FCFD60C25B18FAA00EE8358 /* MIParamType.h in Headers */,
+				8FCFD5B425B18F6700EE8358 /* MIActionEvent.h in Headers */,
 				A3E8274F2461B6F200952606 /* MappIntelligenceWatchOS.h in Headers */,
+				8FCFD50525B18E3000EE8358 /* MICampaignParameters.h in Headers */,
+				8FCFD56525B18EF000EE8358 /* MIProduct.h in Headers */,
+				8FCFD5E425B18F7C00EE8358 /* MITrackingEvent.h in Headers */,
+				8FCFD54D25B18EC400EE8358 /* MISessionParameters.h in Headers */,
+				8FCFD5FC25B18FA400EE8358 /* MIParams.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -900,8 +948,20 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8FCFD5CD25B18F6F00EE8358 /* MIPageViewEvent.h in Headers */,
+				8FCFD59D25B18F1B00EE8358 /* MIEcommerceParameters.h in Headers */,
+				8FCFD53625B18EB900EE8358 /* MIPageParameters.h in Headers */,
 				A33B36F72460249F005EA9AE /* MappIntelligenceSDK_tvOS.h in Headers */,
+				8FCFD52C25B18EB300EE8358 /* MIEventParameters.h in Headers */,
+				8FCFD57E25B18F0500EE8358 /* MIUserCategories.h in Headers */,
+				8FCFD61525B18FAB00EE8358 /* MIParamType.h in Headers */,
+				8FCFD5BC25B18F6700EE8358 /* MIActionEvent.h in Headers */,
 				A3E827502461B72700952606 /* MappIntelligencetvOS.h in Headers */,
+				8FCFD50D25B18E3100EE8358 /* MICampaignParameters.h in Headers */,
+				8FCFD56625B18EF000EE8358 /* MIProduct.h in Headers */,
+				8FCFD5E525B18F7D00EE8358 /* MITrackingEvent.h in Headers */,
+				8FCFD54E25B18EC400EE8358 /* MISessionParameters.h in Headers */,
+				8FCFD60425B18FA400EE8358 /* MIParams.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -909,8 +969,20 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8FCFD5C425B18F6E00EE8358 /* MIPageViewEvent.h in Headers */,
+				8FCFD59425B18F1B00EE8358 /* MIEcommerceParameters.h in Headers */,
+				8FCFD52D25B18EB800EE8358 /* MIPageParameters.h in Headers */,
 				A35C795F2457679000D36144 /* MappIntelligenceSDK_iOS.h in Headers */,
+				8FCFD51C25B18EB000EE8358 /* MIEventParameters.h in Headers */,
+				8FCFD57525B18F0400EE8358 /* MIUserCategories.h in Headers */,
+				8FCFD61425B18FAA00EE8358 /* MIParamType.h in Headers */,
+				8FCFD5AC25B18F6700EE8358 /* MIActionEvent.h in Headers */,
 				A3E8274E2461B6B700952606 /* MappIntelligence.h in Headers */,
+				8FCFD4FD25B18E3000EE8358 /* MICampaignParameters.h in Headers */,
+				8FCFD55D25B18EF000EE8358 /* MIProduct.h in Headers */,
+				8FCFD5DC25B18F7C00EE8358 /* MITrackingEvent.h in Headers */,
+				8FCFD54525B18EC300EE8358 /* MISessionParameters.h in Headers */,
+				8FCFD5F425B18FA300EE8358 /* MIParams.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
