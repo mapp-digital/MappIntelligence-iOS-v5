@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
     s.ios.deployment_target = '10.0'
     s.watchos.deployment_target = '4.0'
     s.source   = { :git => 'https://github.com/mapp-digital/MappIntelligence-iOS-v5.git', :tag => s.version }
-    s.source_files = 'MappIntelligence/include/**'
+    s.exclude_files = 'MappIntelligence/include/**'
     s.source_files = "MappIntelligence/**/*.{h,m}"
     s.watchos.source_files = "MappIntelligenceWatchOS/**/*.{h,m}"
     s.summary  = 'The MappIntelligence SDK allows you to track user activities, screen flow usage for your App.'
