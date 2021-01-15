@@ -10,6 +10,8 @@
 #import <UIKit/UIKit.h>
 #import "MIPageViewEvent.h"
 #import "MIActionEvent.h"
+#import "MIParams.h"
+#import "MIParamType.h"
 
 @class MappIntelligence;
 

@@ -7,8 +7,3 @@
 //
 
 #import "MappIntelligence.h"
-
-#if !TARGET_OS_WATCH
-#import "MIParams.h"
-#import "MIParamType.h"
-#endif
