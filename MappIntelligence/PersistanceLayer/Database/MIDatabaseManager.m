@@ -402,10 +402,11 @@ dispatch_async(_executionQueue, ^{
   
   if (request) {
       dispatch_async(_executionQueue, ^{
-    char *cError;
-    sqlite3_stmt *sql_statement;
-      const char *dbPath = [self.databasePath UTF8String];
+          char *cError;
+          sqlite3_stmt *sql_statement;
+          const char *dbPath = [self.databasePath UTF8String];
           //NSLog(@"DB: %d", self->_requestsDB == nil);
+          
           if (sqlite3_open(dbPath, &self->_requestsDB) == SQLITE_OK) {
     
               sqlite3_exec(self->_requestsDB, "BEGIN TRANSACTION", NULL, NULL, &cError);
@@ -561,8 +562,7 @@ dispatch_async(_executionQueue, ^{
   return error;
 }
 
-- (void)fetchAllRequestsFromInterval:(double)interval andWithCompletionHandler:
-    (StorageManagerCompletionHandler)completionHandler {
+- (void)fetchAllRequestsFromInterval:(double)interval andWithCompletionHandler: (StorageManagerCompletionHandler)completionHandler {
   //dispatch_queue_t queue = dispatch_queue_create("Fetch Resulats", NULL);
 //TODO: select count of request and make logic around it
   dispatch_async(_executionQueue, ^{
@@ -574,10 +574,8 @@ dispatch_async(_executionQueue, ^{
 
     NSError *error;
 
-    if (sqlite3_open_v2(dbPath, &self->_requestsDB,
-    SQLITE_OPEN_CREATE | SQLITE_OPEN_READWRITE |
-        SQLITE_OPEN_FULLMUTEX,
-    NULL) == SQLITE_OK) {
+    sqlite3 *dbHandler;
+    if (sqlite3_open_v2(dbPath, &dbHandler, SQLITE_OPEN_CREATE | SQLITE_OPEN_READWRITE | SQLITE_OPEN_FULLMUTEX, NULL) == SQLITE_OK) {
 
       NSString *querySQL = [[NSString alloc]
           initWithFormat:
@@ -587,22 +585,18 @@ dispatch_async(_executionQueue, ^{
 
       const char *query_stmt = [querySQL UTF8String];
 
-      if (sqlite3_prepare_v2(self->_requestsDB, query_stmt, -1, &sql_statement,
-                             NULL) == SQLITE_OK) {
+      if (sqlite3_prepare_v2(dbHandler, query_stmt, -1, &sql_statement, NULL) == SQLITE_OK) {
 
         requests = [[NSMutableArray alloc] init];
         requestIds = [[NSMutableArray alloc] init];
 
         while (sqlite3_step(sql_statement) == SQLITE_ROW) {
 
-          int uniqueId = sqlite3_column_double(sql_statement, 1);
-          NSString *domain = [[NSString alloc]
-              initWithUTF8String:(const char *)sqlite3_column_text(
-                                     sql_statement, 2)];
-          NSString *ids = [[NSString alloc]
-              initWithUTF8String:(const char *)sqlite3_column_text(
-                                     sql_statement, 3)];
-          int status = sqlite3_column_double(sql_statement, 4);
+            int uniqueId = sqlite3_column_double(sql_statement, 1);
+            NSString *domain = [[NSString alloc] initWithUTF8String:(const char *)sqlite3_column_text(sql_statement, 2)];
+            NSString *ids = [[NSString alloc] initWithUTF8String:(const char *)sqlite3_column_text(sql_statement, 3)];
+          
+            int status = sqlite3_column_double(sql_statement, 4);
             NSString *date = [[NSDate date] description];
             if(sqlite3_column_text(sql_statement, 5) != NULL) {
                 date = [[NSString alloc]
@@ -617,29 +611,28 @@ dispatch_async(_executionQueue, ^{
             @"status" : @(status),
             @"date" : date
           };
-            MIRequest *request = [[MIRequest alloc] initWithKeyedValues:keyedValues];
+          MIRequest *request = [[MIRequest alloc] initWithKeyedValues:keyedValues];
           [requestIds insertObject:@(uniqueId) atIndex:0];
           [requests insertObject:request atIndex:0];
         }
 
       } else {
 
-        NSDictionary *userInfo =
-            @{NSLocalizedDescriptionKey : StorageErrorDescriptionPrepareDB};
+        NSDictionary *userInfo = @{NSLocalizedDescriptionKey : StorageErrorDescriptionPrepareDB};
         error = [[NSError alloc] initWithDomain:StorageDomainSqlite
                                            code:0
                                        userInfo:userInfo];
       }
-
+        sqlite3_finalize(sql_statement);
     } else {
 
-      NSDictionary *userInfo =
-          @{NSLocalizedDescriptionKey : StorageErrorDescriptionOpenDB};
+      NSDictionary *userInfo = @{NSLocalizedDescriptionKey : StorageErrorDescriptionOpenDB};
       error = [[NSError alloc] initWithDomain:StorageDomainSqlite
                                          code:0
                                      userInfo:userInfo];
     }
-
+    sqlite3_close(dbHandler);
+      
     dispatch_async(dispatch_get_main_queue(), ^{
 
       if (completionHandler) {
@@ -676,9 +669,7 @@ dispatch_async(_executionQueue, ^{
   });
 }
 
-- (void)fetchAllParametersForRequestID:(NSArray *)ids
-                andCompletitionHandler:
-                    (StorageManagerCompletionHandler)completionHandler {
+- (void)fetchAllParametersForRequestID:(NSArray *)ids andCompletitionHandler: (StorageManagerCompletionHandler)completionHandler {
 
   //dispatch_queue_t queue = dispatch_queue_create("Fetch Resulats", NULL);
 
@@ -690,10 +681,8 @@ dispatch_async(_executionQueue, ^{
 
     NSError *error;
 
-    if (sqlite3_open_v2(dbPath, &self->_requestsDB,
-    SQLITE_OPEN_CREATE | SQLITE_OPEN_READWRITE |
-        SQLITE_OPEN_FULLMUTEX,
-    NULL) == SQLITE_OK) {
+    sqlite3 *dbHandler;
+    if (sqlite3_open_v2(dbPath, &dbHandler, SQLITE_OPEN_CREATE | SQLITE_OPEN_READWRITE | SQLITE_OPEN_FULLMUTEX, NULL) == SQLITE_OK) {
 
       NSString *querySQL = [[NSString alloc]
           initWithFormat:@"SELECT rowid, * FROM PARAMETERS_TABLE WHERE "
@@ -704,16 +693,13 @@ dispatch_async(_executionQueue, ^{
 
       const char *query_stmt = [querySQL UTF8String];
 
-      if (sqlite3_prepare_v2(self->_requestsDB, query_stmt, -1, &sql_statement,
-                             NULL) == SQLITE_OK) {
+      if (sqlite3_prepare_v2(dbHandler, query_stmt, -1, &sql_statement, NULL) == SQLITE_OK) {
 
         parameters = [[NSMutableArray alloc] init];
 
         while (sqlite3_step(sql_statement) == SQLITE_ROW) {
 
-          NSString *uuid = [[NSString alloc]
-              initWithUTF8String:(const char *)sqlite3_column_text(
-                                     sql_statement, 1)];
+          NSString *uuid = [[NSString alloc] initWithUTF8String:(const char *)sqlite3_column_text(sql_statement, 1)];
           NSNumber *uniqueId = @([uuid doubleValue]);
           NSString *name = [[NSString alloc]
               initWithUTF8String:(const char *)sqlite3_column_text(
@@ -742,7 +728,7 @@ dispatch_async(_executionQueue, ^{
                                            code:0
                                        userInfo:userInfo];
       }
-
+        sqlite3_finalize(sql_statement);
     } else {
 
       NSDictionary *userInfo =
@@ -751,6 +737,7 @@ dispatch_async(_executionQueue, ^{
                                          code:0
                                      userInfo:userInfo];
     }
+    sqlite3_close(dbHandler);
     dispatch_async(dispatch_get_main_queue(), ^{
 
       if (completionHandler) {
@@ -775,9 +762,8 @@ dispatch_async(_executionQueue, ^{
 
     NSError *error;
 
-    if (sqlite3_open_v2(dbPath, &self->_requestsDB, SQLITE_OPEN_CREATE | SQLITE_OPEN_READWRITE |
-           SQLITE_OPEN_FULLMUTEX,
-       NULL) == SQLITE_OK) {
+    sqlite3 *dbHandler;
+    if (sqlite3_open_v2(dbPath, &dbHandler, SQLITE_OPEN_CREATE | SQLITE_OPEN_READWRITE | SQLITE_OPEN_FULLMUTEX, NULL) == SQLITE_OK) {
       // TODO: change it to be 14 days, this is only for testing purpose
       NSString *querySQL = @"SELECT ID FROM REQUESTS_TABLE WHERE "
                            @"datetime(DATE, '+14 days') <= datetime('now','localtime');";
@@ -786,7 +772,7 @@ dispatch_async(_executionQueue, ^{
 
       const char *query_stmt = [querySQL UTF8String];
 
-      if (sqlite3_prepare_v2(self->_requestsDB, query_stmt, -1, &sql_statement,
+      if (sqlite3_prepare_v2(dbHandler, query_stmt, -1, &sql_statement,
                              NULL) == SQLITE_OK) {
 
         requestIds = [[NSMutableArray alloc] init];
@@ -805,7 +791,7 @@ dispatch_async(_executionQueue, ^{
 
           const char *insertStatement = [insertSQL UTF8String];
 
-          sqlite3_prepare_v2(self->_requestsDB, insertStatement, -1,
+          sqlite3_prepare_v2(dbHandler, insertStatement, -1,
                              &sql_statement, NULL);
 
           if (sqlite3_step(sql_statement) != SQLITE_DONE) {
@@ -820,8 +806,7 @@ dispatch_async(_executionQueue, ^{
 
           insertStatement = [insertSQL UTF8String];
 
-          sqlite3_prepare_v2(self->_requestsDB, insertStatement, -1,
-                             &sql_statement, NULL);
+          sqlite3_prepare_v2(dbHandler, insertStatement, -1, &sql_statement, NULL);
 
           if (sqlite3_step(sql_statement) != SQLITE_DONE) {
             // TODO: hendle error
@@ -830,26 +815,23 @@ dispatch_async(_executionQueue, ^{
 
       } else {
 
-        NSDictionary *userInfo =
-            @{NSLocalizedDescriptionKey : StorageErrorDescriptionPrepareDB};
+        NSDictionary *userInfo = @{NSLocalizedDescriptionKey : StorageErrorDescriptionPrepareDB};
         error = [[NSError alloc] initWithDomain:StorageDomainSqlite
                                            code:0
                                        userInfo:userInfo];
       }
-
+        sqlite3_finalize(sql_statement);
     } else {
 
-      NSDictionary *userInfo =
-          @{NSLocalizedDescriptionKey : StorageErrorDescriptionOpenDB};
+      NSDictionary *userInfo = @{NSLocalizedDescriptionKey : StorageErrorDescriptionOpenDB};
       error = [[NSError alloc] initWithDomain:StorageDomainSqlite
                                          code:0
                                      userInfo:userInfo];
     }
-
+    sqlite3_close(dbHandler);
     dispatch_async(dispatch_get_main_queue(), ^{
 
       if (completionHandler) {
-
         completionHandler(error, NULL);
       }
     });
@@ -857,9 +839,9 @@ dispatch_async(_executionQueue, ^{
 }
 
 - (void)removeRequestsDB:(NSArray *)requestIds {
-  const char *dbPath = [self.databasePath UTF8String];
-
-  if (sqlite3_open(dbPath, &self->_requestsDB) == SQLITE_OK) {
+    const char *dbPath = [self.databasePath UTF8String];
+    sqlite3 *dbHandler;
+    if (sqlite3_open_v2(dbPath, &dbHandler, SQLITE_OPEN_CREATE | SQLITE_OPEN_READWRITE | SQLITE_OPEN_FULLMUTEX,NULL) == SQLITE_OK) {
 
     sqlite3_stmt *sql_statement;
     // removing requests
@@ -871,8 +853,7 @@ dispatch_async(_executionQueue, ^{
 
       const char *insertStatement = [insertSQL UTF8String];
 
-      sqlite3_prepare_v2(self->_requestsDB, insertStatement, -1, &sql_statement,
-                         NULL);
+      sqlite3_prepare_v2(dbHandler, insertStatement, -1, &sql_statement, NULL);
 
       if (sqlite3_step(sql_statement) != SQLITE_DONE) {
         // TODO: error while deleting old requests
@@ -886,15 +867,17 @@ dispatch_async(_executionQueue, ^{
 
       insertStatement = [insertSQL UTF8String];
 
-      sqlite3_prepare_v2(self->_requestsDB, insertStatement, -1, &sql_statement,
+      sqlite3_prepare_v2(dbHandler, insertStatement, -1, &sql_statement,
                          NULL);
 
       if (sqlite3_step(sql_statement) != SQLITE_DONE) {
         // TODO: hendle error
       }
+    sqlite3_finalize(sql_statement);
     }
-
+        
   }
+    sqlite3_close(dbHandler);
 }
 
 #pragma mark - Getters && Setters
