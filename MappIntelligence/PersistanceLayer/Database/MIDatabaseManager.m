@@ -858,7 +858,7 @@ dispatch_async(_executionQueue, ^{
       if (sqlite3_step(sql_statement) != SQLITE_DONE) {
         // TODO: error while deleting old requests
       }
-
+    sqlite3_finalize(sql_statement);
       // remove also paramters from parameters table
       insertSQL = [NSString
           stringWithFormat:

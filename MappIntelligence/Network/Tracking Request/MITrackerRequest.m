@@ -84,6 +84,7 @@
                   forDescription:kMappIntelligenceLogLevelDescriptionDebug];
         }
         handler(error);
+        [self->_urlSession invalidateAndCancel];
     }] resume];
 }
 
@@ -92,7 +93,7 @@
       [NSURLSessionConfiguration ephemeralSessionConfiguration];
   [urlSessionConfiguration
       setHTTPCookieAcceptPolicy:NSHTTPCookieAcceptPolicyNever];
-  [urlSessionConfiguration setHTTPShouldSetCookies:YES];
+  [urlSessionConfiguration setHTTPShouldSetCookies:NO];
   [urlSessionConfiguration setURLCache:NULL];
   [urlSessionConfiguration setURLCredentialStorage:NULL];
   [urlSessionConfiguration
