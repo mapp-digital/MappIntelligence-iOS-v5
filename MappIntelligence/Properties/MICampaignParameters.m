@@ -60,8 +60,14 @@
     [adCopy setCustomParameters:_customParameters];
     [adCopy setOncePerSession:_oncePerSession];
     NSError *error;
-    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:adCopy requiringSecureCoding:YES error:&error];
-    adCopy = [NSKeyedUnarchiver unarchivedObjectOfClass:MICampaignParameters.class fromData:data error:&error];
+    if (@available(iOS 11.0, *)) {
+        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:adCopy requiringSecureCoding:YES error:&error];
+        adCopy = [NSKeyedUnarchiver unarchivedObjectOfClass:MICampaignParameters.class fromData:data error:&error];
+    } else {
+        // Fallback on earlier versions
+        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:adCopy];
+        adCopy = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+    }
     return adCopy;
 }
 - (void)encodeWithCoder:(nonnull NSCoder *)coder {

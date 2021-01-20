@@ -404,12 +404,13 @@ dispatch_async(_executionQueue, ^{
       dispatch_async(_executionQueue, ^{
           char *cError;
           sqlite3_stmt *sql_statement;
+          sqlite3 *dbHandler;
           const char *dbPath = [self.databasePath UTF8String];
           //NSLog(@"DB: %d", self->_requestsDB == nil);
           
-          if (sqlite3_open(dbPath, &self->_requestsDB) == SQLITE_OK) {
+          if (sqlite3_open(dbPath, &dbHandler) == SQLITE_OK) {
     
-              sqlite3_exec(self->_requestsDB, "BEGIN TRANSACTION", NULL, NULL, &cError);
+              sqlite3_exec(dbHandler, "BEGIN TRANSACTION", NULL, NULL, &cError);
 
       NSString *insertSQL =
           [NSString stringWithFormat:@"INSERT INTO REQUESTS_TABLE (DOMAIN, "
@@ -417,7 +418,7 @@ dispatch_async(_executionQueue, ^{
 
       const char *insertStatement = [insertSQL UTF8String];
 
-              sqlite3_prepare_v2(self->_requestsDB, insertStatement, -1, &sql_statement,
+              sqlite3_prepare_v2(dbHandler, insertStatement, -1, &sql_statement,
                          NULL);
 
       sqlite3_bind_text(sql_statement, 1, [request.domain UTF8String], -1,
@@ -443,19 +444,19 @@ dispatch_async(_executionQueue, ^{
         //success = NO;
       }
 
-        long long lastRowID = sqlite3_last_insert_rowid(self->_requestsDB);
+        long long lastRowID = sqlite3_last_insert_rowid(dbHandler);
 
       // TODO: add parameters to database
       for (MIParameter *parameter in request.parameters) {
         parameter.request_uniqueId =
             [[NSNumber alloc] initWithLongLong:lastRowID];
-        [self insertParameter:parameter];
+        [self insertParameter:parameter dbHandler:dbHandler];
       }
         //TODO:check do we need it
       //[self deleteTooOldRequests];
-        sqlite3_exec(self->_requestsDB, "END TRANSACTION", NULL, NULL, NULL);
+        sqlite3_exec(dbHandler, "END TRANSACTION", NULL, NULL, NULL);
       sqlite3_finalize(sql_statement);
-        sqlite3_close(self->_requestsDB);
+        sqlite3_close(dbHandler);
 
     } else {
 
@@ -467,7 +468,7 @@ dispatch_async(_executionQueue, ^{
   return success;
 }
 
-- (BOOL)insertParameter:(MIParameter *)parameter {
+- (BOOL)insertParameter:(MIParameter *)parameter dbHandler: (sqlite3 *) dbHandler {
   BOOL success = YES;
 
   if (parameter) {
@@ -480,7 +481,7 @@ dispatch_async(_executionQueue, ^{
 
       const char *insertStatement = [insertSQL UTF8String];
 
-      sqlite3_prepare_v2(_requestsDB, insertStatement, -1, &sql_statement,
+      sqlite3_prepare_v2(dbHandler, insertStatement, -1, &sql_statement,
                          NULL);
 
       sqlite3_bind_text(sql_statement, 1, [parameter.name UTF8String], -1,
@@ -507,16 +508,16 @@ dispatch_async(_executionQueue, ^{
   char *cError;
   const char *dbPath = [self.databasePath UTF8String];
   sqlite3_stmt *sql_statement;
+  sqlite3 *dbHandler;
+  if (sqlite3_open(dbPath, &dbHandler) == SQLITE_OK) {
 
-  if (sqlite3_open(dbPath, &_requestsDB) == SQLITE_OK) {
-
-    sqlite3_exec(_requestsDB, "BEGIN TRANSACTION", NULL, NULL, &cError);
+    sqlite3_exec(dbHandler, "BEGIN TRANSACTION", NULL, NULL, &cError);
 
     NSString *statement =
         [NSString stringWithFormat:@"INSERT INTO REQUESTS_TABLE (DOMAIN, IDS, "
                                    @"STATUS) VALUES(?, ?, ?)"];
 
-    if (sqlite3_prepare_v2(_requestsDB, [statement UTF8String], -1,
+    if (sqlite3_prepare_v2(dbHandler, [statement UTF8String], -1,
                            &sql_statement, NULL) == SQLITE_OK) {
 
       for (MIRequest *request in requests) {
@@ -529,13 +530,13 @@ dispatch_async(_executionQueue, ^{
 
         if (sqlite3_step(sql_statement) == SQLITE_DONE) {
 
-          long long lastRowID = sqlite3_last_insert_rowid(_requestsDB);
+          long long lastRowID = sqlite3_last_insert_rowid(dbHandler);
 
           // TODO: add parameters to database
           for (MIParameter *parameter in request.parameters) {
             parameter.request_uniqueId =
                 [[NSNumber alloc] initWithLongLong:lastRowID];
-            [self insertParameter:parameter];
+            [self insertParameter:parameter dbHandler:dbHandler];
           }
 
           if (sqlite3_reset(sql_statement) != SQLITE_OK) {
@@ -553,10 +554,11 @@ dispatch_async(_executionQueue, ^{
       [self deleteTooOldRequests];
     }
 
-    sqlite3_exec(_requestsDB, "END TRANSACTION", NULL, NULL, &cError);
+    sqlite3_exec(dbHandler, "END TRANSACTION", NULL, NULL, &cError);
 
     if (sqlite3_finalize(sql_statement) == SQLITE_OK) {
     }
+      sqlite3_close(dbHandler);
   }
 
   return error;

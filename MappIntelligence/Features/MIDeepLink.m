@@ -66,16 +66,31 @@ NSString *const UrlErrorDescriptionInvalid = @"Url is invalid";
 
 + (NSError *_Nullable) saveToFile: (MICampaignParameters *) campaign {
     NSError *error = nil;
-    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:campaign requiringSecureCoding:YES error:&error];
-    [data writeToFile:[MIDeepLink filePath] options:NSDataWritingAtomic error:&error];
+    if (@available(iOS 11.0, *)) {
+        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:campaign requiringSecureCoding:YES error:&error];
+        [data writeToFile:[MIDeepLink filePath] options:NSDataWritingAtomic error:&error];
+    } else {
+        // Fallback on earlier versions
+        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:campaign];
+        [data writeToFile:[MIDeepLink filePath] options:NSDataWritingAtomic error:&error];
+    }
     return error;
 }
 
 + (MICampaignParameters *_Nullable) loadCampaign {
     NSError *error = nil;
     NSData *fileData = [NSData dataWithContentsOfFile: [MIDeepLink filePath]];
-    MICampaignParameters *properties = [NSKeyedUnarchiver unarchivedObjectOfClass:[MICampaignParameters class] fromData:fileData error:&error];
-    return properties;
+    if (fileData == nil) {
+        return nil;
+    }
+    if (@available(iOS 11.0, *)) {
+        MICampaignParameters *properties = [NSKeyedUnarchiver unarchivedObjectOfClass:[MICampaignParameters class] fromData:fileData error:&error];
+        return properties;
+    } else {
+        // Fallback on earlier versions
+        MICampaignParameters *properties = [NSKeyedUnarchiver unarchiveObjectWithData:fileData];
+        return properties;
+    }
 }
 
 + (NSError *_Nullable) deleteCampaign {
