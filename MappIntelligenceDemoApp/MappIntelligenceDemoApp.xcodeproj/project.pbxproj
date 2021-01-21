@@ -16,6 +16,8 @@
 		8F3F67FE257EDF9F005F8AFC /* WebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F3F67FD257EDF9F005F8AFC /* WebViewViewController.swift */; };
 		8F3F6813257EE3D5005F8AFC /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F3F6812257EE3D5005F8AFC /* WebKit.framework */; };
 		8F4AF68925A7992F002929DE /* wt.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 8F4AF68825A7992F002929DE /* wt.mp4 */; };
+		8F50F99F25B9735400C62409 /* TVMediaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F50F99E25B9735400C62409 /* TVMediaViewController.swift */; };
+		8F50F9A425B9788500C62409 /* wt.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 8F4AF68825A7992F002929DE /* wt.mp4 */; };
 		A32AEA41242B605B00BC7B46 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A32AEA3F242B605B00BC7B46 /* Interface.storyboard */; };
 		A32AEA43242B605F00BC7B46 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A32AEA42242B605F00BC7B46 /* Assets.xcassets */; };
 		A32AEA4A242B605F00BC7B46 /* MappIntelligenceWatchOSDemoApp Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A32AEA49242B605F00BC7B46 /* MappIntelligenceWatchOSDemoApp Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -92,6 +94,7 @@
 		8F3F67FD257EDF9F005F8AFC /* WebViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewViewController.swift; sourceTree = "<group>"; };
 		8F3F6812257EE3D5005F8AFC /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		8F4AF68825A7992F002929DE /* wt.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = wt.mp4; sourceTree = "<group>"; };
+		8F50F99E25B9735400C62409 /* TVMediaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVMediaViewController.swift; sourceTree = "<group>"; };
 		8FE0AF26255D6FB20037AE4A /* MappIntelligenceDemoApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MappIntelligenceDemoApp.entitlements; sourceTree = "<group>"; };
 		A3258BF5250A4E0B00039B92 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A32AEA3D242B605B00BC7B46 /* MappIntelligenceWatchOSDemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MappIntelligenceWatchOSDemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -198,6 +201,7 @@
 			children = (
 				A35C78EF2452F81500D36144 /* AppDelegate.swift */,
 				A35C78F12452F81500D36144 /* ViewControllerTV.swift */,
+				8F50F99E25B9735400C62409 /* TVMediaViewController.swift */,
 				A35C78F32452F81500D36144 /* Main.storyboard */,
 				A35C78F62452F81600D36144 /* Assets.xcassets */,
 				A35C78F82452F81600D36144 /* LaunchScreen.storyboard */,
@@ -413,6 +417,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F50F9A425B9788500C62409 /* wt.mp4 in Resources */,
 				A35C78FA2452F81600D36144 /* LaunchScreen.storyboard in Resources */,
 				A35C78F72452F81600D36144 /* Assets.xcassets in Resources */,
 				A35C78F52452F81500D36144 /* Main.storyboard in Resources */,
@@ -448,6 +453,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F50F99F25B9735400C62409 /* TVMediaViewController.swift in Sources */,
 				A35C78F22452F81500D36144 /* ViewControllerTV.swift in Sources */,
 				A35C78F02452F81500D36144 /* AppDelegate.swift in Sources */,
 			);

@@ -39,10 +39,10 @@
         [items addObject:[[NSURLQueryItem alloc] initWithName:@"mk" value:_action]];
     }
     if (_position) {
-        [items addObject:[[NSURLQueryItem alloc] initWithName:@"mt1" value: [NSString stringWithFormat:@"%f", _position.doubleValue]]];
+        [items addObject:[[NSURLQueryItem alloc] initWithName:@"mt1" value: [NSString stringWithFormat:@"%ld", (long)_position.doubleValue]]];
     }
     if (_duration) {
-        [items addObject:[[NSURLQueryItem alloc] initWithName:@"mt2" value: [NSString stringWithFormat:@"%f",_duration.doubleValue]]];
+        [items addObject:[[NSURLQueryItem alloc] initWithName:@"mt2" value: [NSString stringWithFormat:@"%ld",(long)_duration.doubleValue]]];
     }
     if ([_soundIsMuted isEqualToString:@"0"] || [_soundIsMuted isEqualToString:@"1"]) {
         [items addObject:[[NSURLQueryItem alloc] initWithName:@"mut" value: _soundIsMuted]];

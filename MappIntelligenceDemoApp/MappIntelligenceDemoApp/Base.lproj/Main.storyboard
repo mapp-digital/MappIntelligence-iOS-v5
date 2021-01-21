@@ -659,14 +659,27 @@
                                     <action selector="playAction:" destination="XRx-cX-iDH" eventType="touchUpInside" id="qxB-ub-pP8"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zhn-wc-PpP">
+                                <rect key="frame" x="50" y="421" width="220" height="30"/>
+                                <color key="backgroundColor" name="Darkblue"/>
+                                <state key="normal" title="Stop">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="stopAction:" destination="XRx-cX-iDH" eventType="touchUpInside" id="IHw-TQ-T6e"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="I4h-3V-tQU"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="I4h-3V-tQU" firstAttribute="trailing" secondItem="2P3-or-ebH" secondAttribute="trailing" id="2bp-pa-6zC"/>
                             <constraint firstItem="I4h-3V-tQU" firstAttribute="trailing" secondItem="NSP-mZ-B98" secondAttribute="trailing" id="7v7-rc-wh0"/>
+                            <constraint firstItem="zhn-wc-PpP" firstAttribute="leading" secondItem="I4h-3V-tQU" secondAttribute="leading" constant="50" id="8qG-4u-AKi"/>
+                            <constraint firstItem="zhn-wc-PpP" firstAttribute="top" secondItem="bFP-iB-MWa" secondAttribute="bottom" constant="22" id="ECn-rP-8Mc"/>
                             <constraint firstItem="NSP-mZ-B98" firstAttribute="leading" secondItem="I4h-3V-tQU" secondAttribute="leading" id="MHS-ej-1YY"/>
                             <constraint firstItem="bFP-iB-MWa" firstAttribute="leading" secondItem="I4h-3V-tQU" secondAttribute="leading" constant="50" id="Tcw-GN-OZa"/>
+                            <constraint firstItem="I4h-3V-tQU" firstAttribute="trailing" secondItem="zhn-wc-PpP" secondAttribute="trailing" constant="50" id="ZOi-2f-MUd"/>
                             <constraint firstItem="NSP-mZ-B98" firstAttribute="top" secondItem="I4h-3V-tQU" secondAttribute="top" id="ZQt-yK-UXt"/>
                             <constraint firstItem="2P3-or-ebH" firstAttribute="leading" secondItem="I4h-3V-tQU" secondAttribute="leading" id="aFD-Hf-vaY"/>
                             <constraint firstItem="2P3-or-ebH" firstAttribute="top" secondItem="NSP-mZ-B98" secondAttribute="bottom" id="gcs-85-nsy"/>
@@ -677,6 +690,7 @@
                     <navigationItem key="navigationItem" id="0xK-X4-GX0"/>
                     <connections>
                         <outlet property="durationLabel" destination="Zqo-n0-ou2" id="vfY-Dx-rgB"/>
+                        <outlet property="playButton" destination="bFP-iB-MWa" id="lK4-be-AYJ"/>
                         <outlet property="postitionLabel" destination="d8O-8S-0zm" id="Nky-Fh-j9B"/>
                         <outlet property="timeSlider" destination="JYd-sx-9uW" id="Y7J-Nl-zVo"/>
                         <outlet property="videoView" destination="NSP-mZ-B98" id="3XO-KN-fcL"/>

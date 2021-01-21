@@ -39,6 +39,8 @@
 		8F4420EE250F7BA6003961F3 /* MISessionProperties.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 8FDF7111250BA9CB00818E51 /* MISessionProperties.h */; };
 		8F4420EF250F969B003961F3 /* MISessionProperties.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8FDF7111250BA9CB00818E51 /* MISessionProperties.h */; };
 		8F4420F0250F96AB003961F3 /* MIActionProperties.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8FDF7105250B9E4D00818E51 /* MIActionProperties.h */; };
+		8F50F98E25B970D500C62409 /* MIMediaEvent.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8F23B5582599DCD000BF9214 /* MIMediaEvent.h */; };
+		8F50F99625B970DE00C62409 /* MIMediaParameters.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8F23B54B2599236F00BF9214 /* MIMediaParameters.h */; };
 		8F5F85172535BAB000A39882 /* MIActionProperties.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8FDF7105250B9E4D00818E51 /* MIActionProperties.h */; };
 		8F5F851F2535BAB300A39882 /* MISessionProperties.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8FDF7111250BA9CB00818E51 /* MISessionProperties.h */; };
 		8F5F85322535BCDD00A39882 /* MIActionProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FDF7106250B9E4D00818E51 /* MIActionProperties.m */; };
@@ -338,6 +340,8 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				8F50F99625B970DE00C62409 /* MIMediaParameters.h in CopyFiles */,
+				8F50F98E25B970D500C62409 /* MIMediaEvent.h in CopyFiles */,
 				8F0055C8256DB9B700E2CC3C /* MIActionEvent.h in CopyFiles */,
 				8F0055C9256DB9B700E2CC3C /* MIPageViewEvent.h in CopyFiles */,
 				8F995E6D25507F4400B918DD /* MICampaignProperties.h in CopyFiles */,

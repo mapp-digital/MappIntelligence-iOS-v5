@@ -1,33 +1,33 @@
 //
-//  MediaPlayerViewController.swift
-//  MappIntelligenceDemoApp
+//  TVMediaViewController.swift
+//  MappIntelligenceTvOSDemoApp
 //
-//  Created by Miroljub Stoilkovic on 30/12/2020.
-//  Copyright © 2020 Mapp Digital US, LLC. All rights reserved.
+//  Created by Miroljub Stoilkovic on 21/01/2021.
+//  Copyright © 2021 Mapp Digital US, LLC. All rights reserved.
 //
 
 import UIKit
 import AVFoundation
 
-class MediaPlayerViewController: UIViewController {
+class TVMediaViewController: UIViewController {
 
-    var streamUrl: URL? = nil
-    @IBOutlet weak var videoView: UIView!
     @IBOutlet weak var playButton: UIButton!
+    @IBOutlet weak var videoView: UIView!
+    @IBOutlet weak var durationLabel: UILabel!
+    @IBOutlet weak var postitionLabel: UILabel!
+//    @IBOutlet weak var timeSlider: UISlider!
+    
     var player:AVPlayer!
     var playerLayer: AVPlayerLayer!
     var isVideoPlaying = false
     var bitrate:NSNumber? = nil
     var mediaName = "TestVideoExample"
     var initiated = false
-    
-    @IBOutlet weak var durationLabel: UILabel!
-    @IBOutlet weak var postitionLabel: UILabel!
-    @IBOutlet weak var timeSlider: UISlider!
+    var streamUrl: URL? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         if let url = streamUrl {
             player = AVPlayer(url: url)
         } else {
@@ -44,7 +44,8 @@ class MediaPlayerViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        player.currentItem?.addObserver( self, forKeyPath: "duration", options: [.new, .initial], context: nil)
+        player.currentItem?.addObserver(self, forKeyPath: "duration", options: [.new, .initial], context: nil)
+
         if(!initiated) {
             trackMediaWithAction(action: "init")
             initiated = true
@@ -78,14 +79,12 @@ class MediaPlayerViewController: UIViewController {
         trackMediaWithAction(action: "stop")
     }
     
-    @IBAction func sliderValueChanged(_ sender: UISlider) {
-        player.seek(to: CMTimeMake(value: Int64(sender.value*1000), timescale: 1000))
-        trackMediaWithAction(action: "seek")
-    }
-
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == "duration", let duration = player.currentItem?.duration.seconds, duration > 0 {
-            self.durationLabel.text = getTimeString(from: player.currentItem!.duration)
+        
+        }
+        if keyPath == "status" {
+            print("status")
         }
     }
     
@@ -113,10 +112,7 @@ class MediaPlayerViewController: UIViewController {
             if (maximumValue != maximumValue) {
                 return
             }
-            self?.timeSlider.maximumValue = maximumValue
-            self?.timeSlider.minimumValue = 0
-            self?.timeSlider.value = Float(currentItem.currentTime().seconds)
-            self?.postitionLabel.text = self?.getTimeString(from: currentItem.currentTime())
+
             if let bps = self?.player.currentItem?.accessLog()?.events.last?.observedBitrate {
                 self?.bitrate = NSNumber(value: bps)
             }
@@ -135,7 +131,7 @@ class MediaPlayerViewController: UIViewController {
         }
             
         let event = MIMediaEvent(pageName: "MediaViewController", parameters: mediaProperties)
-        MappIntelligence.shared()?.trackMedia(event)
+        MappIntelligencetvOS.shared()?.trackMedia(event)
     }
     
     override func viewDidDisappear(_ animated: Bool) {

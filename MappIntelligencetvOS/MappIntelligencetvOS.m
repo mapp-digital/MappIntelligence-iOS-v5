@@ -75,18 +75,6 @@
     [_mappIntelligence setRequestPerQueue:requestPerQueue];
 }
 
-//- (NSError *_Nullable)trackPageWithName: (NSString *_Nonnull) name pageProperties:(MIPageProperties  *_Nullable)properties sessionProperties: (MISessionProperties *_Nullable) sessionProperties userProperties: (MIUserProperties *) userProperties ecommerceProperties: (MIEcommerceProperties *_Nullable) ecommerceProperties  advertisementProperties: (MIAdvertisementProperties *_Nullable) advertisemementProperties {
-//    return [_mappIntelligence trackPageWithName:name pageProperties:properties  sessionProperties:sessionProperties userProperties:userProperties ecommerceProperties: ecommerceProperties advertisementProperties:advertisemementProperties];
-//}
-//
-//- (NSError *_Nullable)trackPageWithViewController:(UIViewController *_Nonnull)controller pageProperties:(MIPageProperties  *_Nullable)pageProperties sessionProperties:(MISessionProperties *_Nullable) sessionProperties userProperties: (MIUserProperties *) userProperties ecommerceProperties: (MIEcommerceProperties *_Nullable) ecommerceProperties  advertisementProperties: (MIAdvertisementProperties *_Nullable) advertisemementProperties {
-//    return [_mappIntelligence trackPageWithViewController:controller pageProperties:pageProperties sessionProperties:sessionProperties userProperties:userProperties ecommerceProperties: ecommerceProperties advertisementProperties:advertisemementProperties];
-//}
-//
-//- (NSError *_Nullable) trackCustomEventWithName:(NSString *_Nonnull) name  actionProperties: (MIActionProperties *_Nullable) actionProperties sessionProperties: (MISessionProperties *_Nullable) sessionProperties userProperties: (MIUserProperties *) userProperties ecommerceProperties:(MIEcommerceProperties * _Nullable)ecommerceProperties advertisementProperties: (MIAdvertisementProperties *_Nullable) advertisemementProperties{
-//    return [_mappIntelligence trackCustomEventWithName:name actionProperties:actionProperties sessionProperties:sessionProperties userProperties:userProperties ecommerceProperties:ecommerceProperties advertisementProperties:advertisemementProperties];
-//}
-
 - (NSError *_Nullable)trackPageWithViewController:(UIViewController *_Nonnull)controller andEvent:(MIPageViewEvent*_Nonnull) event {
     return [_mappIntelligence trackPageWithViewController:controller andEvent:event];
 }
@@ -97,6 +85,10 @@
 
 - (NSError *_Nullable) trackAction:(MIActionEvent *_Nonnull) event {
     return [_mappIntelligence trackAction:event];
+}
+
+- (NSError *_Nullable) trackMedia:(MIMediaEvent *_Nonnull) event {
+    return [_mappIntelligence trackMedia:event];
 }
 
 - (void)reset {
