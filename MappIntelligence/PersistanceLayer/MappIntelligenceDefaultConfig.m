@@ -180,6 +180,11 @@ NSInteger const batchSupportSizeDefault = 5000;
                      @"(60 minutes), will be reset to default (%f minutes).", requestIntervalDefault/60]
         forDescription:kMappIntelligenceLogLevelDescriptionError];
       self.requestsInterval = requestIntervalDefault;
+  } else if (timeInterval < 60) {
+      [_logger logObj:[NSString stringWithFormat: @"Request time interval cannot be less than 60 seconds "
+                       @"(1 minute), will be set to 1 minute."]
+          forDescription:kMappIntelligenceLogLevelDescriptionError];
+        self.requestsInterval = 60;
   }
 }
 
