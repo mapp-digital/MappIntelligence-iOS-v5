@@ -38,6 +38,17 @@ class EcommerceViewController: UIViewController {
         
     }
     
+    func trackGoal() {
+        let ecommerceParameters: MIEcommerceParameters =
+            MIEcommerceParameters(customParameters: [1 : "goal value 1"])
+        
+        let pageEvent = MIPageViewEvent(name: "page name")
+        pageEvent.ecommerceParameters = ecommerceParameters
+        
+        MappIntelligence.shared()?.trackPage(pageEvent)
+    }
+        
+    
     @IBAction func trackEcommerceViewProduct(_ sender: Any) {
         
         let ecommerceParameters1: MIEcommerceParameters =
