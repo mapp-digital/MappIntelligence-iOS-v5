@@ -87,6 +87,10 @@
     return [_mappIntelligence trackAction:event];
 }
 
+- (NSError *_Nullable) trackMedia:(MIMediaEvent *_Nonnull) event {
+    return [_mappIntelligence trackMedia:event];
+}
+
 - (void)reset {
     [_mappIntelligence reset];
 }

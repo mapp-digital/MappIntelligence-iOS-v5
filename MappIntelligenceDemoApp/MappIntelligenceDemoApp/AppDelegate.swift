@@ -59,7 +59,7 @@ var window: UIWindow?
 
     //deep linking
     func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
-        print("Deeplink tapped")
+        MappIntelligence.shared()?.trackUrl(userActivity.webpageURL, withMediaCode: nil)
         return false
     }
     

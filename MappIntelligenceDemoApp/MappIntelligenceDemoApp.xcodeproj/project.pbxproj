@@ -12,6 +12,12 @@
 		8F2D1D6525778B82008CB31D /* ConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2D1D6425778B82008CB31D /* ConfigViewController.swift */; };
 		8F2D1D6F25778F5F008CB31D /* CampaignViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2D1D6E25778F5F008CB31D /* CampaignViewController.swift */; };
 		8F3F6813257EE3D5005F8AFC /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F3F6812257EE3D5005F8AFC /* WebKit.framework */; };
+		8F94E6BE25BF199C00027623 /* wt.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 8F94E6BD25BF199C00027623 /* wt.mp4 */; };
+		8F94E6BF25BF199C00027623 /* wt.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 8F94E6BD25BF199C00027623 /* wt.mp4 */; };
+		8F94E7D025BF315700027623 /* TVMediaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F94E7CF25BF315700027623 /* TVMediaViewController.swift */; };
+		8FA78F0525BF188A00CC166A /* MediaPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA78F0325BF188A00CC166A /* MediaPlayerViewController.swift */; };
+		8FA78F0625BF188A00CC166A /* MediaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA78F0425BF188A00CC166A /* MediaViewController.swift */; };
+		8FA78F0C25BF18BE00CC166A /* WebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA78F0B25BF18BE00CC166A /* WebViewViewController.swift */; };
 		A32AEA41242B605B00BC7B46 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A32AEA3F242B605B00BC7B46 /* Interface.storyboard */; };
 		A32AEA43242B605F00BC7B46 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A32AEA42242B605F00BC7B46 /* Assets.xcassets */; };
 		A32AEA4A242B605F00BC7B46 /* MappIntelligenceWatchOSDemoApp Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A32AEA49242B605F00BC7B46 /* MappIntelligenceWatchOSDemoApp Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -86,6 +92,11 @@
 		8F2D1D6425778B82008CB31D /* ConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigViewController.swift; sourceTree = "<group>"; };
 		8F2D1D6E25778F5F008CB31D /* CampaignViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CampaignViewController.swift; sourceTree = "<group>"; };
 		8F3F6812257EE3D5005F8AFC /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		8F94E6BD25BF199C00027623 /* wt.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = wt.mp4; sourceTree = "<group>"; };
+		8F94E7CF25BF315700027623 /* TVMediaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVMediaViewController.swift; sourceTree = "<group>"; };
+		8FA78F0325BF188A00CC166A /* MediaPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaPlayerViewController.swift; sourceTree = "<group>"; };
+		8FA78F0425BF188A00CC166A /* MediaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaViewController.swift; sourceTree = "<group>"; };
+		8FA78F0B25BF18BE00CC166A /* WebViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewViewController.swift; sourceTree = "<group>"; };
 		8FE0AF26255D6FB20037AE4A /* MappIntelligenceDemoApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MappIntelligenceDemoApp.entitlements; sourceTree = "<group>"; };
 		A3258BF5250A4E0B00039B92 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A32AEA3D242B605B00BC7B46 /* MappIntelligenceWatchOSDemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MappIntelligenceWatchOSDemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -156,6 +167,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8F94E6BC25BF199C00027623 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8F94E6BD25BF199C00027623 /* wt.mp4 */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		A32AEA3E242B605B00BC7B46 /* MappIntelligenceWatchOSDemoApp */ = {
 			isa = PBXGroup;
 			children = (
@@ -183,6 +202,7 @@
 		A35C78EE2452F81500D36144 /* MappIntelligenceTvOSDemoApp */ = {
 			isa = PBXGroup;
 			children = (
+				8F94E7CF25BF315700027623 /* TVMediaViewController.swift */,
 				A35C78EF2452F81500D36144 /* AppDelegate.swift */,
 				A35C78F12452F81500D36144 /* ViewControllerTV.swift */,
 				A35C78F32452F81500D36144 /* Main.storyboard */,
@@ -221,6 +241,9 @@
 		BCA1739023D5D25C00B31430 /* MappIntelligenceDemoApp */ = {
 			isa = PBXGroup;
 			children = (
+				8F94E6BC25BF199C00027623 /* Resources */,
+				8FA78F0325BF188A00CC166A /* MediaPlayerViewController.swift */,
+				8FA78F0425BF188A00CC166A /* MediaViewController.swift */,
 				8FE0AF26255D6FB20037AE4A /* MappIntelligenceDemoApp.entitlements */,
 				BCA1739123D5D25C00B31430 /* AppDelegate.swift */,
 				BCA1739323D5D25C00B31430 /* SceneDelegate.swift */,
@@ -229,6 +252,7 @@
 				8F2D1D6425778B82008CB31D /* ConfigViewController.swift */,
 				8F2D1D6E25778F5F008CB31D /* CampaignViewController.swift */,
 				A36E59CB259493A100BF8873 /* EcommerceViewController.swift */,
+				8FA78F0B25BF18BE00CC166A /* WebViewViewController.swift */,
 				BCA1739723D5D25C00B31430 /* Main.storyboard */,
 				BCA1739A23D5D25E00B31430 /* Assets.xcassets */,
 				BCA1739C23D5D25E00B31430 /* LaunchScreen.storyboard */,
@@ -397,6 +421,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F94E6BF25BF199C00027623 /* wt.mp4 in Resources */,
 				A35C78FA2452F81600D36144 /* LaunchScreen.storyboard in Resources */,
 				A35C78F72452F81600D36144 /* Assets.xcassets in Resources */,
 				A36E5A2C25AD9D8700BF8873 /* Assets.xcassets in Resources */,
@@ -408,6 +433,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F94E6BE25BF199C00027623 /* wt.mp4 in Resources */,
 				A38F82C42538741B0021577B /* SetupForLocalTesting.plist in Resources */,
 				BCA1739E23D5D25E00B31430 /* LaunchScreen.storyboard in Resources */,
 				BCA1739B23D5D25E00B31430 /* Assets.xcassets in Resources */,
@@ -432,6 +458,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F94E7D025BF315700027623 /* TVMediaViewController.swift in Sources */,
 				A35C78F22452F81500D36144 /* ViewControllerTV.swift in Sources */,
 				A35C78F02452F81500D36144 /* AppDelegate.swift in Sources */,
 			);
@@ -441,12 +468,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8FA78F0C25BF18BE00CC166A /* WebViewViewController.swift in Sources */,
 				8F2D1D5525778A07008CB31D /* PageViewController.swift in Sources */,
 				8F2D1D4F257789FA008CB31D /* ActionViewController.swift in Sources */,
 				BCA1739223D5D25C00B31430 /* AppDelegate.swift in Sources */,
 				8F2D1D6F25778F5F008CB31D /* CampaignViewController.swift in Sources */,
 				BCA1739423D5D25C00B31430 /* SceneDelegate.swift in Sources */,
 				8F2D1D6525778B82008CB31D /* ConfigViewController.swift in Sources */,
+				8FA78F0525BF188A00CC166A /* MediaPlayerViewController.swift in Sources */,
+				8FA78F0625BF188A00CC166A /* MediaViewController.swift in Sources */,
 				A36E59CC259493A100BF8873 /* EcommerceViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

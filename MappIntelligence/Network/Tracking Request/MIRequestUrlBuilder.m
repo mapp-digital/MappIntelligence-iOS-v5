@@ -17,6 +17,7 @@
 #import "MITrackingEvent.h"
 #import "MIDeepLink.h"
 #import "MIEnvironment.h"
+#import "MIMediaEvent.h"
 
 #if TARGET_OS_WATCH
 #import <WatchKit/WatchKit.h>
@@ -197,6 +198,15 @@
             if ([self sendCampaignData:advertisementProperties]) {
                 [parametrs addObjectsFromArray:[advertisementProperties asQueryItems]];
             }
+        } else if ([event isKindOfClass:MIMediaEvent.class]) {
+            MIMediaParameters *media = ((MIMediaEvent*)event).mediaParameters;
+            [parametrs addObjectsFromArray:[media asQueryItems]];
+            MISessionParameters *session = ((MIMediaEvent*)event).sessionParameters;
+            [parametrs addObjectsFromArray:[session asQueryItems]];
+            MIEventParameters *eventParameters = ((MIMediaEvent*)event).eventParameters;
+            [parametrs addObjectsFromArray:[eventParameters asQueryItems]];
+            MIEcommerceParameters *ecommerceProperties = ((MIMediaEvent*)event).ecommerceParameters;
+            [parametrs addObjectsFromArray:[ecommerceProperties asQueryItems]];
         }
     }
     

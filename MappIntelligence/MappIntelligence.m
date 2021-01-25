@@ -12,6 +12,7 @@
 #import "MIDatabaseManager.h"
 #import "MIRequestData.h"
 #import "MIDeepLink.h"
+#import "MIMediaTracker.h"
 #import <UIKit/UIKit.h>
 
 @interface MappIntelligence ()
@@ -267,6 +268,18 @@ static MappIntelligenceDefaultConfig *config = nil;
         return nil;
     }
     return [tracker trackWithEvent:event];
+}
+
+- (NSError *_Nullable) trackMedia:(MIMediaEvent *_Nonnull) event {
+    if (![self isTrackingEnabled]) {
+        return nil;
+    }
+    if ([[MIMediaTracker sharedInstance] shouldTrack:event]){
+        return [tracker trackWithEvent:event];
+    } else {
+        [_logger logObj:@"Media tracking skipped." forDescription:kMappIntelligenceLogLevelDescriptionDebug];
+        return nil;
+    }
 }
 
 -(BOOL) isTrackingEnabled {

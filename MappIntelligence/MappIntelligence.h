@@ -12,6 +12,8 @@
 #import "MIActionEvent.h"
 #import "MIParams.h"
 #import "MIParamType.h"
+#import "MIMediaEvent.h"
+
 
 @class MappIntelligence;
 
@@ -84,6 +86,19 @@ typedef NS_ENUM(NSInteger, logLevel) {
 @return the error which may happen through process of tracking, if returns nil there is no error.
 */
 - (NSError *_Nullable) trackAction:(MIActionEvent *_Nonnull) event;
+
+/**
+@brief Method which will track media event
+@param event - media event
+@code
+let mediaProperties = MIMediaParameters("TestVideo", action: "view", postion: 12, duration: 120)
+let mediaEvent = MIMediaEvent(pageName: "Test", parameters: mediaProperties)
+MappIntelligence.shared()?.trackMedia(mediaEvent)
+@endcode
+@return the error which may happen through process of tracking, if returns nil there is no error.
+ */
+- (NSError *_Nullable) trackMedia:(MIMediaEvent *_Nonnull) event;
+
 
 /**
 @brief Method which will track campaign parameters from url

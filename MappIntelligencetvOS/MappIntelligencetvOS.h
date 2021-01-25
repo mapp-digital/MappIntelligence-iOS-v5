@@ -10,6 +10,7 @@
 #import <UIKit/UIKit.h>
 #import "MIPageViewEvent.h"
 #import "MIActionEvent.h"
+#import "MIMediaEvent.h"
 
 typedef NS_ENUM(NSInteger, logTvOSLevel) {
   allTvOSLogs = 1,     // All logs of the above.
@@ -86,6 +87,17 @@ MappIntelligencetvOS.shared()?.initWithConfiguration([12345678, 8783291721], onT
 */
 - (NSError *_Nullable) trackAction:(MIActionEvent *_Nonnull) event;
 
+/**
+@brief Method which will track media event
+@param event - media event
+@code
+let mediaProperties = MIMediaParameters("TestVideo", action: "view", postion: 12, duration: 120)
+let mediaEvent = MIMediaEvent(pageName: "Test", parameters: mediaProperties)
+MappIntelligence.shared()?.trackMedia(mediaEvent)
+@endcode
+@return the error which may happen through process of tracking, if returns nil there is no error.
+ */
+- (NSError *_Nullable) trackMedia:(MIMediaEvent *_Nonnull) event;
 
 /**
 @brief Method to reset the MappIntelligence singleton. This method will set the default empty values for trackID and track domain. Please ensure to provide new trackIDs and track domain.

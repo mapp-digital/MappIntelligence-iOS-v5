@@ -7,3 +7,7 @@
 //
 
 #import "MappIntelligence.h"
+
+#if !TARGET_OS_WATCH
+#import "MIWebViewTracker.h"
+#endif

@@ -9,6 +9,8 @@
 #import <XCTest/XCTest.h>
 #import "MISessionParameters.h"
 #import "MIDefaultTracker.h"
+#import "MIProperties.h"
+#import "MITrackerRequest.h"
 
 @interface SessionPropertiesTests : XCTestCase
 @property NSMutableDictionary *sessionDictionary;
