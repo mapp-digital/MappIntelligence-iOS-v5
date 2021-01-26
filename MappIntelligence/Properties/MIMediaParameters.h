@@ -18,9 +18,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonnull) NSNumber *duration;
 @property (nullable) NSMutableDictionary* groups;
 @property (nonnull) NSNumber *position;
-@property (nullable)NSString *soundIsMuted;
+@property (nullable)NSNumber *soundIsMuted;
 @property (nullable)NSNumber *soundVolume;
-@property (nullable) NSDictionary<NSNumber* ,NSString*>* customProperties;
+@property (nullable) NSDictionary<NSNumber* ,NSString*>* customCategories;
 
 - (instancetype)init NS_UNAVAILABLE;
 - (instancetype)initWith: (NSString *) name action: (NSString *)action position: (NSNumber *) position duration: (NSNumber *) duration;

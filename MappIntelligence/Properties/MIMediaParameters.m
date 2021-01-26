@@ -25,10 +25,10 @@
 -(NSMutableArray<NSURLQueryItem*>*)asQueryItems {
     NSMutableArray<NSURLQueryItem*>* items = [[NSMutableArray alloc] init];
     
-    if (_customProperties) {
-        _customProperties = [self filterCustomDict:_customProperties];
-        for(NSNumber* key in _customProperties) {
-            [items addObject:[[NSURLQueryItem alloc] initWithName:[NSString stringWithFormat:@"mg%@",key] value: _customProperties[key]]];
+    if (_customCategories) {
+        _customCategories = [self filterCustomDict:_customCategories];
+        for(NSNumber* key in _customCategories) {
+            [items addObject:[[NSURLQueryItem alloc] initWithName:[NSString stringWithFormat:@"mg%@",key] value: _customCategories[key]]];
         }
     }
     
@@ -44,8 +44,8 @@
     if (_duration) {
         [items addObject:[[NSURLQueryItem alloc] initWithName:@"mt2" value: [NSString stringWithFormat:@"%ld",(long)_duration.doubleValue]]];
     }
-    if ([_soundIsMuted isEqualToString:@"0"] || [_soundIsMuted isEqualToString:@"1"]) {
-        [items addObject:[[NSURLQueryItem alloc] initWithName:@"mut" value: _soundIsMuted]];
+    if (_soundIsMuted) {
+        [items addObject:[[NSURLQueryItem alloc] initWithName:@"mut" value: _soundIsMuted.stringValue]];
     }
     if (_soundVolume.doubleValue > 0) {
         [items addObject:[[NSURLQueryItem alloc] initWithName:@"vol" value: _soundVolume.stringValue]];

@@ -129,7 +129,7 @@ class MediaPlayerViewController: UIViewController {
 
         let mediaProperties = MIMediaParameters("TestVideoExample", action: action, position: NSNumber(value: position), duration: NSNumber(value: duration))
         mediaProperties.soundVolume = NSNumber(value: (AVAudioSession.sharedInstance().outputVolume) * 255.0)
-        mediaProperties.soundIsMuted = AVAudioSession.sharedInstance().outputVolume == 0.0 ? "1" : "0"
+        mediaProperties.soundIsMuted = AVAudioSession.sharedInstance().outputVolume == 0.0 ? 1 : 0
         if bitrate != nil {
             mediaProperties.bandwith = bitrate
         }
