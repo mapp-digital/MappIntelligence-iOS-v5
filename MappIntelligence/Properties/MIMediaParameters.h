@@ -23,7 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable) NSDictionary<NSNumber* ,NSString*>* customProperties;
 
 - (instancetype)init NS_UNAVAILABLE;
-- (instancetype)initWith: (NSString *) name action: (NSString *)action postion: (NSNumber *) position duration: (NSNumber *) duration;
+- (instancetype)initWith: (NSString *) name action: (NSString *)action position: (NSNumber *) position duration: (NSNumber *) duration;
 -(NSMutableArray<NSURLQueryItem*>*)asQueryItems;
 
 @end

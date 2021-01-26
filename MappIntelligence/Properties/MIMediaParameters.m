@@ -10,7 +10,7 @@
 
 @implementation MIMediaParameters
 
-- (instancetype)initWith: (NSString *) name action: (NSString *)action postion: (NSNumber *) position duration: (NSNumber *) duration {
+- (instancetype)initWith: (NSString *) name action: (NSString *)action position: (NSNumber *) position duration: (NSNumber *) duration {
     self = [super init];
     if (self) {
         _name = name;

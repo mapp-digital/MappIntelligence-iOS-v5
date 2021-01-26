@@ -123,7 +123,7 @@ class TVMediaViewController: UIViewController {
         guard let position = player.currentItem?.currentTime().seconds else { return }
         guard let duration = player.currentItem?.duration.seconds, duration == duration else { return }
 
-        let mediaProperties = MIMediaParameters("TestVideoExample", action: action, postion: NSNumber(value: position), duration: NSNumber(value: duration))
+        let mediaProperties = MIMediaParameters("TestVideoExample", action: action, position: NSNumber(value: position), duration: NSNumber(value: duration))
         if bitrate != nil {
             mediaProperties.bandwith = bitrate
         }
