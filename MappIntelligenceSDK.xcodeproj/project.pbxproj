@@ -415,8 +415,8 @@
 		8F94E6E725BF27D200027623 /* MIMediaEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIMediaEvent.h; sourceTree = "<group>"; };
 		8F94E72725BF281C00027623 /* MIMediaParameters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIMediaParameters.m; sourceTree = "<group>"; };
 		8F94E72825BF281C00027623 /* MIMediaParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIMediaParameters.h; sourceTree = "<group>"; };
-		8F94E79E25BF2E8F00027623 /* MIWebViewTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIWebViewTracker.h; sourceTree = "<group>"; };
-		8F94E79F25BF2E8F00027623 /* MIWebViewTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIWebViewTracker.m; sourceTree = "<group>"; };
+		8F94E79E25BF2E8F00027623 /* MIWebViewTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MIWebViewTracker.h; path = ../../MappIntelligenceiOS/MIWebViewTracker.h; sourceTree = "<group>"; };
+		8F94E79F25BF2E8F00027623 /* MIWebViewTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MIWebViewTracker.m; path = ../../MappIntelligenceiOS/MIWebViewTracker.m; sourceTree = "<group>"; };
 		8F9C7F6F255A851400CB95EF /* AdvertisementPropertiesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AdvertisementPropertiesTests.m; sourceTree = "<group>"; };
 		8FA11960253EDC82000AE887 /* MIUserCategories.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MIUserCategories.h; sourceTree = "<group>"; };
 		8FA11961253EDC82000AE887 /* MIUserCategories.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MIUserCategories.m; sourceTree = "<group>"; };

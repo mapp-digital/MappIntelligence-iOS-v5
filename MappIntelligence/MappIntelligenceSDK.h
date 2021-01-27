@@ -8,6 +8,6 @@
 
 #import "MappIntelligence.h"
 
-#if !TARGET_OS_WATCH
+#if TARGET_OS_IOS
 #import "MIWebViewTracker.h"
 #endif
