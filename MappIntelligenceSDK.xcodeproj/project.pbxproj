@@ -452,7 +452,7 @@
 		A334863C23BF409D00D0EB5F /* MappIntelligence.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MappIntelligence.h; sourceTree = "<group>"; };
 		A337445A24C1A12A0096259B /* MIPageParameters.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MIPageParameters.h; sourceTree = "<group>"; };
 		A337445B24C1A12A0096259B /* MIPageParameters.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MIPageParameters.m; sourceTree = "<group>"; };
-		A337446124C844580096259B /* MappIntelligenceSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MappIntelligenceSDK.h; sourceTree = "<group>"; };
+		A337446124C844580096259B /* MappIntelligenceSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MappIntelligenceSDK.h; path = ../MappIntelligenceiOS/MappIntelligenceSDK.h; sourceTree = "<group>"; };
 		A338B7892546FD1E00E50C28 /* MIEcommerceParameters.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MIEcommerceParameters.h; sourceTree = "<group>"; };
 		A338B78A2546FD1E00E50C28 /* MIEcommerceParameters.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MIEcommerceParameters.m; sourceTree = "<group>"; };
 		A338B79625470A1F00E50C28 /* MIProduct.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MIProduct.h; sourceTree = "<group>"; };
