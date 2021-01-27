@@ -436,7 +436,7 @@
 		A30E3EC0244491F30047D7A6 /* .travis.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .travis.yml; sourceTree = "<group>"; };
 		A30E3EC224449ED90047D7A6 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A30E3EC42444A0B70047D7A6 /* .oclint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .oclint.yml; sourceTree = "<group>"; };
-		A30E3EC62444A3970047D7A6 /* MappIntelligence.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MappIntelligence.podspec; sourceTree = "<group>"; };
+		A30E3EC62444A3970047D7A6 /* MappIntelligence.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = MappIntelligence.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A31C6F1C24D9A0F300166585 /* RequestBatchSupportUrlBuilderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RequestBatchSupportUrlBuilderTests.m; sourceTree = "<group>"; };
 		A31C6F1F24D9A9B200166585 /* DatabaseManagerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DatabaseManagerTests.m; sourceTree = "<group>"; };
 		A31D7A4E243CC0F200386A1C /* TrackerRequestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TrackerRequestTests.m; sourceTree = "<group>"; };
