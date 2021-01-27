@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#if !TARGET_OS_WATCH
+#if TARGET_OS_IOS
 #import <WebKit/WebKit.h>
 
 
