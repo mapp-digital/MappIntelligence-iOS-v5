@@ -6,9 +6,9 @@ import PackageDescription
 let package = Package(
     name: "MappIntelligence",
     platforms: [
-        .iOS(.v11),
-        .tvOS(.v13),
-        .watchOS(.v3)
+        .iOS(.v10),
+        .tvOS(.v11),
+        .watchOS(.v4)
     ],
     products: [
         .library(

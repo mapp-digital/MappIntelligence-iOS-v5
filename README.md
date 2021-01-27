@@ -11,8 +11,8 @@ The MappIntelligence SDK allows you to track user activities, screen flow and me
 | Plattform | Version            |
 |-----------|-------------------:|
 | `iOS`     |             `10.0+` |
-| `tvOs` |             `9.0+` |
-| `watchOs` |             `2.0+` |
+| `tvOs` |             `11.0+` |
+| `watchOs` |             `4.0+` |
 
 
 # Installation
