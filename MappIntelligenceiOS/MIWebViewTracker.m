@@ -5,7 +5,6 @@
 //  Created by Miroljub Stoilkovic on 08/12/2020.
 //  Copyright © 2020 Mapp Digital US, LLC. All rights reserved.
 //
-#if TARGET_OS_IOS
 #import "MIWebViewTracker.h"
 #import "MIDefaultTracker.h"
 #import "MappIntelligence.h"
@@ -89,4 +88,3 @@ NSString static *jsTag = @"MappIntelligenceiOSBridge";
 }
 
 @end
-#endif
