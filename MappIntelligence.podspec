@@ -13,9 +13,11 @@ Pod::Spec.new do |s|
     s.exclude_files = 'MappIntelligence/include/**'
     s.source_files = "MappIntelligence/**/*.{h,m}"
     s.watchos.source_files = "MappIntelligenceWatchOS/**/*.{h,m}"
+    s.ios.source_files = "MappIntelligenceiOS/**/*.{h,m}"
+    s.tvos.source_files = "MappIntelligencetvOS/**/*.{h,m}"
     s.summary  = 'The MappIntelligence SDK allows you to track user activities, screen flow usage for your App.'
 
     s.frameworks         = 'Foundation', 'UIKit'
-    s.ios.frameworks     = 'AVFoundation', 'AVKit', 'CoreTelephony'
+    s.ios.frameworks     = 'AVFoundation', 'AVKit', 'CoreTelephony', 'WebKit'
     s.watchos.frameworks = 'WatchKit'
 end

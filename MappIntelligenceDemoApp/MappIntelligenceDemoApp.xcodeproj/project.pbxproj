@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8F20A10E25C2CF460006CB93 /* libMappIntelligenceiOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F20A10D25C2CF460006CB93 /* libMappIntelligenceiOS.a */; };
 		8F2D1D4F257789FA008CB31D /* ActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2D1D4E257789FA008CB31D /* ActionViewController.swift */; };
 		8F2D1D5525778A07008CB31D /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2D1D5425778A07008CB31D /* PageViewController.swift */; };
 		8F2D1D6525778B82008CB31D /* ConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2D1D6425778B82008CB31D /* ConfigViewController.swift */; };
@@ -41,7 +42,6 @@
 		BCA1739923D5D25C00B31430 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCA1739723D5D25C00B31430 /* Main.storyboard */; };
 		BCA1739B23D5D25E00B31430 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCA1739A23D5D25E00B31430 /* Assets.xcassets */; };
 		BCA1739E23D5D25E00B31430 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCA1739C23D5D25E00B31430 /* LaunchScreen.storyboard */; };
-		BCCAE6CF240D261A005E9FD6 /* libMappIntelligenceSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCCAE6CE240D261A005E9FD6 /* libMappIntelligenceSDK.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +87,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8F20A10D25C2CF460006CB93 /* libMappIntelligenceiOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libMappIntelligenceiOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F2D1D4E257789FA008CB31D /* ActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionViewController.swift; sourceTree = "<group>"; };
 		8F2D1D5425778A07008CB31D /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		8F2D1D6425778B82008CB31D /* ConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigViewController.swift; sourceTree = "<group>"; };
@@ -159,8 +160,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F20A10E25C2CF460006CB93 /* libMappIntelligenceiOS.a in Frameworks */,
 				8F3F6813257EE3D5005F8AFC /* WebKit.framework in Frameworks */,
-				BCCAE6CF240D261A005E9FD6 /* libMappIntelligenceSDK.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,6 +266,7 @@
 		BCA173AE23D6FBFC00B31430 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8F20A10D25C2CF460006CB93 /* libMappIntelligenceiOS.a */,
 				8F3F6812257EE3D5005F8AFC /* WebKit.framework */,
 				A3258BF5250A4E0B00039B92 /* UIKit.framework */,
 				A35C78FF2452F83700D36144 /* libMappIntelligencetvOS.a */,

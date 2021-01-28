@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <MappIntelligenceSDK_iOS/MappIntelligence.h>
+#import <MappIntelligenceSDK_iOS/MappIntelligenceiOS.h>
 
 //! Project version number for MappIntelligenceSDK_iOS.
 FOUNDATION_EXPORT double MappIntelligenceSDK_iOSVersionNumber;

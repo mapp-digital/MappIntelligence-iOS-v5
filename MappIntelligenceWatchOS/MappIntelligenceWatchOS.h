@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "MIPageViewEvent.h"
 #import "MIActionEvent.h"
+#import "MIParams.h"
+#import "MIParamType.h"
 
 typedef NS_ENUM(NSInteger, logWatchOSLevel) {
   allWatchOSLogs = 1,     // All logs of the above.

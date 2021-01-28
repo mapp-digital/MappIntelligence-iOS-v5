@@ -15,6 +15,9 @@ let package = Package(
             name: "MappIntelligenceSDK",
             targets: ["MappIntelligenceSDK"]),
         .library(
+            name: "MappIntelligenceiOS",
+            targets: ["MappIntelligenceiOS"]),
+        .library(
             name: "MappIntelligenceWatchOS",
             targets: ["MappIntelligenceWatchOS"]),
         .library(
@@ -32,6 +35,18 @@ let package = Package(
             linkerSettings: [
                 .linkedFramework("UIKit", .when(platforms: [.iOS, .tvOS])),
                 .linkedFramework("WatchKit", .when(platforms:[.watchOS]))
+            ]
+        ),
+        .target(
+            name: "MappIntelligenceiOS",
+            dependencies:["MappIntelligenceSDK"],
+            path: "MappIntelligenceiOS",
+            publicHeadersPath:"",
+            cSettings: [
+                .headerSearchPath("**"),
+            ],
+            linkerSettings: [
+                .linkedFramework("UIKit")
             ]
         ),
         .target(

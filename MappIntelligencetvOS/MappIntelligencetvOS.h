@@ -11,6 +11,8 @@
 #import "MIPageViewEvent.h"
 #import "MIActionEvent.h"
 #import "MIMediaEvent.h"
+#import "MIParams.h"
+#import "MIParamType.h"
 
 typedef NS_ENUM(NSInteger, logTvOSLevel) {
   allTvOSLogs = 1,     // All logs of the above.
