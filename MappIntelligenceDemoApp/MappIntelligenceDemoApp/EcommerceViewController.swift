@@ -15,6 +15,7 @@ class EcommerceViewController: UIViewController {
             product.name = "Product1"
             product.categories = [1: "ProductCat1", 2: "ProductCat2"]
             product.cost = 13
+            product.quantity = 4
             return product
     }()
     
@@ -55,7 +56,22 @@ class EcommerceViewController: UIViewController {
             MIEcommerceParameters(customParameters: [1 : "ProductParam1", 2 : "ProductParam2"])
         
         ecommerceParameters1.products = [product1]
-        ecommerceParameters1.status = .viewed
+        ecommerceParameters1.status = .purchased
+        ecommerceParameters1.cancellationValue = 2
+        ecommerceParameters1.couponValue = 33
+        ecommerceParameters1.currency = "EUR"
+        ecommerceParameters1.markUp = 1
+        ecommerceParameters1.orderStatus = "order received"
+        ecommerceParameters1.orderID = "ud679adn"
+        ecommerceParameters1.orderValue = 456
+        ecommerceParameters1.paymentMethod = "credit card"
+        ecommerceParameters1.productAdvertiseID = 56291
+        ecommerceParameters1.productSoldOut = 1
+        ecommerceParameters1.returnValue = 3
+        ecommerceParameters1.returningOrNewCustomer = "new customer"
+        ecommerceParameters1.shippingCost = 35
+        ecommerceParameters1.shippingSpeed = "highest"
+        ecommerceParameters1.shippingServiceProvider = "DHL"
         
         let pageEvent = MIPageViewEvent(name: "TrackProductView")
         pageEvent.ecommerceParameters = ecommerceParameters1
