@@ -12,7 +12,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MITrackingEvent : NSObject
 
-@property NSString *ipAddress;
 @property NSString *pageName;
 @property NSDictionary *variables;
 @property NSObject *viewControllerType;

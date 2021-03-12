@@ -143,13 +143,7 @@
                                           initWithFormat:@"%@",
                                                          properties
                                                              .userAgent]]];
-  [parametrs
-      addObject:[NSURLQueryItem
-                    queryItemWithName:@"X-WT-IP"
-                                value:[[NSString alloc]
-                                          initWithFormat:@"%@",
-                                                         event
-                                                             .ipAddress]]];
+
   NSString *language = [[properties locale] objectForKey:NSLocaleLanguageCode];
   if (language) {
     [parametrs
