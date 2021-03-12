@@ -302,7 +302,9 @@
     if(campaignProperties.oncePerSession) {
         MICampaignParameters *c = [campaignProperties copy];
         if(![_campaignsToIgnore containsObject:c]) {
-            [_campaignsToIgnore addObject: c];
+            if(_campaignsToIgnore.count < 100) {
+                [_campaignsToIgnore addObject: c];
+            }
             return YES;
         } else {
             return NO;

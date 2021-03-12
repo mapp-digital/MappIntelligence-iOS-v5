@@ -81,7 +81,9 @@ static int waiting_condition_key;
 #define appVersion @"appVersion"
 #define configuration @"configuration"
 #define everId @"everId"
+#define legacyEverId @"webtrekk.everId"
 #define isFirstEventOfApp @"isFirstEventOfApp"
+#define legacyIsFirstEventOfApp @"webtrekk.isFirstEventOfApp"
 
 @interface MIDefaultTracker ()
 
@@ -195,6 +197,7 @@ static NSString *userAgent;
 }
 
 - (NSString *)generateEverId {
+
 
   NSString *tmpEverId = [[MIDefaultTracker sharedDefaults] stringForKey:everId];
   // https://nshipster.com/nil/ read for more explanation
@@ -459,4 +462,15 @@ static NSString *userAgent;
     _isFirstEventOfSession = NO;
     _isFirstEventOpen = NO;
 }
+
+-(void) migrateData {
+    NSString *legacyEID = [[MIDefaultTracker sharedDefaults] stringForKey:legacyEverId];
+    if (legacyEID != nil) {
+        [[MIDefaultTracker sharedDefaults] setValue:legacyEID forKey:everId];
+    }
+    if ([[MIDefaultTracker sharedDefaults] stringForKey:legacyIsFirstEventOfApp]) {
+        [[MIDefaultTracker sharedDefaults] setBool:NO forKey:isFirstEventOfApp];
+    }
+}
+
 @end

@@ -310,4 +310,11 @@ static MappIntelligenceDefaultConfig *config = nil;
     event.trackingParams = trackingParams;
   return [tracker trackWithCustomEvent:event];
 }
+
+- (void)setShouldMigrate:(BOOL)shouldMigrate {
+    if (shouldMigrate) {
+        [[MIDefaultTracker sharedInstance] migrateData];
+    }
+    _shouldMigrate = shouldMigrate;
+}
 @end
