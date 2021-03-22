@@ -317,4 +317,11 @@ static MappIntelligenceDefaultConfig *config = nil;
     }
     _shouldMigrate = shouldMigrate;
 }
+
+- (void) setAnonimousTracking: (BOOL) enabled withSuppressParameters: (NSArray<NSString *> *_Nullable) params {
+    [[MIDefaultTracker sharedInstance] setAnonimousTracking:enabled];
+    [[MIDefaultTracker sharedInstance] setSuppressedParameters:params];
+}
+
+
 @end

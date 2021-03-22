@@ -168,4 +168,7 @@ MappIntelligence.shared()?.optOut(with: false, andSendCurrentData: false)
  */
 - (NSError *_Nullable) trackCustomEvent: (NSString *_Nonnull)eventName trackingParams: (NSDictionary<NSString *, NSString*> *_Nullable) trackingParams;
 
+
+- (void) setAnonimousTracking: (BOOL) enabled withSuppressParameters: (NSArray<NSString *> *_Nullable) params;
+
 @end

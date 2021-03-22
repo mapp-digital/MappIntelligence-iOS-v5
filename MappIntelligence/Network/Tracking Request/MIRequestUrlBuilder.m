@@ -18,6 +18,7 @@
 #import "MIDeepLink.h"
 #import "MIEnvironment.h"
 #import "MIMediaEvent.h"
+#import "MIDefaultTracker.h"
 
 #if TARGET_OS_WATCH
 #import <WatchKit/WatchKit.h>
@@ -212,6 +213,11 @@
         [parametrs addObject:[NSURLQueryItem queryItemWithName:@"cs821" value: properties.isFirstEventOfApp ? @"1": @"0"]];
     }
     [parametrs addObject:[NSURLQueryItem queryItemWithName:@"eor" value:@"1"]];
+    
+    //process anonimous tracking
+    if ([[MIDefaultTracker sharedInstance] anonimousTracking]) {
+        parametrs = [self getAnonimousParams:parametrs];
+    }
     [_sizeMonitor setCurrentRequestSize:[_sizeMonitor currentRequestSize] +
                                        5]; // add for end of the request
     
@@ -323,4 +329,15 @@
 //    
 //}
 
+-(NSMutableArray *) getAnonimousParams: (NSMutableArray *) params {
+    NSMutableArray *anonimParams = [[NSMutableArray alloc] init];
+    NSArray *suppressed = [[MIDefaultTracker sharedInstance] suppressedParameters];
+    for (NSURLQueryItem *item in params) {
+        if (![suppressed containsObject: item.name] && ![item.name isEqualToString:@"eid"]) {
+            [anonimParams addObject:item];
+        }
+    }
+    [anonimParams addObject:[NSURLQueryItem queryItemWithName:@"nc" value:@"1"]];
+    return anonimParams;
+}
 @end

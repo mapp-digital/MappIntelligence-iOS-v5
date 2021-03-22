@@ -38,4 +38,11 @@ class ConfigViewController: UIViewController {
         MappIntelligence.shared()?.requestInterval = 1 * 60
     }
     
+    @IBAction func toggleAnonimousTracking(_ sender: UISwitch) {
+        if (sender.isOn) {
+            MappIntelligence.shared()?.setAnonimousTracking(true, withSuppressParameters: ["uc706"])
+        } else {
+            MappIntelligence.shared()?.setAnonimousTracking(false, withSuppressParameters: nil)
+        }
+    }
 }
