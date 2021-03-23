@@ -109,4 +109,10 @@ class InterfaceController: WKInterfaceController {
     @IBAction func optOut() {
         MappIntelligenceWatchOS.shared()?.optOutAndSendCurrentData(true)
     }
+    @IBAction func anonymousTrackingOn() {
+        MappIntelligenceWatchOS.shared()?.anonymousTracking = true
+    }
+    @IBAction func anonymousTrackingOff() {
+        MappIntelligenceWatchOS.shared()?.anonymousTracking = false
+    }
 }

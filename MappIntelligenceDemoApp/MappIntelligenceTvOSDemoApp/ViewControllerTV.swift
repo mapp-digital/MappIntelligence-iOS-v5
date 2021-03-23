@@ -102,5 +102,11 @@ class ViewControllerTV: UIViewController {
     @IBAction func initAgain(_ sender: Any) {
         MappIntelligencetvOS.shared()?.initWithConfiguration([385255285199574], onTrackdomain: "https://q3.webtrekk.net")
     }
+    @IBAction func anonymousOn(_ sender: Any) {
+        MappIntelligencetvOS.shared()?.anonymousTracking = true
+    }
+    @IBAction func anonymousOff(_ sender: Any) {
+        MappIntelligencetvOS.shared()?.anonymousTracking = false
+    }
 }
 

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="17506" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="17156" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
     <device id="watch38"/>
     <dependencies>
         <deployment identifier="watchOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="17500"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="17034"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
     </dependencies>
     <scenes>
@@ -62,6 +62,18 @@
                                 <action selector="optOut" destination="AgC-eL-Hgc" id="71L-0o-PFL"/>
                             </connections>
                         </button>
+                        <button width="1" alignment="left" title="Anonymous On" id="sai-P4-uMg">
+                            <color key="backgroundColor" red="0.021203886719999999" green="0.57247686389999997" blue="0.84162324669999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="anonymousTrackingOn" destination="AgC-eL-Hgc" id="fGO-8K-YDY"/>
+                            </connections>
+                        </button>
+                        <button width="1" alignment="left" title="Anonymous Off" id="bP3-dP-LZw">
+                            <color key="backgroundColor" red="0.021203886719999999" green="0.57247686389999997" blue="0.84162324669999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="anonymousTrackingOff" destination="AgC-eL-Hgc" id="LSC-Oj-V3U"/>
+                            </connections>
+                        </button>
                     </items>
                 </controller>
             </objects>
@@ -82,7 +94,7 @@
                     </connections>
                 </notificationController>
             </objects>
-            <point key="canvasLocation" x="220" y="643"/>
+            <point key="canvasLocation" x="220" y="741"/>
         </scene>
         <!--Notification Controller-->
         <scene sceneID="ZPc-GJ-vnh">
