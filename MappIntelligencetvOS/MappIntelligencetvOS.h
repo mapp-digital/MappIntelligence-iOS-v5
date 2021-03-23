@@ -34,6 +34,8 @@ typedef NS_ENUM(NSInteger, logTvOSLevel) {
 @property (nonatomic, readwrite) BOOL batchSupportEnabled;
 @property (nonatomic, readwrite) NSInteger batchSupportSize;
 @property (nonatomic, readwrite) NSInteger requestPerQueue;
+@property (nonatomic, readwrite) BOOL shouldMigrate;
+@property (nonatomic, readwrite) BOOL anonymousTracking;
 
 /**
  MappIntelignece instance
@@ -126,5 +128,13 @@ MappIntelligencetvOS.shared()?.reset()
 @endcode
  */
 - (void)optOutAndSendCurrentData:(BOOL) value;
+
+
+/**
+ @brief Method which will enable anonymous tracking and omit submitted parameters/tags array. Please note that using this option will negatively affect data quality.
+ @param suppressParams - array list of parameters to ignore during anonimous tracking
+ */
+- (void) enableAnonymousTracking:(NSArray<NSString *> *_Nullable) suppressParams;
+
 
 @end

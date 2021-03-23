@@ -107,4 +107,20 @@
     [_mappIntelligence optOutAndSendCurrentData:value];
 }
 
+- (void)setShouldMigrate:(BOOL)shouldMigrate {
+    [_mappIntelligence setShouldMigrate:shouldMigrate];
+}
+
+-(BOOL) anonymousTracking {
+    return [_mappIntelligence anonymousTracking];
+}
+
+-(void) setAnonymousTracking:(BOOL)anonymousTracking {
+    [_mappIntelligence setAnonymousTracking:anonymousTracking];
+}
+
+-(void) enableAnonymousTracking:(NSArray<NSString *> *_Nullable) suppressParams {
+    [_mappIntelligence enableAnonymousTracking:suppressParams];
+}
+
 @end

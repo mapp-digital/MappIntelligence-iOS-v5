@@ -30,6 +30,8 @@ typedef NS_ENUM(NSInteger, logWatchOSLevel) {
 @property (nonatomic, readwrite) BOOL batchSupportEnabled;
 @property (nonatomic, readwrite) NSInteger batchSupportSize;
 @property (nonatomic, readwrite) NSInteger requestPerQueue;
+@property (nonatomic, readwrite) BOOL shouldMigrate;
+@property (nonatomic, readwrite) BOOL anonymousTracking;
 
 /**
  MappIntelignece instance
