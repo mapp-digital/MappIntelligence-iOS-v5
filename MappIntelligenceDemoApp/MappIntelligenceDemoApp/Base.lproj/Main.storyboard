@@ -469,11 +469,11 @@
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="hKu-jQ-csA">
                                 <rect key="frame" x="251" y="336" width="51" height="31"/>
                                 <connections>
-                                    <action selector="toggleAnonimousTracking:" destination="7du-La-z9J" eventType="valueChanged" id="BKC-qC-aqa"/>
+                                    <action selector="toggleAnonimousTracking:" destination="7du-La-z9J" eventType="valueChanged" id="rQd-x0-JLo"/>
                                 </connections>
                             </switch>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Anonimous tracking" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eDG-2v-0Tx">
-                                <rect key="frame" x="20" y="341" width="152" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Anonymous tracking" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eDG-2v-0Tx">
+                                <rect key="frame" x="20" y="341" width="221" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -483,6 +483,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="AgT-SC-XaE" firstAttribute="top" secondItem="c89-Id-IY0" secondAttribute="bottom" constant="25" id="8Lz-QN-eyd"/>
+                            <constraint firstItem="hKu-jQ-csA" firstAttribute="leading" secondItem="eDG-2v-0Tx" secondAttribute="trailing" constant="10" id="AZx-SW-Lbl"/>
                             <constraint firstItem="AgT-SC-XaE" firstAttribute="leading" secondItem="3Yx-Kw-rk7" secondAttribute="leading" constant="20" id="E6x-q8-9ga"/>
                             <constraint firstItem="c89-Id-IY0" firstAttribute="top" secondItem="XU0-8e-ykb" secondAttribute="bottom" constant="25" id="PuD-Do-bdv"/>
                             <constraint firstItem="3Yx-Kw-rk7" firstAttribute="trailing" secondItem="hKu-jQ-csA" secondAttribute="trailing" constant="20" id="RBr-xq-ant"/>
@@ -500,6 +501,9 @@
                     <navigationItem key="navigationItem" title="Configuration" id="xsO-Za-xMB">
                         <barButtonItem key="backBarButtonItem" title="Back" id="iZW-Tn-Okr"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="anonymSwitch" destination="hKu-jQ-csA" id="erF-4W-ZdA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B1x-Df-aY8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

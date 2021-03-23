@@ -10,8 +10,12 @@ import UIKit
 
 class ConfigViewController: UIViewController {
 
+    @IBOutlet weak var anonymSwitch: UISwitch!
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let anonymousTracking = MappIntelligence.shared()?.anonymousTracking, anonymousTracking == true {
+            anonymSwitch.isOn = true
+        }
     }
 
     @IBAction func optOut(_ sender: Any) {
@@ -40,9 +44,10 @@ class ConfigViewController: UIViewController {
     
     @IBAction func toggleAnonimousTracking(_ sender: UISwitch) {
         if (sender.isOn) {
-            MappIntelligence.shared()?.setAnonimousTracking(true, withSuppressParameters: ["uc706"])
+            MappIntelligence.shared()?.enableAnonymousTracking(["uc706"])
         } else {
-            MappIntelligence.shared()?.setAnonimousTracking(false, withSuppressParameters: nil)
+            MappIntelligence.shared()?.anonymousTracking = false
         }
     }
+
 }

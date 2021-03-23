@@ -38,6 +38,8 @@ typedef NS_ENUM(NSInteger, logLevel) {
 @property (nonatomic, readwrite) NSInteger batchSupportSize;
 @property (nonatomic, readwrite) NSInteger requestPerQueue;
 @property (nonatomic, readwrite) BOOL shouldMigrate;
+@property (nonatomic, readwrite) BOOL anonymousTracking;
+
 /**
  MappIntelligence instance
  @brief Method to get a singleton instance of MappIntelligence
@@ -168,7 +170,10 @@ MappIntelligence.shared()?.optOut(with: false, andSendCurrentData: false)
  */
 - (NSError *_Nullable) trackCustomEvent: (NSString *_Nonnull)eventName trackingParams: (NSDictionary<NSString *, NSString*> *_Nullable) trackingParams;
 
-
-- (void) setAnonimousTracking: (BOOL) enabled withSuppressParameters: (NSArray<NSString *> *_Nullable) params;
+/**
+ @brief Method which will enable anonymous tracking and omit submitted parameters/tags array
+ @param suppressParams - array list of parameters to ignore during anonimous tracking
+ */
+- (void) enableAnonymousTracking:(NSArray<NSString *> *_Nullable) suppressParams;
 
 @end

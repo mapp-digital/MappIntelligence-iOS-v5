@@ -19,7 +19,7 @@
 
 @interface MIDefaultTracker : NSObject
 @property BOOL isReady;
-@property BOOL anonimousTracking;
+@property BOOL anonymousTracking;
 @property (nonatomic) NSArray<NSString*> * _Nullable suppressedParameters;
 
 + (nullable instancetype)sharedInstance;
