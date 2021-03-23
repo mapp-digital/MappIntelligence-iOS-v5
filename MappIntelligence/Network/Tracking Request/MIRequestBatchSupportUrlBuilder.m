@@ -30,7 +30,8 @@
     if (self) {
         //initialisation of base url
         MIDefaultTracker* tracker = [MIDefaultTracker sharedInstance];
-        _baseUrl = [[NSString alloc] initWithFormat:@"%@/%@/batch?eid=%@&X-WT-UA=%@", [MappIntelligence getUrl], [MappIntelligence getId],  [tracker generateEverId], [[tracker generateUserAgent] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]] ];
+        NSString *eid = [[MIDefaultTracker sharedInstance] anonymousTracking] ? @"": [NSString stringWithFormat:@"eid=%@&", [tracker generateEverId]];
+        _baseUrl = [[NSString alloc] initWithFormat:@"%@/%@/batch?%@X-WT-UA=%@", [MappIntelligence getUrl], [MappIntelligence getId],  eid, [[tracker generateUserAgent] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]] ];
         _dbManager = [MIDatabaseManager shared];
         _loger = [MappIntelligenceLogger shared];
         

@@ -184,9 +184,7 @@ static NSString *userAgent;
     handler(nil);
 }
 - (void)sendBatchForRequestWithCompletionHandler:(void (^)(NSError * _Nullable))handler {
-    if(!_requestBatchSupportUrlBuilder) {
         _requestBatchSupportUrlBuilder = [[MIRequestBatchSupportUrlBuilder alloc] init];
-    }
     [_requestBatchSupportUrlBuilder sendBatchForRequestsWithCompletition:^(NSError * _Nonnull error) {
         if (error) {
             [self->_logger logObj:@"An error occurred while sending batch requests to Mapp Intelligence." forDescription:kMappIntelligenceLogLevelDescriptionDebug];
