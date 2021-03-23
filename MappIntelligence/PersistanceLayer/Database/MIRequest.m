@@ -127,7 +127,7 @@
 - (NSMutableArray<NSURLQueryItem *> *)convertParamtersWith: (BOOL)batch {
     NSMutableArray<NSURLQueryItem *> * array = [[NSMutableArray alloc] init];
     for (MIParameter* p in _parameters) {
-        if (batch && ([p.name isEqualToString:@"eid"] || [p.name isEqualToString:@"X-WT-UA"])) {
+        if (batch && ([p.name isEqualToString:@"eid"] || [p.name isEqualToString:@"X-WT-UA"] || [p.name isEqualToString:@"nc"])) {
             continue;
         }
         [array addObject:[[NSURLQueryItem alloc] initWithName:p.name value:p.value]];

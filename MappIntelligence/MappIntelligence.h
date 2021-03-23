@@ -171,7 +171,7 @@ MappIntelligence.shared()?.optOut(with: false, andSendCurrentData: false)
 - (NSError *_Nullable) trackCustomEvent: (NSString *_Nonnull)eventName trackingParams: (NSDictionary<NSString *, NSString*> *_Nullable) trackingParams;
 
 /**
- @brief Method which will enable anonymous tracking and omit submitted parameters/tags array
+ @brief Method which will enable anonymous tracking and omit submitted parameters/tags array. Please note that using this option will negatively affect data quality.
  @param suppressParams - array list of parameters to ignore during anonimous tracking
  */
 - (void) enableAnonymousTracking:(NSArray<NSString *> *_Nullable) suppressParams;
