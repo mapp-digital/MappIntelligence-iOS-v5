@@ -101,4 +101,11 @@ MappIntelligenceWatchOS.shared()?.reset()
  */
 - (void)optOutAndSendCurrentData:(BOOL) value;
 
+/**
+ @brief Method which will enable anonymous tracking and omit submitted parameters/tags array. Please note that using this option will negatively affect data quality.
+ @param suppressParams - array list of parameters to ignore during anonimous tracking
+ */
+- (void) enableAnonymousTracking:(NSArray<NSString *> *_Nullable) suppressParams;
+
+
 @end
