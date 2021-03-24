@@ -32,7 +32,7 @@ The *Swift Package Manager* is a tool for automating the distribution of Swift c
 Once you have your Swift package set up, adding MappIntelligence as a dependency is as easy as adding it to the dependencies value of your Package.swift.
 
 dependencies: [
-    .package(url: "https://github.com/mapp-digital/MappIntelligence-iOS-v5.git", .upToNextMajor(from: "5.0.0-beta6"))
+    .package(url: "https://github.com/mapp-digital/MappIntelligence-iOS-v5.git", .upToNextMajor(from: "5.0.0-beta7"))
 ]
 
 # OCLint
@@ -44,6 +44,14 @@ Details about the specific settings for this project can be found in the `.oclin
 
 We use [Travis CI](https://travis-ci.org/) to check the code for inconsistencies and running the linter & tests. 
 Details about the specific settings for this project can be found in the `.travis.yml` file.
+
+# Migrating from Webtrekk SDK V4
+
+The MappIntelligence SDK V5 offers the possibility to migrate some stored information to the new SDK. This option is not enabled as per default, to enable it set shouldMigrate property to 'true'. The code snippet below shows this case.
+
+```swift
+MappIntelligence.shared()?.shouldMigrate = true
+```
 
 # SSL
 

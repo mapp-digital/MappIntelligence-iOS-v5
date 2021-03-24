@@ -47,6 +47,18 @@
     XCTAssertNotNil(url);
 }
 
+- (void)testUrlForAnonymousRequest {
+    MITrackingEvent *event = [[MITrackingEvent alloc] init];
+    [event setPageName:@"testPageName"];
+    NSString *everid = [_tracker generateEverId];
+    [_tracker setAnonymousTracking:true];
+    MIProperties *properies = [[MIProperties alloc] initWithEverID:everid andSamplingRate:0 withTimeZone:[NSTimeZone localTimeZone] withTimestamp:[NSDate date] withUserAgent:@"Tracking Library"];
+    MITrackerRequest *request = [[MITrackerRequest alloc] initWithEvent:event andWithProperties:properies];
+    NSURL *url = [_builder urlForRequest:request withCustomData:NO];
+    XCTAssertFalse([[url absoluteString] containsString:@"eid="]);
+    XCTAssertTrue([[url absoluteString] containsString:@"nc=1"]);
+}
+
 - (void)testcreateURLFromParametersWith {
     //1. create parameters
     NSURLQueryItem* item1 = [[NSURLQueryItem alloc] initWithName:@"parameter1Name" value:@"parameter1Value"];
