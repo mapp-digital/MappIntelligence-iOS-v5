@@ -47,7 +47,7 @@ Details about the specific settings for this project can be found in the `.travi
 
 # Migrating from Webtrekk SDK V4
 
-The MappIntelligence SDK V5 offers the possibility to migrate some stored information to the new SDK. This option is not enabled as per default, to enable it set shouldMigrate property to 'true'. The code snippet below shows this case.
+The Mapp Intelligence SDK v5 offers the possibility to migrate from Mapp Intelligence v4 without losing user data, meaning you will not lose historic data when updating to the new version. The option is disabled by default and needs to be manually enabled in the global configuration. Please use the function below to update from version 4 to version 5 without data loss:
 
 ```swift
 MappIntelligence.shared()?.shouldMigrate = true
