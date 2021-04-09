@@ -18,6 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 -(instancetype)initWithPageParams: (NSDictionary<NSNumber* ,NSString*>* _Nullable) parameters pageCategory: (NSMutableDictionary* _Nullable) category search: (NSString* _Nullable)internalSearch;
 
+- (instancetype)initWithDictionary:(NSDictionary*)dictionary;
+
 -(NSMutableArray<NSURLQueryItem*>*)asQueryItems;
 
 @end

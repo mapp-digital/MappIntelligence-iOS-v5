@@ -8,11 +8,27 @@
 
 #import "MICampaignParameters.h"
 
+#define key_campaign_id @"campaignId"
+#define key_action @"action"
+#define key_media_code @"mediaCode"
+#define key_once_per_session @"oncePerSession"
+#define key_custom_parameters @"customParameters"
+
 @implementation MICampaignParameters
 
 - (instancetype)initWith: (NSString *) campaignId {
     self = [super init];
     _campaignId = campaignId;
+    return self;
+}
+
+- (instancetype)initWithDictionary:(NSDictionary*)dictionary {
+    self = [super init];
+    _campaignId = dictionary[key_campaign_id];
+    _action = (MICampaignAction)dictionary[key_action];
+    _mediaCode = dictionary[key_media_code];
+    _oncePerSession = dictionary[key_once_per_session];
+    _customParameters = dictionary[key_custom_parameters];
     return self;
 }
 
@@ -71,21 +87,21 @@
     return adCopy;
 }
 - (void)encodeWithCoder:(nonnull NSCoder *)coder {
-    [coder encodeObject:self.campaignId forKey:@"Campaign_ID"];
-    [coder encodeObject:self.mediaCode forKey:@"Media_code"];
-    [coder encodeInteger: self.action forKey:@"Action"];
-    [coder encodeObject:self.customParameters forKey:@"Custom_properties"];
-    [coder encodeBool:self.oncePerSession forKey:@"Once_per_session"];
+    [coder encodeObject:self.campaignId forKey:key_campaign_id];
+    [coder encodeObject:self.mediaCode forKey:key_media_code];
+    [coder encodeInteger: self.action forKey:key_action];
+    [coder encodeObject:self.customParameters forKey:key_custom_parameters];
+    [coder encodeBool:self.oncePerSession forKey:key_once_per_session];
 }
 
 - (nullable instancetype)initWithCoder:(nonnull NSCoder *)coder {
     if (self = [super init]) {
-        self.campaignId = [coder decodeObjectForKey:@"Campaign_ID"];
-        self.mediaCode = [coder decodeObjectForKey:@"Media_code"];
-        self.action = [coder decodeIntegerForKey: @"Action"];
+        self.campaignId = [coder decodeObjectForKey:key_campaign_id];
+        self.mediaCode = [coder decodeObjectForKey:key_media_code];
+        self.action = [coder decodeIntegerForKey: key_action];
         NSSet *classes = [NSSet setWithObjects:NSArray.class, NSDictionary.class, NSNumber.class, NSString.class, nil];
-        self.customParameters = [coder decodeObjectOfClasses:classes forKey:@"Custom_properties"];
-        self.oncePerSession = [coder decodeBoolForKey:@"Once_per_session"];
+        self.customParameters = [coder decodeObjectOfClasses:classes forKey:key_custom_parameters];
+        self.oncePerSession = [coder decodeBoolForKey:key_once_per_session];
     }
     return self;
 }

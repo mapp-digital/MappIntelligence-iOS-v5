@@ -8,12 +8,65 @@
 
 #import "MIEcommerceParameters.h"
 
+#define key_products @"products"
+#define key_status @"status"
+#define key_currency @"currency"
+#define key_order_id @"orderID"
+#define key_order_value @"orderValue"
+#define key_returning_or_new_customer @"returningOrNewCustomer"
+#define key_return_value @"returnValue"
+#define key_cancellation_value @"cancellationValue"
+#define key_coupon_value @"couponValue"
+#define key_product_advertise_id @"productAdvertiseID"
+#define key_product_sold_out @"productSoldOut"
+#define key_payment_method @"paymentMethod"
+#define key_shipping_service_provider @"shippingServiceProvider"
+#define key_shippingSpeed @"shippingSpeed"
+#define key_shipping_cost @"shippingCost"
+#define key_mark_up @"markUp"
+#define key_order_status @"orderStatus"
+#define key_product_variant @"productVariant"
+#define key_custom_parameters @"customParameters"
+
 @implementation MIEcommerceParameters
 
 - (instancetype)initWithCustomParameters:(NSDictionary<NSNumber *,NSString *> *)parameters {
     self = [super init];
     if (self) {
         _customParameters = parameters;
+    }
+    return self;
+}
+
+- (instancetype)initWithDictionary:(NSDictionary*)dictionary {
+    self = [super init];
+    if (self) {
+        NSArray<NSDictionary*>* products = dictionary[key_products];
+        if (products && [products count] > 0) {
+            _products = [NSMutableArray new];
+            for (NSDictionary* dict in products) {
+                _products = [_products arrayByAddingObject:[[MIProduct alloc] initWithDictionary:dict]];
+            }
+        }
+        
+        _status = (MIStatus)dictionary[key_status];
+        _currency = dictionary[key_currency];
+        _orderID = dictionary[key_order_id];
+        _orderValue = dictionary[key_order_value];
+        _returningOrNewCustomer = dictionary[key_returning_or_new_customer];
+        _returnValue = dictionary[key_return_value];
+        _cancellationValue = dictionary[key_cancellation_value];
+        _couponValue = dictionary[key_coupon_value];
+        _productAdvertiseID = dictionary[key_product_advertise_id];
+        _productSoldOut = dictionary[key_product_sold_out];
+        _paymentMethod = dictionary[key_payment_method];
+        _shippingServiceProvider = dictionary[key_shipping_service_provider];
+        _shippingSpeed = dictionary[key_shippingSpeed];
+        _shippingCost = dictionary[key_shipping_cost];
+        _markUp = dictionary[key_mark_up];
+        _orderStatus = dictionary[key_order_status];
+        _productVariant = dictionary[key_product_variant];
+        _customParameters = dictionary[key_custom_parameters];
     }
     return self;
 }
@@ -70,7 +123,7 @@
     }
 }
 
-- (void)setStatus:(Status)status {
+- (void)setStatus:(MIStatus)status {
     _status = status;
 }
 
@@ -144,7 +197,8 @@
                 NSString* tmpObject = [[[product categories] allKeys] containsObject:key] ? product.categories[key] : @"";
                 [tempCategories addObject: tmpObject];
             }
-            [items addObject:[[NSURLQueryItem alloc] initWithName:[@"ca" stringByAppendingString:[key stringValue]] value:[tempCategories componentsJoinedByString:@";"]]];
+            NSString* keyValue = [key isKindOfClass:[NSString class]] ? (NSString*)key : (NSString*)[key stringValue];
+            [items addObject:[[NSURLQueryItem alloc] initWithName:[@"ca" stringByAppendingString:keyValue] value:[tempCategories componentsJoinedByString:@";"]]];
         }
         
         [items addObject:[[NSURLQueryItem alloc] initWithName:@"ba" value:[productNames componentsJoinedByString:@";"]]];

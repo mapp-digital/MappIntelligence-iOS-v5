@@ -8,6 +8,10 @@
 
 #import "MIPageParameters.h"
 
+#define key_details @"params"
+#define key_groups @"categories"
+#define key_internal_search @"searchTerm"
+
 @implementation MIPageParameters
 
 -(instancetype)initWithPageParams: (NSDictionary<NSNumber* ,NSString*>* _Nullable) parameters pageCategory: (NSMutableDictionary* _Nullable) category search: (NSString* _Nullable)internalSearch {
@@ -16,6 +20,16 @@
         _details = parameters;
         _groups = category;
         _internalSearch = internalSearch;
+    }
+    return  self;
+}
+
+- (instancetype)initWithDictionary:(NSDictionary*)dictionary {
+    self = [self init];
+    if (self) {
+        _details = dictionary[key_details];
+        _groups = dictionary[key_groups];
+        _internalSearch = dictionary[key_internal_search];
     }
     return  self;
 }

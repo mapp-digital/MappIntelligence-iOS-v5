@@ -8,6 +8,26 @@
 
 #import "MIUserCategories.h"
 
+#define key_birthday @"birthday"
+
+#define key_birthday_day @"day"
+#define key_birthday_month @"month"
+#define key_birthday_year @"year"
+
+#define key_city @"city"
+#define key_country @"country"
+#define key_email_address @"emailAddress"
+#define key_email_receiver_id @"emailReceiverId"
+#define key_first_name @"firstName"
+#define key_gender @"gender"
+#define key_customer_id @"customerId"
+#define key_last_name @"lastName"
+#define key_newsletter_subscribed @"newsletterSubscribed"
+#define key_phone_number @"phoneNumber"
+#define key_street @"street"
+#define key_street_number @"streetNumber"
+#define key_zip_code @"zipCode"
+#define key_custom_categories @"ustomCategories"
 
 @implementation MIUserCategories
 
@@ -17,6 +37,51 @@
         _customCategories = properties;
     }
     return self;
+}
+
+- (instancetype)initWithDictionary:(NSDictionary*)dictionary {
+    self = [super init];
+    if (self) {
+        NSDictionary* brthday = dictionary[key_birthday];
+        [self setBirthdayFrom:brthday];
+        _city = dictionary[key_city];
+        _country = dictionary[key_country];
+        _emailAddress = dictionary[key_email_address];
+        _emailReceiverId = dictionary[key_email_receiver_id];
+        _firstName = dictionary[key_first_name];
+        _gender = (MIGender)dictionary[key_gender];
+        _customerId = dictionary[key_customer_id];
+        _lastName = dictionary[key_last_name];
+        _newsletterSubscribed = dictionary[key_newsletter_subscribed];
+        _phoneNumber = dictionary[key_phone_number];
+        _street = dictionary[key_street];
+        _streetNumber = dictionary[key_street_number];
+        _zipCode = dictionary[key_zip_code];
+        _customCategories = dictionary[key_custom_categories];
+        
+    }
+    return self;
+}
+
+- (void)setBirthdayFrom: (NSDictionary*) brthday {
+    if (brthday){
+        MIBirthday bDay;
+        NSNumber* day = brthday[key_birthday_day];
+        if (day) {
+            bDay.day = [day intValue];
+        }
+        NSNumber* month = brthday[key_birthday_month];
+        if (month) {
+            bDay.month = [month intValue];
+        }
+        NSNumber* year = brthday[key_birthday_year];
+        if (year) {
+            bDay.year = [year intValue];
+        }
+        if (bDay.day) {
+            _birthday = bDay;
+        }
+    }
 }
 
 - (NSMutableArray<NSURLQueryItem*>*)asQueryItems {

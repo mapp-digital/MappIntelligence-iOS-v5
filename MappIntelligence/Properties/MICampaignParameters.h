@@ -24,6 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable) NSDictionary<NSNumber* ,NSString*>* customParameters;
 
 - (instancetype)initWith: (NSString *) campaignId;
+- (instancetype)initWithDictionary:(NSDictionary*)dictionary;
 - (NSMutableArray<NSURLQueryItem*>*)asQueryItems;
 
 @end

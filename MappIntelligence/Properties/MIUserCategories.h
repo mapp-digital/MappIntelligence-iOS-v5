@@ -41,6 +41,7 @@ typedef NS_ENUM(NSInteger, MIGender) {
 @property (nullable) NSDictionary<NSNumber* ,NSString*>* customCategories;
 
 - (instancetype)initWithCustomProperties: (NSDictionary<NSNumber* ,NSString*>* _Nullable) properties;
+- (instancetype)initWithDictionary:(NSDictionary*)dictionary;
 - (NSMutableArray<NSURLQueryItem*>*)asQueryItems;
 
 @end

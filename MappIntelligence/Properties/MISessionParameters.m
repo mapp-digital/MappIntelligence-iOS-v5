@@ -8,12 +8,22 @@
 
 #import "MISessionParameters.h"
 
+#define key_parameters @"parameters"
+
 @implementation MISessionParameters
 
 -(instancetype)initWithParameters: (NSDictionary<NSNumber* ,NSString*>* _Nullable) parameters {
     self = [self init];
     if (self) {
         _parameters = parameters;
+    }
+    return  self;
+}
+
+- (instancetype)initWithDictionary:(NSDictionary*)dictionary {
+    self = [self init];
+    if (self) {
+        _parameters = dictionary[key_parameters];
     }
     return  self;
 }

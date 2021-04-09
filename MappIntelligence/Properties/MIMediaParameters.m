@@ -8,6 +8,15 @@
 
 #import "MIMediaParameters.h"
 
+#define key_name @"name"
+#define key_action @"action"
+#define key_bandwith @"bandwith"
+#define key_duration @"duration"
+#define key_position @"position"
+#define key_sound_is_muted @"soundIsMuted"
+#define key_sound_volume @"soundVolume"
+#define key_custom_categories @"customCategories"
+
 @implementation MIMediaParameters
 
 - (instancetype)initWith: (NSString *) name action: (NSString *)action position: (NSNumber *) position duration: (NSNumber *) duration {
@@ -21,6 +30,20 @@
     return  self;
 }
 
+- (instancetype)initWithDictionary:(NSDictionary*)dictionary {
+    self = [super init];
+    if (self) {
+        _name = dictionary[key_name];
+        _action = dictionary[key_action];
+        _bandwith = dictionary[key_bandwith];
+        _position = dictionary[key_position];
+        _duration = dictionary[key_duration];
+        _soundIsMuted = dictionary[key_sound_is_muted];
+        _soundVolume = dictionary[key_sound_volume];
+        _customCategories = dictionary[key_custom_categories];
+    }
+    return  self;
+}
 
 -(NSMutableArray<NSURLQueryItem*>*)asQueryItems {
     NSMutableArray<NSURLQueryItem*>* items = [[NSMutableArray alloc] init];
