@@ -337,5 +337,9 @@ static MappIntelligenceDefaultConfig *config = nil;
     [_logger logObj: @"Anonymous tracking enabled. Please note that using this option will negatively affect data quality." forDescription:kMappIntelligenceLogLevelDescriptionDebug];
 }
 
+- (NSString *_Nonnull)getEverId {
+    return [tracker generateEverId];
+}
+
 
 @end

@@ -48,8 +48,7 @@
                 _products = [_products arrayByAddingObject:[[MIProduct alloc] initWithDictionary:dict]];
             }
         }
-        
-        _status = (MIStatus)dictionary[key_status];
+        _status = [self getStatusFrom:(int)dictionary[key_status]];
         _currency = dictionary[key_currency];
         _orderID = dictionary[key_order_id];
         _orderValue = dictionary[key_order_value];
@@ -70,6 +69,24 @@
     }
     return self;
 }
+
+- (MIStatus) getStatusFrom:(int) status {
+    switch (status) {
+        case 0:
+            return noneStatus;
+            break;
+        case 1:
+            return addedToBasket;
+            break;
+        case 2:
+            return purchased;
+            break;
+        case 3:
+            return viewed;
+            break;
+        default:
+            return viewed;
+    }}
 
 - (NSMutableArray<NSURLQueryItem *> *)asQueryItems {
     

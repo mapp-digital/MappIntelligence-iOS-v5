@@ -12,7 +12,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 typedef NS_ENUM(NSInteger, MIStatus) {
-    noneStatus,
+    noneStatus = 0,
     addedToBasket,
     purchased,
     viewed

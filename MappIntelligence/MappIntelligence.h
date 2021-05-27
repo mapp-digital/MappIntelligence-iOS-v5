@@ -176,4 +176,10 @@ MappIntelligence.shared()?.optOut(with: false, andSendCurrentData: false)
  */
 - (void) enableAnonymousTracking:(NSArray<NSString *> *_Nullable) suppressParams;
 
+/**
+ @brief Method which will return ever ID
+ @return The string which represent ever ID
+ */
+- (NSString*_Nonnull) getEverId;
+
 @end

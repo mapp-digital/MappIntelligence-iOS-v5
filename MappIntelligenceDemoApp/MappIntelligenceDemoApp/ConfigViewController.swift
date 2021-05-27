@@ -10,12 +10,15 @@ import UIKit
 
 class ConfigViewController: UIViewController {
 
+    @IBOutlet weak var EverIDLabel: UILabel!
+    
     @IBOutlet weak var anonymSwitch: UISwitch!
     override func viewDidLoad() {
         super.viewDidLoad()
         if let anonymousTracking = MappIntelligence.shared()?.anonymousTracking, anonymousTracking == true {
             anonymSwitch.isOn = true
         }
+        EverIDLabel.text = "Ever ID: " + (MappIntelligence.shared()?.getEverId() ?? "there is no EverID")
     }
 
     @IBAction func optOut(_ sender: Any) {
