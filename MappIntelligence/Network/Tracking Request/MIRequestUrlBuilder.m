@@ -291,17 +291,14 @@
 
 - (NSString *)codeString:(NSString *)str {
 
-  // NSString* codeChar = @"$',/:?@=&+";
-  NSCharacterSet *csValue = [NSCharacterSet URLQueryAllowedCharacterSet];
-
-  //    NSUInteger len = [codeChar length];
-  //    unichar buffer[len+1];
-  //    [str getCharacters:buffer range:NSMakeRange(0, len)];
-  //
-  //    for(int i = 0; i < len; i++) {
-  //        [csValue stringByReplacingOccurrencesOfString:[buffer[i]
-  //        unicodeScalar] withString:<#(nonnull NSString *)#>];
-  //    }
+  NSString* codeChar = @"$',/:?@=&+";
+  NSCharacterSet *cValue = [NSCharacterSet URLQueryAllowedCharacterSet];
+    NSMutableCharacterSet *csValue = [cValue mutableCopy];
+    
+    for (NSInteger charIdx=0; charIdx<codeChar.length; charIdx++) {
+        unichar ch = [codeChar characterAtIndex:charIdx];
+        [csValue removeCharactersInString:[NSString stringWithFormat:@"%C", ch]];
+    }
 
   return [str stringByAddingPercentEncodingWithAllowedCharacters:csValue];
 }
@@ -342,4 +339,23 @@
     [anonimParams addObject:[NSURLQueryItem queryItemWithName:@"nc" value:@"1"]];
     return anonimParams;
 }
+@end
+
+
+@implementation NSString(Replacing)
+
+- (NSString *)stringByReplacingCharactersInSet:(NSCharacterSet *)charSet withString:(NSString *)aString {
+    NSMutableString *s = [NSMutableString stringWithCapacity:self.length];
+    for (NSUInteger i = 0; i < self.length; ++i) {
+        unichar c = [self characterAtIndex:i];
+        if (![charSet characterIsMember:c]) {
+            [s appendFormat:@"%C", c];
+        } else {
+            [s appendString:aString];
+        }
+    }
+    return s;
+}
+
+
 @end
