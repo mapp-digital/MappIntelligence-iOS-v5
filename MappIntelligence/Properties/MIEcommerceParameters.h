@@ -30,15 +30,12 @@ typedef NS_ENUM(NSInteger, MIStatus) {
 @property (nullable) NSNumber* returnValue;
 @property (nullable) NSNumber* cancellationValue;
 @property (nullable) NSNumber* couponValue;
-@property (nullable) NSNumber* productAdvertiseID;
-@property (nullable) NSNumber* productSoldOut;
 @property (nullable) NSString* paymentMethod;
 @property (nullable) NSString* shippingServiceProvider;
 @property (nullable) NSString* shippingSpeed;
 @property (nullable) NSNumber* shippingCost;
 @property (nullable) NSNumber* markUp;
 @property (nullable) NSString* orderStatus;
-@property (nullable) NSString* productVariant;
 
 @property (nullable) NSDictionary<NSNumber* ,NSString*>* customParameters;
 

@@ -15,6 +15,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, nullable) NSString* name;
 @property (nonatomic, nullable) NSNumber* cost;
 @property (nonatomic, nullable) NSNumber* quantity;
+@property (nullable) NSNumber* productAdvertiseID;
+@property (nullable) NSNumber* productSoldOut;
+@property (nullable) NSString* productVariant;
+
 @property (nullable) NSDictionary<NSNumber* ,NSString*>* categories;
 
 - (instancetype)initWithDictionary:(NSDictionary*)dictionary;

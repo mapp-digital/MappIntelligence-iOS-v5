@@ -16,6 +16,9 @@ class EcommerceViewController: UIViewController {
             product.categories = [1: "ProductCat1", 2: "ProductCat2"]
             product.cost = 13
             product.quantity = 4
+            product.productAdvertiseID = 56291;
+            product.productSoldOut = 34
+            product.productVariant = "variant1"
             return product
     }()
     
@@ -24,6 +27,8 @@ class EcommerceViewController: UIViewController {
             product.name = "Product2"
             product.categories = [2: "ProductCat2"]
             product.cost = 50
+            product.productAdvertiseID = 4567585757873737;
+            product.productSoldOut = 445
             return product
         
     }()
@@ -65,8 +70,6 @@ class EcommerceViewController: UIViewController {
         ecommerceParameters1.orderID = "ud679adn"
         ecommerceParameters1.orderValue = 456
         ecommerceParameters1.paymentMethod = "credit card"
-        ecommerceParameters1.productAdvertiseID = 56291
-        ecommerceParameters1.productSoldOut = 1
         ecommerceParameters1.returnValue = 3
         ecommerceParameters1.returningOrNewCustomer = "new customer"
         ecommerceParameters1.shippingCost = 35

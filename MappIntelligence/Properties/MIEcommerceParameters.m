@@ -17,15 +17,12 @@
 #define key_return_value @"returnValue"
 #define key_cancellation_value @"cancellationValue"
 #define key_coupon_value @"couponValue"
-#define key_product_advertise_id @"productAdvertiseID"
-#define key_product_sold_out @"productSoldOut"
 #define key_payment_method @"paymentMethod"
 #define key_shipping_service_provider @"shippingServiceProvider"
 #define key_shippingSpeed @"shippingSpeed"
 #define key_shipping_cost @"shippingCost"
 #define key_mark_up @"markUp"
 #define key_order_status @"orderStatus"
-#define key_product_variant @"productVariant"
 #define key_custom_parameters @"customParameters"
 
 @implementation MIEcommerceParameters
@@ -56,15 +53,12 @@
         _returnValue = dictionary[key_return_value];
         _cancellationValue = dictionary[key_cancellation_value];
         _couponValue = dictionary[key_coupon_value];
-        _productAdvertiseID = dictionary[key_product_advertise_id];
-        _productSoldOut = dictionary[key_product_sold_out];
         _paymentMethod = dictionary[key_payment_method];
         _shippingServiceProvider = dictionary[key_shipping_service_provider];
         _shippingSpeed = dictionary[key_shippingSpeed];
         _shippingCost = dictionary[key_shipping_cost];
         _markUp = dictionary[key_mark_up];
         _orderStatus = dictionary[key_order_status];
-        _productVariant = dictionary[key_product_variant];
         _customParameters = dictionary[key_custom_parameters];
     }
     return self;
@@ -159,12 +153,7 @@
     if (_couponValue) {
         [items addObject:[[NSURLQueryItem alloc] initWithName:@"cb563" value:[_couponValue stringValue] ]];
     }
-    if (_productAdvertiseID) {
-        [items addObject:[[NSURLQueryItem alloc] initWithName:@"cb675" value:[_productAdvertiseID stringValue] ]];
-    }
-    if (_productSoldOut) {
-        [items addObject:[[NSURLQueryItem alloc] initWithName:@"cb760" value:[_productSoldOut stringValue]]];
-    }
+    
     if (_paymentMethod) {
         [items addObject:[[NSURLQueryItem alloc] initWithName:@"cb761" value:_paymentMethod]];
     }
@@ -183,9 +172,6 @@
     if (_orderStatus) {
         [items addObject:[[NSURLQueryItem alloc] initWithName:@"cb766" value:_orderStatus]];
     }
-    if (_productVariant) {
-        [items addObject:[[NSURLQueryItem alloc] initWithName:@"cb767" value:_productVariant]];
-    }
     return items;
 }
 
@@ -196,12 +182,18 @@
         NSMutableArray<NSString*>* productNames = [[NSMutableArray alloc] init];
         NSMutableArray<NSString*>* productCosts = [[NSMutableArray alloc] init];
         NSMutableArray<NSString*>* productQuantities = [[NSMutableArray alloc] init];
+        NSMutableArray<NSString*>* productAdvertiseIDs = [[NSMutableArray alloc] init];
+        NSMutableArray<NSString*>* productSoldOuts = [[NSMutableArray alloc] init];
+        NSMutableArray<NSString*>* productVariants = [[NSMutableArray alloc] init];
         NSMutableArray* categoriesKeys = [[NSMutableArray alloc] init];
         
         for (MIProduct* product in _products) {
             [productNames addObject: product.name];
             [productCosts addObject: (product.cost ? [product.cost stringValue] : @"")];
             [productQuantities addObject: (product.quantity ? [product.quantity stringValue] : @"")];
+            [productAdvertiseIDs addObject:product.productAdvertiseID ? [product.productAdvertiseID stringValue] : @""];
+            [productSoldOuts addObject:product.productSoldOut ? [product.productSoldOut stringValue] : @""];
+            [productVariants addObject:product.productVariant ? product.productVariant : @""];
             [categoriesKeys addObjectsFromArray:product.categories.allKeys];
         }
         
@@ -217,7 +209,9 @@
             NSString* keyValue = [key isKindOfClass:[NSString class]] ? (NSString*)key : (NSString*)[key stringValue];
             [items addObject:[[NSURLQueryItem alloc] initWithName:[@"ca" stringByAppendingString:keyValue] value:[tempCategories componentsJoinedByString:@";"]]];
         }
-        
+        [items addObject:[[NSURLQueryItem alloc] initWithName:@"cb675" value:[productAdvertiseIDs componentsJoinedByString:@";"]]];
+        [items addObject:[[NSURLQueryItem alloc] initWithName:@"cb760" value:[productSoldOuts componentsJoinedByString:@";"]]];
+        [items addObject:[[NSURLQueryItem alloc] initWithName:@"cb767" value:[productVariants componentsJoinedByString:@";"]]];
         [items addObject:[[NSURLQueryItem alloc] initWithName:@"ba" value:[productNames componentsJoinedByString:@";"]]];
         [items addObject:[[NSURLQueryItem alloc] initWithName:@"co" value:[productCosts componentsJoinedByString:@";"]]];
         if (_status != viewed) {
