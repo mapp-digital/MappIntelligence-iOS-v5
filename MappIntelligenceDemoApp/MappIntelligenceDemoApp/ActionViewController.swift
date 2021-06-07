@@ -28,7 +28,7 @@ class ActionViewController: UIViewController {
         
         //user properties
         let userCategories = MIUserCategories()
-        userCategories.customCategories = [20:"TestSpecial&'''''Characters@test.com"]
+        userCategories.customCategories = [20:"( $', /:?@=&+ !.;()-_*"]
         userCategories.birthday = MIBirthday(day: 12, month: 1, year: 1993)
         userCategories.city = "Paris"
         userCategories.country = "France"

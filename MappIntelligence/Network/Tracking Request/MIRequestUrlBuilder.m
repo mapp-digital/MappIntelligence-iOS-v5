@@ -291,7 +291,7 @@
 
 - (NSString *)codeString:(NSString *)str {
 
-  NSString* codeChar = @"$',/:?@=&+";
+    NSString* codeChar = @"$', /:?@=&+()!;";
   NSCharacterSet *cValue = [NSCharacterSet URLQueryAllowedCharacterSet];
     NSMutableCharacterSet *csValue = [cValue mutableCopy];
     
@@ -299,8 +299,10 @@
         unichar ch = [codeChar characterAtIndex:charIdx];
         [csValue removeCharactersInString:[NSString stringWithFormat:@"%C", ch]];
     }
+    
+    NSString* codedString = [str stringByAddingPercentEncodingWithAllowedCharacters:csValue];
 
-  return [str stringByAddingPercentEncodingWithAllowedCharacters:csValue];
+    return [codedString stringByReplacingOccurrencesOfString:@"%20" withString:@"+"];
 }
 
 -(BOOL) sendCampaignData: (MICampaignParameters *) campaignProperties {

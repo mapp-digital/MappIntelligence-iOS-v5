@@ -91,12 +91,12 @@
     if (_customParameters) {
         _customParameters = [self filterCustomDict:_customParameters];
         for(NSNumber* key in _customParameters) {
-            NSMutableArray<NSString*>* customProps = [[_customParameters[key] componentsSeparatedByString:@";"] mutableCopy];
-            while ([customProps count] < [_products count]) {
-                [customProps addObject:@""];
-            }
-            NSString* propsValue = [customProps componentsJoinedByString:@";"];
-            [items addObject:[[NSURLQueryItem alloc] initWithName:[NSString stringWithFormat:@"cb%@",key] value: propsValue]];
+//            NSMutableArray<NSString*>* customProps = [[_customParameters[key] componentsSeparatedByString:@";"] mutableCopy];
+//            while ([customProps count] < [_products count]) {
+//                [customProps addObject:@""];
+//            }
+//            NSString* propsValue = [customProps componentsJoinedByString:@";"];
+            [items addObject:[[NSURLQueryItem alloc] initWithName:[NSString stringWithFormat:@"cb%@",key] value: _customParameters[key]]];
         }
     }
     
@@ -186,18 +186,21 @@
         NSMutableArray<NSString*>* productSoldOuts = [[NSMutableArray alloc] init];
         NSMutableArray<NSString*>* productVariants = [[NSMutableArray alloc] init];
         NSMutableArray* categoriesKeys = [[NSMutableArray alloc] init];
+        NSMutableArray* ecommerceParametersKeys = [[NSMutableArray alloc] init];
         
         for (MIProduct* product in _products) {
             [productNames addObject: product.name];
-            [productCosts addObject: (product.cost ? [product.cost stringValue] : @"")];
+            [productCosts addObject: (product.cost ? [NSNumberFormatter localizedStringFromNumber:product.cost numberStyle:NSNumberFormatterDecimalStyle] : @"")];
             [productQuantities addObject: (product.quantity ? [product.quantity stringValue] : @"")];
             [productAdvertiseIDs addObject:product.productAdvertiseID ? [product.productAdvertiseID stringValue] : @""];
             [productSoldOuts addObject:product.productSoldOut ? [product.productSoldOut stringValue] : @""];
             [productVariants addObject:product.productVariant ? product.productVariant : @""];
             [categoriesKeys addObjectsFromArray:product.categories.allKeys];
+            [ecommerceParametersKeys addObjectsFromArray:product.ecommerceParameters.allKeys];
         }
         
         categoriesKeys = [[[NSSet setWithArray:categoriesKeys] allObjects] copy];
+        ecommerceParametersKeys = [[[NSSet setWithArray:ecommerceParametersKeys] allObjects] copy];
         
         NSMutableArray<NSString*>* tempCategories = [[NSMutableArray alloc] init];
         for (NSNumber* key in categoriesKeys) {
@@ -209,14 +212,30 @@
             NSString* keyValue = [key isKindOfClass:[NSString class]] ? (NSString*)key : (NSString*)[key stringValue];
             [items addObject:[[NSURLQueryItem alloc] initWithName:[@"ca" stringByAppendingString:keyValue] value:[tempCategories componentsJoinedByString:@";"]]];
         }
-        [items addObject:[[NSURLQueryItem alloc] initWithName:@"cb675" value:[productAdvertiseIDs componentsJoinedByString:@";"]]];
-        [items addObject:[[NSURLQueryItem alloc] initWithName:@"cb760" value:[productSoldOuts componentsJoinedByString:@";"]]];
-        [items addObject:[[NSURLQueryItem alloc] initWithName:@"cb767" value:[productVariants componentsJoinedByString:@";"]]];
-        [items addObject:[[NSURLQueryItem alloc] initWithName:@"ba" value:[productNames componentsJoinedByString:@";"]]];
-        [items addObject:[[NSURLQueryItem alloc] initWithName:@"co" value:[productCosts componentsJoinedByString:@";"]]];
-        if (_status != viewed) {
-            [items addObject:[[NSURLQueryItem alloc] initWithName:@"qn" value:[productQuantities componentsJoinedByString:@";"]]];
+        
+        [tempCategories removeAllObjects];
+        for (NSNumber* key in ecommerceParametersKeys) {
+            [tempCategories removeAllObjects];
+            for (MIProduct* product in _products) {
+                NSString* tmpObject = [[[product ecommerceParameters] allKeys] containsObject:key] ? product.ecommerceParameters[key] : @"";
+                [tempCategories addObject: tmpObject];
+            }
+            NSString* keyValue = [key isKindOfClass:[NSString class]] ? (NSString*)key : (NSString*)[key stringValue];
+            [items addObject:[[NSURLQueryItem alloc] initWithName:[@"cb" stringByAppendingString:keyValue] value:[tempCategories componentsJoinedByString:@";"]]];
         }
+        
+        if (![self isEmpty:productAdvertiseIDs])
+            [items addObject:[[NSURLQueryItem alloc] initWithName:@"cb675" value:[productAdvertiseIDs componentsJoinedByString:@";"]]];
+        if (![self isEmpty:productSoldOuts])
+            [items addObject:[[NSURLQueryItem alloc] initWithName:@"cb760" value:[productSoldOuts componentsJoinedByString:@";"]]];
+        if (![self isEmpty:productVariants])
+            [items addObject:[[NSURLQueryItem alloc] initWithName:@"cb767" value:[productVariants componentsJoinedByString:@";"]]];
+        if (![self isEmpty: productNames])
+            [items addObject:[[NSURLQueryItem alloc] initWithName:@"ba" value:[productNames componentsJoinedByString:@";"]]];
+        if (![self isEmpty:productCosts])
+            [items addObject:[[NSURLQueryItem alloc] initWithName:@"co" value:[productCosts componentsJoinedByString:@";"]]];
+        if ((_status != viewed) && ![self isEmpty:productQuantities])
+            [items addObject:[[NSURLQueryItem alloc] initWithName:@"qn" value:[productQuantities componentsJoinedByString:@";"]]];
     }
     
     return items;
@@ -231,6 +250,15 @@
         }
     }
     return result;
+}
+
+- (BOOL) isEmpty: (NSArray<NSString*>*) objects {
+    for (NSString* object in objects) {
+        if (![object isEqualToString:@""]) {
+            return false;
+        }
+    }
+    return true;
 }
 
 @end

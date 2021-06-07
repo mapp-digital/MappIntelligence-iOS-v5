@@ -20,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable) NSString* productVariant;
 
 @property (nullable) NSDictionary<NSNumber* ,NSString*>* categories;
+@property (nullable) NSDictionary<NSNumber* ,NSString*>* ecommerceParameters;
 
 - (instancetype)initWithDictionary:(NSDictionary*)dictionary;
 @end

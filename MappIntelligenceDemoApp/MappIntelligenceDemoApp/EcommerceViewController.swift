@@ -33,6 +33,38 @@ class EcommerceViewController: UIViewController {
         
     }()
     
+    let product3: MIProduct = {
+        let product = MIProduct()
+            product.name = "ABC-123"
+            product.cost = 99.90
+            product.quantity = 2
+            product.productSoldOut = false
+            product.productVariant = "green"
+            product.ecommerceParameters = [1: "product1 param 1"]
+            product.categories = [1: "tops", 2 : "noname"]
+            return product
+        
+    }()
+    
+    let product4: MIProduct = {
+        let product = MIProduct()
+            product.name = "ABC-456"
+            product.cost = 33.33
+            product.quantity = 2
+            product.productSoldOut = false
+            product.productVariant = "blue"
+            product.ecommerceParameters = [1: "product2 param 1"]
+            product.categories = [1: "t-shirt", 2 : "gucci"]
+            return product
+        
+    }()
+    
+    let ecommerceParameters1: MIEcommerceParameters = {
+        let ecommerceParameter = MIEcommerceParameters()
+        ecommerceParameter.customParameters = [2:"goal param 2"]
+        return ecommerceParameter
+    }()
+    
     let ecommerceParameters: MIEcommerceParameters = {
         MIEcommerceParameters(customParameters: [1 : "ProductParam1;ProductParam1", 2 : "ProductParam2"])
     }()
@@ -123,7 +155,15 @@ class EcommerceViewController: UIViewController {
         let pageEvent = MIPageViewEvent(name: "TrackProductConfirmed")
         pageEvent.ecommerceParameters = ecommerceParameters
         
-        MappIntelligence.shared()?.trackPage(pageEvent)
+        //MappIntelligence.shared()?.trackPage(pageEvent)
+        
+        let pageEvent1 = MIPageViewEvent(name: "pageName")
+        pageEvent1.pageParameters = MIPageParameters(pageParams: [5: "parameter value 5", 777: "this is my page type"], pageCategory: nil, search: nil)
+        pageEvent1.ecommerceParameters = ecommerceParameters1
+        ecommerceParameters1.products = [product3, product4]
+        ecommerceParameters1.status = .addedToBasket
+        MappIntelligence.shared()?.trackPage(pageEvent1)
+        
     }
     
     func calculateOrderValue() -> NSNumber {
