@@ -299,10 +299,8 @@
         unichar ch = [codeChar characterAtIndex:charIdx];
         [csValue removeCharactersInString:[NSString stringWithFormat:@"%C", ch]];
     }
-    
-    NSString* codedString = [str stringByAddingPercentEncodingWithAllowedCharacters:csValue];
 
-    return [codedString stringByReplacingOccurrencesOfString:@"%20" withString:@"+"];
+    return [str stringByAddingPercentEncodingWithAllowedCharacters:csValue];
 }
 
 -(BOOL) sendCampaignData: (MICampaignParameters *) campaignProperties {
