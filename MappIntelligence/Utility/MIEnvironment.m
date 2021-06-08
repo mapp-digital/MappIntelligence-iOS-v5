@@ -45,7 +45,12 @@ static NSString *const buildVersonKey = @"kBuildVersion";
 }
 
 + (NSString *)operatingSystemVersionString {
-  return [[[NSProcessInfo alloc] init] operatingSystemVersionString];
+#if TARGET_OS_WATCH
+    return [NSString stringWithFormat:@"%@ %@", [[WKInterfaceDevice currentDevice] systemName], [[WKInterfaceDevice currentDevice] systemVersion]];
+#else
+    return [NSString stringWithFormat:@"%@ %@", [[UIDevice currentDevice] systemName], [[UIDevice currentDevice] systemVersion]];
+#endif
+  //return [[[NSProcessInfo alloc] init] operatingSystemVersionString];
 }
 
 + (NSString *)buildVersion {

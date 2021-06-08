@@ -142,15 +142,14 @@ static NSString *userAgent;
 }
 
 - (NSString*)generateUserAgent {
-//  MIEnvironment *env = [[MIEnviroment alloc] init];
   NSString *properties = [MIEnvironment.operatingSystemName
       stringByAppendingFormat:@" %@; %@; %@", MIEnvironment.operatingSystemVersionString,
                             MIEnvironment.deviceModelString,
-                              NSLocale.currentLocale.localeIdentifier];
-
+                          [[NSLocale currentLocale] localeIdentifier]];
   userAgent =
       [[NSString alloc] initWithFormat:@"Tracking Library %@ (%@))",
                                        MappIntelligence.version, properties];
+    NSLog(@"%@", userAgent);
     return userAgent;
 }
 
