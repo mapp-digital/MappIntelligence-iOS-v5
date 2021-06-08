@@ -92,8 +92,8 @@ class EcommerceViewController: UIViewController {
         let ecommerceParameters1: MIEcommerceParameters =
             MIEcommerceParameters(customParameters: [1 : "ProductParam1", 2 : "ProductParam2"])
         
-        ecommerceParameters1.products = [product1]
-        ecommerceParameters1.status = .purchased
+        ecommerceParameters1.products = [product1, product2]
+        ecommerceParameters1.status = .viewed
         ecommerceParameters1.cancellationValue = 2
         ecommerceParameters1.couponValue = 33
         ecommerceParameters1.currency = "EUR"
@@ -111,9 +111,6 @@ class EcommerceViewController: UIViewController {
         let pageEvent = MIPageViewEvent(name: "TrackProductView")
         pageEvent.ecommerceParameters = ecommerceParameters1
         
-        MappIntelligence.shared()?.trackPage(pageEvent)
-        
-        ecommerceParameters1.products = [product2]
         MappIntelligence.shared()?.trackPage(pageEvent)
     }
     

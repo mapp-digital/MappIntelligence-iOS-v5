@@ -148,8 +148,9 @@ static NSString *userAgent;
                           [[NSLocale currentLocale] localeIdentifier]];
   userAgent =
       [[NSString alloc] initWithFormat:@"Tracking Library %@ (%@))",
-                                       MappIntelligence.version, properties];
-    NSLog(@"%@", userAgent);
+       MappIntelligence.version, properties];
+    
+    [[MappIntelligenceLogger shared] logObj:[NSString stringWithFormat:@"%@", userAgent] forDescription:kMappIntelligenceLogLevelDescriptionDebug];
     return userAgent;
 }
 
