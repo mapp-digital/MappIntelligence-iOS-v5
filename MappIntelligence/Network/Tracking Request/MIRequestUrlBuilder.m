@@ -35,7 +35,6 @@
 
 - (NSURL *)buildBaseUrlwithServer:(NSURL *)serverUrl
                         andWithId:(NSString *)mappIntelligenceId;
-- (NSString *)codeString:(NSString *)str;
 - (NSURL *)createURLFromParametersWith:(NSArray<NSURLQueryItem *> *)parameters;
 
 @end

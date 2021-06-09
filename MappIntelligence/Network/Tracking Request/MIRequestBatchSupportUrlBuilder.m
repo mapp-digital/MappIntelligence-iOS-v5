@@ -13,6 +13,7 @@
 #import "MIRequestData.h"
 #import "MITrackerRequest.h"
 #import "MappIntelligenceLogger.h"
+#import "MIRequestUrlBuilder.h"
 
 @interface MIRequestBatchSupportUrlBuilder ()
 
@@ -31,7 +32,7 @@
         //initialisation of base url
         MIDefaultTracker* tracker = [MIDefaultTracker sharedInstance];
         NSString *eid = [[MIDefaultTracker sharedInstance] anonymousTracking] ? @"nc=1&": [NSString stringWithFormat:@"eid=%@&", [tracker generateEverId]];
-        _baseUrl = [[NSString alloc] initWithFormat:@"%@/%@/batch?%@X-WT-UA=%@", [MappIntelligence getUrl], [MappIntelligence getId],  eid, [[tracker generateUserAgent] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]] ];
+        _baseUrl = [[NSString alloc] initWithFormat:@"%@/%@/batch?%@X-WT-UA=%@", [MappIntelligence getUrl], [MappIntelligence getId],  eid, [[[[MIRequestUrlBuilder alloc] init] codeString:[tracker generateUserAgent]] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]] ];
         _dbManager = [MIDatabaseManager shared];
         _loger = [MappIntelligenceLogger shared];
         
