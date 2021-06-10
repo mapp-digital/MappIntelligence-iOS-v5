@@ -10,8 +10,8 @@
 
 
 typedef NS_ENUM(NSInteger, MICampaignAction) {
-    click,
-    view
+    click = 1,
+    view = 2
 };
 
 NS_ASSUME_NONNULL_BEGIN

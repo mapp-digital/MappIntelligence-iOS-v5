@@ -13,9 +13,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 typedef NS_ENUM(NSInteger, MIStatus) {
     noneStatus = 0,
-    addedToBasket,
-    purchased,
-    viewed
+    addedToBasket = 1,
+    purchased = 2,
+    viewed = 3
 };
 
 @interface MIEcommerceParameters : NSObject

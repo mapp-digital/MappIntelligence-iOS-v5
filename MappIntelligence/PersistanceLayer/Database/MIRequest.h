@@ -10,7 +10,7 @@
 #import "MIParameter.h"
 
 typedef NS_ENUM(NSInteger, REQUEST_STATUS) {
-    ACTIVE,
+    ACTIVE = 1,
     SENT,
     FAILED
 };

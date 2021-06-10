@@ -17,9 +17,9 @@ typedef struct MIBirthday {
 } MIBirthday;
 
 typedef NS_ENUM(NSInteger, MIGender) {
-    unknown,
-    male,
-    female
+    unknown = 1,
+    male = 2,
+    female = 3
 };
 
 @interface MIUserCategories : NSObject
