@@ -7,6 +7,7 @@
 //
 
 #import "MIEcommerceParameters.h"
+#import "MappIntelligenceLogger.h"
 
 #define key_products @"products"
 #define key_status @"status"
@@ -25,12 +26,17 @@
 #define key_order_status @"orderStatus"
 #define key_custom_parameters @"customParameters"
 
+@interface MIEcommerceParameters()
+@property NSNumberFormatter* formatter;
+@end
+
 @implementation MIEcommerceParameters
 
 - (instancetype)initWithCustomParameters:(NSDictionary<NSNumber *,NSString *> *)parameters {
     self = [super init];
     if (self) {
         _customParameters = parameters;
+        _formatter = [[MappIntelligenceLogger shared] formatter];
     }
     return self;
 }
@@ -38,6 +44,7 @@
 - (instancetype)initWithDictionary:(NSDictionary*)dictionary {
     self = [super init];
     if (self) {
+        _formatter = [[MappIntelligenceLogger shared] formatter];
         NSArray<NSDictionary*>* products = dictionary[key_products];
         if (products && [products count] > 0) {
             _products = [NSMutableArray new];
@@ -91,11 +98,6 @@
     if (_customParameters) {
         _customParameters = [self filterCustomDict:_customParameters];
         for(NSNumber* key in _customParameters) {
-//            NSMutableArray<NSString*>* customProps = [[_customParameters[key] componentsSeparatedByString:@";"] mutableCopy];
-//            while ([customProps count] < [_products count]) {
-//                [customProps addObject:@""];
-//            }
-//            NSString* propsValue = [customProps componentsJoinedByString:@";"];
             [items addObject:[[NSURLQueryItem alloc] initWithName:[NSString stringWithFormat:@"cb%@",key] value: _customParameters[key]]];
         }
     }
@@ -107,7 +109,7 @@
         [items addObject:[[NSURLQueryItem alloc] initWithName:@"oi" value:_orderID]];
     }
     if (_orderValue) {
-        [items addObject:[[NSURLQueryItem alloc] initWithName:@"ov" value:[_orderValue stringValue]]];
+        [items addObject:[[NSURLQueryItem alloc] initWithName:@"ov" value:[_formatter stringFromNumber:_orderValue]]];
     }
     if (_status) {
         [items addObject:[[NSURLQueryItem alloc] initWithName:@"st" value:[self getStatus]]];
@@ -145,13 +147,13 @@
         [items addObject:[[NSURLQueryItem alloc] initWithName:@"cb560" value:_returningOrNewCustomer]];
     }
     if (_returnValue) {
-        [items addObject:[[NSURLQueryItem alloc] initWithName:@"cb561" value:[_returnValue stringValue]]];
+        [items addObject:[[NSURLQueryItem alloc] initWithName:@"cb561" value:[_formatter stringFromNumber:_returnValue]]];
     }
     if (_cancellationValue) {
-        [items addObject:[[NSURLQueryItem alloc] initWithName:@"cb562" value:[_cancellationValue stringValue] ]];
+        [items addObject:[[NSURLQueryItem alloc] initWithName:@"cb562" value:[_formatter stringFromNumber:_cancellationValue]]];
     }
     if (_couponValue) {
-        [items addObject:[[NSURLQueryItem alloc] initWithName:@"cb563" value:[_couponValue stringValue] ]];
+        [items addObject:[[NSURLQueryItem alloc] initWithName:@"cb563" value:[_formatter stringFromNumber:_couponValue]]];
     }
     
     if (_paymentMethod) {
@@ -164,10 +166,10 @@
         [items addObject:[[NSURLQueryItem alloc] initWithName:@"cb763" value:_shippingSpeed]];
     }
     if (_shippingCost) {
-        [items addObject:[[NSURLQueryItem alloc] initWithName:@"cb764" value:[_shippingCost stringValue]]];
+        [items addObject:[[NSURLQueryItem alloc] initWithName:@"cb764" value:[_formatter stringFromNumber:_shippingCost]]];
     }
     if (_markUp) {
-        [items addObject:[[NSURLQueryItem alloc] initWithName:@"cb765" value:[_markUp stringValue]]];
+        [items addObject:[[NSURLQueryItem alloc] initWithName:@"cb765" value:[_formatter stringFromNumber:_markUp]]];
     }
     if (_orderStatus) {
         [items addObject:[[NSURLQueryItem alloc] initWithName:@"cb766" value:_orderStatus]];
@@ -190,7 +192,7 @@
         
         for (MIProduct* product in _products) {
             [productNames addObject: product.name];
-            [productCosts addObject: (product.cost ? [NSNumberFormatter localizedStringFromNumber:product.cost numberStyle:NSNumberFormatterDecimalStyle] : @"")];
+            [productCosts addObject: (product.cost ? [_formatter stringFromNumber:product.cost] : @"")];
             [productQuantities addObject: (product.quantity ? [product.quantity stringValue] : @"")];
             [productAdvertiseIDs addObject:product.productAdvertiseID ? [product.productAdvertiseID stringValue] : @""];
             [productSoldOuts addObject:product.productSoldOut ? [product.productSoldOut stringValue] : @""];

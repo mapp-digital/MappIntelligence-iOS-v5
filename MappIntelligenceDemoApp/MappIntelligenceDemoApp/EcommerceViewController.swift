@@ -95,16 +95,16 @@ class EcommerceViewController: UIViewController {
         ecommerceParameters1.products = [product1, product2]
         ecommerceParameters1.status = .viewed
         ecommerceParameters1.cancellationValue = 2
-        ecommerceParameters1.couponValue = 33
+        ecommerceParameters1.couponValue = 33.899
         ecommerceParameters1.currency = "EUR"
         ecommerceParameters1.markUp = 1
         ecommerceParameters1.orderStatus = "order received"
         ecommerceParameters1.orderID = "ud679adn"
-        ecommerceParameters1.orderValue = 456
+        ecommerceParameters1.orderValue = 456.99
         ecommerceParameters1.paymentMethod = "credit card"
-        ecommerceParameters1.returnValue = 3
+        ecommerceParameters1.returnValue = 3.9
         ecommerceParameters1.returningOrNewCustomer = "new customer"
-        ecommerceParameters1.shippingCost = 35
+        ecommerceParameters1.shippingCost = 35.890
         ecommerceParameters1.shippingSpeed = "highest"
         ecommerceParameters1.shippingServiceProvider = "DHL"
         

@@ -120,7 +120,7 @@
     }
     if (_gender) {
         items = [self removeObjectWith:@"uc706" from:items];
-        [items addObject:[[NSURLQueryItem alloc] initWithName:@"uc706" value: [NSString stringWithFormat:@"%ld", (long)_gender]]];
+        [items addObject:[[NSURLQueryItem alloc] initWithName:@"uc706" value: [NSString stringWithFormat:@"%ld", (long)_gender - 1]]];
     }
     if (_customerId) {
         [items addObject:[[NSURLQueryItem alloc] initWithName:@"cd" value:_customerId]];

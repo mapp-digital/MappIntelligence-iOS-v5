@@ -43,7 +43,7 @@
     }
     
     if (_action) {
-        NSString *actionString = [NSString stringWithFormat:@"%@", _action == 0 ? @"c": @"v"];
+        NSString *actionString = [NSString stringWithFormat:@"%@", _action == click ? @"c": @"v"];
         [items addObject:[[NSURLQueryItem alloc] initWithName:@"mca" value: actionString]];
     } else {
         [items addObject:[[NSURLQueryItem alloc] initWithName:@"mca" value:@"c"]];

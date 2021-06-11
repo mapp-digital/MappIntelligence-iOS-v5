@@ -149,8 +149,6 @@ static NSString *userAgent;
   userAgent =
       [[NSString alloc] initWithFormat:@"Tracking Library %@ (%@))",
        MappIntelligence.version, properties];
-    
-    [[MappIntelligenceLogger shared] logObj:[NSString stringWithFormat:@"%@", userAgent] forDescription:kMappIntelligenceLogLevelDescriptionDebug];
     return userAgent;
 }
 

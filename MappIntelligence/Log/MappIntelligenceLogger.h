@@ -30,6 +30,7 @@ typedef NS_ENUM(NSInteger, MappIntelligenceLogLevelDescription) {
 
 @property(nonatomic) MappIntelligenceLogLevelDescription
     logLevel; // defualt level is kMappIntelligenceLogLevelDescriptionDebug
+@property (nonatomic, strong) NSNumberFormatter *formatter;
 
 + (instancetype)shared;
 

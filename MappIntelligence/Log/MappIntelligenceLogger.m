@@ -19,6 +19,11 @@
   if (self) {
 
     self.logLevel = kMappIntelligenceLogLevelDescriptionNone;
+    _formatter = [[NSNumberFormatter alloc] init];
+    [_formatter setFormatterBehavior:NSNumberFormatterBehavior10_4];
+    [_formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    [_formatter setGroupingSeparator:@""];
+    [_formatter setDecimalSeparator:@"."];
   }
 
   return self;

@@ -18,7 +18,7 @@ class CampaignViewController: UIViewController {
         let campaignProperties = MICampaignParameters("email.newsletter.nov2020.thursday")
         campaignProperties.mediaCode = "abc"
         campaignProperties.oncePerSession = true
-        campaignProperties.action = .view
+        campaignProperties.action = .click
         campaignProperties.customParameters = [12: "camParam1"]
         
         let event = MIPageViewEvent(name: "TestCampaign")
