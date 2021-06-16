@@ -64,8 +64,9 @@ class PageViewController: UIViewController {
         
         let cparams:[String:String] = ["cp10":"cp10Override",
                                        "cg10": "test"]
-        
-        
+
+
         MappIntelligence.shared()?.trackCustomPage("Test", trackingParams: cparams)
+        
     }
 }

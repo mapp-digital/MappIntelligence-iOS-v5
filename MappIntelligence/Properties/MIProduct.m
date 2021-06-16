@@ -15,6 +15,7 @@
 #define key_product_advertise_id @"productAdvertiseID"
 #define key_product_sold_out @"productSoldOut"
 #define key_categories @"categories"
+#define key_ecommerceParameters @"ecommerceParameters"
 
 @implementation MIProduct
 
@@ -28,6 +29,7 @@
         _productAdvertiseID = dictionary[key_product_advertise_id];
         _productSoldOut = dictionary[key_product_sold_out];
         _categories = dictionary[key_categories];
+        _ecommerceParameters = dictionary[key_ecommerceParameters];
     }
     return self;
 

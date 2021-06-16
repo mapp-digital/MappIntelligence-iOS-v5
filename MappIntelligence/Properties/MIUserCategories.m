@@ -27,7 +27,7 @@
 #define key_street @"street"
 #define key_street_number @"streetNumber"
 #define key_zip_code @"zipCode"
-#define key_custom_categories @"ustomCategories"
+#define key_custom_categories @"customCategories"
 
 @implementation MIUserCategories
 
