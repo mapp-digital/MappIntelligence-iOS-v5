@@ -331,11 +331,11 @@ static MappIntelligenceDefaultConfig *config = nil;
     }
 }
 
-- (void)setSendAppVerisonToEveryRequest:(BOOL)sendAppVerisonToEveryRequest {
+- (void)setSendAppVersionInEveryRequest:(BOOL)sendAppVerisonToEveryRequest {
     [config setSendAppVersionToEveryRequest:sendAppVerisonToEveryRequest];
 }
 
-- (BOOL)sendAppVerisonToEveryRequest {
+- (BOOL)sendAppVersionInEveryRequest {
     return [config sendAppVersionToEveryRequest];
 }
 

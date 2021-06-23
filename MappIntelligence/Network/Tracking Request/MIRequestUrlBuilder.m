@@ -204,7 +204,7 @@
         }
     }
     
-    if ([[MappIntelligence shared] sendAppVerisonToEveryRequest]) {
+    if ([[MappIntelligence shared] sendAppVersionInEveryRequest]) {
         if (MIEnvironment.appVersion) {
             [parametrs addObject:[NSURLQueryItem queryItemWithName:@"cs804" value: MIEnvironment.appVersion]];
         }
