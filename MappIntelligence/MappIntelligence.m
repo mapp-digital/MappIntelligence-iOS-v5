@@ -335,6 +335,10 @@ static MappIntelligenceDefaultConfig *config = nil;
     [config setSendAppVerisonToEveryRequest:sendAppVerisonToEveryRequest];
 }
 
+- (BOOL)sendAppVerisonToEveryRequest {
+    return [config sendAppVerisonToEveryRequest];
+}
+
 -(void) enableAnonymousTracking:(NSArray<NSString *> *_Nullable) suppressParams {
     [[MIDefaultTracker sharedInstance] setAnonymousTracking:true];
     [[MIDefaultTracker sharedInstance] setSuppressedParameters:suppressParams];
