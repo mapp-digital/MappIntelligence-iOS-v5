@@ -39,6 +39,7 @@ typedef NS_ENUM(NSInteger, logLevel) {
 @property (nonatomic, readwrite) NSInteger requestPerQueue;
 @property (nonatomic, readwrite) BOOL shouldMigrate;
 @property (nonatomic, readwrite) BOOL anonymousTracking;
+@property (nonatomic, readwrite) BOOL sendAppVerisonToEveryRequest;
 
 /**
  MappIntelligence instance

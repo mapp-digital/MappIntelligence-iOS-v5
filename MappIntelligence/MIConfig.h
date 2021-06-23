@@ -22,5 +22,6 @@
 @property BOOL batchSupport;
 @property BOOL viewControllerAutoTracking;
 @property BOOL optOut;
+@property BOOL sendAppVerisonToEveryRequest;
 
 @end

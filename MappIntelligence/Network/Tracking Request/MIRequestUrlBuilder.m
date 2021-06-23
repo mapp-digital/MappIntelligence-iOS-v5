@@ -204,10 +204,17 @@
         }
     }
     
-    if (properties.isFirstEventOfSession) {
+    if ([[MappIntelligence shared] sendAppVerisonToEveryRequest]) {
         if (MIEnvironment.appVersion) {
             [parametrs addObject:[NSURLQueryItem queryItemWithName:@"cs804" value: MIEnvironment.appVersion]];
         }
+    } else if (properties.isFirstEventOfSession) {
+        if (MIEnvironment.appVersion) {
+            [parametrs addObject:[NSURLQueryItem queryItemWithName:@"cs804" value: MIEnvironment.appVersion]];
+        }
+    }
+    
+    if (properties.isFirstEventOfSession) {
         [parametrs addObject:[NSURLQueryItem queryItemWithName:@"cs805" value: MIEnvironment.buildVersion]];
         [parametrs addObject:[NSURLQueryItem queryItemWithName:@"cs821" value: properties.isFirstEventOfApp ? @"1": @"0"]];
     }
