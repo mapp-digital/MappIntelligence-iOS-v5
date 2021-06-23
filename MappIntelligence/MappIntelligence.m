@@ -114,7 +114,7 @@ static MappIntelligenceDefaultConfig *config = nil;
   [config setBatchSupport:batchSupport];
   [config setViewControllerAutoTracking:viewControllerAutoTracking];
   [config setRequestPerQueue:numberOfRequestInQueue];
-  [config setSendAppVerisonToEveryRequest:NO];
+  [config setSendAppVersionToEveryRequest:NO];
   [config logConfig];
 
   tracker = [MIDefaultTracker sharedInstance];
@@ -332,11 +332,11 @@ static MappIntelligenceDefaultConfig *config = nil;
 }
 
 - (void)setSendAppVerisonToEveryRequest:(BOOL)sendAppVerisonToEveryRequest {
-    [config setSendAppVerisonToEveryRequest:sendAppVerisonToEveryRequest];
+    [config setSendAppVersionToEveryRequest:sendAppVerisonToEveryRequest];
 }
 
 - (BOOL)sendAppVerisonToEveryRequest {
-    return [config sendAppVerisonToEveryRequest];
+    return [config sendAppVersionToEveryRequest];
 }
 
 -(void) enableAnonymousTracking:(NSArray<NSString *> *_Nullable) suppressParams {

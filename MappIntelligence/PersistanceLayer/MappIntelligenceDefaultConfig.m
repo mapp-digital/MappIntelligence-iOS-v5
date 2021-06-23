@@ -273,6 +273,6 @@ NSInteger const batchSupportSizeDefault = 5000;
 
     return NO;
 }
-@synthesize sendAppVerisonToEveryRequest;
+@synthesize sendAppVersionToEveryRequest;
 
 @end
