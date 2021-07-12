@@ -64,6 +64,10 @@
     [notificationCenter addObserverForName:UIApplicationWillTerminateNotification object:NULL queue:NULL usingBlock:^(NSNotification * _Nonnull note) {
         //[self willResignActive];
     }];
+    
+    [notificationCenter addObserverForName:UIApplicationDidEnterBackgroundNotification object:NULL queue:NULL usingBlock:^(NSNotification * _Nonnull note) {
+        [self willEnterBckground];
+    }];
 #else
     _applicationWillEnterForegroundObserver = [notificationCenter addObserverForName:@"UIApplicationWillEnterForegroundNotification" object:NULL queue:NULL usingBlock:^(NSNotification * _Nonnull note) {
         
@@ -105,6 +109,15 @@
 
 -(void)willTerminate {
     
+}
+
+-(void)willEnterBckground {
+    NSLog(@"enter background and send all requests");
+    [_tracker sendBatchForRequestWithCompletionHandler:^(NSError * _Nullable error) {
+        if (error) {
+            NSLog(@"the requests are not sent!!!");
+        }
+    }];
 }
 
 @end

@@ -98,6 +98,7 @@
   [urlSessionConfiguration setURLCredentialStorage:NULL];
   [urlSessionConfiguration
       setRequestCachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData];
+  [urlSessionConfiguration setShouldUseExtendedBackgroundIdleMode:YES];
 
   _urlSession = [NSURLSession sessionWithConfiguration:urlSessionConfiguration];
   [_urlSession setSessionDescription:@"Mapp Intelligence Tracking"];
