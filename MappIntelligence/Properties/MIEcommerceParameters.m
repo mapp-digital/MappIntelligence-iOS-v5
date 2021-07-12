@@ -91,6 +91,8 @@
 
 - (NSMutableArray<NSURLQueryItem *> *)asQueryItems {
     
+    _formatter = [[MappIntelligenceLogger shared] formatter];
+    
     NSMutableArray<NSURLQueryItem*>* items = [[NSMutableArray alloc] init];
     
     [items addObjectsFromArray:[self getProductsAsQueryItems]];
