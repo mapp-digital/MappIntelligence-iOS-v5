@@ -126,7 +126,7 @@ static MappIntelligenceDefaultConfig *config = nil;
         }
         if (config.batchSupport == YES) {
             //TODO: add timeout to this methods
-            [self->tracker sendBatchForRequestWithCompletionHandler:^(NSError * _Nullable error) {
+            [self->tracker sendBatchForRequestInBackground: NO withCompletionHandler:^(NSError * _Nullable error) {
                 //error is already obtain at one level lower
             }];
         } else {
@@ -141,7 +141,7 @@ static MappIntelligenceDefaultConfig *config = nil;
 - (void)initTimerForRequestsSendout {
     _timerForSendRequests = [NSTimer scheduledTimerWithTimeInterval: [config requestsInterval] repeats:YES block:^(NSTimer * _Nonnull timer) {
         if (config.batchSupport == YES) {
-            [self->tracker sendBatchForRequestWithCompletionHandler:^(NSError * _Nullable error) {
+            [self->tracker sendBatchForRequestInBackground: NO withCompletionHandler:^(NSError * _Nullable error) {
                 //error is already obtain in one level lower
             }];
         } else {
@@ -229,7 +229,7 @@ static MappIntelligenceDefaultConfig *config = nil;
     if (value) {
         //send data and remove it from DB
         [_logger logObj: @"You are opted-out. Current data is sent to trackserver." forDescription:kMappIntelligenceLogLevelDescriptionDebug];
-        [tracker sendBatchForRequestWithCompletionHandler:^(NSError * _Nullable error) {
+        [tracker sendBatchForRequestInBackground: NO withCompletionHandler:^(NSError * _Nullable error) {
             //error is already obtain in one level lower
         }];
     } else {

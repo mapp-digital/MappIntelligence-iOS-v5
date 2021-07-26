@@ -40,7 +40,7 @@
 - (void)reset;
 - (void)initializeTracking;
 - (void)sendRequestFromDatabaseWithCompletionHandler: (void (^_Nullable)(NSError * _Nullable error))handler;
-- (void)sendBatchForRequestWithCompletionHandler: (void (^_Nullable)(NSError * _Nullable error))handler;
+- (void)sendBatchForRequestInBackground: (BOOL)background withCompletionHandler: (void (^_Nullable)(NSError * _Nullable error))handler;
 - (void)removeAllRequestsFromDBWithCompletionHandler: (void (^_Nullable)(NSError * _Nullable error))handler;
 - (void)migrateData;
 @end

@@ -13,7 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface MIRequestBatchSupportUrlBuilder : NSObject
 
 @property NSString* baseUrl;
--(void)sendBatchForRequestsWithCompletition:(void (^)(NSError *error))handler;
+-(void)sendBatchForRequestsInBackground: (BOOL) background withCompletition:(void (^)(NSError *error))handler;
 
 @end
 

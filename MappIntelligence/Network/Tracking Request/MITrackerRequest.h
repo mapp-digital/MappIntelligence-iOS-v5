@@ -12,7 +12,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MITrackerRequest : NSObject
+@interface MITrackerRequest : NSObject <NSURLSessionDataDelegate>
 
 @property MITrackingEvent *event;
 @property MIProperties *properties;
@@ -22,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)sendRequestWith:(NSURL *)url
         andCompletition:(void (^)(NSError *error))handler;
 - (void)sendRequestWith:(NSURL *)url andBody:(NSString*)body andCompletition:(void (^)(NSError *error))handler;
+- (void)sendBackgroundRequestWith:(NSURL *)url andBody:(NSString*)body;
 
 @end
 

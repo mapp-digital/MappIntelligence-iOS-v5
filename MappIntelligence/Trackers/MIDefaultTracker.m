@@ -181,9 +181,9 @@ static NSString *userAgent;
     //TODO: handle deletation error
     handler(nil);
 }
-- (void)sendBatchForRequestWithCompletionHandler:(void (^)(NSError * _Nullable))handler {
+- (void)sendBatchForRequestInBackground: (BOOL)background withCompletionHandler:(void (^)(NSError * _Nullable))handler {
         _requestBatchSupportUrlBuilder = [[MIRequestBatchSupportUrlBuilder alloc] init];
-    [_requestBatchSupportUrlBuilder sendBatchForRequestsWithCompletition:^(NSError * _Nonnull error) {
+    [_requestBatchSupportUrlBuilder sendBatchForRequestsInBackground:background withCompletition:^(NSError * _Nonnull error) {
         if (error) {
             [self->_logger logObj:@"An error occurred while sending batch requests to Mapp Intelligence." forDescription:kMappIntelligenceLogLevelDescriptionDebug];
             

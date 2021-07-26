@@ -40,7 +40,7 @@
     return self;
 }
 
--(void)sendBatchForRequestsWithCompletition:(void (^)(NSError *error))handler {
+-(void)sendBatchForRequestsInBackground: (BOOL) background withCompletition:(void (^)(NSError *error))handler {
     [_dbManager fetchAllRequestsFromInterval:[[MappIntelligence shared] batchSupportSize] andWithCompletionHandler:^(NSError * _Nonnull error, id  _Nullable data) {
         if (error) {
             handler(error);
@@ -49,21 +49,27 @@
         NSArray<NSString *>* bodies = [self createBatchWith:dt];
         MITrackerRequest *request = [[MITrackerRequest alloc] init];
         for (NSString *body in bodies) {
-          [request
-              sendRequestWith:[[NSURL alloc] initWithString:self->_baseUrl]
-                      andBody:body
-              andCompletition:^(NSError *_Nonnull error) {
-                if (!error) {
-                  ;
-                  [self->_loger
-                              logObj:[[NSString alloc]
-                                         initWithFormat:
-                                             @"Batch request sent successfully"]
-                      forDescription:kMappIntelligenceLogLevelDescriptionDebug];
-                  [self->_dbManager removeRequestsDB:[self getRequestIDs:dt]];
-                }
-              handler(error);
-              }];
+            if (background) {
+                [request
+                 sendBackgroundRequestWith:[[NSURL alloc] initWithString:self->_baseUrl]
+                 andBody:body];
+            } else {
+                [request
+                    sendRequestWith:[[NSURL alloc] initWithString:self->_baseUrl]
+                            andBody:body
+                    andCompletition:^(NSError *_Nonnull error) {
+                      if (!error) {
+                        ;
+                        [self->_loger
+                                    logObj:[[NSString alloc]
+                                               initWithFormat:
+                                                   @"Batch request sent successfully"]
+                            forDescription:kMappIntelligenceLogLevelDescriptionDebug];
+                        [self->_dbManager removeRequestsDB:[self getRequestIDs:dt]];
+                      }
+                    handler(error);
+                    }];
+            }
         }
         if (bodies.count == 0) {
             handler(nil);

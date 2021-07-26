@@ -27,6 +27,9 @@
 @property NSObject *applicationWillResignActiveObserver;
 @property NSObject *applicationWillTerminataObserver;
 @property NSUserDefaults *sharedDefaults;
+#if !TARGET_OS_WATCH
+@property UIBackgroundTaskIdentifier backgroundIdentifier;
+#endif
 
 @end
 
@@ -41,7 +44,12 @@
                                       applicationState]];
 #endif
     _sharedDefaults = [NSUserDefaults standardUserDefaults];
+    
     return self;
+}
+
+- (void)fireRequest {
+    
 }
 
 - (BOOL)setup {
@@ -113,11 +121,18 @@
 
 -(void)willEnterBckground {
     NSLog(@"enter background and send all requests");
-    [_tracker sendBatchForRequestWithCompletionHandler:^(NSError * _Nullable error) {
-        if (error) {
-            NSLog(@"the requests are not sent!!!");
-        }
+#if !TARGET_OS_WATCH
+    self.backgroundIdentifier = [[UIApplication sharedApplication] beginBackgroundTaskWithName:@"com.mapp.background" expirationHandler:^{
+        [self->_tracker sendBatchForRequestInBackground: YES withCompletionHandler:^(NSError * _Nullable error) {
+            if (error) {
+                NSLog(@"the requests are not sent!!!");
+            }
+            
+            [[UIApplication sharedApplication] endBackgroundTask:self.backgroundIdentifier];
+            self.backgroundIdentifier = UIBackgroundTaskInvalid;
+        }];
     }];
+#endif
 }
 
 @end
