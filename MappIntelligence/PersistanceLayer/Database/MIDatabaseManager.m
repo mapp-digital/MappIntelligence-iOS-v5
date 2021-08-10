@@ -612,7 +612,7 @@ dispatch_async(_executionQueue, ^{
 
       NSString *querySQL = [[NSString alloc]
           initWithFormat:
-              @"SELECT rowid, * FROM REQUESTS_TABLE "
+              @"SELECT rowid, * FROM REQUESTS_TABLE WHERE REQUESTS_TABLE.STATUS != 4"
                             @" ORDER BY ID LIMIT %i;", (int)interval];
       sqlite3_stmt *sql_statement;
 
