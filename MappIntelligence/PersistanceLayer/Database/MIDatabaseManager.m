@@ -8,6 +8,7 @@
 
 #import "MIDatabaseManager.h"
 #import "MIRequestData.h"
+#import <UIKit/UIKit.h>
 #import <sqlite3.h>
 
 #define DB_PATH @"/MappIntelligence/DB/mappIntelligenceRequestsDB.db"
@@ -60,7 +61,6 @@ NSString *const StorageErrorDescriptionGeneralError = @"General Error";
     }
     [self createDatabaseWithCompletionHandler:^(NSError *_Nonnull error,
                                                 id _Nullable data) {
-        [self updateStatusOfRequests];
       if (error) {
         NSLog(@"%@", error);
       }
@@ -333,19 +333,17 @@ dispatch_async(_executionQueue, ^{
     return success;
 }
 
--(BOOL)updateStatusOfRequests {
-    BOOL success = YES;
-    dispatch_async(_executionQueue, ^{
+-(void)updateStatusOfRequests: (NSArray*) requestIDs {
     sqlite3_stmt *sql_statement;
     const char *dbPath = [self.databasePath UTF8String];
-
+//
         if (sqlite3_open_v2(dbPath, &self->_requestsDB,
                         SQLITE_OPEN_CREATE | SQLITE_OPEN_READWRITE |
                             SQLITE_OPEN_SHAREDCACHE,
                         NULL) == SQLITE_OK) {
-
+            NSString* tempString = [NSString stringWithFormat:@"(%@)", [requestIDs componentsJoinedByString:@","]];
       NSString *insertSQL =
-          [NSString stringWithFormat:@"UPDATE REQUESTS_TABLE SET STATUS = 4 WHERE REQUESTS_TABLE.ID IN (70,71,72,73,74)"];
+          [NSString stringWithFormat:@"UPDATE REQUESTS_TABLE SET STATUS = 4 WHERE REQUESTS_TABLE.ID IN %@", tempString];
 
       const char *insertStatement = [insertSQL UTF8String];
 
@@ -358,9 +356,6 @@ dispatch_async(_executionQueue, ^{
         sqlite3_exec(self->_requestsDB, "BEGIN TRANSACTION", NULL, NULL, NULL);
       sqlite3_finalize(sql_statement);
     }
-    //sqlite3_close(_requestsDB);
-    });
-    return success;
 }
 
 - (BOOL)deleteTooOldRequests {
@@ -609,10 +604,9 @@ dispatch_async(_executionQueue, ^{
 
     sqlite3 *dbHandler;
     if (sqlite3_open_v2(dbPath, &dbHandler, SQLITE_OPEN_CREATE | SQLITE_OPEN_READWRITE | SQLITE_OPEN_FULLMUTEX, NULL) == SQLITE_OK) {
-
       NSString *querySQL = [[NSString alloc]
           initWithFormat:
-              @"SELECT rowid, * FROM REQUESTS_TABLE WHERE REQUESTS_TABLE.STATUS != 4"
+              @"SELECT rowid, * FROM REQUESTS_TABLE"
                             @" ORDER BY ID LIMIT %i;", (int)interval];
       sqlite3_stmt *sql_statement;
 
@@ -648,6 +642,8 @@ dispatch_async(_executionQueue, ^{
           [requestIds insertObject:@(uniqueId) atIndex:0];
           [requests insertObject:request atIndex:0];
         }
+          
+          //[self updateStatusOfRequests:requestIds];
 
       } else {
 
