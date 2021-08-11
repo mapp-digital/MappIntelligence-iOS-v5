@@ -104,6 +104,7 @@
                                        applicationState]];
     self.backgroundIdentifier = (unsigned long)[[NSUserDefaults standardUserDefaults] integerForKey:@"backgroundIdentifier"];
     [[UIApplication sharedApplication] endBackgroundTask: self.backgroundIdentifier];
+    self.backgroundIdentifier = UIBackgroundTaskInvalid;
 #else
   [_tracker updateFirstSessionWith:WKApplicationStateActive];
 #endif
@@ -132,6 +133,8 @@
             
             [[UIApplication sharedApplication] endBackgroundTask:self.backgroundIdentifier];
             self.backgroundIdentifier = UIBackgroundTaskInvalid;
+            [[NSUserDefaults standardUserDefaults] setInteger:self.backgroundIdentifier forKey:@"backgroundIdentifier"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
         }];
     }];
     [[NSUserDefaults standardUserDefaults] setInteger:self.backgroundIdentifier forKey:@"backgroundIdentifier"];
