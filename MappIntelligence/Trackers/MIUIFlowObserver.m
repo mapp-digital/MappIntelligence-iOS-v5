@@ -136,6 +136,10 @@
             [[NSUserDefaults standardUserDefaults] setInteger:self.backgroundIdentifier forKey:@"backgroundIdentifier"];
             [[NSUserDefaults standardUserDefaults] synchronize];
         }];
+        [[UIApplication sharedApplication] endBackgroundTask:self.backgroundIdentifier];
+        self.backgroundIdentifier = UIBackgroundTaskInvalid;
+        [[NSUserDefaults standardUserDefaults] setInteger:self.backgroundIdentifier forKey:@"backgroundIdentifier"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
     }];
     [[NSUserDefaults standardUserDefaults] setInteger:self.backgroundIdentifier forKey:@"backgroundIdentifier"];
     [[NSUserDefaults standardUserDefaults] synchronize];
