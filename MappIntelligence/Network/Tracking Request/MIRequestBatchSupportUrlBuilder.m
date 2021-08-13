@@ -93,7 +93,9 @@
         [data.requests subarrayWithRange:NSMakeRange(i * 5000, length)];
     for (MIRequest *req in subArray) {
       [body appendString:@"wt?"];
-      [body appendString:[[[req urlForBatchSupprot:YES] query] stringByReplacingOccurrencesOfString:@"\n" withString:@" "]];
+        if (![[[[req urlForBatchSupprot:YES] query] stringByReplacingOccurrencesOfString:@"\n" withString:@" "]  isEqual: @""]) {
+            [body appendString:[[[req urlForBatchSupprot:YES] query] stringByReplacingOccurrencesOfString:@"\n" withString:@" "]];
+        }
       [body appendString:@"\n"];
     }
     [array addObject:body];
@@ -101,7 +103,9 @@
   } else {
     for (MIRequest *req in data.requests) {
       [body appendString:@"wt?"];
-      [body appendString:[[[req urlForBatchSupprot:YES] query] stringByReplacingOccurrencesOfString:@"\n" withString:@" "] ];
+        if (![[[[req urlForBatchSupprot:YES] query] stringByReplacingOccurrencesOfString:@"\n" withString:@" "]  isEqual: @""]) {
+            [body appendString:[[[req urlForBatchSupprot:YES] query] stringByReplacingOccurrencesOfString:@"\n" withString:@" "] ];
+        }
       [body appendString:@"\n"];
     }
     [array addObject:body];

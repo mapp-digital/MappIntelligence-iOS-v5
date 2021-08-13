@@ -103,6 +103,13 @@
   [_tracker updateFirstSessionWith:[[UIApplication sharedApplication]
                                        applicationState]];
     self.backgroundIdentifier = (unsigned long)[[NSUserDefaults standardUserDefaults] integerForKey:@"backgroundIdentifier"];
+    if (self.backgroundIdentifier == UIBackgroundTaskInvalid) {
+        [self->_tracker removeAllRequestsFromDBWithCompletionHandler:^(NSError * _Nullable error) {
+            if (error) {
+                NSLog(@"the requests are not deleted!!!");
+            }
+        }];
+    }
     [[UIApplication sharedApplication] endBackgroundTask: self.backgroundIdentifier];
     self.backgroundIdentifier = UIBackgroundTaskInvalid;
 #else
