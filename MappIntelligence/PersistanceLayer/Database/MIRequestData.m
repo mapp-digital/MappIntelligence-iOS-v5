@@ -108,6 +108,9 @@
                 completionHandler(nil);
             }
         }];
+        if ([[request properties] isFirstEventOfApp]) {
+            [NSThread sleepForTimeInterval:0.5f];
+        }
     }
     if (_requests.count == 0) {
         completionHandler(nil);
