@@ -108,8 +108,8 @@
                 completionHandler(nil);
             }
         }];
-        if ([[request properties] isFirstEventOfApp]) {
-            [NSThread sleepForTimeInterval:0.5f];
+        if (r.parameters[3].value) {
+            [NSThread sleepForTimeInterval:1.0f];
         }
     }
     if (_requests.count == 0) {

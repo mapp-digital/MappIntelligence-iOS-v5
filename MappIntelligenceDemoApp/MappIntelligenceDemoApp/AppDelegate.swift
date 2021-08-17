@@ -26,7 +26,7 @@ var window: UIWindow?
         let domain = dict?["domain" as NSObject]
         MappIntelligence.shared()?.initWithConfiguration(array, onTrackdomain: domain as! String)
         MappIntelligence.shared()?.logLevel = .all
-        MappIntelligence.shared()?.batchSupportEnabled = true
+        MappIntelligence.shared()?.batchSupportEnabled = false
         MappIntelligence.shared()?.batchSupportSize = 150
         MappIntelligence.shared()?.requestInterval = 60
         MappIntelligence.shared()?.requestPerQueue = 300
