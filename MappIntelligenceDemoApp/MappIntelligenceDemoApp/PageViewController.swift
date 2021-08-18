@@ -38,12 +38,17 @@ class PageViewController: UIViewController {
         //sessionproperties
         let sessionParameters = MISessionParameters(parameters: [10: "sessionParam1"])
               
-        let pageEvent = MIPageViewEvent(name: "the custom name of page")
+        let pageEvent = MIPageViewEvent(name: "test page 1")
         pageEvent.pageParameters = pageParameters
         pageEvent.userCategories = userCategories
         pageEvent.sessionParameters = sessionParameters
         
+        let pageEvent1 = MIPageViewEvent(name: "test page 2")
+        let pageEvent2 = MIPageViewEvent(name: "test page 3")
+        
         MappIntelligence.shared()?.trackPage(pageEvent)
+        MappIntelligence.shared()?.trackPage(pageEvent1)
+        MappIntelligence.shared()?.trackPage(pageEvent2)
             
     }
     @IBAction func trackCustomPageData(_ sender: Any) {
