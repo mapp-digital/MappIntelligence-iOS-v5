@@ -92,23 +92,32 @@
     NSArray *subArray =
         [data.requests subarrayWithRange:NSMakeRange(i * 5000, length)];
     for (MIRequest *req in subArray) {
-      [body appendString:@"wt?"];
-        if (![[[[req urlForBatchSupprot:YES] query] stringByReplacingOccurrencesOfString:@"\n" withString:@" "]  isEqual: @""]) {
-            [body appendString:[[[req urlForBatchSupprot:YES] query] stringByReplacingOccurrencesOfString:@"\n" withString:@" "]];
+        NSString* partOfBody = [[[req urlForBatchSupprot:YES] query] stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
+        if ([partOfBody isEqualToString: @""] || [partOfBody isEqualToString: @" "]) {
+            continue;
         }
+        [body appendString:@"wt?"];
+        [body appendString:partOfBody];
       [body appendString:@"\n"];
     }
-    [array addObject:body];
+      if ([body length] != 0) {
+          [array addObject:body];
+      }
     i++;
   } else {
     for (MIRequest *req in data.requests) {
-      [body appendString:@"wt?"];
-        if (![[[[req urlForBatchSupprot:YES] query] stringByReplacingOccurrencesOfString:@"\n" withString:@" "]  isEqual: @""]) {
-            [body appendString:[[[req urlForBatchSupprot:YES] query] stringByReplacingOccurrencesOfString:@"\n" withString:@" "] ];
+      
+        NSString* partOfBody = [[[req urlForBatchSupprot:YES] query] stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
+        if ([partOfBody isEqualToString: @""] || [partOfBody isEqualToString: @" "]) {
+            continue;
         }
+        [body appendString:@"wt?"];
+        [body appendString:partOfBody ];
       [body appendString:@"\n"];
     }
-    [array addObject:body];
+      if ([body length] != 0) {
+          [array addObject:body];
+      }
   }
   return array;
 }

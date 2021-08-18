@@ -108,7 +108,7 @@
                 completionHandler(nil);
             }
         }];
-        if (r.parameters[3].value) {
+        if ([r.parameters[3].value boolValue] == YES    ) {
             [NSThread sleepForTimeInterval:1.0f];
         }
     }
