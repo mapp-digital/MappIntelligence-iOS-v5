@@ -29,6 +29,17 @@ typedef NS_ENUM(NSInteger, logLevel) {
   none = 7  // None of the logs.
 };
 
+typedef NS_ENUM(NSInteger, exceptionType) {
+    noneOfExceptionTypes = 1,
+    uncaught = 2,
+    caught = 3,
+    custom = 4,
+    allExceptionTypes = 5,
+    uncaught_and_custom = 6,
+    uncaught_and_caught = 7,
+    custom_and_caught = 8
+};
+
 @interface MappIntelligence : NSObject {
 }
 
@@ -116,6 +127,17 @@ MappIntelligence.shared()?.trackMedia(mediaEvent)
 - (NSError *_Nullable) trackUrl:(NSURL *_Nullable) url withMediaCode:(NSString *_Nullable) mediaCode;
 
 /**
+@brief Method which will track campaign parameters from url
+@param name - custom name of excetpion which we want to track
+@param message - approrpiate message for that exception
+@code
+ MappIntelligence.shared()?.trackException(withName: "test name of exeption", andWithMessage: "this is common exception when you are trying to get data")
+@endcode
+@return the error which may happen through process of tracking, if returns nil there is no error.
+ */
+- (NSError *_Nullable) trackExceptionWithName:(NSString *_Nonnull) name andWithMessage:(NSString *_Nonnull) message;
+
+/**
 @brief Method to initialize tracking. Please specify your track domain and trackID.
 @param trackIDs - Array of your trackIDs. The information can be provided by your account manager.
 @param trackDomain - String value of your track domain. The information can be provided by your account manager.
@@ -176,6 +198,12 @@ MappIntelligence.shared()?.optOut(with: false, andSendCurrentData: false)
  @param suppressParams - array list of parameters to ignore during anonimous tracking
  */
 - (void) enableAnonymousTracking:(NSArray<NSString *> *_Nullable) suppressParams;
+
+/**
+ @brief Method which will enable crash tracking with given exception level
+ @param exceptionLogLevel - parameter which represent the excetpion types which can be logged
+ */
+- (void) enableCrashTracking:(exceptionType) exceptionLogLevel;
 
 /**
  @brief Method which will return ever ID
