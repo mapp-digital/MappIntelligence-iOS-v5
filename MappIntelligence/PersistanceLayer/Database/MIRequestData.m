@@ -108,9 +108,6 @@
                 completionHandler(nil);
             }
         }];
-        if ([r.parameters[3].value boolValue] == YES    ) {
-            [NSThread sleepForTimeInterval:1.0f];
-        }
     }
     if (_requests.count == 0) {
         completionHandler(nil);
