@@ -49,6 +49,8 @@
         NSArray<NSString *>* bodies = [self createBatchWith:dt];
         MITrackerRequest *request = [[MITrackerRequest alloc] init];
         for (NSString *body in bodies) {
+            if([body isEqualToString: @"wt?"])
+                continue;
             if (background) {
                 [request
                  sendBackgroundRequestWith:[[NSURL alloc] initWithString:self->_baseUrl]

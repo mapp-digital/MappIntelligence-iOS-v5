@@ -96,6 +96,8 @@
 
 - (void)sendAllRequestsWithCompletitionHandler:(void (^)(NSError* ))completionHandler {
     for (MIRequest* r in _requests) {
+        if([[r parameters] count] == 0)
+            continue;
         MITrackerRequest *request = [[MITrackerRequest alloc] init];
         [request sendRequestWith: [r urlForBatchSupprot:NO] andCompletition:^(NSError * _Nonnull error) {
             if(error) {
