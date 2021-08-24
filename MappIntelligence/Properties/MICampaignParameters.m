@@ -81,8 +81,8 @@
         adCopy = [NSKeyedUnarchiver unarchivedObjectOfClass:MICampaignParameters.class fromData:data error:&error];
     } else {
         // Fallback on earlier versions
-        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:adCopy];
-        adCopy = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:adCopy requiringSecureCoding:NO error:NULL];
+        adCopy = [NSKeyedUnarchiver unarchivedObjectOfClass:[MICampaignParameters class] fromData:data error:NULL];
     }
     return adCopy;
 }

@@ -71,7 +71,7 @@ NSString *const UrlErrorDescriptionInvalid = @"Url is invalid";
         [data writeToFile:[MIDeepLink filePath] options:NSDataWritingAtomic error:&error];
     } else {
         // Fallback on earlier versions
-        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:campaign];
+        NSData *data = [NSKeyedArchiver archivedDataWithRootObject:campaign requiringSecureCoding:NO error:NULL];
         [data writeToFile:[MIDeepLink filePath] options:NSDataWritingAtomic error:&error];
     }
     return error;
@@ -88,7 +88,7 @@ NSString *const UrlErrorDescriptionInvalid = @"Url is invalid";
         return properties;
     } else {
         // Fallback on earlier versions
-        MICampaignParameters *properties = [NSKeyedUnarchiver unarchiveObjectWithData:fileData];
+        MICampaignParameters *properties = [NSKeyedUnarchiver unarchivedObjectOfClass:[MICampaignParameters class] fromData:fileData error:NULL];
         return properties;
     }
 }

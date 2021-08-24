@@ -756,8 +756,7 @@ dispatch_async(_executionQueue, ^{
 
 - (void)removeOldRequestsWithCompletitionHandler:
     (StorageManagerCompletionHandler)completionHandler {
-  dispatch_queue_t queue = dispatch_queue_create("Remove DB", NULL);
-
+  
   dispatch_async(_executionQueue, ^{
 
     NSMutableArray *requestIds = nil;
