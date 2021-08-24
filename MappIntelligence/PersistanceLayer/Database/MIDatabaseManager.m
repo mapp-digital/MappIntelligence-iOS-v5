@@ -333,31 +333,6 @@ dispatch_async(_executionQueue, ^{
     return success;
 }
 
--(void)updateStatusOfRequests: (NSArray*) requestIDs {
-    sqlite3_stmt *sql_statement;
-    const char *dbPath = [self.databasePath UTF8String];
-//
-        if (sqlite3_open_v2(dbPath, &self->_requestsDB,
-                        SQLITE_OPEN_CREATE | SQLITE_OPEN_READWRITE |
-                            SQLITE_OPEN_SHAREDCACHE,
-                        NULL) == SQLITE_OK) {
-            NSString* tempString = [NSString stringWithFormat:@"(%@)", [requestIDs componentsJoinedByString:@","]];
-      NSString *insertSQL =
-          [NSString stringWithFormat:@"UPDATE REQUESTS_TABLE SET STATUS = 4 WHERE REQUESTS_TABLE.ID IN %@", tempString];
-
-      const char *insertStatement = [insertSQL UTF8String];
-
-        sqlite3_prepare_v2(self->_requestsDB, insertStatement, -1, &sql_statement, NULL);
-
-      if (sqlite3_step(sql_statement) != SQLITE_DONE) {
-
-        //success = NO;
-      }
-        sqlite3_exec(self->_requestsDB, "BEGIN TRANSACTION", NULL, NULL, NULL);
-      sqlite3_finalize(sql_statement);
-    }
-}
-
 - (BOOL)deleteTooOldRequests {
   BOOL success = YES;
 
