@@ -27,6 +27,7 @@
 @property NSObject *applicationWillResignActiveObserver;
 @property NSObject *applicationWillTerminataObserver;
 @property NSUserDefaults *sharedDefaults;
+@property NSString* TIME_WHEN_APP_ENTERS_TO_BACKGROUND;
 #if !TARGET_OS_WATCH
 @property UIBackgroundTaskIdentifier backgroundIdentifier;
 #endif
@@ -43,6 +44,7 @@
     [_tracker updateFirstSessionWith:[[UIApplication sharedApplication]
                                       applicationState]];
 #endif
+    self.TIME_WHEN_APP_ENTERS_TO_BACKGROUND = @"Background_Time";
     _sharedDefaults = [NSUserDefaults standardUserDefaults];
     
     return self;
@@ -112,6 +114,25 @@
     }
     [[UIApplication sharedApplication] endBackgroundTask: self.backgroundIdentifier];
     self.backgroundIdentifier = UIBackgroundTaskInvalid;
+    
+    //remove all request if app is enough time in background to send all requests
+    NSDate* dateWhenAppIsBackFromBackground =  (NSDate*) [NSUserDefaults.standardUserDefaults objectForKey:self.TIME_WHEN_APP_ENTERS_TO_BACKGROUND];
+    if (dateWhenAppIsBackFromBackground) {
+        NSDateComponents *components;
+        NSInteger seconds;
+
+        components = [[NSCalendar currentCalendar] components: NSCalendarUnitSecond
+                fromDate: dateWhenAppIsBackFromBackground toDate: [NSDate date] options: 0];
+        seconds = [components second];
+        if (seconds > 30) {
+            [self->_tracker removeAllRequestsFromDBWithCompletionHandler:^(NSError * _Nullable error) {
+                if (error) {
+                    NSLog(@"the requests are not deleted!!!");
+                }
+            }];
+        }
+    }
+    
 #else
   [_tracker updateFirstSessionWith:WKApplicationStateActive];
 #endif
@@ -131,6 +152,8 @@
 
 -(void)willEnterBckground {
     NSLog(@"enter background and send all requests");
+    [NSUserDefaults.standardUserDefaults setValue:[NSDate date] forKey:self.TIME_WHEN_APP_ENTERS_TO_BACKGROUND];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 #if !TARGET_OS_WATCH
     self.backgroundIdentifier = [[UIApplication sharedApplication] beginBackgroundTaskWithName:@"com.mapp.background" expirationHandler:^{
         [self->_tracker sendBatchForRequestInBackground: YES withCompletionHandler:^(NSError * _Nullable error) {
