@@ -13,12 +13,14 @@
 #import "MIRequestData.h"
 #import "MIDeepLink.h"
 #import "MIMediaTracker.h"
+#import "MIExceptionTracker.h"
 #import <UIKit/UIKit.h>
 
 @interface MappIntelligence ()
 
 @property MappIntelligenceDefaultConfig *configuration;
 @property MIDefaultTracker *tracker;
+@property MIExceptionTracker *exceptionTracker;
 @property MappIntelligenceLogger *logger;
 @property NSTimer* timerForSendRequests;
 
@@ -30,6 +32,7 @@ static MappIntelligence *sharedInstance = nil;
 static MappIntelligenceDefaultConfig *config = nil;
 
 @synthesize tracker;
+@synthesize exceptionTracker;
 
 - (id)init {
   if (!sharedInstance) {
@@ -119,6 +122,8 @@ static MappIntelligenceDefaultConfig *config = nil;
 
   tracker = [MIDefaultTracker sharedInstance];
   [tracker initializeTracking];
+    exceptionTracker = [MIExceptionTracker sharedInstance];
+    [exceptionTracker initializeExceptionTracking];
     
     [[MIDatabaseManager shared] removeOldRequestsWithCompletitionHandler:^(NSError * _Nonnull error, id  _Nullable data) {
         if (!error) {
@@ -309,6 +314,10 @@ static MappIntelligenceDefaultConfig *config = nil;
     MIActionEvent *event = [[MIActionEvent alloc] initWithName:eventName];
     event.trackingParams = trackingParams;
   return [tracker trackWithCustomEvent:event];
+}
+
+- (NSError *)trackExceptionWithName:(NSString *)name andWithMessage:(NSString *)message {
+    return [exceptionTracker trackInfoWithName:name andWithMessage:message];
 }
 
 - (void)setShouldMigrate:(BOOL)shouldMigrate {

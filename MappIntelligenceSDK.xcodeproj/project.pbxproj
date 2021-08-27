@@ -296,6 +296,11 @@
 		A3A7255B243DEA0500671DB2 /* RequestUrlBuilderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3A7255A243DEA0500671DB2 /* RequestUrlBuilderTests.m */; };
 		A3A7255D243E07A100671DB2 /* URLSizeMonitorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3A7255C243E07A100671DB2 /* URLSizeMonitorTests.m */; };
 		A3A7255F243F154900671DB2 /* MappIntelligenceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3A7255E243F154900671DB2 /* MappIntelligenceTests.m */; };
+		A3ADC97326D8EB34007504FF /* MIExceptionTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = A3ADC97126D8EB34007504FF /* MIExceptionTracker.h */; };
+		A3ADC97426D8EB34007504FF /* MIExceptionTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = A3ADC97226D8EB34007504FF /* MIExceptionTracker.m */; };
+		A3ADC98326D941B3007504FF /* MIExceptionTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = A3ADC97226D8EB34007504FF /* MIExceptionTracker.m */; };
+		A3ADC98C26D941B4007504FF /* MIExceptionTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = A3ADC97226D8EB34007504FF /* MIExceptionTracker.m */; };
+		A3ADC98D26D941B5007504FF /* MIExceptionTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = A3ADC97226D8EB34007504FF /* MIExceptionTracker.m */; };
 		A3CC5486248FC418006215FD /* MIDatabaseManager.h in Headers */ = {isa = PBXBuildFile; fileRef = A3CC5484248FC418006215FD /* MIDatabaseManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A3CC5487248FC418006215FD /* MIDatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A3CC5485248FC418006215FD /* MIDatabaseManager.m */; };
 		A3CC548A249125DD006215FD /* MIParameter.h in Headers */ = {isa = PBXBuildFile; fileRef = A3CC5488249125DD006215FD /* MIParameter.h */; };
@@ -594,6 +599,8 @@
 		A3A7255A243DEA0500671DB2 /* RequestUrlBuilderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RequestUrlBuilderTests.m; sourceTree = "<group>"; };
 		A3A7255C243E07A100671DB2 /* URLSizeMonitorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = URLSizeMonitorTests.m; sourceTree = "<group>"; };
 		A3A7255E243F154900671DB2 /* MappIntelligenceTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MappIntelligenceTests.m; sourceTree = "<group>"; };
+		A3ADC97126D8EB34007504FF /* MIExceptionTracker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MIExceptionTracker.h; sourceTree = "<group>"; };
+		A3ADC97226D8EB34007504FF /* MIExceptionTracker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MIExceptionTracker.m; sourceTree = "<group>"; };
 		A3CC5484248FC418006215FD /* MIDatabaseManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MIDatabaseManager.h; sourceTree = "<group>"; };
 		A3CC5485248FC418006215FD /* MIDatabaseManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MIDatabaseManager.m; sourceTree = "<group>"; };
 		A3CC5488249125DD006215FD /* MIParameter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MIParameter.h; sourceTree = "<group>"; };
@@ -1001,6 +1008,8 @@
 				A380D20B2413D317009E2CD8 /* MIConfiguration.m */,
 				A3EAFF5F2418E02F009D5108 /* MIUIFlowObserver.h */,
 				A3EAFF602418E02F009D5108 /* MIUIFlowObserver.m */,
+				A3ADC97126D8EB34007504FF /* MIExceptionTracker.h */,
+				A3ADC97226D8EB34007504FF /* MIExceptionTracker.m */,
 			);
 			path = Trackers;
 			sourceTree = "<group>";
@@ -1064,6 +1073,7 @@
 				A3852A95249389060090F47B /* MIDatabaseManager.m in Headers */,
 				BCCAE6D0240D29A9005E9FD6 /* MappIntelligenceLogger.m in Headers */,
 				A3CC549224912AA8006215FD /* MIRequestData.h in Headers */,
+				A3ADC97326D8EB34007504FF /* MIExceptionTracker.h in Headers */,
 				A36CD7D123F447D0004E3E2D /* MIProperties.h in Headers */,
 				A380D2102413ED35009E2CD8 /* MIRequestUrlBuilder.h in Headers */,
 				A36CD7CD23F44594004E3E2D /* MITrackerRequest.h in Headers */,
@@ -1409,6 +1419,7 @@
 			files = (
 				8F20A18425C2CFD30006CB93 /* MIURLSizeMonitor.m in Sources */,
 				8F20A0DE25C2CED70006CB93 /* MIPageParameters.m in Sources */,
+				A3ADC98D26D941B5007504FF /* MIExceptionTracker.m in Sources */,
 				8F20A16925C2CFCC0006CB93 /* MITrackingEvent.m in Sources */,
 				8F20A13325C2CF970006CB93 /* MIMediaEvent.m in Sources */,
 				8F20A0CC25C2CED20006CB93 /* MICampaignParameters.m in Sources */,
@@ -1450,6 +1461,7 @@
 			files = (
 				8FA11964253EDC82000AE887 /* MIUserCategories.m in Sources */,
 				8F80C047252355B500E1F650 /* MISessionParameters.m in Sources */,
+				A3ADC98326D941B3007504FF /* MIExceptionTracker.m in Sources */,
 				8F94E75A25BF283F00027623 /* MIMediaParameters.m in Sources */,
 				8FDF7110250BA24B00818E51 /* MIActionEvent.m in Sources */,
 				8FDF710F250BA24200818E51 /* MIEventParameters.m in Sources */,
@@ -1491,6 +1503,7 @@
 			files = (
 				8FA11963253EDC82000AE887 /* MIUserCategories.m in Sources */,
 				A3CC548B249125DD006215FD /* MIParameter.m in Sources */,
+				A3ADC97426D8EB34007504FF /* MIExceptionTracker.m in Sources */,
 				8F94E72925BF281C00027623 /* MIMediaParameters.m in Sources */,
 				BCBE5C0923F29E49002125C1 /* MIDefaultTracker.m in Sources */,
 				A380D200241296FD009E2CD8 /* MIPageViewEvent.m in Sources */,
@@ -1577,6 +1590,7 @@
 			files = (
 				8FA11965253EDC82000AE887 /* MIUserCategories.m in Sources */,
 				8F5F85422535BCEB00A39882 /* MIActionEvent.m in Sources */,
+				A3ADC98C26D941B4007504FF /* MIExceptionTracker.m in Sources */,
 				8F94E75B25BF283F00027623 /* MIMediaParameters.m in Sources */,
 				8F5F853A2535BCE100A39882 /* MISessionParameters.m in Sources */,
 				8F5F85322535BCDD00A39882 /* MIEventParameters.m in Sources */,
