@@ -20,10 +20,10 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSError*) trackInfoWithName: (NSString* _Nonnull) name andWithMessage: (NSString* _Nonnull) message;
 
 /** do exception tracking for exception message */
-- (void) trackException: (NSException* _Nonnull) exception;
+- (NSError*) trackException: (NSException* _Nonnull) exception;
 
 /** do exception tracking for NSError message */
-- (void) trackError: (NSError* _Nonnull) error;
+- (NSError*) trackError: (NSError* _Nonnull) error;
 
 - (instancetype) initializeExceptionTracking;
 

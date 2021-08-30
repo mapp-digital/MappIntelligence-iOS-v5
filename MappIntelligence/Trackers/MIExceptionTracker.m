@@ -75,54 +75,56 @@ typedef void SignalHanlder(NSException *exception);
     }
     ///satisfyToLevel
     
+    return [self trackWithType:NULL withName:name withMessage:message withStack:NULL withStackReturnAddress:NULL withUserInfo:NULL];
+    
+}
+
+- (NSError*)trackException:(NSException *)exception {
+    if (![self checkIfInitialized]) {
+        return [NSError errorWithDomain:@"com.mapp.mappIntelligence" code:900 userInfo:@{@"Error reason": @"MappIntelligence exception tracking isn't initialited"}];
+    }
+    ///satisfy to level
+    
+    return [self trackWithType:NULL withName:exception.name withMessage:exception.reason withStack:[[exception.callStackSymbols valueForKey:@"description"] componentsJoinedByString:@""] withStackReturnAddress:[[exception.callStackReturnAddresses valueForKey:@"description"] componentsJoinedByString:@""] withUserInfo:[NSString stringWithFormat:@"%@", exception.userInfo]];
+}
+
+- (NSError*)trackError:(NSError *)error {
+    if (![self checkIfInitialized]) {
+        return [NSError errorWithDomain:@"com.mapp.mappIntelligence" code:900 userInfo:@{@"Error reason": @"MappIntelligence exception tracking isn't initialited"}];
+    }
+    ///satisfyToLevel
+    
+    return [self trackWithType:NULL withName:@"Error" withMessage:error.localizedDescription withStack:NULL withStackReturnAddress:NULL withUserInfo:NULL];
+}
+
+- (NSError*)trackWithType: (NSString * _Nullable) type withName:(NSString* _Nullable) name withMessage: (NSString* _Nullable) message withStack: (NSString* _Nullable)stack withStackReturnAddress: (NSString* _Nullable) stackReturnAddress withUserInfo: (NSString* _Nullable) userInfo {
+    
     //define details
     MIActionEvent* actionEvent = [[MIActionEvent alloc] initWithName:@"webtrekk_ignore"];
     NSMutableDictionary* parameters = [[NSMutableDictionary alloc] init];
+    if (type) {
+        [parameters setObject:type forKey:[NSNumber numberWithInt:910]];
+    }
     if (name) {
         [parameters setObject:name forKey:[NSNumber numberWithInt:911]];
     }
     if (message) {
         [parameters setObject:message forKey:[NSNumber numberWithInt:912]];
     }
+    if (stack) {
+        [parameters setObject:stack forKey:[NSNumber numberWithInt:913]];
+    }
+    if (userInfo) {
+        [parameters setObject:userInfo forKey:[NSNumber numberWithInt:916]];
+    }
+    if (stackReturnAddress) {
+        [parameters setObject:stackReturnAddress forKey:[NSNumber numberWithInt:917]];
+    }
+    
     MIEventParameters* actionProperties = [[MIEventParameters alloc] initWithParameters:parameters];
     actionEvent.eventParameters = actionProperties;
     
     return [_tracker trackWithCustomEvent:actionEvent];
-    /*
-
-     var details: [Int: TrackingValue] = [:]
-
-     details[910] = .constant(String(logLevel.rawValue))
-
-     if let name = name as String?, !name.isEmpty {
-         details[911] = .constant(name)
-     }
-     if let message = message as String?, !message.isEmpty {
-         details[912] = .constant(message)
-     }
-     if let stack = stack as String?, !stack.isEmpty {
-         details[913] = .constant(stack)
-     }
-     if let userInfo = userInfo as String?, !userInfo.isEmpty {
-         details[916] = .constant(userInfo)
-     }
-     if let stackReturnAddress = stackReturnAddress as String?, !stackReturnAddress.isEmpty {
-         details[917] = .constant(stackReturnAddress)
-     }
-     let action = ActionEvent(actionProperties: ActionProperties(name: "webtrekk_ignore", details: details),
-                              pageProperties: PageProperties(name: nil))
-
-     webtrekk.enqueueRequestForEvent(action, type: .exceptionTracking)
-     */
-    
-}
-
-- (void)trackException:(NSException *)exception {
-    
-}
-
-- (void)trackError:(NSError *)error {
-    
 }
 
 @end
