@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 
 class ExceptionsViewController: UIViewController {
 
@@ -20,5 +21,8 @@ class ExceptionsViewController: UIViewController {
         MappIntelligence.shared()?.trackException(withName: "Test Exception", andWithMessage: "Test Exception Message")
     }
     
-
+    @IBAction func trackUncaughtException(_ sender: Any) throws {
+        fatalError()
+    }
+    
 }

@@ -861,9 +861,12 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="jxk-pY-8L7"/>
                                 </constraints>
-                                <state key="normal" title="Test Link2">
+                                <state key="normal" title="Uncaught Exception">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="trackUncaughtException:" destination="Hiw-xa-JOQ" eventType="touchUpInside" id="ObY-ep-U6p"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="DdC-Ij-Mmg"/>

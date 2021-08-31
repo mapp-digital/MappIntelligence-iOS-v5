@@ -7,6 +7,7 @@
 //
 
 #import "MIUIFlowObserver.h"
+#import "MIExceptionTracker.h"
 #if TARGET_OS_WATCH
 #import <WatchKit/WatchKit.h>
 #else
@@ -19,6 +20,7 @@
 @interface MIUIFlowObserver ()
 
 @property MIDefaultTracker *tracker;
+@property MIExceptionTracker *exceptionTracker;
 #if !TARGET_OS_WATCH
 @property UIApplication *application;
 #endif
@@ -46,10 +48,6 @@
     _sharedDefaults = [NSUserDefaults standardUserDefaults];
     
     return self;
-}
-
-- (void)fireRequest {
-    
 }
 
 - (BOOL)setup {
@@ -98,7 +96,26 @@
     
 }
 
+void onUncaughtException(NSException* exception)
+{
+//save exception details
+    NSLog(@"Uncaght exception catched");
+#if !TARGET_OS_WATCH
+    [[UIApplication sharedApplication] beginBackgroundTaskWithName:@"com.mapp.exception" expirationHandler:^{
+        [[NSUserDefaults standardUserDefaults] setObject:exception forKey:@"UncaghtException"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }];
+#endif
+}
+
 -(void)willEnterForeground {
+    NSException* exception = [_sharedDefaults objectForKey:@"UncaghtException"];
+    if(exception) {
+        [[MIExceptionTracker sharedInstance] trackException:exception];
+        [_sharedDefaults removeObjectForKey:@"UncaghtException"];
+        [_sharedDefaults synchronize];
+    }
+    NSSetUncaughtExceptionHandler(&onUncaughtException);
 #if !TARGET_OS_WATCH
   [_tracker updateFirstSessionWith:[[UIApplication sharedApplication]
                                        applicationState]];
