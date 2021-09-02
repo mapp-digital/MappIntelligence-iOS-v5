@@ -145,6 +145,10 @@ static MappIntelligenceDefaultConfig *config = nil;
             [self->tracker sendBatchForRequestInBackground: NO withCompletionHandler:^(NSError * _Nullable error) {
                 //error is already obtain in one level lower
             }];
+        } else if (config.backgroundSendout == YES) {
+            [self->tracker sendBatchForRequestInBackground: YES withCompletionHandler:^(NSError * _Nullable error) {
+                //error is already obtain in one level lower
+            }];
         } else {
             [self->tracker sendRequestFromDatabaseWithCompletionHandler:^(NSError * _Nullable error) {
                 //error is already obtain in one level lower
