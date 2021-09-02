@@ -32,6 +32,7 @@ var window: UIWindow?
         MappIntelligence.shared()?.requestPerQueue = 300
         MappIntelligence.shared()?.shouldMigrate = true
         MappIntelligence.shared()?.sendAppVersionInEveryRequest = true
+        MappIntelligence.shared()?.enableBackgroundSendout = false
         // Override point for customization after application launch.
         return true
     }

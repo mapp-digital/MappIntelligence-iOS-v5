@@ -24,6 +24,7 @@
 NSTimeInterval const requestIntervalDefault = 15*60;
 BOOL const optOutDefault = NO;
 BOOL const batchSupportDefault = NO;
+BOOL const backgroundSendoutDefault = NO;
 NSInteger const requestPerQueueDefault = 100;
 NSInteger const batchSupportSizeDefault = 5000;
 
@@ -37,6 +38,7 @@ NSInteger const batchSupportSizeDefault = 5000;
 
 @synthesize autoTracking;
 @synthesize batchSupport = _batchSupport;
+@synthesize backgroundSendout = _backgroundSendout;
 @synthesize requestPerQueue = _requestPerQueue;
 @synthesize requestsInterval = _requestsInterval;
 @synthesize optOut = _optOut;
