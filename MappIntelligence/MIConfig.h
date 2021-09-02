@@ -20,6 +20,7 @@
 @property BOOL autoTracking;
 @property (nonatomic, setter = setRequestPerQueue:) NSInteger requestPerQueue;
 @property BOOL batchSupport;
+@property BOOL backgroundSendout;
 @property BOOL viewControllerAutoTracking;
 @property BOOL optOut;
 @property BOOL sendAppVersionToEveryRequest;

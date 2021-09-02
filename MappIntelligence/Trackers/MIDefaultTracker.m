@@ -162,6 +162,10 @@ static NSString *userAgent;
                                    andWithId:_config.MappIntelligenceId];
 }
 
+- (BOOL)isBackgroundSendoutEnabled {
+    return [[MappIntelligence shared] enableBackgroundSendout];
+}
+
 - (void)sendRequestFromDatabaseWithCompletionHandler:(void (^)(NSError * _Nullable))handler {
     [[MIDatabaseManager shared] fetchAllRequestsFromInterval: _config.requestPerQueue andWithCompletionHandler:^(NSError * _Nonnull error, id  _Nullable data) {
         if (!error) {

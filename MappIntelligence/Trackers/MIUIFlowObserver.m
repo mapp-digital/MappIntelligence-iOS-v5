@@ -104,6 +104,8 @@
 #if !TARGET_OS_WATCH
   [_tracker updateFirstSessionWith:[[UIApplication sharedApplication]
                                        applicationState]];
+    if (!_tracker.isBackgroundSendoutEnabled)
+        return;
     self.backgroundIdentifier = (unsigned long)[[NSUserDefaults standardUserDefaults] integerForKey:@"backgroundIdentifier"];
     if (self.backgroundIdentifier == UIBackgroundTaskInvalid) {
         [self->_tracker removeAllRequestsFromDBWithCompletionHandler:^(NSError * _Nullable error) {
@@ -151,7 +153,8 @@
 }
 
 -(void)willEnterBckground {
-    NSLog(@"enter background and send all requests");
+    if (!_tracker.isBackgroundSendoutEnabled)
+        return;
     [NSUserDefaults.standardUserDefaults setValue:[NSDate date] forKey:self.TIME_WHEN_APP_ENTERS_TO_BACKGROUND];
     [[NSUserDefaults standardUserDefaults] synchronize];
 #if !TARGET_OS_WATCH

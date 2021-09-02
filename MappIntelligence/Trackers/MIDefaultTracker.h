@@ -25,6 +25,7 @@
 + (nullable instancetype)sharedInstance;
 - (NSString *_Nullable)generateEverId;
 - (NSString*_Nonnull)generateUserAgent;
+- (BOOL)isBackgroundSendoutEnabled;
 #if !TARGET_OS_WATCH
 - (NSError*_Nullable)track:(UIViewController *_Nonnull)controller;
 - (void)updateFirstSessionWith: (UIApplicationState) state;

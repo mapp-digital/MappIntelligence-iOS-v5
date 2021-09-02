@@ -118,6 +118,10 @@ NSInteger const batchSupportSizeDefault = 5000;
                       stringByAppendingFormat:self.batchSupport ? @"Yes"
                                                                 : @"No"])
       forDescription:kMappIntelligenceLogLevelDescriptionInfo];
+  [_logger logObj:([@"Background sendout support is enabled: "
+                        stringByAppendingFormat:self.backgroundSendout ? @"Yes"
+                                                                  : @"No"])
+        forDescription:kMappIntelligenceLogLevelDescriptionInfo];
   [self validateNumberOfRequestsPerQueue:self.requestPerQueue];
   [_logger logObj:([@"Number of requests in queue: "
                       stringByAppendingFormat:

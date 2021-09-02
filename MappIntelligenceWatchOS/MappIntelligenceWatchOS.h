@@ -28,6 +28,7 @@ typedef NS_ENUM(NSInteger, logWatchOSLevel) {
 @property (nonatomic, readwrite) NSTimeInterval requestInterval;
 @property (nonatomic, readwrite) logWatchOSLevel logLevelWatchOS;
 @property (nonatomic, readwrite) BOOL batchSupportEnabled;
+@property (nonatomic, readwrite) BOOL enableBackgroundSendout;
 @property (nonatomic, readwrite) NSInteger batchSupportSize;
 @property (nonatomic, readwrite) NSInteger requestPerQueue;
 @property (nonatomic, readwrite) BOOL shouldMigrate;

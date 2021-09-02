@@ -67,8 +67,16 @@
     return [_mappIntelligence batchSupportEnabled];
 }
 
+- (BOOL)enableBackgroundSendout {
+    return [_mappIntelligence enableBackgroundSendout];
+}
+
 - (void) setBatchSupportEnabled:(BOOL)batchSupportEnabled {
     [_mappIntelligence setBatchSupportEnabled:batchSupportEnabled];
+}
+
+- (void)setEnableBackgroundSendout:(BOOL)enableBackgroundSendout {
+    [_mappIntelligence setEnableBackgroundSendout:enableBackgroundSendout];
 }
 
 - (NSInteger) requestPerQueue {

@@ -115,6 +115,7 @@ static MappIntelligenceDefaultConfig *config = nil;
   [config setViewControllerAutoTracking:viewControllerAutoTracking];
   [config setRequestPerQueue:numberOfRequestInQueue];
   [config setSendAppVersionToEveryRequest:NO];
+  [config setBackgroundSendout:NO];
   [config logConfig];
 
   tracker = [MIDefaultTracker sharedInstance];
@@ -183,6 +184,15 @@ static MappIntelligenceDefaultConfig *config = nil;
 - (void) setBatchSupportEnabled:(BOOL)batchSupportEnabled {
     [config setBatchSupport:batchSupportEnabled];
     [config logConfig];
+}
+
+- (void)setEnableBackgroundSendout:(BOOL)enableBackgroundSendout {
+    [config setBackgroundSendout:enableBackgroundSendout];
+    [config logConfig];
+}
+
+- (BOOL)enableBackgroundSendout {
+    return config.backgroundSendout;
 }
 
 - (NSInteger) requestPerQueue {
