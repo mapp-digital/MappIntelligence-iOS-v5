@@ -107,33 +107,35 @@
     if (!_tracker.isBackgroundSendoutEnabled)
         return;
     self.backgroundIdentifier = (unsigned long)[[NSUserDefaults standardUserDefaults] integerForKey:@"backgroundIdentifier"];
-    if (self.backgroundIdentifier == UIBackgroundTaskInvalid) {
-        [self->_tracker removeAllRequestsFromDBWithCompletionHandler:^(NSError * _Nullable error) {
-            if (error) {
-                NSLog(@"the requests are not deleted!!!");
-            }
-        }];
-    }
+//    if (self.backgroundIdentifier == UIBackgroundTaskInvalid) {
+//        [self->_tracker removeAllRequestsFromDBWithCompletionHandler:^(NSError * _Nullable error) {
+//            if (error) {
+//                NSLog(@"the requests are not deleted!!!");
+//            }
+//        }];
+//    }
     [[UIApplication sharedApplication] endBackgroundTask: self.backgroundIdentifier];
     self.backgroundIdentifier = UIBackgroundTaskInvalid;
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"backgroundIdentifier"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     
     //remove all request if app is enough time in background to send all requests
-    NSDate* dateWhenAppIsBackFromBackground =  (NSDate*) [NSUserDefaults.standardUserDefaults objectForKey:self.TIME_WHEN_APP_ENTERS_TO_BACKGROUND];
-    if (dateWhenAppIsBackFromBackground) {
-        NSDateComponents *components;
-        NSInteger seconds;
-
-        components = [[NSCalendar currentCalendar] components: NSCalendarUnitSecond
-                fromDate: dateWhenAppIsBackFromBackground toDate: [NSDate date] options: 0];
-        seconds = [components second];
-        if (seconds > 30) {
-            [self->_tracker removeAllRequestsFromDBWithCompletionHandler:^(NSError * _Nullable error) {
-                if (error) {
-                    NSLog(@"the requests are not deleted!!!");
-                }
-            }];
-        }
-    }
+//    NSDate* dateWhenAppIsBackFromBackground =  (NSDate*) [NSUserDefaults.standardUserDefaults objectForKey:self.TIME_WHEN_APP_ENTERS_TO_BACKGROUND];
+//    if (dateWhenAppIsBackFromBackground) {
+//        NSDateComponents *components;
+//        NSInteger seconds;
+//
+//        components = [[NSCalendar currentCalendar] components: NSCalendarUnitSecond
+//                fromDate: dateWhenAppIsBackFromBackground toDate: [NSDate date] options: 0];
+//        seconds = [components second];
+//        if (seconds > 30) {
+//            [self->_tracker removeAllRequestsFromDBWithCompletionHandler:^(NSError * _Nullable error) {
+//                if (error) {
+//                    NSLog(@"the requests are not deleted!!!");
+//                }
+//            }];
+//        }
+//    }
     
 #else
   [_tracker updateFirstSessionWith:WKApplicationStateActive];

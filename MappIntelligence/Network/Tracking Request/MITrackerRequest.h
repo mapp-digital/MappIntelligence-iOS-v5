@@ -22,7 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)sendRequestWith:(NSURL *)url
         andCompletition:(void (^)(NSError *error))handler;
 - (void)sendRequestWith:(NSURL *)url andBody:(NSString*)body andCompletition:(void (^)(NSError *error))handler;
-- (void)sendBackgroundRequestWith:(NSURL *)url andBody:(NSString*)body;
+- (void)sendBackgroundRequestWith:(NSURL *)url andBody:(NSString*)body andRequestIds: (NSArray*) ids;
 
 @end
 

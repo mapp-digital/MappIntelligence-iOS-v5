@@ -8,12 +8,14 @@
 
 #import "MITrackerRequest.h"
 #import "MappIntelligenceLogger.h"
+#import "MIDatabaseManager.h"
 
 @interface MITrackerRequest ()
 
 @property MappIntelligenceLogger *loger;
 @property NSURLSession *urlSession;
 @property NSURLSession *backgroundUrlSession;
+@property NSArray* _Nullable requestIds;
 
 @end
 
@@ -22,6 +24,7 @@
 - (instancetype)init {
   self = [super init];
   if (self) {
+      _requestIds = NULL;
     _loger = [MappIntelligenceLogger shared];
 #if TARGET_OS_IOS
     _urlSession = [[NSURLSession alloc] init];
@@ -80,10 +83,12 @@
 }
 
 
-- (void)sendBackgroundRequestWith:(NSURL *)url andBody:(NSString*)body {
+- (void)sendBackgroundRequestWith:(NSURL *)url andBody:(NSString*)body andRequestIds:(nonnull NSArray *)ids {
+    _requestIds = ids;
+    [[NSUserDefaults standardUserDefaults] setObject:ids forKey:@"requestIds"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     [self createBackgroundUrlSession];
     NSURLRequest* request = [self createRequest:url andBody:body];
-    
     [[_backgroundUrlSession dataTaskWithRequest:request] resume];
 }
 
@@ -139,20 +144,48 @@
   [_backgroundUrlSession setSessionDescription:@"Mapp Intelligence Tracking in Background"];
 }
 
-- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveData:(NSData *)data {
-    //NSLog(@"%@", data);
+- (void)URLSession:(NSURLSession *)session didBecomeInvalidWithError:(NSError *)error {
+#if !TARGET_OS_WATCH
+    UIBackgroundTaskIdentifier backgroundIdentifier = (unsigned long)[[NSUserDefaults standardUserDefaults] integerForKey:@"backgroundIdentifier"];
+    [[UIApplication sharedApplication] endBackgroundTask: backgroundIdentifier];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"backgroundIdentifier"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+#endif
+}
+
+- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error {
+    if (session != _backgroundUrlSession)
+        return;
+    
+    if (_requestIds) {
+        [[MIDatabaseManager shared] removeRequestsDB:_requestIds];
+        _requestIds = NULL;
+    } else {
+        NSArray* ids = [[NSUserDefaults standardUserDefaults] objectForKey:@"requestIds"];
+        [[MIDatabaseManager shared] removeRequestsDB:ids];
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"requestIds"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"backgroundIdentifier"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    [self->_loger
+                logObj:[[NSString alloc]
+                           initWithFormat:
+                               @"Background Batch requests are sent successfully %@ and requestsId: %@", error.description, _requestIds]
+        forDescription:kMappIntelligenceLogLevelDescriptionDebug];
 #if !TARGET_OS_WATCH
     UIBackgroundTaskIdentifier backgroundIdentifier = (unsigned long)[[NSUserDefaults standardUserDefaults] integerForKey:@"backgroundIdentifier"];
     [[UIApplication sharedApplication] endBackgroundTask: backgroundIdentifier];
 #endif
 }
 
-- (void)URLSession:(NSURLSession *)session didBecomeInvalidWithError:(NSError *)error {
-    NSLog(@"error: %@", error);
-#if !TARGET_OS_WATCH
-    UIBackgroundTaskIdentifier backgroundIdentifier = (unsigned long)[[NSUserDefaults standardUserDefaults] integerForKey:@"backgroundIdentifier"];
-    [[UIApplication sharedApplication] endBackgroundTask: backgroundIdentifier];
-#endif
+- (void)URLSessionDidFinishEventsForBackgroundURLSession:(NSURLSession *)session {
+    if (_requestIds) {
+        [[MIDatabaseManager shared] removeRequestsDB:_requestIds];
+        _requestIds = NULL;
+    }
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"backgroundIdentifier"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 @end

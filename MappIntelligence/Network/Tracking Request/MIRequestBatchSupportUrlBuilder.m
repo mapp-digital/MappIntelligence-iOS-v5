@@ -19,6 +19,7 @@
 
 @property MIDatabaseManager* dbManager;
 @property MappIntelligenceLogger* loger;
+@property MIRequestData* requestData;
 
 @end
 
@@ -46,6 +47,7 @@
             handler(error);
         }
         MIRequestData* dt = (MIRequestData*)data;
+        self->_requestData = dt;
         NSArray<NSString *>* bodies = [self createBatchWith:dt];
         MITrackerRequest *request = [[MITrackerRequest alloc] init];
         for (NSString *body in bodies) {
@@ -54,7 +56,7 @@
             if (background) {
                 [request
                  sendBackgroundRequestWith:[[NSURL alloc] initWithString:self->_baseUrl]
-                 andBody:body];
+                 andBody:body andRequestIds:[self getRequestIDs:dt]];
             } else {
                 [request
                     sendRequestWith:[[NSURL alloc] initWithString:self->_baseUrl]
@@ -131,6 +133,5 @@
     }
     return array;
 }
-
 
 @end
