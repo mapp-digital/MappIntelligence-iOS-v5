@@ -148,6 +148,8 @@ static MappIntelligenceDefaultConfig *config = nil;
  #else
          isAppActive = YES;
  #endif
+        if (!isAppActive)
+            return;
         if (config.backgroundSendout == YES && !isAppActive) {
             [self->tracker sendBatchForRequestInBackground: YES withCompletionHandler:^(NSError * _Nullable error) {
                 //error is already obtain in one level lower
