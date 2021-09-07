@@ -320,6 +320,10 @@ static MappIntelligenceDefaultConfig *config = nil;
     return [exceptionTracker trackInfoWithName:name andWithMessage:message];
 }
 
+- (NSError *)trackExceptionWith:(NSError *)error {
+    return [exceptionTracker trackError:error];
+}
+
 - (void)setShouldMigrate:(BOOL)shouldMigrate {
     if (shouldMigrate) {
         [[MIDefaultTracker sharedInstance] migrateData];

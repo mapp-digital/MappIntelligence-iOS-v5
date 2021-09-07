@@ -127,7 +127,7 @@ MappIntelligence.shared()?.trackMedia(mediaEvent)
 - (NSError *_Nullable) trackUrl:(NSURL *_Nullable) url withMediaCode:(NSString *_Nullable) mediaCode;
 
 /**
-@brief Method which will track campaign parameters from url
+@brief Method which will track exception with name
 @param name - custom name of excetpion which we want to track
 @param message - approrpiate message for that exception
 @code
@@ -136,6 +136,16 @@ MappIntelligence.shared()?.trackMedia(mediaEvent)
 @return the error which may happen through process of tracking, if returns nil there is no error.
  */
 - (NSError *_Nullable) trackExceptionWithName:(NSString *_Nonnull) name andWithMessage:(NSString *_Nonnull) message;
+
+/**
+@brief Method which will track campaign parameters from url
+@param error - which describes exception
+@code
+ MappIntelligence.shared()?.trackException(with: error)
+@endcode
+@return the error which may happen through process of tracking, if returns nil there is no error.
+ */
+- (NSError *_Nullable) trackExceptionWith:(NSError *_Nonnull) error;
 
 /**
 @brief Method to initialize tracking. Please specify your track domain and trackID.

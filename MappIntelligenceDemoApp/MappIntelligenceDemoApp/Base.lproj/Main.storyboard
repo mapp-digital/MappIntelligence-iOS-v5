@@ -851,9 +851,12 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="NR8-se-tc5"/>
                                 </constraints>
-                                <state key="normal" title="Test Link1">
+                                <state key="normal" title="Track Error">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="TrackError:" destination="Hiw-xa-JOQ" eventType="touchUpInside" id="aPj-hT-YLo"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aFy-re-b8r">
                                 <rect key="frame" x="20" y="244" width="280" height="50"/>
