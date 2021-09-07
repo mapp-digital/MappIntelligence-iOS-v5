@@ -22,6 +22,9 @@ NS_ASSUME_NONNULL_BEGIN
 /** do exception tracking for exception message */
 - (NSError*) trackException: (NSException* _Nonnull) exception;
 
+/** do exception tracking for exception message only for automatic detection */
+- (NSError*)trackExceptionWithName: (NSString* )name andReason:(NSString*)reason andUserInfo:(NSString*)userInfo andCallStackReturnAddress: (NSString*)callStackReturnAddresses andCallStackSymbols:(NSString*)callStackSymbols;
+
 /** do exception tracking for NSError message */
 - (NSError*) trackError: (NSError* _Nonnull) error;
 

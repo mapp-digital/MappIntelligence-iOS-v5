@@ -88,6 +88,15 @@ typedef void SignalHanlder(NSException *exception);
     return [self trackWithType:NULL withName:exception.name withMessage:exception.reason withStack:[[exception.callStackSymbols valueForKey:@"description"] componentsJoinedByString:@" "] withStackReturnAddress:[[exception.callStackReturnAddresses valueForKey:@"description"] componentsJoinedByString:@""] withUserInfo:[NSString stringWithFormat:@"%@", exception.userInfo]];
 }
 
+- (NSError *)trackExceptionWithName:(NSString *)name andReason:(NSString *)reason andUserInfo:(NSString *)userInfo andCallStackReturnAddress:(NSString *)callStackReturnAddresses andCallStackSymbols:(NSString *)callStackSymbols {
+    if (![self checkIfInitialized]) {
+        return [NSError errorWithDomain:@"com.mapp.mappIntelligence" code:900 userInfo:@{@"Error reason": @"MappIntelligence exception tracking isn't initialited"}];
+    }
+
+    ///satisfy to level
+    return [self trackWithType:NULL withName: name withMessage:reason withStack:callStackSymbols withStackReturnAddress:callStackReturnAddresses withUserInfo: userInfo];
+}
+
 - (NSError*)trackError:(NSError *)error {
     if (![self checkIfInitialized]) {
         return [NSError errorWithDomain:@"com.mapp.mappIntelligence" code:900 userInfo:@{@"Error reason": @"MappIntelligence exception tracking isn't initialited"}];

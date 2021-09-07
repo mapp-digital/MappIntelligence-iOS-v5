@@ -8,6 +8,7 @@
 
 #import "MIUIFlowObserver.h"
 #import "MIExceptionTracker.h"
+#import "MappIntelligenceLogger.h"
 #if TARGET_OS_WATCH
 #import <WatchKit/WatchKit.h>
 #else
@@ -21,6 +22,7 @@
 
 @property MIDefaultTracker *tracker;
 @property MIExceptionTracker *exceptionTracker;
+@property MappIntelligenceLogger *logger;
 #if !TARGET_OS_WATCH
 @property UIApplication *application;
 #endif
@@ -40,6 +42,7 @@
 - (instancetype)initWith:(MIDefaultTracker *)tracker {
     self = [super init];
     _tracker = tracker;
+    _logger = [MappIntelligenceLogger shared];
     //to force new session only for TV, bacause notficataion for willenterforeground do not work on TVOS
 #if TARGET_OS_TV
     [_tracker updateFirstSessionWith:[[UIApplication sharedApplication]
@@ -96,26 +99,9 @@
     
 }
 
-void onUncaughtException(NSException* exception)
-{
-//save exception details
-    NSLog(@"Uncaght exception catched");
-#if !TARGET_OS_WATCH
-    [[UIApplication sharedApplication] beginBackgroundTaskWithName:@"com.mapp.exception" expirationHandler:^{
-        [[NSUserDefaults standardUserDefaults] setObject:exception forKey:@"UncaghtException"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
-    }];
-#endif
-}
-
 -(void)willEnterForeground {
-    NSException* exception = [_sharedDefaults objectForKey:@"UncaghtException"];
-    if(exception) {
-        [[MIExceptionTracker sharedInstance] trackException:exception];
-        [_sharedDefaults removeObjectForKey:@"UncaghtException"];
-        [_sharedDefaults synchronize];
-    }
     NSSetUncaughtExceptionHandler(&onUncaughtException);
+    [self getExceptionFromFileAndSendItAsAnRequest];
 #if !TARGET_OS_WATCH
   [_tracker updateFirstSessionWith:[[UIApplication sharedApplication]
                                        applicationState]];
@@ -137,12 +123,12 @@ void onUncaughtException(NSException* exception)
 }
 
 -(void)willEnterBckground {
-    NSLog(@"enter background and send all requests");
+    [_logger logObj:@"Enter background and send all requests." forDescription:kMappIntelligenceLogLevelDescriptionDebug];
 #if !TARGET_OS_WATCH
     self.backgroundIdentifier = [[UIApplication sharedApplication] beginBackgroundTaskWithName:@"com.mapp.background" expirationHandler:^{
         [self->_tracker sendBatchForRequestInBackground: YES withCompletionHandler:^(NSError * _Nullable error) {
             if (error) {
-                NSLog(@"the requests are not sent!!!");
+                [self->_logger logObj:@"The requests in background are not sent!!!." forDescription:kMappIntelligenceLogLevelDescriptionDebug];
             }
             
             [[UIApplication sharedApplication] endBackgroundTask:self.backgroundIdentifier];
@@ -150,6 +136,48 @@ void onUncaughtException(NSException* exception)
         }];
     }];
 #endif
+}
+
+#pragma mark - Helper methods
+
+void onUncaughtException(NSException* exception)
+{
+//save exception details
+#if !TARGET_OS_WATCH
+    NSString* exceptionText = [NSString stringWithFormat:@"%@,%@,%@,%@,%@", exception.name, exception.reason, exception.userInfo, exception.callStackReturnAddresses, exception.callStackSymbols];
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *filePath = [documentsDirectory stringByAppendingPathComponent:@"file.txt"];
+    [exceptionText writeToFile:filePath atomically:TRUE encoding:NSUTF8StringEncoding error:NULL];
+    NSLog(@"The exception is saved fully!");
+#endif
+}
+
+-(void) getExceptionFromFileAndSendItAsAnRequest {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *filePath = [documentsDirectory stringByAppendingPathComponent:@"file.txt"];
+    NSString* exceptionString = [NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:NULL];
+    if (exceptionString) {
+        //send the exception like an request
+        NSArray* exceptionElements = [exceptionString componentsSeparatedByString:@","];
+        if ([exceptionElements count] == 5)
+            [[MIExceptionTracker sharedInstance] trackExceptionWithName:exceptionElements[0] andReason:exceptionElements[1] andUserInfo:exceptionElements[2] andCallStackReturnAddress:exceptionElements[3] andCallStackSymbols:exceptionElements[4]];
+        //remove the file
+        if ([self removeTextFileWhereExceptionIsSaved]) {
+            [_logger logObj:@"The uncaught request is successfully sent to server." forDescription:kMappIntelligenceLogLevelDescriptionDebug];
+        }
+    }
+}
+
+-(BOOL)removeTextFileWhereExceptionIsSaved {
+    // get reference with path and filename
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *filePath = [documentsDirectory stringByAppendingPathComponent:@"file.txt"];
+    // now delete the file
+    return [[NSFileManager defaultManager]removeItemAtPath:filePath error:nil];
 }
 
 @end

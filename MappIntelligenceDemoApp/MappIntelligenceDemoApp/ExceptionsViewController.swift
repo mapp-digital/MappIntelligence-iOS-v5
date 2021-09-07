@@ -22,7 +22,8 @@ class ExceptionsViewController: UIViewController {
     }
     
     @IBAction func trackUncaughtException(_ sender: Any) throws {
-        fatalError()
+        //fatalError()
+        NSException(name: NSExceptionName(rawValue: "Custom Exception"), reason: "Custom reason", userInfo: ["Localized key" : "Unexpected input"]).raise()
     }
     
 }
