@@ -13,6 +13,12 @@
 
 typedef void SignalHanlder(NSException *exception);
 
+typedef NS_ENUM(NSInteger, ExceptionType) {
+    uncaught = 1,
+    caught = 2,
+    caughtCustom = 3
+};
+
 @interface MIExceptionTracker ()
 @property SignalHanlder* previousSignalHandlers;
 @property (nonatomic, strong) MIDefaultTracker* tracker;
@@ -75,7 +81,7 @@ typedef void SignalHanlder(NSException *exception);
     }
     ///satisfyToLevel
     
-    return [self trackWithType:NULL withName:name withMessage:message withStack:NULL withStackReturnAddress:NULL withUserInfo:NULL];
+    return [self trackWithType:[@(caughtCustom) stringValue] withName:name withMessage:message withStack:NULL withStackReturnAddress:NULL withUserInfo:NULL];
     
 }
 
@@ -85,7 +91,7 @@ typedef void SignalHanlder(NSException *exception);
     }
     ///satisfy to level
     
-    return [self trackWithType:NULL withName:exception.name withMessage:exception.reason withStack:[[exception.callStackSymbols valueForKey:@"description"] componentsJoinedByString:@" "] withStackReturnAddress:[[exception.callStackReturnAddresses valueForKey:@"description"] componentsJoinedByString:@""] withUserInfo:[NSString stringWithFormat:@"%@", exception.userInfo]];
+    return [self trackWithType:[@(uncaught) stringValue] withName:exception.name withMessage:exception.reason withStack:[[exception.callStackSymbols valueForKey:@"description"] componentsJoinedByString:@" "] withStackReturnAddress:[[exception.callStackReturnAddresses valueForKey:@"description"] componentsJoinedByString:@""] withUserInfo:[NSString stringWithFormat:@"%@", exception.userInfo]];
 }
 
 - (NSError *)trackExceptionWithName:(NSString *)name andReason:(NSString *)reason andUserInfo:(NSString *)userInfo andCallStackReturnAddress:(NSString *)callStackReturnAddresses andCallStackSymbols:(NSString *)callStackSymbols {
@@ -94,7 +100,7 @@ typedef void SignalHanlder(NSException *exception);
     }
 
     ///satisfy to level
-    return [self trackWithType:NULL withName: name withMessage:reason withStack:callStackSymbols withStackReturnAddress:callStackReturnAddresses withUserInfo: userInfo];
+    return [self trackWithType:[@(uncaught) stringValue] withName: name withMessage:reason withStack:callStackSymbols withStackReturnAddress:callStackReturnAddresses withUserInfo: userInfo];
 }
 
 - (NSError*)trackError:(NSError *)error {
@@ -103,7 +109,7 @@ typedef void SignalHanlder(NSException *exception);
     }
     ///satisfyToLevel
     
-    return [self trackWithType:NULL withName:@"Error" withMessage:error.localizedDescription withStack:NULL withStackReturnAddress:NULL withUserInfo:NULL];
+    return [self trackWithType:[@(caught) stringValue] withName:@"Error" withMessage:error.localizedDescription withStack:NULL withStackReturnAddress:NULL withUserInfo:NULL];
 }
 
 - (NSError*)trackWithType: (NSString * _Nullable) type withName:(NSString* _Nullable) name withMessage: (NSString* _Nullable) message withStack: (NSString* _Nullable)stack withStackReturnAddress: (NSString* _Nullable) stackReturnAddress withUserInfo: (NSString* _Nullable) userInfo {
