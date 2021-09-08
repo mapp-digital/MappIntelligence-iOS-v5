@@ -122,6 +122,7 @@ static MappIntelligenceDefaultConfig *config = nil;
 
   tracker = [MIDefaultTracker sharedInstance];
   [tracker initializeTracking];
+    [[MIExceptionTracker sharedInstance] setTypeOfExceptionsToTrack:noneOfExceptionTypes];
     exceptionTracker = [MIExceptionTracker sharedInstance];
     [exceptionTracker initializeExceptionTracking];
     
@@ -356,6 +357,10 @@ static MappIntelligenceDefaultConfig *config = nil;
     [[MIDefaultTracker sharedInstance] setAnonymousTracking:true];
     [[MIDefaultTracker sharedInstance] setSuppressedParameters:suppressParams];
     [_logger logObj: @"Anonymous tracking enabled. Please note that using this option will negatively affect data quality." forDescription:kMappIntelligenceLogLevelDescriptionDebug];
+}
+
+- (void)enableCrashTracking:(exceptionType)exceptionLogLevel {
+    [[MIExceptionTracker sharedInstance] setTypeOfExceptionsToTrack:exceptionLogLevel];
 }
 
 - (NSString *_Nonnull)getEverId {

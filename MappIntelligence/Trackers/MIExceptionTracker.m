@@ -13,10 +13,10 @@
 
 typedef void SignalHanlder(NSException *exception);
 
-typedef NS_ENUM(NSInteger, ExceptionType) {
-    uncaught = 1,
-    caught = 2,
-    caughtCustom = 3
+typedef NS_ENUM(NSInteger, ExceptionRequestType) {
+    uncaughtType = 1,
+    caughtType = 2,
+    caughtCustomType = 3
 };
 
 @interface MIExceptionTracker ()
@@ -30,6 +30,7 @@ typedef NS_ENUM(NSInteger, ExceptionType) {
 
 @implementation MIExceptionTracker
 @synthesize initialized = _initialized;
+@synthesize typeOfExceptionsToTrack = _typeOfExceptionsToTrack;
 
 + (nullable instancetype)sharedInstance {
 
@@ -48,6 +49,7 @@ typedef NS_ENUM(NSInteger, ExceptionType) {
 #endif
          _logger = [MappIntelligenceLogger shared];
          _tracker = [MIDefaultTracker sharedInstance];
+         _typeOfExceptionsToTrack = noneOfExceptionTypes;
        self.initialized = NO;
      }
      return self;
@@ -76,40 +78,47 @@ typedef NS_ENUM(NSInteger, ExceptionType) {
 }
 
 - (NSError*) trackInfoWithName:(NSString *)name andWithMessage:(NSString *)message {
+    if (![self satisfyToLevel:caughtCustomType])
+        return [NSError errorWithDomain:@"com.mapp.mappIntelligence" code:900 userInfo:@{@"Error reason": @"There is no correct level for crash tracking enabled!"}];
     if (![self checkIfInitialized]) {
         return [NSError errorWithDomain:@"com.mapp.mappIntelligence" code:900 userInfo:@{@"Error reason": @"MappIntelligence exception tracking isn't initialited"}];
     }
-    ///satisfyToLevel
     
-    return [self trackWithType:[@(caughtCustom) stringValue] withName:name withMessage:message withStack:NULL withStackReturnAddress:NULL withUserInfo:NULL];
+    return [self trackWithType:[@(caughtCustomType) stringValue] withName:name withMessage:message withStack:NULL withStackReturnAddress:NULL withUserInfo:NULL];
     
 }
 
 - (NSError*)trackException:(NSException *)exception {
+    if (![self satisfyToLevel:uncaughtType])
+        return [NSError errorWithDomain:@"com.mapp.mappIntelligence" code:900 userInfo:@{@"Error reason": @"There is no correct level for crash tracking enabled!"}];
+    
     if (![self checkIfInitialized]) {
         return [NSError errorWithDomain:@"com.mapp.mappIntelligence" code:900 userInfo:@{@"Error reason": @"MappIntelligence exception tracking isn't initialited"}];
     }
-    ///satisfy to level
     
-    return [self trackWithType:[@(uncaught) stringValue] withName:exception.name withMessage:exception.reason withStack:[[exception.callStackSymbols valueForKey:@"description"] componentsJoinedByString:@" "] withStackReturnAddress:[[exception.callStackReturnAddresses valueForKey:@"description"] componentsJoinedByString:@""] withUserInfo:[NSString stringWithFormat:@"%@", exception.userInfo]];
+    return [self trackWithType:[@(uncaughtType) stringValue] withName:exception.name withMessage:exception.reason withStack:[[exception.callStackSymbols valueForKey:@"description"] componentsJoinedByString:@" "] withStackReturnAddress:[[exception.callStackReturnAddresses valueForKey:@"description"] componentsJoinedByString:@""] withUserInfo:[NSString stringWithFormat:@"%@", exception.userInfo]];
 }
 
 - (NSError *)trackExceptionWithName:(NSString *)name andReason:(NSString *)reason andUserInfo:(NSString *)userInfo andCallStackReturnAddress:(NSString *)callStackReturnAddresses andCallStackSymbols:(NSString *)callStackSymbols {
+    if (![self satisfyToLevel:uncaughtType])
+        return [NSError errorWithDomain:@"com.mapp.mappIntelligence" code:900 userInfo:@{@"Error reason": @"There is no correct level for crash tracking enabled!"}];
+    
     if (![self checkIfInitialized]) {
         return [NSError errorWithDomain:@"com.mapp.mappIntelligence" code:900 userInfo:@{@"Error reason": @"MappIntelligence exception tracking isn't initialited"}];
     }
 
-    ///satisfy to level
-    return [self trackWithType:[@(uncaught) stringValue] withName: name withMessage:reason withStack:callStackSymbols withStackReturnAddress:callStackReturnAddresses withUserInfo: userInfo];
+    return [self trackWithType:[@(uncaughtType) stringValue] withName: name withMessage:reason withStack:callStackSymbols withStackReturnAddress:callStackReturnAddresses withUserInfo: userInfo];
 }
 
 - (NSError*)trackError:(NSError *)error {
+    if (![self satisfyToLevel:caughtType])
+        return [NSError errorWithDomain:@"com.mapp.mappIntelligence" code:900 userInfo:@{@"Error reason": @"There is no correct level for crash tracking enabled!"}];
+    
     if (![self checkIfInitialized]) {
         return [NSError errorWithDomain:@"com.mapp.mappIntelligence" code:900 userInfo:@{@"Error reason": @"MappIntelligence exception tracking isn't initialited"}];
     }
-    ///satisfyToLevel
     
-    return [self trackWithType:[@(caught) stringValue] withName:@"Error" withMessage:error.localizedDescription withStack:NULL withStackReturnAddress:NULL withUserInfo:NULL];
+    return [self trackWithType:[@(caughtType) stringValue] withName:@"Error" withMessage:error.localizedDescription withStack:NULL withStackReturnAddress:NULL withUserInfo:NULL];
 }
 
 - (NSError*)trackWithType: (NSString * _Nullable) type withName:(NSString* _Nullable) name withMessage: (NSString* _Nullable) message withStack: (NSString* _Nullable)stack withStackReturnAddress: (NSString* _Nullable) stackReturnAddress withUserInfo: (NSString* _Nullable) userInfo {
@@ -140,6 +149,28 @@ typedef NS_ENUM(NSInteger, ExceptionType) {
     actionEvent.eventParameters = actionProperties;
     
     return [_tracker trackWithCustomEvent:actionEvent];
+}
+
+-(BOOL)satisfyToLevel:(ExceptionRequestType) level {
+    BOOL satisfy = NO;
+    if (_typeOfExceptionsToTrack == allExceptionTypes)
+        satisfy = YES;
+    if (_typeOfExceptionsToTrack == noneOfExceptionTypes)
+        satisfy = NO;
+    if (level == caughtType && (_typeOfExceptionsToTrack == caught || _typeOfExceptionsToTrack == uncaught_and_caught || _typeOfExceptionsToTrack == custom_and_caught)) {
+        satisfy = YES;
+    }
+    if (level == uncaughtType && (_typeOfExceptionsToTrack == uncaught || _typeOfExceptionsToTrack == uncaught_and_caught || _typeOfExceptionsToTrack == uncaught_and_custom)) {
+        satisfy = YES;
+    }
+    if (level == caughtCustomType && (_typeOfExceptionsToTrack == custom || _typeOfExceptionsToTrack == uncaught_and_custom || _typeOfExceptionsToTrack == custom_and_caught)) {
+        satisfy = YES;
+    }
+    
+    if (!satisfy) {
+        [_logger logObj:@"There is no correct level for crash tracking enabled!" forDescription:kMappIntelligenceLogLevelDescriptionInfo];
+    }
+    return satisfy;
 }
 
 @end

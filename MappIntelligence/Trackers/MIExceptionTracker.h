@@ -7,12 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MappIntelligence.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface MIExceptionTracker : NSObject
 
 @property (nonatomic) BOOL initialized;
+@property (atomic) exceptionType typeOfExceptionsToTrack;
 
 + (nullable instancetype)sharedInstance;
 
