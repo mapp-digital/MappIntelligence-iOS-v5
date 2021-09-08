@@ -11,7 +11,6 @@
 #import "MIActionEvent.h"
 #import "MIDefaultTracker.h"
 
-typedef void SignalHanlder(NSException *exception);
 
 typedef NS_ENUM(NSInteger, ExceptionRequestType) {
     uncaughtType = 1,
@@ -20,11 +19,7 @@ typedef NS_ENUM(NSInteger, ExceptionRequestType) {
 };
 
 @interface MIExceptionTracker ()
-@property SignalHanlder* previousSignalHandlers;
 @property (nonatomic, strong) MIDefaultTracker* tracker;
-#if !TARGET_OS_WATCH
-@property NSArray<id>* signals;
-#endif
 @property (nonatomic, strong) MappIntelligenceLogger* logger;
 @end
 
@@ -44,9 +39,6 @@ typedef NS_ENUM(NSInteger, ExceptionRequestType) {
 
 -(id)init {
      if (self = [super init])  {
-#if !TARGET_OS_WATCH
-         _signals = @[@SIGABRT, @SIGILL, @SIGSEGV, @SIGFPE, @SIGBUS, @SIGPIPE, @SIGTRAP];
-#endif
          _logger = [MappIntelligenceLogger shared];
          _tracker = [MIDefaultTracker sharedInstance];
          _typeOfExceptionsToTrack = noneOfExceptionTypes;
@@ -60,14 +52,8 @@ typedef NS_ENUM(NSInteger, ExceptionRequestType) {
         return self;
     }
     
-    [self installUncaughtExceptionHandler];
     self.initialized = YES;
     return self;
-}
-
-- (void) installUncaughtExceptionHandler {
-    _previousSignalHandlers = NSGetUncaughtExceptionHandler();
-    [_logger logObj:@"exception tracking has been initialized" forDescription:kMappIntelligenceLogLevelDescriptionInfo];
 }
 
 -(BOOL) checkIfInitialized {
@@ -139,10 +125,10 @@ typedef NS_ENUM(NSInteger, ExceptionRequestType) {
         [parameters setObject:stack forKey:[NSNumber numberWithInt:913]];
     }
     if (userInfo) {
-        [parameters setObject:userInfo forKey:[NSNumber numberWithInt:916]];
+        [parameters setObject:userInfo forKey:[NSNumber numberWithInt:915]];//916
     }
     if (stackReturnAddress) {
-        [parameters setObject:stackReturnAddress forKey:[NSNumber numberWithInt:917]];
+        [parameters setObject:stackReturnAddress forKey:[NSNumber numberWithInt:914]];//917
     }
     
     MIEventParameters* actionProperties = [[MIEventParameters alloc] initWithParameters:parameters];
