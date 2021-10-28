@@ -19,6 +19,7 @@
 		8FA78F0525BF188A00CC166A /* MediaPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA78F0325BF188A00CC166A /* MediaPlayerViewController.swift */; };
 		8FA78F0625BF188A00CC166A /* MediaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA78F0425BF188A00CC166A /* MediaViewController.swift */; };
 		8FA78F0C25BF18BE00CC166A /* WebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA78F0B25BF18BE00CC166A /* WebViewViewController.swift */; };
+		A30218052705C9A2003EF60D /* SetupForLocalTesting.plist in Resources */ = {isa = PBXBuildFile; fileRef = A30218042705C9A2003EF60D /* SetupForLocalTesting.plist */; };
 		A32AEA41242B605B00BC7B46 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A32AEA3F242B605B00BC7B46 /* Interface.storyboard */; };
 		A32AEA43242B605F00BC7B46 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A32AEA42242B605F00BC7B46 /* Assets.xcassets */; };
 		A32AEA4A242B605F00BC7B46 /* MappIntelligenceWatchOSDemoApp Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A32AEA49242B605F00BC7B46 /* MappIntelligenceWatchOSDemoApp Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -36,7 +37,6 @@
 		A36E59CC259493A100BF8873 /* EcommerceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36E59CB259493A100BF8873 /* EcommerceViewController.swift */; };
 		A36E5A2C25AD9D8700BF8873 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCA1739A23D5D25E00B31430 /* Assets.xcassets */; };
 		A38A6AF4242CD74F00600D82 /* libMappIntelligenceWatchOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A38A6AF3242CD74F00600D82 /* libMappIntelligenceWatchOS.a */; };
-		A38F82C42538741B0021577B /* SetupForLocalTesting.plist in Resources */ = {isa = PBXBuildFile; fileRef = A38F82C32538741B0021577B /* SetupForLocalTesting.plist */; };
 		A3ADC97E26D94057007504FF /* ExceptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3ADC97D26D94057007504FF /* ExceptionsViewController.swift */; };
 		BCA1739223D5D25C00B31430 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA1739123D5D25C00B31430 /* AppDelegate.swift */; };
 		BCA1739423D5D25C00B31430 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA1739323D5D25C00B31430 /* SceneDelegate.swift */; };
@@ -100,6 +100,7 @@
 		8FA78F0425BF188A00CC166A /* MediaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaViewController.swift; sourceTree = "<group>"; };
 		8FA78F0B25BF18BE00CC166A /* WebViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewViewController.swift; sourceTree = "<group>"; };
 		8FE0AF26255D6FB20037AE4A /* MappIntelligenceDemoApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MappIntelligenceDemoApp.entitlements; sourceTree = "<group>"; };
+		A30218042705C9A2003EF60D /* SetupForLocalTesting.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = SetupForLocalTesting.plist; path = ../SetupForLocalTesting.plist; sourceTree = "<group>"; };
 		A3258BF5250A4E0B00039B92 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A32AEA3D242B605B00BC7B46 /* MappIntelligenceWatchOSDemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MappIntelligenceWatchOSDemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A32AEA40242B605B00BC7B46 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
@@ -127,7 +128,6 @@
 		A38A6AEF242CCFA100600D82 /* libMappIntelligenceSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libMappIntelligenceSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A38A6AF1242CD0C600600D82 /* libMappIntelligenceSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libMappIntelligenceSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A38A6AF3242CD74F00600D82 /* libMappIntelligenceWatchOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libMappIntelligenceWatchOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		A38F82C32538741B0021577B /* SetupForLocalTesting.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SetupForLocalTesting.plist; sourceTree = "<group>"; };
 		A3ADC97D26D94057007504FF /* ExceptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExceptionsViewController.swift; sourceTree = "<group>"; };
 		BCA1738E23D5D25C00B31430 /* MappIntelligenceDemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MappIntelligenceDemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCA1739123D5D25C00B31430 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -220,7 +220,7 @@
 		BCA1738523D5D25C00B31430 = {
 			isa = PBXGroup;
 			children = (
-				A38F82C32538741B0021577B /* SetupForLocalTesting.plist */,
+				A30218042705C9A2003EF60D /* SetupForLocalTesting.plist */,
 				BCA1739023D5D25C00B31430 /* MappIntelligenceDemoApp */,
 				A32AEA3E242B605B00BC7B46 /* MappIntelligenceWatchOSDemoApp */,
 				A32AEA4D242B605F00BC7B46 /* MappIntelligenceWatchOSDemoApp Extension */,
@@ -439,7 +439,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8F94E6BE25BF199C00027623 /* wt.mp4 in Resources */,
-				A38F82C42538741B0021577B /* SetupForLocalTesting.plist in Resources */,
+				A30218052705C9A2003EF60D /* SetupForLocalTesting.plist in Resources */,
 				BCA1739E23D5D25E00B31430 /* LaunchScreen.storyboard in Resources */,
 				BCA1739B23D5D25E00B31430 /* Assets.xcassets in Resources */,
 				BCA1739923D5D25C00B31430 /* Main.storyboard in Resources */,
