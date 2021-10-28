@@ -24,6 +24,7 @@ var window: UIWindow?
         let dict = NSDictionary(contentsOfFile: path) as Dictionary?
         let array = [(dict?["track_ids" as NSObject]?.intValue) ?? 0]
         let domain = dict?["domain" as NSObject]
+        MappIntelligence.shared()?.initWithConfiguration(array, onTrackdomain: domain as! String)
         MappIntelligence.shared()?.logLevel = .all
         MappIntelligence.shared()?.batchSupportEnabled = false
         MappIntelligence.shared()?.batchSupportSize = 150
@@ -32,7 +33,6 @@ var window: UIWindow?
         MappIntelligence.shared()?.shouldMigrate = true
         MappIntelligence.shared()?.sendAppVersionInEveryRequest = true
         MappIntelligence.shared()?.enableCrashTracking(.caught)
-        MappIntelligence.shared()?.initWithConfiguration(array, onTrackdomain: domain as! String)
         // Override point for customization after application launch.
         return true
     }
