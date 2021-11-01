@@ -181,12 +181,12 @@ NSInteger const batchSupportSizeDefault = 5000;
         forDescription:kMappIntelligenceLogLevelDescriptionError];
       self.requestsInterval = requestIntervalDefault;
   }
-//  else if (timeInterval < 60) {
-//      [_logger logObj:[NSString stringWithFormat: @"Request time interval cannot be less than 60 seconds "
-//                       @"(1 minute), will be set to 1 minute."]
-//          forDescription:kMappIntelligenceLogLevelDescriptionError];
-//        self.requestsInterval = 60;
-//  }
+  else if (timeInterval < 5) {
+      [_logger logObj:[NSString stringWithFormat: @"Request time interval cannot be less than 60 seconds "
+                       @"(1 minute), will be set to 1 minute."]
+          forDescription:kMappIntelligenceLogLevelDescriptionError];
+        self.requestsInterval = 5;
+  }
 }
 
 - (BOOL)trackDomainValidation:(NSString *)trackingDomain {
