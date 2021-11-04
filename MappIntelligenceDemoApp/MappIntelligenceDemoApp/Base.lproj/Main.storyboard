@@ -211,6 +211,33 @@
                                             <segue destination="D55-Lk-m95" kind="show" id="Whi-MO-Jo0"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="65" id="haW-0z-FjN">
+                                        <rect key="frame" x="0.0" y="483" width="320" height="65"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="haW-0z-FjN" id="WbV-Eg-brz">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="65"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Exceptions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EMn-k2-k4b">
+                                                    <rect key="frame" x="119" y="22" width="82.5" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="Omj-oD-AXy"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                                    <color key="textColor" red="0.019607843140000001" green="0.57254901960000004" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="EMn-k2-k4b" firstAttribute="centerY" secondItem="WbV-Eg-brz" secondAttribute="centerY" id="B3q-HM-JA5"/>
+                                                <constraint firstItem="EMn-k2-k4b" firstAttribute="centerX" secondItem="WbV-Eg-brz" secondAttribute="centerX" id="Bdv-ky-Rwq"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <connections>
+                                            <segue destination="Hiw-xa-JOQ" kind="show" id="ZCM-t1-e7o"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -809,6 +836,76 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nvW-Ym-Qwj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2147" y="2402"/>
+        </scene>
+        <!--Exceptions-->
+        <scene sceneID="CTF-oM-SuJ">
+            <objects>
+                <viewController id="Hiw-xa-JOQ" customClass="ExceptionsViewController" customModule="MappIntelligenceDemoApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="STG-He-Twi">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nIR-yz-lII">
+                                <rect key="frame" x="20" y="94" width="280" height="50"/>
+                                <color key="backgroundColor" red="0.021203886719999999" green="0.57247686389999997" blue="0.84162324669999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="iZP-Kr-BKn"/>
+                                </constraints>
+                                <state key="normal" title="Test Exception With Name And Message">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="trackExceptionWithNameAndMessage:" destination="Hiw-xa-JOQ" eventType="touchUpInside" id="2cb-5a-cbm"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="we1-ht-ud4">
+                                <rect key="frame" x="20" y="169" width="280" height="50"/>
+                                <color key="backgroundColor" red="0.021203886719999999" green="0.57247686389999997" blue="0.84162324669999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="NR8-se-tc5"/>
+                                </constraints>
+                                <state key="normal" title="Track Error">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="TrackError:" destination="Hiw-xa-JOQ" eventType="touchUpInside" id="aPj-hT-YLo"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aFy-re-b8r">
+                                <rect key="frame" x="20" y="244" width="280" height="50"/>
+                                <color key="backgroundColor" red="0.021203886719999999" green="0.57247686389999997" blue="0.84162324669999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="jxk-pY-8L7"/>
+                                </constraints>
+                                <state key="normal" title="Uncaught Exception">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="trackUncaughtException:" destination="Hiw-xa-JOQ" eventType="touchUpInside" id="ObY-ep-U6p"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="DdC-Ij-Mmg"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="we1-ht-ud4" firstAttribute="top" secondItem="nIR-yz-lII" secondAttribute="bottom" constant="25" id="Ahq-FO-JsK"/>
+                            <constraint firstItem="DdC-Ij-Mmg" firstAttribute="trailing" secondItem="nIR-yz-lII" secondAttribute="trailing" constant="20" id="CQv-Nn-hCT"/>
+                            <constraint firstItem="DdC-Ij-Mmg" firstAttribute="trailing" secondItem="we1-ht-ud4" secondAttribute="trailing" constant="20" id="CaO-jn-yqZ"/>
+                            <constraint firstItem="we1-ht-ud4" firstAttribute="leading" secondItem="DdC-Ij-Mmg" secondAttribute="leading" constant="20" id="OAY-xS-OwV"/>
+                            <constraint firstItem="nIR-yz-lII" firstAttribute="leading" secondItem="DdC-Ij-Mmg" secondAttribute="leading" constant="20" id="VfW-kD-UY4"/>
+                            <constraint firstItem="nIR-yz-lII" firstAttribute="top" secondItem="DdC-Ij-Mmg" secondAttribute="top" constant="50" id="Z05-v4-lEs"/>
+                            <constraint firstItem="aFy-re-b8r" firstAttribute="top" secondItem="we1-ht-ud4" secondAttribute="bottom" constant="25" id="e9b-dr-E3s"/>
+                            <constraint firstItem="aFy-re-b8r" firstAttribute="leading" secondItem="DdC-Ij-Mmg" secondAttribute="leading" constant="20" id="fpd-73-cPa"/>
+                            <constraint firstItem="DdC-Ij-Mmg" firstAttribute="trailing" secondItem="aFy-re-b8r" secondAttribute="trailing" constant="20" id="xd4-E6-nh2"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Exceptions" id="V96-f8-Hi9">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="sHE-x2-QDp"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1J6-P0-9Zm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4455" y="1647"/>
         </scene>
     </scenes>
     <resources>

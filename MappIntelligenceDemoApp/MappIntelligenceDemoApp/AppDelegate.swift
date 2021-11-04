@@ -28,11 +28,12 @@ var window: UIWindow?
         MappIntelligence.shared()?.logLevel = .all
         MappIntelligence.shared()?.batchSupportEnabled = false
         MappIntelligence.shared()?.batchSupportSize = 150
-        MappIntelligence.shared()?.requestInterval = 60
+        MappIntelligence.shared()?.requestInterval = 1
         MappIntelligence.shared()?.requestPerQueue = 300
         MappIntelligence.shared()?.shouldMigrate = true
         MappIntelligence.shared()?.sendAppVersionInEveryRequest = true
         MappIntelligence.shared()?.enableBackgroundSendout = true
+        MappIntelligence.shared()?.enableCrashTracking(.caught)
         // Override point for customization after application launch.
         return true
     }

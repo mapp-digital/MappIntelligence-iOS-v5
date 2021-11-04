@@ -13,12 +13,14 @@
 #import "MIRequestData.h"
 #import "MIDeepLink.h"
 #import "MIMediaTracker.h"
+#import "MIExceptionTracker.h"
 #import <UIKit/UIKit.h>
 
 @interface MappIntelligence ()
 
 @property MappIntelligenceDefaultConfig *configuration;
 @property MIDefaultTracker *tracker;
+@property MIExceptionTracker *exceptionTracker;
 @property MappIntelligenceLogger *logger;
 @property NSTimer* timerForSendRequests;
 
@@ -30,6 +32,7 @@ static MappIntelligence *sharedInstance = nil;
 static MappIntelligenceDefaultConfig *config = nil;
 
 @synthesize tracker;
+@synthesize exceptionTracker;
 
 - (id)init {
   if (!sharedInstance) {
@@ -120,6 +123,9 @@ static MappIntelligenceDefaultConfig *config = nil;
 
   tracker = [MIDefaultTracker sharedInstance];
   [tracker initializeTracking];
+    [[MIExceptionTracker sharedInstance] setTypeOfExceptionsToTrack:noneOfExceptionTypes];
+    exceptionTracker = [MIExceptionTracker sharedInstance];
+    [exceptionTracker initializeExceptionTracking];
     
     [[MIDatabaseManager shared] removeOldRequestsWithCompletitionHandler:^(NSError * _Nonnull error, id  _Nullable data) {
         if (!error) {
@@ -337,6 +343,14 @@ static MappIntelligenceDefaultConfig *config = nil;
   return [tracker trackWithCustomEvent:event];
 }
 
+- (NSError *)trackExceptionWithName:(NSString *)name andWithMessage:(NSString *)message {
+    return [exceptionTracker trackInfoWithName:name andWithMessage:message];
+}
+
+- (NSError *)trackExceptionWith:(NSError *)error {
+    return [exceptionTracker trackError:error];
+}
+
 - (void)setShouldMigrate:(BOOL)shouldMigrate {
     if (shouldMigrate) {
         [[MIDefaultTracker sharedInstance] migrateData];
@@ -369,6 +383,10 @@ static MappIntelligenceDefaultConfig *config = nil;
     [[MIDefaultTracker sharedInstance] setAnonymousTracking:true];
     [[MIDefaultTracker sharedInstance] setSuppressedParameters:suppressParams];
     [_logger logObj: @"Anonymous tracking enabled. Please note that using this option will negatively affect data quality." forDescription:kMappIntelligenceLogLevelDescriptionDebug];
+}
+
+- (void)enableCrashTracking:(exceptionType)exceptionLogLevel {
+    [[MIExceptionTracker sharedInstance] setTypeOfExceptionsToTrack:exceptionLogLevel];
 }
 
 - (NSString *_Nonnull)getEverId {
