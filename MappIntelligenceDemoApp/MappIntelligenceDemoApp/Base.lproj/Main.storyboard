@@ -827,7 +827,7 @@
         <!--Form Tracking-->
         <scene sceneID="Hjg-2C-VEn">
             <objects>
-                <viewController title="Form Tracking" id="Uyo-wg-qu0" sceneMemberID="viewController">
+                <viewController title="Form Tracking" id="Uyo-wg-qu0" customClass="FormViewController" customModule="MappIntelligenceDemoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QZL-kO-HDE">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -877,10 +877,14 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VWi-NU-h8k">
-                                <rect key="frame" x="20" y="298" width="280" height="70"/>
+                                <rect key="frame" x="20" y="298" width="280" height="100"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="70" id="zAQ-XG-DCf"/>
+                                    <constraint firstAttribute="height" constant="100" id="zAQ-XG-DCf"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="Uyo-wg-qu0" id="bwH-4s-xhJ"/>
+                                    <outlet property="delegate" destination="Uyo-wg-qu0" id="GFW-wS-ei2"/>
+                                </connections>
                             </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Anonymous:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IVb-HK-XTN">
                                 <rect key="frame" x="20" y="527" width="99" height="21"/>
@@ -902,7 +906,7 @@
                                 <color key="onTintColor" name="Blue"/>
                             </switch>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WRf-mV-fGQ">
-                                <rect key="frame" x="20" y="388" width="144" height="50"/>
+                                <rect key="frame" x="20" y="418" width="144" height="50"/>
                                 <color key="backgroundColor" name="Darkblue"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="LYH-MQ-tjA"/>
@@ -911,11 +915,12 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
+                                    <action selector="confirmButtonPressed:" destination="Uyo-wg-qu0" eventType="touchUpInside" id="uQk-oy-Qgc"/>
                                     <action selector="trackMedia1:" destination="D55-Lk-m95" eventType="touchUpInside" id="ce6-pJ-Wb2"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="83G-9F-ler">
-                                <rect key="frame" x="174" y="388" width="126" height="50"/>
+                                <rect key="frame" x="174" y="418" width="126" height="50"/>
                                 <color key="backgroundColor" name="Darkblue"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="B7v-4g-Vgm"/>
@@ -924,6 +929,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
+                                    <action selector="cancelButtonPressed:" destination="Uyo-wg-qu0" eventType="touchUpInside" id="ul2-ky-57a"/>
                                     <action selector="trackMedia1:" destination="D55-Lk-m95" eventType="touchUpInside" id="3Zu-I4-7jo"/>
                                 </connections>
                             </button>
@@ -964,21 +970,15 @@
                     <navigationItem key="navigationItem" title="Form Tracking" id="LhJ-Pd-JZv">
                         <barButtonItem key="backBarButtonItem" title="Back" id="ffD-hs-On0"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="anynonimusSwitch" destination="Lab-XG-TQa" id="5r1-BM-iPf"/>
+                        <outlet property="name1TextField" destination="MZL-2L-JCc" id="Dzu-gg-wLH"/>
+                        <outlet property="name2TextField" destination="62R-vA-xog" id="Y5y-Jy-rOK"/>
+                        <outlet property="name3TextView" destination="hWa-TM-dOB" id="piU-yl-4iw"/>
+                        <outlet property="switchButton" destination="sEu-mS-gmr" id="6WA-Ol-AZr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vkd-Bb-sJ1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9W0-3u-L19">
-                    <rect key="frame" x="0.0" y="0.0" width="280" height="50"/>
-                    <color key="backgroundColor" name="Darkblue"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="50" id="lsI-XA-pwt"/>
-                    </constraints>
-                    <state key="normal" title="Test Media1">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </state>
-                    <connections>
-                        <action selector="trackMedia1:" destination="D55-Lk-m95" eventType="touchUpInside" id="47z-fY-dih"/>
-                    </connections>
-                </button>
             </objects>
             <point key="canvasLocation" x="3699.375" y="2049.2957746478874"/>
         </scene>
