@@ -7,6 +7,7 @@
 //
 
 #import "MIFormParameters.h"
+#import <UIKit/UIKit.h>
 
 #define key_form_name @"mi_form_name"
 #define key_form_submit @"mi_form_submit"
@@ -41,6 +42,65 @@
 
 - (NSString*)getFormForQuery {
     return [[NSString alloc] initWithFormat:@"%@|%i", _formName, _formSubmit];
+}
+
+- (NSArray<UITextField *> *)getTextFields: (UIView*) mainView {
+    NSMutableArray<UITextField *> * textFields = [[NSMutableArray alloc] init];
+    for (UIView* view in [mainView subviews]) {
+        if ([view isKindOfClass:UITextField.class]) {
+            [textFields addObject:(UITextField *)view];
+        } else {
+            [self getTextFields: view];
+        }
+    }
+    return NULL;
+}
+
+- (NSArray<UITextView *> *)getTextViews: (UIView*) mainView {
+    NSMutableArray<UITextView *> * textViews = [[NSMutableArray alloc] init];
+    for (UIView* view in [mainView subviews]) {
+        if ([view isKindOfClass:UITextField.class]) {
+            [textViews addObject:(UITextView *)view];
+        } else {
+            [self getTextViews: view];
+        }
+    }
+    return NULL;
+}
+
+- (NSArray<UISwitch *> *)getSwithces: (UIView*) mainView {
+    NSMutableArray<UISwitch *> * switches = [[NSMutableArray alloc] init];
+    for (UIView* view in [mainView subviews]) {
+        if ([view isKindOfClass:UISwitch.class]) {
+            [switches addObject:(UISwitch *)view];
+        } else {
+            [self getSwithces: view];
+        }
+    }
+    return NULL;
+}
+
+- (NSArray<UIPickerView *> *)getPickerViews: (UIView*) mainView {
+    NSMutableArray<UIPickerView *> * pickers = [[NSMutableArray alloc] init];
+    for (UIView* view in [mainView subviews]) {
+        if ([view isKindOfClass:UIPickerView.class]) {
+            [pickers addObject:(UIPickerView *)view];
+        } else {
+            [self getPickerViews: view];
+        }
+    }
+    return NULL;
+}
+
+- (UIViewController*)topViewController {
+    UIWindow* window = [[UIApplication sharedApplication] keyWindow];
+    UIViewController* topViewControler = [window rootViewController];
+    if (!window || !topViewControler)
+        return NULL;
+    while( [topViewControler presentedViewController] ) {
+        topViewControler = [topViewControler presentedViewController];
+    }
+    return topViewControler;
 }
 
 @end
