@@ -13,6 +13,15 @@
 #define key_form_submit @"mi_form_submit"
 #define key_form_fields @"mi_form_fields"
 
+@interface MIFormParameters()
+
+@property NSMutableArray<UITextField *> * textFields;
+@property NSMutableArray<UITextView *> * textViews;
+@property NSMutableArray<UISwitch *> * switches;
+@property NSMutableArray<UIPickerView *> * pickers;
+
+@end
+
 @implementation MIFormParameters
 
 - (instancetype)initWithDictionary:(NSDictionary*)dictionary {
@@ -45,10 +54,9 @@
 }
 
 - (NSArray<UITextField *> *)getTextFields: (UIView*) mainView {
-    NSMutableArray<UITextField *> * textFields = [[NSMutableArray alloc] init];
     for (UIView* view in [mainView subviews]) {
         if ([view isKindOfClass:UITextField.class]) {
-            [textFields addObject:(UITextField *)view];
+            [_textFields addObject:(UITextField *)view];
         } else {
             [self getTextFields: view];
         }
@@ -57,10 +65,9 @@
 }
 
 - (NSArray<UITextView *> *)getTextViews: (UIView*) mainView {
-    NSMutableArray<UITextView *> * textViews = [[NSMutableArray alloc] init];
     for (UIView* view in [mainView subviews]) {
         if ([view isKindOfClass:UITextField.class]) {
-            [textViews addObject:(UITextView *)view];
+            [_textViews addObject:(UITextView *)view];
         } else {
             [self getTextViews: view];
         }
@@ -69,10 +76,9 @@
 }
 
 - (NSArray<UISwitch *> *)getSwithces: (UIView*) mainView {
-    NSMutableArray<UISwitch *> * switches = [[NSMutableArray alloc] init];
     for (UIView* view in [mainView subviews]) {
         if ([view isKindOfClass:UISwitch.class]) {
-            [switches addObject:(UISwitch *)view];
+            [_switches addObject:(UISwitch *)view];
         } else {
             [self getSwithces: view];
         }
@@ -81,10 +87,9 @@
 }
 
 - (NSArray<UIPickerView *> *)getPickerViews: (UIView*) mainView {
-    NSMutableArray<UIPickerView *> * pickers = [[NSMutableArray alloc] init];
     for (UIView* view in [mainView subviews]) {
         if ([view isKindOfClass:UIPickerView.class]) {
-            [pickers addObject:(UIPickerView *)view];
+            [_pickers addObject:(UIPickerView *)view];
         } else {
             [self getPickerViews: view];
         }
