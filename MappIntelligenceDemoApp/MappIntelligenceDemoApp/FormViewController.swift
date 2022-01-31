@@ -18,6 +18,7 @@ class FormViewController: UIViewController, UIPickerViewDataSource, UIPickerView
    
     override func viewDidLoad() {
         super.viewDidLoad()
+        name1TextField.tag = 11
     }
     
     @IBAction func confirmButtonPressed(_ sender: Any) {

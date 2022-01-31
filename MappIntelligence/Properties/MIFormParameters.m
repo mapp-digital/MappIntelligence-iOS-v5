@@ -7,9 +7,17 @@
 //
 
 #import "MIFormParameters.h"
-#import <UIKit/UIKit.h>
 
-#define key_form_name @"mi_form_name"
+#define key_form_name @"form_name"
+#define key_field_ids @"field_ids"
+#define key_rename_ids @"rename_ids"
+#define key_change_fields_value @"change_fields_value"
+#define key_anonymous_specific_fields @"anonymous_specific_fields"
+#define key_full_content_specific_fields @"full_content_specific_fields"
+#define key_confirm_button @"confirm_button"
+#define key_anonymous @"anonymous"
+#define key_path_analysis @"path_analysis"
+
 #define key_form_submit @"mi_form_submit"
 #define key_form_fields @"mi_form_fields"
 
@@ -28,7 +36,14 @@
     self = [super init];
     if (self) {
         _formName = dictionary[key_form_name];
-        _formSubmit = dictionary[key_form_submit];
+        _fieldIds = dictionary[key_field_ids];
+        _renameFields = dictionary[key_rename_ids];
+        _changeFieldsValue = dictionary[key_change_fields_value];
+        _anonymousSpecificFields = dictionary[key_anonymous_specific_fields];
+        _fullContentSpecificFields = dictionary[key_full_content_specific_fields];
+        _confirmButton = dictionary[key_confirm_button];
+        _anonymous = dictionary[key_anonymous];
+        _pathAnalysis = dictionary[key_path_analysis];
         NSArray<NSDictionary*>* formFields = dictionary[key_form_fields];
         if (formFields && [formFields count] > 0) {
             _fields = [NSMutableArray new];
@@ -38,6 +53,101 @@
         }
     }
     return self;
+}
+- (instancetype)initWithController:(UIViewController *)controller {
+    self = [super init];
+    if (self) {
+        UIView* superView = [controller view];
+        [self getTextFields:superView];
+        [self getTextViews:controller.view];
+    }
+    return self;
+}
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        UIView* superView = self.topViewController.view;
+        if (superView) {
+            [self getTextFields:superView];
+            [self getTextViews:superView];
+            [self getPickerViews:superView];
+            [self getSwithces:superView];
+            _formName = NSStringFromClass(self.topViewController.classForCoder);
+            _fieldIds = [[NSMutableArray alloc] init];
+            _renameFields = [[NSMutableDictionary alloc] init];
+            _changeFieldsValue = [[NSMutableDictionary alloc] init];
+            _anonymousSpecificFields = [[NSMutableArray alloc] init];
+            _fullContentSpecificFields = [[NSMutableArray alloc] init];
+            _confirmButton = YES;
+            _anonymous = NO;
+            _pathAnalysis = [[NSMutableArray alloc] init];
+        }
+    }
+    return self;
+}
+
+- (void)setFieldIds:(NSMutableArray<NSNumber *> *)fieldIds {
+    _fieldIds = fieldIds;
+    if([fieldIds count] > 0) {
+        for (UITextField* textField in _textFields) {
+            if ([fieldIds containsObject:[NSNumber numberWithInteger:textField.tag]]) {
+                [_textFields removeObject:textField];
+            }
+        }
+        for (UITextView* textView in _textViews) {
+            if ([fieldIds containsObject:[NSNumber numberWithInteger:textView.tag]]) {
+                [_textViews removeObject:textView];
+            }
+        }
+        for (UIPickerView* pickerView in _pickers) {
+            if ([fieldIds containsObject:[NSNumber numberWithInteger:pickerView.tag]]) {
+                [_pickers removeObject:pickerView];
+            }
+        }
+        for (UISwitch* switchC in _switches) {
+            if ([fieldIds containsObject:[NSNumber numberWithInteger:switchC.tag]]) {
+                [_switches removeObject:switchC];
+            }
+        }
+    }
+}
+
+- (void)createFromFields {
+    _fields = [[NSMutableArray alloc] init];
+    for (UITextField* textField in _textFields) {
+        _fields = [_fields arrayByAddingObject:[[MIFormField alloc] initWithName:(textField.accessibilityLabel ? textField.accessibilityLabel : NSStringFromClass(textField.classForCoder)) andContent:textField.text andID:(NSInteger*)textField.tag andWithAnonymus:YES]];
+    }
+    for (UITextView* textView in _textViews) {
+        _fields = [_fields arrayByAddingObject:[[MIFormField alloc] initWithName:(textView.accessibilityLabel ? textView.accessibilityLabel : NSStringFromClass(textView.classForCoder)) andContent:textView.text andID:(NSInteger*)textView.tag andWithAnonymus:YES]];
+    }
+    for (UIPickerView* pickerView in _pickers) {
+        _fields = [_fields arrayByAddingObject:[[MIFormField alloc] initWithName:(pickerView.accessibilityLabel ? pickerView.accessibilityLabel : NSStringFromClass(pickerView.classForCoder)) andContent:pickerView andID:(NSInteger*)pickerView.tag andWithAnonymus:NO]];
+    }
+    for (UISwitch* switchC in _switches) {
+        _fields = [_fields arrayByAddingObject:[[MIFormField alloc] initWithName:(switchC.accessibilityLabel ? switchC.accessibilityLabel : NSStringFromClass(switchC.classForCoder)) andContent:(switchC.on ? @"1" : @"0") andID:(NSInteger*)switchC.tag andWithAnonymus:NO]];
+    }
+    
+    if (!_anonymous) {
+        for (MIFormField* field in _fields) {
+            if ([_anonymousSpecificFields containsObject:[NSNumber numberWithInteger:*(NSInteger*)field.ID]]) {
+                [[_fields objectAtIndex: [_fields indexOfObject:field]] setAnonymus:YES];
+            }
+        }
+    }
+    
+    for (MIFormField* field in _fields) {
+        if ([[_renameFields allKeys] containsObject:[NSNumber numberWithInteger:*(NSInteger*)field.ID]]) {
+            [[_fields objectAtIndex: [_fields indexOfObject:field]] setFormFieldName:[_renameFields valueForKey: [[NSNumber numberWithInteger:*(NSInteger*)field.ID] stringValue] ]];
+        }
+        if ([[_changeFieldsValue allKeys] containsObject:[NSNumber numberWithInteger:*(NSInteger*)field.ID]]) {
+            [[_fields objectAtIndex: [_fields indexOfObject:field]] setFormFieldContent:[_changeFieldsValue valueForKey: [[NSNumber numberWithInteger:*(NSInteger*)field.ID] stringValue] ]];
+        }
+        if ([_fullContentSpecificFields containsObject:[NSNumber numberWithInteger:*(NSInteger*)field.ID]]) {
+            [[_fields objectAtIndex: [_fields indexOfObject:field]] setAnonymus:NO];
+        }
+    }
 }
 
 - (NSMutableArray<NSURLQueryItem *> *)asQueryItems {
@@ -50,7 +160,7 @@
 }
 
 - (NSString*)getFormForQuery {
-    return [[NSString alloc] initWithFormat:@"%@|%i", _formName, _formSubmit];
+    return [[NSString alloc] initWithFormat:@"%@|%i", _formName, _confirmButton];
 }
 
 - (NSArray<UITextField *> *)getTextFields: (UIView*) mainView {
