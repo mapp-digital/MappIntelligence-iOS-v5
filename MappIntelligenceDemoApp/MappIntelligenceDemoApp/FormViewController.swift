@@ -19,9 +19,15 @@ class FormViewController: UIViewController, UIPickerViewDataSource, UIPickerView
     override func viewDidLoad() {
         super.viewDidLoad()
         name1TextField.tag = 11
+        name2TextField.tag = 22
+        name3TextView.tag = 33
+        switchButton.tag = 44
+        anynonimusSwitch.tag = 55
     }
     
     @IBAction func confirmButtonPressed(_ sender: Any) {
+        let parameters = MIFormParameters();
+        MappIntelligence.shared()?.formTracking(parameters)
     }
     
     @IBAction func cancelButtonPressed(_ sender: Any) {

@@ -23,10 +23,12 @@
 
 @interface MIFormParameters()
 
+#if !TARGET_OS_WATCH
 @property NSMutableArray<UITextField *> * textFields;
 @property NSMutableArray<UITextView *> * textViews;
 @property NSMutableArray<UISwitch *> * switches;
 @property NSMutableArray<UIPickerView *> * pickers;
+#endif
 
 @end
 
@@ -54,36 +56,27 @@
     }
     return self;
 }
-- (instancetype)initWithController:(UIViewController *)controller {
-    self = [super init];
-    if (self) {
-        UIView* superView = [controller view];
-        [self getTextFields:superView];
-        [self getTextViews:controller.view];
-    }
-    return self;
-}
 
 - (instancetype)init
 {
     self = [super init];
     if (self) {
-        UIView* superView = self.topViewController.view;
-        if (superView) {
-            [self getTextFields:superView];
-            [self getTextViews:superView];
-            [self getPickerViews:superView];
-            [self getSwithces:superView];
-            _formName = NSStringFromClass(self.topViewController.classForCoder);
-            _fieldIds = [[NSMutableArray alloc] init];
-            _renameFields = [[NSMutableDictionary alloc] init];
-            _changeFieldsValue = [[NSMutableDictionary alloc] init];
-            _anonymousSpecificFields = [[NSMutableArray alloc] init];
-            _fullContentSpecificFields = [[NSMutableArray alloc] init];
-            _confirmButton = YES;
-            _anonymous = NO;
-            _pathAnalysis = [[NSMutableArray alloc] init];
-        }
+#if !TARGET_OS_WATCH
+        _textFields = [[NSMutableArray alloc] init];
+        _textViews = [[NSMutableArray alloc] init];
+        _switches = [[NSMutableArray alloc] init];
+        _pickers = [[NSMutableArray alloc] init];
+#endif
+        //TODO: add watchOS controller name
+        _formName = @"";
+        _fieldIds = [[NSMutableArray alloc] init];
+        _renameFields = [[NSMutableDictionary alloc] init];
+        _changeFieldsValue = [[NSMutableDictionary alloc] init];
+        _anonymousSpecificFields = [[NSMutableArray alloc] init];
+        _fullContentSpecificFields = [[NSMutableArray alloc] init];
+        _confirmButton = YES;
+        _anonymous = NO;
+        _pathAnalysis = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -91,6 +84,7 @@
 - (void)setFieldIds:(NSMutableArray<NSNumber *> *)fieldIds {
     _fieldIds = fieldIds;
     if([fieldIds count] > 0) {
+#if !TARGET_OS_WATCH
         for (UITextField* textField in _textFields) {
             if ([fieldIds containsObject:[NSNumber numberWithInteger:textField.tag]]) {
                 [_textFields removeObject:textField];
@@ -111,48 +105,72 @@
                 [_switches removeObject:switchC];
             }
         }
+#endif
     }
 }
 
 - (void)createFromFields {
+#if !TARGET_OS_WATCH
+    dispatch_sync(dispatch_get_main_queue(), ^{
+        UIView* superView = self.topViewController.view;
+        if (superView) {
+            [self getTextFields:superView];
+            [self getTextViews:superView];
+            [self getPickerViews:superView];
+            [self getSwithces:superView];
+        }
+    });
+    _formName = NSStringFromClass(self.topViewController.classForCoder);
+#endif
     _fields = [[NSMutableArray alloc] init];
+#if !TARGET_OS_WATCH
     for (UITextField* textField in _textFields) {
-        _fields = [_fields arrayByAddingObject:[[MIFormField alloc] initWithName:(textField.accessibilityLabel ? textField.accessibilityLabel : NSStringFromClass(textField.classForCoder)) andContent:textField.text andID:(NSInteger*)textField.tag andWithAnonymus:YES]];
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            self->_fields = [self->_fields arrayByAddingObject:[[MIFormField alloc] initWithName:(textField.accessibilityLabel ? textField.accessibilityLabel : NSStringFromClass(textField.classForCoder)) andContent:textField.text andID:(NSInteger*)textField.tag andWithAnonymus:YES]];
+        });
     }
     for (UITextView* textView in _textViews) {
-        _fields = [_fields arrayByAddingObject:[[MIFormField alloc] initWithName:(textView.accessibilityLabel ? textView.accessibilityLabel : NSStringFromClass(textView.classForCoder)) andContent:textView.text andID:(NSInteger*)textView.tag andWithAnonymus:YES]];
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            self->_fields = [self->_fields arrayByAddingObject:[[MIFormField alloc] initWithName:(textView.accessibilityLabel ? textView.accessibilityLabel : NSStringFromClass(textView.classForCoder)) andContent:textView.text andID:(NSInteger*)textView.tag andWithAnonymus:YES]];
+        });
     }
     for (UIPickerView* pickerView in _pickers) {
-        _fields = [_fields arrayByAddingObject:[[MIFormField alloc] initWithName:(pickerView.accessibilityLabel ? pickerView.accessibilityLabel : NSStringFromClass(pickerView.classForCoder)) andContent:pickerView andID:(NSInteger*)pickerView.tag andWithAnonymus:NO]];
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            self->_fields = [self->_fields arrayByAddingObject:[[MIFormField alloc] initWithName:(pickerView.accessibilityLabel ? pickerView.accessibilityLabel : NSStringFromClass(pickerView.classForCoder)) andContent:pickerView andID:(NSInteger*)pickerView.tag andWithAnonymus:NO]];
+        });
     }
     for (UISwitch* switchC in _switches) {
-        _fields = [_fields arrayByAddingObject:[[MIFormField alloc] initWithName:(switchC.accessibilityLabel ? switchC.accessibilityLabel : NSStringFromClass(switchC.classForCoder)) andContent:(switchC.on ? @"1" : @"0") andID:(NSInteger*)switchC.tag andWithAnonymus:NO]];
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            self->_fields = [self->_fields arrayByAddingObject:[[MIFormField alloc] initWithName:(switchC.accessibilityLabel ? switchC.accessibilityLabel : NSStringFromClass(switchC.classForCoder)) andContent:(switchC.on ? @"1" : @"0") andID:(NSInteger *)switchC.tag andWithAnonymus:NO]];
+        });
     }
+#endif
     
     if (!_anonymous) {
         for (MIFormField* field in _fields) {
-            if ([_anonymousSpecificFields containsObject:[NSNumber numberWithInteger:*(NSInteger*)field.ID]]) {
+            if ([_anonymousSpecificFields containsObject:[NSNumber numberWithInteger:(NSInteger)field.ID]]) {
                 [[_fields objectAtIndex: [_fields indexOfObject:field]] setAnonymus:YES];
             }
         }
     }
     
     for (MIFormField* field in _fields) {
-        if ([[_renameFields allKeys] containsObject:[NSNumber numberWithInteger:*(NSInteger*)field.ID]]) {
+        if ([[_renameFields allKeys] containsObject:[NSNumber numberWithInteger:(NSInteger)field.ID]]) {
             [[_fields objectAtIndex: [_fields indexOfObject:field]] setFormFieldName:[_renameFields valueForKey: [[NSNumber numberWithInteger:*(NSInteger*)field.ID] stringValue] ]];
         }
-        if ([[_changeFieldsValue allKeys] containsObject:[NSNumber numberWithInteger:*(NSInteger*)field.ID]]) {
-            [[_fields objectAtIndex: [_fields indexOfObject:field]] setFormFieldContent:[_changeFieldsValue valueForKey: [[NSNumber numberWithInteger:*(NSInteger*)field.ID] stringValue] ]];
+        if ([[_changeFieldsValue allKeys] containsObject:[NSNumber numberWithInteger:(NSInteger)field.ID]]) {
+            [[_fields objectAtIndex: [_fields indexOfObject:field]] setFormFieldContent:[_changeFieldsValue valueForKey: [[NSNumber numberWithInteger:(NSInteger)field.ID] stringValue] ]];
         }
-        if ([_fullContentSpecificFields containsObject:[NSNumber numberWithInteger:*(NSInteger*)field.ID]]) {
+        if ([_fullContentSpecificFields containsObject:[NSNumber numberWithInteger:(NSInteger)field.ID]]) {
             [[_fields objectAtIndex: [_fields indexOfObject:field]] setAnonymus:NO];
         }
     }
 }
 
 - (NSMutableArray<NSURLQueryItem *> *)asQueryItems {
+    [self createFromFields];
     NSMutableArray<NSURLQueryItem*>* items = [[NSMutableArray alloc] init];
-    [items addObject:[[NSURLQueryItem alloc] initWithName:@"ft" value:[self getFormForQuery]]];
+    [items addObject:[[NSURLQueryItem alloc] initWithName:@"fn" value:[self getFormForQuery]]];
     for (MIFormField* field in _fields) {
        [items addObject:[[NSURLQueryItem alloc] initWithName:@"ft" value:[field getFormFieldForQuery]]];
     }
@@ -163,6 +181,7 @@
     return [[NSString alloc] initWithFormat:@"%@|%i", _formName, _confirmButton];
 }
 
+#if !TARGET_OS_WATCH
 - (NSArray<UITextField *> *)getTextFields: (UIView*) mainView {
     for (UIView* view in [mainView subviews]) {
         if ([view isKindOfClass:UITextField.class]) {
@@ -176,7 +195,7 @@
 
 - (NSArray<UITextView *> *)getTextViews: (UIView*) mainView {
     for (UIView* view in [mainView subviews]) {
-        if ([view isKindOfClass:UITextField.class]) {
+        if ([view isKindOfClass:UITextView.class]) {
             [_textViews addObject:(UITextView *)view];
         } else {
             [self getTextViews: view];
@@ -215,7 +234,11 @@
     while( [topViewControler presentedViewController] ) {
         topViewControler = [topViewControler presentedViewController];
     }
+    if ([topViewControler isKindOfClass:UINavigationController.class]) {
+        return ((UINavigationController*)topViewControler).topViewController;
+    }
     return topViewControler;
 }
+#endif
 
 @end

@@ -13,6 +13,7 @@
 #import "MIParams.h"
 #import "MIParamType.h"
 #import "MIMediaEvent.h"
+#import "MIFormParameters.h"
 
 
 @class MappIntelligence;
@@ -171,6 +172,13 @@ MappIntelligence.shared()?.optOut(with: false, andSendCurrentData: false)
  @return the error which may happen through process of tracking, if returns nil there is no error.
  */
 - (NSError *_Nullable) trackCustomEvent: (NSString *_Nonnull)eventName trackingParams: (NSDictionary<NSString *, NSString*> *_Nullable) trackingParams;
+
+/**
+ @brief Method which will track form submit/cancel
+ @param formParams - form parameters that are bveing tracked
+ @return the error which may happen through process of tracking, if returns nil there is no error.
+ */
+- (NSError *_Nullable) formTracking: (MIFormParameters *_Nonnull) formParams;
 
 /**
  @brief Method which will enable anonymous tracking and omit submitted parameters/tags array. Please note that using this option will negatively affect data quality.

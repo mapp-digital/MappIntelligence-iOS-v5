@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, nullable) NSString* formFieldName;
 @property (nonatomic, nullable) NSString* formFieldContent;
-@property (nonatomic, nonnull) NSInteger* ID;
+@property (nonatomic) NSInteger ID;
 @property (nonatomic) BOOL lastFocus;
 @property (nonatomic) BOOL anonymus;
 

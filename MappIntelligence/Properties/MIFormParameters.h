@@ -44,7 +44,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable) NSArray<MIFormField*>* fields;
 
 - (instancetype)initWithDictionary:(NSDictionary*)dictionary;
-- (instancetype)initWithController:(UIViewController*)controller;
 - (NSMutableArray<NSURLQueryItem*>*)asQueryItems;
 
 @end
