@@ -7,6 +7,7 @@
 //
 
 #import "MIFormParameters.h"
+#import "MappIntelligenceLogger.h"
 
 #define key_form_name @"form_name"
 #define key_field_ids @"field_ids"
@@ -86,34 +87,61 @@
     if([fieldIds count] > 0) {
 #if !TARGET_OS_WATCH
         for (UITextField* textField in _textFields) {
-            if ([fieldIds containsObject:[NSNumber numberWithInteger:textField.tag]]) {
+            if (![fieldIds containsObject:[NSNumber numberWithInteger:textField.tag]]) {
                 [_textFields removeObject:textField];
             }
         }
         for (UITextView* textView in _textViews) {
-            if ([fieldIds containsObject:[NSNumber numberWithInteger:textView.tag]]) {
+            if (![fieldIds containsObject:[NSNumber numberWithInteger:textView.tag]]) {
                 [_textViews removeObject:textView];
             }
         }
         for (UIPickerView* pickerView in _pickers) {
-            if ([fieldIds containsObject:[NSNumber numberWithInteger:pickerView.tag]]) {
+            if (![fieldIds containsObject:[NSNumber numberWithInteger:pickerView.tag]]) {
                 [_pickers removeObject:pickerView];
             }
         }
         for (UISwitch* switchC in _switches) {
-            if ([fieldIds containsObject:[NSNumber numberWithInteger:switchC.tag]]) {
+            if (![fieldIds containsObject:[NSNumber numberWithInteger:switchC.tag]]) {
                 [_switches removeObject:switchC];
             }
         }
 #endif
     }
 }
+#if !TARGET_OS_WATCH
+-(NSString*)extractLabelFromPickerView: (UIView*) godView {
+    if ([godView isKindOfClass:UIPickerView.class]) {
+        NSLog(@"%@", ((UIPickerView*)godView).subviews.firstObject.subviews.lastObject);
+        UIPickerView *picker = ((UIPickerView*)godView);
+        NSInteger selectedRow = [picker selectedRowInComponent:0];
+        UIView* selectedView = [picker viewForRow:selectedRow forComponent:0];
+        if (selectedView == NULL) {
+            selectedView = ((UIPickerView*)godView).subviews.firstObject.subviews.lastObject;
+        }
+        return [self extractLabelFromPickerView:selectedView];
+    }
+    for (UIView* view in [godView subviews]) {
+        if ([view isKindOfClass:UILabel.class]) {
+            return ((UILabel*)view).text;
+        } else {
+            return [self extractLabelFromPickerView:view];
+        }
+    }
+    return @"empty";
+}
+#endif
 
 - (void)createFromFields {
 #if !TARGET_OS_WATCH
     dispatch_sync(dispatch_get_main_queue(), ^{
         UIView* superView = self.topViewController.view;
         if (superView) {
+            //make sure that arrays are empty, if property is saved as state at SwiftUI app
+            _textFields = [[NSMutableArray alloc] init];
+            _textViews = [[NSMutableArray alloc] init];
+            _switches = [[NSMutableArray alloc] init];
+            _pickers = [[NSMutableArray alloc] init];
             [self getTextFields:superView];
             [self getTextViews:superView];
             [self getPickerViews:superView];
@@ -126,22 +154,24 @@
 #if !TARGET_OS_WATCH
     for (UITextField* textField in _textFields) {
         dispatch_sync(dispatch_get_main_queue(), ^{
-            self->_fields = [self->_fields arrayByAddingObject:[[MIFormField alloc] initWithName:(textField.accessibilityLabel ? textField.accessibilityLabel : NSStringFromClass(textField.classForCoder)) andContent:textField.text andID:(NSInteger*)textField.tag andWithAnonymus:YES]];
+            self->_fields = [self->_fields arrayByAddingObject:[[MIFormField alloc] initWithName:(textField.accessibilityLabel ? textField.accessibilityLabel : NSStringFromClass(textField.classForCoder)) andContent:textField.text andID:textField.tag andWithAnonymus:YES]];
         });
     }
     for (UITextView* textView in _textViews) {
         dispatch_sync(dispatch_get_main_queue(), ^{
-            self->_fields = [self->_fields arrayByAddingObject:[[MIFormField alloc] initWithName:(textView.accessibilityLabel ? textView.accessibilityLabel : NSStringFromClass(textView.classForCoder)) andContent:textView.text andID:(NSInteger*)textView.tag andWithAnonymus:YES]];
+            self->_fields = [self->_fields arrayByAddingObject:[[MIFormField alloc] initWithName:(textView.accessibilityLabel ? textView.accessibilityLabel : NSStringFromClass(textView.classForCoder)) andContent:textView.text andID:textView.tag andWithAnonymus:YES]];
         });
     }
     for (UIPickerView* pickerView in _pickers) {
         dispatch_sync(dispatch_get_main_queue(), ^{
-            self->_fields = [self->_fields arrayByAddingObject:[[MIFormField alloc] initWithName:(pickerView.accessibilityLabel ? pickerView.accessibilityLabel : NSStringFromClass(pickerView.classForCoder)) andContent:pickerView andID:(NSInteger*)pickerView.tag andWithAnonymus:NO]];
+            NSString* test = [self extractLabelFromPickerView:pickerView];
+            NSLog(@"Selektovaio si na piker: %@", test);
+            self->_fields = [self->_fields arrayByAddingObject:[[MIFormField alloc] initWithName:(pickerView.accessibilityLabel ? pickerView.accessibilityLabel : NSStringFromClass(pickerView.classForCoder)) andContent:[self extractLabelFromPickerView:pickerView] andID:pickerView.tag andWithAnonymus:NO]];
         });
     }
     for (UISwitch* switchC in _switches) {
         dispatch_sync(dispatch_get_main_queue(), ^{
-            self->_fields = [self->_fields arrayByAddingObject:[[MIFormField alloc] initWithName:(switchC.accessibilityLabel ? switchC.accessibilityLabel : NSStringFromClass(switchC.classForCoder)) andContent:(switchC.on ? @"1" : @"0") andID:(NSInteger *)switchC.tag andWithAnonymus:NO]];
+            self->_fields = [self->_fields arrayByAddingObject:[[MIFormField alloc] initWithName:(switchC.accessibilityLabel ? switchC.accessibilityLabel : NSStringFromClass(switchC.classForCoder)) andContent:(switchC.on ? @"1" : @"0") andID:switchC.tag andWithAnonymus:NO]];
         });
     }
 #endif
@@ -156,15 +186,26 @@
     
     for (MIFormField* field in _fields) {
         if ([[_renameFields allKeys] containsObject:[NSNumber numberWithInteger:(NSInteger)field.ID]]) {
-            [[_fields objectAtIndex: [_fields indexOfObject:field]] setFormFieldName:[_renameFields valueForKey: [[NSNumber numberWithInteger:*(NSInteger*)field.ID] stringValue] ]];
+            [[_fields objectAtIndex: [_fields indexOfObject:field]] setFormFieldName:_renameFields[[NSNumber numberWithInteger:field.ID]]];
+            
         }
         if ([[_changeFieldsValue allKeys] containsObject:[NSNumber numberWithInteger:(NSInteger)field.ID]]) {
-            [[_fields objectAtIndex: [_fields indexOfObject:field]] setFormFieldContent:[_changeFieldsValue valueForKey: [[NSNumber numberWithInteger:(NSInteger)field.ID] stringValue] ]];
+            [[_fields objectAtIndex: [_fields indexOfObject:field]] setFormFieldContent:_changeFieldsValue[[NSNumber numberWithInteger:(NSInteger)field.ID]]];
+            //TODO: da li ukoliko se stavlja kontent polje automatski nije vise anonimno ili mora da se naglasi 
         }
         if ([_fullContentSpecificFields containsObject:[NSNumber numberWithInteger:(NSInteger)field.ID]]) {
             [[_fields objectAtIndex: [_fields indexOfObject:field]] setAnonymus:NO];
         }
     }
+}
+
+-(NSString*) getContentWithTag: (NSInteger) tag forRow: (NSInteger) row {
+    if (tag == 0) {
+        [[MappIntelligenceLogger shared] logObj:@"If you are using UIPicker as component you must have tag for it, otherwise we will send UIPicker selected opinion as an empty one!" forDescription:kMappIntelligenceLogLevelDescriptionDebug];
+        return @"empty";
+    }
+    NSArray<NSString*>* pickerDataArray = [_pickerData valueForKey: [NSString stringWithFormat: @"%li", (long)tag]];
+    return pickerDataArray[row];
 }
 
 - (NSMutableArray<NSURLQueryItem *> *)asQueryItems {

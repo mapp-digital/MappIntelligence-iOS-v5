@@ -27,7 +27,7 @@
 
 }
 
-- (instancetype)initWithName:(NSString *)name andContent:(NSString *)content andID:(NSInteger * _Nonnull)ID andWithAnonymus:(BOOL)anonymus {
+- (instancetype)initWithName:(NSString *)name andContent:(NSString *)content andID:(NSInteger)ID andWithAnonymus:(BOOL)anonymus {
     self = [super init];
     if (self) {
         _formFieldName = name;
@@ -38,11 +38,11 @@
     return self;
 }
 
-- (NSString *)formFieldName {
+- (NSString *)setformFieldName {
     return (_formFieldName == NULL) ? @"" : _formFieldName;
 }
 
-- (NSString *)formFieldContent {
+- (NSString *)setformFieldContent {
     if (_anonymus) {
         if ([_formFieldContent isEqualToString: @""]) {
             return @"empty";
@@ -53,12 +53,12 @@
     return (_formFieldContent == NULL) ? @"" : _formFieldContent;
 }
 
-- (BOOL)lastFocus {
+- (BOOL)setlastFocus {
     return _lastFocus ? _lastFocus : NO;
 }
 
 - (NSString *)getFormFieldForQuery {
-    return [[NSString alloc] initWithFormat:@"%@|%@|%i", _formFieldName, _formFieldContent, _lastFocus ];
+    return [[NSString alloc] initWithFormat:@"%@|%@|%i", [self setformFieldName], [self setformFieldContent], [self setlastFocus] ];
 }
 
 @end

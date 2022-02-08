@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:testMappIntelligenceSwiftUI/testMappIntelligenceSwiftUI.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:MappIntelligenceDemoApp/MappIntelligenceDemoApp.xcodeproj">
    </FileRef>
    <FileRef

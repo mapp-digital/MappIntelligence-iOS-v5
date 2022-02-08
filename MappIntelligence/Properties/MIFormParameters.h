@@ -42,6 +42,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, nullable) NSMutableArray<NSNumber*>* pathAnalysis;
 
 @property (nullable) NSArray<MIFormField*>* fields;
+@property (nonatomic, nullable) NSDictionary * pickerData;
 
 - (instancetype)initWithDictionary:(NSDictionary*)dictionary;
 - (NSMutableArray<NSURLQueryItem*>*)asQueryItems;

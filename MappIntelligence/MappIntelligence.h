@@ -179,6 +179,7 @@ MappIntelligence.shared()?.optOut(with: false, andSendCurrentData: false)
  @return the error which may happen through process of tracking, if returns nil there is no error.
  */
 - (NSError *_Nullable) formTracking: (MIFormParameters *_Nonnull) formParams;
+- (NSError *_Nullable) formTracking: (MIFormParameters *_Nonnull) formParams andWithPickersData: (NSDictionary *_Nullable)data;
 
 /**
  @brief Method which will enable anonymous tracking and omit submitted parameters/tags array. Please note that using this option will negatively affect data quality.

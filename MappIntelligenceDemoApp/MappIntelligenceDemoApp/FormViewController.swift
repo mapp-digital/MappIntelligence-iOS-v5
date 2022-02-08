@@ -27,6 +27,9 @@ class FormViewController: UIViewController, UIPickerViewDataSource, UIPickerView
     
     @IBAction func confirmButtonPressed(_ sender: Any) {
         let parameters = MIFormParameters();
+        parameters.renameFields = [11:"Zivko"]
+        parameters.changeFieldsValue = [22:"zivorad_bekrija"]
+        parameters.fullContentSpecificFields = [33]
         MappIntelligence.shared()?.formTracking(parameters)
     }
     
