@@ -111,6 +111,9 @@
 
 #if !TARGET_OS_WATCH
 -(NSString*)extractLabelFromPickerView: (UIView*) godView {
+    if ([godView isKindOfClass:UILabel.class]) {
+        return ((UILabel*)godView).text;
+    }
     for (UIView* view in [godView subviews]) {
         if ([view isKindOfClass:UILabel.class]) {
             return ((UILabel*)view).text;
@@ -130,7 +133,7 @@
         NSInteger selectedRow = [pickerView selectedRowInComponent:i];
         UIView* selectedView = [pickerView viewForRow:selectedRow forComponent:i];
         if (selectedView == NULL) {
-            selectedView = pickerView.subviews.firstObject.subviews.lastObject;
+            selectedView = pickerView.subviews.firstObject.subviews[i].subviews.lastObject;
         }
         pickerString = [[NSString alloc] initWithFormat:@"%@ %@", pickerString, [self extractLabelFromPickerView:selectedView]];
     }

@@ -14,7 +14,7 @@ class FormViewController: UIViewController, UIPickerViewDataSource, UIPickerView
     @IBOutlet weak var name3TextView: UITextView!
     @IBOutlet weak var anynonimusSwitch: UISwitch!
     
-    var items = ["Item1", "Item2", "Item3", "Item4"]
+    var items = [["Item1", "Item2", "Item3", "Item4"], ["1", "2", "3", "4", "5"]]
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,14 +38,21 @@ class FormViewController: UIViewController, UIPickerViewDataSource, UIPickerView
     
     // #pragma_mark uipicker dalegate methods
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return items.count
     }
     
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return items[component].count
+    }
+    
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return items[row]
+        return items[component][row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        let pickerLabel = UILabel()
+        pickerLabel.textAlignment = NSTextAlignment.center
+        pickerLabel.text = items[component][row]
+        return pickerLabel
     }
 }
