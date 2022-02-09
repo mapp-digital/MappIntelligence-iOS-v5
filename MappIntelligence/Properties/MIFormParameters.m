@@ -155,6 +155,10 @@
     for (UITextField* textField in _textFields) {
         dispatch_sync(dispatch_get_main_queue(), ^{
             self->_fields = [self->_fields arrayByAddingObject:[[MIFormField alloc] initWithName:(textField.accessibilityLabel ? textField.accessibilityLabel : NSStringFromClass(textField.classForCoder)) andContent:textField.text andID:textField.tag andWithAnonymus:YES]];
+            if (textField.tag == 0) {
+                NSInteger intVal = [[textField accessibilityLabel] integerValue];
+                
+            }
         });
     }
     for (UITextView* textView in _textViews) {
@@ -197,15 +201,6 @@
             [[_fields objectAtIndex: [_fields indexOfObject:field]] setAnonymus:NO];
         }
     }
-}
-
--(NSString*) getContentWithTag: (NSInteger) tag forRow: (NSInteger) row {
-    if (tag == 0) {
-        [[MappIntelligenceLogger shared] logObj:@"If you are using UIPicker as component you must have tag for it, otherwise we will send UIPicker selected opinion as an empty one!" forDescription:kMappIntelligenceLogLevelDescriptionDebug];
-        return @"empty";
-    }
-    NSArray<NSString*>* pickerDataArray = [_pickerData valueForKey: [NSString stringWithFormat: @"%li", (long)tag]];
-    return pickerDataArray[row];
 }
 
 - (NSMutableArray<NSURLQueryItem *> *)asQueryItems {
