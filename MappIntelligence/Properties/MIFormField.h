@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) BOOL anonymus;
 
 - (instancetype)initWithDictionary:(NSDictionary*)dictionary;
-- (instancetype)initWithName:(NSString*)name andContent: (NSString*)content andID: (NSInteger)ID andWithAnonymus:(BOOL)anonymus;
+- (instancetype)initWithName:(NSString*)name andContent: (NSString*)content andID: (NSInteger)ID andWithAnonymus:(BOOL)anonymus andFocus:(BOOL)focus;
 - (NSString*)getFormFieldForQuery;
 
 @end

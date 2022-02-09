@@ -27,13 +27,14 @@
 
 }
 
-- (instancetype)initWithName:(NSString *)name andContent:(NSString *)content andID:(NSInteger)ID andWithAnonymus:(BOOL)anonymus {
+- (instancetype)initWithName:(NSString *)name andContent:(NSString *)content andID:(NSInteger)ID andWithAnonymus:(BOOL)anonymus andFocus:(BOOL)focus {
     self = [super init];
     if (self) {
         _formFieldName = name;
         _formFieldContent = content;
         _anonymus = anonymus;
         _ID = ID;
+        _lastFocus = focus;
     }
     return self;
 }
