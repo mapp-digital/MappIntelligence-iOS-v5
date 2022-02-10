@@ -144,7 +144,7 @@
 - (void)createFromFields {
 #if !TARGET_OS_WATCH
     dispatch_sync(dispatch_get_main_queue(), ^{
-        UIView* superView = self.topViewController.view;
+        __block UIView* superView = self.topViewController.view;
         if (superView) {
             //make sure that arrays are empty, if property is saved as state at SwiftUI app
             _textFields = [[NSMutableArray alloc] init];
@@ -208,6 +208,15 @@
         }
     }
 }
+
+- (NSURLQueryItem *)asQueryItemsForPatyAnylisis {
+    NSString* pathAnylisis = @"";
+    for (MIFormField* field in _fields) {
+        pathAnylisis = [NSString stringWithFormat:@"%@;%@", pathAnylisis, [field getFormFieldForQuery]];
+    }
+    return [[NSURLQueryItem alloc] initWithName:@"ft" value:pathAnylisis];
+}
+
 
 - (NSMutableArray<NSURLQueryItem *> *)asQueryItems {
     [self createFromFields];
