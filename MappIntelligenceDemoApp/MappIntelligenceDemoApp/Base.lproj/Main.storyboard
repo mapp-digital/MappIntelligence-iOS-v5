@@ -933,6 +933,21 @@
                                     <action selector="trackMedia1:" destination="D55-Lk-m95" eventType="touchUpInside" id="3Zu-I4-7jo"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9T9-UU-0Su">
+                                <rect key="frame" x="20" y="478" width="280" height="36"/>
+                                <color key="backgroundColor" name="Darkblue"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="vKl-20-ld9"/>
+                                </constraints>
+                                <state key="normal" title="Path Anylisis">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelButtonPressed:" destination="Uyo-wg-qu0" eventType="touchUpInside" id="rNg-mx-mU3"/>
+                                    <action selector="pathAnylisesPressed:" destination="Uyo-wg-qu0" eventType="touchUpInside" id="HYS-Ig-KaO"/>
+                                    <action selector="trackMedia1:" destination="D55-Lk-m95" eventType="touchUpInside" id="UBl-Vx-IHf"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Dlc-En-d2W"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -946,6 +961,7 @@
                             <constraint firstItem="sEu-mS-gmr" firstAttribute="top" secondItem="62R-vA-xog" secondAttribute="bottom" constant="15" id="Ct7-1m-kZM"/>
                             <constraint firstItem="WRf-mV-fGQ" firstAttribute="leading" secondItem="Dlc-En-d2W" secondAttribute="leading" constant="20" id="Ez0-el-Svc"/>
                             <constraint firstItem="wuf-XH-pvm" firstAttribute="centerY" secondItem="sEu-mS-gmr" secondAttribute="centerY" id="N1o-Xq-afU"/>
+                            <constraint firstItem="9T9-UU-0Su" firstAttribute="leading" secondItem="Dlc-En-d2W" secondAttribute="leading" constant="20" id="Ngr-M5-noc"/>
                             <constraint firstItem="VWi-NU-h8k" firstAttribute="leading" secondItem="Dlc-En-d2W" secondAttribute="leading" constant="20" id="Oi7-mO-4ej"/>
                             <constraint firstItem="Dlc-En-d2W" firstAttribute="trailing" secondItem="83G-9F-ler" secondAttribute="trailing" constant="20" id="RMm-6d-Aiv"/>
                             <constraint firstItem="Dlc-En-d2W" firstAttribute="trailing" secondItem="Lab-XG-TQa" secondAttribute="trailing" constant="20" id="RgR-Xh-ap6"/>
@@ -961,6 +977,8 @@
                             <constraint firstItem="wuf-XH-pvm" firstAttribute="leading" secondItem="Dlc-En-d2W" secondAttribute="leading" constant="20" id="gok-8z-Xip"/>
                             <constraint firstItem="Dlc-En-d2W" firstAttribute="bottom" secondItem="Lab-XG-TQa" secondAttribute="bottom" constant="15" id="hLL-Zk-GXB"/>
                             <constraint firstItem="Dlc-En-d2W" firstAttribute="trailing" secondItem="62R-vA-xog" secondAttribute="trailing" constant="20" id="iTA-z5-sBv"/>
+                            <constraint firstItem="9T9-UU-0Su" firstAttribute="top" secondItem="WRf-mV-fGQ" secondAttribute="bottom" constant="10" id="jNd-Vy-7eU"/>
+                            <constraint firstItem="Dlc-En-d2W" firstAttribute="trailing" secondItem="9T9-UU-0Su" secondAttribute="trailing" constant="20" id="jfl-wR-d9s"/>
                             <constraint firstItem="83G-9F-ler" firstAttribute="leading" secondItem="WRf-mV-fGQ" secondAttribute="trailing" constant="10" id="mJM-La-DSo"/>
                             <constraint firstItem="Dlc-En-d2W" firstAttribute="trailing" secondItem="hWa-TM-dOB" secondAttribute="trailing" constant="20" id="rBy-Xr-jav"/>
                             <constraint firstItem="IVb-HK-XTN" firstAttribute="leading" secondItem="Dlc-En-d2W" secondAttribute="leading" constant="20" id="uMD-Pf-bG5"/>

@@ -45,6 +45,14 @@ class FormViewController: UIViewController, UIPickerViewDataSource, UIPickerView
         MappIntelligence.shared()?.formTracking(parameters)
     }
     
+    @IBAction func pathAnylisesPressed(_ sender: Any) {
+        let parameters = MIFormParameters();
+        parameters.pathAnalysis = [44,55,33,44,55]
+        parameters.confirmButton = true
+        parameters.anonymous = self.anynonimusSwitch.isOn
+        MappIntelligence.shared()?.formTracking(parameters)
+        
+    }
     // #pragma_mark uipicker dalegate methods
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return items.count
