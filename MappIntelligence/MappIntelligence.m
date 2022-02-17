@@ -334,13 +334,6 @@ static MappIntelligenceDefaultConfig *config = nil;
     return [tracker trackWithEvent:formEvent];
 }
 
-- (NSError *)formTracking:(MIFormParameters *)formParams andWithPickersData:(NSDictionary *)data {
-    MIFormSubmitEvent* formEvent = [[MIFormSubmitEvent alloc] init];
-    MIFormParameters* params = [formParams mutableCopy];
-    [params setPickerData:data];
-    return [tracker trackWithEvent:formEvent];
-}
-
 - (NSError *_Nullable) trackCustomEvent: (NSString *_Nonnull)eventName trackingParams: (NSDictionary<NSString *, NSString*> *_Nullable) trackingParams {
     if (![self isTrackingEnabled]) {
         return nil;

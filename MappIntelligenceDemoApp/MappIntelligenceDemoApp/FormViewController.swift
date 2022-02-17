@@ -15,6 +15,7 @@ class FormViewController: UIViewController, UIPickerViewDataSource, UIPickerView
     @IBOutlet weak var anynonimusSwitch: UISwitch!
     
     var items = [["Item1", "Item2", "Item3", "Item4"], ["1", "2", "3", "4", "5"]]
+    var isAnonymusSelected = false
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,10 +31,18 @@ class FormViewController: UIViewController, UIPickerViewDataSource, UIPickerView
         parameters.renameFields = [11:"Zivko"]
         parameters.changeFieldsValue = [22:"zivorad_bekrija"]
         parameters.fullContentSpecificFields = [33]
+        parameters.confirmButton = true
+        parameters.anonymous = self.anynonimusSwitch.isOn
         MappIntelligence.shared()?.formTracking(parameters)
     }
     
     @IBAction func cancelButtonPressed(_ sender: Any) {
+        let parameters = MIFormParameters();
+        parameters.fieldIds = [11,33]
+        parameters.fullContentSpecificFields = [33]
+        parameters.confirmButton = false
+        parameters.anonymous = self.anynonimusSwitch.isOn
+        MappIntelligence.shared()?.formTracking(parameters)
     }
     
     // #pragma_mark uipicker dalegate methods

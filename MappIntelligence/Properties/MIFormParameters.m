@@ -31,6 +31,12 @@
 @property NSMutableArray<UIPickerView *> * pickers;
 #endif
 
+@property NSMutableArray<MIFormField *> * emptyNonPathFields;
+@property NSMutableArray<MIFormField *> * filledNonPathFields;
+@property NSMutableArray<MIFormField *> * pathFields;
+
+@property (nullable) NSArray<MIFormField*>* fields;
+
 @end
 
 @implementation MIFormParameters
@@ -135,7 +141,7 @@
         if (selectedView == NULL) {
             selectedView = pickerView.subviews.firstObject.subviews[i].subviews.lastObject;
         }
-        pickerString = [[NSString alloc] initWithFormat:@"%@ %@", pickerString, [self extractLabelFromPickerView:selectedView]];
+        pickerString = [[NSString alloc] initWithFormat:@"%@/%@", pickerString, [self extractLabelFromPickerView:selectedView]];
     }
     return pickerString;
 }
@@ -211,10 +217,36 @@
 
 - (NSURLQueryItem *)asQueryItemsForPatyAnylisis {
     NSString* pathAnylisis = @"";
-    for (MIFormField* field in _fields) {
+    //1. step
+    // The first values are the fields that the user did not actively fill out, followed by the fields that the user did actively fill out.
+    [self prepareFields];
+    for (MIFormField* field in _emptyNonPathFields) {
+        pathAnylisis = [NSString stringWithFormat:@"%@;%@", pathAnylisis, [field getFormFieldForQuery]];
+    }
+    for (MIFormField* field in _filledNonPathFields) {
+        pathAnylisis = [NSString stringWithFormat:@"%@;%@", pathAnylisis, [field getFormFieldForQuery]];
+    }
+    //2. step
+    //If a user navigated to a field multiple times, the field is tracked multiple times in the ft parameter
+    for (MIFormField* field in _pathFields) {
         pathAnylisis = [NSString stringWithFormat:@"%@;%@", pathAnylisis, [field getFormFieldForQuery]];
     }
     return [[NSURLQueryItem alloc] initWithName:@"ft" value:pathAnylisis];
+}
+
+- (void)prepareFields {
+    _emptyNonPathFields = [[NSMutableArray alloc] init];
+    _filledNonPathFields = [[NSMutableArray alloc] init];
+    _pathFields = [[NSMutableArray alloc] init];
+    for (MIFormField* field in _fields) {
+        if(!field.formFieldContent && ![_pathAnalysis containsObject:[NSNumber numberWithInteger:field.ID]]) {
+            [_emptyNonPathFields addObject:field];
+        } else if(![_pathAnalysis containsObject:[NSNumber numberWithInteger:field.ID]]) {
+            [_filledNonPathFields addObject:field];
+        } else {
+            [_pathFields addObject:field];
+        }
+    }
 }
 
 
@@ -222,9 +254,7 @@
     [self createFromFields];
     NSMutableArray<NSURLQueryItem*>* items = [[NSMutableArray alloc] init];
     [items addObject:[[NSURLQueryItem alloc] initWithName:@"fn" value:[self getFormForQuery]]];
-    for (MIFormField* field in _fields) {
-       [items addObject:[[NSURLQueryItem alloc] initWithName:@"ft" value:[field getFormFieldForQuery]]];
-    }
+    [items addObject:[self asQueryItemsForPatyAnylisis]];
     return items;
 }
 
@@ -234,9 +264,7 @@
 
 #if !TARGET_OS_WATCH
 - (NSArray<UITextField *> *)getTextFields: (UIView*) mainView {
-    //NSLog(@"mainview id: %@ for view: %@", [mainView accessibilityLabel], mainView);
     for (UIView* view in [mainView subviews]) {
-        //NSLog(@"view id: %@ for view: %@", [view accessibilityLabel], view);
         if ([view isKindOfClass:UITextField.class]) {
             [_textFields addObject:(UITextField *)view];
         } else {

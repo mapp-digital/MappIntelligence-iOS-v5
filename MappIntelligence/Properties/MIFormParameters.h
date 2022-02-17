@@ -41,9 +41,6 @@ NS_ASSUME_NONNULL_BEGIN
 /// You can track the order in which the user has filled out the fields. Please note that you need to track the order manually and parse the data to the fieldsOrder function. Mapp Intelligence cannot track the order in which the user filled out the form automatically.
 @property (nonatomic, nullable) NSMutableArray<NSNumber*>* pathAnalysis;
 
-@property (nullable) NSArray<MIFormField*>* fields;
-@property (nonatomic, nullable) NSDictionary * pickerData;
-
 - (instancetype)initWithDictionary:(NSDictionary*)dictionary;
 - (NSMutableArray<NSURLQueryItem*>*)asQueryItems;
 
