@@ -91,26 +91,28 @@
 - (void) setTrackableFields {
     if([_fieldIds count] > 0) {
 #if !TARGET_OS_WATCH
-        for (UITextField* textField in _textFields) {
-            if (![_fieldIds containsObject:[NSNumber numberWithInteger:textField.tag]]) {
-                [_textFields removeObject:textField];
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            for (UITextField* textField in _textFields) {
+                if (![[_fieldIds copy] containsObject:[NSNumber numberWithInteger:textField.tag]]) {
+                    [_textFields removeObject:textField];
+                }
             }
-        }
-        for (UITextView* textView in _textViews) {
-            if (![_fieldIds containsObject:[NSNumber numberWithInteger:textView.tag]]) {
-                [_textViews removeObject:textView];
+            for (UITextView* textView in _textViews) {
+                if (![[_fieldIds copy] containsObject:[NSNumber numberWithInteger:textView.tag]]) {
+                    [_textViews removeObject:textView];
+                }
             }
-        }
-        for (UIPickerView* pickerView in _pickers) {
-            if (![_fieldIds containsObject:[NSNumber numberWithInteger:pickerView.tag]]) {
-                [_pickers removeObject:pickerView];
+            for (UIPickerView* pickerView in _pickers) {
+                if (![[_fieldIds copy] containsObject:[NSNumber numberWithInteger:pickerView.tag]]) {
+                    [_pickers removeObject:pickerView];
+                }
             }
-        }
-        for (UISwitch* switchC in _switches) {
-            if (![_fieldIds containsObject:[NSNumber numberWithInteger:switchC.tag]]) {
-                [_switches removeObject:switchC];
+            for (UISwitch* switchC in [_switches copy]) {
+                if (![[_fieldIds copy] containsObject:[NSNumber numberWithInteger:switchC.tag]]) {
+                    [_switches removeObject:switchC];
+                }
             }
-        }
+        });
 #endif
     }
 }
@@ -149,8 +151,9 @@
 
 - (void)createFromFields {
 #if !TARGET_OS_WATCH
+    UIViewController* superViewController = self.topViewController;
     dispatch_sync(dispatch_get_main_queue(), ^{
-        __block UIView* superView = self.topViewController.view;
+        __block UIView* superView = superViewController.view;
         if (superView) {
             //make sure that arrays are empty, if property is saved as state at SwiftUI app
             _textFields = [[NSMutableArray alloc] init];
@@ -308,15 +311,26 @@
 }
 
 - (UIViewController*)topViewController {
-    UIWindow* window = [[UIApplication sharedApplication] keyWindow];
-    UIViewController* topViewControler = [window rootViewController];
+    __block UIWindow* window;
+    dispatch_sync(dispatch_get_main_queue(), ^{
+        window = [[UIApplication sharedApplication] keyWindow];
+    });
+    __block UIViewController* topViewControler;
+    dispatch_sync(dispatch_get_main_queue(), ^{
+        topViewControler = [window rootViewController];
+    });
     if (!window || !topViewControler)
         return NULL;
-    while( [topViewControler presentedViewController] ) {
-        topViewControler = [topViewControler presentedViewController];
-    }
+    dispatch_sync(dispatch_get_main_queue(), ^{
+        while( [topViewControler presentedViewController] ) {
+            topViewControler = [topViewControler presentedViewController];
+        }
+    });
     if ([topViewControler isKindOfClass:UINavigationController.class]) {
-        return ((UINavigationController*)topViewControler).topViewController;
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            topViewControler = ((UINavigationController*)topViewControler).topViewController;
+        });
+        return topViewControler;
     }
     return topViewControler;
 }
