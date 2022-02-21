@@ -24,6 +24,9 @@ class FormViewController: UIViewController, UIPickerViewDataSource, UIPickerView
         name3TextView.tag = 33
         switchButton.tag = 44
         anynonimusSwitch.tag = 55
+        view.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
+        view.addGestureRecognizer(tap)
     }
     
     @IBAction func confirmButtonPressed(_ sender: Any) {
