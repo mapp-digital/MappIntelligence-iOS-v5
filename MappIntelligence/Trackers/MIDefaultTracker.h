@@ -25,7 +25,7 @@
 
 + (nullable instancetype)sharedInstance;
 - (NSString *_Nullable)generateEverId;
-- (void)setEverID: (NSString *_Nonnull)everID;
+- (void)setEverIDFromString: (NSString *_Nonnull)everIDString;
 - (NSString*_Nonnull)generateUserAgent;
 - (BOOL)isBackgroundSendoutEnabled;
 #if !TARGET_OS_WATCH

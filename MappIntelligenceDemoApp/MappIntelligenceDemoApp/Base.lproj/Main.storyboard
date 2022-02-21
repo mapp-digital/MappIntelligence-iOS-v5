@@ -511,13 +511,40 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uhR-9U-x7d">
+                                <rect key="frame" x="20" y="411" width="280" height="50"/>
+                                <color key="backgroundColor" red="0.021203886719999999" green="0.57247686389999997" blue="0.84162324669999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="nN6-kI-9IB"/>
+                                </constraints>
+                                <state key="normal" title="Init with everID">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="initwithEverID:" destination="7du-La-z9J" eventType="touchUpInside" id="HUT-xH-lmg"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ever ID" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mNz-OQ-SRH">
+                                <rect key="frame" x="20" y="476" width="280" height="34"/>
+                                <accessibility key="accessibilityConfiguration" label="Ever ID"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="qnH-Rx-zoL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="3Yx-Kw-rk7"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="mNz-OQ-SRH" firstAttribute="leading" secondItem="3Yx-Kw-rk7" secondAttribute="leading" constant="20" id="4RQ-Ly-hlM"/>
+                            <constraint firstItem="uhR-9U-x7d" firstAttribute="leading" secondItem="3Yx-Kw-rk7" secondAttribute="leading" constant="20" id="6Uv-pM-ijt"/>
                             <constraint firstItem="AgT-SC-XaE" firstAttribute="top" secondItem="c89-Id-IY0" secondAttribute="bottom" constant="25" id="8Lz-QN-eyd"/>
                             <constraint firstItem="hKu-jQ-csA" firstAttribute="leading" secondItem="eDG-2v-0Tx" secondAttribute="trailing" constant="10" id="AZx-SW-Lbl"/>
+                            <constraint firstItem="3Yx-Kw-rk7" firstAttribute="trailing" secondItem="mNz-OQ-SRH" secondAttribute="trailing" constant="20" id="AhK-KQ-7a7"/>
                             <constraint firstItem="AgT-SC-XaE" firstAttribute="leading" secondItem="3Yx-Kw-rk7" secondAttribute="leading" constant="20" id="E6x-q8-9ga"/>
+                            <constraint firstItem="uhR-9U-x7d" firstAttribute="top" secondItem="Stq-zW-wEO" secondAttribute="bottom" constant="20" id="ICj-dT-PST"/>
+                            <constraint firstItem="mNz-OQ-SRH" firstAttribute="top" secondItem="uhR-9U-x7d" secondAttribute="bottom" constant="15" id="M0T-nt-ekd"/>
                             <constraint firstItem="c89-Id-IY0" firstAttribute="top" secondItem="XU0-8e-ykb" secondAttribute="bottom" constant="25" id="PuD-Do-bdv"/>
                             <constraint firstItem="3Yx-Kw-rk7" firstAttribute="trailing" secondItem="hKu-jQ-csA" secondAttribute="trailing" constant="20" id="RBr-xq-ant"/>
                             <constraint firstItem="eDG-2v-0Tx" firstAttribute="leading" secondItem="3Yx-Kw-rk7" secondAttribute="leading" constant="20" id="Tw0-fe-OYy"/>
@@ -527,6 +554,7 @@
                             <constraint firstItem="XU0-8e-ykb" firstAttribute="leading" secondItem="3Yx-Kw-rk7" secondAttribute="leading" constant="20" id="bWH-zB-9ik"/>
                             <constraint firstItem="eDG-2v-0Tx" firstAttribute="top" secondItem="AgT-SC-XaE" secondAttribute="bottom" constant="47" id="bib-ot-bAJ"/>
                             <constraint firstItem="3Yx-Kw-rk7" firstAttribute="trailing" secondItem="c89-Id-IY0" secondAttribute="trailing" constant="20" id="cWP-sV-8fP"/>
+                            <constraint firstItem="3Yx-Kw-rk7" firstAttribute="trailing" secondItem="uhR-9U-x7d" secondAttribute="trailing" constant="20" id="ghv-jV-9KP"/>
                             <constraint firstItem="Stq-zW-wEO" firstAttribute="top" secondItem="eDG-2v-0Tx" secondAttribute="bottom" constant="8" symbolic="YES" id="hyr-nm-NB0"/>
                             <constraint firstItem="XU0-8e-ykb" firstAttribute="top" secondItem="3Yx-Kw-rk7" secondAttribute="top" constant="50" id="iMl-PT-ADZ"/>
                             <constraint firstItem="hKu-jQ-csA" firstAttribute="centerY" secondItem="eDG-2v-0Tx" secondAttribute="centerY" id="m5R-HA-TM5"/>
@@ -539,6 +567,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="EverIDLabel" destination="Stq-zW-wEO" id="dNO-0K-ck1"/>
+                        <outlet property="EverIDTextField" destination="mNz-OQ-SRH" id="Z2B-Be-xR2"/>
                         <outlet property="anonymSwitch" destination="hKu-jQ-csA" id="erF-4W-ZdA"/>
                     </connections>
                 </viewController>
