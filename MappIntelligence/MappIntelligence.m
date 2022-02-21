@@ -182,6 +182,11 @@ static MappIntelligenceDefaultConfig *config = nil;
             batchSupportEnabled:batchSupportDefault viewControllerAutoTrackingEnabled:YES andLogLevel: none];
 }
 
+- (void)initWithConfiguration:(NSArray *)trackIDs onTrackdomain:(NSString *)trackDomain andWithEverID:(NSString *)everID {
+    [self initWithConfiguration:trackIDs onTrackdomain:trackDomain];
+    [tracker setEverID:everID];
+}
+
 - (void)setRequestInterval:(NSTimeInterval)requestInterval {
   [config setRequestsInterval:requestInterval];
   [config logConfig];

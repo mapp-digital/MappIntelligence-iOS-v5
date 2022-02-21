@@ -210,6 +210,10 @@ static NSString *userAgent;
   return @"";
 }
 
+- (void)setEverID:(NSString *)everID {
+    [[MIDefaultTracker sharedDefaults] setValue:everID forKey:everId];
+}
+
 - (NSString *)getNewEverID {
   NSString *tmpEverId = [[NSString alloc]
       initWithFormat:@"6%010.0f%08u",

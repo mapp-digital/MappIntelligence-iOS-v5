@@ -128,6 +128,17 @@ MappIntelligence.shared()?.initWithConfiguration([12345678, 8783291721], onTrack
 - (void)initWithConfiguration:(NSArray *_Nonnull)trackIDs
                     onTrackdomain:(NSString *_Nonnull)trackDomain;
 /**
+@brief Method to initialize tracking. Please specify your track domain and trackID.
+@param trackIDs - Array of your trackIDs. The information can be provided by your account manager.
+@param trackDomain - String value of your track domain. The information can be provided by your account manager.
+@param everID - Strings which represent ever ID, this method is commonly  used when customer redirects user from web app to the mobile so it can keep the same session.
+@code
+MappIntelligence.shared()?.initWithConfiguration([12345678, 8783291721], onTrackdomain: "www.mappIntelligence-trackDomain.com", andWithEverID: "537363826253")
+@endcode
+*/
+- (void)initWithConfiguration:(NSArray *_Nonnull)trackIDs
+                    onTrackdomain:(NSString *_Nonnull)trackDomain andWithEverID: (NSString *_Nonnull) everID;
+/**
 @brief Method to reset the MappIntelligence singleton. This method will set the default empty values for trackID and track domain. Please ensure to provide new trackIDs and track domain.
 @code
 MappIntelligence.shared()?.reset()
