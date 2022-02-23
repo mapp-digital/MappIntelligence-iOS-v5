@@ -234,7 +234,7 @@
   url = [self createURLFromParametersWith:parametrs];
   _dbRequest = [[MIRequest alloc] initWithParamters:parametrs
                                         andDomain:[MappIntelligence getUrl]
-                                      andTrackIds:_mappIntelligenceId];
+                                      andTrackIds:[MappIntelligence getId]];
   return url;
 }
 

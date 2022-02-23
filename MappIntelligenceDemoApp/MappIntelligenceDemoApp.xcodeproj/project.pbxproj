@@ -29,6 +29,7 @@
 		A32AEA5A242B606000BC7B46 /* MappIntelligenceWatchOSDemoApp.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = A32AEA3D242B605B00BC7B46 /* MappIntelligenceWatchOSDemoApp.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A345975B27A162920038FE3F /* SetupForLocalTesting.plist in Resources */ = {isa = PBXBuildFile; fileRef = A345975A27A162920038FE3F /* SetupForLocalTesting.plist */; };
 		A345975E27A164C10038FE3F /* FormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A345975D27A164C10038FE3F /* FormViewController.swift */; };
+		A3588A9527C66BA40053961B /* RuntimeConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3588A9427C66BA40053961B /* RuntimeConfigurationViewController.swift */; };
 		A35C78F02452F81500D36144 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35C78EF2452F81500D36144 /* AppDelegate.swift */; };
 		A35C78F22452F81500D36144 /* ViewControllerTV.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35C78F12452F81500D36144 /* ViewControllerTV.swift */; };
 		A35C78F52452F81500D36144 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A35C78F32452F81500D36144 /* Main.storyboard */; };
@@ -116,6 +117,7 @@
 		A32AEA68242B716100BC7B46 /* libMappIntelligenceWatchOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libMappIntelligenceWatchOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A345975A27A162920038FE3F /* SetupForLocalTesting.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SetupForLocalTesting.plist; sourceTree = "<group>"; };
 		A345975D27A164C10038FE3F /* FormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewController.swift; sourceTree = "<group>"; };
+		A3588A9427C66BA40053961B /* RuntimeConfigurationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuntimeConfigurationViewController.swift; sourceTree = "<group>"; };
 		A35C78ED2452F81500D36144 /* MappIntelligenceTvOSDemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MappIntelligenceTvOSDemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A35C78EF2452F81500D36144 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A35C78F12452F81500D36144 /* ViewControllerTV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerTV.swift; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 				8F2D1D4E257789FA008CB31D /* ActionViewController.swift */,
 				8F2D1D5425778A07008CB31D /* PageViewController.swift */,
 				8F2D1D6425778B82008CB31D /* ConfigViewController.swift */,
+				A3588A9427C66BA40053961B /* RuntimeConfigurationViewController.swift */,
 				8F2D1D6E25778F5F008CB31D /* CampaignViewController.swift */,
 				A36E59CB259493A100BF8873 /* EcommerceViewController.swift */,
 				8FA78F0B25BF18BE00CC166A /* WebViewViewController.swift */,
@@ -483,6 +486,7 @@
 				8F2D1D6525778B82008CB31D /* ConfigViewController.swift in Sources */,
 				8FA78F0525BF188A00CC166A /* MediaPlayerViewController.swift in Sources */,
 				8FA78F0625BF188A00CC166A /* MediaViewController.swift in Sources */,
+				A3588A9527C66BA40053961B /* RuntimeConfigurationViewController.swift in Sources */,
 				A36E59CC259493A100BF8873 /* EcommerceViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

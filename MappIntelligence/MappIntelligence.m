@@ -187,6 +187,11 @@ static MappIntelligenceDefaultConfig *config = nil;
     [tracker setEverIDFromString:everID];
 }
 
+- (void)setIdsAndDomain:(NSArray *)trackIDs onTrackdomain:(NSString *)trackDomain {
+    [config setTrackDomain: trackDomain];
+    [config setTrackIDs:trackIDs];
+}
+
 - (void)setRequestInterval:(NSTimeInterval)requestInterval {
   [config setRequestsInterval:requestInterval];
   [config logConfig];
