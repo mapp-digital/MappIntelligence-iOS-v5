@@ -143,7 +143,11 @@
         if (selectedView == NULL) {
             selectedView = pickerView.subviews.firstObject.subviews[i].subviews.lastObject;
         }
-        pickerString = [[NSString alloc] initWithFormat:@"%@/%@", pickerString, [self extractLabelFromPickerView:selectedView]];
+        if([pickerString isEqualToString:@""]) {
+            pickerString = [[NSString alloc] initWithFormat:@"%@", [self extractLabelFromPickerView:selectedView]];
+        } else {
+            pickerString = [[NSString alloc] initWithFormat:@"%@/%@", pickerString, [self extractLabelFromPickerView:selectedView]];
+        }
     }
     return pickerString;
 }
@@ -224,15 +228,27 @@
     // The first values are the fields that the user did not actively fill out, followed by the fields that the user did actively fill out.
     [self prepareFields];
     for (MIFormField* field in _emptyNonPathFields) {
-        pathAnylisis = [NSString stringWithFormat:@"%@;%@", pathAnylisis, [field getFormFieldForQuery]];
+        if([pathAnylisis isEqualToString:@""]) {
+            pathAnylisis = [NSString stringWithFormat:@"%@", [field getFormFieldForQuery]];
+        } else {
+            pathAnylisis = [NSString stringWithFormat:@"%@;%@", pathAnylisis, [field getFormFieldForQuery]];
+        }
     }
     for (MIFormField* field in _filledNonPathFields) {
-        pathAnylisis = [NSString stringWithFormat:@"%@;%@", pathAnylisis, [field getFormFieldForQuery]];
+        if([pathAnylisis isEqualToString:@""]) {
+            pathAnylisis = [NSString stringWithFormat:@"%@", [field getFormFieldForQuery]];
+        } else {
+            pathAnylisis = [NSString stringWithFormat:@"%@;%@", pathAnylisis, [field getFormFieldForQuery]];
+        }
     }
     //2. step
     //If a user navigated to a field multiple times, the field is tracked multiple times in the ft parameter
     for (MIFormField* field in _pathFields) {
-        pathAnylisis = [NSString stringWithFormat:@"%@;%@", pathAnylisis, [field getFormFieldForQuery]];
+        if([pathAnylisis isEqualToString:@""]) {
+            pathAnylisis = [NSString stringWithFormat:@"%@", [field getFormFieldForQuery]];
+        } else {
+            pathAnylisis = [NSString stringWithFormat:@"%@;%@", pathAnylisis, [field getFormFieldForQuery]];
+        }
     }
     return [[NSURLQueryItem alloc] initWithName:@"ft" value:pathAnylisis];
 }

@@ -1098,6 +1098,7 @@
                         <barButtonItem key="backBarButtonItem" title="Back" id="ffD-hs-On0"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="ConfirmButton" destination="WRf-mV-fGQ" id="rK7-xv-fVp"/>
                         <outlet property="anynonimusSwitch" destination="Lab-XG-TQa" id="5r1-BM-iPf"/>
                         <outlet property="name1TextField" destination="MZL-2L-JCc" id="Dzu-gg-wLH"/>
                         <outlet property="name2TextField" destination="62R-vA-xog" id="Y5y-Jy-rOK"/>

@@ -13,6 +13,7 @@ class FormViewController: UIViewController, UIPickerViewDataSource, UIPickerView
     @IBOutlet weak var switchButton: UISwitch!
     @IBOutlet weak var name3TextView: UITextView!
     @IBOutlet weak var anynonimusSwitch: UISwitch!
+    @IBOutlet weak var ConfirmButton: UIButton!
     
     var items = [["Item1", "Item2", "Item3", "Item4"], ["1", "2", "3", "4", "5"]]
     var isAnonymusSelected = false
@@ -36,6 +37,8 @@ class FormViewController: UIViewController, UIPickerViewDataSource, UIPickerView
         parameters.fullContentSpecificFields = [33]
         parameters.confirmButton = true
         parameters.anonymous = self.anynonimusSwitch.isOn
+        let alert = UIAlertController(title: "Alert", message: "IsFocused: \(self.name1TextField.isFocused), \(name3TextView.isFocused), \(name2TextField.isFocused) , \(switchButton.isFocused), \(anynonimusSwitch.isFocused), \(ConfirmButton.isFocused)", preferredStyle: .alert)
+        self.present(alert, animated: true, completion: nil)
         MappIntelligence.shared()?.formTracking(parameters)
     }
     
