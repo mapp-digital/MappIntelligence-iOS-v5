@@ -189,12 +189,12 @@
         dispatch_sync(dispatch_get_main_queue(), ^{
             NSString* test = [self extractValueForAllComponentOfPickerView:pickerView];
             NSLog(@"Selektovaio si na piker: %@", test);
-            self->_fields = [self->_fields arrayByAddingObject:[[MIFormField alloc] initWithName:(pickerView.accessibilityLabel ? pickerView.accessibilityLabel : NSStringFromClass(pickerView.classForCoder)) andContent:test andID:pickerView.tag andWithAnonymus:NO andFocus:pickerView.isFocused]];
+            self->_fields = [self->_fields arrayByAddingObject:[[MIFormField alloc] initWithName:(pickerView.accessibilityLabel ? pickerView.accessibilityLabel : NSStringFromClass(pickerView.classForCoder)) andContent:test andID:pickerView.tag andWithAnonymus:_anonymous ? YES : NO andFocus:pickerView.isFocused]];
         });
     }
     for (UISwitch* switchC in _switches) {
         dispatch_sync(dispatch_get_main_queue(), ^{
-            self->_fields = [self->_fields arrayByAddingObject:[[MIFormField alloc] initWithName:(switchC.accessibilityLabel ? switchC.accessibilityLabel : NSStringFromClass(switchC.classForCoder)) andContent:(switchC.on ? @"1" : @"0") andID:switchC.tag andWithAnonymus:NO andFocus:switchC.isFocused]];
+            self->_fields = [self->_fields arrayByAddingObject:[[MIFormField alloc] initWithName:(switchC.accessibilityLabel ? switchC.accessibilityLabel : NSStringFromClass(switchC.classForCoder)) andContent:(switchC.on ? @"1" : @"0") andID:switchC.tag andWithAnonymus:_anonymous ? YES : NO andFocus:switchC.isFocused]];
         });
     }
 #endif
@@ -257,14 +257,22 @@
     _emptyNonPathFields = [[NSMutableArray alloc] init];
     _filledNonPathFields = [[NSMutableArray alloc] init];
     _pathFields = [[NSMutableArray alloc] init];
+    [self populatePathFields];
     for (MIFormField* field in _fields) {
         if(!field.formFieldContent && ![_pathAnalysis containsObject:[NSNumber numberWithInteger:field.ID]]) {
             [_emptyNonPathFields addObject:field];
         } else if(![_pathAnalysis containsObject:[NSNumber numberWithInteger:field.ID]]) {
             [_filledNonPathFields addObject:field];
-        } else {
-            [_pathFields addObject:field];
         }
+    }
+}
+
+- (void)populatePathFields {
+    for (NSNumber* fieldID in _pathAnalysis) {
+        NSUInteger index = [_fields indexOfObjectPassingTest:^BOOL(MIFormField * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            return obj.ID == [fieldID integerValue];
+        }];
+        [_pathFields addObject:[_fields objectAtIndex:index]];
     }
 }
 

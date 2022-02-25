@@ -1025,7 +1025,6 @@
                                 </state>
                                 <connections>
                                     <action selector="confirmButtonPressed:" destination="Uyo-wg-qu0" eventType="touchUpInside" id="uQk-oy-Qgc"/>
-                                    <action selector="trackMedia1:" destination="D55-Lk-m95" eventType="touchUpInside" id="ce6-pJ-Wb2"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="83G-9F-ler">
@@ -1039,7 +1038,6 @@
                                 </state>
                                 <connections>
                                     <action selector="cancelButtonPressed:" destination="Uyo-wg-qu0" eventType="touchUpInside" id="ul2-ky-57a"/>
-                                    <action selector="trackMedia1:" destination="D55-Lk-m95" eventType="touchUpInside" id="3Zu-I4-7jo"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9T9-UU-0Su">
@@ -1052,9 +1050,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="cancelButtonPressed:" destination="Uyo-wg-qu0" eventType="touchUpInside" id="rNg-mx-mU3"/>
                                     <action selector="pathAnylisesPressed:" destination="Uyo-wg-qu0" eventType="touchUpInside" id="HYS-Ig-KaO"/>
-                                    <action selector="trackMedia1:" destination="D55-Lk-m95" eventType="touchUpInside" id="UBl-Vx-IHf"/>
                                 </connections>
                             </button>
                         </subviews>

@@ -53,9 +53,9 @@ class FormViewController: UIViewController, UIPickerViewDataSource, UIPickerView
     
     @IBAction func pathAnylisesPressed(_ sender: Any) {
         let parameters = MIFormParameters();
-        parameters.pathAnalysis = [44,55,33,44,55]
+        parameters.pathAnalysis = [44,55,33,44,55,44,55,33,44,55,44,55,33,44,55,44,55,33,44,55]
         parameters.confirmButton = true
-        parameters.anonymous = self.anynonimusSwitch.isOn
+        parameters.anonymousSpecificFields = [55]
         MappIntelligence.shared()?.formTracking(parameters)
         
     }
