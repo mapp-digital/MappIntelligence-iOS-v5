@@ -36,7 +36,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) BOOL confirmButton;
 
 /// If you want to anonymize all field types, set anonymous to true.
-@property (nonatomic) BOOL anonymous;
+@property (nonatomic, nullable) NSNumber* anonymous;
 
 /// You can track the order in which the user has filled out the fields. Please note that you need to track the order manually and parse the data to the fieldsOrder function. Mapp Intelligence cannot track the order in which the user filled out the form automatically.
 @property (nonatomic, nullable) NSMutableArray<NSNumber*>* pathAnalysis;

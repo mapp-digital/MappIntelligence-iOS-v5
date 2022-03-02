@@ -82,7 +82,6 @@
         _anonymousSpecificFields = [[NSMutableArray alloc] init];
         _fullContentSpecificFields = [[NSMutableArray alloc] init];
         _confirmButton = YES;
-        _anonymous = NO;
         _pathAnalysis = [[NSMutableArray alloc] init];
     }
     return self;
@@ -177,29 +176,28 @@
 #if !TARGET_OS_WATCH
     for (UITextField* textField in _textFields) {
         dispatch_sync(dispatch_get_main_queue(), ^{
-            self->_fields = [self->_fields arrayByAddingObject:[[MIFormField alloc] initWithName:(textField.accessibilityLabel ? textField.accessibilityLabel : NSStringFromClass(textField.classForCoder)) andContent:textField.text andID:textField.tag andWithAnonymus:YES andFocus:textField.isFocused]];
+            self->_fields = [self->_fields arrayByAddingObject:[[MIFormField alloc] initWithName:(textField.accessibilityLabel ? textField.accessibilityLabel : NSStringFromClass(textField.classForCoder)) andContent:textField.text andID:textField.tag andWithAnonymus:(_anonymous == nil) ? YES : [_anonymous boolValue] andFocus:textField.isFocused]];
         });
     }
     for (UITextView* textView in _textViews) {
         dispatch_sync(dispatch_get_main_queue(), ^{
-            self->_fields = [self->_fields arrayByAddingObject:[[MIFormField alloc] initWithName:(textView.accessibilityLabel ? textView.accessibilityLabel : NSStringFromClass(textView.classForCoder)) andContent:textView.text andID:textView.tag andWithAnonymus:YES andFocus:textView.isFocused]];
+            self->_fields = [self->_fields arrayByAddingObject:[[MIFormField alloc] initWithName:(textView.accessibilityLabel ? textView.accessibilityLabel : NSStringFromClass(textView.classForCoder)) andContent:textView.text andID:textView.tag andWithAnonymus:(_anonymous == nil) ? YES : [_anonymous boolValue] andFocus:textView.isFocused]];
         });
     }
     for (UIPickerView* pickerView in _pickers) {
         dispatch_sync(dispatch_get_main_queue(), ^{
             NSString* test = [self extractValueForAllComponentOfPickerView:pickerView];
-            NSLog(@"Selektovaio si na piker: %@", test);
-            self->_fields = [self->_fields arrayByAddingObject:[[MIFormField alloc] initWithName:(pickerView.accessibilityLabel ? pickerView.accessibilityLabel : NSStringFromClass(pickerView.classForCoder)) andContent:test andID:pickerView.tag andWithAnonymus:_anonymous ? YES : NO andFocus:pickerView.isFocused]];
+            self->_fields = [self->_fields arrayByAddingObject:[[MIFormField alloc] initWithName:(pickerView.accessibilityLabel ? pickerView.accessibilityLabel : NSStringFromClass(pickerView.classForCoder)) andContent:test andID:pickerView.tag andWithAnonymus:[_anonymous boolValue] ? YES : NO andFocus:pickerView.isFocused]];
         });
     }
     for (UISwitch* switchC in _switches) {
         dispatch_sync(dispatch_get_main_queue(), ^{
-            self->_fields = [self->_fields arrayByAddingObject:[[MIFormField alloc] initWithName:(switchC.accessibilityLabel ? switchC.accessibilityLabel : NSStringFromClass(switchC.classForCoder)) andContent:(switchC.on ? @"1" : @"0") andID:switchC.tag andWithAnonymus:_anonymous ? YES : NO andFocus:switchC.isFocused]];
+            self->_fields = [self->_fields arrayByAddingObject:[[MIFormField alloc] initWithName:(switchC.accessibilityLabel ? switchC.accessibilityLabel : NSStringFromClass(switchC.classForCoder)) andContent:(switchC.on ? @"1" : @"0") andID:switchC.tag andWithAnonymus:[_anonymous boolValue] ? YES : NO andFocus:switchC.isFocused]];
         });
     }
 #endif
     
-    if (!_anonymous) {
+    if (![_anonymous boolValue]) {
         for (MIFormField* field in _fields) {
             if ([_anonymousSpecificFields containsObject:[NSNumber numberWithInteger:(NSInteger)field.ID]]) {
                 [[_fields objectAtIndex: [_fields indexOfObject:field]] setAnonymus:YES];
@@ -212,11 +210,10 @@
             [[_fields objectAtIndex: [_fields indexOfObject:field]] setFormFieldName:_renameFields[[NSNumber numberWithInteger:field.ID]]];
             
         }
-        if ([[_changeFieldsValue allKeys] containsObject:[NSNumber numberWithInteger:(NSInteger)field.ID]]) {
+        if ([[_changeFieldsValue allKeys] containsObject:[NSNumber numberWithInteger:(NSInteger)field.ID]] && ![_anonymous boolValue]) {
             [[_fields objectAtIndex: [_fields indexOfObject:field]] setFormFieldContent:_changeFieldsValue[[NSNumber numberWithInteger:(NSInteger)field.ID]]];
-            //TODO: da li ukoliko se stavlja kontent polje automatski nije vise anonimno ili mora da se naglasi 
         }
-        if ([_fullContentSpecificFields containsObject:[NSNumber numberWithInteger:(NSInteger)field.ID]]) {
+        if ([_fullContentSpecificFields containsObject:[NSNumber numberWithInteger:(NSInteger)field.ID]] && ![_anonymous boolValue]) {
             [[_fields objectAtIndex: [_fields indexOfObject:field]] setAnonymus:NO];
         }
     }

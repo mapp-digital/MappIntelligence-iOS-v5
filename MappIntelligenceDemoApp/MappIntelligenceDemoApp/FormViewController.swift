@@ -36,7 +36,7 @@ class FormViewController: UIViewController, UIPickerViewDataSource, UIPickerView
         parameters.changeFieldsValue = [22:"zivorad_bekrija"]
         parameters.fullContentSpecificFields = [33]
         parameters.confirmButton = true
-        parameters.anonymous = self.anynonimusSwitch.isOn
+        parameters.anonymous = self.anynonimusSwitch.isOn as NSNumber
 //        let alert = UIAlertController(title: "Alert", message: "IsFocused: \(self.name1TextField.isFocused), \(name3TextView.isFocused), \(name2TextField.isFocused) , \(switchButton.isFocused), \(anynonimusSwitch.isFocused), \(ConfirmButton.isFocused)", preferredStyle: .alert)
 //        self.present(alert, animated: true, completion: nil)
         MappIntelligence.shared()?.formTracking(parameters)
@@ -47,7 +47,7 @@ class FormViewController: UIViewController, UIPickerViewDataSource, UIPickerView
         parameters.fieldIds = [11,33]
         parameters.fullContentSpecificFields = [33]
         parameters.confirmButton = false
-        parameters.anonymous = self.anynonimusSwitch.isOn
+        parameters.anonymous = self.anynonimusSwitch.isOn as NSNumber
         MappIntelligence.shared()?.formTracking(parameters)
     }
     
