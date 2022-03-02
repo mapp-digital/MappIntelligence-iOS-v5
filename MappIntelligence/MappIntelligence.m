@@ -188,6 +188,16 @@ static MappIntelligenceDefaultConfig *config = nil;
             batchSupportEnabled:batchSupportDefault viewControllerAutoTrackingEnabled:YES andLogLevel: none];
 }
 
+- (void)initWithConfiguration:(NSArray *)trackIDs onTrackdomain:(NSString *)trackDomain andWithEverID:(NSString *)everID {
+    [self initWithConfiguration:trackIDs onTrackdomain:trackDomain];
+    [tracker setEverIDFromString:everID];
+}
+
+- (void)setIdsAndDomain:(NSArray *)trackIDs onTrackdomain:(NSString *)trackDomain {
+    [config setTrackDomain: trackDomain];
+    [config setTrackIDs:trackIDs];
+}
+
 - (void)setRequestInterval:(NSTimeInterval)requestInterval {
   [config setRequestsInterval:requestInterval];
   [config logConfig];
@@ -332,6 +342,12 @@ static MappIntelligenceDefaultConfig *config = nil;
     MIPageViewEvent *event = [[MIPageViewEvent alloc] initWithName:pageName];
     event.trackingParams = trackingParams;
   return [tracker trackWithCustomEvent:event];
+}
+
+- (NSError *)formTracking:(MIFormParameters *)formParams {
+    MIFormSubmitEvent* formEvent = [[MIFormSubmitEvent alloc] init];
+    [formEvent setFormParameters:formParams];
+    return [tracker trackWithEvent:formEvent];
 }
 
 - (NSError *_Nullable) trackCustomEvent: (NSString *_Nonnull)eventName trackingParams: (NSDictionary<NSString *, NSString*> *_Nullable) trackingParams {

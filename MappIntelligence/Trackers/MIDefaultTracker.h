@@ -10,6 +10,7 @@
 #define DefaultTracker_h
 #import <UIKit/UIKit.h>
 #import "MIPageViewEvent.h"
+#import "MIFormSubmitEvent.h"
 #import "MIActionEvent.h"
 #if TARGET_OS_WATCH
 #import <WatchKit/WatchKit.h>
@@ -24,6 +25,7 @@
 
 + (nullable instancetype)sharedInstance;
 - (NSString *_Nullable)generateEverId;
+- (void)setEverIDFromString: (NSString *_Nonnull)everIDString;
 - (NSString*_Nonnull)generateUserAgent;
 - (BOOL)isBackgroundSendoutEnabled;
 #if !TARGET_OS_WATCH

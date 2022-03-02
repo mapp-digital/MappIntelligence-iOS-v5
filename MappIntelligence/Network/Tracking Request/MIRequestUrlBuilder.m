@@ -75,7 +75,7 @@
   NSString *pageNameOpt = [event pageName];
   NSURL *url;
 
-  if (!pageNameOpt) {
+  if (!pageNameOpt && ![event isKindOfClass:MIFormSubmitEvent.class]) {
     [_logger logObj:@"Tracking event must contain a page name: %@"
         forDescription:kMappIntelligenceLogLevelDescriptionError];
     return url;
@@ -201,6 +201,8 @@
             [parametrs addObjectsFromArray:[eventParameters asQueryItems]];
             MIEcommerceParameters *ecommerceProperties = ((MIMediaEvent*)event).ecommerceParameters;
             [parametrs addObjectsFromArray:[ecommerceProperties asQueryItems]];
+        } else if ([event isKindOfClass:MIFormSubmitEvent.class]) {
+            [parametrs addObjectsFromArray:[((MIFormSubmitEvent*)event).formParameters asQueryItems]];
         }
     }
     
@@ -232,7 +234,7 @@
   url = [self createURLFromParametersWith:parametrs];
   _dbRequest = [[MIRequest alloc] initWithParamters:parametrs
                                         andDomain:[MappIntelligence getUrl]
-                                      andTrackIds:_mappIntelligenceId];
+                                      andTrackIds:[MappIntelligence getId]];
   return url;
 }
 

@@ -10,6 +10,7 @@ import UIKit
 
 class ConfigViewController: UIViewController {
 
+    @IBOutlet weak var EverIDTextField: UITextField!
     @IBOutlet weak var EverIDLabel: UILabel!
     
     @IBOutlet weak var anonymSwitch: UISwitch!
@@ -52,5 +53,34 @@ class ConfigViewController: UIViewController {
             MappIntelligence.shared()?.anonymousTracking = false
         }
     }
+    
+    @IBAction func initwithEverID(_ sender: Any) {
+        guard let everID = self.EverIDTextField.text else {
+            print("You must enter everID it can not be empty value!")
+            return
+        }
+        let bundles = Bundle.allBundles
+        var path = ""
+        for bundle in bundles {
+            if bundle.path(forResource: "SetupForLocalTesting", ofType: "plist") != nil {
+                path = bundle.path(forResource: "SetupForLocalTesting", ofType: "plist") ?? ""
+            }
+        }
+        let dict = NSDictionary(contentsOfFile: path) as Dictionary?
+        let array = [(dict?["track_ids" as NSObject]?.intValue) ?? 0]
+        let domain = dict?["domain" as NSObject]
+        MappIntelligence.shared()?.initWithConfiguration(array, onTrackdomain: domain as! String, andWithEverID: everID)
+        MappIntelligence.shared()?.logLevel = .all
+        MappIntelligence.shared()?.batchSupportEnabled = false
+        MappIntelligence.shared()?.batchSupportSize = 150
+        MappIntelligence.shared()?.requestInterval = 60
+        MappIntelligence.shared()?.requestPerQueue = 300
+        MappIntelligence.shared()?.shouldMigrate = true
+        MappIntelligence.shared()?.sendAppVersionInEveryRequest = true
+        MappIntelligence.shared()?.enableBackgroundSendout = true
+        
+        self.EverIDLabel.text = "Ever ID: " + (MappIntelligence.shared()?.getEverId() ?? "there is no EverID")
+    }
+    
 
 }

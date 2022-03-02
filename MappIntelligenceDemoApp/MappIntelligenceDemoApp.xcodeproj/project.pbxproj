@@ -27,6 +27,9 @@
 		A32AEA53242B605F00BC7B46 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32AEA52242B605F00BC7B46 /* NotificationController.swift */; };
 		A32AEA55242B606000BC7B46 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A32AEA54242B606000BC7B46 /* Assets.xcassets */; };
 		A32AEA5A242B606000BC7B46 /* MappIntelligenceWatchOSDemoApp.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = A32AEA3D242B605B00BC7B46 /* MappIntelligenceWatchOSDemoApp.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A345975E27A164C10038FE3F /* FormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A345975D27A164C10038FE3F /* FormViewController.swift */; };
+		A3588A9527C66BA40053961B /* RuntimeConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3588A9427C66BA40053961B /* RuntimeConfigurationViewController.swift */; };
+		A3588A9727CFC57E0053961B /* SetupForLocalTesting.plist in Resources */ = {isa = PBXBuildFile; fileRef = A3588A9627CFC57E0053961B /* SetupForLocalTesting.plist */; };
 		A35C78F02452F81500D36144 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35C78EF2452F81500D36144 /* AppDelegate.swift */; };
 		A35C78F22452F81500D36144 /* ViewControllerTV.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35C78F12452F81500D36144 /* ViewControllerTV.swift */; };
 		A35C78F52452F81500D36144 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A35C78F32452F81500D36144 /* Main.storyboard */; };
@@ -37,7 +40,6 @@
 		A36E5A2C25AD9D8700BF8873 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCA1739A23D5D25E00B31430 /* Assets.xcassets */; };
 		A38A6AF4242CD74F00600D82 /* libMappIntelligenceWatchOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A38A6AF3242CD74F00600D82 /* libMappIntelligenceWatchOS.a */; };
 		A3ADC97E26D94057007504FF /* ExceptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3ADC97D26D94057007504FF /* ExceptionsViewController.swift */; };
-		A3BCEBE52733DC0D0040502E /* SetupForLocalTesting.plist in Resources */ = {isa = PBXBuildFile; fileRef = A3BCEBE42733DC0D0040502E /* SetupForLocalTesting.plist */; };
 		BCA1739223D5D25C00B31430 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA1739123D5D25C00B31430 /* AppDelegate.swift */; };
 		BCA1739423D5D25C00B31430 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA1739323D5D25C00B31430 /* SceneDelegate.swift */; };
 		BCA1739923D5D25C00B31430 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCA1739723D5D25C00B31430 /* Main.storyboard */; };
@@ -114,6 +116,9 @@
 		A32AEA57242B606000BC7B46 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		A32AEA63242B6F7500BC7B46 /* MappIntelligenceWatchOSDemoApp Extension-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MappIntelligenceWatchOSDemoApp Extension-Bridging-Header.h"; sourceTree = "<group>"; };
 		A32AEA68242B716100BC7B46 /* libMappIntelligenceWatchOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libMappIntelligenceWatchOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A345975D27A164C10038FE3F /* FormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewController.swift; sourceTree = "<group>"; };
+		A3588A9427C66BA40053961B /* RuntimeConfigurationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuntimeConfigurationViewController.swift; sourceTree = "<group>"; };
+		A3588A9627CFC57E0053961B /* SetupForLocalTesting.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = SetupForLocalTesting.plist; path = ../../SetupForLocalTesting.plist; sourceTree = "<group>"; };
 		A35C78ED2452F81500D36144 /* MappIntelligenceTvOSDemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MappIntelligenceTvOSDemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A35C78EF2452F81500D36144 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A35C78F12452F81500D36144 /* ViewControllerTV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerTV.swift; sourceTree = "<group>"; };
@@ -128,7 +133,6 @@
 		A38A6AF1242CD0C600600D82 /* libMappIntelligenceSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libMappIntelligenceSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A38A6AF3242CD74F00600D82 /* libMappIntelligenceWatchOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libMappIntelligenceWatchOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3ADC97D26D94057007504FF /* ExceptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExceptionsViewController.swift; sourceTree = "<group>"; };
-		A3BCEBE42733DC0D0040502E /* SetupForLocalTesting.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SetupForLocalTesting.plist; sourceTree = "<group>"; };
 		BCA1738E23D5D25C00B31430 /* MappIntelligenceDemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MappIntelligenceDemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCA1739123D5D25C00B31430 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BCA1739323D5D25C00B31430 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -243,7 +247,7 @@
 		BCA1739023D5D25C00B31430 /* MappIntelligenceDemoApp */ = {
 			isa = PBXGroup;
 			children = (
-				A3BCEBE42733DC0D0040502E /* SetupForLocalTesting.plist */,
+				A3588A9627CFC57E0053961B /* SetupForLocalTesting.plist */,
 				8F94E6BC25BF199C00027623 /* Resources */,
 				8FA78F0325BF188A00CC166A /* MediaPlayerViewController.swift */,
 				8FA78F0425BF188A00CC166A /* MediaViewController.swift */,
@@ -253,9 +257,11 @@
 				8F2D1D4E257789FA008CB31D /* ActionViewController.swift */,
 				8F2D1D5425778A07008CB31D /* PageViewController.swift */,
 				8F2D1D6425778B82008CB31D /* ConfigViewController.swift */,
+				A3588A9427C66BA40053961B /* RuntimeConfigurationViewController.swift */,
 				8F2D1D6E25778F5F008CB31D /* CampaignViewController.swift */,
 				A36E59CB259493A100BF8873 /* EcommerceViewController.swift */,
 				8FA78F0B25BF18BE00CC166A /* WebViewViewController.swift */,
+				A345975D27A164C10038FE3F /* FormViewController.swift */,
 				BCA1739723D5D25C00B31430 /* Main.storyboard */,
 				BCA1739A23D5D25E00B31430 /* Assets.xcassets */,
 				BCA1739C23D5D25E00B31430 /* LaunchScreen.storyboard */,
@@ -438,9 +444,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A3BCEBE52733DC0D0040502E /* SetupForLocalTesting.plist in Resources */,
 				8F94E6BE25BF199C00027623 /* wt.mp4 in Resources */,
 				BCA1739E23D5D25E00B31430 /* LaunchScreen.storyboard in Resources */,
+				A3588A9727CFC57E0053961B /* SetupForLocalTesting.plist in Resources */,
 				BCA1739B23D5D25E00B31430 /* Assets.xcassets in Resources */,
 				BCA1739923D5D25C00B31430 /* Main.storyboard in Resources */,
 			);
@@ -474,6 +480,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8FA78F0C25BF18BE00CC166A /* WebViewViewController.swift in Sources */,
+				A345975E27A164C10038FE3F /* FormViewController.swift in Sources */,
 				8F2D1D5525778A07008CB31D /* PageViewController.swift in Sources */,
 				8F2D1D4F257789FA008CB31D /* ActionViewController.swift in Sources */,
 				A3ADC97E26D94057007504FF /* ExceptionsViewController.swift in Sources */,
@@ -483,6 +490,7 @@
 				8F2D1D6525778B82008CB31D /* ConfigViewController.swift in Sources */,
 				8FA78F0525BF188A00CC166A /* MediaPlayerViewController.swift in Sources */,
 				8FA78F0625BF188A00CC166A /* MediaViewController.swift in Sources */,
+				A3588A9527C66BA40053961B /* RuntimeConfigurationViewController.swift in Sources */,
 				A36E59CC259493A100BF8873 /* EcommerceViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

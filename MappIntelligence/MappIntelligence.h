@@ -13,6 +13,7 @@
 #import "MIParams.h"
 #import "MIParamType.h"
 #import "MIMediaEvent.h"
+#import "MIFormParameters.h"
 
 
 @class MappIntelligence;
@@ -158,6 +159,29 @@ MappIntelligence.shared()?.initWithConfiguration([12345678, 8783291721], onTrack
 */
 - (void)initWithConfiguration:(NSArray *_Nonnull)trackIDs
                     onTrackdomain:(NSString *_Nonnull)trackDomain;
+
+/**
+@brief Method to change current trackIDs and domain at runtime of application.
+@param trackIDs - Array of your trackIDs. The information can be provided by your account manager.
+@param trackDomain - String value of your track domain. The information can be provided by your account manager.
+@code
+MappIntelligence.shared()?.setIdsAndDomain([12345678, 8783291721], onTrackdomain: "www.mappIntelligence-trackDomain.com")
+@endcode
+*/
+- (void)setIdsAndDomain:(NSArray *_Nonnull)trackIDs
+                    onTrackdomain:(NSString *_Nonnull)trackDomain;
+
+/**
+@brief Method to initialize tracking. Please specify your track domain and trackID.
+@param trackIDs - Array of your trackIDs. The information can be provided by your account manager.
+@param trackDomain - String value of your track domain. The information can be provided by your account manager.
+@param everID - Strings which represent ever ID, this method is commonly  used when customer redirects user from web app to the mobile so it can keep the same session.
+@code
+MappIntelligence.shared()?.initWithConfiguration([12345678, 8783291721], onTrackdomain: "www.mappIntelligence-trackDomain.com", andWithEverID: "537363826253")
+@endcode
+*/
+- (void)initWithConfiguration:(NSArray *_Nonnull)trackIDs
+                    onTrackdomain:(NSString *_Nonnull)trackDomain andWithEverID: (NSString *_Nonnull) everID;
 /**
 @brief Method to reset the MappIntelligence singleton. This method will set the default empty values for trackID and track domain. Please ensure to provide new trackIDs and track domain.
 @code
@@ -203,6 +227,13 @@ MappIntelligence.shared()?.optOut(with: false, andSendCurrentData: false)
  @return the error which may happen through process of tracking, if returns nil there is no error.
  */
 - (NSError *_Nullable) trackCustomEvent: (NSString *_Nonnull)eventName trackingParams: (NSDictionary<NSString *, NSString*> *_Nullable) trackingParams;
+
+/**
+ @brief Method which will track form submit/cancel
+ @param formParams - form parameters that are bveing tracked
+ @return the error which may happen through process of tracking, if returns nil there is no error.
+ */
+- (NSError *_Nullable) formTracking: (MIFormParameters *_Nonnull) formParams;
 
 /**
  @brief Method which will enable anonymous tracking and omit submitted parameters/tags array. Please note that using this option will negatively affect data quality.
