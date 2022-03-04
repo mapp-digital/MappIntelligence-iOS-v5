@@ -6,17 +6,21 @@
 //  Copyright © 2022 Mapp Digital US, LLC. All rights reserved.
 //
 
-class FormViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
+class FormViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate, UITextViewDelegate {
     
     @IBOutlet weak var name1TextField: UITextField!
     @IBOutlet weak var name2TextField: UITextField!
     @IBOutlet weak var switchButton: UISwitch!
     @IBOutlet weak var name3TextView: UITextView!
     @IBOutlet weak var anynonimusSwitch: UISwitch!
+    @IBOutlet weak var testPickerView: UIPickerView!
     @IBOutlet weak var ConfirmButton: UIButton!
     
     var items = [["Item1", "Item2", "Item3", "Item4"], ["1", "2", "3", "4", "5"]]
     var isAnonymusSelected = false
+    
+    //this array will be used to track fields for path anylisis
+    var pathAnalysisTags:[Int] = []
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +29,15 @@ class FormViewController: UIViewController, UIPickerViewDataSource, UIPickerView
         name3TextView.tag = 33
         switchButton.tag = 44
         anynonimusSwitch.tag = 55
+        testPickerView.tag = 66
+        
+        //adding delegates for switch methods
+        switchButton.addTarget(self, action: #selector(onSwitchValueChanged(_:)), for: UIControl.Event.valueChanged)
+        anynonimusSwitch.addTarget(self, action: #selector(onSwitchValueChanged(_:)), for: UIControl.Event.valueChanged)
+        name1TextField.delegate = self
+        name2TextField.delegate = self
+        name3TextView.delegate = self
+        
         view.isUserInteractionEnabled = true
         let tap = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tap)
@@ -32,8 +45,8 @@ class FormViewController: UIViewController, UIPickerViewDataSource, UIPickerView
     
     @IBAction func confirmButtonPressed(_ sender: Any) {
         let parameters = MIFormParameters();
-        parameters.renameFields = [11:"Zivko"]
-        parameters.changeFieldsValue = [22:"zivorad_bekrija"]
+        parameters.renameFields = [11:"rename_field1"]
+        parameters.changeFieldsValue = [22:"changed_value1"]
         parameters.fullContentSpecificFields = [33]
         parameters.confirmButton = true
         parameters.anonymous = self.anynonimusSwitch.isOn as NSNumber
@@ -53,10 +66,11 @@ class FormViewController: UIViewController, UIPickerViewDataSource, UIPickerView
     
     @IBAction func pathAnylisesPressed(_ sender: Any) {
         let parameters = MIFormParameters();
-        parameters.pathAnalysis = [44,55,33,44,55,44,55,33,44,55,44,55,33,44,55,44,55,33,44,55]
+        parameters.pathAnalysis = NSMutableArray(array: pathAnalysisTags)
         parameters.confirmButton = true
         parameters.anonymousSpecificFields = [55]
         MappIntelligence.shared()?.formTracking(parameters)
+        pathAnalysisTags.removeAll()
         
     }
     // #pragma_mark uipicker dalegate methods
@@ -77,5 +91,27 @@ class FormViewController: UIViewController, UIPickerViewDataSource, UIPickerView
         pickerLabel.textAlignment = NSTextAlignment.center
         pickerLabel.text = items[component][row]
         return pickerLabel
+    }
+    
+    //this delegate methods will be used for path anylisis
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if (pickerView.tag != 0) {
+            pathAnalysisTags.append(pickerView.tag)
+        }
+    }
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if(textView.tag != 0) {
+            pathAnalysisTags.append(textView.tag)
+        }
+    }
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if(textField.tag != 0) {
+            pathAnalysisTags.append(textField.tag)
+        }
+    }
+    @objc func onSwitchValueChanged(_ switchTmp: UISwitch) {
+        if(switchTmp.tag != 0) {
+            pathAnalysisTags.append(switchTmp.tag)
+        }
     }
 }
