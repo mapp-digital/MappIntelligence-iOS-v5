@@ -162,7 +162,7 @@
     XCTestExpectation* expectation = [[XCTestExpectation alloc] initWithDescription:@"Wait until send batch with requests from database!"];
     //1. write requests into database
     //2. send requests as a batch to the server
-    [_tracker sendBatchForRequestWithCompletionHandler:^(NSError * _Nullable error) {
+    [_tracker sendRequestFromDatabaseWithCompletionHandler:^(NSError * _Nullable error) {
         XCTAssertNil(error, @"There was an error while sending requests from database as batch!");
         [expectation fulfill];
     }];
