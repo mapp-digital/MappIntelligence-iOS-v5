@@ -191,12 +191,12 @@
 #if !TARGET_OS_WATCH
     for (UITextField* textField in _textFields) {
         dispatch_sync(dispatch_get_main_queue(), ^{
-            self->_fields = [self->_fields arrayByAddingObject:[[MIFormField alloc] initWithName:[self getNameForControl:textField] andContent:textField.text andID:textField.tag andWithAnonymus:[_anonymous boolValue] ? YES : NO andFocus:textField.isFocused]];
+            self->_fields = [self->_fields arrayByAddingObject:[[MIFormField alloc] initWithName:[self getNameForControl:textField] andContent:textField.text andID:textField.tag andWithAnonymus: YES andFocus:textField.isFocused]];
         });
     }
     for (UITextView* textView in _textViews) {
         dispatch_sync(dispatch_get_main_queue(), ^{
-            self->_fields = [self->_fields arrayByAddingObject:[[MIFormField alloc] initWithName:[self getNameForControl:textView] andContent:textView.text andID:textView.tag andWithAnonymus:[_anonymous boolValue] ? YES : NO andFocus:textView.isFocused]];
+            self->_fields = [self->_fields arrayByAddingObject:[[MIFormField alloc] initWithName:[self getNameForControl:textView] andContent:textView.text andID:textView.tag andWithAnonymus:YES andFocus:textView.isFocused]];
         });
     }
     for (UIPickerView* pickerView in _pickers) {
