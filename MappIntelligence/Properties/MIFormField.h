@@ -20,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)initWithDictionary:(NSDictionary*)dictionary;
 - (instancetype)initWithName:(NSString*)name andContent: (NSString*)content andID: (NSInteger)ID andWithAnonymus:(BOOL)anonymus andFocus:(BOOL)focus;
+-(void)renameField: (NSString*) renameValue;
 - (NSString*)getFormFieldForQuery;
 
 @end

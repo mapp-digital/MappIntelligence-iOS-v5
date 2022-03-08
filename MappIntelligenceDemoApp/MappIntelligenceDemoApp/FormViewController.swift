@@ -12,8 +12,9 @@ class FormViewController: UIViewController, UIPickerViewDataSource, UIPickerView
     @IBOutlet weak var name2TextField: UITextField!
     @IBOutlet weak var switchButton: UISwitch!
     @IBOutlet weak var name3TextView: UITextView!
-    @IBOutlet weak var anynonimusSwitch: UISwitch!
+    @IBOutlet weak var anonymousSwitch: UISwitch!
     @IBOutlet weak var testPickerView: UIPickerView!
+    @IBOutlet weak var testSegmentedControl: UISegmentedControl!
     @IBOutlet weak var ConfirmButton: UIButton!
     
     var items = [["Item1", "Item2", "Item3", "Item4"], ["1", "2", "3", "4", "5"]]
@@ -24,16 +25,27 @@ class FormViewController: UIViewController, UIPickerViewDataSource, UIPickerView
    
     override func viewDidLoad() {
         super.viewDidLoad()
+        testSegmentedControl.setTitleColor(.white)
+        
         name1TextField.tag = 11
         name2TextField.tag = 22
         name3TextView.tag = 33
         switchButton.tag = 44
-        anynonimusSwitch.tag = 55
+        anonymousSwitch.tag = 55
         testPickerView.tag = 66
+        testSegmentedControl.tag = 77
+        
+        //add accessibility labels
+        name1TextField.accessibilityLabel = "firstTextField"
+        name2TextField.accessibilityLabel = "secondTextField"
+        name3TextView.accessibilityLabel = "firstTextView"
+        switchButton.accessibilityLabel = "firstSwitchButton"
+        testPickerView.accessibilityLabel = "firstPicker"
+        testSegmentedControl.accessibilityLabel = "testSegment"
         
         //adding delegates for switch methods
         switchButton.addTarget(self, action: #selector(onSwitchValueChanged(_:)), for: UIControl.Event.valueChanged)
-        anynonimusSwitch.addTarget(self, action: #selector(onSwitchValueChanged(_:)), for: UIControl.Event.valueChanged)
+        anonymousSwitch.addTarget(self, action: #selector(onSwitchValueChanged(_:)), for: UIControl.Event.valueChanged)
         name1TextField.delegate = self
         name2TextField.delegate = self
         name3TextView.delegate = self
@@ -49,9 +61,7 @@ class FormViewController: UIViewController, UIPickerViewDataSource, UIPickerView
         parameters.changeFieldsValue = [22:"changed_value1"]
         parameters.fullContentSpecificFields = [33]
         parameters.confirmButton = true
-        parameters.anonymous = self.anynonimusSwitch.isOn as NSNumber
-//        let alert = UIAlertController(title: "Alert", message: "IsFocused: \(self.name1TextField.isFocused), \(name3TextView.isFocused), \(name2TextField.isFocused) , \(switchButton.isFocused), \(anynonimusSwitch.isFocused), \(ConfirmButton.isFocused)", preferredStyle: .alert)
-//        self.present(alert, animated: true, completion: nil)
+        parameters.anonymous = self.anonymousSwitch.isOn as NSNumber
         MappIntelligence.shared()?.formTracking(parameters)
     }
     
@@ -60,7 +70,7 @@ class FormViewController: UIViewController, UIPickerViewDataSource, UIPickerView
         parameters.fieldIds = [11,33]
         parameters.fullContentSpecificFields = [33]
         parameters.confirmButton = false
-        parameters.anonymous = self.anynonimusSwitch.isOn as NSNumber
+        parameters.anonymous = self.anonymousSwitch.isOn as NSNumber
         MappIntelligence.shared()?.formTracking(parameters)
     }
     
@@ -114,4 +124,21 @@ class FormViewController: UIViewController, UIPickerViewDataSource, UIPickerView
             pathAnalysisTags.append(switchTmp.tag)
         }
     }
+}
+
+
+extension UISegmentedControl {
+
+    func setTitleColor(_ color: UIColor, state: UIControl.State = .normal) {
+        var attributes = self.titleTextAttributes(for: state) ?? [:]
+        attributes[.foregroundColor] = color
+        self.setTitleTextAttributes(attributes, for: state)
+    }
+    
+    func setTitleFont(_ font: UIFont, state: UIControl.State = .normal) {
+        var attributes = self.titleTextAttributes(for: state) ?? [:]
+        attributes[.font] = font
+        self.setTitleTextAttributes(attributes, for: state)
+    }
+
 }

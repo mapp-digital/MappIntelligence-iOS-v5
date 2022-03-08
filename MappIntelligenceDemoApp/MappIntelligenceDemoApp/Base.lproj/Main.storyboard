@@ -980,7 +980,7 @@
                                 <color key="textColor" name="Blue"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sEu-mS-gmr">
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" title="Switch" translatesAutoresizingMaskIntoConstraints="NO" id="sEu-mS-gmr">
                                 <rect key="frame" x="251" y="167" width="51" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="31" id="hmT-g5-fPI"/>
@@ -1008,17 +1008,7 @@
                                     <outlet property="delegate" destination="Uyo-wg-qu0" id="GFW-wS-ei2"/>
                                 </connections>
                             </pickerView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Anonymous:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IVb-HK-XTN">
-                                <rect key="frame" x="20" y="527" width="99" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="99" id="KT7-Hr-XGA"/>
-                                    <constraint firstAttribute="height" constant="21" id="uXq-P5-EHM"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" name="Blue"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lab-XG-TQa">
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lab-XG-TQa" userLabel="anynonymousSwitch">
                                 <rect key="frame" x="253" y="522" width="49" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="31" id="LAg-7u-Zc5"/>
@@ -1066,18 +1056,41 @@
                                     <action selector="pathAnylisesPressed:" destination="Uyo-wg-qu0" eventType="touchUpInside" id="HYS-Ig-KaO"/>
                                 </connections>
                             </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="NsG-RO-qho">
+                                <rect key="frame" x="4" y="522" width="131" height="31"/>
+                                <color key="backgroundColor" name="Blue"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="MxF-0R-7r5"/>
+                                    <constraint firstAttribute="width" constant="131" id="sff-ae-FTQ"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                </segments>
+                                <color key="selectedSegmentTintColor" name="Darkblue"/>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Anonymous:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IVb-HK-XTN">
+                                <rect key="frame" x="149" y="527" width="99" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="99" id="Giv-3k-vNH"/>
+                                    <constraint firstAttribute="height" constant="21" id="kvd-7n-f1k"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" name="Blue"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Dlc-En-d2W"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="hWa-TM-dOB" firstAttribute="top" secondItem="sEu-mS-gmr" secondAttribute="bottom" constant="20" id="13x-pb-9Nu"/>
                             <constraint firstItem="62R-vA-xog" firstAttribute="leading" secondItem="Dlc-En-d2W" secondAttribute="leading" constant="20" id="2E7-VE-u3m"/>
+                            <constraint firstItem="Lab-XG-TQa" firstAttribute="leading" secondItem="IVb-HK-XTN" secondAttribute="trailing" constant="5" id="3BP-Sx-wZg"/>
                             <constraint firstItem="VWi-NU-h8k" firstAttribute="top" secondItem="hWa-TM-dOB" secondAttribute="bottom" constant="20" id="76y-iw-W8C"/>
-                            <constraint firstItem="Dlc-En-d2W" firstAttribute="bottom" secondItem="IVb-HK-XTN" secondAttribute="bottom" constant="20" id="8hI-np-CoA"/>
                             <constraint firstItem="MZL-2L-JCc" firstAttribute="leading" secondItem="Dlc-En-d2W" secondAttribute="leading" constant="20" id="92R-wf-Z8v"/>
-                            <constraint firstItem="Lab-XG-TQa" firstAttribute="centerY" secondItem="IVb-HK-XTN" secondAttribute="centerY" id="AM2-Nn-MGu"/>
                             <constraint firstItem="sEu-mS-gmr" firstAttribute="top" secondItem="62R-vA-xog" secondAttribute="bottom" constant="15" id="Ct7-1m-kZM"/>
                             <constraint firstItem="WRf-mV-fGQ" firstAttribute="leading" secondItem="Dlc-En-d2W" secondAttribute="leading" constant="20" id="Ez0-el-Svc"/>
+                            <constraint firstItem="NsG-RO-qho" firstAttribute="leading" secondItem="Dlc-En-d2W" secondAttribute="leading" constant="4" id="JIn-LT-qCN"/>
                             <constraint firstItem="wuf-XH-pvm" firstAttribute="centerY" secondItem="sEu-mS-gmr" secondAttribute="centerY" id="N1o-Xq-afU"/>
                             <constraint firstItem="9T9-UU-0Su" firstAttribute="leading" secondItem="Dlc-En-d2W" secondAttribute="leading" constant="20" id="Ngr-M5-noc"/>
                             <constraint firstItem="VWi-NU-h8k" firstAttribute="leading" secondItem="Dlc-En-d2W" secondAttribute="leading" constant="20" id="Oi7-mO-4ej"/>
@@ -1086,6 +1099,7 @@
                             <constraint firstItem="wuf-XH-pvm" firstAttribute="top" secondItem="62R-vA-xog" secondAttribute="bottom" constant="20" id="TNJ-rI-OIc"/>
                             <constraint firstItem="62R-vA-xog" firstAttribute="top" secondItem="MZL-2L-JCc" secondAttribute="bottom" constant="20" id="TQZ-2D-pv6"/>
                             <constraint firstItem="MZL-2L-JCc" firstAttribute="top" secondItem="Dlc-En-d2W" secondAttribute="top" constant="20" id="Wum-22-Cjb"/>
+                            <constraint firstItem="Dlc-En-d2W" firstAttribute="bottom" secondItem="NsG-RO-qho" secondAttribute="bottom" constant="16" id="XRb-WE-jTi"/>
                             <constraint firstItem="Dlc-En-d2W" firstAttribute="trailing" secondItem="sEu-mS-gmr" secondAttribute="trailing" constant="20" id="aIv-6p-2oC"/>
                             <constraint firstItem="hWa-TM-dOB" firstAttribute="leading" secondItem="Dlc-En-d2W" secondAttribute="leading" constant="20" id="dON-gF-KDz"/>
                             <constraint firstItem="83G-9F-ler" firstAttribute="top" secondItem="VWi-NU-h8k" secondAttribute="bottom" constant="20" id="dak-LB-bow"/>
@@ -1097,9 +1111,9 @@
                             <constraint firstItem="Dlc-En-d2W" firstAttribute="trailing" secondItem="62R-vA-xog" secondAttribute="trailing" constant="20" id="iTA-z5-sBv"/>
                             <constraint firstItem="9T9-UU-0Su" firstAttribute="top" secondItem="WRf-mV-fGQ" secondAttribute="bottom" constant="10" id="jNd-Vy-7eU"/>
                             <constraint firstItem="Dlc-En-d2W" firstAttribute="trailing" secondItem="9T9-UU-0Su" secondAttribute="trailing" constant="20" id="jfl-wR-d9s"/>
+                            <constraint firstItem="IVb-HK-XTN" firstAttribute="centerY" secondItem="Lab-XG-TQa" secondAttribute="centerY" id="ksR-Fq-r9P"/>
                             <constraint firstItem="83G-9F-ler" firstAttribute="leading" secondItem="WRf-mV-fGQ" secondAttribute="trailing" constant="10" id="mJM-La-DSo"/>
                             <constraint firstItem="Dlc-En-d2W" firstAttribute="trailing" secondItem="hWa-TM-dOB" secondAttribute="trailing" constant="20" id="rBy-Xr-jav"/>
-                            <constraint firstItem="IVb-HK-XTN" firstAttribute="leading" secondItem="Dlc-En-d2W" secondAttribute="leading" constant="20" id="uMD-Pf-bG5"/>
                             <constraint firstItem="Dlc-En-d2W" firstAttribute="trailing" secondItem="MZL-2L-JCc" secondAttribute="trailing" constant="20" id="w1X-Ek-QLD"/>
                         </constraints>
                     </view>
@@ -1108,12 +1122,13 @@
                     </navigationItem>
                     <connections>
                         <outlet property="ConfirmButton" destination="WRf-mV-fGQ" id="rK7-xv-fVp"/>
-                        <outlet property="anynonimusSwitch" destination="Lab-XG-TQa" id="5r1-BM-iPf"/>
+                        <outlet property="anonymousSwitch" destination="Lab-XG-TQa" id="5r1-BM-iPf"/>
                         <outlet property="name1TextField" destination="MZL-2L-JCc" id="Dzu-gg-wLH"/>
                         <outlet property="name2TextField" destination="62R-vA-xog" id="Y5y-Jy-rOK"/>
                         <outlet property="name3TextView" destination="hWa-TM-dOB" id="piU-yl-4iw"/>
                         <outlet property="switchButton" destination="sEu-mS-gmr" id="6WA-Ol-AZr"/>
                         <outlet property="testPickerView" destination="VWi-NU-h8k" id="9yJ-l0-uI5"/>
+                        <outlet property="testSegmentedControl" destination="NsG-RO-qho" id="ZmY-ef-4uT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vkd-Bb-sJ1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
