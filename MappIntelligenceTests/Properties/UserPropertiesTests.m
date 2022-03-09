@@ -89,12 +89,57 @@ static MIBirthday dataInit = { .day = 1, .month = 2, .year = 1991};
 }
 
 - (void)tearDown {
-    _parameters = nil;
-    _userProperties = nil;
+    _parameters = NULL;
+    _userProperties = NULL;
+    _dictionary = NULL;
+    _userPropertiesFromDict = NULL;
+    _city = NULL;
+    _country = NULL;
+    _emailAddress = NULL;
+    _emailReceiverId = NULL;
+    _firstName = NULL;
+    _customerId = NULL;
+    _lastName = NULL;
+    _phoneNumber = NULL;
+    _street = NULL;
+    _streetNumber =  NULL;
+    _zipCode = NULL;
+    _customCategories =  NULL;
 }
 
 - (void)testInitWIthCustomParameters {
+    _userProperties.birthday = _birthday;
+    _userProperties.city = _city;
+    _userProperties.country = _country;
+    _userProperties.emailAddress = _emailAddress;
+    _userProperties.emailReceiverId = _emailReceiverId;
+    _userProperties.firstName = _firstName;
+    _userProperties.gender = _gender;
+    _userProperties.customerId = _customerId;
+    _userProperties.lastName = _lastName;
+    _userProperties.newsletterSubscribed = _newsletterSubscribed;
+    _userProperties.phoneNumber = _phoneNumber;
+    _userProperties.street = _street;
+    _userProperties.streetNumber = _streetNumber;
+    _userProperties.zipCode = _zipCode;
+    
     XCTAssertTrue([_userProperties.customCategories isEqualToDictionary:_parameters], @"The details from action properties is not same as it is used for creation!");
+    
+    XCTAssertTrue([[self setBirthdayFrom:_userProperties.birthday] isEqualToDictionary:[self setBirthdayFrom:_birthday]], @"There is no birthday!");
+    XCTAssertTrue([_userProperties.city isEqualToString:_city], @"The city is not correct!");
+    XCTAssertTrue([_userProperties.country isEqualToString:_country], @"The country is not correct!");
+    XCTAssertTrue([_userProperties.emailAddress isEqualToString:_emailAddress], @"The email address is not correct!");
+    XCTAssertTrue([_userProperties.emailReceiverId isEqualToString:_emailReceiverId], @"The email receiver id is not correct!");
+    XCTAssertTrue([_userProperties.firstName isEqualToString:_firstName], @"The first name is not correct!");
+    XCTAssertTrue((int)_userProperties.gender == (int)_gender, @"The gender is not correct!");
+    XCTAssertTrue([_userProperties.customerId isEqualToString:_customerId], @"The customer id is not correct!");
+    XCTAssertTrue([_userProperties.lastName isEqualToString:_lastName], @"The last name is not correct!");
+    XCTAssertTrue(_userProperties.newsletterSubscribed == _newsletterSubscribed, @"The newsletter subscribed flag is not correct!");
+    XCTAssertTrue([_userProperties.phoneNumber isEqualToString:_phoneNumber], @"The phone number is not correct!");
+    XCTAssertTrue([_userProperties.street isEqualToString:_street], @"The street is not correct!");
+    XCTAssertTrue([_userProperties.streetNumber isEqualToString:_streetNumber], @"The street number is not correct!");
+    XCTAssertTrue([_userProperties.zipCode isEqualToString:_zipCode], @"The zip code is not correct!");
+    
 }
 
 - (void)testAsQueryItemsForRequest {
