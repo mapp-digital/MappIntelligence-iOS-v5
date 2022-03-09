@@ -12,9 +12,12 @@
 #import "MIProperties.h"
 #import "MITrackerRequest.h"
 
+#define key_parameters @"parameters"
+
 @interface SessionPropertiesTests : XCTestCase
 @property NSMutableDictionary *sessionDictionary;
 @property MISessionParameters *sessionProperties;
+@property NSDictionary* dictionary;
 @end
 
 @implementation SessionPropertiesTests
@@ -22,14 +25,22 @@
 - (void)setUp {
     _sessionDictionary = [@{@10: @[@"sessionpar1"]} copy];
     _sessionProperties =  [[MISessionParameters alloc] initWithParameters: _sessionDictionary];
+    _dictionary = @{key_parameters: _sessionDictionary};
 }
 
 - (void)tearDown {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
+    _sessionDictionary = NULL;
+    _sessionProperties = NULL;
+    _dictionary = NULL;
 }
 
 - (void)testInitWithProperties {
     XCTAssertTrue([_sessionProperties.parameters isEqualToDictionary:_sessionDictionary], @"The dicitonary from session properties is not same as it is used for creation!");
+}
+
+- (void)testInitWithDictionary {
+    MISessionParameters* sessionParameter = [[MISessionParameters alloc] initWithDictionary:_dictionary];
+    XCTAssertTrue([sessionParameter.parameters isEqualToDictionary:_sessionDictionary], @"The dicitonary from session properties is not same as it is used for creation!");
 }
 
 - (void)testAsQueryItemsForRequest {
@@ -40,16 +51,8 @@
             [expectedItems addObject:[[NSURLQueryItem alloc] initWithName:[NSString stringWithFormat:@"cs%@",key] value: _sessionDictionary[key]]];
         }
     }
-    
-
-    //2.Create tracking request
-    MITrackingEvent *event = [[MITrackingEvent alloc] init];
-     [event setPageName:@"testPageName"];
-     NSString *everid = [[[MIDefaultTracker alloc] init] generateEverId];
-    MIProperties *properies = [[MIProperties alloc] initWithEverID:everid andSamplingRate:0 withTimeZone:[NSTimeZone localTimeZone] withTimestamp:[NSDate date] withUserAgent:@"Tracking Library"];
-    MITrackerRequest *request = [[MITrackerRequest alloc] initWithEvent:event andWithProperties:properies];
      
-     //3.get resulted list of query items
+     //2.get resulted list of query items
      NSMutableArray<NSURLQueryItem*>* result = [_sessionProperties asQueryItems];
      
      XCTAssertTrue([expectedItems isEqualToArray:result], @"The expected query is not the same as ones from result!");
