@@ -29,6 +29,7 @@
 @property NSMutableArray<UITextView *> * textViews;
 @property NSMutableArray<UISwitch *> * switches;
 @property NSMutableArray<UIPickerView *> * pickers;
+@property NSMutableArray<UISegmentedControl *> * segmentedControls;
 #endif
 
 @property NSMutableArray<MIFormField *> * emptyNonPathFields;
@@ -73,6 +74,7 @@
         _textViews = [[NSMutableArray alloc] init];
         _switches = [[NSMutableArray alloc] init];
         _pickers = [[NSMutableArray alloc] init];
+        _segmentedControls = [[NSMutableArray alloc] init];
 #endif
         //TODO: add watchOS controller name
         _formName = @"";
@@ -104,6 +106,11 @@
             for (UIPickerView* pickerView in _pickers) {
                 if (![[_fieldIds copy] containsObject:[NSNumber numberWithInteger:pickerView.tag]]) {
                     [_pickers removeObject:pickerView];
+                }
+            }
+            for (UISegmentedControl* segmentedCotrol in _segmentedControls) {
+                if (![[_fieldIds copy] containsObject:[NSNumber numberWithInteger:segmentedCotrol.tag]]) {
+                    [_segmentedControls removeObject:segmentedCotrol];
                 }
             }
             for (UISwitch* switchC in [_switches copy]) {
@@ -150,6 +157,12 @@
     }
     return pickerString;
 }
+
+-(NSString*)getNameForControl: (UIView*)control {
+    NSString* nameOfControl = [control accessibilityLabel];
+    NSString* typeOfControl = NSStringFromClass(control.classForCoder);
+    return [NSString stringWithFormat:@"%@.%@", (nameOfControl == NULL ? @"n/a" : nameOfControl), typeOfControl];
+}
 #endif
 
 - (void)createFromFields {
@@ -163,9 +176,11 @@
             _textViews = [[NSMutableArray alloc] init];
             _switches = [[NSMutableArray alloc] init];
             _pickers = [[NSMutableArray alloc] init];
+            _segmentedControls = [[NSMutableArray alloc] init];
             [self getTextFields:superView];
             [self getTextViews:superView];
             [self getPickerViews:superView];
+            [self getSegmetedControls:superView];
             [self getSwithces:superView];
         }
     });
@@ -176,23 +191,29 @@
 #if !TARGET_OS_WATCH
     for (UITextField* textField in _textFields) {
         dispatch_sync(dispatch_get_main_queue(), ^{
-            self->_fields = [self->_fields arrayByAddingObject:[[MIFormField alloc] initWithName:(textField.accessibilityLabel ? textField.accessibilityLabel : NSStringFromClass(textField.classForCoder)) andContent:textField.text andID:textField.tag andWithAnonymus:(_anonymous == nil) ? YES : [_anonymous boolValue] andFocus:textField.isFocused]];
+            self->_fields = [self->_fields arrayByAddingObject:[[MIFormField alloc] initWithName:[self getNameForControl:textField] andContent:textField.text andID:textField.tag andWithAnonymus: YES andFocus:textField.isFocused]];
         });
     }
     for (UITextView* textView in _textViews) {
         dispatch_sync(dispatch_get_main_queue(), ^{
-            self->_fields = [self->_fields arrayByAddingObject:[[MIFormField alloc] initWithName:(textView.accessibilityLabel ? textView.accessibilityLabel : NSStringFromClass(textView.classForCoder)) andContent:textView.text andID:textView.tag andWithAnonymus:(_anonymous == nil) ? YES : [_anonymous boolValue] andFocus:textView.isFocused]];
+            self->_fields = [self->_fields arrayByAddingObject:[[MIFormField alloc] initWithName:[self getNameForControl:textView] andContent:textView.text andID:textView.tag andWithAnonymus:YES andFocus:textView.isFocused]];
         });
     }
     for (UIPickerView* pickerView in _pickers) {
         dispatch_sync(dispatch_get_main_queue(), ^{
             NSString* test = [self extractValueForAllComponentOfPickerView:pickerView];
-            self->_fields = [self->_fields arrayByAddingObject:[[MIFormField alloc] initWithName:(pickerView.accessibilityLabel ? pickerView.accessibilityLabel : NSStringFromClass(pickerView.classForCoder)) andContent:test andID:pickerView.tag andWithAnonymus:[_anonymous boolValue] ? YES : NO andFocus:pickerView.isFocused]];
+            self->_fields = [self->_fields arrayByAddingObject:[[MIFormField alloc] initWithName:[self getNameForControl:pickerView] andContent:test andID:pickerView.tag andWithAnonymus:[_anonymous boolValue] ? YES : NO andFocus:pickerView.isFocused]];
+        });
+    }
+    for (UISegmentedControl* segmentedControl in _segmentedControls) {
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            NSString *title = [segmentedControl titleForSegmentAtIndex:segmentedControl.selectedSegmentIndex];
+            self->_fields = [self->_fields arrayByAddingObject:[[MIFormField alloc] initWithName:[self getNameForControl:segmentedControl] andContent:title andID:segmentedControl.tag andWithAnonymus:[_anonymous boolValue] ? YES : NO andFocus:segmentedControl.isFocused]];
         });
     }
     for (UISwitch* switchC in _switches) {
         dispatch_sync(dispatch_get_main_queue(), ^{
-            self->_fields = [self->_fields arrayByAddingObject:[[MIFormField alloc] initWithName:(switchC.accessibilityLabel ? switchC.accessibilityLabel : NSStringFromClass(switchC.classForCoder)) andContent:(switchC.on ? @"1" : @"0") andID:switchC.tag andWithAnonymus:[_anonymous boolValue] ? YES : NO andFocus:switchC.isFocused]];
+            self->_fields = [self->_fields arrayByAddingObject:[[MIFormField alloc] initWithName:[self getNameForControl:switchC] andContent:(switchC.on ? @"1" : @"") andID:switchC.tag andWithAnonymus:[_anonymous boolValue] ? YES : NO andFocus:switchC.isFocused]];
         });
     }
 #endif
@@ -207,13 +228,13 @@
     
     for (MIFormField* field in _fields) {
         if ([[_renameFields allKeys] containsObject:[NSNumber numberWithInteger:(NSInteger)field.ID]]) {
-            [[_fields objectAtIndex: [_fields indexOfObject:field]] setFormFieldName:_renameFields[[NSNumber numberWithInteger:field.ID]]];
+            [[_fields objectAtIndex: [_fields indexOfObject:field]] renameField:_renameFields[[NSNumber numberWithInteger:field.ID]]];
             
         }
         if ([[_changeFieldsValue allKeys] containsObject:[NSNumber numberWithInteger:(NSInteger)field.ID]] && ![_anonymous boolValue]) {
             [[_fields objectAtIndex: [_fields indexOfObject:field]] setFormFieldContent:_changeFieldsValue[[NSNumber numberWithInteger:(NSInteger)field.ID]]];
         }
-        if ([_fullContentSpecificFields containsObject:[NSNumber numberWithInteger:(NSInteger)field.ID]] && ![_anonymous boolValue]) {
+        if ([_fullContentSpecificFields containsObject:[NSNumber numberWithInteger:(NSInteger)field.ID]]) {
             [[_fields objectAtIndex: [_fields indexOfObject:field]] setAnonymus:NO];
         }
     }
@@ -326,6 +347,17 @@
             [_pickers addObject:(UIPickerView *)view];
         } else {
             [self getPickerViews: view];
+        }
+    }
+    return NULL;
+}
+
+- (NSArray<UISegmentedControl *> *)getSegmetedControls: (UIView*) mainView {
+    for (UIView* view in [mainView subviews]) {
+        if ([view isKindOfClass:UISegmentedControl.class]) {
+            [_segmentedControls addObject:(UISegmentedControl *)view];
+        } else {
+            [self getSegmetedControls: view];
         }
     }
     return NULL;

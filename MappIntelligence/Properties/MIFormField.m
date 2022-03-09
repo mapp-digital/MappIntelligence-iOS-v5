@@ -58,6 +58,11 @@
     return _lastFocus ? _lastFocus : NO;
 }
 
+- (void)renameField:(NSString *)renameValue {
+    NSArray<NSString*>* nameComponents = [_formFieldName componentsSeparatedByString:@"."];
+    _formFieldName = [NSString stringWithFormat:@"%@.%@", renameValue, nameComponents.lastObject];
+}
+
 - (NSString *)getFormFieldForQuery {
     return [[NSString alloc] initWithFormat:@"%@|%@|%i", [self setformFieldName], [self setformFieldContent], [self setlastFocus] ];
 }
