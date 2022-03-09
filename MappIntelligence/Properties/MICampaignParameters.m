@@ -25,7 +25,12 @@
 - (instancetype)initWithDictionary:(NSDictionary*)dictionary {
     self = [super init];
     _campaignId = dictionary[key_campaign_id];
-    _action = (MICampaignAction)dictionary[key_action];
+    long actionIntValue = [[dictionary valueForKey:key_action] longValue];
+    if (actionIntValue == 1) {
+        _action = click;
+    } else if  (actionIntValue == 2) {
+        _action = view;
+    }
     _mediaCode = dictionary[key_media_code];
     _oncePerSession = dictionary[key_once_per_session];
     _customParameters = dictionary[key_custom_parameters];

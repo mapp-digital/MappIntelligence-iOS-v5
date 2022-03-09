@@ -28,7 +28,7 @@
     _oncePerSession = true;
     _action = click;
     _customParameters = @{@12: @"camParam1"};
-    NSDictionary* dict = @{@"campaignId": _campaignId, @"action": _action, @"mediaCode" : _mediaCode, @"oncePerSession" : [NSNumber numberWithBool:_oncePerSession], @"customParameters" : _customParameters};
+    NSDictionary* dict = @{@"campaignId": _campaignId, @"action": @((int)_action), @"mediaCode" : _mediaCode, @"oncePerSession" : [NSNumber numberWithBool:_oncePerSession], @"customParameters" : _customParameters};
     _parameters = [[MICampaignParameters alloc] initWithDictionary:dict];
 }
 
