@@ -213,7 +213,7 @@
     }
     for (UISwitch* switchC in _switches) {
         dispatch_sync(dispatch_get_main_queue(), ^{
-            self->_fields = [self->_fields arrayByAddingObject:[[MIFormField alloc] initWithName:[self getNameForControl:switchC] andContent:(switchC.on ? @"1" : @"") andID:switchC.tag andWithAnonymus:[_anonymous boolValue] ? YES : NO andFocus:switchC.isFocused]];
+            self->_fields = [self->_fields arrayByAddingObject:[[MIFormField alloc] initWithName:[self getNameForControl:switchC] andContent:(switchC.on ? @"mapp_inteligence_switch" : @"") andID:switchC.tag andWithAnonymus:YES andFocus:switchC.isFocused]];
         });
     }
 #endif
