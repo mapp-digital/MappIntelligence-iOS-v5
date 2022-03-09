@@ -276,6 +276,7 @@
 		A357222024FD10AD005F9DE1 /* PagePropertiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A357221F24FD10AD005F9DE1 /* PagePropertiesTests.m */; };
 		A357222224FD1ABB005F9DE1 /* PageViewEventTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A357222124FD1ABB005F9DE1 /* PageViewEventTests.m */; };
 		A3588A9927D20A7D0053961B /* MediaPropertiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3588A9827D20A7D0053961B /* MediaPropertiesTests.m */; };
+		A3588A9B27D8B5A70053961B /* CampaignParameterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3588A9A27D8B5A70053961B /* CampaignParameterTests.m */; };
 		A35C78C82452E6FF00D36144 /* MappIntelligencetvOS.m in Sources */ = {isa = PBXBuildFile; fileRef = A35C78C72452E6FF00D36144 /* MappIntelligencetvOS.m */; };
 		A35C78C92452E6FF00D36144 /* MappIntelligencetvOS.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A35C78C62452E6FF00D36144 /* MappIntelligencetvOS.h */; };
 		A35C79052452FBFC00D36144 /* MappIntelligence.m in Sources */ = {isa = PBXBuildFile; fileRef = A334861C23BF3E2300D0EB5F /* MappIntelligence.m */; };
@@ -619,6 +620,7 @@
 		A357221F24FD10AD005F9DE1 /* PagePropertiesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PagePropertiesTests.m; sourceTree = "<group>"; };
 		A357222124FD1ABB005F9DE1 /* PageViewEventTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PageViewEventTests.m; sourceTree = "<group>"; };
 		A3588A9827D20A7D0053961B /* MediaPropertiesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MediaPropertiesTests.m; sourceTree = "<group>"; };
+		A3588A9A27D8B5A70053961B /* CampaignParameterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CampaignParameterTests.m; sourceTree = "<group>"; };
 		A35C78C42452E6FF00D36144 /* libMappIntelligencetvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMappIntelligencetvOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A35C78C62452E6FF00D36144 /* MappIntelligencetvOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MappIntelligencetvOS.h; sourceTree = "<group>"; };
 		A35C78C72452E6FF00D36144 /* MappIntelligencetvOS.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MappIntelligencetvOS.m; sourceTree = "<group>"; };
@@ -969,6 +971,7 @@
 				A338B812254C6D3A00E50C28 /* EcommercePropertiesTests.m */,
 				8F9C7F6F255A851400CB95EF /* AdvertisementPropertiesTests.m */,
 				A3588A9827D20A7D0053961B /* MediaPropertiesTests.m */,
+				A3588A9A27D8B5A70053961B /* CampaignParameterTests.m */,
 			);
 			path = Properties;
 			sourceTree = "<group>";
@@ -1628,6 +1631,7 @@
 				A3A72557243DBF1000671DB2 /* PropertiesTests.m in Sources */,
 				BCBE5C3A23F698EF002125C1 /* DefaultTrackerTests.m in Sources */,
 				A357221924F8F17B005F9DE1 /* ParameterTest.m in Sources */,
+				A3588A9B27D8B5A70053961B /* CampaignParameterTests.m in Sources */,
 				A357222224FD1ABB005F9DE1 /* PageViewEventTests.m in Sources */,
 				A3A7255B243DEA0500671DB2 /* RequestUrlBuilderTests.m in Sources */,
 				A32EE0A2243CB97200EDC5B8 /* MappIntelligenceDefaultConfigTest.m in Sources */,
