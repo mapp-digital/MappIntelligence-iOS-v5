@@ -49,10 +49,10 @@
         _emailAddress = dictionary[key_email_address];
         _emailReceiverId = dictionary[key_email_receiver_id];
         _firstName = dictionary[key_first_name];
-        _gender = (MIGender)dictionary[key_gender];
+        _gender = [self setGenderFromInt:[[dictionary valueForKey:key_gender] longValue]];
         _customerId = dictionary[key_customer_id];
         _lastName = dictionary[key_last_name];
-        _newsletterSubscribed = dictionary[key_newsletter_subscribed];
+        _newsletterSubscribed = [dictionary[key_newsletter_subscribed] boolValue];
         _phoneNumber = dictionary[key_phone_number];
         _street = dictionary[key_street];
         _streetNumber = dictionary[key_street_number];
@@ -81,6 +81,17 @@
         if (bDay.day) {
             _birthday = bDay;
         }
+    }
+}
+
+- (MIGender)setGenderFromInt:(long)gender {
+    switch (gender) {
+        case 2:
+            return male;
+        case 3:
+            return female;
+        default:
+            return unknown;
     }
 }
 
