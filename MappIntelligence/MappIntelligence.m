@@ -189,8 +189,14 @@ static MappIntelligenceDefaultConfig *config = nil;
 }
 
 - (void)initWithConfiguration:(NSArray *)trackIDs onTrackdomain:(NSString *)trackDomain andWithEverID:(NSString *)everID {
-    [self initWithConfiguration:trackIDs onTrackdomain:trackDomain];
-    [tracker setEverIDFromString:everID];
+    NSCharacterSet *set = [NSCharacterSet whitespaceCharacterSet];
+    if (![everID  isEqual: @""] && [[everID stringByTrimmingCharactersInSet: set] length] != 0) {
+        [self initWithConfiguration:trackIDs onTrackdomain:trackDomain];
+        [tracker setEverIDFromString:everID];
+    } else {
+        [self reset];
+        [self setIdsAndDomain:trackIDs onTrackdomain:trackDomain];
+    }
 }
 
 - (void)setIdsAndDomain:(NSArray *)trackIDs onTrackdomain:(NSString *)trackDomain {
