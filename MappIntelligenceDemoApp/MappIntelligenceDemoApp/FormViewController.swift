@@ -18,7 +18,7 @@ class FormViewController: UIViewController, UIPickerViewDataSource, UIPickerView
     @IBOutlet weak var ConfirmButton: UIButton!
     
     var items = [["Item1", "Item2", "Item3", "Item4"], ["1", "2", "3", "4", "5"]]
-    var isAnonymusSelected = false
+    var isAnonymousSelected = false
     
     //this array will be used to track fields for path anylisis
     var pathAnalysisTags:[Int] = []

@@ -44,14 +44,14 @@
 }
 
 - (NSString *)setformFieldContent {
-    if (_anonymus) {
-        if ([_formFieldContent isEqualToString: @""]) {
+    if (_anonymus || [_formFieldContent isEqualToString:@"mapp_inteligence_switch"]) {
+        if (_formFieldContent == NULL || [_formFieldContent isEqualToString: @""]) {
             return @"empty";
         } else {
             return @"filled_out";
         }
     }
-    return (_formFieldContent == NULL) ? @"" : _formFieldContent;
+    return (_formFieldContent == NULL || [_formFieldContent isEqualToString: @""]) ? @"empty" : _formFieldContent;
 }
 
 - (BOOL)setlastFocus {
