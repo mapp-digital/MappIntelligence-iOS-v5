@@ -144,17 +144,36 @@ static MIBirthday dataInit = { .day = 1, .month = 2, .year = 1991};
 
 - (void)testAsQueryItemsForRequest {
     //1. create expected query items
-    NSMutableArray<NSURLQueryItem*>* expectedItems = [[NSMutableArray alloc] init];
-    if (_parameters) {
-        for(NSString* key in _parameters) {
-            [expectedItems addObject:[[NSURLQueryItem alloc] initWithName:[NSString stringWithFormat:@"uc%@",key] value: _parameters[key]]];
+    NSMutableArray<NSURLQueryItem*>* result = [_userPropertiesFromDict asQueryItems];
+    if (_customCategories) {
+        for(NSString* key in [_customCategories allKeys]) {
+            NSURLQueryItem* tempItem = [[NSURLQueryItem alloc] initWithName:[NSString stringWithFormat:@"uc%@",key] value: _customCategories[key]];
+            XCTAssertTrue([result containsObject:tempItem], @"Custom category is not the same!");
+            
         }
     }
+    XCTAssertTrue([result containsObject:[[NSURLQueryItem alloc] initWithName:@"uc707" value: [self getBirthday]]], @"Birthday is not the same!");
+    XCTAssertTrue([result containsObject:[[NSURLQueryItem alloc] initWithName:@"uc709" value:_city]], @"City is not the same!");
+    XCTAssertTrue([result containsObject:[[NSURLQueryItem alloc] initWithName:@"uc708" value:_country]], @"Country is not the same!");
+    XCTAssertTrue([result containsObject:[[NSURLQueryItem alloc] initWithName:@"uc700" value:_emailAddress]], @"Email address is not the same!");
+    XCTAssertTrue([result containsObject:[[NSURLQueryItem alloc] initWithName:@"uc701" value:_emailReceiverId]], @"Email Receiver ID is not the same!");
+    XCTAssertTrue([result containsObject:[[NSURLQueryItem alloc] initWithName:@"uc703" value:_firstName]], @"First Name is not the same!");
+    NSURLQueryItem* genderItem = [[NSURLQueryItem alloc] initWithName:@"uc706" value: [NSString stringWithFormat:@"%ld", (long)_gender - 1]];
+    XCTAssertTrue([result containsObject:genderItem], @"Gender is not the same!");
+    XCTAssertTrue([result containsObject:[[NSURLQueryItem alloc] initWithName:@"cd" value:_customerId]], @"Customer id is not the same!");
+    XCTAssertTrue([result containsObject:[[NSURLQueryItem alloc] initWithName:@"uc704" value:_lastName]], @"Last name is not the same!");
+    XCTAssertTrue([result containsObject:[[NSURLQueryItem alloc] initWithName:@"uc702" value: (_newsletterSubscribed ? @"1" : @"2")]], @"Newletter subscribed flag is not the same!");
+    XCTAssertTrue([result containsObject:[[NSURLQueryItem alloc] initWithName:@"uc705" value:_phoneNumber]], @"Phone number is not the same!");
+    XCTAssertTrue([result containsObject:[[NSURLQueryItem alloc] initWithName:@"uc711" value:_street]], @"Street is not the same!");
+    XCTAssertTrue([result containsObject:[[NSURLQueryItem alloc] initWithName:@"uc712" value:_streetNumber]], @"Street number is not the same!");
+    XCTAssertTrue([result containsObject:[[NSURLQueryItem alloc] initWithName:@"uc710" value:_zipCode]], @"Zip code is not the same!");
+}
 
-     //3.get resulted list of query items
-     NSMutableArray<NSURLQueryItem*>* result = [_userProperties asQueryItems];
-     
-     XCTAssertTrue([expectedItems isEqualToArray:result], @"The expected query is not the same as ones from result!");
+- (NSString *) getBirthday {
+    if (_birthday.day && _birthday.month && _birthday.year) {
+        return [NSString stringWithFormat:@"%4d%02d%02d", _birthday.year, _birthday.month, _birthday.day];
+    }
+    return @"";
 }
 
 - (void)testInitWithDictionary {

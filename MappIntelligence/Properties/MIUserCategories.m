@@ -140,10 +140,10 @@
         items = [self removeObjectWith:@"uc704" from:items];
         [items addObject:[[NSURLQueryItem alloc] initWithName:@"uc704" value:_lastName]];
     }
-    if (_newsletterSubscribed) {
-        items = [self removeObjectWith:@"uc702" from:items];
-        [items addObject:[[NSURLQueryItem alloc] initWithName:@"uc702" value: (_newsletterSubscribed ? @"1" : @"2")]];
-    }
+    
+    items = [self removeObjectWith:@"uc702" from:items];
+    [items addObject:[[NSURLQueryItem alloc] initWithName:@"uc702" value: (_newsletterSubscribed ? @"1" : @"2")]];
+    
     if (_phoneNumber) {
         items = [self removeObjectWith:@"uc705" from:items];
         [items addObject:[[NSURLQueryItem alloc] initWithName:@"uc705" value:_phoneNumber]];
