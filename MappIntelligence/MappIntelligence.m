@@ -59,7 +59,7 @@ static MappIntelligenceDefaultConfig *config = nil;
 }
 
 + (NSString *)version {
-  return @"5.0.2";
+  return @"5.0.2.1";
 }
 
 + (NSString *)getUrl {
