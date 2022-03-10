@@ -194,8 +194,12 @@ static MappIntelligenceDefaultConfig *config = nil;
         [self initWithConfiguration:trackIDs onTrackdomain:trackDomain];
         [tracker setEverIDFromString:everID];
     } else {
-        [self reset];
-        [self setIdsAndDomain:trackIDs onTrackdomain:trackDomain];
+        if (![MappIntelligence.getUrl isEqualToString:@""]) {
+            [self reset];
+            [self setIdsAndDomain:trackIDs onTrackdomain:trackDomain];
+        } else {
+            [self initWithConfiguration:trackIDs onTrackdomain:trackDomain];
+        }
     }
 }
 
