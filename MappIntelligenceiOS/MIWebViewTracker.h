@@ -7,12 +7,6 @@
 //
 #import <Foundation/Foundation.h>
 #import <WebKit/WebKit.h>
-#ifdef SWIFT_PACKAGE
-#import "Trackers/MIDefaultTracker.h"
-#else
-#import "MIDefaultTracker.h"
-#endif
-#import "MappIntelligence.h"
 
 
 NS_ASSUME_NONNULL_BEGIN
