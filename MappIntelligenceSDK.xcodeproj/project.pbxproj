@@ -254,7 +254,7 @@
 		A345977827A97C930038FE3F /* MIFormParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = A345975F27A1878A0038FE3F /* MIFormParameters.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A345977927A97C940038FE3F /* MIFormParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = A345975F27A1878A0038FE3F /* MIFormParameters.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A345977A27A97C950038FE3F /* MIFormParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = A345975F27A1878A0038FE3F /* MIFormParameters.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A345977E27A982C70038FE3F /* MIFormSubmitEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = A345976727A9771B0038FE3F /* MIFormSubmitEvent.h */; };
+		A345977E27A982C70038FE3F /* MIFormSubmitEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = A345976727A9771B0038FE3F /* MIFormSubmitEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A345977F27A982E80038FE3F /* MIFormParameters.h in Copy Files */ = {isa = PBXBuildFile; fileRef = A345975F27A1878A0038FE3F /* MIFormParameters.h */; };
 		A345978027A9843F0038FE3F /* MIFormField.h in Copy Files */ = {isa = PBXBuildFile; fileRef = A345976327A1890A0038FE3F /* MIFormField.h */; };
 		A345978127A9843F0038FE3F /* MIFormSubmitEvent.h in Copy Files */ = {isa = PBXBuildFile; fileRef = A345976727A9771B0038FE3F /* MIFormSubmitEvent.h */; };
