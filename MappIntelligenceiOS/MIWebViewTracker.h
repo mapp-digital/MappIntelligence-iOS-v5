@@ -5,11 +5,13 @@
 //  Created by Miroljub Stoilkovic on 08/12/2020.
 //  Copyright © 2020 Mapp Digital US, LLC. All rights reserved.
 //
-#pragma once
-
 #import <Foundation/Foundation.h>
 #import <WebKit/WebKit.h>
+#ifdef SWIFT_PACKAGE
+#import "Trackers/MIDefaultTracker.h"
+#else
 #import "MIDefaultTracker.h"
+#endif
 #import "MappIntelligence.h"
 
 
