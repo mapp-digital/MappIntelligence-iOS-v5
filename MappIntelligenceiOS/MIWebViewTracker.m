@@ -6,8 +6,6 @@
 //  Copyright © 2020 Mapp Digital US, LLC. All rights reserved.
 //
 #import "MIWebViewTracker.h"
-#import "MIDefaultTracker.h"
-#import "MappIntelligence.h"
 
 NSString static *jsTag = @"MappIntelligenceiOSBridge";
 

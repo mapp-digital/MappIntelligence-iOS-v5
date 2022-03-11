@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import <WebKit/WebKit.h>
+#import "MIDefaultTracker.h"
+#import "MappIntelligence.h"
 
 
 NS_ASSUME_NONNULL_BEGIN
