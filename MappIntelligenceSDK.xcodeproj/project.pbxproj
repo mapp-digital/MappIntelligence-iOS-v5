@@ -323,6 +323,9 @@
 		A380D21424141B55009E2CD8 /* MIURLSizeMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = A380D21224141B55009E2CD8 /* MIURLSizeMonitor.h */; };
 		A380D21524141B55009E2CD8 /* MIURLSizeMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = A380D21324141B55009E2CD8 /* MIURLSizeMonitor.m */; };
 		A3852A95249389060090F47B /* MIDatabaseManager.m in Headers */ = {isa = PBXBuildFile; fileRef = A3CC5485248FC418006215FD /* MIDatabaseManager.m */; };
+		A3861FF627DB47B300F3F27C /* MIFormParameters.m in Headers */ = {isa = PBXBuildFile; fileRef = A345976027A1878A0038FE3F /* MIFormParameters.m */; };
+		A3861FF727DB4DFC00F3F27C /* MIDefaultTracker.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BCBE5C0723F1A688002125C1 /* MIDefaultTracker.h */; };
+		A3861FF827DB4E3500F3F27C /* MIDefaultTracker.h in Copy Files */ = {isa = PBXBuildFile; fileRef = BCBE5C0723F1A688002125C1 /* MIDefaultTracker.h */; };
 		A3A72557243DBF1000671DB2 /* PropertiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3A72556243DBF1000671DB2 /* PropertiesTests.m */; };
 		A3A72559243DC22C00671DB2 /* RequestTrackerBuilderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3A72558243DC22C00671DB2 /* RequestTrackerBuilderTests.m */; };
 		A3A7255B243DEA0500671DB2 /* RequestUrlBuilderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3A7255A243DEA0500671DB2 /* RequestUrlBuilderTests.m */; };
@@ -424,10 +427,11 @@
 /* Begin PBXCopyFilesBuildPhase section */
 		8F20A08525C2CE470006CB93 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				A3861FF727DB4DFC00F3F27C /* MIDefaultTracker.h in CopyFiles */,
 				A345978527A9857C0038FE3F /* MIFormParameters.h in CopyFiles */,
 				A345978627A9857C0038FE3F /* MIFormField.h in CopyFiles */,
 				A345978727A9857C0038FE3F /* MIFormSubmitEvent.h in CopyFiles */,
@@ -486,6 +490,7 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				A3861FF827DB4E3500F3F27C /* MIDefaultTracker.h in Copy Files */,
 				A345978027A9843F0038FE3F /* MIFormField.h in Copy Files */,
 				A345978127A9843F0038FE3F /* MIFormSubmitEvent.h in Copy Files */,
 				A345977F27A982E80038FE3F /* MIFormParameters.h in Copy Files */,
@@ -1120,6 +1125,7 @@
 				A345976527A1890A0038FE3F /* MIFormField.h in Headers */,
 				A345977E27A982C70038FE3F /* MIFormSubmitEvent.h in Headers */,
 				A345976127A1878A0038FE3F /* MIFormParameters.h in Headers */,
+				A3861FF627DB47B300F3F27C /* MIFormParameters.m in Headers */,
 				A380D1FF241296FD009E2CD8 /* MIPageViewEvent.h in Headers */,
 				A337446024C8404B0096259B /* MIPageViewEvent.m in Headers */,
 				8F94E6E925BF27D200027623 /* MIMediaEvent.h in Headers */,
