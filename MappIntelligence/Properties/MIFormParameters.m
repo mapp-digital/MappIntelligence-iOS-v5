@@ -8,6 +8,7 @@
 
 #import "MIFormParameters.h"
 #import "MappIntelligenceLogger.h"
+#import "MIFormField.h"
 
 #define key_form_name @"form_name"
 #define key_field_ids @"field_ids"
