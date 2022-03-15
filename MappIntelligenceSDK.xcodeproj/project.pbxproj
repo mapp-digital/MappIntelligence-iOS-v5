@@ -331,6 +331,7 @@
 		A3A7255B243DEA0500671DB2 /* RequestUrlBuilderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3A7255A243DEA0500671DB2 /* RequestUrlBuilderTests.m */; };
 		A3A7255D243E07A100671DB2 /* URLSizeMonitorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3A7255C243E07A100671DB2 /* URLSizeMonitorTests.m */; };
 		A3A7255F243F154900671DB2 /* MappIntelligenceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3A7255E243F154900671DB2 /* MappIntelligenceTests.m */; };
+		A3A7DCE127E0A24E00A739B9 /* MIDefaultTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = BCBE5C0723F1A688002125C1 /* MIDefaultTracker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A3ADC97326D8EB34007504FF /* MIExceptionTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = A3ADC97126D8EB34007504FF /* MIExceptionTracker.h */; };
 		A3ADC97426D8EB34007504FF /* MIExceptionTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = A3ADC97226D8EB34007504FF /* MIExceptionTracker.m */; };
 		A3ADC98326D941B3007504FF /* MIExceptionTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = A3ADC97226D8EB34007504FF /* MIExceptionTracker.m */; };
@@ -1228,6 +1229,7 @@
 				A3E8274E2461B6B700952606 /* MappIntelligence.h in Headers */,
 				8FCFD4FD25B18E3000EE8358 /* MICampaignParameters.h in Headers */,
 				8FCFD55D25B18EF000EE8358 /* MIProduct.h in Headers */,
+				A3A7DCE127E0A24E00A739B9 /* MIDefaultTracker.h in Headers */,
 				A345977827A97C930038FE3F /* MIFormParameters.h in Headers */,
 				8FCFD5DC25B18F7C00EE8358 /* MITrackingEvent.h in Headers */,
 				8FCFD54525B18EC300EE8358 /* MISessionParameters.h in Headers */,
