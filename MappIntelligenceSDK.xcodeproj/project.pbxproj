@@ -239,7 +239,7 @@
 		A33B3700246047C8005EA9AE /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A33B36FF246047C8005EA9AE /* libz.tbd */; };
 		A345976127A1878A0038FE3F /* MIFormParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = A345975F27A1878A0038FE3F /* MIFormParameters.h */; };
 		A345976227A1878A0038FE3F /* MIFormParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = A345976027A1878A0038FE3F /* MIFormParameters.m */; };
-		A345976527A1890A0038FE3F /* MIFormField.h in Headers */ = {isa = PBXBuildFile; fileRef = A345976327A1890A0038FE3F /* MIFormField.h */; };
+		A345976527A1890A0038FE3F /* MIFormField.h in Headers */ = {isa = PBXBuildFile; fileRef = A345976327A1890A0038FE3F /* MIFormField.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A345976627A1890A0038FE3F /* MIFormField.m in Sources */ = {isa = PBXBuildFile; fileRef = A345976427A1890A0038FE3F /* MIFormField.m */; };
 		A345976A27A9771B0038FE3F /* MIFormSubmitEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = A345976827A9771B0038FE3F /* MIFormSubmitEvent.m */; };
 		A345976B27A978700038FE3F /* MIFormSubmitEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = A345976727A9771B0038FE3F /* MIFormSubmitEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -254,7 +254,7 @@
 		A345977827A97C930038FE3F /* MIFormParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = A345975F27A1878A0038FE3F /* MIFormParameters.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A345977927A97C940038FE3F /* MIFormParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = A345975F27A1878A0038FE3F /* MIFormParameters.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A345977A27A97C950038FE3F /* MIFormParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = A345975F27A1878A0038FE3F /* MIFormParameters.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A345977E27A982C70038FE3F /* MIFormSubmitEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = A345976727A9771B0038FE3F /* MIFormSubmitEvent.h */; };
+		A345977E27A982C70038FE3F /* MIFormSubmitEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = A345976727A9771B0038FE3F /* MIFormSubmitEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A345977F27A982E80038FE3F /* MIFormParameters.h in Copy Files */ = {isa = PBXBuildFile; fileRef = A345975F27A1878A0038FE3F /* MIFormParameters.h */; };
 		A345978027A9843F0038FE3F /* MIFormField.h in Copy Files */ = {isa = PBXBuildFile; fileRef = A345976327A1890A0038FE3F /* MIFormField.h */; };
 		A345978127A9843F0038FE3F /* MIFormSubmitEvent.h in Copy Files */ = {isa = PBXBuildFile; fileRef = A345976727A9771B0038FE3F /* MIFormSubmitEvent.h */; };
@@ -264,9 +264,9 @@
 		A345978527A9857C0038FE3F /* MIFormParameters.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A345975F27A1878A0038FE3F /* MIFormParameters.h */; };
 		A345978627A9857C0038FE3F /* MIFormField.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A345976327A1890A0038FE3F /* MIFormField.h */; };
 		A345978727A9857C0038FE3F /* MIFormSubmitEvent.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A345976727A9771B0038FE3F /* MIFormSubmitEvent.h */; };
-		A345978827A986920038FE3F /* MIFormField.h in Headers */ = {isa = PBXBuildFile; fileRef = A345976327A1890A0038FE3F /* MIFormField.h */; };
-		A345978927A986940038FE3F /* MIFormField.h in Headers */ = {isa = PBXBuildFile; fileRef = A345976327A1890A0038FE3F /* MIFormField.h */; };
-		A345978A27A986960038FE3F /* MIFormField.h in Headers */ = {isa = PBXBuildFile; fileRef = A345976327A1890A0038FE3F /* MIFormField.h */; };
+		A345978827A986920038FE3F /* MIFormField.h in Headers */ = {isa = PBXBuildFile; fileRef = A345976327A1890A0038FE3F /* MIFormField.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A345978927A986940038FE3F /* MIFormField.h in Headers */ = {isa = PBXBuildFile; fileRef = A345976327A1890A0038FE3F /* MIFormField.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A345978A27A986960038FE3F /* MIFormField.h in Headers */ = {isa = PBXBuildFile; fileRef = A345976327A1890A0038FE3F /* MIFormField.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A345978E27A986AF0038FE3F /* MIFormField.m in Sources */ = {isa = PBXBuildFile; fileRef = A345976427A1890A0038FE3F /* MIFormField.m */; };
 		A345978F27A986B00038FE3F /* MIFormField.m in Sources */ = {isa = PBXBuildFile; fileRef = A345976427A1890A0038FE3F /* MIFormField.m */; };
 		A345979027A986B10038FE3F /* MIFormField.m in Sources */ = {isa = PBXBuildFile; fileRef = A345976427A1890A0038FE3F /* MIFormField.m */; };
@@ -326,11 +326,15 @@
 		A380D21424141B55009E2CD8 /* MIURLSizeMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = A380D21224141B55009E2CD8 /* MIURLSizeMonitor.h */; };
 		A380D21524141B55009E2CD8 /* MIURLSizeMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = A380D21324141B55009E2CD8 /* MIURLSizeMonitor.m */; };
 		A3852A95249389060090F47B /* MIDatabaseManager.m in Headers */ = {isa = PBXBuildFile; fileRef = A3CC5485248FC418006215FD /* MIDatabaseManager.m */; };
+		A3861FF627DB47B300F3F27C /* MIFormParameters.m in Headers */ = {isa = PBXBuildFile; fileRef = A345976027A1878A0038FE3F /* MIFormParameters.m */; };
+		A3861FF727DB4DFC00F3F27C /* MIDefaultTracker.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BCBE5C0723F1A688002125C1 /* MIDefaultTracker.h */; };
+		A3861FF827DB4E3500F3F27C /* MIDefaultTracker.h in Copy Files */ = {isa = PBXBuildFile; fileRef = BCBE5C0723F1A688002125C1 /* MIDefaultTracker.h */; };
 		A3A72557243DBF1000671DB2 /* PropertiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3A72556243DBF1000671DB2 /* PropertiesTests.m */; };
 		A3A72559243DC22C00671DB2 /* RequestTrackerBuilderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3A72558243DC22C00671DB2 /* RequestTrackerBuilderTests.m */; };
 		A3A7255B243DEA0500671DB2 /* RequestUrlBuilderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3A7255A243DEA0500671DB2 /* RequestUrlBuilderTests.m */; };
 		A3A7255D243E07A100671DB2 /* URLSizeMonitorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3A7255C243E07A100671DB2 /* URLSizeMonitorTests.m */; };
 		A3A7255F243F154900671DB2 /* MappIntelligenceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3A7255E243F154900671DB2 /* MappIntelligenceTests.m */; };
+		A3A7DCE127E0A24E00A739B9 /* MIDefaultTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = BCBE5C0723F1A688002125C1 /* MIDefaultTracker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A3ADC97326D8EB34007504FF /* MIExceptionTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = A3ADC97126D8EB34007504FF /* MIExceptionTracker.h */; };
 		A3ADC97426D8EB34007504FF /* MIExceptionTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = A3ADC97226D8EB34007504FF /* MIExceptionTracker.m */; };
 		A3ADC98326D941B3007504FF /* MIExceptionTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = A3ADC97226D8EB34007504FF /* MIExceptionTracker.m */; };
@@ -427,10 +431,11 @@
 /* Begin PBXCopyFilesBuildPhase section */
 		8F20A08525C2CE470006CB93 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				A3861FF727DB4DFC00F3F27C /* MIDefaultTracker.h in CopyFiles */,
 				A345978527A9857C0038FE3F /* MIFormParameters.h in CopyFiles */,
 				A345978627A9857C0038FE3F /* MIFormField.h in CopyFiles */,
 				A345978727A9857C0038FE3F /* MIFormSubmitEvent.h in CopyFiles */,
@@ -489,6 +494,7 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				A3861FF827DB4E3500F3F27C /* MIDefaultTracker.h in Copy Files */,
 				A345978027A9843F0038FE3F /* MIFormField.h in Copy Files */,
 				A345978127A9843F0038FE3F /* MIFormSubmitEvent.h in Copy Files */,
 				A345977F27A982E80038FE3F /* MIFormParameters.h in Copy Files */,
@@ -670,7 +676,7 @@
 		A3EAFF602418E02F009D5108 /* MIUIFlowObserver.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MIUIFlowObserver.m; sourceTree = "<group>"; };
 		BCA1738123D5C12A00B31430 /* MappIntelligenceDefaultConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MappIntelligenceDefaultConfig.h; sourceTree = "<group>"; };
 		BCBE5BFA23EB1798002125C1 /* MappIntelligenceSDKLoggerTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MappIntelligenceSDKLoggerTest.m; path = MappIntelligenceTests/Log/MappIntelligenceSDKLoggerTest.m; sourceTree = SOURCE_ROOT; };
-		BCBE5C0723F1A688002125C1 /* MIDefaultTracker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MIDefaultTracker.h; sourceTree = "<group>"; };
+		BCBE5C0723F1A688002125C1 /* MIDefaultTracker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MIDefaultTracker.h; path = MappIntelligence/Trackers/MIDefaultTracker.h; sourceTree = SOURCE_ROOT; };
 		BCBE5C0823F29E49002125C1 /* MIDefaultTracker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MIDefaultTracker.m; sourceTree = "<group>"; };
 		BCBE5C3923F698EF002125C1 /* DefaultTrackerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = DefaultTrackerTests.m; path = MappIntelligenceTests/Trackers/DefaultTrackerTests.m; sourceTree = SOURCE_ROOT; };
 		BCD5E2C223CF309900CE2092 /* MIConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MIConfig.h; sourceTree = "<group>"; };
@@ -1129,6 +1135,7 @@
 				A345976527A1890A0038FE3F /* MIFormField.h in Headers */,
 				A345977E27A982C70038FE3F /* MIFormSubmitEvent.h in Headers */,
 				A345976127A1878A0038FE3F /* MIFormParameters.h in Headers */,
+				A3861FF627DB47B300F3F27C /* MIFormParameters.m in Headers */,
 				A380D1FF241296FD009E2CD8 /* MIPageViewEvent.h in Headers */,
 				A337446024C8404B0096259B /* MIPageViewEvent.m in Headers */,
 				8F94E6E925BF27D200027623 /* MIMediaEvent.h in Headers */,
@@ -1231,6 +1238,7 @@
 				A3E8274E2461B6B700952606 /* MappIntelligence.h in Headers */,
 				8FCFD4FD25B18E3000EE8358 /* MICampaignParameters.h in Headers */,
 				8FCFD55D25B18EF000EE8358 /* MIProduct.h in Headers */,
+				A3A7DCE127E0A24E00A739B9 /* MIDefaultTracker.h in Headers */,
 				A345977827A97C930038FE3F /* MIFormParameters.h in Headers */,
 				8FCFD5DC25B18F7C00EE8358 /* MITrackingEvent.h in Headers */,
 				8FCFD54525B18EC300EE8358 /* MISessionParameters.h in Headers */,

@@ -8,6 +8,7 @@
 
 #import "MIFormParameters.h"
 #import "MappIntelligenceLogger.h"
+#import "MIFormField.h"
 
 #define key_form_name @"form_name"
 #define key_field_ids @"field_ids"
@@ -24,7 +25,7 @@
 
 @interface MIFormParameters()
 
-#if !TARGET_OS_WATCH
+#if !TARGET_OS_WATCH && !TARGET_OS_TV
 @property NSMutableArray<UITextField *> * textFields;
 @property NSMutableArray<UITextView *> * textViews;
 @property NSMutableArray<UISwitch *> * switches;
@@ -69,7 +70,7 @@
 {
     self = [super init];
     if (self) {
-#if !TARGET_OS_WATCH
+#if !TARGET_OS_WATCH && !TARGET_OS_TV
         _textFields = [[NSMutableArray alloc] init];
         _textViews = [[NSMutableArray alloc] init];
         _switches = [[NSMutableArray alloc] init];
@@ -91,7 +92,7 @@
 
 - (void) setTrackableFields {
     if([_fieldIds count] > 0) {
-#if !TARGET_OS_WATCH
+#if !TARGET_OS_WATCH && !TARGET_OS_TV
         dispatch_sync(dispatch_get_main_queue(), ^{
             for (UITextField* textField in _textFields) {
                 if (![[_fieldIds copy] containsObject:[NSNumber numberWithInteger:textField.tag]]) {
@@ -123,7 +124,7 @@
     }
 }
 
-#if !TARGET_OS_WATCH
+#if !TARGET_OS_WATCH && !TARGET_OS_TV
 -(NSString*)extractLabelFromPickerView: (UIView*) godView {
     if ([godView isKindOfClass:UILabel.class]) {
         return ((UILabel*)godView).text;
@@ -166,7 +167,7 @@
 #endif
 
 - (void)createFromFields {
-#if !TARGET_OS_WATCH
+#if !TARGET_OS_WATCH && !TARGET_OS_TV
     UIViewController* superViewController = self.topViewController;
     dispatch_sync(dispatch_get_main_queue(), ^{
         __block UIView* superView = superViewController.view;
@@ -188,7 +189,7 @@
 #endif
     _fields = [[NSMutableArray alloc] init];
     [self setTrackableFields];
-#if !TARGET_OS_WATCH
+#if !TARGET_OS_WATCH && !TARGET_OS_TV
     for (UITextField* textField in _textFields) {
         dispatch_sync(dispatch_get_main_queue(), ^{
             self->_fields = [self->_fields arrayByAddingObject:[[MIFormField alloc] initWithName:[self getNameForControl:textField] andContent:textField.text andID:textField.tag andWithAnonymus: YES andFocus:textField.isFocused]];
@@ -307,7 +308,7 @@
     return [[NSString alloc] initWithFormat:@"%@|%i", _formName, _confirmButton];
 }
 
-#if !TARGET_OS_WATCH
+#if !TARGET_OS_WATCH && !TARGET_OS_TV
 - (NSArray<UITextField *> *)getTextFields: (UIView*) mainView {
     for (UIView* view in [mainView subviews]) {
         if ([view isKindOfClass:UITextField.class]) {
