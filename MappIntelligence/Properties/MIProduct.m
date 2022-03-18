@@ -51,4 +51,8 @@
      [items addObject:[[NSURLQueryItem alloc] initWithName:@"cb767" value:_productVariant]];
  }
  */
+
+- (BOOL)isEqual:(id)object {
+    return _name ? [_name isEqualToString: ((MIProduct*)object).name] : YES && _cost ? [_cost isEqualToNumber: ((MIProduct*)object).cost] : YES && _quantity ? [_quantity isEqualToNumber: ((MIProduct*)object).quantity] : YES && _productVariant ? [_productVariant isEqualToString:((MIProduct*)object).productVariant] : YES && _productAdvertiseID ? [_productAdvertiseID isEqualToNumber:((MIProduct*)object).productAdvertiseID] : YES && _productSoldOut ? [_productSoldOut isEqualToNumber: ((MIProduct*)object).productSoldOut] : YES && _categories ? [_categories isEqualToDictionary: ((MIProduct*)object).categories] : YES && _ecommerceParameters ? [_ecommerceParameters isEqualToDictionary: ((MIProduct*)object).ecommerceParameters] : YES;
+}
 @end

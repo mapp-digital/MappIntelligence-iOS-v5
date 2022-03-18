@@ -8,6 +8,7 @@
 
 #import <XCTest/XCTest.h>
 #import "MIEcommerceParameters.h"
+#import "MappIntelligenceLogger.h"
 
 #define key_products @"products"
 #define key_status @"status"
@@ -40,6 +41,7 @@
 
 @property MIEcommerceParameters* ecommerceProperties;
 @property MIEcommerceParameters* ecommercePropertiesFromDictionary;
+@property NSNumberFormatter* formatter;
 @property NSMutableDictionary* properties;
 @property NSArray<MIProduct* >* products;
 
@@ -64,6 +66,7 @@
 @implementation EcommercePropertiesTests
 
 - (void)setUp {
+    _formatter = [[MappIntelligenceLogger shared] formatter];
     _properties = [@{@1:@"testValue;"} copy];
     _ecommerceProperties = [[MIEcommerceParameters alloc] initWithCustomParameters:_properties];
     MIProduct *product1 = [[MIProduct alloc] init];
@@ -107,7 +110,7 @@
     _ecommerceProperties.orderStatus = _orderStatus;
     
     //crate dictionary for ecommerce object
-    NSDictionary* dictionary = @{key_products: [self setProducts], key_status: [NSNumber numberWithLong:(long)_status], key_currency: _currency, key_order_id: _orderID, key_order_value: _orderValue, key_returning_or_new_customer: _returningOrNewCustomer, key_return_value: _returnValue, key_cancellation_value: _cancellationValue, key_coupon_value: _couponValue, key_payment_method: _paymentMethod, key_shipping_service_provider: _shippingServiceProvider, key_shippingSpeed: _shippingSpeed, key_shipping_cost: _shippingCost, key_mark_up: _markUp, key_order_status: _orderStatus};
+    NSDictionary* dictionary = @{key_products: [self setProducts], key_status: [NSNumber numberWithLong:(long)_status], key_currency: _currency, key_order_id: _orderID, key_order_value: _orderValue, key_returning_or_new_customer: _returningOrNewCustomer, key_return_value: _returnValue, key_cancellation_value: _cancellationValue, key_coupon_value: _couponValue, key_payment_method: _paymentMethod, key_shipping_service_provider: _shippingServiceProvider, key_shippingSpeed: _shippingSpeed, key_shipping_cost: _shippingCost, key_mark_up: _markUp, key_order_status: _orderStatus, key_custom_parameters: _properties};
     _ecommercePropertiesFromDictionary = [[MIEcommerceParameters alloc] initWithDictionary:dictionary];
 }
 
@@ -120,7 +123,17 @@
 }
 
 - (NSDictionary*) dictionaryFromProduct: (MIProduct*) product {
-    return @{key_name: product.name, key_cost: product.cost, key_quantity: product.quantity};
+    NSMutableDictionary* tempDictionary = [[NSMutableDictionary alloc] init];
+    if (product.name) {
+        [tempDictionary addEntriesFromDictionary:@{key_name: product.name}];
+    }
+    if (product.cost) {
+        [tempDictionary addEntriesFromDictionary:@{key_cost: product.cost}];
+    }
+    if (product.quantity) {
+        [tempDictionary addEntriesFromDictionary:@{key_quantity: product.quantity}];
+    }
+    return tempDictionary;
 }
 
 - (void)tearDown {
@@ -157,25 +170,55 @@
     XCTAssertTrue([object.markUp isEqualToNumber:_markUp], @"The markup is not correct!");
     XCTAssertTrue([object.orderStatus isEqualToString:_orderStatus], @"The order status is not correct!");
     
-    XCTAssertTrue([object.products isEqualToArray:_products], @"The products is not correct!");
+    for (int i = 0; i < [object.products count]; i++)
+    {
+        XCTAssertTrue([object.products[i] isEqual:_products[i]], @"The product is not correct!");
+    }
     XCTAssertTrue([object.customParameters isEqualToDictionary:_properties], @"The custom parameters is not correct!");
+}
+
+- (NSString*)getStatus {
+    switch ((int)_status) {
+        case addedToBasket:
+            return @"add";
+            break;
+        case purchased:
+            return @"conf";
+            break;
+        case viewed:
+            return @"view";
+            break;
+        default:
+            return @"view";
+    }
 }
 
 - (void)testAsQueryItems {
     NSMutableArray<NSURLQueryItem*>* expectedItems = [[NSMutableArray alloc] init];
     
-    //custom properties
+    [expectedItems addObjectsFromArray:[self getProductsAsQueryItems]];
+    
     if (_properties) {
+        _properties = [[self filterCustomDict:_properties] copy];
         for(NSNumber* key in _properties) {
             [expectedItems addObject:[[NSURLQueryItem alloc] initWithName:[NSString stringWithFormat:@"cb%@",key] value: _properties[key]]];
         }
     }
-    //products
-    [expectedItems addObjectsFromArray:[self getProductsAsQueryItems]];
-    //cupon value
-    if (_couponValue) {
-        [expectedItems addObject:[[NSURLQueryItem alloc] initWithName:@"cb563" value:[_couponValue stringValue] ]];
+    
+    if (_currency) {
+        [expectedItems addObject:[[NSURLQueryItem alloc] initWithName:@"cr" value:_currency]];
     }
+    if (_orderID) {
+        [expectedItems addObject:[[NSURLQueryItem alloc] initWithName:@"oi" value:_orderID]];
+    }
+    if (_orderValue) {
+        [expectedItems addObject:[[NSURLQueryItem alloc] initWithName:@"ov" value:[_formatter stringFromNumber:_orderValue]]];
+    }
+    if (_status) {
+        [expectedItems addObject:[[NSURLQueryItem alloc] initWithName:@"st" value:[self getStatus]]];
+    }
+    
+    [expectedItems addObjectsFromArray:[self getProductsAsQueryItems]];
     
     NSMutableSet* set1 = [NSMutableSet setWithArray:expectedItems];
     NSMutableSet* set2 = [NSMutableSet setWithArray:[_ecommerceProperties asQueryItems]];
@@ -191,25 +234,82 @@
         NSMutableArray<NSString*>* productNames = [[NSMutableArray alloc] init];
         NSMutableArray<NSString*>* productCosts = [[NSMutableArray alloc] init];
         NSMutableArray<NSString*>* productQuantities = [[NSMutableArray alloc] init];
+        NSMutableArray<NSString*>* productAdvertiseIDs = [[NSMutableArray alloc] init];
+        NSMutableArray<NSString*>* productSoldOuts = [[NSMutableArray alloc] init];
+        NSMutableArray<NSString*>* productVariants = [[NSMutableArray alloc] init];
+        NSMutableArray* categoriesKeys = [[NSMutableArray alloc] init];
+        NSMutableArray* ecommerceParametersKeys = [[NSMutableArray alloc] init];
         
         for (MIProduct* product in _products) {
             [productNames addObject: product.name];
-            [productCosts addObject: product.cost ? [product.cost stringValue] : @""];
-            [productQuantities addObject: (product.quantity == NULL) ? @"" : [product.quantity stringValue]];
+            [productCosts addObject: (product.cost ? [_formatter stringFromNumber:product.cost] : @"")];
+            [productQuantities addObject: (product.quantity ? [product.quantity stringValue] : @"")];
+            [productAdvertiseIDs addObject:product.productAdvertiseID ? [product.productAdvertiseID stringValue] : @""];
+            [productSoldOuts addObject:product.productSoldOut ? [product.productSoldOut stringValue] : @""];
+            [productVariants addObject:product.productVariant ? product.productVariant : @""];
+            [categoriesKeys addObjectsFromArray:product.categories.allKeys];
+            [ecommerceParametersKeys addObjectsFromArray:product.ecommerceParameters.allKeys];
         }
-        [items addObject:[[NSURLQueryItem alloc] initWithName:@"ba" value:[productNames componentsJoinedByString:@";"]]];
-        [items addObject:[[NSURLQueryItem alloc] initWithName:@"co" value:[productCosts componentsJoinedByString:@";"]]];
-        [items addObject:[[NSURLQueryItem alloc] initWithName:@"qn" value:[productQuantities componentsJoinedByString:@";"]]];
+        
+        categoriesKeys = [[[NSSet setWithArray:categoriesKeys] allObjects] copy];
+        ecommerceParametersKeys = [[[NSSet setWithArray:ecommerceParametersKeys] allObjects] copy];
+        
+        NSMutableArray<NSString*>* tempCategories = [[NSMutableArray alloc] init];
+        for (NSNumber* key in categoriesKeys) {
+            [tempCategories removeAllObjects];
+            for (MIProduct* product in _products) {
+                NSString* tmpObject = [[[product categories] allKeys] containsObject:key] ? product.categories[key] : @"";
+                [tempCategories addObject: tmpObject];
+            }
+            NSString* keyValue = [key isKindOfClass:[NSString class]] ? (NSString*)key : (NSString*)[key stringValue];
+            [items addObject:[[NSURLQueryItem alloc] initWithName:[@"ca" stringByAppendingString:keyValue] value:[tempCategories componentsJoinedByString:@";"]]];
+        }
+        
+        [tempCategories removeAllObjects];
+        for (NSNumber* key in ecommerceParametersKeys) {
+            [tempCategories removeAllObjects];
+            for (MIProduct* product in _products) {
+                NSString* tmpObject = [[[product ecommerceParameters] allKeys] containsObject:key] ? product.ecommerceParameters[key] : @"";
+                [tempCategories addObject: tmpObject];
+            }
+            NSString* keyValue = [key isKindOfClass:[NSString class]] ? (NSString*)key : (NSString*)[key stringValue];
+            [items addObject:[[NSURLQueryItem alloc] initWithName:[@"cb" stringByAppendingString:keyValue] value:[tempCategories componentsJoinedByString:@";"]]];
+        }
+        
+        if (![self isEmpty:productAdvertiseIDs])
+            [items addObject:[[NSURLQueryItem alloc] initWithName:@"cb675" value:[productAdvertiseIDs componentsJoinedByString:@";"]]];
+        if (![self isEmpty:productSoldOuts])
+            [items addObject:[[NSURLQueryItem alloc] initWithName:@"cb760" value:[productSoldOuts componentsJoinedByString:@";"]]];
+        if (![self isEmpty:productVariants])
+            [items addObject:[[NSURLQueryItem alloc] initWithName:@"cb767" value:[productVariants componentsJoinedByString:@";"]]];
+        if (![self isEmpty: productNames])
+            [items addObject:[[NSURLQueryItem alloc] initWithName:@"ba" value:[productNames componentsJoinedByString:@";"]]];
+        if (![self isEmpty:productCosts])
+            [items addObject:[[NSURLQueryItem alloc] initWithName:@"co" value:[productCosts componentsJoinedByString:@";"]]];
+        if ((_status != viewed) && ![self isEmpty:productQuantities])
+            [items addObject:[[NSURLQueryItem alloc] initWithName:@"qn" value:[productQuantities componentsJoinedByString:@";"]]];
     }
     
     return items;
 }
 
-- (void)testPerformanceExample {
-    // This is an example of a performance test case.
-    [self measureBlock:^{
-        // Put the code you want to measure the time of here.
-    }];
+- (BOOL) isEmpty: (NSArray<NSString*>*) objects {
+    for (NSString* object in objects) {
+        if (![object isEqualToString:@""]) {
+            return false;
+        }
+    }
+    return true;
+}
+
+- (NSDictionary<NSNumber* ,NSString*> *) filterCustomDict: (NSDictionary<NSNumber* ,NSString*> *) dict{
+    NSMutableDictionary *result = [[NSMutableDictionary alloc] init];
+    for (NSNumber *idx in dict) {
+        if (idx.intValue > 0) {
+            [result setObject:dict[idx] forKey:idx];
+        }
+    }
+    return result;
 }
 
 @end
