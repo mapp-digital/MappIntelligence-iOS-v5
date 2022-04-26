@@ -67,6 +67,7 @@ class FormViewController: UIViewController, UIPickerViewDataSource, UIPickerView
     
     @IBAction func cancelButtonPressed(_ sender: Any) {
         let parameters = MIFormParameters();
+        parameters.formName = "testFormName"
         parameters.fieldIds = [11,33]
         parameters.fullContentSpecificFields = [33]
         parameters.confirmButton = false

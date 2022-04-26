@@ -7,6 +7,7 @@
 //
 
 #import "MIFormField.h"
+#include <stdlib.h>
 
 #define key_field_name @"mi_form_field_name"
 #define key_field_content @"mi_field_content"
@@ -33,7 +34,11 @@
         _formFieldName = name;
         _formFieldContent = content;
         _anonymus = anonymus;
-        _ID = ID;
+        if(ID) {
+            _ID = ID;
+        } else {
+            _ID = arc4random_uniform(10074);
+        }
         _lastFocus = focus;
     }
     return self;

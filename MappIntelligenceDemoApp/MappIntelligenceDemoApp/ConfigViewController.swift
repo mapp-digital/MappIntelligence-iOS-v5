@@ -44,6 +44,7 @@ class ConfigViewController: UIViewController {
         let domain = dict?["domain" as NSObject]
         MappIntelligence.shared()?.initWithConfiguration(array, onTrackdomain: domain as! String)
         MappIntelligence.shared()?.requestInterval = 1 * 60
+        MappIntelligence.shared()?.logLevel = .all
     }
     
     @IBAction func toggleAnonimousTracking(_ sender: UISwitch) {

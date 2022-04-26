@@ -185,7 +185,9 @@
             [self getSwithces:superView];
         }
     });
-    _formName = NSStringFromClass(self.topViewController.classForCoder);
+    if (!_formName) {
+        _formName = NSStringFromClass(self.topViewController.classForCoder);
+    }
 #endif
     _fields = [[NSMutableArray alloc] init];
     [self setTrackableFields];
