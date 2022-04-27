@@ -21,8 +21,8 @@
     if (self) {
         _formFieldName = dictionary[key_field_name];
         _formFieldContent = dictionary[key_field_content];
-        _lastFocus = dictionary[key_last_focus];
-        _anonymus = dictionary[key_anonymus];
+        _lastFocus = [dictionary[key_last_focus] boolValue];
+        _anonymus = [dictionary[key_anonymus] boolValue];
     }
     return self;
 
