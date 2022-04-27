@@ -97,4 +97,10 @@
     [self checkParameters:_parametersFromDictionary];
 }
 
+- (void)testAsQueryItemsForRequest {
+    //1. create expected query items
+    //NSMutableArray<NSURLQueryItem*>* result = [_parameters asQueryItems];
+    //not posibal tu test because it includes UIKit elements :(
+}
+
 @end
