@@ -34,7 +34,7 @@ var window: UIWindow?
         MappIntelligence.shared()?.shouldMigrate = true
         MappIntelligence.shared()?.sendAppVersionInEveryRequest = true
         MappIntelligence.shared()?.enableBackgroundSendout = true
-        MappIntelligence.shared()?.enableCrashTracking(.caught)
+        MappIntelligence.shared()?.enableCrashTracking(.allExceptionTypes)
         // Override point for customization after application launch.
         return true
     }
