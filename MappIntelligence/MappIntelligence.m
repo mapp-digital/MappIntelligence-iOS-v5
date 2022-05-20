@@ -146,6 +146,9 @@ static MappIntelligenceDefaultConfig *config = nil;
 }
 
 - (void)initTimerForRequestsSendout {
+    if(_timerForSendRequests) {
+        return;
+    }
     _timerForSendRequests = [NSTimer scheduledTimerWithTimeInterval: [config requestsInterval] repeats:YES block:^(NSTimer * _Nonnull timer) {
         
         BOOL isAppActive = YES;
