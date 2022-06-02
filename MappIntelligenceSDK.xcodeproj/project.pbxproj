@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		049B8BA72849037A006F239E /* MIURLSizeMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = A380D21224141B55009E2CD8 /* MIURLSizeMonitor.h */; };
+		049B8BA82849037A006F239E /* MIURLSizeMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = A380D21224141B55009E2CD8 /* MIURLSizeMonitor.h */; };
+		049B8BA92849037B006F239E /* MIURLSizeMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = A380D21224141B55009E2CD8 /* MIURLSizeMonitor.h */; };
+		049B8BAA2849037F006F239E /* MIRequestUrlBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = A380D20E2413ED35009E2CD8 /* MIRequestUrlBuilder.h */; };
+		049B8BAB28490380006F239E /* MIRequestUrlBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = A380D20E2413ED35009E2CD8 /* MIRequestUrlBuilder.h */; };
+		049B8BAC28490380006F239E /* MIRequestUrlBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = A380D20E2413ED35009E2CD8 /* MIRequestUrlBuilder.h */; };
+		049B8BAD28490383006F239E /* MIRequestBatchSupportUrlBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = A3D9835024AE298200AF0CD8 /* MIRequestBatchSupportUrlBuilder.h */; };
+		049B8BAE28490384006F239E /* MIRequestBatchSupportUrlBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = A3D9835024AE298200AF0CD8 /* MIRequestBatchSupportUrlBuilder.h */; };
+		049B8BAF28490384006F239E /* MIRequestBatchSupportUrlBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = A3D9835024AE298200AF0CD8 /* MIRequestBatchSupportUrlBuilder.h */; };
+		049B8BB02849038A006F239E /* MappIntelligence.h in Headers */ = {isa = PBXBuildFile; fileRef = A334861B23BF3E2300D0EB5F /* MappIntelligence.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		049B8BB12849038A006F239E /* MappIntelligence.h in Headers */ = {isa = PBXBuildFile; fileRef = A334861B23BF3E2300D0EB5F /* MappIntelligence.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8F0055A9256DB16B00E2CC3C /* MIActionEvent.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8FDF710A250B9E5B00818E51 /* MIActionEvent.h */; };
 		8F0055AA256DB16B00E2CC3C /* MIPageViewEvent.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A380D1FD241296FD009E2CD8 /* MIPageViewEvent.h */; };
 		8F0055C8256DB9B700E2CC3C /* MIActionEvent.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8FDF710A250B9E5B00818E51 /* MIActionEvent.h */; };
@@ -1166,19 +1177,23 @@
 				8FCFD59C25B18F1B00EE8358 /* MIEcommerceParameters.h in Headers */,
 				8F94E75125BF282E00027623 /* MIMediaParameters.h in Headers */,
 				8FCFD53525B18EB800EE8358 /* MIPageParameters.h in Headers */,
+				049B8BAE28490384006F239E /* MIRequestBatchSupportUrlBuilder.h in Headers */,
 				A345976C27A978700038FE3F /* MIFormSubmitEvent.h in Headers */,
 				A33B36E72460246F005EA9AE /* MappIntelligenceSDK_watchOS.h in Headers */,
 				8FCFD52425B18EB200EE8358 /* MIEventParameters.h in Headers */,
 				8FCFD57D25B18F0400EE8358 /* MIUserCategories.h in Headers */,
 				A345978927A986940038FE3F /* MIFormField.h in Headers */,
+				049B8BB02849038A006F239E /* MappIntelligence.h in Headers */,
 				8FCFD60C25B18FAA00EE8358 /* MIParamType.h in Headers */,
 				8FCFD5B425B18F6700EE8358 /* MIActionEvent.h in Headers */,
 				A3E8274F2461B6F200952606 /* MappIntelligenceWatchOS.h in Headers */,
 				A345977927A97C940038FE3F /* MIFormParameters.h in Headers */,
 				8FCFD50525B18E3000EE8358 /* MICampaignParameters.h in Headers */,
 				8FCFD56525B18EF000EE8358 /* MIProduct.h in Headers */,
+				049B8BA82849037A006F239E /* MIURLSizeMonitor.h in Headers */,
 				8FCFD5E425B18F7C00EE8358 /* MITrackingEvent.h in Headers */,
 				8FCFD54D25B18EC400EE8358 /* MISessionParameters.h in Headers */,
+				049B8BAB28490380006F239E /* MIRequestUrlBuilder.h in Headers */,
 				8FCFD5FC25B18FA400EE8358 /* MIParams.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1192,19 +1207,23 @@
 				8FCFD59D25B18F1B00EE8358 /* MIEcommerceParameters.h in Headers */,
 				8F94E75225BF282E00027623 /* MIMediaParameters.h in Headers */,
 				8FCFD53625B18EB900EE8358 /* MIPageParameters.h in Headers */,
+				049B8BAF28490384006F239E /* MIRequestBatchSupportUrlBuilder.h in Headers */,
 				A345976D27A978710038FE3F /* MIFormSubmitEvent.h in Headers */,
 				A33B36F72460249F005EA9AE /* MappIntelligenceSDK_tvOS.h in Headers */,
 				8FCFD52C25B18EB300EE8358 /* MIEventParameters.h in Headers */,
 				8FCFD57E25B18F0500EE8358 /* MIUserCategories.h in Headers */,
 				A345978A27A986960038FE3F /* MIFormField.h in Headers */,
+				049B8BB12849038A006F239E /* MappIntelligence.h in Headers */,
 				8FCFD61525B18FAB00EE8358 /* MIParamType.h in Headers */,
 				8FCFD5BC25B18F6700EE8358 /* MIActionEvent.h in Headers */,
 				A3E827502461B72700952606 /* MappIntelligencetvOS.h in Headers */,
 				A345977A27A97C950038FE3F /* MIFormParameters.h in Headers */,
 				8FCFD50D25B18E3100EE8358 /* MICampaignParameters.h in Headers */,
 				8FCFD56625B18EF000EE8358 /* MIProduct.h in Headers */,
+				049B8BA92849037B006F239E /* MIURLSizeMonitor.h in Headers */,
 				8FCFD5E525B18F7D00EE8358 /* MITrackingEvent.h in Headers */,
 				8FCFD54E25B18EC400EE8358 /* MISessionParameters.h in Headers */,
+				049B8BAC28490380006F239E /* MIRequestUrlBuilder.h in Headers */,
 				8FCFD60425B18FA400EE8358 /* MIParams.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1217,6 +1236,7 @@
 				8FCFD5C425B18F6E00EE8358 /* MIPageViewEvent.h in Headers */,
 				8FCFD59425B18F1B00EE8358 /* MIEcommerceParameters.h in Headers */,
 				8F94E74925BF282E00027623 /* MIMediaParameters.h in Headers */,
+				049B8BAA2849037F006F239E /* MIRequestUrlBuilder.h in Headers */,
 				8FCFD52D25B18EB800EE8358 /* MIPageParameters.h in Headers */,
 				A35C795F2457679000D36144 /* MappIntelligenceSDK_iOS.h in Headers */,
 				8FCFD51C25B18EB000EE8358 /* MIEventParameters.h in Headers */,
@@ -1224,12 +1244,14 @@
 				8FCFD57525B18F0400EE8358 /* MIUserCategories.h in Headers */,
 				8FCFD61425B18FAA00EE8358 /* MIParamType.h in Headers */,
 				A345976B27A978700038FE3F /* MIFormSubmitEvent.h in Headers */,
+				049B8BA72849037A006F239E /* MIURLSizeMonitor.h in Headers */,
 				8FCFD5AC25B18F6700EE8358 /* MIActionEvent.h in Headers */,
 				A3E8274E2461B6B700952606 /* MappIntelligence.h in Headers */,
 				8FCFD4FD25B18E3000EE8358 /* MICampaignParameters.h in Headers */,
 				8FCFD55D25B18EF000EE8358 /* MIProduct.h in Headers */,
 				A3A7DCE127E0A24E00A739B9 /* MIDefaultTracker.h in Headers */,
 				A345977827A97C930038FE3F /* MIFormParameters.h in Headers */,
+				049B8BAD28490383006F239E /* MIRequestBatchSupportUrlBuilder.h in Headers */,
 				8FCFD5DC25B18F7C00EE8358 /* MITrackingEvent.h in Headers */,
 				8FCFD54525B18EC300EE8358 /* MISessionParameters.h in Headers */,
 				8F0A3F6525C2F40C00CD43A2 /* MappIntelligenceiOS.h in Headers */,
