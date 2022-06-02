@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		049B8BA52848EF6C006F239E /* MIRequestBatchSupportUrlBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = A3D9835124AE298200AF0CD8 /* MIRequestBatchSupportUrlBuilder.m */; };
+		049B8BA62848EF75006F239E /* MIRequestUrlBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = A380D20F2413ED35009E2CD8 /* MIRequestUrlBuilder.m */; };
 		8F0055A9256DB16B00E2CC3C /* MIActionEvent.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8FDF710A250B9E5B00818E51 /* MIActionEvent.h */; };
 		8F0055AA256DB16B00E2CC3C /* MIPageViewEvent.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A380D1FD241296FD009E2CD8 /* MIPageViewEvent.h */; };
 		8F0055C8256DB9B700E2CC3C /* MIActionEvent.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8FDF710A250B9E5B00818E51 /* MIActionEvent.h */; };
@@ -1714,6 +1716,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				049B8BA52848EF6C006F239E /* MIRequestBatchSupportUrlBuilder.m in Sources */,
+				049B8BA62848EF75006F239E /* MIRequestUrlBuilder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
