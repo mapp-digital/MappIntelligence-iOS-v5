@@ -7,14 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		049B8BA52848EF6C006F239E /* MIRequestBatchSupportUrlBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = A3D9835124AE298200AF0CD8 /* MIRequestBatchSupportUrlBuilder.m */; };
-		049B8BA62848EF75006F239E /* MIRequestUrlBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = A380D20F2413ED35009E2CD8 /* MIRequestUrlBuilder.m */; };
 		8F0055A9256DB16B00E2CC3C /* MIActionEvent.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8FDF710A250B9E5B00818E51 /* MIActionEvent.h */; };
 		8F0055AA256DB16B00E2CC3C /* MIPageViewEvent.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A380D1FD241296FD009E2CD8 /* MIPageViewEvent.h */; };
 		8F0055C8256DB9B700E2CC3C /* MIActionEvent.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8FDF710A250B9E5B00818E51 /* MIActionEvent.h */; };
 		8F0055C9256DB9B700E2CC3C /* MIPageViewEvent.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A380D1FD241296FD009E2CD8 /* MIPageViewEvent.h */; };
 		8F0A3F5B25C2F34700CD43A2 /* MappIntelligence.h in Resources */ = {isa = PBXBuildFile; fileRef = A334861B23BF3E2300D0EB5F /* MappIntelligence.h */; };
-		8F0A3F5C25C2F34700CD43A2 /* MappIntelligence.m in Resources */ = {isa = PBXBuildFile; fileRef = A334861C23BF3E2300D0EB5F /* MappIntelligence.m */; };
 		8F0A3F6525C2F40C00CD43A2 /* MappIntelligenceiOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F20A08925C2CE470006CB93 /* MappIntelligenceiOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8F0A3F7725C2F47200CD43A2 /* MIWebViewTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F94E79E25BF2E8F00027623 /* MIWebViewTracker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8F143ED92510AD830024CF24 /* ActionEventTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F143ED82510AD830024CF24 /* ActionEventTests.m */; };
@@ -1480,7 +1477,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8F0A3F5B25C2F34700CD43A2 /* MappIntelligence.h in Resources */,
-				8F0A3F5C25C2F34700CD43A2 /* MappIntelligence.m in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1716,8 +1712,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				049B8BA52848EF6C006F239E /* MIRequestBatchSupportUrlBuilder.m in Sources */,
-				049B8BA62848EF75006F239E /* MIRequestUrlBuilder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
