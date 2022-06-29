@@ -352,7 +352,6 @@
 		A3CC549C249151E8006215FD /* MIRequestData.m in Sources */ = {isa = PBXBuildFile; fileRef = A3CC549124912AA8006215FD /* MIRequestData.m */; };
 		A3CC549D249151E9006215FD /* MIRequestData.m in Sources */ = {isa = PBXBuildFile; fileRef = A3CC549124912AA8006215FD /* MIRequestData.m */; };
 		A3D9835224AE298200AF0CD8 /* MIRequestBatchSupportUrlBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = A3D9835024AE298200AF0CD8 /* MIRequestBatchSupportUrlBuilder.h */; };
-		A3D9835324AE298200AF0CD8 /* MIRequestBatchSupportUrlBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = A3D9835124AE298200AF0CD8 /* MIRequestBatchSupportUrlBuilder.m */; };
 		A3D9836F24B3311100AF0CD8 /* MIRequestBatchSupportUrlBuilder.m in Headers */ = {isa = PBXBuildFile; fileRef = A3D9835124AE298200AF0CD8 /* MIRequestBatchSupportUrlBuilder.m */; };
 		A3D9837024B3311D00AF0CD8 /* MIRequestBatchSupportUrlBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = A3D9835124AE298200AF0CD8 /* MIRequestBatchSupportUrlBuilder.m */; };
 		A3D9837124B3312600AF0CD8 /* MIRequestBatchSupportUrlBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = A3D9835124AE298200AF0CD8 /* MIRequestBatchSupportUrlBuilder.m */; };
@@ -1590,7 +1589,6 @@
 				A380D2092412D8F2009E2CD8 /* MIRequestTrackerBuilder.m in Sources */,
 				A345976627A1890A0038FE3F /* MIFormField.m in Sources */,
 				A338B78C2546FD1E00E50C28 /* MIEcommerceParameters.m in Sources */,
-				A3D9835324AE298200AF0CD8 /* MIRequestBatchSupportUrlBuilder.m in Sources */,
 				A380D1FB2411478C009E2CD8 /* MITrackingEvent.m in Sources */,
 				A338B79925470A1F00E50C28 /* MIProduct.m in Sources */,
 				8F94E6C625BF27AC00027623 /* MIMediaTracker.m in Sources */,
