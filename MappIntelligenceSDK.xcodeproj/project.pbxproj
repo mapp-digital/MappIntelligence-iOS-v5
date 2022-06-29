@@ -89,7 +89,6 @@
 		8F5F853A2535BCE100A39882 /* MISessionParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FDF7112250BA9CB00818E51 /* MISessionParameters.m */; };
 		8F5F85422535BCEB00A39882 /* MIActionEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FDF7109250B9E5B00818E51 /* MIActionEvent.m */; };
 		8F80C047252355B500E1F650 /* MISessionParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FDF7112250BA9CB00818E51 /* MISessionParameters.m */; };
-		8F94E6C625BF27AC00027623 /* MIMediaTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F94E6C425BF27AC00027623 /* MIMediaTracker.m */; };
 		8F94E6C725BF27AC00027623 /* MIMediaTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F94E6C525BF27AC00027623 /* MIMediaTracker.h */; };
 		8F94E6D625BF27BB00027623 /* MIMediaTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F94E6C425BF27AC00027623 /* MIMediaTracker.m */; };
 		8F94E6DE25BF27BC00027623 /* MIMediaTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F94E6C425BF27AC00027623 /* MIMediaTracker.m */; };
@@ -1590,7 +1589,6 @@
 				A338B78C2546FD1E00E50C28 /* MIEcommerceParameters.m in Sources */,
 				A380D1FB2411478C009E2CD8 /* MITrackingEvent.m in Sources */,
 				A338B79925470A1F00E50C28 /* MIProduct.m in Sources */,
-				8F94E6C625BF27AC00027623 /* MIMediaTracker.m in Sources */,
 				8FEC887925598E6500E24EDC /* MIDeepLink.m in Sources */,
 				8FD2C20D258C0CCA002A9ED4 /* MIParamType.m in Sources */,
 				A3CC549324912AA8006215FD /* MIRequestData.m in Sources */,
