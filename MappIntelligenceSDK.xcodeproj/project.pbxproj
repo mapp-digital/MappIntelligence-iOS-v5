@@ -266,7 +266,7 @@
 		A3861FF827DB4E3500F3F27C /* MIDefaultTracker.h in Copy Files */ = {isa = PBXBuildFile; fileRef = BCBE5C0723F1A688002125C1 /* MIDefaultTracker.h */; };
 		A39E4B9F286C604A0061970C /* MIWebViewTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F94E79F25BF2E8F00027623 /* MIWebViewTracker.m */; };
 		A39E4BA0286C604A0061970C /* MIWebViewTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F94E79F25BF2E8F00027623 /* MIWebViewTracker.m */; };
-		A39E4BBB286C67A50061970C /* MIWebViewTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F94E79F25BF2E8F00027623 /* MIWebViewTracker.m */; };
+		A39E4BBC286C689C0061970C /* MIWebViewTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F94E79F25BF2E8F00027623 /* MIWebViewTracker.m */; };
 		A3A72557243DBF1000671DB2 /* PropertiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3A72556243DBF1000671DB2 /* PropertiesTests.m */; };
 		A3A72559243DC22C00671DB2 /* RequestTrackerBuilderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3A72558243DC22C00671DB2 /* RequestTrackerBuilderTests.m */; };
 		A3A7255B243DEA0500671DB2 /* RequestUrlBuilderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3A7255A243DEA0500671DB2 /* RequestUrlBuilderTests.m */; };
@@ -1420,7 +1420,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A39E4BBB286C67A50061970C /* MIWebViewTracker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1474,6 +1473,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A39E4BBC286C689C0061970C /* MIWebViewTracker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
