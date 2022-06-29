@@ -345,6 +345,13 @@
 			remoteGlobalIDString = A334861723BF3E2300D0EB5F;
 			remoteInfo = MappIntelligenceSDK;
 		};
+		A39E4BC1286C6BF80061970C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A334861023BF3E2300D0EB5F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8F20A08625C2CE470006CB93;
+			remoteInfo = MappIntelligenceiOS;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -1306,6 +1313,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				A39E4BC2286C6BF80061970C /* PBXTargetDependency */,
 			);
 			name = "MappIntelligenceSDK-iOS";
 			productName = "MappIntelligenceSDK-iOS";
@@ -1599,6 +1607,11 @@
 			isa = PBXTargetDependency;
 			target = A334861723BF3E2300D0EB5F /* MappIntelligenceSDK */;
 			targetProxy = A36C6DFD243233FE008A9CB6 /* PBXContainerItemProxy */;
+		};
+		A39E4BC2286C6BF80061970C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8F20A08625C2CE470006CB93 /* MappIntelligenceiOS */;
+			targetProxy = A39E4BC1286C6BF80061970C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
