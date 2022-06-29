@@ -74,7 +74,6 @@
 		8F20A37625C2ED8A0006CB93 /* MIParamType.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8FD2C20A258C0CCA002A9ED4 /* MIParamType.h */; };
 		8F20A37F25C2EDC50006CB93 /* MIWebViewTracker.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8F94E79E25BF2E8F00027623 /* MIWebViewTracker.h */; };
 		8F3BC308254BFF1D00076321 /* MICampaignParameters.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 8F423EDA254B17D900DE191D /* MICampaignParameters.h */; };
-		8F423EDB254B17D900DE191D /* MICampaignParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F423ED9254B17D900DE191D /* MICampaignParameters.m */; };
 		8F423EDC254B17D900DE191D /* MICampaignParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F423ED9254B17D900DE191D /* MICampaignParameters.m */; };
 		8F423EDD254B17D900DE191D /* MICampaignParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F423ED9254B17D900DE191D /* MICampaignParameters.m */; };
 		8F423EDE254B17D900DE191D /* MICampaignParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F423EDA254B17D900DE191D /* MICampaignParameters.h */; };
@@ -92,14 +91,12 @@
 		8F94E6C725BF27AC00027623 /* MIMediaTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F94E6C525BF27AC00027623 /* MIMediaTracker.h */; };
 		8F94E6D625BF27BB00027623 /* MIMediaTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F94E6C425BF27AC00027623 /* MIMediaTracker.m */; };
 		8F94E6DE25BF27BC00027623 /* MIMediaTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F94E6C425BF27AC00027623 /* MIMediaTracker.m */; };
-		8F94E6E825BF27D200027623 /* MIMediaEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F94E6E625BF27D200027623 /* MIMediaEvent.m */; };
 		8F94E6E925BF27D200027623 /* MIMediaEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F94E6E725BF27D200027623 /* MIMediaEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8F94E6F825BF27DB00027623 /* MIMediaEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F94E6E625BF27D200027623 /* MIMediaEvent.m */; };
 		8F94E70025BF27DC00027623 /* MIMediaEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F94E6E625BF27D200027623 /* MIMediaEvent.m */; };
 		8F94E70F25BF27EF00027623 /* MIMediaEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F94E6E725BF27D200027623 /* MIMediaEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8F94E71725BF27F000027623 /* MIMediaEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F94E6E725BF27D200027623 /* MIMediaEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8F94E71825BF27F000027623 /* MIMediaEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F94E6E725BF27D200027623 /* MIMediaEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8F94E72925BF281C00027623 /* MIMediaParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F94E72725BF281C00027623 /* MIMediaParameters.m */; };
 		8F94E72A25BF281C00027623 /* MIMediaParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F94E72825BF281C00027623 /* MIMediaParameters.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8F94E74925BF282E00027623 /* MIMediaParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F94E72825BF281C00027623 /* MIMediaParameters.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8F94E75125BF282E00027623 /* MIMediaParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F94E72825BF281C00027623 /* MIMediaParameters.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -116,7 +113,6 @@
 		8F995E6D25507F4400B918DD /* MICampaignParameters.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8F423EDA254B17D900DE191D /* MICampaignParameters.h */; };
 		8F9C7F70255A851400CB95EF /* AdvertisementPropertiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F9C7F6F255A851400CB95EF /* AdvertisementPropertiesTests.m */; };
 		8FA11962253EDC82000AE887 /* MIUserCategories.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FA11960253EDC82000AE887 /* MIUserCategories.h */; };
-		8FA11963253EDC82000AE887 /* MIUserCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FA11961253EDC82000AE887 /* MIUserCategories.m */; };
 		8FA11964253EDC82000AE887 /* MIUserCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FA11961253EDC82000AE887 /* MIUserCategories.m */; };
 		8FA11965253EDC82000AE887 /* MIUserCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FA11961253EDC82000AE887 /* MIUserCategories.m */; };
 		8FAF2D3F25405DFE007AA438 /* MIUserCategories.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 8FA11960253EDC82000AE887 /* MIUserCategories.h */; };
@@ -161,24 +157,19 @@
 		8FCFD64B25B1916F00EE8358 /* MIParams.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 8FD2C1F6258C0CA8002A9ED4 /* MIParams.h */; };
 		8FCFD64C25B1916F00EE8358 /* MIParamType.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 8FD2C20A258C0CCA002A9ED4 /* MIParamType.h */; };
 		8FD2C1F8258C0CA8002A9ED4 /* MIParams.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FD2C1F6258C0CA8002A9ED4 /* MIParams.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8FD2C1F9258C0CA8002A9ED4 /* MIParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD2C1F7258C0CA8002A9ED4 /* MIParams.m */; };
 		8FD2C1FA258C0CA8002A9ED4 /* MIParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD2C1F7258C0CA8002A9ED4 /* MIParams.m */; };
 		8FD2C1FB258C0CA8002A9ED4 /* MIParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD2C1F7258C0CA8002A9ED4 /* MIParams.m */; };
 		8FD2C20C258C0CCA002A9ED4 /* MIParamType.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FD2C20A258C0CCA002A9ED4 /* MIParamType.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8FD2C20D258C0CCA002A9ED4 /* MIParamType.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD2C20B258C0CCA002A9ED4 /* MIParamType.m */; };
 		8FD2C20E258C0CCA002A9ED4 /* MIParamType.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD2C20B258C0CCA002A9ED4 /* MIParamType.m */; };
 		8FD2C20F258C0CCA002A9ED4 /* MIParamType.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD2C20B258C0CCA002A9ED4 /* MIParamType.m */; };
 		8FDF7107250B9E4D00818E51 /* MIEventParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FDF7105250B9E4D00818E51 /* MIEventParameters.h */; };
-		8FDF7108250B9E4D00818E51 /* MIEventParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FDF7106250B9E4D00818E51 /* MIEventParameters.m */; };
 		8FDF710C250B9E5B00818E51 /* MIActionEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FDF710A250B9E5B00818E51 /* MIActionEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8FDF710D250BA22100818E51 /* MIEventParameters.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 8FDF7105250B9E4D00818E51 /* MIEventParameters.h */; };
 		8FDF710E250BA22700818E51 /* MIActionEvent.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 8FDF710A250B9E5B00818E51 /* MIActionEvent.h */; };
 		8FDF710F250BA24200818E51 /* MIEventParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FDF7106250B9E4D00818E51 /* MIEventParameters.m */; };
 		8FDF7110250BA24B00818E51 /* MIActionEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FDF7109250B9E5B00818E51 /* MIActionEvent.m */; };
 		8FDF7113250BA9CB00818E51 /* MISessionParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FDF7111250BA9CB00818E51 /* MISessionParameters.h */; };
-		8FDF7114250BA9CB00818E51 /* MISessionParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FDF7112250BA9CB00818E51 /* MISessionParameters.m */; };
 		8FEC887825598E6500E24EDC /* MIDeepLink.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FEC887625598E6500E24EDC /* MIDeepLink.h */; };
-		8FEC887925598E6500E24EDC /* MIDeepLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FEC887725598E6500E24EDC /* MIDeepLink.m */; };
 		8FEC887A25598E6500E24EDC /* MIDeepLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FEC887725598E6500E24EDC /* MIDeepLink.m */; };
 		8FEC887B25598E6500E24EDC /* MIDeepLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FEC887725598E6500E24EDC /* MIDeepLink.m */; };
 		8FF7765725C2F767005CEE9B /* MIParams.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8FD2C1F6258C0CA8002A9ED4 /* MIParams.h */; };
@@ -205,7 +196,6 @@
 		A334862D23BF3F2800D0EB5F /* libMappIntelligenceSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A334861823BF3E2300D0EB5F /* libMappIntelligenceSDK.a */; };
 		A334863423BF3FAD00D0EB5F /* MappIntelligence.h in Headers */ = {isa = PBXBuildFile; fileRef = A334861B23BF3E2300D0EB5F /* MappIntelligence.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A337445C24C1A12A0096259B /* MIPageParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = A337445A24C1A12A0096259B /* MIPageParameters.h */; };
-		A337445D24C1A12A0096259B /* MIPageParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = A337445B24C1A12A0096259B /* MIPageParameters.m */; };
 		A337445E24C840370096259B /* MIPageViewEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = A380D1FE241296FD009E2CD8 /* MIPageViewEvent.m */; };
 		A337445F24C840410096259B /* MIPageViewEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = A380D1FE241296FD009E2CD8 /* MIPageViewEvent.m */; };
 		A337446224C844AE0096259B /* MappIntelligenceSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = A337446124C844580096259B /* MappIntelligenceSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -216,11 +206,9 @@
 		A337446724C84A060096259B /* MITrackingEvent.h in Copy Files */ = {isa = PBXBuildFile; fileRef = A380D1F82411478C009E2CD8 /* MITrackingEvent.h */; };
 		A337446824C84A100096259B /* MIProperties.h in Copy Files */ = {isa = PBXBuildFile; fileRef = A36CD7CF23F447D0004E3E2D /* MIProperties.h */; };
 		A338B78B2546FD1E00E50C28 /* MIEcommerceParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = A338B7892546FD1E00E50C28 /* MIEcommerceParameters.h */; };
-		A338B78C2546FD1E00E50C28 /* MIEcommerceParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = A338B78A2546FD1E00E50C28 /* MIEcommerceParameters.m */; };
 		A338B78D2546FD1E00E50C28 /* MIEcommerceParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = A338B78A2546FD1E00E50C28 /* MIEcommerceParameters.m */; };
 		A338B78E2546FD1E00E50C28 /* MIEcommerceParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = A338B78A2546FD1E00E50C28 /* MIEcommerceParameters.m */; };
 		A338B79825470A1F00E50C28 /* MIProduct.h in Headers */ = {isa = PBXBuildFile; fileRef = A338B79625470A1F00E50C28 /* MIProduct.h */; };
-		A338B79925470A1F00E50C28 /* MIProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = A338B79725470A1F00E50C28 /* MIProduct.m */; };
 		A338B79A25470A1F00E50C28 /* MIProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = A338B79725470A1F00E50C28 /* MIProduct.m */; };
 		A338B79B25470A1F00E50C28 /* MIProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = A338B79725470A1F00E50C28 /* MIProduct.m */; };
 		A338B7B12548744900E50C28 /* MIEcommerceParameters.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A338B7892546FD1E00E50C28 /* MIEcommerceParameters.h */; };
@@ -237,10 +225,7 @@
 		A33B36FB246024A6005EA9AE /* libMappIntelligencetvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A35C78C42452E6FF00D36144 /* libMappIntelligencetvOS.a */; };
 		A33B3700246047C8005EA9AE /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A33B36FF246047C8005EA9AE /* libz.tbd */; };
 		A345976127A1878A0038FE3F /* MIFormParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = A345975F27A1878A0038FE3F /* MIFormParameters.h */; };
-		A345976227A1878A0038FE3F /* MIFormParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = A345976027A1878A0038FE3F /* MIFormParameters.m */; };
 		A345976527A1890A0038FE3F /* MIFormField.h in Headers */ = {isa = PBXBuildFile; fileRef = A345976327A1890A0038FE3F /* MIFormField.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A345976627A1890A0038FE3F /* MIFormField.m in Sources */ = {isa = PBXBuildFile; fileRef = A345976427A1890A0038FE3F /* MIFormField.m */; };
-		A345976A27A9771B0038FE3F /* MIFormSubmitEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = A345976827A9771B0038FE3F /* MIFormSubmitEvent.m */; };
 		A345976B27A978700038FE3F /* MIFormSubmitEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = A345976727A9771B0038FE3F /* MIFormSubmitEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A345976C27A978700038FE3F /* MIFormSubmitEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = A345976727A9771B0038FE3F /* MIFormSubmitEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A345976D27A978710038FE3F /* MIFormSubmitEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = A345976727A9771B0038FE3F /* MIFormSubmitEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -304,22 +289,14 @@
 		A36C6E0A24323F17008A9CB6 /* MIURLSizeMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = A380D21324141B55009E2CD8 /* MIURLSizeMonitor.m */; };
 		A36C6E0B24323F22008A9CB6 /* MITrackerRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = A36CD7CC23F44594004E3E2D /* MITrackerRequest.m */; };
 		A36CD7CD23F44594004E3E2D /* MITrackerRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = A36CD7CB23F44594004E3E2D /* MITrackerRequest.h */; };
-		A36CD7CE23F44594004E3E2D /* MITrackerRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = A36CD7CC23F44594004E3E2D /* MITrackerRequest.m */; };
 		A36CD7D123F447D0004E3E2D /* MIProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = A36CD7CF23F447D0004E3E2D /* MIProperties.h */; };
-		A36CD7D223F447D0004E3E2D /* MIProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = A36CD7D023F447D0004E3E2D /* MIProperties.m */; };
 		A380D1FA2411478C009E2CD8 /* MITrackingEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = A380D1F82411478C009E2CD8 /* MITrackingEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A380D1FB2411478C009E2CD8 /* MITrackingEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = A380D1F92411478C009E2CD8 /* MITrackingEvent.m */; };
 		A380D1FF241296FD009E2CD8 /* MIPageViewEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = A380D1FD241296FD009E2CD8 /* MIPageViewEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A380D2042412B0AB009E2CD8 /* MIEnvironment.h in Headers */ = {isa = PBXBuildFile; fileRef = A380D2022412B0AB009E2CD8 /* MIEnvironment.h */; };
-		A380D2052412B0AB009E2CD8 /* MIEnvironment.m in Sources */ = {isa = PBXBuildFile; fileRef = A380D2032412B0AB009E2CD8 /* MIEnvironment.m */; };
 		A380D2082412D8F2009E2CD8 /* MIRequestTrackerBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = A380D2062412D8F2009E2CD8 /* MIRequestTrackerBuilder.h */; };
-		A380D2092412D8F2009E2CD8 /* MIRequestTrackerBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = A380D2072412D8F2009E2CD8 /* MIRequestTrackerBuilder.m */; };
 		A380D20C2413D317009E2CD8 /* MIConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = A380D20A2413D317009E2CD8 /* MIConfiguration.h */; };
-		A380D20D2413D317009E2CD8 /* MIConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = A380D20B2413D317009E2CD8 /* MIConfiguration.m */; };
 		A380D2102413ED35009E2CD8 /* MIRequestUrlBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = A380D20E2413ED35009E2CD8 /* MIRequestUrlBuilder.h */; };
-		A380D2112413ED35009E2CD8 /* MIRequestUrlBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = A380D20F2413ED35009E2CD8 /* MIRequestUrlBuilder.m */; };
 		A380D21424141B55009E2CD8 /* MIURLSizeMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = A380D21224141B55009E2CD8 /* MIURLSizeMonitor.h */; };
-		A380D21524141B55009E2CD8 /* MIURLSizeMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = A380D21324141B55009E2CD8 /* MIURLSizeMonitor.m */; };
 		A3852A95249389060090F47B /* MIDatabaseManager.m in Headers */ = {isa = PBXBuildFile; fileRef = A3CC5485248FC418006215FD /* MIDatabaseManager.m */; };
 		A3861FF627DB47B300F3F27C /* MIFormParameters.m in Headers */ = {isa = PBXBuildFile; fileRef = A345976027A1878A0038FE3F /* MIFormParameters.m */; };
 		A3861FF727DB4DFC00F3F27C /* MIDefaultTracker.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BCBE5C0723F1A688002125C1 /* MIDefaultTracker.h */; };
@@ -335,13 +312,9 @@
 		A3ADC98C26D941B4007504FF /* MIExceptionTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = A3ADC97226D8EB34007504FF /* MIExceptionTracker.m */; };
 		A3ADC98D26D941B5007504FF /* MIExceptionTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = A3ADC97226D8EB34007504FF /* MIExceptionTracker.m */; };
 		A3CC5486248FC418006215FD /* MIDatabaseManager.h in Headers */ = {isa = PBXBuildFile; fileRef = A3CC5484248FC418006215FD /* MIDatabaseManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A3CC5487248FC418006215FD /* MIDatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A3CC5485248FC418006215FD /* MIDatabaseManager.m */; };
 		A3CC548A249125DD006215FD /* MIParameter.h in Headers */ = {isa = PBXBuildFile; fileRef = A3CC5488249125DD006215FD /* MIParameter.h */; };
-		A3CC548B249125DD006215FD /* MIParameter.m in Sources */ = {isa = PBXBuildFile; fileRef = A3CC5489249125DD006215FD /* MIParameter.m */; };
 		A3CC548E249125F0006215FD /* MIRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = A3CC548C249125F0006215FD /* MIRequest.h */; };
-		A3CC548F249125F0006215FD /* MIRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = A3CC548D249125F0006215FD /* MIRequest.m */; };
 		A3CC549224912AA8006215FD /* MIRequestData.h in Headers */ = {isa = PBXBuildFile; fileRef = A3CC549024912AA8006215FD /* MIRequestData.h */; };
-		A3CC549324912AA8006215FD /* MIRequestData.m in Sources */ = {isa = PBXBuildFile; fileRef = A3CC549124912AA8006215FD /* MIRequestData.m */; };
 		A3CC5496249151DB006215FD /* MIDatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A3CC5485248FC418006215FD /* MIDatabaseManager.m */; };
 		A3CC5497249151DC006215FD /* MIDatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A3CC5485248FC418006215FD /* MIDatabaseManager.m */; };
 		A3CC5498249151DF006215FD /* MIParameter.m in Sources */ = {isa = PBXBuildFile; fileRef = A3CC5489249125DD006215FD /* MIParameter.m */; };
@@ -359,13 +332,9 @@
 		A3E827502461B72700952606 /* MappIntelligencetvOS.h in Headers */ = {isa = PBXBuildFile; fileRef = A35C78C62452E6FF00D36144 /* MappIntelligencetvOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A3EAFF612418E02F009D5108 /* MIUIFlowObserver.h in Headers */ = {isa = PBXBuildFile; fileRef = A3EAFF5F2418E02F009D5108 /* MIUIFlowObserver.h */; };
 		BCBE5BFB23EB1798002125C1 /* MappIntelligenceSDKLoggerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBE5BFA23EB1798002125C1 /* MappIntelligenceSDKLoggerTest.m */; };
-		BCBE5C0923F29E49002125C1 /* MIDefaultTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBE5C0823F29E49002125C1 /* MIDefaultTracker.m */; };
 		BCBE5C3A23F698EF002125C1 /* DefaultTrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBE5C3923F698EF002125C1 /* DefaultTrackerTests.m */; };
 		BCCAE6D0240D29A9005E9FD6 /* MappIntelligenceLogger.m in Headers */ = {isa = PBXBuildFile; fileRef = BCEAE6B723BF5A8B007F410D /* MappIntelligenceLogger.m */; };
 		BCCAE6D2240D2E16005E9FD6 /* MappIntelligenceDefaultConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = BCA1738123D5C12A00B31430 /* MappIntelligenceDefaultConfig.h */; };
-		BCD5E2C323CF309900CE2092 /* MIConfig.h in Sources */ = {isa = PBXBuildFile; fileRef = BCD5E2C223CF309900CE2092 /* MIConfig.h */; };
-		BCD5E2C523CF38F300CE2092 /* MappIntelligenceDefaultConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD5E2C423CF38F300CE2092 /* MappIntelligenceDefaultConfig.m */; };
-		BCEAE6B823BF5A8B007F410D /* MappIntelligenceLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = BCEAE6B723BF5A8B007F410D /* MappIntelligenceLogger.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1576,37 +1545,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8FA11963253EDC82000AE887 /* MIUserCategories.m in Sources */,
-				A3CC548B249125DD006215FD /* MIParameter.m in Sources */,
-				8F94E72925BF281C00027623 /* MIMediaParameters.m in Sources */,
-				BCBE5C0923F29E49002125C1 /* MIDefaultTracker.m in Sources */,
-				A36CD7CE23F44594004E3E2D /* MITrackerRequest.m in Sources */,
-				A345976A27A9771B0038FE3F /* MIFormSubmitEvent.m in Sources */,
-				BCEAE6B823BF5A8B007F410D /* MappIntelligenceLogger.m in Sources */,
-				A380D2112413ED35009E2CD8 /* MIRequestUrlBuilder.m in Sources */,
-				A380D2092412D8F2009E2CD8 /* MIRequestTrackerBuilder.m in Sources */,
-				A345976627A1890A0038FE3F /* MIFormField.m in Sources */,
-				A338B78C2546FD1E00E50C28 /* MIEcommerceParameters.m in Sources */,
-				A380D1FB2411478C009E2CD8 /* MITrackingEvent.m in Sources */,
-				A338B79925470A1F00E50C28 /* MIProduct.m in Sources */,
-				8FEC887925598E6500E24EDC /* MIDeepLink.m in Sources */,
-				8FD2C20D258C0CCA002A9ED4 /* MIParamType.m in Sources */,
-				A3CC549324912AA8006215FD /* MIRequestData.m in Sources */,
-				8F94E6E825BF27D200027623 /* MIMediaEvent.m in Sources */,
-				A380D20D2413D317009E2CD8 /* MIConfiguration.m in Sources */,
-				A36CD7D223F447D0004E3E2D /* MIProperties.m in Sources */,
-				8FDF7114250BA9CB00818E51 /* MISessionParameters.m in Sources */,
-				A380D21524141B55009E2CD8 /* MIURLSizeMonitor.m in Sources */,
-				A3CC5487248FC418006215FD /* MIDatabaseManager.m in Sources */,
-				8FDF7108250B9E4D00818E51 /* MIEventParameters.m in Sources */,
-				BCD5E2C523CF38F300CE2092 /* MappIntelligenceDefaultConfig.m in Sources */,
-				BCD5E2C323CF309900CE2092 /* MIConfig.h in Sources */,
-				A345976227A1878A0038FE3F /* MIFormParameters.m in Sources */,
-				8F423EDB254B17D900DE191D /* MICampaignParameters.m in Sources */,
-				A337445D24C1A12A0096259B /* MIPageParameters.m in Sources */,
-				A380D2052412B0AB009E2CD8 /* MIEnvironment.m in Sources */,
-				A3CC548F249125F0006215FD /* MIRequest.m in Sources */,
-				8FD2C1F9258C0CA8002A9ED4 /* MIParams.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
