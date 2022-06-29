@@ -171,7 +171,6 @@
 		8FD2C20F258C0CCA002A9ED4 /* MIParamType.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FD2C20B258C0CCA002A9ED4 /* MIParamType.m */; };
 		8FDF7107250B9E4D00818E51 /* MIEventParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FDF7105250B9E4D00818E51 /* MIEventParameters.h */; };
 		8FDF7108250B9E4D00818E51 /* MIEventParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FDF7106250B9E4D00818E51 /* MIEventParameters.m */; };
-		8FDF710B250B9E5B00818E51 /* MIActionEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FDF7109250B9E5B00818E51 /* MIActionEvent.m */; };
 		8FDF710C250B9E5B00818E51 /* MIActionEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FDF710A250B9E5B00818E51 /* MIActionEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8FDF710D250BA22100818E51 /* MIEventParameters.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 8FDF7105250B9E4D00818E51 /* MIEventParameters.h */; };
 		8FDF710E250BA22700818E51 /* MIActionEvent.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 8FDF710A250B9E5B00818E51 /* MIActionEvent.h */; };
@@ -1600,7 +1599,6 @@
 				A338B79925470A1F00E50C28 /* MIProduct.m in Sources */,
 				8F94E6C625BF27AC00027623 /* MIMediaTracker.m in Sources */,
 				8FEC887925598E6500E24EDC /* MIDeepLink.m in Sources */,
-				8FDF710B250B9E5B00818E51 /* MIActionEvent.m in Sources */,
 				A3EAFF622418E02F009D5108 /* MIUIFlowObserver.m in Sources */,
 				8FD2C20D258C0CCA002A9ED4 /* MIParamType.m in Sources */,
 				A3CC549324912AA8006215FD /* MIRequestData.m in Sources */,
