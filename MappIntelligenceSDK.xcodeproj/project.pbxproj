@@ -144,7 +144,7 @@
 		8FCFD59425B18F1B00EE8358 /* MIEcommerceParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = A338B7892546FD1E00E50C28 /* MIEcommerceParameters.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8FCFD59C25B18F1B00EE8358 /* MIEcommerceParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = A338B7892546FD1E00E50C28 /* MIEcommerceParameters.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8FCFD59D25B18F1B00EE8358 /* MIEcommerceParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = A338B7892546FD1E00E50C28 /* MIEcommerceParameters.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8FCFD5AC25B18F6700EE8358 /* MIActionEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FDF710A250B9E5B00818E51 /* MIActionEvent.h */; };
+		8FCFD5AC25B18F6700EE8358 /* MIActionEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FDF710A250B9E5B00818E51 /* MIActionEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8FCFD5B425B18F6700EE8358 /* MIActionEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FDF710A250B9E5B00818E51 /* MIActionEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8FCFD5BC25B18F6700EE8358 /* MIActionEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FDF710A250B9E5B00818E51 /* MIActionEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8FCFD5C425B18F6E00EE8358 /* MIPageViewEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = A380D1FD241296FD009E2CD8 /* MIPageViewEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
