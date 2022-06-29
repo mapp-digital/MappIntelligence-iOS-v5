@@ -359,7 +359,6 @@
 		A3E8274F2461B6F200952606 /* MappIntelligenceWatchOS.h in Headers */ = {isa = PBXBuildFile; fileRef = A32AEA27242A6F4600BC7B46 /* MappIntelligenceWatchOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A3E827502461B72700952606 /* MappIntelligencetvOS.h in Headers */ = {isa = PBXBuildFile; fileRef = A35C78C62452E6FF00D36144 /* MappIntelligencetvOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A3EAFF612418E02F009D5108 /* MIUIFlowObserver.h in Headers */ = {isa = PBXBuildFile; fileRef = A3EAFF5F2418E02F009D5108 /* MIUIFlowObserver.h */; };
-		A3EAFF622418E02F009D5108 /* MIUIFlowObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = A3EAFF602418E02F009D5108 /* MIUIFlowObserver.m */; };
 		BCBE5BFB23EB1798002125C1 /* MappIntelligenceSDKLoggerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBE5BFA23EB1798002125C1 /* MappIntelligenceSDKLoggerTest.m */; };
 		BCBE5C0923F29E49002125C1 /* MIDefaultTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBE5C0823F29E49002125C1 /* MIDefaultTracker.m */; };
 		BCBE5C3A23F698EF002125C1 /* DefaultTrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBE5C3923F698EF002125C1 /* DefaultTrackerTests.m */; };
@@ -1593,7 +1592,6 @@
 				A338B79925470A1F00E50C28 /* MIProduct.m in Sources */,
 				8F94E6C625BF27AC00027623 /* MIMediaTracker.m in Sources */,
 				8FEC887925598E6500E24EDC /* MIDeepLink.m in Sources */,
-				A3EAFF622418E02F009D5108 /* MIUIFlowObserver.m in Sources */,
 				8FD2C20D258C0CCA002A9ED4 /* MIParamType.m in Sources */,
 				A3CC549324912AA8006215FD /* MIRequestData.m in Sources */,
 				8F94E6E825BF27D200027623 /* MIMediaEvent.m in Sources */,
