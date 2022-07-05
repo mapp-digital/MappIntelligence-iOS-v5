@@ -9,6 +9,8 @@
 #import "MIUIFlowObserver.h"
 #import "MIExceptionTracker.h"
 #import "MappIntelligenceLogger.h"
+#import "APXRequestBuilder.h"
+#import "APXNetworkManager.h"
 #if TARGET_OS_WATCH
 #import <WatchKit/WatchKit.h>
 #else
@@ -53,6 +55,44 @@
     _sharedDefaults = [NSUserDefaults standardUserDefaults];
     
     return self;
+}
+
+- (void)getDeviceInfoForParameters:(NSArray *)parameters {
+#define GET @"get"
+#define DMC_USER_ID @"dmcUserId"
+
+    RequestBuilder *builder = [RequestBuilder builder];
+    [builder addRequestKeyedValues:@{GET : parameters} forRequestType:kAPXRequestKeyTypeGetCustomFields];
+    NSData *serverData = [builder buildRequestAsJsonData];
+    
+    
+    [[NetworkManager shared] performNetworkOperation:kAPXNetworkManagerOperationTypeSetActions withData:serverData andCompletionBlock:^(NSError *error, id data) {
+        
+        if (!error) {
+            NSDictionary *dataDictionary = (NSDictionary *)data;
+
+            NSString *dmcUserId = dataDictionary[GET][DMC_USER_ID];
+            //NSArray *dmcUserIdComponents = [dmcUserId componentsSeparatedByString:@";;;"];
+
+            NSString *userId = nil;
+            if (dmcUserId && ![dmcUserId isKindOfClass:[NSNull class]])
+            userId = dmcUserId;
+            
+            if (userId && ![userId isKindOfClass:[NSNull class]])
+                [[NSUserDefaults standardUserDefaults] setObject:userId forKey:DMC_USER_ID];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[[NSUserDefaults standardUserDefaults] objectForKey:DMC_USER_ID] message:@"DMC_USER_ID" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alert show];
+            
+
+        } else {
+            NSLog(@"error reported %@", error.description);
+            NSLog(@"%@", [[NetworkManager shared] sdkID]);
+            NSLog(@"%@", [[NetworkManager shared] preferedURL]);
+            NSLog(@"%ld", (long)[[NetworkManager shared] environment]);
+        }
+    }];
 }
 
 - (void)fireRequest {
@@ -106,6 +146,7 @@
 }
 
 -(void)willEnterForeground {
+    [self getDeviceInfoForParameters:@[@"dmcUserId"]];
     NSSetUncaughtExceptionHandler(&onUncaughtException);
     [self getExceptionFromFileAndSendItAsAnRequest];
 #if !TARGET_OS_WATCH

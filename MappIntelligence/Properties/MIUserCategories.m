@@ -85,6 +85,7 @@
 }
 
 - (NSMutableArray<NSURLQueryItem*>*)asQueryItems {
+#define DMC_USER_ID @"dmcUserId"
     NSMutableArray<NSURLQueryItem*>* items = [[NSMutableArray alloc] init];
     
     if (_customCategories) {
@@ -111,6 +112,9 @@
         [items addObject:[[NSURLQueryItem alloc] initWithName:@"uc700" value:_emailAddress]];
     }
     if (_emailReceiverId) {
+        if([[NSUserDefaults standardUserDefaults] objectForKey:DMC_USER_ID]) {
+            _emailReceiverId = [[NSUserDefaults standardUserDefaults] objectForKey:DMC_USER_ID];
+        }
         items = [self removeObjectWith:@"uc701" from:items];
         [items addObject:[[NSURLQueryItem alloc] initWithName:@"uc701" value:_emailReceiverId]];
     }
