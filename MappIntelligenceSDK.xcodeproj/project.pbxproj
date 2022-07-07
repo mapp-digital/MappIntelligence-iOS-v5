@@ -194,7 +194,6 @@
 		A3187BAA287429EC00653D05 /* APXRequestBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = A3187BA0287429EC00653D05 /* APXRequestBuilder.h */; };
 		A3187BAB287429EC00653D05 /* APXNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A3187BA1287429EC00653D05 /* APXNetworkManager.m */; };
 		A3187BAD287429F600653D05 /* AppoxeeSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3187BAC287429F600653D05 /* AppoxeeSDK.xcframework */; };
-		A3187BAF2874805000653D05 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3187BAE2874805000653D05 /* WebKit.framework */; };
 		A31C6F1D24D9A0F300166585 /* RequestBatchSupportUrlBuilderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A31C6F1C24D9A0F300166585 /* RequestBatchSupportUrlBuilderTests.m */; };
 		A31C6F2024D9A9B200166585 /* DatabaseManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A31C6F1F24D9A9B200166585 /* DatabaseManagerTests.m */; };
 		A31D7A4F243CC0F200386A1C /* TrackerRequestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A31D7A4E243CC0F200386A1C /* TrackerRequestTests.m */; };
@@ -724,7 +723,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A3187BAF2874805000653D05 /* WebKit.framework in Frameworks */,
 				A3187BAD287429F600653D05 /* AppoxeeSDK.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

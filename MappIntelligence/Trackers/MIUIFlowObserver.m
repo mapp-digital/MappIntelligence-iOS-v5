@@ -81,9 +81,6 @@
             if (userId && ![userId isKindOfClass:[NSNull class]])
                 [[NSUserDefaults standardUserDefaults] setObject:userId forKey:DMC_USER_ID];
             [[NSUserDefaults standardUserDefaults] synchronize];
-
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[[NSUserDefaults standardUserDefaults] objectForKey:DMC_USER_ID] message:@"DMC_USER_ID" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-            [alert show];
             
 
         } else {
