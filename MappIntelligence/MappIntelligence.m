@@ -119,6 +119,7 @@ static MappIntelligenceDefaultConfig *config = nil;
   [config setRequestPerQueue:numberOfRequestInQueue];
   [config setSendAppVersionToEveryRequest:NO];
   [config setBackgroundSendout:NO];
+  [config setUserMatching:NO];
   [config logConfig];
 
   tracker = [MIDefaultTracker sharedInstance];
