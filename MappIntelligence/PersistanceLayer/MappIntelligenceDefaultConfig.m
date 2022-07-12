@@ -17,6 +17,7 @@
 #define key_autoTracking @"auto_tracking"
 #define key_requestPerQueue @"request_per_batch"
 #define key_batchSupport @"batch_support"
+#define key_userMatching @"user_matching"
 #define key_optOut @"optOut"
 #define key_viewControllerAutoTracking @"view_controller_auto_tracking"
 #define key_MappIntelligence_default_configuration @"defaultConfiguration"
@@ -24,6 +25,7 @@
 NSTimeInterval const requestIntervalDefault = 15*60;
 BOOL const optOutDefault = NO;
 BOOL const batchSupportDefault = NO;
+BOOL const userMatchingDefault = NO;
 BOOL const backgroundSendoutDefault = NO;
 NSInteger const requestPerQueueDefault = 100;
 NSInteger const batchSupportSizeDefault = 5000;
@@ -38,6 +40,7 @@ NSInteger const batchSupportSizeDefault = 5000;
 
 @synthesize autoTracking;
 @synthesize batchSupport = _batchSupport;
+@synthesize userMatching = _userMatching;
 @synthesize backgroundSendout = _backgroundSendout;
 @synthesize requestPerQueue = _requestPerQueue;
 @synthesize requestsInterval = _requestsInterval;
@@ -70,6 +73,11 @@ NSInteger const batchSupportSizeDefault = 5000;
                                 ? batchSupportDefault
                                 : [[NSUserDefaults standardUserDefaults]
                                       doubleForKey:key_batchSupport];
+        self.userMatching = (![[NSUserDefaults standardUserDefaults]
+                                doubleForKey:key_userMatching])
+                                ? userMatchingDefault
+                                : [[NSUserDefaults standardUserDefaults]
+                                      doubleForKey:key_userMatching];
         self.requestPerQueue = (![[NSUserDefaults standardUserDefaults]
                                    doubleForKey:key_requestPerQueue])
                                    ? requestPerQueueDefault
@@ -84,6 +92,7 @@ NSInteger const batchSupportSizeDefault = 5000;
   [encoder encodeInt64:self.requestPerQueue forKey:key_requestPerQueue];
   [encoder encodeBool:self.autoTracking forKey:key_autoTracking];
   [encoder encodeBool:self.batchSupport forKey:key_batchSupport];
+  [encoder encodeBool:self.userMatching forKey:key_userMatching];
   [encoder encodeInt64:self.requestsInterval forKey:key_requestsInterval];
   [encoder encodeBool:self.viewControllerAutoTracking
                forKey:key_viewControllerAutoTracking];
@@ -96,6 +105,7 @@ NSInteger const batchSupportSizeDefault = 5000;
   if (self = [super init]) {
     self.autoTracking = [coder decodeBoolForKey:key_autoTracking];
     self.batchSupport = [coder decodeBoolForKey:key_batchSupport];
+    self.userMatching = [coder decodeBoolForKey:key_userMatching];
     self.requestPerQueue = [coder decodeIntForKey:key_requestPerQueue];
     self.requestsInterval = [coder decodeIntForKey:key_requestsInterval];
     self.trackDomain = [coder decodeObjectForKey:key_trackDomain];
@@ -265,10 +275,18 @@ NSInteger const batchSupportSizeDefault = 5000;
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
+- (void)setUserMatching:(BOOL)userMatching {
+    _userMatching = userMatching;
+    [[NSUserDefaults standardUserDefaults] setBool:userMatching forKey:key_userMatching];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+
+}
+
 - (void) reset {
     self.requestsInterval = requestIntervalDefault;
     self.optOut = optOutDefault;
     self.batchSupport = batchSupportDefault;
+    self.userMatching = userMatchingDefault;
     self.requestPerQueue = requestIntervalDefault;
 }
 

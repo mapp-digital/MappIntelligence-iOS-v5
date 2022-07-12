@@ -9,13 +9,14 @@
 #import "MIUIFlowObserver.h"
 #import "MIExceptionTracker.h"
 #import "MappIntelligenceLogger.h"
-#import "APXRequestBuilder.h"
-#import "APXNetworkManager.h"
+
 #if TARGET_OS_WATCH
 #import <WatchKit/WatchKit.h>
 #else
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
+#import "APXRequestBuilder.h"
+#import "APXNetworkManager.h"
 #endif
 
 #define doesAppEnterInBackground @"enteredInBackground";
@@ -60,7 +61,7 @@
 - (void)getDeviceInfoForParameters:(NSArray *)parameters {
 #define GET @"get"
 #define DMC_USER_ID @"dmcUserId"
-
+#if !TARGET_OS_WATCH
     RequestBuilder *builder = [RequestBuilder builder];
     [builder addRequestKeyedValues:@{GET : parameters} forRequestType:kAPXRequestKeyTypeGetCustomFields];
     NSData *serverData = [builder buildRequestAsJsonData];
@@ -90,6 +91,8 @@
             NSLog(@"%ld", (long)[[NetworkManager shared] environment]);
         }
     }];
+    
+#endif
 }
 
 - (void)fireRequest {
