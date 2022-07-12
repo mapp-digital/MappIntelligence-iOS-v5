@@ -143,7 +143,9 @@
 }
 
 -(void)willEnterForeground {
-    [self getDeviceInfoForParameters:@[@"dmcUserId"]];
+    if([_tracker isUserMatchingEnabled]) {
+        [self getDeviceInfoForParameters:@[@"dmcUserId"]];
+    }
     NSSetUncaughtExceptionHandler(&onUncaughtException);
     [self getExceptionFromFileAndSendItAsAnRequest];
 #if !TARGET_OS_WATCH

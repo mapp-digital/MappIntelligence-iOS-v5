@@ -240,6 +240,14 @@ static MappIntelligenceDefaultConfig *config = nil;
     return config.backgroundSendout;
 }
 
+- (void)setEnableUserMatching:(BOOL)enableUserMatching {
+    [config setUserMatching:enableUserMatching];
+}
+
+- (BOOL)enableUserMatching {
+    return config.userMatching;
+}
+
 - (NSInteger) requestPerQueue {
     return config.requestPerQueue;
 }

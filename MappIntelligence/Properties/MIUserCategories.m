@@ -7,6 +7,7 @@
 //
 
 #import "MIUserCategories.h"
+#import "MIDefaultTracker.h"
 
 #define key_birthday @"birthday"
 
@@ -111,7 +112,7 @@
         items = [self removeObjectWith:@"uc700" from:items];
         [items addObject:[[NSURLQueryItem alloc] initWithName:@"uc700" value:_emailAddress]];
     }
-    if([[NSUserDefaults standardUserDefaults] objectForKey:DMC_USER_ID]) {
+    if([[NSUserDefaults standardUserDefaults] objectForKey:DMC_USER_ID] && [[MIDefaultTracker sharedInstance] isUserMatchingEnabled]) {
         _emailReceiverId = [[NSUserDefaults standardUserDefaults] objectForKey:DMC_USER_ID];
     }
     if (_emailReceiverId) {
