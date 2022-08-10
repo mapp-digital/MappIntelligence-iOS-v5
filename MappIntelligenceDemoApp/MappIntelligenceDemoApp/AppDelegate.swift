@@ -13,7 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
+        Appoxee.shared()?.engageAndAutoIntegrate(launchOptions: launchOptions, andDelegate: nil, with: .L3)
         let bundles = Bundle.allBundles
         var path = ""
         for bundle in bundles {
@@ -24,8 +24,8 @@ var window: UIWindow?
         let dict = NSDictionary(contentsOfFile: path) as Dictionary?
         let array = [(dict?["track_ids" as NSObject]?.intValue) ?? 0]
         let domain = dict?["domain" as NSObject]
-//        MappIntelligence.shared()?.initWithConfiguration(array, onTrackdomain: domain as! String)
-        MappIntelligence.shared()?.initWithConfiguration(array, onTrackdomain: domain as! String, andWithEverID: "")
+        MappIntelligence.shared()?.initWithConfiguration(array, onTrackdomain: domain as! String)
+ //       MappIntelligence.shared()?.initWithConfiguration(array, onTrackdomain: domain as! String, andWithEverID: "")
         MappIntelligence.shared()?.logLevel = .all
         MappIntelligence.shared()?.batchSupportEnabled = false
         MappIntelligence.shared()?.batchSupportSize = 150
@@ -34,6 +34,7 @@ var window: UIWindow?
         MappIntelligence.shared()?.shouldMigrate = true
         MappIntelligence.shared()?.sendAppVersionInEveryRequest = true
         MappIntelligence.shared()?.enableBackgroundSendout = true
+        MappIntelligence.shared()?.enableUserMatching = true
         MappIntelligence.shared()?.enableCrashTracking(.allExceptionTypes)
         // Override point for customization after application launch.
         return true

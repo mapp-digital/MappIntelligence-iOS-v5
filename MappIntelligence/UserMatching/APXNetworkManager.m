@@ -45,6 +45,11 @@
         
         [request setHTTPBody:dataArg];
         
+        NSLog(@"Method: %@", [request HTTPMethod]);
+        NSLog(@"URL: %@", [[request URL] description] );
+        NSLog(@"Headers: %@", [request allHTTPHeaderFields]);
+        NSLog(@"Body: %@", [[NSString alloc] initWithData:[request HTTPBody] encoding:NSUTF8StringEncoding]);
+        
         NSURLSession *session = [NSURLSession sharedSession];
         
         NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
@@ -61,7 +66,7 @@
                     NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
                     
                     NSLog(@"\nall headers from response:\n%@\n", [httpResponse allHeaderFields]);
-                    NSLog(@"\nresponse from response:\n%@\n", data);
+                    NSLog(@"\nresponse from response:\n%@\n\n%@\n", data, [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
                     NSLog(@"\nstatus code from response:%ld\n", (long)[httpResponse statusCode]);
                 }
                 
