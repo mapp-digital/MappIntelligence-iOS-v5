@@ -72,6 +72,7 @@
 
 - (NSURL *)urlForRequest:(MITrackerRequest *)request withCustomData: (BOOL) custom{
 #define DMC_USER_ID @"dmcUserId"
+#define EMAIL_RECEIVER_ID @"emailReceiverIdUserDefaults"
     MITrackingEvent *event = [request event];
   NSString *pageNameOpt = [event pageName];
   NSURL *url;
@@ -126,7 +127,10 @@
                                                1000)]]];
   [parametrs addObject:[NSURLQueryItem queryItemWithName:@"eid"
                                                    value:properties.everId]];
-    if([[NSUserDefaults standardUserDefaults] objectForKey:DMC_USER_ID] && [[MIDefaultTracker sharedInstance] isUserMatchingEnabled]) {
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:EMAIL_RECEIVER_ID]) {
+        [parametrs addObject:[NSURLQueryItem queryItemWithName:@"uc701"
+                                                         value:[[NSUserDefaults standardUserDefaults] objectForKey:EMAIL_RECEIVER_ID]]];
+    } else if([[NSUserDefaults standardUserDefaults] objectForKey:DMC_USER_ID] && [[MIDefaultTracker sharedInstance] isUserMatchingEnabled]) {
         [parametrs addObject:[NSURLQueryItem queryItemWithName:@"uc701"
                                                          value:[[NSUserDefaults standardUserDefaults] objectForKey:DMC_USER_ID]]];
     }
@@ -248,6 +252,8 @@
 -(BOOL)containsEmailReceiverId:(NSArray<NSURLQueryItem *> *)parameters {
     for (NSURLQueryItem* key in parameters) {
         if( [key.name  isEqual: @"uc701"]) {
+            [[NSUserDefaults standardUserDefaults] setObject:key.value forKey:EMAIL_RECEIVER_ID];
+            [[NSUserDefaults standardUserDefaults] synchronize];
             return YES;
         }
     }
