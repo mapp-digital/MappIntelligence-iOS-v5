@@ -27,7 +27,8 @@ class CampaignViewController: UIViewController {
     }
     
     @IBAction func testLink1(_ sender: Any) {
-        let url = URL(string: "https://testurl.com/?wt_mc=email.newsletter.nov2020.thursday&wt_cc45=parameter45")
+        //let url = URL(string: "https://testurl.com/?wt_mc=email.newsletter.nov2020.thursday&wt_cc45=parameter45")
+        let url = URL(string: "https://testurl.com/?wt_mc=email.newsletter.nov2020.thursday&cc45=parameter45")
         
         MappIntelligence.shared()?.trackUrl(url, withMediaCode: nil)
         MappIntelligence.shared()?.trackPage(with: self, pageViewEvent: nil)
