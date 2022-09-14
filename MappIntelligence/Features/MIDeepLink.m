@@ -89,7 +89,7 @@ NSString *const UrlErrorDescriptionInvalid = @"Url is invalid";
         return nil;
     }
     if (@available(iOS 11.0, *)) {
-        MICampaignParameters *properties = [NSKeyedUnarchiver unarchivedObjectOfClass:[MICampaignParameters class] fromData:fileData error:&error];
+        MICampaignParameters *properties = [NSKeyedUnarchiver unarchivedObjectOfClasses:[[NSSet alloc] initWithArray:@[[MICampaignParameters.class class],[NSString class]]] fromData:fileData error:&error];
         return properties;
     } else {
         // Fallback on earlier versions
