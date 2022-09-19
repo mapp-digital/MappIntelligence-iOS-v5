@@ -71,6 +71,8 @@
 }
 
 - (NSURL *)urlForRequest:(MITrackerRequest *)request withCustomData: (BOOL) custom{
+#define DMC_USER_ID @"dmcUserId"
+#define EMAIL_RECEIVER_ID @"emailReceiverIdUserDefaults"
     MITrackingEvent *event = [request event];
   NSString *pageNameOpt = [event pageName];
   NSURL *url;
@@ -125,6 +127,13 @@
                                                1000)]]];
   [parametrs addObject:[NSURLQueryItem queryItemWithName:@"eid"
                                                    value:properties.everId]];
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:EMAIL_RECEIVER_ID]) {
+        [parametrs addObject:[NSURLQueryItem queryItemWithName:@"uc701"
+                                                         value:[[NSUserDefaults standardUserDefaults] objectForKey:EMAIL_RECEIVER_ID]]];
+    } else if([[NSUserDefaults standardUserDefaults] objectForKey:DMC_USER_ID] && [[MIDefaultTracker sharedInstance] isUserMatchingEnabled]) {
+        [parametrs addObject:[NSURLQueryItem queryItemWithName:@"uc701"
+                                                         value:[[NSUserDefaults standardUserDefaults] objectForKey:DMC_USER_ID]]];
+    }
   [parametrs
       addObject:[NSURLQueryItem
                     queryItemWithName:@"fns"
@@ -166,6 +175,7 @@
             MISessionParameters *session = pgEvent.sessionParameters;
             [parametrs addObjectsFromArray:[session asQueryItems]];
             MIUserCategories *userCategories = pgEvent.userCategories;
+            parametrs = [self removeDmcUserId:parametrs and:[userCategories asQueryItems]];
             [parametrs addObjectsFromArray:[userCategories asQueryItems]];
             MIEcommerceParameters *ecommerceParameters = pgEvent.ecommerceParameters;
             [parametrs addObjectsFromArray:[ecommerceParameters asQueryItems]];
@@ -185,6 +195,7 @@
             MISessionParameters *session = ((MIActionEvent*)event).sessionParameters;
             [parametrs addObjectsFromArray:[session asQueryItems]];
             MIUserCategories *userCategories = ((MIActionEvent*)event).userCategories;
+            parametrs = [self removeDmcUserId:parametrs and:[userCategories asQueryItems]];
             [parametrs addObjectsFromArray:[userCategories asQueryItems]];
             MIEcommerceParameters *ecommerceParameters = ((MIActionEvent*)event).ecommerceParameters;
             [parametrs addObjectsFromArray:[ecommerceParameters asQueryItems]];
@@ -236,6 +247,28 @@
                                         andDomain:[MappIntelligence getUrl]
                                       andTrackIds:[MappIntelligence getId]];
   return url;
+}
+
+-(BOOL)containsEmailReceiverId:(NSArray<NSURLQueryItem *> *)parameters {
+    for (NSURLQueryItem* key in parameters) {
+        if( [key.name  isEqual: @"uc701"]) {
+            [[NSUserDefaults standardUserDefaults] setObject:key.value forKey:EMAIL_RECEIVER_ID];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            return YES;
+        }
+    }
+    return NO;
+}
+
+-(NSMutableArray<NSURLQueryItem *> *)removeDmcUserId:(NSMutableArray<NSURLQueryItem *> *) parameters and:(NSArray<NSURLQueryItem *> *) newParameters {
+    
+    if([self containsEmailReceiverId:newParameters] && [[NSUserDefaults standardUserDefaults] objectForKey:DMC_USER_ID] && [[MIDefaultTracker sharedInstance] isUserMatchingEnabled] ) {
+        NSMutableArray<NSURLQueryItem *> *reversedCalEvents = [parameters mutableCopy];
+        [reversedCalEvents removeObject:[NSURLQueryItem queryItemWithName:@"uc701"
+                                                                    value:[[NSUserDefaults standardUserDefaults] objectForKey:DMC_USER_ID]]];
+        return reversedCalEvents;
+    }
+    return [parameters mutableCopy];
 }
 
 - (NSURL *)createURLFromParametersWith:(NSArray<NSURLQueryItem *> *)parameters {

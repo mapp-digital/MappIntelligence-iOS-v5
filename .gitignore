@@ -69,4 +69,5 @@ iOSInjectionProject/
 
 
 SetupForLocalTesting.plist
+AppoxeeConfig.plist
 .DS_Store

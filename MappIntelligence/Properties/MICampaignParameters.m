@@ -78,7 +78,7 @@
     NSError *error;
     if (@available(iOS 11.0, *)) {
         NSData *data = [NSKeyedArchiver archivedDataWithRootObject:adCopy requiringSecureCoding:YES error:&error];
-        adCopy = [NSKeyedUnarchiver unarchivedObjectOfClass:MICampaignParameters.class fromData:data error:&error];
+        adCopy = [NSKeyedUnarchiver unarchivedObjectOfClasses:[[NSSet alloc] initWithArray:@[[MICampaignParameters.class class],[NSString class]]]  fromData:data error:&error];
     } else {
         // Fallback on earlier versions
         NSData *data = [NSKeyedArchiver archivedDataWithRootObject:adCopy requiringSecureCoding:NO error:NULL];

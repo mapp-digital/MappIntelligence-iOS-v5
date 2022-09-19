@@ -28,6 +28,7 @@
 - (void)setEverIDFromString: (NSString *_Nonnull)everIDString;
 - (NSString*_Nonnull)generateUserAgent;
 - (BOOL)isBackgroundSendoutEnabled;
+- (BOOL)isUserMatchingEnabled;
 #if !TARGET_OS_WATCH
 - (NSError*_Nullable)track:(UIViewController *_Nonnull)controller;
 - (void)updateFirstSessionWith: (UIApplicationState) state;

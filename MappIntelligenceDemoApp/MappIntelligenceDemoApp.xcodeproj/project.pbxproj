@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -40,6 +40,9 @@
 		A36E5A2C25AD9D8700BF8873 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCA1739A23D5D25E00B31430 /* Assets.xcassets */; };
 		A38A6AF4242CD74F00600D82 /* libMappIntelligenceWatchOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A38A6AF3242CD74F00600D82 /* libMappIntelligenceWatchOS.a */; };
 		A3ADC97E26D94057007504FF /* ExceptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3ADC97D26D94057007504FF /* ExceptionsViewController.swift */; };
+		A3CA0A3C28A3E04000ACC335 /* AppoxeeConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = A3CA0A3B28A3E04000ACC335 /* AppoxeeConfig.plist */; };
+		A3CA0A3D28A3E04600ACC335 /* AppoxeeConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = A3CA0A3B28A3E04000ACC335 /* AppoxeeConfig.plist */; };
+		A3CA0A4728A3E4C400ACC335 /* AppoxeeSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3CA0A4628A3E4C400ACC335 /* AppoxeeSDK.xcframework */; };
 		BCA1739223D5D25C00B31430 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA1739123D5D25C00B31430 /* AppDelegate.swift */; };
 		BCA1739423D5D25C00B31430 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA1739323D5D25C00B31430 /* SceneDelegate.swift */; };
 		BCA1739923D5D25C00B31430 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCA1739723D5D25C00B31430 /* Main.storyboard */; };
@@ -133,6 +136,8 @@
 		A38A6AF1242CD0C600600D82 /* libMappIntelligenceSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libMappIntelligenceSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A38A6AF3242CD74F00600D82 /* libMappIntelligenceWatchOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libMappIntelligenceWatchOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3ADC97D26D94057007504FF /* ExceptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExceptionsViewController.swift; sourceTree = "<group>"; };
+		A3CA0A3B28A3E04000ACC335 /* AppoxeeConfig.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = AppoxeeConfig.plist; sourceTree = SOURCE_ROOT; };
+		A3CA0A4628A3E4C400ACC335 /* AppoxeeSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = AppoxeeSDK.xcframework; path = ../MappIntelligence/UserMatching/AppoxeeSDK.xcframework; sourceTree = "<group>"; };
 		BCA1738E23D5D25C00B31430 /* MappIntelligenceDemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MappIntelligenceDemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCA1739123D5D25C00B31430 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BCA1739323D5D25C00B31430 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -167,6 +172,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8F20A10E25C2CF460006CB93 /* libMappIntelligenceiOS.a in Frameworks */,
+				A3CA0A4728A3E4C400ACC335 /* AppoxeeSDK.xcframework in Frameworks */,
 				8F3F6813257EE3D5005F8AFC /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -247,6 +253,7 @@
 		BCA1739023D5D25C00B31430 /* MappIntelligenceDemoApp */ = {
 			isa = PBXGroup;
 			children = (
+				A3CA0A3B28A3E04000ACC335 /* AppoxeeConfig.plist */,
 				A3588A9627CFC57E0053961B /* SetupForLocalTesting.plist */,
 				8F94E6BC25BF199C00027623 /* Resources */,
 				8FA78F0325BF188A00CC166A /* MediaPlayerViewController.swift */,
@@ -275,6 +282,7 @@
 		BCA173AE23D6FBFC00B31430 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A3CA0A4628A3E4C400ACC335 /* AppoxeeSDK.xcframework */,
 				8F20A10D25C2CF460006CB93 /* libMappIntelligenceiOS.a */,
 				8F3F6812257EE3D5005F8AFC /* WebKit.framework */,
 				A3258BF5250A4E0B00039B92 /* UIKit.framework */,
@@ -424,6 +432,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3CA0A3D28A3E04600ACC335 /* AppoxeeConfig.plist in Resources */,
 				A32AEA55242B606000BC7B46 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -445,6 +454,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8F94E6BE25BF199C00027623 /* wt.mp4 in Resources */,
+				A3CA0A3C28A3E04000ACC335 /* AppoxeeConfig.plist in Resources */,
 				BCA1739E23D5D25E00B31430 /* LaunchScreen.storyboard in Resources */,
 				A3588A9727CFC57E0053961B /* SetupForLocalTesting.plist in Resources */,
 				BCA1739B23D5D25E00B31430 /* Assets.xcassets in Resources */,

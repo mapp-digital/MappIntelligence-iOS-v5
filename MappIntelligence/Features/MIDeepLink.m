@@ -36,7 +36,12 @@ NSString *const UrlErrorDescriptionInvalid = @"Url is invalid";
             campaignProperties.campaignId = item.value;
         }
         if ([MIDeepLink isCampaignParameter: item.name]) {
-            int idx = [[item.name substringFromIndex:5] intValue];
+            int idx = 2;
+            if (item.name.length >4) {
+                idx = [[item.name substringFromIndex:5] intValue];
+            } else {
+                idx = [[item.name substringFromIndex:2] intValue];
+            }
             NSNumber *key = [NSNumber numberWithInt:idx];
 //            NSArray *value = [NSArray arrayWithObject:item.value];
             if(key && idx) {
@@ -55,7 +60,7 @@ NSString *const UrlErrorDescriptionInvalid = @"Url is invalid";
 }
 
 + (BOOL) isCampaignParameter: (NSString *) key {
-    NSRegularExpression *regexp = [[NSRegularExpression alloc] initWithPattern:@"^wt_cc" options:0 error:nil];
+    NSRegularExpression *regexp = [[NSRegularExpression alloc] initWithPattern:@"^cc" options:0 error:nil];
     long n = [regexp numberOfMatchesInString:key options:0 range:NSMakeRange(0, key.length)];
     if (n > 0) {
         return YES;
@@ -84,7 +89,7 @@ NSString *const UrlErrorDescriptionInvalid = @"Url is invalid";
         return nil;
     }
     if (@available(iOS 11.0, *)) {
-        MICampaignParameters *properties = [NSKeyedUnarchiver unarchivedObjectOfClass:[MICampaignParameters class] fromData:fileData error:&error];
+        MICampaignParameters *properties = [NSKeyedUnarchiver unarchivedObjectOfClasses:[[NSSet alloc] initWithArray:@[[MICampaignParameters.class class],[NSString class]]] fromData:fileData error:&error];
         return properties;
     } else {
         // Fallback on earlier versions
