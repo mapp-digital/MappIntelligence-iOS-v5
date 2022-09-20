@@ -415,6 +415,9 @@
 		A3E827502461B72700952606 /* MappIntelligencetvOS.h in Headers */ = {isa = PBXBuildFile; fileRef = A35C78C62452E6FF00D36144 /* MappIntelligencetvOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A3EAFF612418E02F009D5108 /* MIUIFlowObserver.h in Headers */ = {isa = PBXBuildFile; fileRef = A3EAFF5F2418E02F009D5108 /* MIUIFlowObserver.h */; };
 		A3EAFF622418E02F009D5108 /* MIUIFlowObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = A3EAFF602418E02F009D5108 /* MIUIFlowObserver.m */; };
+		A3F08BBB28D9DC19004FF49C /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3187BAE2874805000653D05 /* WebKit.framework */; };
+		A3F08BBC28D9DC68004FF49C /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3187BAE2874805000653D05 /* WebKit.framework */; };
+		A3F08BBE28D9DD66004FF49C /* MediaTrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3F08BBD28D9DD66004FF49C /* MediaTrackerTests.m */; };
 		A3FE6CE1286C956C00D89CC7 /* MIFormField.h in Resources */ = {isa = PBXBuildFile; fileRef = A345976327A1890A0038FE3F /* MIFormField.h */; };
 		BCBE5BFB23EB1798002125C1 /* MappIntelligenceSDKLoggerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBE5BFA23EB1798002125C1 /* MappIntelligenceSDKLoggerTest.m */; };
 		BCBE5C0923F29E49002125C1 /* MIDefaultTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBE5C0823F29E49002125C1 /* MIDefaultTracker.m */; };
@@ -738,9 +741,9 @@
 		A3DD62E2242CE111004B3A2D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS6.1.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		A3EAFF5F2418E02F009D5108 /* MIUIFlowObserver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MIUIFlowObserver.h; sourceTree = "<group>"; };
 		A3EAFF602418E02F009D5108 /* MIUIFlowObserver.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MIUIFlowObserver.m; sourceTree = "<group>"; };
+		A3F08BBD28D9DD66004FF49C /* MediaTrackerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MediaTrackerTests.m; sourceTree = "<group>"; };
 		A3F8888B281825A40054B9A1 /* MIFormParametersTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MIFormParametersTest.m; sourceTree = "<group>"; };
 		A3F88899281985810054B9A1 /* MIFormFieldTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MIFormFieldTests.m; sourceTree = "<group>"; };
-		A3F8889D28198F9C0054B9A1 /* MIMediaTrackerTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MIMediaTrackerTest.m; sourceTree = "<group>"; };
 		BCA1738123D5C12A00B31430 /* MappIntelligenceDefaultConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MappIntelligenceDefaultConfig.h; sourceTree = "<group>"; };
 		BCBE5BFA23EB1798002125C1 /* MappIntelligenceSDKLoggerTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MappIntelligenceSDKLoggerTest.m; path = MappIntelligenceTests/Log/MappIntelligenceSDKLoggerTest.m; sourceTree = SOURCE_ROOT; };
 		BCBE5C0723F1A688002125C1 /* MIDefaultTracker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MIDefaultTracker.h; path = MappIntelligence/Trackers/MIDefaultTracker.h; sourceTree = SOURCE_ROOT; };
@@ -773,6 +776,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3F08BBB28D9DC19004FF49C /* WebKit.framework in Frameworks */,
 				A3187BAD287429F600653D05 /* AppoxeeSDK.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -781,6 +785,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3F08BBC28D9DC68004FF49C /* WebKit.framework in Frameworks */,
 				A334862D23BF3F2800D0EB5F /* libMappIntelligenceSDK.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1164,7 +1169,7 @@
 		A3F8889C28198F7D0054B9A1 /* Features */ = {
 			isa = PBXGroup;
 			children = (
-				A3F8889D28198F9C0054B9A1 /* MIMediaTrackerTest.m */,
+				A3F08BBD28D9DD66004FF49C /* MediaTrackerTests.m */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -1767,9 +1772,9 @@
 				A32EE09F243B574E00EDC5B8 /* UIFlowObserverTests.m in Sources */,
 				A31C6F1D24D9A0F300166585 /* RequestBatchSupportUrlBuilderTests.m in Sources */,
 				A3A7255D243E07A100671DB2 /* URLSizeMonitorTests.m in Sources */,
-				A3F8888C281825A40054B9A1 /* MIFormParametersTest.m in Sources */,
 				A357221D24F95742005F9DE1 /* RequestDataTest.m in Sources */,
 				A3588A9D27D8E5340053961B /* EventParameterTests.m in Sources */,
+				A3F08BBE28D9DD66004FF49C /* MediaTrackerTests.m in Sources */,
 				A3588A9927D20A7D0053961B /* MediaPropertiesTests.m in Sources */,
 				8F143ED92510AD830024CF24 /* ActionEventTests.m in Sources */,
 				A3A72557243DBF1000671DB2 /* PropertiesTests.m in Sources */,
@@ -1779,13 +1784,11 @@
 				A357222224FD1ABB005F9DE1 /* PageViewEventTests.m in Sources */,
 				A3A7255B243DEA0500671DB2 /* RequestUrlBuilderTests.m in Sources */,
 				A32EE0A2243CB97200EDC5B8 /* MappIntelligenceDefaultConfigTest.m in Sources */,
-				A3F8889E28198F9C0054B9A1 /* MIMediaTrackerTest.m in Sources */,
 				A31D7A4F243CC0F200386A1C /* TrackerRequestTests.m in Sources */,
 				A357221B24F933A1005F9DE1 /* RequestTest.m in Sources */,
 				A338B803254C6C0A00E50C28 /* ProductTests.m in Sources */,
 				8F143EDB2510AECA0024CF24 /* ActionPropertiesTests.m in Sources */,
 				8FFDEA3B254225D800E069F7 /* UserPropertiesTests.m in Sources */,
-				A3F8889A281985810054B9A1 /* MIFormFieldTests.m in Sources */,
 				A31C6F2024D9A9B200166585 /* DatabaseManagerTests.m in Sources */,
 				A3A72559243DC22C00671DB2 /* RequestTrackerBuilderTests.m in Sources */,
 				A357222024FD10AD005F9DE1 /* PagePropertiesTests.m in Sources */,
