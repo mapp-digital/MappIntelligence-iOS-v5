@@ -70,6 +70,9 @@
 - (BOOL)enableBackgroundSendout {
     return [_mappIntelligence enableBackgroundSendout];
 }
+- (BOOL)enableUserMatching {
+    return [_mappIntelligence enableUserMatching];
+}
 
 - (void) setBatchSupportEnabled:(BOOL)batchSupportEnabled {
     [_mappIntelligence setBatchSupportEnabled:batchSupportEnabled];
@@ -77,6 +80,10 @@
 
 - (void)setEnableBackgroundSendout:(BOOL)enableBackgroundSendout {
     [_mappIntelligence setEnableBackgroundSendout:enableBackgroundSendout];
+}
+
+- (void)setEnableUserMatching:(BOOL)enableUserMatching {
+    [_mappIntelligence setEnableUserMatching:enableUserMatching];
 }
 
 - (NSInteger) requestPerQueue {

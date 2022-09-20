@@ -3,3 +3,4 @@
 //
 
 #import <MappIntelligenceiOS/MappIntelligenceiOS.h>
+#import "AppoxeeSDK.h"

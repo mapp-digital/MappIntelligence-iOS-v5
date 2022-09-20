@@ -9,11 +9,14 @@
 #import "MIUIFlowObserver.h"
 #import "MIExceptionTracker.h"
 #import "MappIntelligenceLogger.h"
+
 #if TARGET_OS_WATCH
 #import <WatchKit/WatchKit.h>
 #else
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
+#import "APXRequestBuilder.h"
+#import "APXNetworkManager.h"
 #endif
 
 #define doesAppEnterInBackground @"enteredInBackground";
@@ -53,6 +56,43 @@
     _sharedDefaults = [NSUserDefaults standardUserDefaults];
     
     return self;
+}
+
+- (void)getDeviceInfoForParameters:(NSArray *)parameters {
+#define GET @"get"
+#define DMC_USER_ID @"dmcUserId"
+#if !TARGET_OS_WATCH
+    RequestBuilder *builder = [RequestBuilder builder];
+    [builder addRequestKeyedValues:@{GET : parameters} forRequestType:kAPXRequestKeyTypeGetCustomFields];
+    NSData *serverData = [builder buildRequestAsJsonData];
+    
+    
+    [[NetworkManager shared] performNetworkOperation:kAPXNetworkManagerOperationTypeSetActions withData:serverData andCompletionBlock:^(NSError *error, id data) {
+        
+        if (!error) {
+            NSDictionary *dataDictionary = (NSDictionary *)data;
+
+            NSString *dmcUserId = dataDictionary[GET][DMC_USER_ID];
+            //NSArray *dmcUserIdComponents = [dmcUserId componentsSeparatedByString:@";;;"];
+
+            NSString *userId = nil;
+            if (dmcUserId && ![dmcUserId isKindOfClass:[NSNull class]])
+            userId = dmcUserId;
+            
+            if (userId && ![userId isKindOfClass:[NSNull class]])
+                [[NSUserDefaults standardUserDefaults] setObject:userId forKey:DMC_USER_ID];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            
+
+        } else {
+            NSLog(@"error reported %@", error.description);
+            NSLog(@"%@", [[NetworkManager shared] sdkID]);
+            NSLog(@"%@", [[NetworkManager shared] preferedURL]);
+            NSLog(@"%ld", (long)[[NetworkManager shared] environment]);
+        }
+    }];
+    
+#endif
 }
 
 - (void)fireRequest {
@@ -106,6 +146,9 @@
 }
 
 -(void)willEnterForeground {
+    if([_tracker isUserMatchingEnabled]) {
+        [self getDeviceInfoForParameters:@[@"dmcUserId"]];
+    }
     NSSetUncaughtExceptionHandler(&onUncaughtException);
     [self getExceptionFromFileAndSendItAsAnRequest];
 #if !TARGET_OS_WATCH

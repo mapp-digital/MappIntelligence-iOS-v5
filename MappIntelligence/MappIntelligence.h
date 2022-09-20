@@ -54,6 +54,9 @@ typedef NS_ENUM(NSInteger, exceptionType) {
 @property (nonatomic, readwrite) BOOL anonymousTracking;
 @property (nonatomic, readwrite) BOOL sendAppVersionInEveryRequest;
 
+/// This options helps you to unifiy user from Mapp Intelligence SDK and Mapp Engage SDK if you are using both of them
+@property (nonatomic, readwrite) BOOL enableUserMatching;
+
 /**
  MappIntelligence instance
  @brief Method to get a singleton instance of MappIntelligence

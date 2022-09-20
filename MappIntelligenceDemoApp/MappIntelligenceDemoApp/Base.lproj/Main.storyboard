@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="v0p-og-LCW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="v0p-og-LCW">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -236,6 +236,33 @@
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
                                             <segue destination="Uyo-wg-qu0" kind="show" id="SLb-2u-4by"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="65" id="C96-MB-5Nv">
+                                        <rect key="frame" x="0.0" y="564.5" width="320" height="65"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="C96-MB-5Nv" id="CBZ-74-zg9">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="65"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Exceptions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cgt-ZY-jDG">
+                                                    <rect key="frame" x="118.5" y="22" width="83" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="wlC-GL-LDW"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                                    <color key="textColor" red="0.019607843140000001" green="0.57254901960000004" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Cgt-ZY-jDG" firstAttribute="centerY" secondItem="CBZ-74-zg9" secondAttribute="centerY" id="SFC-cI-uZK"/>
+                                                <constraint firstItem="Cgt-ZY-jDG" firstAttribute="centerX" secondItem="CBZ-74-zg9" secondAttribute="centerX" id="k6v-fs-Sbt"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <connections>
+                                            <segue destination="Uno-u6-0B1" kind="show" id="8zg-1Y-idd"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -1134,6 +1161,76 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vkd-Bb-sJ1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3699.375" y="2049.2957746478874"/>
+        </scene>
+        <!--Exceptions-->
+        <scene sceneID="BaJ-5c-GqA">
+            <objects>
+                <viewController id="Uno-u6-0B1" customClass="ExceptionsViewController" customModule="MappIntelligenceDemoApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Fyn-Up-mbG">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lg0-TV-5XJ">
+                                <rect key="frame" x="20" y="69" width="280" height="50"/>
+                                <color key="backgroundColor" red="0.021203886719999999" green="0.57247686389999997" blue="0.84162324669999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="QoL-3R-LUJ"/>
+                                </constraints>
+                                <state key="normal" title="Track Exception With Name">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="trackExceptionWithNameAndMessage:" destination="Uno-u6-0B1" eventType="touchUpInside" id="nsS-JI-vvJ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pRL-EX-lOR">
+                                <rect key="frame" x="20" y="139" width="280" height="50"/>
+                                <color key="backgroundColor" red="0.021203886719999999" green="0.57247686389999997" blue="0.84162324669999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="d9j-mN-pzu"/>
+                                </constraints>
+                                <state key="normal" title="Track Error">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="TrackError:" destination="Uno-u6-0B1" eventType="touchUpInside" id="ALr-vH-bBU"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ytm-e7-Ps6">
+                                <rect key="frame" x="20" y="209" width="280" height="50"/>
+                                <color key="backgroundColor" red="0.021203886719999999" green="0.57247686389999997" blue="0.84162324669999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="C4t-Ri-vEO"/>
+                                </constraints>
+                                <state key="normal" title="Uncaught error">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="trackUncaughtException:" destination="Uno-u6-0B1" eventType="touchUpInside" id="8If-RN-juz"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="fTO-U7-G1N"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="fTO-U7-G1N" firstAttribute="trailing" secondItem="Lg0-TV-5XJ" secondAttribute="trailing" constant="20" id="0Oj-ug-mYg"/>
+                            <constraint firstItem="fTO-U7-G1N" firstAttribute="trailing" secondItem="ytm-e7-Ps6" secondAttribute="trailing" constant="20" id="6h6-BC-ed5"/>
+                            <constraint firstItem="fTO-U7-G1N" firstAttribute="trailing" secondItem="pRL-EX-lOR" secondAttribute="trailing" constant="20" id="NSy-76-TcK"/>
+                            <constraint firstItem="ytm-e7-Ps6" firstAttribute="top" secondItem="pRL-EX-lOR" secondAttribute="bottom" constant="20" id="UAx-fA-GFh"/>
+                            <constraint firstItem="Lg0-TV-5XJ" firstAttribute="top" secondItem="fTO-U7-G1N" secondAttribute="top" constant="25" id="UUO-q9-ha8"/>
+                            <constraint firstItem="pRL-EX-lOR" firstAttribute="top" secondItem="Lg0-TV-5XJ" secondAttribute="bottom" constant="20" id="UfK-Bk-OBP"/>
+                            <constraint firstItem="ytm-e7-Ps6" firstAttribute="leading" secondItem="fTO-U7-G1N" secondAttribute="leading" constant="20" id="dvG-JT-Zbp"/>
+                            <constraint firstItem="Lg0-TV-5XJ" firstAttribute="leading" secondItem="fTO-U7-G1N" secondAttribute="leading" constant="20" id="syq-Tu-dzQ"/>
+                            <constraint firstItem="pRL-EX-lOR" firstAttribute="leading" secondItem="fTO-U7-G1N" secondAttribute="leading" constant="20" id="zn4-ph-yoY"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Exceptions" id="X4u-hB-hnX">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="Tjn-9V-PXC"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Etc-np-6cE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2674" y="8"/>
         </scene>
     </scenes>
     <resources>

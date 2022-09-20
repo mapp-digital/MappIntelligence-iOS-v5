@@ -29,6 +29,7 @@ The MappIntelligence SDK allows you to track user activities, screen flow and me
 
 The *Swift Package Manager* is a tool for automating the distribution of Swift code and is integrated into the swift compiler. It is in early development, but Alamofire does support its use on supported platforms.
 
+
 Once you have your Swift package set up, adding MappIntelligence as a dependency is as easy as adding it to the dependencies value of your Package.swift.
 
 dependencies: [

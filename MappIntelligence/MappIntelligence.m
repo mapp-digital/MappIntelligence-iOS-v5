@@ -119,6 +119,7 @@ static MappIntelligenceDefaultConfig *config = nil;
   [config setRequestPerQueue:numberOfRequestInQueue];
   [config setSendAppVersionToEveryRequest:NO];
   [config setBackgroundSendout:NO];
+  [config setUserMatching:NO];
   [config logConfig];
 
   tracker = [MIDefaultTracker sharedInstance];
@@ -146,6 +147,9 @@ static MappIntelligenceDefaultConfig *config = nil;
 }
 
 - (void)initTimerForRequestsSendout {
+    if(_timerForSendRequests) {
+        return;
+    }
     _timerForSendRequests = [NSTimer scheduledTimerWithTimeInterval: [config requestsInterval] repeats:YES block:^(NSTimer * _Nonnull timer) {
         
         BOOL isAppActive = YES;
@@ -235,6 +239,14 @@ static MappIntelligenceDefaultConfig *config = nil;
 
 - (BOOL)enableBackgroundSendout {
     return config.backgroundSendout;
+}
+
+- (void)setEnableUserMatching:(BOOL)enableUserMatching {
+    [config setUserMatching:enableUserMatching];
+}
+
+- (BOOL)enableUserMatching {
+    return config.userMatching;
 }
 
 - (NSInteger) requestPerQueue {

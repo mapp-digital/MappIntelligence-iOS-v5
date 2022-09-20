@@ -34,6 +34,7 @@ class ActionViewController: UIViewController {
         userCategories.country = "France"
         userCategories.customerId = "CustomerID"
         userCategories.gender = .unknown
+        userCategories.emailReceiverId = "testd598378532"
         
         //sessionproperties
         let sessionParameters = MISessionParameters(parameters: [10: "sessionParam1"])
