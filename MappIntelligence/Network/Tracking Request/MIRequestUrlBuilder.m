@@ -152,6 +152,8 @@
                                           initWithFormat:@"%@",
                                                          properties
                                                              .userAgent]]];
+    [parametrs addObject:[NSURLQueryItem queryItemWithName:@"cs801" value:[[MIDefaultTracker sharedInstance] version]]];
+    [parametrs addObject:[NSURLQueryItem queryItemWithName:@"cs802" value:[[MIDefaultTracker sharedInstance] platform]]];
 
   NSString *language = [[properties locale] objectForKey:NSLocaleLanguageCode];
   if (language) {

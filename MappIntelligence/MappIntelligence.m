@@ -123,6 +123,7 @@ static MappIntelligenceDefaultConfig *config = nil;
   [config logConfig];
 
   tracker = [MIDefaultTracker sharedInstance];
+  [tracker setupVersion:[MappIntelligence version] andPlatform:@"iOS"];
   [tracker initializeTracking];
     [[MIExceptionTracker sharedInstance] setTypeOfExceptionsToTrack:noneOfExceptionTypes];
     exceptionTracker = [MIExceptionTracker sharedInstance];

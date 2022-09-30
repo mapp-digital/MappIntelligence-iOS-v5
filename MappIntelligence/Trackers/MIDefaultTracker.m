@@ -162,6 +162,11 @@ static NSString *userAgent;
                                    andWithId:_config.MappIntelligenceId];
 }
 
+- (void)setupVersion:(NSString *)version andPlatform:(NSString *)platform {
+    _version = version;
+    _platform = platform;
+}
+
 - (BOOL)isBackgroundSendoutEnabled {
     return [[MappIntelligence shared] enableBackgroundSendout];
 }

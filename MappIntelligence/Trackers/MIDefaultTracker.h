@@ -21,6 +21,8 @@
 @interface MIDefaultTracker : NSObject
 @property BOOL isReady;
 @property BOOL anonymousTracking;
+@property NSString* version;
+@property NSString* platform;
 @property (nonatomic) NSArray<NSString*> * _Nullable suppressedParameters;
 
 + (nullable instancetype)sharedInstance;
@@ -29,6 +31,7 @@
 - (NSString*_Nonnull)generateUserAgent;
 - (BOOL)isBackgroundSendoutEnabled;
 - (BOOL)isUserMatchingEnabled;
+- (void)setupVersion: (NSString *_Nonnull) version andPlatform: (NSString *_Nonnull) platform;
 #if !TARGET_OS_WATCH
 - (NSError*_Nullable)track:(UIViewController *_Nonnull)controller;
 - (void)updateFirstSessionWith: (UIApplicationState) state;
