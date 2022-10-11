@@ -24,6 +24,7 @@ var window: UIWindow?
         let dict = NSDictionary(contentsOfFile: path) as Dictionary?
         let array = [(dict?["track_ids" as NSObject]?.intValue) ?? 0]
         let domain = dict?["domain" as NSObject]
+        MappIntelligence.shared()?.anonymousTracking = true
         MappIntelligence.shared()?.initWithConfiguration(array, onTrackdomain: domain as! String)
  //       MappIntelligence.shared()?.initWithConfiguration(array, onTrackdomain: domain as! String, andWithEverID: "")
         MappIntelligence.shared()?.logLevel = .all

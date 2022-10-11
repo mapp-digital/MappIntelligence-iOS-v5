@@ -123,7 +123,10 @@ static NSString *userAgent;
 - (instancetype)init {
   if (!sharedTracker) {
     sharedTracker = [super init];
-    everID = [sharedTracker generateEverId];
+      dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.2 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+          everID = [sharedTracker generateEverId];
+      });
+    //everID = [sharedTracker generateEverId];
     _config = [[MIConfiguration alloc] init];
     _logger = [MappIntelligenceLogger shared];
     _defaults = [NSUserDefaults standardUserDefaults];
@@ -206,8 +209,9 @@ static NSString *userAgent;
 }
 
 - (NSString *)generateEverId {
-
-
+    if (_anonymousTracking) {
+        return @"";
+    }
   NSString *tmpEverId = [[MIDefaultTracker sharedDefaults] stringForKey:everId];
   // https://nshipster.com/nil/ read for more explanation
   if (tmpEverId != nil) {
@@ -220,12 +224,19 @@ static NSString *userAgent;
 }
 
 - (void)setEverIDFromString:(NSString *_Nonnull)everIDString {
+    if (_anonymousTracking) {
+        [[MappIntelligenceLogger shared] logObj:@"It is not possible to set ever ID while anonymous tracking is turn on." forDescription:kMappIntelligenceLogLevelDescriptionDebug];
+        return;
+    }
     everID = everIDString;
     [[MIDefaultTracker sharedDefaults] setValue:everIDString forKey:everId];
     [[MIDefaultTracker sharedDefaults] synchronize];
 }
 
 - (NSString *)getNewEverID {
+    if (_anonymousTracking) {
+        @throw @"Cannot generate everID while anonymous tracking is turn on.";
+    }
   NSString *tmpEverId = [[NSString alloc]
       initWithFormat:@"6%010.0f%08u",
                      [[[NSDate alloc] init] timeIntervalSince1970],
