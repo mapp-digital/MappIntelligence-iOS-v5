@@ -243,6 +243,11 @@ static MappIntelligenceDefaultConfig *config = nil;
 }
 
 - (void)setEnableUserMatching:(BOOL)enableUserMatching {
+    if ([[MIDefaultTracker sharedInstance] anonymousTracking]) {
+        [config setUserMatching:NO];
+        @throw @"User matching is not possible while anonymous tracking is turn on.";
+        return;
+    }
     [config setUserMatching:enableUserMatching];
 }
 

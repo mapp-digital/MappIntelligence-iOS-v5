@@ -26,7 +26,7 @@ var window: UIWindow?
         let domain = dict?["domain" as NSObject]
         MappIntelligence.shared()?.anonymousTracking = true
         MappIntelligence.shared()?.initWithConfiguration(array, onTrackdomain: domain as! String)
- //       MappIntelligence.shared()?.initWithConfiguration(array, onTrackdomain: domain as! String, andWithEverID: "")
+ //       MappIntelligence.shared()?.initWithConfiguration(array, onTrackdomain: domain as! String, andWithEverID: "43657756353521")
         MappIntelligence.shared()?.logLevel = .all
         MappIntelligence.shared()?.batchSupportEnabled = false
         MappIntelligence.shared()?.batchSupportSize = 150
@@ -35,7 +35,7 @@ var window: UIWindow?
         MappIntelligence.shared()?.shouldMigrate = true
         MappIntelligence.shared()?.sendAppVersionInEveryRequest = true
         MappIntelligence.shared()?.enableBackgroundSendout = true
-        MappIntelligence.shared()?.enableUserMatching = true
+        //MappIntelligence.shared()?.enableUserMatching = true
         MappIntelligence.shared()?.enableCrashTracking(.allExceptionTypes)
         // Override point for customization after application launch.
         return true
