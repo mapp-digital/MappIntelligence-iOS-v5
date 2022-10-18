@@ -226,7 +226,6 @@ static NSString *userAgent;
 - (void)setEverIDFromString:(NSString *_Nonnull)everIDString {
     if (_anonymousTracking) {
         [[MappIntelligenceLogger shared] logObj:@"It is not possible to set ever ID while anonymous tracking is turn on." forDescription:kMappIntelligenceLogLevelDescriptionDebug];
-        @throw @"It is not possible to set ever ID while anonymous tracking is turn on.";
         return;
     }
     everID = everIDString;
