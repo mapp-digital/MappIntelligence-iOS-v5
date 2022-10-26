@@ -245,7 +245,7 @@ static MappIntelligenceDefaultConfig *config = nil;
 - (void)setEnableUserMatching:(BOOL)enableUserMatching {
     if ([[MIDefaultTracker sharedInstance] anonymousTracking]) {
         [config setUserMatching:NO];
-        [[MappIntelligenceLogger shared] logObj:@"It is not possible to set ever ID while anonymous tracking is turn on." forDescription:kMappIntelligenceLogLevelDescriptionDebug];
+        [[MappIntelligenceLogger shared] logObj:@"It is not possible to do user matching while anonymous tracking is turn on." forDescription:kMappIntelligenceLogLevelDescriptionDebug];
         return;
     }
     [config setUserMatching:enableUserMatching];
@@ -280,6 +280,7 @@ static MappIntelligenceDefaultConfig *config = nil;
 - (void)reset {
     sharedInstance = NULL;
     sharedInstance = [self init];
+    [[MIDefaultTracker sharedInstance] setAnonymousTracking:NO];
     [_logger logObj:@"Reset Mapp Intelligence Instance."
         forDescription:kMappIntelligenceLogLevelDescriptionDebug];
     [config reset];
