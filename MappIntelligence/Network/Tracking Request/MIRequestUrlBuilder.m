@@ -127,12 +127,14 @@
                                                1000)]]];
   [parametrs addObject:[NSURLQueryItem queryItemWithName:@"eid"
                                                    value:properties.everId]];
-    if ([[NSUserDefaults standardUserDefaults] objectForKey:EMAIL_RECEIVER_ID]) {
-        [parametrs addObject:[NSURLQueryItem queryItemWithName:@"uc701"
-                                                         value:[[NSUserDefaults standardUserDefaults] objectForKey:EMAIL_RECEIVER_ID]]];
-    } else if([[NSUserDefaults standardUserDefaults] objectForKey:DMC_USER_ID] && [[MIDefaultTracker sharedInstance] isUserMatchingEnabled]) {
-        [parametrs addObject:[NSURLQueryItem queryItemWithName:@"uc701"
-                                                         value:[[NSUserDefaults standardUserDefaults] objectForKey:DMC_USER_ID]]];
+    if(![[MIDefaultTracker sharedInstance] anonymousTracking]) {
+        if ([[NSUserDefaults standardUserDefaults] objectForKey:EMAIL_RECEIVER_ID]) {
+            [parametrs addObject:[NSURLQueryItem queryItemWithName:@"uc701"
+                                                             value:[[NSUserDefaults standardUserDefaults] objectForKey:EMAIL_RECEIVER_ID]]];
+        } else if([[NSUserDefaults standardUserDefaults] objectForKey:DMC_USER_ID] && [[MIDefaultTracker sharedInstance] isUserMatchingEnabled]) {
+            [parametrs addObject:[NSURLQueryItem queryItemWithName:@"uc701"
+                                                             value:[[NSUserDefaults standardUserDefaults] objectForKey:DMC_USER_ID]]];
+        }
     }
   [parametrs
       addObject:[NSURLQueryItem
