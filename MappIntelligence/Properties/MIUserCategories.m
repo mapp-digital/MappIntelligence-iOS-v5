@@ -124,7 +124,9 @@
     }
     if (_emailReceiverId) {
         items = [self removeObjectWith:@"uc701" from:items];
-        [items addObject:[[NSURLQueryItem alloc] initWithName:@"uc701" value:_emailReceiverId]];
+        if (![[MIDefaultTracker sharedInstance] anonymousTracking]) {
+            [items addObject:[[NSURLQueryItem alloc] initWithName:@"uc701" value:_emailReceiverId]];
+        }
     }
     if (_firstName) {
         items = [self removeObjectWith:@"uc703" from:items];
