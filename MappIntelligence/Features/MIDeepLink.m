@@ -65,6 +65,11 @@ NSString *const UrlErrorDescriptionInvalid = @"Url is invalid";
     if (n > 0) {
         return YES;
     } else {
+        NSRegularExpression *regexp = [[NSRegularExpression alloc] initWithPattern:@"^wt_cc" options:0 error:nil];
+        long n = [regexp numberOfMatchesInString:key options:0 range:NSMakeRange(0, key.length)];
+        if (n > 0) {
+            return YES;
+        }
         return NO;
     }
 }
