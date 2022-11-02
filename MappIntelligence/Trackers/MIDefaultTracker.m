@@ -223,6 +223,14 @@ static NSString *userAgent;
   return @"";
 }
 
+- (void)setAnonymousTracking:(BOOL)anonymousTracking {
+    _anonymousTracking = anonymousTracking;
+    if (!anonymousTracking) {
+        [[MIDefaultTracker sharedDefaults] removeObjectForKey:everId];
+    }
+    
+}
+
 - (void)setEverIDFromString:(NSString *_Nonnull)everIDString {
     if (_anonymousTracking) {
         [[MappIntelligenceLogger shared] logObj:@"It is not possible to set ever ID while anonymous tracking is turn on." forDescription:kMappIntelligenceLogLevelDescriptionDebug];
