@@ -42,10 +42,15 @@ class ConfigViewController: UIViewController {
         let dict = NSDictionary(contentsOfFile: path) as Dictionary?
         let array = [(dict?["track_ids" as NSObject]?.intValue) ?? 0]
         let domain = dict?["domain" as NSObject]
-        MappIntelligence.shared()?.anonymousTracking = anonymSwitch.isOn;
+        //MappIntelligence.shared()?.anonymousTracking = anonymSwitch.isOn;
         MappIntelligence.shared()?.initWithConfiguration(array, onTrackdomain: domain as! String)
         MappIntelligence.shared()?.requestInterval = 1 * 60
         MappIntelligence.shared()?.logLevel = .all
+        if let anonymousTracking = MappIntelligence.shared()?.anonymousTracking, anonymousTracking == true {
+            anonymSwitch.isOn = true
+        } else {
+            anonymSwitch.isOn = false
+        }
     }
     
     @IBAction func toggleAnonimousTracking(_ sender: UISwitch) {
@@ -54,6 +59,7 @@ class ConfigViewController: UIViewController {
         } else {
             MappIntelligence.shared()?.anonymousTracking = false
         }
+        EverIDLabel.text = "Ever ID: " + (MappIntelligence.shared()?.getEverId() ?? "there is no EverID")
     }
     
     @IBAction func initwithEverID(_ sender: Any) {
