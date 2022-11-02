@@ -51,6 +51,7 @@ class ConfigViewController: UIViewController {
         } else {
             anonymSwitch.isOn = false
         }
+        EverIDLabel.text = "Ever ID: " + (MappIntelligence.shared()?.getEverId() ?? "there is no EverID")
     }
     
     @IBAction func toggleAnonimousTracking(_ sender: UISwitch) {
