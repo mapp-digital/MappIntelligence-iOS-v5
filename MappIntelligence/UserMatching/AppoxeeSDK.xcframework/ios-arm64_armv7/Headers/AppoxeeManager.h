@@ -52,7 +52,9 @@
 - (void)appoxeeInteractivePushButton2PressedWithCategory:(nonnull NSString*)category andPayload:(nonnull NSDictionary*)pushPayload DEPRECATED_MSG_ATTRIBUTE("No calls will be forwarded to this method. Use appoxeeManager:handledRemoteNotification:andIdentifer: instead.");
 - (void)AppoxeeDelegateReciveAppoxeeClosed DEPRECATED_MSG_ATTRIBUTE("No calls will be forwarded to this method.");
 - (void)AppoxeeDelegateReciveAppoxeeRequestFocus DEPRECATED_MSG_ATTRIBUTE("No calls will be forwarded to this method.");
+#if !TARGET_OS_TV && !TARGET_OS_WATCH
 - (BOOL)shouldAppoxeeRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation DEPRECATED_MSG_ATTRIBUTE("No calls will be forwarded to this method.");
+#endif
 
 @end
 
@@ -344,7 +346,9 @@
 - (void)SplashScreen DEPRECATED_ATTRIBUTE;
 - (void)optOutBadge:(BOOL)flag DEPRECATED_ATTRIBUTE;
 - (void)optOutSound:(BOOL)flag DEPRECATED_ATTRIBUTE;
+#if !TARGET_OS_TV && !TARGET_OS_WATCH
 - (UIRemoteNotificationType)getNotificationStatus DEPRECATED_ATTRIBUTE;
+#endif
 - (void)setQuietTime:(nullable NSString *)startTimeParam endTime:(nullable NSString *)endTimeParam DEPRECATED_ATTRIBUTE;
 - (nullable NSString *) getSplashScreen DEPRECATED_ATTRIBUTE;
 - (nullable NSString *) getPoweredByImageLink DEPRECATED_ATTRIBUTE;
@@ -373,9 +377,11 @@
 - (BOOL)showFeedbackViewController DEPRECATED_ATTRIBUTE;
 - (void)showMoreAppsOnInbox:(BOOL)show DEPRECATED_ATTRIBUTE;
 - (void)showFeedbackOnInbox:(BOOL)show DEPRECATED_ATTRIBUTE;
+#if !TARGET_OS_WATCH
 - (nullable UIViewController *)getAppoxeeViewController DEPRECATED_ATTRIBUTE;
 - (nullable UIViewController *)getAppoxeeMoreAppsViewController DEPRECATED_ATTRIBUTE;
 - (nullable UIViewController *)getAppoxeeFeedbackViewController DEPRECATED_ATTRIBUTE;
+#endif
 - (void)recalculateUnreadMessagesBadge DEPRECATED_ATTRIBUTE;
 - (void)setUsingCustomInbox:(BOOL)isCustom DEPRECATED_ATTRIBUTE;
 - (BOOL)getUsingCustomInboxFlag DEPRECATED_ATTRIBUTE;

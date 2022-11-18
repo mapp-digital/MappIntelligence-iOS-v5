@@ -17,15 +17,18 @@ typedef NS_ENUM(NSInteger, APXInterfaceServiceOperation) {
 };
 
 typedef void(^APXInterfaceServiceCompletionBlock)(NSError * _Nullable error, id _Nullable data);
+#if !TARGET_OS_WATCH
 typedef void(^APXInterfaceServiceFetchBlock)(UIBackgroundFetchResult fetchResult);
+#endif
 
 @class APXInterfaceService;
 
 @protocol APXInterfaceServiceFetchDelegate <NSObject>
 
 @required;
+#if !TARGET_OS_WATCH
 - (void)interfaceService:(nonnull APXInterfaceService *)service performFetchWithCompletionHandler:(nullable APXInterfaceServiceFetchBlock)fetchBlock withCompletionBlock:(nullable APXInterfaceServiceCompletionBlock)completionBlock;
-
+#endif
 @end
 
 @interface APXInterfaceService : NSObject
@@ -40,9 +43,9 @@ typedef void(^APXInterfaceServiceFetchBlock)(UIBackgroundFetchResult fetchResult
 @property (nonatomic, readonly) BOOL isSilentPushAvailable;
 
 - (void)performOperation:(APXInterfaceServiceOperation)operation withIdentifier:(nullable NSString *)identifier andData:(nullable NSDictionary *)args andCompletionBlock:(nullable APXInterfaceServiceCompletionBlock)completionBlock;
-
+#if !TARGET_OS_WATCH
 - (void)performFetchWithCompletionHandler:(nullable APXInterfaceServiceFetchBlock)fetchBlock andCompletionBlock:(nullable APXInterfaceServiceCompletionBlock)completionBlock;
-
+#endif
 + (NSTimeInterval)timestamp;
 + (nonnull NSString *)stringTimestamp;
 

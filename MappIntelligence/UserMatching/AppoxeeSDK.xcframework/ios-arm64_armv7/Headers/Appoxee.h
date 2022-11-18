@@ -319,7 +319,9 @@ typedef void(^AppoxeeCompletionHandler)(NSError * _Nullable appoxeeError, id _Nu
  @param completionHandler The OS completion handler block. Must be called (by Appoxee / by developer) when work is completed. if param is nil, the developer will need to call it on he's own. If provided, Appoxee will call it when it completes its work, unless the silent-push did not originate at Appoxee. It is advised to wait for the completionBlock parameters, and act according to their data.
  @param completionBlock A completion block which will be called when Appoxee completes it's work, enabling the developer to call completionHandler, in case fetchHandler is nil.
  */
+#if !TARGET_OS_WATCH
 - (void)didReceiveRemoteNotification:(nullable NSDictionary *)userInfo fetchCompletionHandler:(nullable void (^)(UIBackgroundFetchResult))completionHandler andNotifyCompletionWithBlock:(nullable AppoxeeCompletionHandler)completionBlock;
+#endif
 
 #pragma mark - Background fetch
 
@@ -356,8 +358,9 @@ typedef void(^AppoxeeCompletionHandler)(NSError * _Nullable appoxeeError, id _Nu
  @param fetchHandler The OS fetch handler block. must be called (by Appoxee / by developer) when work is completed. if nil, the developer will need to call it, while waiting for Appoxee's completionBlock. If provided, then Appoxee will call the fetchHandler when done.
  @param completionBlock A completion block which will be called when Appoxee completes it's work, enabling the developer to be notified, in case fetchHandler is nil, and to call the fetchHandler.
  */
+#if !TARGET_OS_WATCH
 - (void)performFetchWithCompletionHandler:(nullable void (^)(UIBackgroundFetchResult))fetchHandler andNotifyCompletionWithBlock:(nullable AppoxeeCompletionHandler)completionBlock;
-
+#endif
 #pragma mark - Push Handling ios10
 
 /**
@@ -380,7 +383,9 @@ typedef void(^AppoxeeCompletionHandler)(NSError * _Nullable appoxeeError, id _Nu
  @param response                 The user’s response to the notification. This object contains the original notification and the identifier string for the selected action. If the action allowed the user to provide a textual response, this object is an instance of the UNTextInputNotificationResponse class.
  @param appoxeeCompletionHandler The block to execute when Appoxee finished processing the notification. The block has no return value or parameters.
  */
+#if !TARGET_OS_TV
 - (void)userNotificationCenter:(nonnull UNUserNotificationCenter *)center didReceiveNotificationResponse:(nonnull UNNotificationResponse *)response withAppoxeeCompletionHandler:(nullable void (^)())appoxeeCompletionHandler __IOS_AVAILABLE(10.0);
+#endif
 
 #pragma mark - Device API
 

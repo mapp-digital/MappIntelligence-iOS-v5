@@ -6,7 +6,7 @@
 	<array>
 		<dict>
 			<key>HeadersPath</key>
-			<string>Headers</string>
+			<string>HeadersSim</string>
 			<key>LibraryIdentifier</key>
 			<string>ios-arm64_i386_x86_64-simulator</string>
 			<key>LibraryPath</key>

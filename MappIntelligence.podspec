@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
     s.watchos.deployment_target = '4.0'
     s.tvos.deployment_target = '11.0'
     s.source   = { :git => 'https://github.com/mapp-digital/MappIntelligence-iOS-v5.git', :tag => s.version }
-    s.exclude_files = 'MappIntelligence/include/**'
+    s.exclude_files = 'MappIntelligence/include/**', 'MappIntelligence/UserMatching/AppoxeeSDK.xcframework/ios-arm64_i386_x86_64-simulator/HeadersSim/**'
     s.source_files = "MappIntelligence/**/*.{h,m}"
     s.watchos.source_files = "MappIntelligenceWatchOS/**/*.{h,m}"
     s.ios.source_files = "MappIntelligenceiOS/**/*.{h,m}"
@@ -20,4 +20,6 @@ Pod::Spec.new do |s|
     s.frameworks         = 'Foundation', 'UIKit'
     s.ios.frameworks     = 'AVFoundation', 'AVKit', 'CoreTelephony', 'WebKit'
     s.watchos.frameworks = 'WatchKit'
+    
+    s.ios.vendored_frameworks = 'MappIntelligence/UserMatching/AppoxeeSDK.xcframework'
 end

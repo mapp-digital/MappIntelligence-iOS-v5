@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -21,7 +21,7 @@
 		8FA78F0C25BF18BE00CC166A /* WebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA78F0B25BF18BE00CC166A /* WebViewViewController.swift */; };
 		A32AEA41242B605B00BC7B46 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A32AEA3F242B605B00BC7B46 /* Interface.storyboard */; };
 		A32AEA43242B605F00BC7B46 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A32AEA42242B605F00BC7B46 /* Assets.xcassets */; };
-		A32AEA4A242B605F00BC7B46 /* MappIntelligenceWatchOSDemoApp Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A32AEA49242B605F00BC7B46 /* MappIntelligenceWatchOSDemoApp Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A32AEA4A242B605F00BC7B46 /* MappIntelligenceWatchOSDemoApp Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = A32AEA49242B605F00BC7B46 /* MappIntelligenceWatchOSDemoApp Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A32AEA4F242B605F00BC7B46 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32AEA4E242B605F00BC7B46 /* InterfaceController.swift */; };
 		A32AEA51242B605F00BC7B46 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32AEA50242B605F00BC7B46 /* ExtensionDelegate.swift */; };
 		A32AEA53242B605F00BC7B46 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32AEA52242B605F00BC7B46 /* NotificationController.swift */; };
@@ -42,7 +42,6 @@
 		A3ADC97E26D94057007504FF /* ExceptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3ADC97D26D94057007504FF /* ExceptionsViewController.swift */; };
 		A3CA0A3C28A3E04000ACC335 /* AppoxeeConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = A3CA0A3B28A3E04000ACC335 /* AppoxeeConfig.plist */; };
 		A3CA0A3D28A3E04600ACC335 /* AppoxeeConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = A3CA0A3B28A3E04000ACC335 /* AppoxeeConfig.plist */; };
-		A3CA0A4728A3E4C400ACC335 /* AppoxeeSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3CA0A4628A3E4C400ACC335 /* AppoxeeSDK.xcframework */; };
 		BCA1739223D5D25C00B31430 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA1739123D5D25C00B31430 /* AppDelegate.swift */; };
 		BCA1739423D5D25C00B31430 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA1739323D5D25C00B31430 /* SceneDelegate.swift */; };
 		BCA1739923D5D25C00B31430 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCA1739723D5D25C00B31430 /* Main.storyboard */; };
@@ -68,15 +67,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		A32AEA5E242B606000BC7B46 /* Embed App Extensions */ = {
+		A32AEA5E242B606000BC7B46 /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				A32AEA4A242B605F00BC7B46 /* MappIntelligenceWatchOSDemoApp Extension.appex in Embed App Extensions */,
+				A32AEA4A242B605F00BC7B46 /* MappIntelligenceWatchOSDemoApp Extension.appex in Embed Foundation Extensions */,
 			);
-			name = "Embed App Extensions";
+			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A32AEA62242B606000BC7B46 /* Embed Watch Content */ = {
@@ -172,7 +171,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8F20A10E25C2CF460006CB93 /* libMappIntelligenceiOS.a in Frameworks */,
-				A3CA0A4728A3E4C400ACC335 /* AppoxeeSDK.xcframework in Frameworks */,
 				8F3F6813257EE3D5005F8AFC /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -305,7 +303,7 @@
 			buildConfigurationList = A32AEA5F242B606000BC7B46 /* Build configuration list for PBXNativeTarget "MappIntelligenceWatchOSDemoApp" */;
 			buildPhases = (
 				A32AEA3B242B605B00BC7B46 /* Resources */,
-				A32AEA5E242B606000BC7B46 /* Embed App Extensions */,
+				A32AEA5E242B606000BC7B46 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
@@ -377,7 +375,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1130;
-				LastUpgradeCheck = 1210;
+				LastUpgradeCheck = 1400;
 				ORGANIZATIONNAME = "Mapp Digital US, LLC";
 				TargetAttributes = {
 					A32AEA3C242B605B00BC7B46 = {
@@ -833,7 +831,7 @@
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				INFOPLIST_FILE = MappIntelligenceDemoApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -861,7 +859,7 @@
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				INFOPLIST_FILE = MappIntelligenceDemoApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

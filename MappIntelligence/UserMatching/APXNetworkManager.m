@@ -5,11 +5,11 @@
 //  Created by Raz Elkayam on 3/2/15.
 //  Copyright (c) 2015 Appoxee. All rights reserved.
 //
-
+#if !TARGET_OS_WATCH && !TARGET_OS_TV
 #import "APXNetworkManager.h"
 #import "APXNetworkMetadata.h"
 #import "APXInappLogger.h"
-#import "AppoxeeSDK.h"
+#import "AppoxeeSDK.xcframework/ios-arm64_armv7/Headers/AppoxeeSDK.h"
 
 #define KEY_CONFIG_APPOXEE_SDK @"sdk"
 #define KEY_CONFIG_APPOXEE_JAMIE_URL @"jamie_url"
@@ -473,3 +473,4 @@
 }
 
 @end
+#endif

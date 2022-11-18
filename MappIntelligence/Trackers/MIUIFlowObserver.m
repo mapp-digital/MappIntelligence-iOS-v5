@@ -61,7 +61,7 @@
 - (void)getDeviceInfoForParameters:(NSArray *)parameters {
 #define GET @"get"
 #define DMC_USER_ID @"dmcUserId"
-#if !TARGET_OS_WATCH
+#if TARGET_OS_IOS
     RequestBuilder *builder = [RequestBuilder builder];
     [builder addRequestKeyedValues:@{GET : parameters} forRequestType:kAPXRequestKeyTypeGetCustomFields];
     NSData *serverData = [builder buildRequestAsJsonData];
