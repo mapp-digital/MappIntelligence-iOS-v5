@@ -183,6 +183,7 @@
 		8FF7765725C2F767005CEE9B /* MIParams.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8FD2C1F6258C0CA8002A9ED4 /* MIParams.h */; };
 		8FF7765825C2F767005CEE9B /* MIParamType.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8FD2C20A258C0CCA002A9ED4 /* MIParamType.h */; };
 		8FFDEA3B254225D800E069F7 /* UserPropertiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FFDEA3A254225D800E069F7 /* UserPropertiesTests.m */; };
+		A3144048292ED2AD006ECC85 /* AppoxeeSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3187BAC287429F600653D05 /* AppoxeeSDK.xcframework */; };
 		A3187BA2287429EC00653D05 /* APXRequestBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = A3187B98287429EC00653D05 /* APXRequestBuilder.m */; };
 		A3187BA3287429EC00653D05 /* APXNetworkManager.h in Headers */ = {isa = PBXBuildFile; fileRef = A3187B99287429EC00653D05 /* APXNetworkManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A3187BA4287429EC00653D05 /* APXNetworkMetadata.h in Headers */ = {isa = PBXBuildFile; fileRef = A3187B9A287429EC00653D05 /* APXNetworkMetadata.h */; };
@@ -193,7 +194,6 @@
 		A3187BA9287429EC00653D05 /* APXRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = A3187B9F287429EC00653D05 /* APXRequest.m */; };
 		A3187BAA287429EC00653D05 /* APXRequestBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = A3187BA0287429EC00653D05 /* APXRequestBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A3187BAB287429EC00653D05 /* APXNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A3187BA1287429EC00653D05 /* APXNetworkManager.m */; };
-		A3187BAD287429F600653D05 /* AppoxeeSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3187BAC287429F600653D05 /* AppoxeeSDK.xcframework */; };
 		A31C6F1D24D9A0F300166585 /* RequestBatchSupportUrlBuilderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A31C6F1C24D9A0F300166585 /* RequestBatchSupportUrlBuilderTests.m */; };
 		A31C6F2024D9A9B200166585 /* DatabaseManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A31C6F1F24D9A9B200166585 /* DatabaseManagerTests.m */; };
 		A31D7A4F243CC0F200386A1C /* TrackerRequestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A31D7A4E243CC0F200386A1C /* TrackerRequestTests.m */; };
@@ -374,10 +374,6 @@
 		A3955B55287DAD3100D4FA90 /* APXRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = A3187B9F287429EC00653D05 /* APXRequest.m */; };
 		A3955B56287DAD3100D4FA90 /* APXRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = A3187B9F287429EC00653D05 /* APXRequest.m */; };
 		A3955B57287DAD3200D4FA90 /* APXRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = A3187B9F287429EC00653D05 /* APXRequest.m */; };
-		A3955B58287DAD5700D4FA90 /* AppoxeeSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3187BAC287429F600653D05 /* AppoxeeSDK.xcframework */; };
-		A3955B5A287DAD5900D4FA90 /* AppoxeeSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3187BAC287429F600653D05 /* AppoxeeSDK.xcframework */; };
-		A3955B5B287DAD5A00D4FA90 /* AppoxeeSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3187BAC287429F600653D05 /* AppoxeeSDK.xcframework */; };
-		A3955B5C287DAD5B00D4FA90 /* AppoxeeSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3187BAC287429F600653D05 /* AppoxeeSDK.xcframework */; };
 		A3A72557243DBF1000671DB2 /* PropertiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3A72556243DBF1000671DB2 /* PropertiesTests.m */; };
 		A3A72559243DC22C00671DB2 /* RequestTrackerBuilderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3A72558243DC22C00671DB2 /* RequestTrackerBuilderTests.m */; };
 		A3A7255B243DEA0500671DB2 /* RequestUrlBuilderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3A7255A243DEA0500671DB2 /* RequestUrlBuilderTests.m */; };
@@ -762,7 +758,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A3955B5C287DAD5B00D4FA90 /* AppoxeeSDK.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -778,7 +773,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A3F08BBB28D9DC19004FF49C /* WebKit.framework in Frameworks */,
-				A3187BAD287429F600653D05 /* AppoxeeSDK.xcframework in Frameworks */,
+				A3144048292ED2AD006ECC85 /* AppoxeeSDK.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -796,7 +791,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A33B36EB24602482005EA9AE /* libMappIntelligenceWatchOS.a in Frameworks */,
-				A3955B5A287DAD5900D4FA90 /* AppoxeeSDK.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -805,7 +799,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A33B36FB246024A6005EA9AE /* libMappIntelligencetvOS.a in Frameworks */,
-				A3955B5B287DAD5A00D4FA90 /* AppoxeeSDK.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -821,7 +814,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8F20A1DD25C2D20D0006CB93 /* libMappIntelligenceiOS.a in Frameworks */,
-				A3955B58287DAD5700D4FA90 /* AppoxeeSDK.xcframework in Frameworks */,
 				A33B3700246047C8005EA9AE /* libz.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
