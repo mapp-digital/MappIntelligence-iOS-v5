@@ -187,6 +187,12 @@
 		A314404C292F71CF006ECC85 /* AppoxeeSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3187BAC287429F600653D05 /* AppoxeeSDK.xcframework */; };
 		A314404D292F71D0006ECC85 /* AppoxeeSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3187BAC287429F600653D05 /* AppoxeeSDK.xcframework */; };
 		A314404E292F71D1006ECC85 /* AppoxeeSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3187BAC287429F600653D05 /* AppoxeeSDK.xcframework */; };
+		A314404F292F72DA006ECC85 /* APXInappLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = A3187B9E287429EC00653D05 /* APXInappLogger.h */; };
+		A3144050292F72DA006ECC85 /* APXInappLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = A3187B9E287429EC00653D05 /* APXInappLogger.h */; };
+		A3144051292F72DB006ECC85 /* APXInappLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = A3187B9E287429EC00653D05 /* APXInappLogger.h */; };
+		A3144052292F72FC006ECC85 /* APXNetworkMetadata.h in Headers */ = {isa = PBXBuildFile; fileRef = A3187B9A287429EC00653D05 /* APXNetworkMetadata.h */; };
+		A3144053292F72FC006ECC85 /* APXNetworkMetadata.h in Headers */ = {isa = PBXBuildFile; fileRef = A3187B9A287429EC00653D05 /* APXNetworkMetadata.h */; };
+		A3144054292F72FD006ECC85 /* APXNetworkMetadata.h in Headers */ = {isa = PBXBuildFile; fileRef = A3187B9A287429EC00653D05 /* APXNetworkMetadata.h */; };
 		A3187BA2287429EC00653D05 /* APXRequestBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = A3187B98287429EC00653D05 /* APXRequestBuilder.m */; };
 		A3187BA3287429EC00653D05 /* APXNetworkManager.h in Headers */ = {isa = PBXBuildFile; fileRef = A3187B99287429EC00653D05 /* APXNetworkManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A3187BA4287429EC00653D05 /* APXNetworkMetadata.h in Headers */ = {isa = PBXBuildFile; fileRef = A3187B9A287429EC00653D05 /* APXNetworkMetadata.h */; };
@@ -345,9 +351,6 @@
 		A3861FF627DB47B300F3F27C /* MIFormParameters.m in Headers */ = {isa = PBXBuildFile; fileRef = A345976027A1878A0038FE3F /* MIFormParameters.m */; };
 		A3861FF727DB4DFC00F3F27C /* MIDefaultTracker.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BCBE5C0723F1A688002125C1 /* MIDefaultTracker.h */; };
 		A3861FF827DB4E3500F3F27C /* MIDefaultTracker.h in Copy Files */ = {isa = PBXBuildFile; fileRef = BCBE5C0723F1A688002125C1 /* MIDefaultTracker.h */; };
-		A3955B37287DA98200D4FA90 /* APXInappLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = A3187B9E287429EC00653D05 /* APXInappLogger.h */; };
-		A3955B38287DA98200D4FA90 /* APXInappLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = A3187B9E287429EC00653D05 /* APXInappLogger.h */; };
-		A3955B39287DA98300D4FA90 /* APXInappLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = A3187B9E287429EC00653D05 /* APXInappLogger.h */; };
 		A3955B3A287DA98F00D4FA90 /* APXNetworkManager.h in Headers */ = {isa = PBXBuildFile; fileRef = A3187B99287429EC00653D05 /* APXNetworkManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A3955B3B287DA98F00D4FA90 /* APXNetworkManager.h in Headers */ = {isa = PBXBuildFile; fileRef = A3187B99287429EC00653D05 /* APXNetworkManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A3955B3C287DA99000D4FA90 /* APXNetworkManager.h in Headers */ = {isa = PBXBuildFile; fileRef = A3187B99287429EC00653D05 /* APXNetworkManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1298,6 +1301,7 @@
 				A345978927A986940038FE3F /* MIFormField.h in Headers */,
 				8FCFD60C25B18FAA00EE8358 /* MIParamType.h in Headers */,
 				A3955B3E287DA9B200D4FA90 /* APXRequestBuilder.h in Headers */,
+				A3144053292F72FC006ECC85 /* APXNetworkMetadata.h in Headers */,
 				8FCFD5B425B18F6700EE8358 /* MIActionEvent.h in Headers */,
 				A3E8274F2461B6F200952606 /* MappIntelligenceWatchOS.h in Headers */,
 				A345977927A97C940038FE3F /* MIFormParameters.h in Headers */,
@@ -1306,7 +1310,7 @@
 				8FCFD5E425B18F7C00EE8358 /* MITrackingEvent.h in Headers */,
 				8FCFD54D25B18EC400EE8358 /* MISessionParameters.h in Headers */,
 				8FCFD5FC25B18FA400EE8358 /* MIParams.h in Headers */,
-				A3955B38287DA98200D4FA90 /* APXInappLogger.h in Headers */,
+				A3144050292F72DA006ECC85 /* APXInappLogger.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1328,6 +1332,7 @@
 				A345978A27A986960038FE3F /* MIFormField.h in Headers */,
 				8FCFD61525B18FAB00EE8358 /* MIParamType.h in Headers */,
 				A3955B3F287DA9B300D4FA90 /* APXRequestBuilder.h in Headers */,
+				A3144054292F72FD006ECC85 /* APXNetworkMetadata.h in Headers */,
 				8FCFD5BC25B18F6700EE8358 /* MIActionEvent.h in Headers */,
 				A3E827502461B72700952606 /* MappIntelligencetvOS.h in Headers */,
 				A345977A27A97C950038FE3F /* MIFormParameters.h in Headers */,
@@ -1336,7 +1341,7 @@
 				8FCFD5E525B18F7D00EE8358 /* MITrackingEvent.h in Headers */,
 				8FCFD54E25B18EC400EE8358 /* MISessionParameters.h in Headers */,
 				8FCFD60425B18FA400EE8358 /* MIParams.h in Headers */,
-				A3955B39287DA98300D4FA90 /* APXInappLogger.h in Headers */,
+				A3144051292F72DB006ECC85 /* APXInappLogger.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1351,6 +1356,8 @@
 				8F94E74925BF282E00027623 /* MIMediaParameters.h in Headers */,
 				A3955B3D287DA9B200D4FA90 /* APXRequestBuilder.h in Headers */,
 				8FCFD52D25B18EB800EE8358 /* MIPageParameters.h in Headers */,
+				A314404F292F72DA006ECC85 /* APXInappLogger.h in Headers */,
+				A3144052292F72FC006ECC85 /* APXNetworkMetadata.h in Headers */,
 				A35C795F2457679000D36144 /* MappIntelligenceSDK_iOS.h in Headers */,
 				8FCFD51C25B18EB000EE8358 /* MIEventParameters.h in Headers */,
 				A345978827A986920038FE3F /* MIFormField.h in Headers */,
@@ -1369,7 +1376,6 @@
 				8F0A3F6525C2F40C00CD43A2 /* MappIntelligenceiOS.h in Headers */,
 				8FCFD5F425B18FA300EE8358 /* MIParams.h in Headers */,
 				8F0A3F7725C2F47200CD43A2 /* MIWebViewTracker.h in Headers */,
-				A3955B37287DA98200D4FA90 /* APXInappLogger.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
