@@ -356,11 +356,9 @@
 		A3955B46287DACEE00D4FA90 /* APXRequestBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = A3187B98287429EC00653D05 /* APXRequestBuilder.m */; };
 		A3955B48287DACEF00D4FA90 /* APXRequestBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = A3187B98287429EC00653D05 /* APXRequestBuilder.m */; };
 		A3955B49287DACF000D4FA90 /* APXRequestBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = A3187B98287429EC00653D05 /* APXRequestBuilder.m */; };
-		A3955B4B287DACF800D4FA90 /* APXNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A3187BA1287429EC00653D05 /* APXNetworkManager.m */; };
 		A3955B4C287DAD2100D4FA90 /* APXInappLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = A3187B9D287429EC00653D05 /* APXInappLogger.m */; };
 		A3955B4D287DAD2200D4FA90 /* APXInappLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = A3187B9D287429EC00653D05 /* APXInappLogger.m */; };
 		A3955B4E287DAD2200D4FA90 /* APXInappLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = A3187B9D287429EC00653D05 /* APXInappLogger.m */; };
-		A3955B4F287DAD2300D4FA90 /* APXInappLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = A3187B9D287429EC00653D05 /* APXInappLogger.m */; };
 		A3955B50287DAD2B00D4FA90 /* APXNetworkMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = A3187B9B287429EC00653D05 /* APXNetworkMetadata.m */; };
 		A3955B51287DAD2C00D4FA90 /* APXNetworkMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = A3187B9B287429EC00653D05 /* APXNetworkMetadata.m */; };
 		A3955B52287DAD2C00D4FA90 /* APXNetworkMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = A3187B9B287429EC00653D05 /* APXNetworkMetadata.m */; };
@@ -1624,7 +1622,6 @@
 				8F20A19A25C2D0000006CB93 /* MIRequestData.m in Sources */,
 				8F20A19B25C2D0000006CB93 /* MIRequest.m in Sources */,
 				A345977027A97C510038FE3F /* MIFormSubmitEvent.m in Sources */,
-				A3955B4B287DACF800D4FA90 /* APXNetworkManager.m in Sources */,
 				8F20A1A425C2D00F0006CB93 /* MIConfiguration.m in Sources */,
 				8F20A16025C2CFC30006CB93 /* MIProperties.m in Sources */,
 				8F20A0C325C2CECE0006CB93 /* MIMediaParameters.m in Sources */,
@@ -1650,7 +1647,6 @@
 				8F20A0E725C2CED90006CB93 /* MISessionParameters.m in Sources */,
 				8F20A19825C2D0000006CB93 /* MIDatabaseManager.m in Sources */,
 				8F20A18D25C2CFD90006CB93 /* MIRequestBatchSupportUrlBuilder.m in Sources */,
-				A3955B4F287DAD2300D4FA90 /* APXInappLogger.m in Sources */,
 				8F20A0BA25C2CEC30006CB93 /* MIMediaTracker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
