@@ -1,0 +1,17 @@
+//
+//  Config.xcconfig
+//  MappIntelligenceSDK
+//
+//  Created by Stefan Stevanovic on 25.11.22..
+//  Copyright © 2022 Mapp Digital US, LLC. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+// Disable building the arm64 simulators when using Carthage as it doesn't support them yet
+REALM_ARM_ARCHS_YES = arm64 arm64e;
+REALM_ARM_ARCHS = $(REALM_ARM_ARCHS_$(CARTHAGE))
+
+EXCLUDED_ARCHS[sdk=watchsimulator*] = $(REALM_ARM_ARCHS);
+//EXCLUDED_ARCHS[sdk=iphonesimulator*] = $(REALM_ARM_ARCHS);
+EXCLUDED_ARCHS[sdk=appletvsimulator*] = $(REALM_ARM_ARCHS);
