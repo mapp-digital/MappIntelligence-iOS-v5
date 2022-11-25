@@ -193,6 +193,8 @@
 		A3144052292F72FC006ECC85 /* APXNetworkMetadata.h in Headers */ = {isa = PBXBuildFile; fileRef = A3187B9A287429EC00653D05 /* APXNetworkMetadata.h */; };
 		A3144053292F72FC006ECC85 /* APXNetworkMetadata.h in Headers */ = {isa = PBXBuildFile; fileRef = A3187B9A287429EC00653D05 /* APXNetworkMetadata.h */; };
 		A3144054292F72FD006ECC85 /* APXNetworkMetadata.h in Headers */ = {isa = PBXBuildFile; fileRef = A3187B9A287429EC00653D05 /* APXNetworkMetadata.h */; };
+		A31440552930C16F006ECC85 /* AppoxeeSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3187BAC287429F600653D05 /* AppoxeeSDK.xcframework */; };
+		A31440562930C170006ECC85 /* AppoxeeSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3187BAC287429F600653D05 /* AppoxeeSDK.xcframework */; };
 		A31C6F1D24D9A0F300166585 /* RequestBatchSupportUrlBuilderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A31C6F1C24D9A0F300166585 /* RequestBatchSupportUrlBuilderTests.m */; };
 		A31C6F2024D9A9B200166585 /* DatabaseManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A31C6F1F24D9A9B200166585 /* DatabaseManagerTests.m */; };
 		A31D7A4F243CC0F200386A1C /* TrackerRequestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A31D7A4E243CC0F200386A1C /* TrackerRequestTests.m */; };
@@ -784,6 +786,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A33B36EB24602482005EA9AE /* libMappIntelligenceWatchOS.a in Frameworks */,
+				A31440552930C16F006ECC85 /* AppoxeeSDK.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -792,6 +795,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A33B36FB246024A6005EA9AE /* libMappIntelligencetvOS.a in Frameworks */,
+				A31440562930C170006ECC85 /* AppoxeeSDK.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
