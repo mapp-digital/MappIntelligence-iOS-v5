@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		045E9B6D292F9DCA0040C5DB /* AppoxeeSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3187BAC287429F600653D05 /* AppoxeeSDK.xcframework */; };
-		045E9B70292F9DEF0040C5DB /* AppoxeeSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3187BAC287429F600653D05 /* AppoxeeSDK.xcframework */; };
 		8F0055A9256DB16B00E2CC3C /* MIActionEvent.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8FDF710A250B9E5B00818E51 /* MIActionEvent.h */; };
 		8F0055AA256DB16B00E2CC3C /* MIPageViewEvent.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A380D1FD241296FD009E2CD8 /* MIPageViewEvent.h */; };
 		8F0055C8256DB9B700E2CC3C /* MIActionEvent.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8FDF710A250B9E5B00818E51 /* MIActionEvent.h */; };
@@ -361,6 +360,10 @@
 		A3955B54287DAD3000D4FA90 /* APXRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = A3187B9F287429EC00653D05 /* APXRequest.m */; };
 		A3955B55287DAD3100D4FA90 /* APXRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = A3187B9F287429EC00653D05 /* APXRequest.m */; };
 		A3955B56287DAD3100D4FA90 /* APXRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = A3187B9F287429EC00653D05 /* APXRequest.m */; };
+		A3A4A0D42930D5F400F5C652 /* AppoxeeSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3187BAC287429F600653D05 /* AppoxeeSDK.xcframework */; };
+		A3A4A0D62930DF9800F5C652 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = A3A4A0D52930DF9800F5C652 /* Config.xcconfig */; };
+		A3A4A0D72930DF9900F5C652 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = A3A4A0D52930DF9800F5C652 /* Config.xcconfig */; };
+		A3A4A0D82930DF9900F5C652 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = A3A4A0D52930DF9800F5C652 /* Config.xcconfig */; };
 		A3A72557243DBF1000671DB2 /* PropertiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3A72556243DBF1000671DB2 /* PropertiesTests.m */; };
 		A3A72559243DC22C00671DB2 /* RequestTrackerBuilderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3A72558243DC22C00671DB2 /* RequestTrackerBuilderTests.m */; };
 		A3A7255B243DEA0500671DB2 /* RequestUrlBuilderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3A7255A243DEA0500671DB2 /* RequestUrlBuilderTests.m */; };
@@ -704,6 +707,7 @@
 		A380D20F2413ED35009E2CD8 /* MIRequestUrlBuilder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MIRequestUrlBuilder.m; sourceTree = "<group>"; };
 		A380D21224141B55009E2CD8 /* MIURLSizeMonitor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MIURLSizeMonitor.h; sourceTree = "<group>"; };
 		A380D21324141B55009E2CD8 /* MIURLSizeMonitor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MIURLSizeMonitor.m; sourceTree = "<group>"; };
+		A3A4A0D52930DF9800F5C652 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		A3A72556243DBF1000671DB2 /* PropertiesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PropertiesTests.m; sourceTree = "<group>"; };
 		A3A72558243DC22C00671DB2 /* RequestTrackerBuilderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RequestTrackerBuilderTests.m; sourceTree = "<group>"; };
 		A3A7255A243DEA0500671DB2 /* RequestUrlBuilderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RequestUrlBuilderTests.m; sourceTree = "<group>"; };
@@ -745,7 +749,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				045E9B70292F9DEF0040C5DB /* AppoxeeSDK.xcframework in Frameworks */,
+				A3A4A0D42930D5F400F5C652 /* AppoxeeSDK.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -939,6 +943,7 @@
 		A334860F23BF3E2300D0EB5F = {
 			isa = PBXGroup;
 			children = (
+				A3A4A0D52930DF9800F5C652 /* Config.xcconfig */,
 				A345975C27A162A20038FE3F /* SetupForLocalTesting.plist */,
 				A33C1D3A24508C990049D5E5 /* LICENSE.md */,
 				A30E3EC62444A3970047D7A6 /* MappIntelligence.podspec */,
@@ -1577,6 +1582,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3A4A0D72930DF9900F5C652 /* Config.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1584,6 +1590,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3A4A0D82930DF9900F5C652 /* Config.xcconfig in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1591,6 +1598,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3A4A0D62930DF9800F5C652 /* Config.xcconfig in Resources */,
 				A3FE6CE1286C956C00D89CC7 /* MIFormField.h in Resources */,
 				8F0A3F5B25C2F34700CD43A2 /* MappIntelligence.h in Resources */,
 				8F0A3F5C25C2F34700CD43A2 /* MappIntelligence.m in Resources */,
@@ -1930,6 +1938,8 @@
 				DEVELOPMENT_TEAM = LERY366S7C;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_LDFLAGS = "-ObjC";
+				"OTHER_LDFLAGS[sdk=appletvsimulator*]" = "";
+				"OTHER_LDFLAGS[sdk=watchsimulator*]" = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
