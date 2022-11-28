@@ -5,7 +5,7 @@
 //  Created by Raz Elkayam on 3/4/15.
 //  Copyright (c) 2015 Appoxee. All rights reserved.
 //
-#if !TARGET_OS_WATCH && !TARGET_OS_TV
+#if !TARGET_OS_WATCH || !TARGET_OS_TV
 #import <Foundation/Foundation.h>
 
 @interface NetworkMetadata : NSObject

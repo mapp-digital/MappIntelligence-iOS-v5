@@ -5,7 +5,7 @@
 //  Created by Raz Elkayam on 6/27/16.
 //  Copyright © 2016 Teradata. All rights reserved.
 //
-#if !TARGET_OS_WATCH && !TARGET_OS_TV
+#if !TARGET_OS_WATCH || !TARGET_OS_TV
 #import "APXInappLogger.h"
 
 @implementation APXInappLogger

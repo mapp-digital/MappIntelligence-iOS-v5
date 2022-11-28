@@ -38,7 +38,7 @@ typedef NS_ENUM(NSInteger, ConnectionType) {
 @property NSString *userAgent;
 @property NSInteger adClearId;
 
-#if !TARGET_OS_WATCH && !TARGET_OS_TV
+#if !TARGET_OS_WATCH || !TARGET_OS_TV
 @property UIInterfaceOrientation *interfaceOrientation;
 #endif
 
