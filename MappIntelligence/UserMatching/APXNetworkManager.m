@@ -183,14 +183,15 @@
                     
                     responseDictionary = nil;
                 }
-#endif
             
             } else {
                 
                 //AppLog(@"Synchronous - Received Error while parsing JSON:\n%@", jsonError);
             }
             
-        } else {
+        }
+#endif
+        else {
             
             //AppLog(@"Synchronous - Network Communication Error: %@", error);
         }
