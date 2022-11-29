@@ -190,11 +190,11 @@
             }
             
         }
-#endif
         else {
             
             //AppLog(@"Synchronous - Network Communication Error: %@", error);
         }
+#endif
         
     } else {
         
