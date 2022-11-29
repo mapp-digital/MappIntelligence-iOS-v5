@@ -9,7 +9,7 @@
 #import "APXNetworkManager.h"
 #import "APXNetworkMetadata.h"
 #import "APXInappLogger.h"
-#import "AppoxeeSDK.xcframework/ios-arm64_armv7/Headers/AppoxeeSDK.h"
+#import "AppoxeeSDK.h"
 
 
 #define KEY_CONFIG_APPOXEE_SDK @"sdk"
