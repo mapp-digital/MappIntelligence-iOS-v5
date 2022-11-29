@@ -354,8 +354,6 @@
 		A3955B48287DACEF00D4FA90 /* APXRequestBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = A3187B98287429EC00653D05 /* APXRequestBuilder.m */; };
 		A3955B49287DACF000D4FA90 /* APXRequestBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = A3187B98287429EC00653D05 /* APXRequestBuilder.m */; };
 		A3955B4C287DAD2100D4FA90 /* APXInappLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = A3187B9D287429EC00653D05 /* APXInappLogger.m */; };
-		A3955B4D287DAD2200D4FA90 /* APXInappLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = A3187B9D287429EC00653D05 /* APXInappLogger.m */; };
-		A3955B4E287DAD2200D4FA90 /* APXInappLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = A3187B9D287429EC00653D05 /* APXInappLogger.m */; };
 		A3955B50287DAD2B00D4FA90 /* APXNetworkMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = A3187B9B287429EC00653D05 /* APXNetworkMetadata.m */; };
 		A3955B51287DAD2C00D4FA90 /* APXNetworkMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = A3187B9B287429EC00653D05 /* APXNetworkMetadata.m */; };
 		A3955B52287DAD2C00D4FA90 /* APXNetworkMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = A3187B9B287429EC00653D05 /* APXNetworkMetadata.m */; };
@@ -1786,7 +1784,6 @@
 			files = (
 				A3955B41287DACD800D4FA90 /* APXNetworkManager.m in Sources */,
 				A3955B55287DAD3100D4FA90 /* APXRequest.m in Sources */,
-				A3955B4D287DAD2200D4FA90 /* APXInappLogger.m in Sources */,
 				A3955B48287DACEF00D4FA90 /* APXRequestBuilder.m in Sources */,
 				A3955B51287DAD2C00D4FA90 /* APXNetworkMetadata.m in Sources */,
 			);
@@ -1798,7 +1795,6 @@
 			files = (
 				A3955B42287DACD900D4FA90 /* APXNetworkManager.m in Sources */,
 				A3955B56287DAD3100D4FA90 /* APXRequest.m in Sources */,
-				A3955B4E287DAD2200D4FA90 /* APXInappLogger.m in Sources */,
 				A3955B49287DACF000D4FA90 /* APXRequestBuilder.m in Sources */,
 				A3955B52287DAD2C00D4FA90 /* APXNetworkMetadata.m in Sources */,
 			);
