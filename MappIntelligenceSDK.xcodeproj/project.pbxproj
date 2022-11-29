@@ -1942,8 +1942,6 @@
 				DEVELOPMENT_TEAM = LERY366S7C;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				OTHER_LDFLAGS = "-ObjC";
-				"OTHER_LDFLAGS[sdk=appletvsimulator*]" = "";
-				"OTHER_LDFLAGS[sdk=watchsimulator*]" = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
