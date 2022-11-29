@@ -75,7 +75,7 @@
         self.actions[key] = keyedValues;
     }
     
-    AppLog(@"current request dictionary: %@", self.actions);
+    //AppLog(@"current request dictionary: %@", self.actions);
 }
 
 - (NSString *)keyForKeyType:(RequestKeyType)keyType

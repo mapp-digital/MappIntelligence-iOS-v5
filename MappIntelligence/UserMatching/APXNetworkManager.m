@@ -82,7 +82,7 @@
                     if (data) {
                      
                         serverData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&jsonError];
-                        AppLog(@"Server Operation: %tu JSON respose: %@",operation, serverData);
+                        //AppLog(@"Server Operation: %tu JSON respose: %@",operation, serverData);
                     }
                     
                     if (!jsonError) {
@@ -96,7 +96,7 @@
                             
                             requestError = [APXInappLogger errorWithType:kAPXErrorTypeNetwork];
                             
-                            AppLog(@"Network protocol error.\n Code: %tu\nMessage: %@", metadata.code, metadata.message);
+                            //AppLog(@"Network protocol error.\n Code: %tu\nMessage: %@", metadata.code, metadata.message);
                             [[APXInappLogger shared] logObj:[NSString stringWithFormat:@"Network protocol error with HTTP code: %tu", metadata.code] forDescription:kAPXLogLevelDescriptionError];
                         }
                         
@@ -107,13 +107,13 @@
                         
                     } else {
                         
-                        AppLog(@"Received Error while parsing JSON:\n%@", jsonError);
+                        //AppLog(@"Received Error while parsing JSON:\n%@", jsonError);
                         if (completionBlock) completionBlock(jsonError, nil);
                     }
                     
                 } else {
                     
-                    AppLog(@"Network Communication Error: %@", error);
+                    //AppLog(@"Network Communication Error: %@", error);
                     
                     BOOL willRetry = [self retryOperation:operation withData:dataArg andCompletionBlock:completionBlock];
                     
@@ -129,7 +129,7 @@
 
     } else {
         
-        AppLog(@"No data was supplied, aborting network operation: %tu", operation);
+        //AppLog(@"No data was supplied, aborting network operation: %tu", operation);
         
         NSError *error = [APXInappLogger errorWithType:kAPXErrorTypeNetwork];
         
@@ -167,7 +167,7 @@
             
             NSError *jsonError = nil;
             id serverData = [NSJSONSerialization JSONObjectWithData:serverDataResponse options:NSJSONReadingMutableContainers error:&jsonError];
-            AppLog(@"Synchronous - Server Operation: %tu JSON respose: %@",operation, serverData);
+            //AppLog(@"Synchronous - Server Operation: %tu JSON respose: %@",operation, serverData);
             
             if (!jsonError) {
                 
@@ -179,7 +179,7 @@
                 
                 if (!metadata.isSuccess) {
                     
-                    AppLog(@"Synchronous - Network protocol error.\n Code: %tu\nMessage: %@", metadata.code, metadata.message);
+                    //AppLog(@"Synchronous - Network protocol error.\n Code: %tu\nMessage: %@", metadata.code, metadata.message);
                     [[APXInappLogger shared] logObj:[NSString stringWithFormat:@"Network protocol error with HTTP code: %tu", metadata.code] forDescription:kAPXLogLevelDescriptionError];
                     
                     responseDictionary = nil;
@@ -187,17 +187,17 @@
             
             } else {
                 
-                AppLog(@"Synchronous - Received Error while parsing JSON:\n%@", jsonError);
+                //AppLog(@"Synchronous - Received Error while parsing JSON:\n%@", jsonError);
             }
             
         } else {
             
-            AppLog(@"Synchronous - Network Communication Error: %@", error);
+            //AppLog(@"Synchronous - Network Communication Error: %@", error);
         }
         
     } else {
         
-        AppLog(@"No data was supplied, aborting network operation: %tu", operation);
+        //AppLog(@"No data was supplied, aborting network operation: %tu", operation);
     }
 
     return responseDictionary;
@@ -226,7 +226,7 @@
     
     url = [NSString stringWithFormat:@"%@%@", baseURL, endpoint];
     
-    AppLog(@"URL for network operation: %@", url);
+    //AppLog(@"URL for network operation: %@", url);
     
     [request setURL:[NSURL URLWithString:url]];
     
@@ -413,7 +413,7 @@
 {
     NSString *httpMethod = @"PUT";
     
-    AppLog(@"HTTP method: %@", httpMethod);
+    //AppLog(@"HTTP method: %@", httpMethod);
     
     return httpMethod;
 }
@@ -440,7 +440,7 @@
     
     if ([retryCount integerValue] <= 3) {
         
-        AppLog(@"Retrying network operation: %tu. Retry count: %tu", operation, [retryCount integerValue]);
+        //AppLog(@"Retrying network operation: %tu. Retry count: %tu", operation, [retryCount integerValue]);
         
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(([retryCount integerValue] * [retryCount integerValue]) * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             
@@ -449,7 +449,7 @@
         
     } else {
         
-        AppLog(@"Aborting retry, retry count exceeds allowed retry amount.");
+        //AppLog(@"Aborting retry, retry count exceeds allowed retry amount.");
         
         [self.retryOperations removeObjectForKey:retryKey];
         
