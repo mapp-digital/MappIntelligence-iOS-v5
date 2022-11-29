@@ -148,7 +148,7 @@
         
         NSURLResponse *response = nil;
         NSError *error = nil;
-        
+#if !TARGET_OS_WATCH
         NSData *serverDataResponse = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
         
         // For quick debugging.
@@ -183,6 +183,7 @@
                     
                     responseDictionary = nil;
                 }
+#endif
             
             } else {
                 
