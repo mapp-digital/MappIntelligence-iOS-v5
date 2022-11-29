@@ -14,7 +14,7 @@
 #define KEY_CONFIG_APPOXEE_SDK @"sdk"
 #define KEY_CONFIG_APPOXEE_JAMIE_URL @"jamie_url"
 #define KEY_CONFIG_APPOXEE_APPLICATION_SDK_KEY @"sdk_key"
-#if !TARGET_OS_WATCH && !TARGET_OS_TV
+
 @interface NetworkManager ()
 
 @property (nonatomic, strong) NSMutableDictionary *retryOperations;
@@ -473,4 +473,4 @@
 }
 
 @end
-#endif
+
