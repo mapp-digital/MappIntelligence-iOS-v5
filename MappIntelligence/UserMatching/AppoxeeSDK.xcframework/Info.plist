@@ -25,7 +25,7 @@
 			<key>HeadersPath</key>
 			<string>HeadersSim</string>
 			<key>LibraryIdentifier</key>
-			<string>ios-arm64_x86_64-simulator</string>
+			<string>ios-arm64_i386_x86_64-simulator</string>
 			<key>LibraryPath</key>
 			<string>libAppoxeeSDK.a</string>
 			<key>SupportedArchitectures</key>
