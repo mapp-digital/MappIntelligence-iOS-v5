@@ -9,12 +9,12 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "MIPageParameters.h"
-#import "MITrackingEvent.h"
-#import "MISessionParameters.h"
-#import "MIUserCategories.h"
-#import "MIEcommerceParameters.h"
-#import "MICampaignParameters.h"
+#import <MIPageParameters.h>
+#import <MITrackingEvent.h>
+#import <MISessionParameters.h>
+#import <MIUserCategories.h>
+#import <MIEcommerceParameters.h>
+#import <MICampaignParameters.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
