@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -19,6 +19,8 @@
 		8FA78F0525BF188A00CC166A /* MediaPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA78F0325BF188A00CC166A /* MediaPlayerViewController.swift */; };
 		8FA78F0625BF188A00CC166A /* MediaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA78F0425BF188A00CC166A /* MediaViewController.swift */; };
 		8FA78F0C25BF18BE00CC166A /* WebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA78F0B25BF18BE00CC166A /* WebViewViewController.swift */; };
+		A30242612937C01600C1436D /* AppoxeeSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3CA0A4628A3E4C400ACC335 /* AppoxeeSDK.xcframework */; };
+		A30242622937C01600C1436D /* AppoxeeSDK.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A3CA0A4628A3E4C400ACC335 /* AppoxeeSDK.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A32AEA41242B605B00BC7B46 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A32AEA3F242B605B00BC7B46 /* Interface.storyboard */; };
 		A32AEA43242B605F00BC7B46 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A32AEA42242B605F00BC7B46 /* Assets.xcassets */; };
 		A32AEA4A242B605F00BC7B46 /* MappIntelligenceWatchOSDemoApp Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = A32AEA49242B605F00BC7B46 /* MappIntelligenceWatchOSDemoApp Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -67,6 +69,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		A30242632937C01700C1436D /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				A30242622937C01600C1436D /* AppoxeeSDK.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A32AEA5E242B606000BC7B46 /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -171,6 +184,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8F20A10E25C2CF460006CB93 /* libMappIntelligenceiOS.a in Frameworks */,
+				A30242612937C01600C1436D /* AppoxeeSDK.xcframework in Frameworks */,
 				8F3F6813257EE3D5005F8AFC /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -357,6 +371,7 @@
 				BCA1738B23D5D25C00B31430 /* Frameworks */,
 				BCA1738C23D5D25C00B31430 /* Resources */,
 				A32AEA62242B606000BC7B46 /* Embed Watch Content */,
+				A30242632937C01700C1436D /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -837,6 +852,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mappIntelligence.MappIntelligenceDemoApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -865,6 +881,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mappIntelligence.MappIntelligenceDemoApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
