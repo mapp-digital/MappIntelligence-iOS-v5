@@ -5,7 +5,7 @@
 //  Created by Stefan Stevanovic on 1/3/20.
 //  Copyright © 2020 Mapp Digital US, LLC. All rights reserved.
 //
-
+#pragma once
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "MIPageViewEvent.h"
