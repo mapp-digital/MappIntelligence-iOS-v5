@@ -67,16 +67,8 @@
     return [_mappIntelligence enableBackgroundSendout];
 }
 
-- (BOOL)enableUserMatching {
-    return [_mappIntelligence enableUserMatching];
-}
-
 - (void) setBatchSupportEnabled:(BOOL)batchSupportEnabled {
     [_mappIntelligence setBatchSupportEnabled:batchSupportEnabled];
-}
-
-- (void)setEnableUserMatching:(BOOL)enableUserMatching {
-    [_mappIntelligence setEnableUserMatching:enableUserMatching];
 }
 
 - (void)setEnableBackgroundSendout:(BOOL)enableBackgroundSendout {
@@ -133,6 +125,18 @@
 
 -(void) enableAnonymousTracking:(NSArray<NSString *> *_Nullable) suppressParams {
     [_mappIntelligence enableAnonymousTracking:suppressParams];
+}
+
+- (void)setSendAppVersionInEveryRequest:(BOOL)sendAppVerisonToEveryRequest {
+    [_mappIntelligence setSendAppVersionInEveryRequest:sendAppVerisonToEveryRequest];
+}
+
+- (BOOL)sendAppVersionInEveryRequest {
+    return [_mappIntelligence sendAppVersionInEveryRequest];
+}
+
+- (void)enableCrashTracking:(exceptionTypeTVOS)exceptionLogLevel {
+    [_mappIntelligence enableCrashTracking:(exceptionType)exceptionLogLevel];
 }
 
 @end

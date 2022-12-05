@@ -70,9 +70,7 @@
 - (BOOL)enableBackgroundSendout {
     return [_mappIntelligence enableBackgroundSendout];
 }
-- (BOOL)enableUserMatching {
-    return [_mappIntelligence enableUserMatching];
-}
+
 
 - (void) setBatchSupportEnabled:(BOOL)batchSupportEnabled {
     [_mappIntelligence setBatchSupportEnabled:batchSupportEnabled];
@@ -82,16 +80,20 @@
     [_mappIntelligence setEnableBackgroundSendout:enableBackgroundSendout];
 }
 
-- (void)setEnableUserMatching:(BOOL)enableUserMatching {
-    [_mappIntelligence setEnableUserMatching:enableUserMatching];
-}
-
 - (NSInteger) requestPerQueue {
     return [_mappIntelligence requestPerQueue];
 }
 
 - (void) setRequestPerQueue:(NSInteger)requestPerQueue {
     [_mappIntelligence setRequestPerQueue:requestPerQueue];
+}
+
+- (void)setSendAppVersionInEveryRequest:(BOOL)sendAppVerisonToEveryRequest {
+    [_mappIntelligence setSendAppVersionInEveryRequest:sendAppVerisonToEveryRequest];
+}
+
+- (BOOL)sendAppVersionInEveryRequest {
+    return [_mappIntelligence sendAppVersionInEveryRequest];
 }
 
 //- (NSError *_Nullable)trackPageWithName: (NSString *_Nonnull) name pageProperties:(MIPageParameters  *_Nullable)pageProperties sessionProperties: (MISessionProperties *_Nullable) sessionProperties userProperties: (MIUserCategories *_Nullable) userProperties ecommerceProperties:(id)ecommerceProperties advertisementProperties:(MIAdvertisementProperties * _Nullable)advertisemementProperties {
@@ -138,4 +140,7 @@
     [_mappIntelligence enableAnonymousTracking:suppressParams];
 }
 
+- (void)enableCrashTracking:(exceptionTypeWatchOS)exceptionLogLevel {
+    [_mappIntelligence enableCrashTracking:(exceptionType)exceptionLogLevel];
+}
 @end

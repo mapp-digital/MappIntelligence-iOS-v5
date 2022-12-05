@@ -23,17 +23,29 @@ typedef NS_ENUM(NSInteger, logWatchOSLevel) {
             // older versions of the library.
   noneOfWatchOSLogs = 7  // None of the logs.
 };
+
+typedef NS_ENUM(NSInteger, exceptionTypeWatchOS) {
+    noneOfExceptionTypesWatchOS = 1,
+    uncaughtWatchOS = 2,
+    caughtWatchOS = 3,
+    customWatchOS = 4,
+    allExceptionTypesWatchOS = 5,
+    uncaught_and_customWatchOS = 6,
+    uncaught_and_caughtWatchOS = 7,
+    custom_and_caughtWatchOS = 8
+};
+
 @interface MappIntelligenceWatchOS : NSObject
 
 @property (nonatomic, readwrite) NSTimeInterval requestInterval;
 @property (nonatomic, readwrite) logWatchOSLevel logLevelWatchOS;
 @property (nonatomic, readwrite) BOOL batchSupportEnabled;
 @property (nonatomic, readwrite) BOOL enableBackgroundSendout;
-@property (nonatomic, readwrite) BOOL enableUserMatching;
 @property (nonatomic, readwrite) NSInteger batchSupportSize;
 @property (nonatomic, readwrite) NSInteger requestPerQueue;
 @property (nonatomic, readwrite) BOOL shouldMigrate;
 @property (nonatomic, readwrite) BOOL anonymousTracking;
+@property (nonatomic, readwrite) BOOL sendAppVersionInEveryRequest;
 
 /**
  MappIntelignece instance
@@ -109,5 +121,10 @@ MappIntelligenceWatchOS.shared()?.reset()
  */
 - (void) enableAnonymousTracking:(NSArray<NSString *> *_Nullable) suppressParams;
 
+/**
+ @brief Method which will enable crash tracking with given exception level
+ @param exceptionLogLevel - parameter which represent the excetpion types which can be logged
+ */
+- (void) enableCrashTracking:(exceptionTypeWatchOS) exceptionLogLevel;
 
 @end

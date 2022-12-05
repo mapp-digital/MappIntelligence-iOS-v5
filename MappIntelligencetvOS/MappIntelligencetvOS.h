@@ -26,6 +26,17 @@ typedef NS_ENUM(NSInteger, logTvOSLevel) {
   noneOfTvOSLogs = 7  // None of the logs.
 };
 
+typedef NS_ENUM(NSInteger, exceptionTypeTVOS) {
+    noneOfExceptionTypesTVOS = 1,
+    uncaughtTVOS = 2,
+    caughtTVOS = 3,
+    customTVOS = 4,
+    allExceptionTypesTVOS = 5,
+    uncaught_and_customTVOS = 6,
+    uncaught_and_caughtTVOS = 7,
+    custom_and_caughtTVOS = 8
+};
+
 @interface MappIntelligencetvOS : NSObject
 
 
@@ -33,11 +44,11 @@ typedef NS_ENUM(NSInteger, logTvOSLevel) {
 @property (nonatomic, readwrite) logTvOSLevel logLevelTVOS;
 @property (nonatomic, readwrite) BOOL batchSupportEnabled;
 @property (nonatomic, readwrite) BOOL enableBackgroundSendout;
-@property (nonatomic, readwrite) BOOL enableUserMatching;
 @property (nonatomic, readwrite) NSInteger batchSupportSize;
 @property (nonatomic, readwrite) NSInteger requestPerQueue;
 @property (nonatomic, readwrite) BOOL shouldMigrate;
 @property (nonatomic, readwrite) BOOL anonymousTracking;
+@property (nonatomic, readwrite) BOOL sendAppVersionInEveryRequest;
 
 /**
  MappIntelignece instance
@@ -138,5 +149,10 @@ MappIntelligencetvOS.shared()?.reset()
  */
 - (void) enableAnonymousTracking:(NSArray<NSString *> *_Nullable) suppressParams;
 
+/**
+ @brief Method which will enable crash tracking with given exception level
+ @param exceptionLogLevel - parameter which represent the excetpion types which can be logged
+ */
+- (void) enableCrashTracking:(exceptionTypeTVOS) exceptionLogLevel;
 
 @end
