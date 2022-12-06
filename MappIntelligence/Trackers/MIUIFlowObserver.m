@@ -15,8 +15,13 @@
 #else
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
+#ifdef SWIFT_PACKAGE
+#import "../UserMatching/APXRequestBuilder.h"
+#import "../UserMatching/APXNetworkManager.h"
+#else
 #import "APXRequestBuilder.h"
 #import "APXNetworkManager.h"
+#endif
 #endif
 
 #define doesAppEnterInBackground @"enteredInBackground";
