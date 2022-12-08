@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -28,6 +28,8 @@
 		A32AEA55242B606000BC7B46 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A32AEA54242B606000BC7B46 /* Assets.xcassets */; };
 		A32AEA5A242B606000BC7B46 /* MappIntelligenceWatchOSDemoApp.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = A32AEA3D242B605B00BC7B46 /* MappIntelligenceWatchOSDemoApp.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A345975E27A164C10038FE3F /* FormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A345975D27A164C10038FE3F /* FormViewController.swift */; };
+		A348C84B29422B0400E23346 /* AppoxeeSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3CA0A4628A3E4C400ACC335 /* AppoxeeSDK.xcframework */; };
+		A348C84C29422B0400E23346 /* AppoxeeSDK.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A3CA0A4628A3E4C400ACC335 /* AppoxeeSDK.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A3588A9527C66BA40053961B /* RuntimeConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3588A9427C66BA40053961B /* RuntimeConfigurationViewController.swift */; };
 		A3588A9727CFC57E0053961B /* SetupForLocalTesting.plist in Resources */ = {isa = PBXBuildFile; fileRef = A3588A9627CFC57E0053961B /* SetupForLocalTesting.plist */; };
 		A35C78F02452F81500D36144 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35C78EF2452F81500D36144 /* AppDelegate.swift */; };
@@ -87,6 +89,17 @@
 				A32AEA5A242B606000BC7B46 /* MappIntelligenceWatchOSDemoApp.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A348C84D29422B0500E23346 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				A348C84C29422B0400E23346 /* AppoxeeSDK.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -171,6 +184,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8F20A10E25C2CF460006CB93 /* libMappIntelligenceiOS.a in Frameworks */,
+				A348C84B29422B0400E23346 /* AppoxeeSDK.xcframework in Frameworks */,
 				8F3F6813257EE3D5005F8AFC /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -357,6 +371,7 @@
 				BCA1738B23D5D25C00B31430 /* Frameworks */,
 				BCA1738C23D5D25C00B31430 /* Resources */,
 				A32AEA62242B606000BC7B46 /* Embed Watch Content */,
+				A348C84D29422B0500E23346 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

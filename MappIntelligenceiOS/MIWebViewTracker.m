@@ -87,6 +87,8 @@ NSString static *jsTag = @"MappIntelligenceiOSBridge";
                                                 error:&jsonError];
     } @catch (NSException *exception) {
         return [[NSDictionary alloc] init];
+    } @catch(id anException) {
+        return [[NSDictionary alloc] init];
     }
     return json;
 }
