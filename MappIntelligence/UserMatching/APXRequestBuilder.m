@@ -7,7 +7,7 @@
 //
 #if !TARGET_OS_WATCH && !TARGET_OS_TV
 #import "APXRequestBuilder.h"
-#import "AppoxeeSDK.xcframework/ios-arm64/Headers/AppoxeeSDK.h"
+#import "AppoxeeSDK.h"
 
 @interface RequestBuilder ()
 
