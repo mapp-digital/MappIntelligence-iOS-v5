@@ -645,7 +645,6 @@
 		A3187B9F287429EC00653D05 /* APXRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APXRequest.m; sourceTree = "<group>"; };
 		A3187BA0287429EC00653D05 /* APXRequestBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APXRequestBuilder.h; sourceTree = "<group>"; };
 		A3187BA1287429EC00653D05 /* APXNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APXNetworkManager.m; sourceTree = "<group>"; };
-		A3187BAC287429F600653D05 /* AppoxeeSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = AppoxeeSDK.xcframework; sourceTree = "<group>"; };
 		A3187BAE2874805000653D05 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk/System/iOSSupport/System/Library/Frameworks/WebKit.framework; sourceTree = DEVELOPER_DIR; };
 		A31C6F1C24D9A0F300166585 /* RequestBatchSupportUrlBuilderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RequestBatchSupportUrlBuilderTests.m; sourceTree = "<group>"; };
 		A31C6F1F24D9A9B200166585 /* DatabaseManagerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DatabaseManagerTests.m; sourceTree = "<group>"; };
@@ -843,7 +842,6 @@
 		A3187B97287429C600653D05 /* UserMatching */ = {
 			isa = PBXGroup;
 			children = (
-				A3187BAC287429F600653D05 /* AppoxeeSDK.xcframework */,
 				A3187B9E287429EC00653D05 /* APXInappLogger.h */,
 				A3187B9D287429EC00653D05 /* APXInappLogger.m */,
 				A3187B99287429EC00653D05 /* APXNetworkManager.h */,
