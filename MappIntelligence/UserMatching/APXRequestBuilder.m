@@ -8,6 +8,7 @@
 #if !TARGET_OS_WATCH && !TARGET_OS_TV
 #import "APXRequestBuilder.h"
 //#import "AppoxeeSDK.h"
+#import "APXIdentifier.h"
 
 @interface RequestBuilder ()
 
@@ -24,10 +25,7 @@
     self = [super init];
     
     if (self) {
-        
-        //APXClientDevice *device = [[Appoxee shared] deviceInfo];
-        
-        //self.key = device.udid;
+        self.key = [self deviceUniqueGlobaldentifier];
         
 //        [[Appoxee shared] getDeviceAliasWithCompletionHandler:^(NSError * _Nullable appoxeeError, id  _Nullable data) {
 //            if (!appoxeeError) {
@@ -39,6 +37,32 @@
     }
     
     return self;
+}
+
+- (NSString *)deviceUniqueGlobaldentifier
+{
+#define defualts_key @"UDID_USER_DEFAULTS_KEY"
+#define SECURE_UDID_DOMAIN @"com.appoxee.lib" // this value should not be changed.
+#define SECURE_UDID_KEY @"com-appoxee-lib-key-ios-devices" // this value should not be changed.
+    
+    NSString *udid = nil;
+    
+    // Checking if SDK 3.x has stored a UDID value.
+    NSString *oldUdid = [[NSUserDefaults standardUserDefaults] objectForKey:defualts_key];
+    
+    if (oldUdid) {
+        
+        udid = oldUdid;
+        
+    } else {
+        
+        udid = [APXIdentifier UDIDForDomain:SECURE_UDID_DOMAIN usingKey:SECURE_UDID_KEY];
+        
+        [[NSUserDefaults standardUserDefaults] setObject:udid forKey:defualts_key];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+    
+    return udid;
 }
 
 #pragma mark - Initialization
