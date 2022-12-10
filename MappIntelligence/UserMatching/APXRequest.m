@@ -44,7 +44,7 @@
 {
     NSString *key = [self keyForKeyType:keyType];
     
-    AppLog(@"Adding keyedValues: %@, for key: %@", keyedValues, key);
+    //AppLog(@"Adding keyedValues: %@, for key: %@", keyedValues, key);
     
     // special 'set' case.
     if ([key isEqualToString:key_actions_setters]) {
@@ -75,7 +75,7 @@
         self.actions[key] = keyedValues;
     }
     
-    AppLog(@"current request dictionary: %@", self.actions);
+    //AppLog(@"current request dictionary: %@", self.actions);
 }
 
 - (NSString *)keyForKeyType:(RequestKeyType)keyType
