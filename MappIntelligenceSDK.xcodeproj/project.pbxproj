@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -405,7 +405,6 @@
 		A3D9836F24B3311100AF0CD8 /* MIRequestBatchSupportUrlBuilder.m in Headers */ = {isa = PBXBuildFile; fileRef = A3D9835124AE298200AF0CD8 /* MIRequestBatchSupportUrlBuilder.m */; };
 		A3D9837024B3311D00AF0CD8 /* MIRequestBatchSupportUrlBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = A3D9835124AE298200AF0CD8 /* MIRequestBatchSupportUrlBuilder.m */; };
 		A3D9837124B3312600AF0CD8 /* MIRequestBatchSupportUrlBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = A3D9835124AE298200AF0CD8 /* MIRequestBatchSupportUrlBuilder.m */; };
-		A3DE04E12944AA9B008657B9 /* AppoxeeSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3187BAC287429F600653D05 /* AppoxeeSDK.xcframework */; };
 		A3E8274E2461B6B700952606 /* MappIntelligence.h in Headers */ = {isa = PBXBuildFile; fileRef = A334861B23BF3E2300D0EB5F /* MappIntelligence.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A3E8274F2461B6F200952606 /* MappIntelligenceWatchOS.h in Headers */ = {isa = PBXBuildFile; fileRef = A32AEA27242A6F4600BC7B46 /* MappIntelligenceWatchOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A3E827502461B72700952606 /* MappIntelligencetvOS.h in Headers */ = {isa = PBXBuildFile; fileRef = A35C78C62452E6FF00D36144 /* MappIntelligencetvOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -773,7 +772,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A3F08BBB28D9DC19004FF49C /* WebKit.framework in Frameworks */,
-				A3DE04E12944AA9B008657B9 /* AppoxeeSDK.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
