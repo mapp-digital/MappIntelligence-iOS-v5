@@ -384,9 +384,6 @@
 		A3DE04E82944BAE1008657B9 /* APXIdentifier.m in Sources */ = {isa = PBXBuildFile; fileRef = A3DE04E62944BAE1008657B9 /* APXIdentifier.m */; };
 		A3DE04EB2944BB6F008657B9 /* KeychainManager.h in Headers */ = {isa = PBXBuildFile; fileRef = A3DE04E92944BB6F008657B9 /* KeychainManager.h */; };
 		A3DE04EC2944BB6F008657B9 /* KeychainManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A3DE04EA2944BB6F008657B9 /* KeychainManager.m */; };
-		A3DE04ED2944BBCF008657B9 /* APXIdentifier.h in Headers */ = {isa = PBXBuildFile; fileRef = A3DE04E52944BAE1008657B9 /* APXIdentifier.h */; };
-		A3DE04EE2944BBD1008657B9 /* APXIdentifier.h in Headers */ = {isa = PBXBuildFile; fileRef = A3DE04E52944BAE1008657B9 /* APXIdentifier.h */; };
-		A3DE04EF2944BBD1008657B9 /* APXIdentifier.h in Headers */ = {isa = PBXBuildFile; fileRef = A3DE04E52944BAE1008657B9 /* APXIdentifier.h */; };
 		A3DE04F02944BBE3008657B9 /* APXIdentifier.m in Sources */ = {isa = PBXBuildFile; fileRef = A3DE04E62944BAE1008657B9 /* APXIdentifier.m */; };
 		A3DE04F12944BBF5008657B9 /* KeychainManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A3DE04EA2944BB6F008657B9 /* KeychainManager.m */; };
 		A3E8274E2461B6B700952606 /* MappIntelligence.h in Headers */ = {isa = PBXBuildFile; fileRef = A334861B23BF3E2300D0EB5F /* MappIntelligence.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -1281,7 +1278,6 @@
 				8FCFD59C25B18F1B00EE8358 /* MIEcommerceParameters.h in Headers */,
 				8F94E75125BF282E00027623 /* MIMediaParameters.h in Headers */,
 				8FCFD53525B18EB800EE8358 /* MIPageParameters.h in Headers */,
-				A3DE04EE2944BBD1008657B9 /* APXIdentifier.h in Headers */,
 				A345976C27A978700038FE3F /* MIFormSubmitEvent.h in Headers */,
 				A33B36E72460246F005EA9AE /* MappIntelligenceSDK_watchOS.h in Headers */,
 				8FCFD52425B18EB200EE8358 /* MIEventParameters.h in Headers */,
@@ -1308,7 +1304,6 @@
 				8FCFD59D25B18F1B00EE8358 /* MIEcommerceParameters.h in Headers */,
 				8F94E75225BF282E00027623 /* MIMediaParameters.h in Headers */,
 				8FCFD53625B18EB900EE8358 /* MIPageParameters.h in Headers */,
-				A3DE04EF2944BBD1008657B9 /* APXIdentifier.h in Headers */,
 				A345976D27A978710038FE3F /* MIFormSubmitEvent.h in Headers */,
 				A33B36F72460249F005EA9AE /* MappIntelligenceSDK_tvOS.h in Headers */,
 				8FCFD52C25B18EB300EE8358 /* MIEventParameters.h in Headers */,
@@ -1343,7 +1338,6 @@
 				A345976B27A978700038FE3F /* MIFormSubmitEvent.h in Headers */,
 				8FCFD5AC25B18F6700EE8358 /* MIActionEvent.h in Headers */,
 				A3E8274E2461B6B700952606 /* MappIntelligence.h in Headers */,
-				A3DE04ED2944BBCF008657B9 /* APXIdentifier.h in Headers */,
 				8FCFD4FD25B18E3000EE8358 /* MICampaignParameters.h in Headers */,
 				8FCFD55D25B18EF000EE8358 /* MIProduct.h in Headers */,
 				A3A7DCE127E0A24E00A739B9 /* MIDefaultTracker.h in Headers */,
