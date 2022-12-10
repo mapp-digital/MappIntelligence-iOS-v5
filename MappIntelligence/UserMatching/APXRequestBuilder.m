@@ -25,9 +25,9 @@
     
     if (self) {
         
-        APXClientDevice *device = [[Appoxee shared] deviceInfo];
+        //APXClientDevice *device = [[Appoxee shared] deviceInfo];
         
-        self.key = device.udid;
+        //self.key = device.udid;
         
 //        [[Appoxee shared] getDeviceAliasWithCompletionHandler:^(NSError * _Nullable appoxeeError, id  _Nullable data) {
 //            if (!appoxeeError) {
