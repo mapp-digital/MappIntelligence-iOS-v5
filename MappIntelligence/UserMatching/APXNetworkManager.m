@@ -374,30 +374,6 @@
         serverAdress = [@"https://" stringByAppendingString: [jamieURL stringByAppendingString: @"/charon/"] ];
         
     }
-    
-    
-//    switch ([[Appoxee shared] server]) {
-//        case L3:
-//            serverAdress = @"https://jamie.g.shortest-route.com/charon/";
-//            break;
-//        case EMC:
-//            serverAdress = @"https://jamie.h.shortest-route.com/charon/";
-//            break;
-//        case EMC_US:
-//            serverAdress = @"https://jamie.c.shortest-route.com/charon/";
-//            break;
-//        case CROC:
-//            serverAdress = @"https://jamie.m.shortest-route.com/charon/";
-//            break;
-//        case TEST:
-//            serverAdress = @"https://charon-test.shortest-route.com/";
-//            break;
-//        case TEST55:
-//            serverAdress = @"https://charon-qa.shortest-route.com/";
-//            break;
-//        default:
-//            break;
-//    }
     return serverAdress;
 }
 
