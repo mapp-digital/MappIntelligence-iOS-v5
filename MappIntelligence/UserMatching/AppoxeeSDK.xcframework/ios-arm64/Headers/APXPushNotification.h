@@ -87,8 +87,7 @@
 /*!
  * Class initializer with UNNotificationResponse as push payload.
  */
-#if !TARGET_OS_TV
+#if TARGET_OS_IOS
 + (nullable instancetype)notificationWithNotificationResponse:(nullable UNNotificationResponse *)notificationResponse;
 #endif
-
 @end

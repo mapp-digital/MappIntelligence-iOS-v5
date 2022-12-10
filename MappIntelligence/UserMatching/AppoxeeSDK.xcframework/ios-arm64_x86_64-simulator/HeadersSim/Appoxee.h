@@ -322,7 +322,6 @@ typedef void(^AppoxeeCompletionHandler)(NSError * _Nullable appoxeeError, id _Nu
 #if !TARGET_OS_WATCH
 - (void)didReceiveRemoteNotification:(nullable NSDictionary *)userInfo fetchCompletionHandler:(nullable void (^)(UIBackgroundFetchResult))completionHandler andNotifyCompletionWithBlock:(nullable AppoxeeCompletionHandler)completionBlock;
 #endif
-
 #pragma mark - Background fetch
 
 /**
@@ -383,10 +382,9 @@ typedef void(^AppoxeeCompletionHandler)(NSError * _Nullable appoxeeError, id _Nu
  @param response                 The user’s response to the notification. This object contains the original notification and the identifier string for the selected action. If the action allowed the user to provide a textual response, this object is an instance of the UNTextInputNotificationResponse class.
  @param appoxeeCompletionHandler The block to execute when Appoxee finished processing the notification. The block has no return value or parameters.
  */
-#if !TARGET_OS_TV
+#if TARGET_OS_IOS
 - (void)userNotificationCenter:(nonnull UNUserNotificationCenter *)center didReceiveNotificationResponse:(nonnull UNNotificationResponse *)response withAppoxeeCompletionHandler:(nullable void (^)())appoxeeCompletionHandler __IOS_AVAILABLE(10.0);
 #endif
-
 #pragma mark - Device API
 
 /**
