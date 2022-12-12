@@ -346,6 +346,7 @@ NSString *SUUIDCryptorToString(CCOperation operation, NSData *value, NSData *key
 Clear a storage location, removing anything stored there.  Useful for dealing with
 potential corruption.  Be careful with this function, as it can remove Opt-Out markers.
 */
+#if !TARGET_OS_WATCH && !TARGET_OS_TV
 void SUUIDDeleteStorageLocation(NSInteger number) {
     UIPasteboard* pasteboard;
     NSString*     name;
@@ -365,12 +366,14 @@ void SUUIDDeleteStorageLocation(NSInteger number) {
     [pasteboard setData:[[NSData alloc] init] forPasteboardType:SUUIDTypeDataDictionary];
     [UIPasteboard removePasteboardWithName:name];
 }
+#endif
 
 /*
  Writes out a dictionary to a storage location.  That dictionary must be a 'valid'
  AppSecureUDID structure, and the location must be within range.  A new location is
  created if is didn't already exist.
  */
+#if !TARGET_OS_WATCH && !TARGET_OS_TV
 void SUUIDWriteDictionaryToStorageLocation(NSInteger number, NSDictionary* dictionary) {
     UIPasteboard* pasteboard;
     
@@ -394,6 +397,7 @@ void SUUIDWriteDictionaryToStorageLocation(NSInteger number, NSDictionary* dicti
     [pasteboard setData:[NSKeyedArchiver archivedDataWithRootObject:dictionary]
       forPasteboardType:SUUIDTypeDataDictionary];
 }
+#endif
 
 /*
  Reads a dictionary from a storage location.  Validation occurs once data
@@ -402,6 +406,7 @@ void SUUIDWriteDictionaryToStorageLocation(NSInteger number, NSDictionary* dicti
  
  Returns the data dictionary, or nil on failure.
  */
+#if !TARGET_OS_WATCH && !TARGET_OS_TV
 NSDictionary *SUUIDDictionaryForStorageLocation(NSInteger number) {
     id            decodedObject;
     UIPasteboard* pasteboard;
@@ -441,6 +446,7 @@ NSDictionary *SUUIDDictionaryForStorageLocation(NSInteger number) {
     
     return decodedObject;
 }
+#endif
 
 /*
  Returns an NSString formatted with the supplied number.
