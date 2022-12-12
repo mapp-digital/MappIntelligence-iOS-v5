@@ -1,0 +1,340 @@
+{
+        "app_conf": {
+            "id": "262802",
+            "mailboxTitle": "",
+            "RTL": "0",
+            "moreApps": "0",
+            "feedback": "0",
+            "is_dev": "0",
+            "powered": null,
+            "inbox": "1",
+            "coppa": "0",
+            "customInbox": "0",
+            "timeout": null,
+            "sleep": null,
+            "api_link": "eu.dev.appoxee.com",
+            "secret": null,
+            "key": null,
+            "sqs_link": "https://sqs.us-east-1.amazonaws.com/463740239353/prod",
+            "has_integration": "1",
+            "has_fake_alias": "1",
+            "google_pid": "182774534911",
+            "display_last": "-1",
+            "categories": [
+                {
+                    "buttons": [
+                        {
+                            "bgActionMandatory": false,
+                            "icon": "check_light",
+                            "id": 22,
+                            "index": 1,
+                            "isForeground": true,
+                            "title": "Yes"
+                        },
+                        {
+                            "bgActionMandatory": false,
+                            "icon": "close_light",
+                            "id": 23,
+                            "index": 2,
+                            "isForeground": false,
+                            "title": "No"
+                        }
+                    ],
+                    "categoryId": 14,
+                    "description": "Yes will open the app, No will dismiss and can set a tag/custom field",
+                    "isContextMinimal": false,
+                    "isCustomCategory": false,
+                    "name": "apx_yes_no_open",
+                    "title": "Yes or No (Open the app)",
+                    "type": 0
+                },
+                {
+                    "buttons": [
+                        {
+                            "bgActionMandatory": false,
+                            "icon": "check_light",
+                            "id": 24,
+                            "index": 1,
+                            "isForeground": true,
+                            "title": "Yes"
+                        },
+                        {
+                            "bgActionMandatory": false,
+                            "icon": "close_light",
+                            "id": 25,
+                            "index": 2,
+                            "isForeground": true,
+                            "title": "No"
+                        }
+                    ],
+                    "categoryId": 15,
+                    "description": "Yes will set a tag / custom field and dismiss the notification, No will dismiss the notification (optionally will set tag/custom field)",
+                    "isContextMinimal": false,
+                    "isCustomCategory": false,
+                    "name": "apx_yes_no_dismiss",
+                    "title": "Yes or No (Dismiss notification)",
+                    "type": 0
+                },
+                {
+                    "buttons": [
+                        {
+                            "bgActionMandatory": false,
+                            "icon": "check_light",
+                            "id": 26,
+                            "index": 1,
+                            "isForeground": true,
+                            "title": "Accept"
+                        },
+                        {
+                            "bgActionMandatory": false,
+                            "icon": "close_light",
+                            "id": 27,
+                            "index": 2,
+                            "isForeground": false,
+                            "title": "Decline"
+                        }
+                    ],
+                    "categoryId": 16,
+                    "description": "Accept will open the app, Decline will dismiss and can set a tag/custom field",
+                    "isContextMinimal": false,
+                    "isCustomCategory": false,
+                    "name": "apx_acc_dec_open",
+                    "title": "Accept or Decline (Open the app)",
+                    "type": 0
+                },
+                {
+                    "buttons": [
+                        {
+                            "bgActionMandatory": true,
+                            "icon": "check_light",
+                            "id": 28,
+                            "index": 1,
+                            "isForeground": true,
+                            "title": "Accept"
+                        },
+                        {
+                            "bgActionMandatory": true,
+                            "icon": "close_light",
+                            "id": 29,
+                            "index": 2,
+                            "isForeground": false,
+                            "title": "Decline"
+                        }
+                    ],
+                    "categoryId": 17,
+                    "description": "Accept will set a tag / custom field and dismiss the notification, Decline will dismiss the notification (optionally will set tag/custom field)",
+                    "isContextMinimal": false,
+                    "isCustomCategory": false,
+                    "name": "apx_acc_dec_dismiss",
+                    "title": "Accept or Decline (Dismiss notification)",
+                    "type": 0
+                },
+                {
+                    "buttons": [
+                        {
+                            "bgActionMandatory": true,
+                            "icon": "play_arrow_light",
+                            "id": 30,
+                            "index": 1,
+                            "isForeground": true,
+                            "title": "Play Now"
+                        }
+                    ],
+                    "categoryId": 18,
+                    "description": "Play Now will open the app",
+                    "isContextMinimal": false,
+                    "isCustomCategory": false,
+                    "name": "apx_play_open",
+                    "title": "Play now (Open the app)",
+                    "type": 0
+                },
+                {
+                    "buttons": [
+                        {
+                            "bgActionMandatory": false,
+                            "icon": "shoping_cart_add_light",
+                            "id": 31,
+                            "index": 1,
+                            "isForeground": true,
+                            "title": "Buy Now"
+                        }
+                    ],
+                    "categoryId": 19,
+                    "description": "Buy Now will open the app",
+                    "isContextMinimal": false,
+                    "isCustomCategory": false,
+                    "name": "apx_buy_open",
+                    "title": "Buy now (Open the app)",
+                    "type": 0
+                },
+                {
+                    "buttons": [
+                        {
+                            "bgActionMandatory": false,
+                            "icon": "shoping_cart_light",
+                            "id": 32,
+                            "index": 1,
+                            "isForeground": true,
+                            "title": "Shop Now"
+                        },
+                        {
+                            "bgActionMandatory": false,
+                            "icon": "close_light",
+                            "id": 33,
+                            "index": 2,
+                            "isForeground": false,
+                            "title": "Remind Me Later"
+                        }
+                    ],
+                    "categoryId": 20,
+                    "description": "Shop Now will open the app, Remind Me Later will set a tag/custom field",
+                    "isContextMinimal": false,
+                    "isCustomCategory": false,
+                    "name": "apx_shop_remind_open",
+                    "title": "Shop now (Open the app) remind later",
+                    "type": 0
+                },
+                {
+                    "buttons": [
+                        {
+                            "bgActionMandatory": true,
+                            "icon": "message_white",
+                            "id": 34,
+                            "index": 1,
+                            "isForeground": false,
+                            "title": "Follow"
+                        }
+                    ],
+                    "categoryId": 21,
+                    "description": "Follow sets a tag/custom field so the customer can target this user with specific content",
+                    "isContextMinimal": false,
+                    "isCustomCategory": false,
+                    "name": "apx_follow_dismiss",
+                    "title": "Follow to get more notifications on the subject",
+                    "type": 0
+                },
+                {
+                    "buttons": [
+                        {
+                            "bgActionMandatory": true,
+                            "icon": "snooze_light",
+                            "id": 35,
+                            "index": 1,
+                            "isForeground": false,
+                            "title": "Remind Me Later"
+                        }
+                    ],
+                    "categoryId": 22,
+                    "description": "Remind Me Later sets a tag/custom field so the customer can target this user again later",
+                    "isContextMinimal": false,
+                    "isCustomCategory": false,
+                    "name": "apx_remind_me_dismiss",
+                    "title": "Remind me later - for retargeting",
+                    "type": 0
+                },
+                {
+                    "buttons": [
+                        {
+                            "bgActionMandatory": false,
+                            "icon": "local_play_white",
+                            "id": 36,
+                            "index": 1,
+                            "isForeground": true,
+                            "title": "Redeem"
+                        },
+                        {
+                            "bgActionMandatory": false,
+                            "icon": "close_light",
+                            "id": 37,
+                            "index": 2,
+                            "isForeground": false,
+                            "title": "No Thanks"
+                        }
+                    ],
+                    "categoryId": 23,
+                    "description": "Redeem will take you into the app on a specific deep link with extra field for coupon",
+                    "isContextMinimal": false,
+                    "isCustomCategory": false,
+                    "name": "apx_redeem_open",
+                    "title": "Redeem coupon",
+                    "type": 0
+                },
+                {
+                    "buttons": [
+                        {
+                            "bgActionMandatory": true,
+                            "icon": "add_light",
+                            "id": 38,
+                            "index": 1,
+                            "isForeground": true,
+                            "title": "Read More"
+                        }
+                    ],
+                    "categoryId": 24,
+                    "description": "Read More will take the user into the app on the specific article",
+                    "isContextMinimal": false,
+                    "isCustomCategory": false,
+                    "name": "apx_read_open",
+                    "title": "Read More",
+                    "type": 0
+                },
+                {
+                    "buttons": [
+                        {
+                            "bgActionMandatory": false,
+                            "icon": "check_light",
+                            "id": 39,
+                            "index": 2,
+                            "isForeground": true,
+                            "title": "Accept"
+                        },
+                        {
+                            "bgActionMandatory": false,
+                            "icon": "settings_white",
+                            "id": 40,
+                            "index": 1,
+                            "isForeground": true,
+                            "title": "Notification Settings"
+                        }
+                    ],
+                    "categoryId": 25,
+                    "description": "Accept will open tha app and Notification Settings will open the notification settings page",
+                    "isContextMinimal": false,
+                    "isCustomCategory": false,
+                    "name": "apx_accept_notification_setings_open",
+                    "title": "Notification setting accept",
+                    "type": 0
+                },
+                {
+                    "buttons": [
+                        {
+                            "bgActionMandatory": false,
+                            "icon": "settings_white",
+                            "id": 42,
+                            "index": 1,
+                            "isForeground": true,
+                            "title": "Notification Settings"
+                        },
+                        {
+                            "bgActionMandatory": false,
+                            "icon": "check_light",
+                            "id": 41,
+                            "index": 2,
+                            "isForeground": true,
+                            "title": "Yes"
+                        }
+                    ],
+                    "categoryId": 26,
+                    "description": "Yes will open tha app and Notification Settings will open the notification settings page",
+                    "isContextMinimal": false,
+                    "isCustomCategory": false,
+                    "name": "apx_yes_notification_setings_open",
+                    "title": "Notification settings Yes",
+                    "type": 0
+                }
+            ],
+            "UDIDHashed": "11C0C984D3C323C4D21BA0D3038E45215BEEEE36D5386F7F308AB6FCA7C94471"
+        }
+}
+
+

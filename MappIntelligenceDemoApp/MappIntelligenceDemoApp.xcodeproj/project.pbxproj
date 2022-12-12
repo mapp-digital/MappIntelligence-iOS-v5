@@ -44,6 +44,7 @@
 		A3ADC97E26D94057007504FF /* ExceptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3ADC97D26D94057007504FF /* ExceptionsViewController.swift */; };
 		A3CA0A3C28A3E04000ACC335 /* AppoxeeConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = A3CA0A3B28A3E04000ACC335 /* AppoxeeConfig.plist */; };
 		A3CA0A3D28A3E04600ACC335 /* AppoxeeConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = A3CA0A3B28A3E04000ACC335 /* AppoxeeConfig.plist */; };
+		A3DE04F329475223008657B9 /* AppoxeeSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A3DE04F229475223008657B9 /* AppoxeeSDKResources.bundle */; };
 		BCA1739223D5D25C00B31430 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA1739123D5D25C00B31430 /* AppDelegate.swift */; };
 		BCA1739423D5D25C00B31430 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA1739323D5D25C00B31430 /* SceneDelegate.swift */; };
 		BCA1739923D5D25C00B31430 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCA1739723D5D25C00B31430 /* Main.storyboard */; };
@@ -150,6 +151,7 @@
 		A3ADC97D26D94057007504FF /* ExceptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExceptionsViewController.swift; sourceTree = "<group>"; };
 		A3CA0A3B28A3E04000ACC335 /* AppoxeeConfig.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = AppoxeeConfig.plist; sourceTree = SOURCE_ROOT; };
 		A3CA0A4628A3E4C400ACC335 /* AppoxeeSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = AppoxeeSDK.xcframework; path = ../MappIntelligence/UserMatching/AppoxeeSDK.xcframework; sourceTree = "<group>"; };
+		A3DE04F229475223008657B9 /* AppoxeeSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AppoxeeSDKResources.bundle; sourceTree = SOURCE_ROOT; };
 		BCA1738E23D5D25C00B31430 /* MappIntelligenceDemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MappIntelligenceDemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCA1739123D5D25C00B31430 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BCA1739323D5D25C00B31430 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 		8F94E6BC25BF199C00027623 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A3DE04F229475223008657B9 /* AppoxeeSDKResources.bundle */,
 				8F94E6BD25BF199C00027623 /* wt.mp4 */,
 			);
 			path = Resources;
@@ -466,6 +469,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3DE04F329475223008657B9 /* AppoxeeSDKResources.bundle in Resources */,
 				8F94E6BE25BF199C00027623 /* wt.mp4 in Resources */,
 				A3CA0A3C28A3E04000ACC335 /* AppoxeeConfig.plist in Resources */,
 				BCA1739E23D5D25E00B31430 /* LaunchScreen.storyboard in Resources */,
