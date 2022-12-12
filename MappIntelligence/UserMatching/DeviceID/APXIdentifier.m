@@ -5,7 +5,6 @@
 //  Created by Raz Elkayam on 6/2/15.
 //  Copyright (c) 2015 Appoxee. All rights reserved.
 //
-#if !TARGET_OS_WATCH && !TARGET_OS_TV
 #import "APXIdentifier.h"
 #import <UIKit/UIKit.h>
 #import <CommonCrypto/CommonCryptor.h>
@@ -102,7 +101,9 @@ NSString *const SUUIDPastboardFileFormat = @"org.AppSecureUDID-";
             identifier = SUUIDCryptorToString(kCCDecrypt, identifierData, ownerKey);
             if (!identifier) {
                 // We've failed to decrypt our identifier.  This is a sign of storage corruption.
+#if !TARGET_OS_WATCH && !TARGET_OS_TV
                 SUUIDDeleteStorageLocation(ownerIndex);
+#endif
                 
                 // return here - do not write values back to the store
                 return SUUIDDefaultIdentifier;
@@ -134,7 +135,9 @@ NSString *const SUUIDPastboardFileFormat = @"org.AppSecureUDID-";
         if (@available(iOS 14, *)) {
             [[KeychainManager default] saveObject:identifier forKey:bundleID];
         } else {
+#if !TARGET_OS_WATCH && !TARGET_OS_TV
             SUUIDWriteDictionaryToStorageLocation(ownerIndex, topLevelDictionary);
+#endif
         }
     }
     
@@ -224,8 +227,9 @@ NSInteger SUUIDStorageLocationForOwnerKey(NSData *ownerKey, NSMutableDictionary*
     for (NSInteger i = 0; i < SUUID_MAX_STORAGE_LOCATIONS; ++i) {
         NSDate*       modifiedDate;
         NSDictionary* dictionary;
-        
+#if !TARGET_OS_WATCH && !TARGET_OS_TV
         dictionary = SUUIDDictionaryForStorageLocation(i);
+#endif
         if (!dictionary) {
             if (lowestUnusedIndex == -1) {
                 lowestUnusedIndex = i;
@@ -276,8 +280,9 @@ NSInteger SUUIDStorageLocationForOwnerKey(NSData *ownerKey, NSMutableDictionary*
     }
     
     // Make sure to write the most recent structure to the new location
+#if !TARGET_OS_WATCH && !TARGET_OS_TV
     SUUIDWriteDictionaryToStorageLocation(ownerIndex, mostRecentDictionary);
-    
+#endif
     return ownerIndex;
 }
 
@@ -534,4 +539,3 @@ BOOL SUUIDValidOwnerObject(id object) {
 }
 
 @end
-#endif
