@@ -236,6 +236,7 @@ dispatch_async(_executionQueue, ^{
     }
       sqlite3_exec(self->_requestsDB, "END TRANSACTION", NULL, NULL, NULL);
     sqlite3_finalize(sql_statement);
+        sqlite3_close(self->_requestsDB);
 
   } else {
 
@@ -290,7 +291,7 @@ dispatch_async(_executionQueue, ^{
         sqlite3_exec(self->_requestsDB, "END TRANSACTION", NULL, NULL, NULL);
     sqlite3_finalize(sql_statement);
 
-    //sqlite3_close(_requestsDB);
+    sqlite3_close(self->_requestsDB);
 
   } else {
 
