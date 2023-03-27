@@ -225,7 +225,7 @@ static NSString *userAgent;
 
 - (void)setAnonymousTracking:(BOOL)anonymousTracking {
     _anonymousTracking = anonymousTracking;
-    if (!anonymousTracking) {
+    if (anonymousTracking) {
         [[MIDefaultTracker sharedDefaults] removeObjectForKey:everId];
     }
     
