@@ -24,7 +24,8 @@ var window: UIWindow?
         let dict = NSDictionary(contentsOfFile: path) as Dictionary?
         let array = [(dict?["track_ids" as NSObject]?.intValue) ?? 0]
         let domain = dict?["domain" as NSObject]
-        MappIntelligence.shared()?.anonymousTracking = false 
+        let didYouChangeTheStatusFlag = UserDefaults.standard.bool(forKey: "didYouChangeTheStatus")
+        MappIntelligence.shared()?.anonymousTracking = didYouChangeTheStatusFlag ? (MappIntelligence.shared()?.anonymousTracking ?? false) : true
         MappIntelligence.shared()?.initWithConfiguration(array, onTrackdomain: domain as! String)
  //       MappIntelligence.shared()?.initWithConfiguration(array, onTrackdomain: domain as! String, andWithEverID: "43657756353521")
         MappIntelligence.shared()?.logLevel = .all

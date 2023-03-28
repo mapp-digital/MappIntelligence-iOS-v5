@@ -55,6 +55,7 @@ class ConfigViewController: UIViewController {
     }
     
     @IBAction func toggleAnonimousTracking(_ sender: UISwitch) {
+        UserDefaults.standard.setValue(true, forKey: "didYouChangeTheStatus")
         if (sender.isOn) {
             MappIntelligence.shared()?.enableAnonymousTracking(["uc706"])
         } else {
