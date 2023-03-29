@@ -81,6 +81,7 @@ static int waiting_condition_key;
 #define appVersion @"appVersion"
 #define configuration @"configuration"
 #define everId @"everId"
+#define anonymous @"anonymous"
 #define legacyEverId @"webtrekk.everId"
 #define isFirstEventOfApp @"isFirstEventOfApp"
 #define legacyIsFirstEventOfApp @"webtrekk.isFirstEventOfApp"
@@ -123,6 +124,7 @@ static NSString *userAgent;
 - (instancetype)init {
   if (!sharedTracker) {
     sharedTracker = [super init];
+     _anonymousTracking = [[MIDefaultTracker sharedDefaults] boolForKey:anonymous];
       dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.2 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
           everID = [sharedTracker generateEverId];
       });
@@ -225,10 +227,11 @@ static NSString *userAgent;
 
 - (void)setAnonymousTracking:(BOOL)anonymousTracking {
     _anonymousTracking = anonymousTracking;
+    [[MIDefaultTracker sharedDefaults] setBool:anonymousTracking forKey:anonymous];
     if (anonymousTracking) {
         [[MIDefaultTracker sharedDefaults] removeObjectForKey:everId];
     }
-    
+    [[MIDefaultTracker sharedDefaults] synchronize];
 }
 
 - (void)setEverIDFromString:(NSString *_Nonnull)everIDString {
@@ -379,6 +382,7 @@ static NSString *userAgent;
   [requestProperties setIsFirstEventOfApp:_isFirstEventOpen];
   [requestProperties setIsFirstEventOfSession:_isFirstEventOfSession];
   [requestProperties setIsFirstEventAfterAppUpdate:NO];
+  [requestProperties setEverId:[[MIDefaultTracker sharedDefaults] stringForKey:everId]];
 
   MIRequestTrackerBuilder *builder =
       [[MIRequestTrackerBuilder alloc] initWithConfoguration:self.config];
@@ -482,6 +486,7 @@ static NSString *userAgent;
     [requestProperties setIsFirstEventOfApp:_isFirstEventOpen];
     [requestProperties setIsFirstEventOfSession:_isFirstEventOfSession];
     [requestProperties setIsFirstEventAfterAppUpdate:NO];
+    [requestProperties setEverId:[[MIDefaultTracker sharedDefaults] stringForKey:everId]];
 
     MIRequestTrackerBuilder *builder =
         [[MIRequestTrackerBuilder alloc] initWithConfoguration:self.config];
