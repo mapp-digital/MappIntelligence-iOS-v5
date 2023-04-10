@@ -7,7 +7,7 @@
 //
 #import <Foundation/Foundation.h>
 
-@interface NetworkMetadata : NSObject
+@interface MINetworkMetadata : NSObject
 
 @property (nonatomic, getter = isSuccess) BOOL succes;
 @property (nonatomic) NSInteger code;

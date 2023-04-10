@@ -5,9 +5,9 @@
 //  Created by Raz Elkayam on 6/27/16.
 //  Copyright © 2016 Teradata. All rights reserved.
 //
-#import "APXInappLogger.h"
+#import "MIAPXInappLogger.h"
 
-@implementation APXInappLogger
+@implementation MIAPXInappLogger
 
 
 #pragma mark - Initialization
@@ -26,11 +26,11 @@
 
 + (instancetype)shared
 {
-    static APXInappLogger *sharedInstance = nil;
+    static MIAPXInappLogger *sharedInstance = nil;
     
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        sharedInstance = [[APXInappLogger alloc] init];
+        sharedInstance = [[MIAPXInappLogger alloc] init];
     });
     
     return sharedInstance;

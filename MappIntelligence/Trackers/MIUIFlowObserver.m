@@ -62,12 +62,12 @@
 #define GET @"get"
 #define DMC_USER_ID @"dmcUserId"
 #if TARGET_OS_IOS
-    RequestBuilder *builder = [RequestBuilder builder];
+    MIRequestBuilder *builder = [MIRequestBuilder builder];
     [builder addRequestKeyedValues:@{GET : parameters} forRequestType:kAPXRequestKeyTypeGetCustomFields];
     NSData *serverData = [builder buildRequestAsJsonData];
     
     
-    [[NetworkManager shared] performNetworkOperation:kAPXNetworkManagerOperationTypeSetActions withData:serverData andCompletionBlock:^(NSError *error, id data) {
+    [[MINetworkManager shared] performNetworkOperation:kAPXNetworkManagerOperationTypeSetActions withData:serverData andCompletionBlock:^(NSError *error, id data) {
         
         if (!error) {
             NSDictionary *dataDictionary = (NSDictionary *)data;
@@ -86,9 +86,9 @@
 
         } else {
             NSLog(@"error reported %@", error.description);
-            NSLog(@"%@", [[NetworkManager shared] sdkID]);
-            NSLog(@"%@", [[NetworkManager shared] preferedURL]);
-            NSLog(@"%ld", (long)[[NetworkManager shared] environment]);
+            NSLog(@"%@", [[MINetworkManager shared] sdkID]);
+            NSLog(@"%@", [[MINetworkManager shared] preferedURL]);
+            NSLog(@"%ld", (long)[[MINetworkManager shared] environment]);
         }
     }];
     

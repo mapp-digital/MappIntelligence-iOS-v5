@@ -25,7 +25,7 @@ typedef NS_ENUM(NSInteger, RequestKeyType) {
     kAPXRequestKeyTypeGeoUpdateGeoConf
 };
 
-@interface Request : NSObject
+@interface MIRequest : NSObject
 
 - (void)addKeyedValues:(NSDictionary *)keyedValues forKeyType:(RequestKeyType)keyType;
 

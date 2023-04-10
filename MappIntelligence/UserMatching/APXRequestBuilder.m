@@ -8,17 +8,17 @@
 #if !TARGET_OS_WATCH && !TARGET_OS_TV
 #import "APXRequestBuilder.h"
 //#import "AppoxeeSDK.h"
-#import "APXIdentifier.h"
+#import "MIAPXIdentifier.h"
 
-@interface RequestBuilder ()
+@interface MIRequestBuilder ()
 
 @property (nonatomic, strong) NSString *key;
 @property (nonatomic, strong) NSString *aliasValue;    /////
-@property (nonatomic, strong, readwrite) Request *request;
+@property (nonatomic, strong, readwrite) MIRequest *request;
 
 @end
 
-@implementation RequestBuilder
+@implementation MIRequestBuilder
 
 - (id)init
 {
@@ -56,7 +56,7 @@
         
     } else {
         
-        udid = [APXIdentifier UDIDForDomain:SECURE_UDID_DOMAIN usingKey:SECURE_UDID_KEY];
+        udid = [MIAPXIdentifier UDIDForDomain:SECURE_UDID_DOMAIN usingKey:SECURE_UDID_KEY];
         
         [[NSUserDefaults standardUserDefaults] setObject:udid forKey:defualts_key];
         [[NSUserDefaults standardUserDefaults] synchronize];
@@ -69,11 +69,11 @@
 
 + (instancetype)shared
 {
-    static RequestBuilder *shared = nil;
+    static MIRequestBuilder *shared = nil;
     
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        shared = [[RequestBuilder alloc] init];
+        shared = [[MIRequestBuilder alloc] init];
     });
     
     return shared;
@@ -81,7 +81,7 @@
 
 + (instancetype)builder
 {
-    return [[RequestBuilder alloc] init];
+    return [[MIRequestBuilder alloc] init];
 }
 
 #pragma mark - Methods
@@ -102,7 +102,7 @@
 {
     if (!self.request) {
         
-        self.request = [[Request alloc] init];
+        self.request = [[MIRequest alloc] init];
     }
 }
 

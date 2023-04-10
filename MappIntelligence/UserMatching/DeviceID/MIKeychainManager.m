@@ -6,17 +6,17 @@
 //  Copyright © 2021 Appoxee. All rights reserved.
 //
 #if !TARGET_OS_WATCH && !TARGET_OS_TV
-#import "KeychainManager.h"
+#import "MIKeychainManager.h"
 #import <Security/Security.h>
-#import "APXInappLogger.h"
+#import "MIAPXInappLogger.h"
 
 
-@implementation KeychainManager
+@implementation MIKeychainManager
 
-+(KeychainManager*)default
-{ static KeychainManager *keychainManager = nil;
++(MIKeychainManager*)default
+{ static MIKeychainManager *keychainManager = nil;
     if(keychainManager == nil) {
-        keychainManager = [[KeychainManager alloc] init];
+        keychainManager = [[MIKeychainManager alloc] init];
     }
     return keychainManager;
 }
@@ -57,7 +57,7 @@
             object = [NSKeyedUnarchiver unarchiveObjectWithData:(__bridge NSData *)keyData];
         }
         @catch (NSException *exception) {
-            [[APXInappLogger shared] logObj:[[NSString alloc] initWithFormat:@"Unarchiving for key %@ failed with exception %@", key, exception.name] forDescription:kAPXLogLevelDescriptionDebug];
+            [[MIAPXInappLogger shared] logObj:[[NSString alloc] initWithFormat:@"Unarchiving for key %@ failed with exception %@", key, exception.name] forDescription:kAPXLogLevelDescriptionDebug];
             object = nil;
         }
         @finally {}

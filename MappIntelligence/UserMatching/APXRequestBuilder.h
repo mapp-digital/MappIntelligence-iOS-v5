@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "APXRequest.h"
 
-@interface RequestBuilder : NSObject
+@interface MIRequestBuilder : NSObject
 
 /*!
  * Singleton instance

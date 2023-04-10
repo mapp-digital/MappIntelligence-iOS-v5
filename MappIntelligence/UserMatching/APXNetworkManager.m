@@ -7,30 +7,30 @@
 //
 #import "APXNetworkManager.h"
 #import "APXNetworkMetadata.h"
-#import "APXInappLogger.h"
+#import "MIAPXInappLogger.h"
 //#import "AppoxeeSDK.xcframework/ios-arm64/Headers/AppoxeeSDK.h"
 
 #define KEY_CONFIG_APPOXEE_SDK @"sdk"
 #define KEY_CONFIG_APPOXEE_JAMIE_URL @"jamie_url"
 #define KEY_CONFIG_APPOXEE_APPLICATION_SDK_KEY @"sdk_key"
 
-@interface NetworkManager ()
+@interface MINetworkManager ()
 
 @property (nonatomic, strong) NSMutableDictionary *retryOperations;
 
 @end
 
-@implementation NetworkManager
+@implementation MINetworkManager
 
 #pragma mark - Initialization
 
 + (instancetype)shared
 {
-    static NetworkManager *shared = nil;
+    static MINetworkManager *shared = nil;
     
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        shared = [[NetworkManager alloc] init];
+        shared = [[MINetworkManager alloc] init];
     });
     
     return shared;
@@ -88,14 +88,14 @@
                         NSError *requestError = nil;
                         NSDictionary *serverDictionary = (NSDictionary *)serverData;
                         
-                        NetworkMetadata *metadata = [[NetworkMetadata alloc] initWithKeyedValues:serverDictionary[@"metadata"]];
+                        MINetworkMetadata *metadata = [[MINetworkMetadata alloc] initWithKeyedValues:serverDictionary[@"metadata"]];
                         
                         if (!metadata.isSuccess) {
                             
-                            requestError = [APXInappLogger errorWithType:kAPXErrorTypeNetwork];
+                            requestError = [MIAPXInappLogger errorWithType:kAPXErrorTypeNetwork];
                             
                             //AppLog(@"Network protocol error.\n Code: %tu\nMessage: %@", metadata.code, metadata.message);
-                            [[APXInappLogger shared] logObj:[NSString stringWithFormat:@"Network protocol error with HTTP code: %tu", metadata.code] forDescription:kAPXLogLevelDescriptionError];
+                            [[MIAPXInappLogger shared] logObj:[NSString stringWithFormat:@"Network protocol error with HTTP code: %tu", metadata.code] forDescription:kAPXLogLevelDescriptionError];
                         }
                         
                         if (completionBlock) {
@@ -129,7 +129,7 @@
         
         //AppLog(@"No data was supplied, aborting network operation: %tu", operation);
         
-        NSError *error = [APXInappLogger errorWithType:kAPXErrorTypeNetwork];
+        NSError *error = [MIAPXInappLogger errorWithType:kAPXErrorTypeNetwork];
         
         if (completionBlock) completionBlock(error, nil);
     }
@@ -171,14 +171,14 @@
                 
                 NSDictionary *serverDictionary = (NSDictionary *)serverData;
                 
-                NetworkMetadata *metadata = [[NetworkMetadata alloc] initWithKeyedValues:serverDictionary[@"metadata"]];
+                MINetworkMetadata *metadata = [[MINetworkMetadata alloc] initWithKeyedValues:serverDictionary[@"metadata"]];
                 
                 responseDictionary = serverDictionary[@"payload"];
                 
                 if (!metadata.isSuccess) {
                     
                     //AppLog(@"Synchronous - Network protocol error.\n Code: %tu\nMessage: %@", metadata.code, metadata.message);
-                    [[APXInappLogger shared] logObj:[NSString stringWithFormat:@"Network protocol error with HTTP code: %tu", metadata.code] forDescription:kAPXLogLevelDescriptionError];
+                    [[MIAPXInappLogger shared] logObj:[NSString stringWithFormat:@"Network protocol error with HTTP code: %tu", metadata.code] forDescription:kAPXLogLevelDescriptionError];
                     
                     responseDictionary = nil;
                 }
@@ -241,13 +241,13 @@
     
     if ([obj isKindOfClass:[NSString class]]) {
         
-        [APXInappLogger logObj: @"Loading application sdk key."];
+        [MIAPXInappLogger logObj: @"Loading application sdk key."];
         
         sdkKey = (NSString *)obj;
         
-        [APXInappLogger logObj: [NSString stringWithFormat:@"Application sdk key: %@", sdkKey]];
+        [MIAPXInappLogger logObj: [NSString stringWithFormat:@"Application sdk key: %@", sdkKey]];
         
-        [[NetworkManager shared] setSdkID:sdkKey];
+        [[MINetworkManager shared] setSdkID:sdkKey];
         
     }
     
@@ -365,11 +365,11 @@
     
     if ([obj isKindOfClass:[NSString class]]) {
         
-        [APXInappLogger logObj: @"Loading application sdk key."];
+        [MIAPXInappLogger logObj: @"Loading application sdk key."];
         
         jamieURL = (NSString *)obj;
         
-        [APXInappLogger logObj: [NSString stringWithFormat:@"Application sdk key: %@", jamieURL]];
+        [MIAPXInappLogger logObj: [NSString stringWithFormat:@"Application sdk key: %@", jamieURL]];
         
         serverAdress = [@"https://" stringByAppendingString: [jamieURL stringByAppendingString: @"/charon/"] ];
         

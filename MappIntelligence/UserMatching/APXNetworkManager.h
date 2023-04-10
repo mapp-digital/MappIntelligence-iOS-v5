@@ -41,7 +41,7 @@ typedef NS_ENUM(NSInteger, NetworkManagerEnvironment) {
 
 typedef void(^APXNetworkManagerCompletionBlock)(NSError *error, id data);
 
-@interface NetworkManager : NSObject
+@interface MINetworkManager : NSObject
 
 @property (nonatomic) NetworkManagerEnvironment environment;
 @property (nonatomic, strong) NSString *sdkID;

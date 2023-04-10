@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Appoxee. All rights reserved.
 //
 #import "APXRequest.h"
-#import "APXInappLogger.h"
+#import "MIAPXInappLogger.h"
 
 // Appoxee SDK
 #define key_actions @"actions"
@@ -28,14 +28,14 @@
 #define key_geo_region_status @"region_status"
 #define key_geo_update_geo_conf @"update_geo_conf"
 
-@interface Request ()
+@interface MIRequest ()
 
 @property (nonatomic, strong) NSMutableDictionary *actions;
 @property (nonatomic, strong) NSMutableDictionary *actionsSetters;
 
 @end
 
-@implementation Request
+@implementation MIRequest
 
 #pragma mark - Class Methods
 

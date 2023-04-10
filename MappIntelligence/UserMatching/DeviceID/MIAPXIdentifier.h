@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface APXIdentifier : NSObject
+@interface MIAPXIdentifier : NSObject
 
 // class generates a device ID and was migrated form SDK 3.x
 

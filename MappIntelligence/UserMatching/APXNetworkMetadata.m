@@ -7,7 +7,7 @@
 //
 #import "APXNetworkMetadata.h"
 
-@implementation NetworkMetadata
+@implementation MINetworkMetadata
 
 - (id)initWithKeyedValues:(NSDictionary *)keyedValues
 {

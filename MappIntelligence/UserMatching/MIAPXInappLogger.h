@@ -40,7 +40,7 @@ typedef NS_ENUM(NSInteger, APXErrorType) {
 #define AppLog(...)
 #endif
 
-@interface APXInappLogger : NSObject
+@interface MIAPXInappLogger : NSObject
 
 @property (nonatomic) APXLogLevelDescription logLevel; // defualt level is kAPXLogLevelDescriptionDebug
 

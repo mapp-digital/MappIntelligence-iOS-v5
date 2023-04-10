@@ -10,8 +10,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface KeychainManager : NSObject
-+(KeychainManager*)default;
+@interface MIKeychainManager : NSObject
++(MIKeychainManager*)default;
 /**
  @abstract Saves the object to the Keychain.
  @param object The object to save. Must be an object that could be archived with NSKeyedArchiver.
