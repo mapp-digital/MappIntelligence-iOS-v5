@@ -60,7 +60,7 @@
         
         for (NSDictionary *regionDictionary in regions) {
             
-            MIRequest *request = [[MIRequest alloc] initWithKeyedValues:regionDictionary];
+            MIDBRequest *request = [[MIDBRequest alloc] initWithKeyedValues:regionDictionary];
             
             [self.requests addObject:request];
         }
@@ -73,7 +73,7 @@
     
     NSMutableArray *requestsDictionaries = [[NSMutableArray alloc] initWithCapacity:[self.regions count]];
     
-    for (MIRequest *request in self.requests) {
+    for (MIDBRequest *request in self.requests) {
         
         [requestsDictionaries addObject:[request dictionaryWithValuesForKeys]];
     }
@@ -88,14 +88,14 @@
 
 - (NSString*)print {
     NSMutableString* requests = [[NSMutableString alloc] initWithString:@""];
-    for (MIRequest* request in self.requests) {
+    for (MIDBRequest* request in self.requests) {
         [requests appendString:[request print]];
     }
     return requests;
 }
 
 - (void)sendAllRequestsWithCompletitionHandler:(void (^)(NSError* ))completionHandler {
-    for (MIRequest* r in _requests) {
+    for (MIDBRequest* r in _requests) {
         if([[r parameters] count] == 0)
             continue;
         MITrackerRequest *request = [[MITrackerRequest alloc] init];

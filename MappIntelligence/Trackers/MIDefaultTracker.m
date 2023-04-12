@@ -390,7 +390,7 @@ static NSString *userAgent;
     MITrackerRequest *request =
       [builder createRequestWith:event andWith:requestProperties];
    [_requestUrlBuilder urlForRequest:request withCustomData:NO];
-    MIRequest *r = [self->_requestUrlBuilder dbRequest];
+    MIDBRequest *r = [self->_requestUrlBuilder dbRequest];
     [r setStatus:ACTIVE];
     BOOL status = [[MIDatabaseManager shared] insertRequest:r];
     [_logger logObj:[NSString stringWithFormat: @"request written with success: %d", status] forDescription:kMappIntelligenceLogLevelDescriptionDebug];
@@ -494,7 +494,7 @@ static NSString *userAgent;
       MITrackerRequest *request =
         [builder createRequestWith:event andWith:requestProperties];
      [_requestUrlBuilder urlForRequest:request withCustomData:YES];
-      MIRequest *r = [self->_requestUrlBuilder dbRequest];
+      MIDBRequest *r = [self->_requestUrlBuilder dbRequest];
       [r setStatus:ACTIVE];
       BOOL status = [[MIDatabaseManager shared] insertRequest:r];
       [_logger logObj:[NSString stringWithFormat: @"request written with success: %d", status] forDescription:kMappIntelligenceLogLevelDescriptionDebug];

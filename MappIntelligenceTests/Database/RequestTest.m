@@ -7,11 +7,11 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "MIRequest.h"
+#import "MIDBRequest.h"
 
 @interface RequestTest : XCTestCase
 
-@property MIRequest* request;
+@property MIDBRequest* request;
 @property NSDate* date;
 @property NSDictionary* keyedValues;
 
@@ -32,7 +32,7 @@
       @"status" : @0,
       @"date" : [dateFormatter stringFromDate:_date]
     };
-    _request = [[MIRequest alloc] initWithKeyedValues:_keyedValues];
+    _request = [[MIDBRequest alloc] initWithKeyedValues:_keyedValues];
 }
 
 - (void)testInitWithKeyedValues {
@@ -55,7 +55,7 @@
         addObject:[NSURLQueryItem
                       queryItemWithName:@"one"
                                   value:@"1"]];
-    _request = [[MIRequest alloc] initWithParamters:parametrs andDomain:@"www.domain.com" andTrackIds:@"12,34"];
+    _request = [[MIDBRequest alloc] initWithParamters:parametrs andDomain:@"www.domain.com" andTrackIds:@"12,34"];
     
     XCTAssertTrue([_request.domain isEqualToString:@"www.domain.com"], @"Request domain is not same as we set it into test!");
     XCTAssertTrue([_request.track_ids isEqualToString:@"12,34"], @"Request trackIDs is not same as we set it into test!");
@@ -78,7 +78,7 @@
     NSMutableArray *parametrs = [[NSMutableArray alloc] init];
     [parametrs addObject:[NSURLQueryItem queryItemWithName:@"eid"
                                                      value:@"6089777"]];
-    _request = [[MIRequest alloc] initWithParamters:parametrs andDomain:@"www.domain.com" andTrackIds:@"12,34"];
+    _request = [[MIDBRequest alloc] initWithParamters:parametrs andDomain:@"www.domain.com" andTrackIds:@"12,34"];
     NSURL* urlWithoutBatch = [_request urlForBatchSupprot:NO];
     XCTAssertTrue([[urlWithoutBatch description] isEqualToString:@"www.domain.com/12,34/wt?eid=6089777"], @"Url request without batch is not correct!");
     //we do not put eid or user client because it is same for every request and we spare the time

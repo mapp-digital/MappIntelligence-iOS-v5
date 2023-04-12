@@ -14,8 +14,8 @@
 @property MIRequestData* requestData;
 @property NSDate* date;
 @property NSDateFormatter* dateFormatter;
-@property MIRequest* request1;
-@property MIRequest* request2;
+@property MIDBRequest* request1;
+@property MIDBRequest* request2;
 @property NSDictionary *keyedValues;
 
 @end
@@ -36,7 +36,7 @@
       @"status" : @0,
       @"date" : [_dateFormatter stringFromDate:_date]
     };
-    _request1 = [[MIRequest alloc] initWithKeyedValues:keyedValues];
+    _request1 = [[MIDBRequest alloc] initWithKeyedValues:keyedValues];
     
     keyedValues = @{
       @"id" : @7891234,
@@ -45,7 +45,7 @@
       @"status" : @0,
       @"date" : [_dateFormatter stringFromDate:_date]
     };
-    _request2 = [[MIRequest alloc] initWithKeyedValues:keyedValues];
+    _request2 = [[MIDBRequest alloc] initWithKeyedValues:keyedValues];
     _keyedValues = @{
     @"requests" :
             @[@{
@@ -75,7 +75,7 @@
 }
 
 - (void)testInitWithRequests {
-    NSMutableArray<MIRequest*>* requests = [[NSMutableArray alloc] init];
+    NSMutableArray<MIDBRequest*>* requests = [[NSMutableArray alloc] init];
     [requests addObject:_request1];
     [requests addObject:_request2];
     _requestData = [[MIRequestData alloc] initWithRequests:requests];

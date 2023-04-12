@@ -93,7 +93,7 @@
         (requestsCount - i * 5000) > 5000 ? 5000 : (requestsCount - i * 5000);
     NSArray *subArray =
         [data.requests subarrayWithRange:NSMakeRange(i * 5000, length)];
-    for (MIRequest *req in subArray) {
+    for (MIDBRequest *req in subArray) {
         NSString* partOfBody = [[[req urlForBatchSupprot:YES] query] stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
         if ([partOfBody isEqualToString: @""] || [partOfBody isEqualToString: @" "]) {
             continue;
@@ -107,7 +107,7 @@
       }
     i++;
   } else {
-    for (MIRequest *req in data.requests) {
+    for (MIDBRequest *req in data.requests) {
       
         NSString* partOfBody = [[[req urlForBatchSupprot:YES] query] stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
         if ([partOfBody isEqualToString: @""] || [partOfBody isEqualToString: @" "]) {
@@ -126,7 +126,7 @@
 
 -(NSArray* )getRequestIDs:(MIRequestData*) data {
     NSMutableArray* array = [[NSMutableArray alloc] init];
-    for (MIRequest* req in data.requests) {
+    for (MIDBRequest* req in data.requests) {
         [array addObject:req.uniqueId];
     }
     return array;

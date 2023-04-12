@@ -247,7 +247,7 @@
                                        5]; // add for end of the request
     
   url = [self createURLFromParametersWith:parametrs];
-  _dbRequest = [[MIRequest alloc] initWithParamters:parametrs
+  _dbRequest = [[MIDBRequest alloc] initWithParamters:parametrs
                                         andDomain:[MappIntelligence getUrl]
                                       andTrackIds:[MappIntelligence getId]];
   return url;

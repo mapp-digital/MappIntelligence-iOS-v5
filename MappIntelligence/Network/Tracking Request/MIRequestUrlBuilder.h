@@ -8,13 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import "MITrackerRequest.h"
-#import "MIRequest.h"
+#import "MIDBRequest.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface MIRequestUrlBuilder : NSObject
 
-@property MIRequest *dbRequest;
+@property MIDBRequest *dbRequest;
 
 -(instancetype)initWithUrl: (NSURL*) serverUrl andWithId: (NSString*) mappIntelligenceId;
 -(NSURL *)urlForRequest:(MITrackerRequest *)request withCustomData: (BOOL) custom;

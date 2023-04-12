@@ -399,7 +399,7 @@ dispatch_async(_executionQueue, ^{
   return success;
 }
 
-- (BOOL)insertRequest:(MIRequest *)request {
+- (BOOL)insertRequest:(MIDBRequest *)request {
   BOOL success = YES;
   
   if (request) {
@@ -522,7 +522,7 @@ dispatch_async(_executionQueue, ^{
     if (sqlite3_prepare_v2(dbHandler, [statement UTF8String], -1,
                            &sql_statement, NULL) == SQLITE_OK) {
 
-      for (MIRequest *request in requests) {
+      for (MIDBRequest *request in requests) {
 
         sqlite3_bind_text(sql_statement, 1, [request.domain UTF8String], -1,
                           SQLITE_TRANSIENT);
@@ -614,7 +614,7 @@ dispatch_async(_executionQueue, ^{
             @"status" : @(status),
             @"date" : date
           };
-          MIRequest *request = [[MIRequest alloc] initWithKeyedValues:keyedValues];
+          MIDBRequest *request = [[MIDBRequest alloc] initWithKeyedValues:keyedValues];
           [requestIds insertObject:@(uniqueId) atIndex:0];
           [requests insertObject:request atIndex:0];
         }
@@ -650,7 +650,7 @@ dispatch_async(_executionQueue, ^{
                                                id _Nullable data) {
                         NSMutableArray<MIParameter *> *parameters =
                             (NSMutableArray<MIParameter *> *)data;
-                        for (MIRequest *request in reveresedRequests) {
+                        for (MIDBRequest *request in reveresedRequests) {
                           NSPredicate *predicate =
                               [NSPredicate predicateWithBlock:^BOOL(
                                                id _Nullable evaluatedObject,
