@@ -14,7 +14,7 @@
 
 @property (nonatomic, strong) NSString *key;
 @property (nonatomic, strong) NSString *aliasValue;    /////
-@property (nonatomic, strong, readwrite) MIRequest *request;
+@property (nonatomic, strong, readwrite) MIUMRequest *request;
 
 @end
 
@@ -102,7 +102,7 @@
 {
     if (!self.request) {
         
-        self.request = [[MIRequest alloc] init];
+        self.request = [[MIUMRequest alloc] init];
     }
 }
 

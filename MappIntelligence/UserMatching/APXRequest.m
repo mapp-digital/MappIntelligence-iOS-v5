@@ -28,14 +28,14 @@
 #define key_geo_region_status @"region_status"
 #define key_geo_update_geo_conf @"update_geo_conf"
 
-@interface MIRequest ()
+@interface MIUMRequest ()
 
 @property (nonatomic, strong) NSMutableDictionary *actions;
 @property (nonatomic, strong) NSMutableDictionary *actionsSetters;
 
 @end
 
-@implementation MIRequest
+@implementation MIUMRequest
 
 #pragma mark - Class Methods
 
