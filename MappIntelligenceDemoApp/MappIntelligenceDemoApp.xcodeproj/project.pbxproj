@@ -40,9 +40,9 @@
 		A38A6AF4242CD74F00600D82 /* libMappIntelligenceWatchOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A38A6AF3242CD74F00600D82 /* libMappIntelligenceWatchOS.a */; };
 		A3ADC97E26D94057007504FF /* ExceptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3ADC97D26D94057007504FF /* ExceptionsViewController.swift */; };
 		A3C8598029A80C750097CF32 /* SetupForLocalTesting.plist in Resources */ = {isa = PBXBuildFile; fileRef = A3C8597F29A80C750097CF32 /* SetupForLocalTesting.plist */; };
-		A3C8598329A80ED90097CF32 /* AppoxeeConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = A3C8598229A80ED80097CF32 /* AppoxeeConfig.plist */; };
 		A3C8598529A80FC10097CF32 /* AppoxeeSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3C8598429A80FC10097CF32 /* AppoxeeSDK.xcframework */; };
 		A3DE04F329475223008657B9 /* AppoxeeSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A3DE04F229475223008657B9 /* AppoxeeSDKResources.bundle */; };
+		A3E66B8429F677EF00DB4C99 /* AppoxeeConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = A3E66B8329F677EF00DB4C99 /* AppoxeeConfig.plist */; };
 		BCA1739223D5D25C00B31430 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA1739123D5D25C00B31430 /* AppDelegate.swift */; };
 		BCA1739423D5D25C00B31430 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA1739323D5D25C00B31430 /* SceneDelegate.swift */; };
 		BCA1739923D5D25C00B31430 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCA1739723D5D25C00B31430 /* Main.storyboard */; };
@@ -136,10 +136,10 @@
 		A38A6AF3242CD74F00600D82 /* libMappIntelligenceWatchOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libMappIntelligenceWatchOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3ADC97D26D94057007504FF /* ExceptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExceptionsViewController.swift; sourceTree = "<group>"; };
 		A3C8597F29A80C750097CF32 /* SetupForLocalTesting.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = SetupForLocalTesting.plist; sourceTree = SOURCE_ROOT; };
-		A3C8598229A80ED80097CF32 /* AppoxeeConfig.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = AppoxeeConfig.plist; sourceTree = SOURCE_ROOT; };
 		A3C8598429A80FC10097CF32 /* AppoxeeSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = AppoxeeSDK.xcframework; sourceTree = SOURCE_ROOT; };
 		A3CA0A4628A3E4C400ACC335 /* AppoxeeSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = AppoxeeSDK.xcframework; path = ../MappIntelligence/UserMatching/AppoxeeSDK.xcframework; sourceTree = "<group>"; };
 		A3DE04F229475223008657B9 /* AppoxeeSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AppoxeeSDKResources.bundle; sourceTree = SOURCE_ROOT; };
+		A3E66B8329F677EF00DB4C99 /* AppoxeeConfig.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = AppoxeeConfig.plist; sourceTree = SOURCE_ROOT; };
 		BCA1738E23D5D25C00B31430 /* MappIntelligenceDemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MappIntelligenceDemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCA1739123D5D25C00B31430 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BCA1739323D5D25C00B31430 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -257,7 +257,7 @@
 			isa = PBXGroup;
 			children = (
 				A3C8598429A80FC10097CF32 /* AppoxeeSDK.xcframework */,
-				A3C8598229A80ED80097CF32 /* AppoxeeConfig.plist */,
+				A3E66B8329F677EF00DB4C99 /* AppoxeeConfig.plist */,
 				A3C8597F29A80C750097CF32 /* SetupForLocalTesting.plist */,
 				8F94E6BC25BF199C00027623 /* Resources */,
 				8FA78F0325BF188A00CC166A /* MediaPlayerViewController.swift */,
@@ -460,7 +460,7 @@
 				8F94E6BE25BF199C00027623 /* wt.mp4 in Resources */,
 				BCA1739E23D5D25E00B31430 /* LaunchScreen.storyboard in Resources */,
 				A3C8598029A80C750097CF32 /* SetupForLocalTesting.plist in Resources */,
-				A3C8598329A80ED90097CF32 /* AppoxeeConfig.plist in Resources */,
+				A3E66B8429F677EF00DB4C99 /* AppoxeeConfig.plist in Resources */,
 				BCA1739B23D5D25E00B31430 /* Assets.xcassets in Resources */,
 				BCA1739923D5D25C00B31430 /* Main.storyboard in Resources */,
 			);

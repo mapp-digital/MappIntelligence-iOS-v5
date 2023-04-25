@@ -242,7 +242,11 @@ static MappIntelligenceDefaultConfig *config = nil;
     return config.backgroundSendout;
 }
 
+#define EMAIL_RECEIVER_ID @"emailReceiverIdUserDefaults"
 - (void)setEnableUserMatching:(BOOL)enableUserMatching {
+    if (enableUserMatching) {
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:EMAIL_RECEIVER_ID];
+    }
     if ([[MIDefaultTracker sharedInstance] anonymousTracking]) {
         [config setUserMatching:NO];
         [[MappIntelligenceLogger shared] logObj:@"It is not possible to do user matching while anonymous tracking is turn on." forDescription:kMappIntelligenceLogLevelDescriptionDebug];

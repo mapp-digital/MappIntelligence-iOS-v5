@@ -25,7 +25,7 @@ var window: UIWindow?
         let array = [(dict?["track_ids" as NSObject]?.intValue) ?? 0]
         let domain = dict?["domain" as NSObject]
         let didYouChangeTheStatusFlag = UserDefaults.standard.bool(forKey: "didYouChangeTheStatus")
-        MappIntelligence.shared()?.anonymousTracking = didYouChangeTheStatusFlag ? (MappIntelligence.shared()?.anonymousTracking ?? false) : true
+        MappIntelligence.shared()?.anonymousTracking = false//didYouChangeTheStatusFlag ? (MappIntelligence.shared()?.anonymousTracking ?? false) : true
         MappIntelligence.shared()?.initWithConfiguration(array, onTrackdomain: domain as! String)
  //       MappIntelligence.shared()?.initWithConfiguration(array, onTrackdomain: domain as! String, andWithEverID: "43657756353521")
         MappIntelligence.shared()?.logLevel = .all
@@ -36,7 +36,7 @@ var window: UIWindow?
         MappIntelligence.shared()?.shouldMigrate = true
         MappIntelligence.shared()?.sendAppVersionInEveryRequest = true
         MappIntelligence.shared()?.enableBackgroundSendout = true
-        MappIntelligence.shared()?.enableUserMatching = false
+        MappIntelligence.shared()?.enableUserMatching = true
         MappIntelligence.shared()?.enableCrashTracking(.allExceptionTypes)
         // Override point for customization after application launch.
         return true
