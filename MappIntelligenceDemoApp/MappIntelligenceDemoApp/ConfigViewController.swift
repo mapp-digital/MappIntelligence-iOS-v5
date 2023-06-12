@@ -92,5 +92,8 @@ class ConfigViewController: UIViewController {
         self.EverIDLabel.text = "Ever ID: " + (MappIntelligence.shared()?.getEverId() ?? "there is no EverID")
     }
     
-
+    @IBAction func SetUserMatchingToTrue(_ sender: Any) {
+        MappIntelligence.shared()?.enableUserMatching = true
+    }
+    
 }

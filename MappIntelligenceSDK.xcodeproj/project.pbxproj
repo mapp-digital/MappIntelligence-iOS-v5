@@ -657,6 +657,7 @@
 		A33B36F62460249F005EA9AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A33B36FF246047C8005EA9AE /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/lib/libz.tbd; sourceTree = DEVELOPER_DIR; };
 		A33C1D3A24508C990049D5E5 /* LICENSE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
+		A341D6FF2A320EF900CA1946 /* SetupForLocalTesting.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = SetupForLocalTesting.plist; sourceTree = "<group>"; };
 		A345975F27A1878A0038FE3F /* MIFormParameters.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MIFormParameters.h; sourceTree = "<group>"; };
 		A345976027A1878A0038FE3F /* MIFormParameters.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MIFormParameters.m; sourceTree = "<group>"; };
 		A345976327A1890A0038FE3F /* MIFormField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MIFormField.h; sourceTree = "<group>"; };
@@ -702,7 +703,6 @@
 		A3A7255E243F154900671DB2 /* MappIntelligenceTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MappIntelligenceTests.m; sourceTree = "<group>"; };
 		A3ADC97126D8EB34007504FF /* MIExceptionTracker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MIExceptionTracker.h; sourceTree = "<group>"; };
 		A3ADC97226D8EB34007504FF /* MIExceptionTracker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MIExceptionTracker.m; sourceTree = "<group>"; };
-		A3C8598129A80EB80097CF32 /* SetupForLocalTesting.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = SetupForLocalTesting.plist; path = MappIntelligenceDemoApp/SetupForLocalTesting.plist; sourceTree = "<group>"; };
 		A3CC5484248FC418006215FD /* MIDatabaseManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MIDatabaseManager.h; sourceTree = "<group>"; };
 		A3CC5485248FC418006215FD /* MIDatabaseManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MIDatabaseManager.m; sourceTree = "<group>"; };
 		A3CC5488249125DD006215FD /* MIParameter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MIParameter.h; sourceTree = "<group>"; };
@@ -933,7 +933,7 @@
 		A334860F23BF3E2300D0EB5F = {
 			isa = PBXGroup;
 			children = (
-				A3C8598129A80EB80097CF32 /* SetupForLocalTesting.plist */,
+				A341D6FF2A320EF900CA1946 /* SetupForLocalTesting.plist */,
 				A33C1D3A24508C990049D5E5 /* LICENSE.md */,
 				A30E3EC62444A3970047D7A6 /* MappIntelligence.podspec */,
 				A30E3EC42444A0B70047D7A6 /* .oclint.yml */,
