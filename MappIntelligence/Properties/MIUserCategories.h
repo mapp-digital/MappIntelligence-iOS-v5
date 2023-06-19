@@ -28,7 +28,7 @@ typedef NS_ENUM(NSInteger, MIGender) {
 @property (nullable) NSString *city;
 @property (nullable) NSString *country;
 @property (nullable) NSString *emailAddress;
-@property (nullable) NSString *emailReceiverId;
+@property (nonatomic, nullable) NSString *emailReceiverId;
 @property (nullable) NSString *firstName;
 @property MIGender gender;
 @property (nullable) NSString *customerId;

@@ -96,6 +96,13 @@
     }
 }
 
+- (void)setEmailReceiverId:(NSString *)emailReceiverId {
+    if([[MIDefaultTracker sharedInstance] isUserMatchingEnabled])
+        return;
+    else
+        _emailReceiverId = emailReceiverId;
+}
+
 - (NSMutableArray<NSURLQueryItem*>*)asQueryItems {
     NSMutableArray<NSURLQueryItem*>* items = [[NSMutableArray alloc] init];
     
