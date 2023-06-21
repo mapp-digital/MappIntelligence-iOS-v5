@@ -11,6 +11,7 @@
 #import <UIKit/UIKit.h>
 #import "MIPageViewEvent.h"
 #import "MIFormSubmitEvent.h"
+#import "MIUsageStatistics.h"
 #import "MIActionEvent.h"
 #if TARGET_OS_WATCH
 #import <WatchKit/WatchKit.h>
@@ -21,9 +22,10 @@
 @interface MIDefaultTracker : NSObject
 @property BOOL isReady;
 @property (nonatomic) BOOL anonymousTracking;
-@property NSString* version;
-@property NSString* platform;
+@property NSString* _Nonnull version;
+@property NSString* _Nonnull platform;
 @property (nonatomic) NSArray<NSString*> * _Nullable suppressedParameters;
+@property MIUsageStatistics* _Nonnull usageStatistics;
 
 + (nullable instancetype)sharedInstance;
 - (NSString *_Nullable)generateEverId;

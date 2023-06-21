@@ -114,12 +114,21 @@ static MappIntelligenceDefaultConfig *config = nil;
   [config setTrackIDs:trackIDs];
   [config setTrackDomain:trackDomain];
   [config setAutoTracking:autoTracking];
+    if(!autoTracking)
+        [[[MIDefaultTracker sharedInstance] usageStatistics] setAutoTracking:[NSNumber numberWithInt:0]];
   [config setBatchSupport:batchSupport];
+    if(!batchSupport)
+        [[[MIDefaultTracker sharedInstance] usageStatistics] setBatchSupport:[NSNumber numberWithInt:0]];
   [config setViewControllerAutoTracking:viewControllerAutoTracking];
+    if(!viewControllerAutoTracking)
+        [[[MIDefaultTracker sharedInstance] usageStatistics] setAutoTracking:[NSNumber numberWithInt:0]];
   [config setRequestPerQueue:numberOfRequestInQueue];
   [config setSendAppVersionToEveryRequest:NO];
+    [[[MIDefaultTracker sharedInstance] usageStatistics] setAppVersionInEveryRequest:[NSNumber numberWithInt:0]];
   [config setBackgroundSendout:NO];
+    [[[MIDefaultTracker sharedInstance] usageStatistics] setBackgroundSendout:[NSNumber numberWithInt:0]];
   [config setUserMatching:NO];
+    [[[MIDefaultTracker sharedInstance] usageStatistics] setUserMatching:[NSNumber numberWithInt:0]];
   [config logConfig];
 
   tracker = [MIDefaultTracker sharedInstance];
@@ -230,11 +239,15 @@ static MappIntelligenceDefaultConfig *config = nil;
 
 - (void) setBatchSupportEnabled:(BOOL)batchSupportEnabled {
     [config setBatchSupport:batchSupportEnabled];
+    if(!batchSupportEnabled)
+        [[[MIDefaultTracker sharedInstance] usageStatistics] setBatchSupport:[NSNumber numberWithInt:0]];
     [config logConfig];
 }
 
 - (void)setEnableBackgroundSendout:(BOOL)enableBackgroundSendout {
     [config setBackgroundSendout:enableBackgroundSendout];
+    if(!enableBackgroundSendout)
+        [[[MIDefaultTracker sharedInstance] usageStatistics] setBackgroundSendout:[NSNumber numberWithInt:0]];
     [config logConfig];
 }
 
@@ -244,6 +257,8 @@ static MappIntelligenceDefaultConfig *config = nil;
 
 #define EMAIL_RECEIVER_ID @"emailReceiverIdUserDefaults"
 - (void)setEnableUserMatching:(BOOL)enableUserMatching {
+    if(!enableUserMatching)
+        [[[MIDefaultTracker sharedInstance] usageStatistics] setAutoTracking:[NSNumber numberWithInt:0]];
     if (enableUserMatching) {
         [[NSUserDefaults standardUserDefaults] removeObjectForKey:EMAIL_RECEIVER_ID];
     }

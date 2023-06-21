@@ -247,6 +247,18 @@
 		A33B36F72460249F005EA9AE /* MappIntelligenceSDK_tvOS.h in Headers */ = {isa = PBXBuildFile; fileRef = A33B36F52460249F005EA9AE /* MappIntelligenceSDK_tvOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A33B36FB246024A6005EA9AE /* libMappIntelligencetvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A35C78C42452E6FF00D36144 /* libMappIntelligencetvOS.a */; };
 		A33B3700246047C8005EA9AE /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A33B36FF246047C8005EA9AE /* libz.tbd */; };
+		A341D7062A433EBC00CA1946 /* MIUsageStatistics.h in Headers */ = {isa = PBXBuildFile; fileRef = A341D7042A433EBC00CA1946 /* MIUsageStatistics.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A341D7072A433EBC00CA1946 /* MIUsageStatistics.m in Sources */ = {isa = PBXBuildFile; fileRef = A341D7052A433EBC00CA1946 /* MIUsageStatistics.m */; };
+		A341D7082A43487400CA1946 /* MIUsageStatistics.m in Sources */ = {isa = PBXBuildFile; fileRef = A341D7052A433EBC00CA1946 /* MIUsageStatistics.m */; };
+		A341D7092A43487600CA1946 /* MIUsageStatistics.m in Sources */ = {isa = PBXBuildFile; fileRef = A341D7052A433EBC00CA1946 /* MIUsageStatistics.m */; };
+		A341D70A2A43487700CA1946 /* MIUsageStatistics.m in Sources */ = {isa = PBXBuildFile; fileRef = A341D7052A433EBC00CA1946 /* MIUsageStatistics.m */; };
+		A341D70B2A4348A200CA1946 /* MIUsageStatistics.h in Headers */ = {isa = PBXBuildFile; fileRef = A341D7042A433EBC00CA1946 /* MIUsageStatistics.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A341D70C2A4348A200CA1946 /* MIUsageStatistics.h in Headers */ = {isa = PBXBuildFile; fileRef = A341D7042A433EBC00CA1946 /* MIUsageStatistics.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A341D70D2A4348A300CA1946 /* MIUsageStatistics.h in Headers */ = {isa = PBXBuildFile; fileRef = A341D7042A433EBC00CA1946 /* MIUsageStatistics.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A341D70E2A43498000CA1946 /* MIUsageStatistics.h in Copy Files */ = {isa = PBXBuildFile; fileRef = A341D7042A433EBC00CA1946 /* MIUsageStatistics.h */; };
+		A341D70F2A43499D00CA1946 /* MIUsageStatistics.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A341D7042A433EBC00CA1946 /* MIUsageStatistics.h */; };
+		A341D7102A4349A700CA1946 /* MIUsageStatistics.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A341D7042A433EBC00CA1946 /* MIUsageStatistics.h */; };
+		A341D7112A4349CE00CA1946 /* MIUsageStatistics.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A341D7042A433EBC00CA1946 /* MIUsageStatistics.h */; };
 		A345976127A1878A0038FE3F /* MIFormParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = A345975F27A1878A0038FE3F /* MIFormParameters.h */; };
 		A345976227A1878A0038FE3F /* MIFormParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = A345976027A1878A0038FE3F /* MIFormParameters.m */; };
 		A345976527A1890A0038FE3F /* MIFormField.h in Headers */ = {isa = PBXBuildFile; fileRef = A345976327A1890A0038FE3F /* MIFormField.h */; };
@@ -464,6 +476,7 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				A341D7112A4349CE00CA1946 /* MIUsageStatistics.h in CopyFiles */,
 				A3861FF727DB4DFC00F3F27C /* MIDefaultTracker.h in CopyFiles */,
 				A345978527A9857C0038FE3F /* MIFormParameters.h in CopyFiles */,
 				A345978627A9857C0038FE3F /* MIFormField.h in CopyFiles */,
@@ -494,6 +507,7 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				A341D70F2A43499D00CA1946 /* MIUsageStatistics.h in CopyFiles */,
 				A353EB18287DA00A00729919 /* APXNetworkManager.h in CopyFiles */,
 				A353EB19287DA00A00729919 /* APXRequestBuilder.h in CopyFiles */,
 				A345978227A985700038FE3F /* MIFormParameters.h in CopyFiles */,
@@ -525,6 +539,7 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				A341D70E2A43498000CA1946 /* MIUsageStatistics.h in Copy Files */,
 				A3861FF827DB4E3500F3F27C /* MIDefaultTracker.h in Copy Files */,
 				A345978027A9843F0038FE3F /* MIFormField.h in Copy Files */,
 				A345978127A9843F0038FE3F /* MIFormSubmitEvent.h in Copy Files */,
@@ -557,6 +572,7 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				A341D7102A4349A700CA1946 /* MIUsageStatistics.h in CopyFiles */,
 				8FF7765725C2F767005CEE9B /* MIParams.h in CopyFiles */,
 				8FF7765825C2F767005CEE9B /* MIParamType.h in CopyFiles */,
 				8F94E77B25BF2D8700027623 /* MIMediaEvent.h in CopyFiles */,
@@ -658,6 +674,8 @@
 		A33B36FF246047C8005EA9AE /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/lib/libz.tbd; sourceTree = DEVELOPER_DIR; };
 		A33C1D3A24508C990049D5E5 /* LICENSE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
 		A341D6FF2A320EF900CA1946 /* SetupForLocalTesting.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = SetupForLocalTesting.plist; sourceTree = "<group>"; };
+		A341D7042A433EBC00CA1946 /* MIUsageStatistics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MIUsageStatistics.h; sourceTree = "<group>"; };
+		A341D7052A433EBC00CA1946 /* MIUsageStatistics.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MIUsageStatistics.m; sourceTree = "<group>"; };
 		A345975F27A1878A0038FE3F /* MIFormParameters.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MIFormParameters.h; sourceTree = "<group>"; };
 		A345976027A1878A0038FE3F /* MIFormParameters.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MIFormParameters.m; sourceTree = "<group>"; };
 		A345976327A1890A0038FE3F /* MIFormField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MIFormField.h; sourceTree = "<group>"; };
@@ -1123,6 +1141,8 @@
 			children = (
 				A380D2022412B0AB009E2CD8 /* MIEnvironment.h */,
 				A380D2032412B0AB009E2CD8 /* MIEnvironment.m */,
+				A341D7042A433EBC00CA1946 /* MIUsageStatistics.h */,
+				A341D7052A433EBC00CA1946 /* MIUsageStatistics.m */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -1235,6 +1255,7 @@
 				A3DE04EB2944BB6F008657B9 /* MIKeychainManager.h in Headers */,
 				A345976127A1878A0038FE3F /* MIFormParameters.h in Headers */,
 				A3DE04E72944BAE1008657B9 /* MIAPXIdentifier.h in Headers */,
+				A341D7062A433EBC00CA1946 /* MIUsageStatistics.h in Headers */,
 				A3861FF627DB47B300F3F27C /* MIFormParameters.m in Headers */,
 				A380D1FF241296FD009E2CD8 /* MIPageViewEvent.h in Headers */,
 				A337446024C8404B0096259B /* MIPageViewEvent.m in Headers */,
@@ -1288,6 +1309,7 @@
 				A3E8274F2461B6F200952606 /* MappIntelligenceWatchOS.h in Headers */,
 				A345977927A97C940038FE3F /* MIFormParameters.h in Headers */,
 				8FCFD50525B18E3000EE8358 /* MICampaignParameters.h in Headers */,
+				A341D70C2A4348A200CA1946 /* MIUsageStatistics.h in Headers */,
 				8FCFD56525B18EF000EE8358 /* MIProduct.h in Headers */,
 				8FCFD5E425B18F7C00EE8358 /* MITrackingEvent.h in Headers */,
 				8FCFD54D25B18EC400EE8358 /* MISessionParameters.h in Headers */,
@@ -1314,6 +1336,7 @@
 				A3E827502461B72700952606 /* MappIntelligencetvOS.h in Headers */,
 				A345977A27A97C950038FE3F /* MIFormParameters.h in Headers */,
 				8FCFD50D25B18E3100EE8358 /* MICampaignParameters.h in Headers */,
+				A341D70D2A4348A300CA1946 /* MIUsageStatistics.h in Headers */,
 				8FCFD56625B18EF000EE8358 /* MIProduct.h in Headers */,
 				8FCFD5E525B18F7D00EE8358 /* MITrackingEvent.h in Headers */,
 				8FCFD54E25B18EC400EE8358 /* MISessionParameters.h in Headers */,
@@ -1347,6 +1370,7 @@
 				8F0A3F6525C2F40C00CD43A2 /* MappIntelligenceiOS.h in Headers */,
 				8FCFD5F425B18FA300EE8358 /* MIParams.h in Headers */,
 				8F0A3F7725C2F47200CD43A2 /* MIWebViewTracker.h in Headers */,
+				A341D70B2A4348A200CA1946 /* MIUsageStatistics.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1643,6 +1667,7 @@
 				A3DE04F02944BBE3008657B9 /* MIAPXIdentifier.m in Sources */,
 				8F20A0E725C2CED90006CB93 /* MISessionParameters.m in Sources */,
 				8F20A19825C2D0000006CB93 /* MIDatabaseManager.m in Sources */,
+				A341D70A2A43487700CA1946 /* MIUsageStatistics.m in Sources */,
 				8F20A18D25C2CFD90006CB93 /* MIRequestBatchSupportUrlBuilder.m in Sources */,
 				A3955B4F287DAD2300D4FA90 /* MIAPXInappLogger.m in Sources */,
 				8F20A0BA25C2CEC30006CB93 /* MIMediaTracker.m in Sources */,
@@ -1673,6 +1698,7 @@
 				8F94E6D625BF27BB00027623 /* MIMediaTracker.m in Sources */,
 				A338B79A25470A1F00E50C28 /* MIProduct.m in Sources */,
 				8FEC887A25598E6500E24EDC /* MIDeepLink.m in Sources */,
+				A341D7082A43487400CA1946 /* MIUsageStatistics.m in Sources */,
 				A36C6E072432392A008A9CB6 /* MIEnvironment.m in Sources */,
 				A36C6E0624323917008A9CB6 /* MIRequestUrlBuilder.m in Sources */,
 				A3CC549A249151E3006215FD /* MIDBRequest.m in Sources */,
@@ -1741,6 +1767,7 @@
 				A3DE04E82944BAE1008657B9 /* MIAPXIdentifier.m in Sources */,
 				A337445D24C1A12A0096259B /* MIPageParameters.m in Sources */,
 				A380D2052412B0AB009E2CD8 /* MIEnvironment.m in Sources */,
+				A341D7072A433EBC00CA1946 /* MIUsageStatistics.m in Sources */,
 				A3CC548F249125F0006215FD /* MIDBRequest.m in Sources */,
 				A3187BA7287429EC00653D05 /* MIAPXInappLogger.m in Sources */,
 				8FD2C1F9258C0CA8002A9ED4 /* MIParams.m in Sources */,
@@ -1820,6 +1847,7 @@
 				8F94E6DE25BF27BC00027623 /* MIMediaTracker.m in Sources */,
 				A338B79B25470A1F00E50C28 /* MIProduct.m in Sources */,
 				8FEC887B25598E6500E24EDC /* MIDeepLink.m in Sources */,
+				A341D7092A43487600CA1946 /* MIUsageStatistics.m in Sources */,
 				A35C790A2452FCB700D36144 /* MIEnvironment.m in Sources */,
 				A35C790B2452FCB700D36144 /* MIConfiguration.m in Sources */,
 				A3CC549B249151E5006215FD /* MIDBRequest.m in Sources */,
