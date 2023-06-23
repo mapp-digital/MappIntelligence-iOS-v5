@@ -7,6 +7,7 @@
 //
 
 #import "MIUsageStatistics.h"
+#import "MappIntelligenceLogger.h"
 #include <math.h>
 
 @implementation MIUsageStatistics
@@ -75,10 +76,7 @@
 }
 
 - (void)printUserStatistics {
-    NSLog(@"===================================================");
-    NSLog(@"===================Usage Statistics================");
-    NSLog(@"Activity Auto Tracking: %i\nFragments Auto Tracking: %i\nAuto Tracking: %i\nBackground Sendout: %i\nUser Matching: %i\n Webview: %i\nSet EverId: %i\nApp Version in every Request: %i\nCrash Tracking: %i Batch Support: %i\n", [_activityAutoTracking intValue], [_fragmentsAutoTracking intValue], [_autoTracking intValue], [_backgroundSendout intValue], [_userMatching intValue], [_webview intValue], [_setEverId intValue], [_appVersionInEveryRequest intValue], [_crashTracking intValue], [_batchSupport intValue] );
-    NSLog(@"===================================================");
+    [[MappIntelligenceLogger shared] logObj:[NSString stringWithFormat:@"\n===================================================\n===================Usage Statistics================\nActivity Auto Tracking: %i\nFragments Auto Tracking: %i\nAuto Tracking: %i\nBackground Sendout: %i\nUser Matching: %i\nWebview: %i\nSet EverId: %i\nApp Version in every Request: %i\nCrash Tracking: %i\nBatch Support: %i\n===================================================\n", [_activityAutoTracking intValue], [_fragmentsAutoTracking intValue], [_autoTracking intValue], [_backgroundSendout intValue], [_userMatching intValue], [_webview intValue], [_setEverId intValue], [_appVersionInEveryRequest intValue], [_crashTracking intValue], [_batchSupport intValue] ] forDescription:kMappIntelligenceLogLevelDescriptionDebug];
 }
 
 - (NSString*)getUserStatisticsValue {
