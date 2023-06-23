@@ -259,6 +259,7 @@
 		A341D70F2A43499D00CA1946 /* MIUsageStatistics.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A341D7042A433EBC00CA1946 /* MIUsageStatistics.h */; };
 		A341D7102A4349A700CA1946 /* MIUsageStatistics.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A341D7042A433EBC00CA1946 /* MIUsageStatistics.h */; };
 		A341D7112A4349CE00CA1946 /* MIUsageStatistics.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A341D7042A433EBC00CA1946 /* MIUsageStatistics.h */; };
+		A341D7142A45BC3400CA1946 /* MIUsageStatisticsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A341D7132A45BC3400CA1946 /* MIUsageStatisticsTests.m */; };
 		A345976127A1878A0038FE3F /* MIFormParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = A345975F27A1878A0038FE3F /* MIFormParameters.h */; };
 		A345976227A1878A0038FE3F /* MIFormParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = A345976027A1878A0038FE3F /* MIFormParameters.m */; };
 		A345976527A1890A0038FE3F /* MIFormField.h in Headers */ = {isa = PBXBuildFile; fileRef = A345976327A1890A0038FE3F /* MIFormField.h */; };
@@ -676,6 +677,7 @@
 		A341D6FF2A320EF900CA1946 /* SetupForLocalTesting.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = SetupForLocalTesting.plist; sourceTree = "<group>"; };
 		A341D7042A433EBC00CA1946 /* MIUsageStatistics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MIUsageStatistics.h; sourceTree = "<group>"; };
 		A341D7052A433EBC00CA1946 /* MIUsageStatistics.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MIUsageStatistics.m; sourceTree = "<group>"; };
+		A341D7132A45BC3400CA1946 /* MIUsageStatisticsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MIUsageStatisticsTests.m; sourceTree = "<group>"; };
 		A345975F27A1878A0038FE3F /* MIFormParameters.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MIFormParameters.h; sourceTree = "<group>"; };
 		A345976027A1878A0038FE3F /* MIFormParameters.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MIFormParameters.m; sourceTree = "<group>"; };
 		A345976327A1890A0038FE3F /* MIFormField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MIFormField.h; sourceTree = "<group>"; };
@@ -1059,6 +1061,14 @@
 			path = "MappIntelligenceSDK-tvOS";
 			sourceTree = "<group>";
 		};
+		A341D7122A45BBF600CA1946 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				A341D7132A45BC3400CA1946 /* MIUsageStatisticsTests.m */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
 		A357221E24FD1013005F9DE1 /* Properties */ = {
 			isa = PBXGroup;
 			children = (
@@ -1199,6 +1209,7 @@
 		BCEA32C023E979FD003AF806 /* MappIntelligenceTests */ = {
 			isa = PBXGroup;
 			children = (
+				A341D7122A45BBF600CA1946 /* Utility */,
 				A3F8889C28198F7D0054B9A1 /* Features */,
 				A357221E24FD1013005F9DE1 /* Properties */,
 				A31D7A4C243CBE1A00386A1C /* Network */,
@@ -1792,6 +1803,7 @@
 				A3588A9B27D8B5A70053961B /* CampaignParameterTests.m in Sources */,
 				A357222224FD1ABB005F9DE1 /* PageViewEventTests.m in Sources */,
 				A3A7255B243DEA0500671DB2 /* RequestUrlBuilderTests.m in Sources */,
+				A341D7142A45BC3400CA1946 /* MIUsageStatisticsTests.m in Sources */,
 				A32EE0A2243CB97200EDC5B8 /* MappIntelligenceDefaultConfigTest.m in Sources */,
 				A31D7A4F243CC0F200386A1C /* TrackerRequestTests.m in Sources */,
 				A357221B24F933A1005F9DE1 /* RequestTest.m in Sources */,
@@ -2172,6 +2184,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LERY366S7C;
+				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2190,6 +2203,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LERY366S7C;
+				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

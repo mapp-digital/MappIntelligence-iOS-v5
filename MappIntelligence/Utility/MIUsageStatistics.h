@@ -14,17 +14,18 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonnull) NSNumber* activityAutoTracking;
 @property (nonnull) NSNumber* fragmentsAutoTracking;
-@property (nonnull) NSNumber* autoTracking;
-@property (nonnull) NSNumber* backgroundSendout;
-@property (nonnull) NSNumber* userMatching;
-@property (nonnull) NSNumber* webview;
-@property (nonnull) NSNumber* setEverId;
-@property (nonnull) NSNumber* appVersionInEveryRequest;
-@property (nonnull) NSNumber* crashTracking;
-@property (nonnull) NSNumber* batchSupport;
+@property (nonatomic, nonnull) NSNumber* autoTracking;
+@property (nonatomic, nonnull) NSNumber* backgroundSendout;
+@property (nonatomic, nonnull) NSNumber* userMatching;
+@property (nonatomic, nonnull) NSNumber* webview;
+@property (nonatomic, nonnull) NSNumber* setEverId;
+@property (nonatomic, nonnull) NSNumber* appVersionInEveryRequest;
+@property (nonatomic, nonnull) NSNumber* crashTracking;
+@property (nonatomic, nonnull) NSNumber* batchSupport;
 
 - (void)printUserStatistics;
 - (NSString*)getUserStatisticsValue;
+- (void)reset;
 @end
 
 NS_ASSUME_NONNULL_END

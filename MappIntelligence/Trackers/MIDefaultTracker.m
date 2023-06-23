@@ -132,6 +132,7 @@ static NSString *userAgent;
     _config = [[MIConfiguration alloc] init];
     _logger = [MappIntelligenceLogger shared];
     _defaults = [NSUserDefaults standardUserDefaults];
+    _usageStatistics = [[MIUsageStatistics alloc] init];
     _flowObserver = [[MIUIFlowObserver alloc] initWith:self];
     [_flowObserver setup];
     _conditionUntilGetFNS = [[NSCondition alloc] init];
@@ -242,6 +243,7 @@ static NSString *userAgent;
     everID = everIDString;
     [[MIDefaultTracker sharedDefaults] setValue:everIDString forKey:everId];
     [[MIDefaultTracker sharedDefaults] synchronize];
+    [[sharedTracker usageStatistics] setSetEverId:[NSNumber numberWithInt:1]];
 }
 
 - (NSString *)getNewEverID {

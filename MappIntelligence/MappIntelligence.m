@@ -114,14 +114,21 @@ static MappIntelligenceDefaultConfig *config = nil;
   [config setTrackIDs:trackIDs];
   [config setTrackDomain:trackDomain];
   [config setAutoTracking:autoTracking];
+  [[[MIDefaultTracker sharedInstance] usageStatistics] setSetEverId:[NSNumber numberWithInt:0]];
     if(!autoTracking)
         [[[MIDefaultTracker sharedInstance] usageStatistics] setAutoTracking:[NSNumber numberWithInt:0]];
+    else
+        [[[MIDefaultTracker sharedInstance] usageStatistics] setAutoTracking:[NSNumber numberWithInt:1]];
   [config setBatchSupport:batchSupport];
     if(!batchSupport)
         [[[MIDefaultTracker sharedInstance] usageStatistics] setBatchSupport:[NSNumber numberWithInt:0]];
+    else
+        [[[MIDefaultTracker sharedInstance] usageStatistics] setBatchSupport:[NSNumber numberWithInt:1]];
   [config setViewControllerAutoTracking:viewControllerAutoTracking];
     if(!viewControllerAutoTracking)
         [[[MIDefaultTracker sharedInstance] usageStatistics] setAutoTracking:[NSNumber numberWithInt:0]];
+    else
+        [[[MIDefaultTracker sharedInstance] usageStatistics] setAutoTracking:[NSNumber numberWithInt:1]];
   [config setRequestPerQueue:numberOfRequestInQueue];
   [config setSendAppVersionToEveryRequest:NO];
     [[[MIDefaultTracker sharedInstance] usageStatistics] setAppVersionInEveryRequest:[NSNumber numberWithInt:0]];
@@ -241,6 +248,8 @@ static MappIntelligenceDefaultConfig *config = nil;
     [config setBatchSupport:batchSupportEnabled];
     if(!batchSupportEnabled)
         [[[MIDefaultTracker sharedInstance] usageStatistics] setBatchSupport:[NSNumber numberWithInt:0]];
+    else
+        [[[MIDefaultTracker sharedInstance] usageStatistics] setBatchSupport:[NSNumber numberWithInt:1]];
     [config logConfig];
 }
 
@@ -248,6 +257,8 @@ static MappIntelligenceDefaultConfig *config = nil;
     [config setBackgroundSendout:enableBackgroundSendout];
     if(!enableBackgroundSendout)
         [[[MIDefaultTracker sharedInstance] usageStatistics] setBackgroundSendout:[NSNumber numberWithInt:0]];
+    else
+        [[[MIDefaultTracker sharedInstance] usageStatistics] setBackgroundSendout:[NSNumber numberWithInt:1]];
     [config logConfig];
 }
 
@@ -259,6 +270,8 @@ static MappIntelligenceDefaultConfig *config = nil;
 - (void)setEnableUserMatching:(BOOL)enableUserMatching {
     if(!enableUserMatching)
         [[[MIDefaultTracker sharedInstance] usageStatistics] setAutoTracking:[NSNumber numberWithInt:0]];
+    else
+        [[[MIDefaultTracker sharedInstance] usageStatistics] setAutoTracking:[NSNumber numberWithInt:1]];
     if (enableUserMatching) {
         [[NSUserDefaults standardUserDefaults] removeObjectForKey:EMAIL_RECEIVER_ID];
     }
@@ -303,6 +316,7 @@ static MappIntelligenceDefaultConfig *config = nil;
     [_logger logObj:@"Reset Mapp Intelligence Instance."
         forDescription:kMappIntelligenceLogLevelDescriptionDebug];
     [config reset];
+    [[[MIDefaultTracker sharedInstance] usageStatistics] reset];
     [config logConfig];
     [tracker reset];
     [_logger logObj:@"Resetting the SDK sets all configuration options to the default values. Please initialize tracking by specifying your trackdomain and trackID after calling reset" forDescription:kMappIntelligenceLogLevelDescriptionInfo];
@@ -437,6 +451,10 @@ static MappIntelligenceDefaultConfig *config = nil;
 
 - (void)setSendAppVersionInEveryRequest:(BOOL)sendAppVerisonToEveryRequest {
     [config setSendAppVersionToEveryRequest:sendAppVerisonToEveryRequest];
+    if(!sendAppVerisonToEveryRequest)
+        [[[MIDefaultTracker sharedInstance] usageStatistics] setAppVersionInEveryRequest:[NSNumber numberWithInt:0]];
+    else
+        [[[MIDefaultTracker sharedInstance] usageStatistics] setAppVersionInEveryRequest:[NSNumber numberWithInt:1]];
 }
 
 - (BOOL)sendAppVersionInEveryRequest {
@@ -451,6 +469,10 @@ static MappIntelligenceDefaultConfig *config = nil;
 
 - (void)enableCrashTracking:(exceptionType)exceptionLogLevel {
     [[MIExceptionTracker sharedInstance] setTypeOfExceptionsToTrack:exceptionLogLevel];
+    if(exceptionLogLevel == noneOfExceptionTypes)
+        [[[MIDefaultTracker sharedInstance] usageStatistics] setCrashTracking:[NSNumber numberWithInt:0]];
+    else
+        [[[MIDefaultTracker sharedInstance] usageStatistics] setCrashTracking:[NSNumber numberWithInt:1]];
 }
 
 - (NSString *_Nonnull)getEverId {
