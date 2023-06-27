@@ -269,9 +269,9 @@ static MappIntelligenceDefaultConfig *config = nil;
 #define EMAIL_RECEIVER_ID @"emailReceiverIdUserDefaults"
 - (void)setEnableUserMatching:(BOOL)enableUserMatching {
     if(!enableUserMatching)
-        [[[MIDefaultTracker sharedInstance] usageStatistics] setAutoTracking:[NSNumber numberWithInt:0]];
+        [[[MIDefaultTracker sharedInstance] usageStatistics] setUserMatching:[NSNumber numberWithInt:0]];
     else
-        [[[MIDefaultTracker sharedInstance] usageStatistics] setAutoTracking:[NSNumber numberWithInt:1]];
+        [[[MIDefaultTracker sharedInstance] usageStatistics] setUserMatching:[NSNumber numberWithInt:1]];
     if (enableUserMatching) {
         [[NSUserDefaults standardUserDefaults] removeObjectForKey:EMAIL_RECEIVER_ID];
     }
