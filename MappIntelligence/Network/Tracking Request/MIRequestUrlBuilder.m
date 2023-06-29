@@ -125,6 +125,7 @@
                                               (properties.timestamp
                                                    .timeIntervalSince1970 *
                                                1000)]]];
+    //TODO: seee why is ever id is null
   [parametrs addObject:[NSURLQueryItem queryItemWithName:@"eid"
                                                    value:properties.everId]];
     if(![[MIDefaultTracker sharedInstance] anonymousTracking]) {

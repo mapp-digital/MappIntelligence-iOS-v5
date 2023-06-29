@@ -38,7 +38,9 @@
     if (self) {
         self.parameters = [[NSMutableArray alloc] init];
         for (NSURLQueryItem* item in parameters) {
-            [self.parameters addObject:[[MIParameter alloc] initWithKeyedValues: @{@"name" : item.name, @"value" : item.value}]];
+            //NSLog(@"name: %@ value: %@", item.name, item.value);
+            if(![item.name isEqual:NULL] && ![item.value isEqual:NULL])
+                [self.parameters addObject:[[MIParameter alloc] initWithKeyedValues: @{@"name" : item.name, @"value" : item.value}]];
         }
         self.domain = domain;
         self.track_ids = trackids;

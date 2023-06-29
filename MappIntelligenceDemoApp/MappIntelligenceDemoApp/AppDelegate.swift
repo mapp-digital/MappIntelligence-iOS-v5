@@ -27,7 +27,8 @@ var window: UIWindow?
         let didYouChangeTheStatusFlag = UserDefaults.standard.bool(forKey: "didYouChangeTheStatus")
         MappIntelligence.shared()?.anonymousTracking = true//didYouChangeTheStatusFlag ? (MappIntelligence.shared()?.anonymousTracking ?? false) : true
         MappIntelligence.shared()?.initWithConfiguration(array, onTrackdomain: domain as! String)
- //       MappIntelligence.shared()?.initWithConfiguration(array, onTrackdomain: domain as! String, andWithEverID: "43657756353521")
+        //MappIntelligence.shared()?.trackPage(MIPageViewEvent(name: "ime_glupo"))
+        //MappIntelligence.shared()?.initWithConfiguration(array, onTrackdomain: domain as! String, andWithEverID: "43657756353521")
         MappIntelligence.shared()?.logLevel = .all
         MappIntelligence.shared()?.batchSupportEnabled = false
         MappIntelligence.shared()?.batchSupportSize = 150
@@ -36,7 +37,7 @@ var window: UIWindow?
         MappIntelligence.shared()?.shouldMigrate = true
         MappIntelligence.shared()?.sendAppVersionInEveryRequest = true
         MappIntelligence.shared()?.enableBackgroundSendout = true
-        MappIntelligence.shared()?.enableUserMatching = true
+        //MappIntelligence.shared()?.enableUserMatching = true
         MappIntelligence.shared()?.enableCrashTracking(.allExceptionTypes)
         // Override point for customization after application launch.
         return true
