@@ -125,10 +125,10 @@ static NSString *userAgent;
   if (!sharedTracker) {
     sharedTracker = [super init];
      _anonymousTracking = [[MIDefaultTracker sharedDefaults] boolForKey:anonymous];
-      dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.2 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-          everID = [sharedTracker generateEverId];
-      });
-    //everID = [sharedTracker generateEverId];
+//      dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.2 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+//          everID = [sharedTracker generateEverId];
+//      });
+    everID = [sharedTracker generateEverId];
     _config = [[MIConfiguration alloc] init];
     _logger = [MappIntelligenceLogger shared];
     _defaults = [NSUserDefaults standardUserDefaults];
@@ -139,7 +139,9 @@ static NSString *userAgent;
     _isReady = NO;
     [self generateUserAgent];
     [self initializeTracking];
-      _queue = dispatch_queue_create("Inserting Requests", NULL);
+      //it seems that is impossible to have queues on both places, so I will use the same one from database
+      _queue = [[MIDatabaseManager shared] getExecutionQueue];
+      //dispatch_queue_create("Inserting Requests", NULL);
 #if TARGET_OS_TV
       [self checkIfAppUpdated];
 #endif

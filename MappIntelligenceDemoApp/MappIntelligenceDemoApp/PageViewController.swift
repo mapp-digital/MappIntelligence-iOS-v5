@@ -74,4 +74,8 @@ class PageViewController: UIViewController {
         MappIntelligence.shared()?.trackCustomPage("Test", trackingParams: cparams)
         
     }
+    @IBAction func testBugWithAnonimousTracking(_ sender: Any) {
+        MappIntelligence.shared()?.anonymousTracking = true
+        MappIntelligence.shared()?.trackPage(MIPageViewEvent(name: "anonymous_bug_tracking"))
+    }
 }

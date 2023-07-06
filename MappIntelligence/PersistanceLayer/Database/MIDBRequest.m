@@ -38,7 +38,6 @@
     if (self) {
         self.parameters = [[NSMutableArray alloc] init];
         for (NSURLQueryItem* item in parameters) {
-            //NSLog(@"name: %@ value: %@", item.name, item.value);
             if(![item.name isEqual:NULL] && ![item.value isEqual:NULL])
                 [self.parameters addObject:[[MIParameter alloc] initWithKeyedValues: @{@"name" : item.name, @"value" : item.value}]];
         }
@@ -46,7 +45,7 @@
         self.track_ids = trackids;
         self.status = ACTIVE;
     }
-    
+    [self print];
     return self;
 }
 
@@ -122,7 +121,6 @@
     for(MIParameter* parameter in self.parameters) {
         request = [request stringByAppendingString:[parameter print]];
     }
-    NSLog(@"%@", request);
     return request;
 }
 

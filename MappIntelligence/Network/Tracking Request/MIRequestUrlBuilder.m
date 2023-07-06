@@ -125,9 +125,10 @@
                                               (properties.timestamp
                                                    .timeIntervalSince1970 *
                                                1000)]]];
-    //TODO: seee why is ever id is null
-  [parametrs addObject:[NSURLQueryItem queryItemWithName:@"eid"
-                                                   value:properties.everId]];
+    if(properties.everId) {
+        [parametrs addObject:[NSURLQueryItem queryItemWithName:@"eid"
+                                                         value:properties.everId]];
+    }
     if(![[MIDefaultTracker sharedInstance] anonymousTracking]) {
         if ([[NSUserDefaults standardUserDefaults] objectForKey:EMAIL_RECEIVER_ID]) {
             [parametrs addObject:[NSURLQueryItem queryItemWithName:@"uc701"
@@ -184,7 +185,9 @@
             MISessionParameters *session = pgEvent.sessionParameters;
             [parametrs addObjectsFromArray:[session asQueryItems]];
             MIUserCategories *userCategories = pgEvent.userCategories;
-            parametrs = [self removeDmcUserId:parametrs and:[userCategories asQueryItems]];
+            if(userCategories) {
+                parametrs = [self removeDmcUserId:parametrs and:[userCategories asQueryItems]];
+            }
             [parametrs addObjectsFromArray:[userCategories asQueryItems]];
             MIEcommerceParameters *ecommerceParameters = pgEvent.ecommerceParameters;
             [parametrs addObjectsFromArray:[ecommerceParameters asQueryItems]];
@@ -247,11 +250,11 @@
     }
     
     [parametrs addObject:[NSURLQueryItem queryItemWithName:@"eor" value:@"1"]];
-
+    
     [_sizeMonitor setCurrentRequestSize:[_sizeMonitor currentRequestSize] +
                                        5]; // add for end of the request
-    
-  url = [self createURLFromParametersWith:parametrs];
+  
+    url = [self createURLFromParametersWith:parametrs];
   _dbRequest = [[MIDBRequest alloc] initWithParamters:parametrs
                                         andDomain:[MappIntelligence getUrl]
                                       andTrackIds:[MappIntelligence getId]];
@@ -367,16 +370,6 @@
     }
     return YES;
 }
-//
-//-(void) parseCampaignFrom: (NSDictionary *) trackingParams {
-//    MICampaignProperties *campaign = [[MICampaignProperties alloc] init];
-//    for (NSString *key in trackingParams) {
-//        if ([[key substringToIndex:2] isEqualToString:@"mc"]) {
-//            
-//        }
-//    }
-//    
-//}
 
 -(NSMutableArray *) getAnonimousParams: (NSMutableArray *) params {
     NSMutableArray *anonimParams = [[NSMutableArray alloc] init];

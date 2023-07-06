@@ -748,6 +748,19 @@
                                     <action selector="trackCustomPageData:" destination="OQt-Ei-jeo" eventType="touchUpInside" id="Yhg-AD-yBK"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4L7-5k-x84">
+                                <rect key="frame" x="20" y="334" width="374" height="50"/>
+                                <color key="backgroundColor" red="0.021203886719999999" green="0.57247686389999997" blue="0.84162324669999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Etx-Ug-84h"/>
+                                </constraints>
+                                <state key="normal" title="Track Page with Anonimus set to true (Bug)">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="testBugWithAnonimousTracking:" destination="OQt-Ei-jeo" eventType="touchUpInside" id="k4Z-04-rQN"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="s58-Tq-3r0"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -755,12 +768,15 @@
                         <constraints>
                             <constraint firstItem="8dv-nM-LHo" firstAttribute="top" secondItem="6ud-t1-Mby" secondAttribute="bottom" constant="25" id="168-B2-mUu"/>
                             <constraint firstItem="s58-Tq-3r0" firstAttribute="trailing" secondItem="6ud-t1-Mby" secondAttribute="trailing" constant="20" id="2vb-8m-6RF"/>
+                            <constraint firstItem="4L7-5k-x84" firstAttribute="top" secondItem="mTi-qR-vcf" secondAttribute="bottom" constant="20" id="DBR-eW-xvD"/>
+                            <constraint firstItem="4L7-5k-x84" firstAttribute="leading" secondItem="s58-Tq-3r0" secondAttribute="leading" constant="20" id="OXw-o3-p2G"/>
                             <constraint firstItem="s58-Tq-3r0" firstAttribute="trailing" secondItem="mTi-qR-vcf" secondAttribute="trailing" constant="20" id="SJo-4O-jnP"/>
                             <constraint firstItem="6ud-t1-Mby" firstAttribute="top" secondItem="s58-Tq-3r0" secondAttribute="top" constant="50" id="UGC-zZ-3Vu"/>
                             <constraint firstItem="s58-Tq-3r0" firstAttribute="trailing" secondItem="8dv-nM-LHo" secondAttribute="trailing" constant="20" id="VSD-rK-gMX"/>
                             <constraint firstItem="mTi-qR-vcf" firstAttribute="leading" secondItem="s58-Tq-3r0" secondAttribute="leading" constant="20" id="aVw-vp-kYv"/>
                             <constraint firstItem="8dv-nM-LHo" firstAttribute="leading" secondItem="s58-Tq-3r0" secondAttribute="leading" constant="20" id="b3z-Ab-1np"/>
                             <constraint firstItem="mTi-qR-vcf" firstAttribute="top" secondItem="8dv-nM-LHo" secondAttribute="bottom" constant="25" id="fpY-Tf-Ehj"/>
+                            <constraint firstItem="s58-Tq-3r0" firstAttribute="trailing" secondItem="4L7-5k-x84" secondAttribute="trailing" constant="20" id="pap-D0-0L5"/>
                             <constraint firstItem="6ud-t1-Mby" firstAttribute="leading" secondItem="s58-Tq-3r0" secondAttribute="leading" constant="20" id="ulC-iL-ECZ"/>
                         </constraints>
                     </view>
