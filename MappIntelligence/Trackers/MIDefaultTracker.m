@@ -124,10 +124,8 @@ static NSString *userAgent;
 - (instancetype)init {
   if (!sharedTracker) {
     sharedTracker = [super init];
-     _anonymousTracking = [[MIDefaultTracker sharedDefaults] boolForKey:anonymous];
-//      dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.2 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-//          everID = [sharedTracker generateEverId];
-//      });
+    _anonymousTracking = [[MIDefaultTracker sharedDefaults] boolForKey:anonymous];
+    _temporaryID = NULL;
     everID = [sharedTracker generateEverId];
     _config = [[MIConfiguration alloc] init];
     _logger = [MappIntelligenceLogger shared];

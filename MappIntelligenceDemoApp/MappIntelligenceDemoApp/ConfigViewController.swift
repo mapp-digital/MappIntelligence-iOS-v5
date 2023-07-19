@@ -58,6 +58,7 @@ class ConfigViewController: UIViewController {
         UserDefaults.standard.setValue(true, forKey: "didYouChangeTheStatus")
         if (sender.isOn) {
             MappIntelligence.shared()?.enableAnonymousTracking(["uc706"])
+            MappIntelligence.shared()?.setTemporarySessionId("user-xyz-123456789")
         } else {
             MappIntelligence.shared()?.anonymousTracking = false
         }

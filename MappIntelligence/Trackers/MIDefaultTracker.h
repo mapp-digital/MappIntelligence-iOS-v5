@@ -22,6 +22,7 @@
 @interface MIDefaultTracker : NSObject
 @property BOOL isReady;
 @property (nonatomic) BOOL anonymousTracking;
+@property NSString*_Nullable temporaryID;
 @property NSString* _Nonnull version;
 @property NSString* _Nonnull platform;
 @property (nonatomic) NSArray<NSString*> * _Nullable suppressedParameters;

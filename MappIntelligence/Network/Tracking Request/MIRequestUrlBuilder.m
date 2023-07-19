@@ -161,6 +161,9 @@
     if([[MIDefaultTracker sharedInstance] anonymousTracking]) {
         [parametrs addObject:[NSURLQueryItem queryItemWithName:@"pf" value:[[[MIDefaultTracker sharedInstance] usageStatistics] getUserStatisticsValue]]];
         [[[MIDefaultTracker sharedInstance] usageStatistics] printUserStatistics];
+        if ([[MIDefaultTracker sharedInstance] temporaryID]) {
+            [parametrs addObject:[NSURLQueryItem queryItemWithName:@"fpv" value:[[MIDefaultTracker sharedInstance] temporaryID]]];
+        }
     }
 
   NSString *language = [[properties locale] objectForKey:NSLocaleLanguageCode];

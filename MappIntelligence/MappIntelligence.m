@@ -360,6 +360,14 @@ static MappIntelligenceDefaultConfig *config = nil;
     [[MIDatabaseManager shared] deleteRequest:ID];
 }
 
+- (void)setTemporarySessionId:(NSString *)ID {
+    if (![tracker anonymousTracking]) {
+        [tracker setTemporaryID:NULL];
+        return;
+    }
+    [tracker setTemporaryID:ID];
+}
+
 - (NSError *_Nullable) trackPage:(MIPageViewEvent *_Nonnull) event {
     if (![self isTrackingEnabled]) {
         return nil;
@@ -446,6 +454,7 @@ static MappIntelligenceDefaultConfig *config = nil;
     [[MIDefaultTracker sharedInstance] setAnonymousTracking:anonymousTracking];
     if (!anonymousTracking) {
         [[MIDefaultTracker sharedInstance] setSuppressedParameters:nil];
+        [tracker setTemporaryID:NULL];
     }
 }
 

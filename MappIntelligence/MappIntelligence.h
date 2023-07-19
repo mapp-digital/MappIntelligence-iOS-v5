@@ -72,6 +72,9 @@ typedef NS_ENUM(NSInteger, exceptionType) {
 
 #if !TARGET_OS_WATCH
 
+/// Method to set temporary session id, if anonimous tracking is turn on.
+/// @param ID tempraryID which is wont to be set
+- (void)setTemporarySessionId: (NSString*_Nonnull)ID;
 /**
 @brief Method to collect the name of the current UIViewController and track additional page information.
 @param controller - current ui view controller.
