@@ -101,7 +101,7 @@
                              .size.height *
                          scale];
 #endif
-  NSString *libraryVersionOriginal = [MappIntelligence version];
+  NSString *libraryVersionOriginal = [[MappIntelligence version] substringToIndex:5];
   NSString *libraryVersionParced =
       [self codeString:[libraryVersionOriginal
                            stringByReplacingOccurrencesOfString:@"."
