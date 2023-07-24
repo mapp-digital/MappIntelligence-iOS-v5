@@ -214,6 +214,9 @@
 		A334861E23BF3E2300D0EB5F /* MappIntelligence.h in Copy Files */ = {isa = PBXBuildFile; fileRef = A334861B23BF3E2300D0EB5F /* MappIntelligence.h */; };
 		A334862D23BF3F2800D0EB5F /* libMappIntelligenceSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A334861823BF3E2300D0EB5F /* libMappIntelligenceSDK.a */; };
 		A334863423BF3FAD00D0EB5F /* MappIntelligence.h in Headers */ = {isa = PBXBuildFile; fileRef = A334861B23BF3E2300D0EB5F /* MappIntelligence.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A33735BE2A6EB87800223779 /* MIPageViewEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = A380D1FE241296FD009E2CD8 /* MIPageViewEvent.m */; };
+		A33735BF2A6EB87800223779 /* MIPageViewEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = A380D1FE241296FD009E2CD8 /* MIPageViewEvent.m */; };
+		A33735C02A6EB87900223779 /* MIPageViewEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = A380D1FE241296FD009E2CD8 /* MIPageViewEvent.m */; };
 		A337445C24C1A12A0096259B /* MIPageParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = A337445A24C1A12A0096259B /* MIPageParameters.h */; };
 		A337445D24C1A12A0096259B /* MIPageParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = A337445B24C1A12A0096259B /* MIPageParameters.m */; };
 		A337445E24C840370096259B /* MIPageViewEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = A380D1FE241296FD009E2CD8 /* MIPageViewEvent.m */; };
@@ -569,7 +572,7 @@
 		};
 		A35C78C22452E6FF00D36144 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
@@ -657,6 +660,7 @@
 		A334861C23BF3E2300D0EB5F /* MappIntelligence.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MappIntelligence.m; sourceTree = "<group>"; };
 		A334862823BF3F2800D0EB5F /* MappIntelligenceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MappIntelligenceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A334863C23BF409D00D0EB5F /* MappIntelligence.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MappIntelligence.h; sourceTree = "<group>"; };
+		A33735BD2A6EB12200223779 /* SetupForLocalTesting.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = SetupForLocalTesting.plist; sourceTree = "<group>"; };
 		A337445A24C1A12A0096259B /* MIPageParameters.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MIPageParameters.h; sourceTree = "<group>"; };
 		A337445B24C1A12A0096259B /* MIPageParameters.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MIPageParameters.m; sourceTree = "<group>"; };
 		A337446124C844580096259B /* MappIntelligenceSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MappIntelligenceSDK.h; sourceTree = "<group>"; };
@@ -674,7 +678,6 @@
 		A33B36F62460249F005EA9AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A33B36FF246047C8005EA9AE /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/lib/libz.tbd; sourceTree = DEVELOPER_DIR; };
 		A33C1D3A24508C990049D5E5 /* LICENSE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
-		A341D6FF2A320EF900CA1946 /* SetupForLocalTesting.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = SetupForLocalTesting.plist; sourceTree = "<group>"; };
 		A341D7042A433EBC00CA1946 /* MIUsageStatistics.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MIUsageStatistics.h; sourceTree = "<group>"; };
 		A341D7052A433EBC00CA1946 /* MIUsageStatistics.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MIUsageStatistics.m; sourceTree = "<group>"; };
 		A341D7132A45BC3400CA1946 /* MIUsageStatisticsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MIUsageStatisticsTests.m; sourceTree = "<group>"; };
@@ -953,7 +956,7 @@
 		A334860F23BF3E2300D0EB5F = {
 			isa = PBXGroup;
 			children = (
-				A341D6FF2A320EF900CA1946 /* SetupForLocalTesting.plist */,
+				A33735BD2A6EB12200223779 /* SetupForLocalTesting.plist */,
 				A33C1D3A24508C990049D5E5 /* LICENSE.md */,
 				A30E3EC62444A3970047D7A6 /* MappIntelligence.podspec */,
 				A30E3EC42444A0B70047D7A6 /* .oclint.yml */,
@@ -1825,6 +1828,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A33735BF2A6EB87800223779 /* MIPageViewEvent.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1832,6 +1836,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A33735C02A6EB87900223779 /* MIPageViewEvent.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1886,6 +1891,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A33735BE2A6EB87800223779 /* MIPageViewEvent.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
