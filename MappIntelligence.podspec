@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
     s.name    = 'MappIntelligence'
-    s.version = '5.0.4.5'
+    s.version = '5.0.4.6'
 
     s.author   = { 'Mapp Digital' => 'devgroup.mobile@webtrekk.com' }
     s.homepage = 'https://mapp.com/mapp-cloud/analytics/app-analytics/'
@@ -10,6 +10,7 @@ Pod::Spec.new do |s|
     s.watchos.deployment_target = '4.0'
     s.tvos.deployment_target = '11.0'
     s.source   = { :git => 'https://github.com/mapp-digital/MappIntelligence-iOS-v5.git', :tag => s.version }
+    s.exclude_files = 'MappIntelligence/include/**',
     s.source_files = "MappIntelligence/**/*.{h,m}"
     s.watchos.source_files = "MappIntelligenceWatchOS/**/*.{h,m}"
     s.ios.source_files = "MappIntelligenceiOS/**/*.{h,m}"
