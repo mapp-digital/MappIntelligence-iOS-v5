@@ -670,6 +670,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = LERY366S7C;
 				INFOPLIST_FILE = MappIntelligenceTvOSDemoApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -694,6 +695,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = LERY366S7C;
 				INFOPLIST_FILE = MappIntelligenceTvOSDemoApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -837,6 +839,7 @@
 				CODE_SIGN_ENTITLEMENTS = MappIntelligenceDemoApp/MappIntelligenceDemoApp.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = LERY366S7C;
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
@@ -866,6 +869,7 @@
 				CODE_SIGN_ENTITLEMENTS = MappIntelligenceDemoApp/MappIntelligenceDemoApp.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = LERY366S7C;
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
