@@ -115,20 +115,18 @@ static MappIntelligenceDefaultConfig *config = nil;
   [config setTrackDomain:trackDomain];
   [config setAutoTracking:autoTracking];
   [[[MIDefaultTracker sharedInstance] usageStatistics] setSetEverId:[NSNumber numberWithInt:0]];
-    if(!autoTracking)
-        [[[MIDefaultTracker sharedInstance] usageStatistics] setAutoTracking:[NSNumber numberWithInt:0]];
-    else
-        [[[MIDefaultTracker sharedInstance] usageStatistics] setAutoTracking:[NSNumber numberWithInt:1]];
+  //MARK: because autotracking is not available for iOS
+    [[[MIDefaultTracker sharedInstance] usageStatistics] setAutoTracking:[NSNumber numberWithInt:0]];
+    
   [config setBatchSupport:batchSupport];
     if(!batchSupport)
         [[[MIDefaultTracker sharedInstance] usageStatistics] setBatchSupport:[NSNumber numberWithInt:0]];
     else
         [[[MIDefaultTracker sharedInstance] usageStatistics] setBatchSupport:[NSNumber numberWithInt:1]];
   [config setViewControllerAutoTracking:viewControllerAutoTracking];
-    if(!viewControllerAutoTracking)
+    //MARK: because autotracking is not available for iOS
         [[[MIDefaultTracker sharedInstance] usageStatistics] setAutoTracking:[NSNumber numberWithInt:0]];
-    else
-        [[[MIDefaultTracker sharedInstance] usageStatistics] setAutoTracking:[NSNumber numberWithInt:1]];
+    
   [config setRequestPerQueue:numberOfRequestInQueue];
   [config setSendAppVersionToEveryRequest:NO];
     [[[MIDefaultTracker sharedInstance] usageStatistics] setAppVersionInEveryRequest:[NSNumber numberWithInt:0]];
