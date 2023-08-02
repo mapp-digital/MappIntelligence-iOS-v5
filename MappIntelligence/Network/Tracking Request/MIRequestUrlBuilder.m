@@ -158,8 +158,9 @@
                                                              .userAgent]]];
     [parametrs addObject:[NSURLQueryItem queryItemWithName:@"cs801" value:[[MIDefaultTracker sharedInstance] version]]];
     [parametrs addObject:[NSURLQueryItem queryItemWithName:@"cs802" value:[[MIDefaultTracker sharedInstance] platform]]];
+    
+    [parametrs addObject:[NSURLQueryItem queryItemWithName:@"pf" value:[[[MIDefaultTracker sharedInstance] usageStatistics] getUserStatisticsValue]]];
     if([[MIDefaultTracker sharedInstance] anonymousTracking]) {
-        [parametrs addObject:[NSURLQueryItem queryItemWithName:@"pf" value:[[[MIDefaultTracker sharedInstance] usageStatistics] getUserStatisticsValue]]];
         [[[MIDefaultTracker sharedInstance] usageStatistics] printUserStatistics];
         if ([[MIDefaultTracker sharedInstance] temporaryID]) {
             [parametrs addObject:[NSURLQueryItem queryItemWithName:@"fpv" value:[[MIDefaultTracker sharedInstance] temporaryID]]];
