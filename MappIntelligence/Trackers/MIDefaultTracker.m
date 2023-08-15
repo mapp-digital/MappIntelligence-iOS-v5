@@ -124,7 +124,9 @@ static NSString *userAgent;
 - (instancetype)init {
   if (!sharedTracker) {
     sharedTracker = [super init];
-    _anonymousTracking = [[MIDefaultTracker sharedDefaults] boolForKey:anonymous];
+//      if (_anonymousTracking == NULL) {
+//          _anonymousTracking = [[MIDefaultTracker sharedDefaults] boolForKey:anonymous];
+//      }
     _temporaryID = NULL;
     everID = [sharedTracker generateEverId];
     _config = [[MIConfiguration alloc] init];
