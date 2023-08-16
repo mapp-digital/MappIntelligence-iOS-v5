@@ -212,6 +212,7 @@
 		A3258C01250AA15100039B92 /* MIPageParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = A337445B24C1A12A0096259B /* MIPageParameters.m */; };
 		A32AEA29242A6F4600BC7B46 /* MappIntelligenceWatchOS.m in Sources */ = {isa = PBXBuildFile; fileRef = A32AEA28242A6F4600BC7B46 /* MappIntelligenceWatchOS.m */; };
 		A32AEA2A242A6F4600BC7B46 /* MappIntelligenceWatchOS.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A32AEA27242A6F4600BC7B46 /* MappIntelligenceWatchOS.h */; };
+		A32E16B22A8D05EA000304AA /* MIUsageStatistics.h in Sources */ = {isa = PBXBuildFile; fileRef = A341D7042A433EBC00CA1946 /* MIUsageStatistics.h */; };
 		A32EE09F243B574E00EDC5B8 /* UIFlowObserverTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A32EE09E243B574E00EDC5B8 /* UIFlowObserverTests.m */; };
 		A32EE0A2243CB97200EDC5B8 /* MappIntelligenceDefaultConfigTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A32EE0A1243CB97200EDC5B8 /* MappIntelligenceDefaultConfigTest.m */; };
 		A334861D23BF3E2300D0EB5F /* MappIntelligence.m in Sources */ = {isa = PBXBuildFile; fileRef = A334861C23BF3E2300D0EB5F /* MappIntelligence.m */; };
@@ -1649,6 +1650,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A32E16B22A8D05EA000304AA /* MIUsageStatistics.h in Sources */,
 				8F20A18425C2CFD30006CB93 /* MIURLSizeMonitor.m in Sources */,
 				8F20A0DE25C2CED70006CB93 /* MIPageParameters.m in Sources */,
 				A3ADC98D26D941B5007504FF /* MIExceptionTracker.m in Sources */,
