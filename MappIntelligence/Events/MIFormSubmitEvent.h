@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "MITrackingEvent.h"
+#import "MIUsageStatistics.h"
 #import "MIFormParameters.h"
 
 NS_ASSUME_NONNULL_BEGIN

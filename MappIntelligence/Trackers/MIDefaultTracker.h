@@ -11,7 +11,6 @@
 #import <UIKit/UIKit.h>
 #import "MIPageViewEvent.h"
 #import "MIFormSubmitEvent.h"
-#import "MIUsageStatistics.h"
 #import "MIActionEvent.h"
 #if TARGET_OS_WATCH
 #import <WatchKit/WatchKit.h>
