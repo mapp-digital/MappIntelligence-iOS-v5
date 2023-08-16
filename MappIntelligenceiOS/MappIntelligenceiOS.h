@@ -10,3 +10,4 @@
 #import "MIWebViewTracker.h"
 #import "MIDefaultTracker.h"
 #import "MIFormField.h"
+#import "MIUsageStatistics.h"
