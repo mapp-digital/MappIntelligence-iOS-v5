@@ -24,6 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, nonnull) NSNumber* batchSupport;
 
 - (void)printUserStatistics;
+/// returns value which will be sent to server
 - (NSString*)getUserStatisticsValue;
 - (void)reset;
 @end
