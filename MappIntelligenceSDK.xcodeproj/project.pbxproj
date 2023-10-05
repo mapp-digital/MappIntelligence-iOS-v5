@@ -7,10 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		04528A7B2A712B71001EFA42 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 04528A7A2A712B71001EFA42 /* PrivacyInfo.xcprivacy */; };
-		04528A7C2A712B71001EFA42 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 04528A7A2A712B71001EFA42 /* PrivacyInfo.xcprivacy */; };
-		04528A7D2A712B71001EFA42 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 04528A7A2A712B71001EFA42 /* PrivacyInfo.xcprivacy */; };
-		04528A7E2A712B71001EFA42 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 04528A7A2A712B71001EFA42 /* PrivacyInfo.xcprivacy */; };
 		8F0055A9256DB16B00E2CC3C /* MIActionEvent.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8FDF710A250B9E5B00818E51 /* MIActionEvent.h */; };
 		8F0055AA256DB16B00E2CC3C /* MIPageViewEvent.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A380D1FD241296FD009E2CD8 /* MIPageViewEvent.h */; };
 		8F0055C8256DB9B700E2CC3C /* MIActionEvent.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8FDF710A250B9E5B00818E51 /* MIActionEvent.h */; };
@@ -602,7 +598,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		04528A7A2A712B71001EFA42 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		04B84FC729279B1700A412B8 /* AppoxeeSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = AppoxeeSDK.xcframework; path = MappIntelligenceDemoApp/AppoxeeSDK.xcframework; sourceTree = "<group>"; };
 		8F143ED82510AD830024CF24 /* ActionEventTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionEventTests.m; sourceTree = "<group>"; };
 		8F143EDA2510AECA0024CF24 /* ActionPropertiesTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionPropertiesTests.m; sourceTree = "<group>"; };
@@ -959,7 +954,6 @@
 		A334860F23BF3E2300D0EB5F = {
 			isa = PBXGroup;
 			children = (
-				04528A7A2A712B71001EFA42 /* PrivacyInfo.xcprivacy */,
 				A33735BD2A6EB12200223779 /* SetupForLocalTesting.plist */,
 				A33C1D3A24508C990049D5E5 /* LICENSE.md */,
 				A30E3EC62444A3970047D7A6 /* MappIntelligence.podspec */,
@@ -1609,7 +1603,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04528A7B2A712B71001EFA42 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1617,7 +1610,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04528A7D2A712B71001EFA42 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1625,7 +1617,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04528A7E2A712B71001EFA42 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1635,7 +1626,6 @@
 			files = (
 				A3FE6CE1286C956C00D89CC7 /* MIFormField.h in Resources */,
 				8F0A3F5B25C2F34700CD43A2 /* MappIntelligence.h in Resources */,
-				04528A7C2A712B71001EFA42 /* PrivacyInfo.xcprivacy in Resources */,
 				8F0A3F5C25C2F34700CD43A2 /* MappIntelligence.m in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

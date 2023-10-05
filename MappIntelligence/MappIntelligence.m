@@ -59,7 +59,7 @@ static MappIntelligenceDefaultConfig *config = nil;
 }
 
 + (NSString *)version {
-  return @"5.0.5";
+  return @"5.0.5.1";
 }
 
 + (NSString *)getUrl {
@@ -359,7 +359,7 @@ static MappIntelligenceDefaultConfig *config = nil;
 }
 
 - (void)setTemporarySessionId:(NSString *)ID {
-    if (![tracker anonymousTracking]) {
+    if (![tracker anonymousTracking] || [ID isEqual:@""]) {
         [tracker setTemporaryID:NULL];
         return;
     }

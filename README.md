@@ -33,7 +33,7 @@ The *Swift Package Manager* is a tool for automating the distribution of Swift c
 Once you have your Swift package set up, adding MappIntelligence as a dependency is as easy as adding it to the dependencies value of your Package.swift.
 
 dependencies: [
-    .package(url: "https://github.com/mapp-digital/MappIntelligence-iOS-v5.git", .upToNextMajor(from: "5.0.5"))
+    .package(url: "https://github.com/mapp-digital/MappIntelligence-iOS-v5.git", .upToNextMajor(from: "5.0.5.1"))
 ]
 
 # OCLint

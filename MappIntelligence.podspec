@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
     s.name    = 'MappIntelligence'
-    s.version = '5.0.5'
+    s.version = '5.0.5.1'
 
     s.author   = { 'Mapp Digital' => 'devgroup.mobile@webtrekk.com' }
     s.homepage = 'https://mapp.com/mapp-cloud/analytics/app-analytics/'
@@ -15,13 +15,6 @@ Pod::Spec.new do |s|
     s.watchos.source_files = "MappIntelligenceWatchOS/**/*.{h,m}"
     s.ios.source_files = "MappIntelligenceiOS/**/*.{h,m}"
     s.tvos.source_files = "MappIntelligencetvOS/**/*.{h,m}"
-    s.user_target_xcconfig = {
-            'GENERATE_INFOPLIST_FILE' => 'YES'
-       }
-
-        s.pod_target_xcconfig = {
-         'GENERATE_INFOPLIST_FILE' => 'YES'
-        }
     s.summary  = 'The MappIntelligence SDK allows you to track user activities, screen flow usage for your App.'
 
     s.frameworks         = 'Foundation', 'UIKit'
