@@ -147,6 +147,8 @@
         
         NSURLResponse *response = nil;
         NSError *error = nil;
+        NSURLSession *session = [NSURLSession sharedSession];
+        
         
         NSData *serverDataResponse = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
         

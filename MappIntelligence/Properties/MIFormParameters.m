@@ -70,14 +70,11 @@
 {
     self = [super init];
     if (self) {
-#if !TARGET_OS_WATCH && !TARGET_OS_TV
         _textFields = [[NSMutableArray alloc] init];
         _textViews = [[NSMutableArray alloc] init];
         _switches = [[NSMutableArray alloc] init];
         _pickers = [[NSMutableArray alloc] init];
         _segmentedControls = [[NSMutableArray alloc] init];
-#endif
-        //TODO: add watchOS controller name
         _formName = @"";
         _fieldIds = [[NSMutableArray alloc] init];
         _renameFields = [[NSMutableDictionary alloc] init];
@@ -92,7 +89,6 @@
 
 - (void) setTrackableFields {
     if([_fieldIds count] > 0) {
-#if !TARGET_OS_WATCH && !TARGET_OS_TV
         dispatch_sync(dispatch_get_main_queue(), ^{
             for (UITextField* textField in _textFields) {
                 if (![[_fieldIds copy] containsObject:[NSNumber numberWithInteger:textField.tag]]) {
@@ -120,11 +116,9 @@
                 }
             }
         });
-#endif
     }
 }
 
-#if !TARGET_OS_WATCH && !TARGET_OS_TV
 -(NSString*)extractLabelFromPickerView: (UIView*) godView {
     if ([godView isKindOfClass:UILabel.class]) {
         return ((UILabel*)godView).text;
@@ -164,10 +158,8 @@
     NSString* typeOfControl = NSStringFromClass(control.classForCoder);
     return [NSString stringWithFormat:@"%@.%@", (nameOfControl == NULL ? @"n/a" : nameOfControl), typeOfControl];
 }
-#endif
 
 - (void)createFromFields {
-#if !TARGET_OS_WATCH && !TARGET_OS_TV
     UIViewController* superViewController = self.topViewController;
     dispatch_sync(dispatch_get_main_queue(), ^{
         __block UIView* superView = superViewController.view;
@@ -188,10 +180,8 @@
     if (!_formName) {
         _formName = NSStringFromClass(self.topViewController.classForCoder);
     }
-#endif
     _fields = [[NSMutableArray alloc] init];
     [self setTrackableFields];
-#if !TARGET_OS_WATCH && !TARGET_OS_TV
     for (UITextField* textField in _textFields) {
         dispatch_sync(dispatch_get_main_queue(), ^{
             self->_fields = [self->_fields arrayByAddingObject:[[MIFormField alloc] initWithName:[self getNameForControl:textField] andContent:textField.text andID:textField.tag andWithAnonymus: YES andFocus:textField.isFocused]];
@@ -219,7 +209,6 @@
             self->_fields = [self->_fields arrayByAddingObject:[[MIFormField alloc] initWithName:[self getNameForControl:switchC] andContent:(switchC.on ? @"mapp_inteligence_switch" : @"") andID:switchC.tag andWithAnonymus:YES andFocus:switchC.isFocused]];
         });
     }
-#endif
     
     if (![_anonymous boolValue]) {
         for (MIFormField* field in _fields) {
@@ -310,7 +299,6 @@
     return [[NSString alloc] initWithFormat:@"%@|%i", _formName, _confirmButton];
 }
 
-#if !TARGET_OS_WATCH && !TARGET_OS_TV
 - (NSArray<UITextField *> *)getTextFields: (UIView*) mainView {
     for (UIView* view in [mainView subviews]) {
         if ([view isKindOfClass:UITextField.class]) {
@@ -390,6 +378,5 @@
     }
     return topViewControler;
 }
-#endif
 
 @end

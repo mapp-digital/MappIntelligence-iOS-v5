@@ -52,7 +52,7 @@
                 _products = [_products arrayByAddingObject:[[MIProduct alloc] initWithDictionary:dict]];
             }
         }
-        _status = [self getStatusFrom:(int)dictionary[key_status]];
+        _status = [self getStatusFrom:(int)(size_t)dictionary[key_status]];
         _currency = dictionary[key_currency];
         _orderID = dictionary[key_order_id];
         _orderValue = dictionary[key_order_value];

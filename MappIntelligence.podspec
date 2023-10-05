@@ -7,14 +7,10 @@ Pod::Spec.new do |s|
     s.homepage = 'https://mapp.com/mapp-cloud/analytics/app-analytics/'
     s.license  = { :type => 'MIT', :file => 'LICENSE.md' }
     s.ios.deployment_target = '10.0'
-    s.watchos.deployment_target = '4.0'
-    s.tvos.deployment_target = '11.0'
     s.source   = { :git => 'https://github.com/mapp-digital/MappIntelligence-iOS-v5.git', :tag => s.version }
     s.exclude_files = 'MappIntelligence/include/**'
     s.source_files = "MappIntelligence/**/*.{h,m}"
-    s.watchos.source_files = "MappIntelligenceWatchOS/**/*.{h,m}"
     s.ios.source_files = "MappIntelligenceiOS/**/*.{h,m}"
-    s.tvos.source_files = "MappIntelligencetvOS/**/*.{h,m}"
     s.user_target_xcconfig = {
             'GENERATE_INFOPLIST_FILE' => 'YES'
        }
@@ -26,6 +22,5 @@ Pod::Spec.new do |s|
 
     s.frameworks         = 'Foundation', 'UIKit'
     s.ios.frameworks     = 'AVFoundation', 'AVKit', 'CoreTelephony', 'WebKit'
-    s.watchos.frameworks = 'WatchKit'
     
 end

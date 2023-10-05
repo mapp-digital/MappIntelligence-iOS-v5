@@ -142,9 +142,7 @@ static NSString *userAgent;
       //it seems that is impossible to have queues on both places, so I will use the same one from database
       _queue = [[MIDatabaseManager shared] getExecutionQueue];
       //dispatch_queue_create("Inserting Requests", NULL);
-#if TARGET_OS_TV
-      [self checkIfAppUpdated];
-#endif
+
   }
   return sharedTracker;
 }
@@ -264,13 +262,11 @@ static NSString *userAgent;
   }
   return tmpEverId;
 }
-#if !TARGET_OS_WATCH
 - (NSError *_Nullable)track:(UIViewController *)controller {
   NSString *CurrentSelectedCViewController =
       NSStringFromClass([controller class]);
   return [self trackWith:CurrentSelectedCViewController];
 }
-#endif
 - (NSError *)trackWithEvent:(MITrackingEvent *)event {
       if (![_defaults stringForKey:isFirstEventOfApp]) {
         [_defaults setBool:YES forKey:isFirstEventOfApp];
@@ -280,9 +276,7 @@ static NSString *userAgent;
       } else {
         _isFirstEventOpen = NO;
       }
-    #ifdef TARGET_OS_WATCH
-        _isReady = YES;
-    #endif
+    
       dispatch_async(_queue,
                      ^(void) {
                        // Background Thread
@@ -306,9 +300,7 @@ static NSString *userAgent;
       } else {
         _isFirstEventOpen = NO;
       }
-    #ifdef TARGET_OS_WATCH
-        _isReady = YES;
-    #endif
+    
       dispatch_async(_queue,
                      ^(void) {
                        // Background Thread
@@ -360,9 +352,7 @@ static NSString *userAgent;
   // create request with page event
     MITrackingEvent *event = [[MITrackingEvent alloc] init];
   [event setPageName:name];
-#ifdef TARGET_OS_WATCH
-    _isReady = YES;
-#endif
+
   dispatch_async(_queue,
                  ^(void) {
                    // Background Thread

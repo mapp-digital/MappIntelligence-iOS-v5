@@ -26,18 +26,14 @@
 @property MIDefaultTracker *tracker;
 @property MIExceptionTracker *exceptionTracker;
 @property MappIntelligenceLogger *logger;
-#if !TARGET_OS_WATCH
 @property UIApplication *application;
-#endif
 @property NSObject *applicationDidBecomeActiveObserver;
 @property NSObject *applicationWillEnterForegroundObserver;
 @property NSObject *applicationWillResignActiveObserver;
 @property NSObject *applicationWillTerminataObserver;
 @property NSUserDefaults *sharedDefaults;
 @property NSString* TIME_WHEN_APP_ENTERS_TO_BACKGROUND;
-#if !TARGET_OS_WATCH
 @property UIBackgroundTaskIdentifier backgroundIdentifier;
-#endif
 
 @end
 
@@ -61,7 +57,6 @@
 - (void)getDeviceInfoForParameters:(NSArray *)parameters {
 #define GET @"get"
 #define DMC_USER_ID @"dmcUserId"
-#if TARGET_OS_IOS
     MIRequestBuilder *builder = [MIRequestBuilder builder];
     [builder addRequestKeyedValues:@{GET : parameters} forRequestType:kAPXRequestKeyTypeGetCustomFields];
     NSData *serverData = [builder buildRequestAsJsonData];
@@ -92,7 +87,6 @@
         }
     }];
     
-#endif
 }
 
 - (void)fireRequest {
