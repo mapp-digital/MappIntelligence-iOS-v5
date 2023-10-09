@@ -37,10 +37,7 @@ typedef NS_ENUM(NSInteger, ConnectionType) {
 @property NSDate *timestamp;
 @property NSString *userAgent;
 @property NSInteger adClearId;
-
-#if !TARGET_OS_WATCH && !TARGET_OS_TV
 @property UIInterfaceOrientation *interfaceOrientation;
-#endif
 
 - (instancetype)initWithEverID:(NSString *)eid
                andSamplingRate:(NSInteger)rate

@@ -7,10 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#if TARGET_OS_WATCH
-#import <WatchKit/WatchKit.h>
-#endif
-
 #import "MIDefaultTracker.h"
 #import "MappIntelligenceLogger.h"
 #import "MappIntelligence.h"
@@ -415,7 +411,6 @@ static NSString *userAgent;
   [_defaults setObject:date forKey:appHibernationDate];
   _isReady = NO;
 }
-#if !TARGET_OS_WATCH
 - (void)updateFirstSessionWith:(UIApplicationState)state {
   if (state == UIApplicationStateInactive) {
     _isFirstEventOfSession = YES;
@@ -426,26 +421,6 @@ static NSString *userAgent;
   [self fireSignal];
 //  [self checkIfAppUpdated];
 }
-#else
-- (void)updateFirstSessionWith:(WKApplicationState)state {
-  NSDate *date = [[NSDate alloc] init];
-  [_logger logObj:[[NSString alloc]
-                      initWithFormat:
-                          @" interval since last close of app:  %f",
-                          [date
-                              timeIntervalSinceDate:
-                                  [_defaults objectForKey:appHibernationDate]]]
-      forDescription:kMappIntelligenceLogLevelDescriptionDebug];
-  if ([date timeIntervalSinceDate:[_defaults objectForKey:appHibernationDate]] >
-      30 * 60) {
-    _isFirstEventOfSession = YES;
-  } else {
-    _isFirstEventOfSession = NO;
-  }
-  [self checkIfAppUpdated];
-  [self fireSignal];
-}
-#endif
 
 - (void)fireSignal {
   _isReady = YES;

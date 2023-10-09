@@ -165,11 +165,8 @@ static MappIntelligenceDefaultConfig *config = nil;
     _timerForSendRequests = [NSTimer scheduledTimerWithTimeInterval: [config requestsInterval] repeats:YES block:^(NSTimer * _Nonnull timer) {
         
         BOOL isAppActive = YES;
- #if !TARGET_OS_WATCH
+
          isAppActive = [[UIApplication sharedApplication] applicationState] == UIApplicationStateActive;
- #else
-         isAppActive = YES;
- #endif
         if (!isAppActive)
             return;
         if (config.backgroundSendout == YES && !isAppActive) {

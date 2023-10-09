@@ -10,14 +10,10 @@
 #import "MIExceptionTracker.h"
 #import "MappIntelligenceLogger.h"
 
-#if TARGET_OS_WATCH
-#import <WatchKit/WatchKit.h>
-#else
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
 #import "APXRequestBuilder.h"
 #import "APXNetworkManager.h"
-#endif
 
 #define doesAppEnterInBackground @"enteredInBackground";
 
@@ -44,10 +40,8 @@
     _tracker = tracker;
     _logger = [MappIntelligenceLogger shared];
     //to force new session only for TV, bacause notficataion for willenterforeground do not work on TVOS
-#if TARGET_OS_TV
     [_tracker updateFirstSessionWith:[[UIApplication sharedApplication]
                                       applicationState]];
-#endif
     self.TIME_WHEN_APP_ENTERS_TO_BACKGROUND = @"Background_Time";
     _sharedDefaults = [NSUserDefaults standardUserDefaults];
     
@@ -96,7 +90,6 @@
 - (BOOL)setup {
   NSNotificationCenter *notificationCenter =
       [NSNotificationCenter defaultCenter];
-#if !TARGET_OS_WATCH
     //Posted when the app becomes active.
     _applicationDidBecomeActiveObserver = [notificationCenter addObserverForName: UIApplicationDidBecomeActiveNotification object:NULL queue:NULL usingBlock:^(NSNotification * _Nonnull note) {
         [self didBecomeActive];
@@ -117,21 +110,6 @@
     [notificationCenter addObserverForName:UIApplicationDidEnterBackgroundNotification object:NULL queue:NULL usingBlock:^(NSNotification * _Nonnull note) {
         [self willEnterBckground];
     }];
-#else
-    _applicationWillEnterForegroundObserver = [notificationCenter addObserverForName:@"UIApplicationWillEnterForegroundNotification" object:NULL queue:NULL usingBlock:^(NSNotification * _Nonnull note) {
-        
-        [self willEnterForeground];
-    }];
-    _applicationDidBecomeActiveObserver = [notificationCenter addObserverForName: @"UIApplicationDidBecomeActiveNotification" object:NULL queue:NULL usingBlock:^(NSNotification * _Nonnull note) {
-        [self didBecomeActive];
-    }];
-    _applicationWillTerminataObserver = [notificationCenter addObserverForName:@"UIApplicationWillTerminateNotification" object:NULL queue:NULL usingBlock:^(NSNotification * _Nonnull note) {
-        [self willTerminate];
-    }];
-    _applicationWillResignActiveObserver = [notificationCenter addObserverForName:@"UIApplicationWillResignActiveNotification" object:NULL queue:NULL usingBlock:^(NSNotification * _Nonnull note) {
-        [self willResignActive];
-    }];
-#endif
   return YES;
 }
 
@@ -145,7 +123,6 @@
     }
     NSSetUncaughtExceptionHandler(&onUncaughtException);
     [self getExceptionFromFileAndSendItAsAnRequest];
-#if !TARGET_OS_WATCH
   [_tracker updateFirstSessionWith:[[UIApplication sharedApplication]
                                        applicationState]];
     if (!_tracker.isBackgroundSendoutEnabled)
@@ -178,17 +155,9 @@
             }];
         }
     }
-    
-#else
-  [_tracker updateFirstSessionWith:WKApplicationStateActive];
-#endif
 }
 
 -(void)willResignActive {
-#if TARGET_OS_WATCH
-    [_sharedDefaults setBool:YES forKey:@"enteredInBackground"];
-    [_sharedDefaults synchronize];
-#endif
 	  [_tracker initHibernate];
 }
 
@@ -202,7 +171,6 @@
         return;
     [NSUserDefaults.standardUserDefaults setValue:[NSDate date] forKey:self.TIME_WHEN_APP_ENTERS_TO_BACKGROUND];
     [[NSUserDefaults standardUserDefaults] synchronize];
-#if !TARGET_OS_WATCH
     self.backgroundIdentifier = [[UIApplication sharedApplication] beginBackgroundTaskWithName:@"com.mapp.background" expirationHandler:^{
         [self->_tracker sendBatchForRequestInBackground: YES withCompletionHandler:^(NSError * _Nullable error) {
             if (error) {
@@ -221,7 +189,6 @@
     }];
     [[NSUserDefaults standardUserDefaults] setInteger:self.backgroundIdentifier forKey:@"backgroundIdentifier"];
     [[NSUserDefaults standardUserDefaults] synchronize];
-#endif
 }
 
 #pragma mark - Helper methods
@@ -229,7 +196,6 @@
 void onUncaughtException(NSException* exception)
 {
 //save exception details
-#if !TARGET_OS_WATCH
     NSString* exceptionText = [NSString stringWithFormat:@"%@,%@,%@,%@,%@", exception.name, exception.reason, exception.userInfo, exception.callStackReturnAddresses, exception.callStackSymbols];
     
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -237,7 +203,6 @@ void onUncaughtException(NSException* exception)
     NSString *filePath = [documentsDirectory stringByAppendingPathComponent:@"file.txt"];
     [exceptionText writeToFile:filePath atomically:TRUE encoding:NSUTF8StringEncoding error:NULL];
     NSLog(@"The exception is saved fully!");
-#endif
 }
 
 -(void) getExceptionFromFileAndSendItAsAnRequest {

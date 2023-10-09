@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		04528A7B2A712B71001EFA42 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 04528A7A2A712B71001EFA42 /* PrivacyInfo.xcprivacy */; };
-		04528A7C2A712B71001EFA42 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 04528A7A2A712B71001EFA42 /* PrivacyInfo.xcprivacy */; };
 		8F0A3F5B25C2F34700CD43A2 /* MappIntelligence.h in Resources */ = {isa = PBXBuildFile; fileRef = A334861B23BF3E2300D0EB5F /* MappIntelligence.h */; };
 		8F0A3F5C25C2F34700CD43A2 /* MappIntelligence.m in Resources */ = {isa = PBXBuildFile; fileRef = A334861C23BF3E2300D0EB5F /* MappIntelligence.m */; };
 		8F0A3F6525C2F40C00CD43A2 /* MappIntelligenceiOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F20A08925C2CE470006CB93 /* MappIntelligenceiOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -350,7 +348,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		04528A7A2A712B71001EFA42 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		04AD09CC2ABAEEA3002A8AF2 /* SetupForLocalTesting.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = SetupForLocalTesting.plist; sourceTree = "<group>"; };
 		04AD09CD2ABAEEA3002A8AF2 /* AppoxeeConfig.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = AppoxeeConfig.plist; sourceTree = "<group>"; };
 		04B84FC729279B1700A412B8 /* AppoxeeSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = AppoxeeSDK.xcframework; path = MappIntelligenceDemoApp/AppoxeeSDK.xcframework; sourceTree = "<group>"; };
@@ -410,7 +407,6 @@
 		A334861C23BF3E2300D0EB5F /* MappIntelligence.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MappIntelligence.m; sourceTree = "<group>"; };
 		A334862823BF3F2800D0EB5F /* MappIntelligenceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MappIntelligenceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A334863C23BF409D00D0EB5F /* MappIntelligence.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MappIntelligence.h; sourceTree = "<group>"; };
-		A33735BD2A6EB12200223779 /* SetupForLocalTesting.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = SetupForLocalTesting.plist; sourceTree = "<group>"; };
 		A337445A24C1A12A0096259B /* MIPageParameters.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MIPageParameters.h; sourceTree = "<group>"; };
 		A337445B24C1A12A0096259B /* MIPageParameters.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MIPageParameters.m; sourceTree = "<group>"; };
 		A337446124C844580096259B /* MappIntelligenceSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MappIntelligenceSDK.h; sourceTree = "<group>"; };
@@ -658,9 +654,7 @@
 		A334860F23BF3E2300D0EB5F = {
 			isa = PBXGroup;
 			children = (
-				04528A7A2A712B71001EFA42 /* PrivacyInfo.xcprivacy */,
 				04AD09CD2ABAEEA3002A8AF2 /* AppoxeeConfig.plist */,
-				A33735BD2A6EB12200223779 /* SetupForLocalTesting.plist */,
 				04AD09CC2ABAEEA3002A8AF2 /* SetupForLocalTesting.plist */,
 				A33C1D3A24508C990049D5E5 /* LICENSE.md */,
 				A30E3EC62444A3970047D7A6 /* MappIntelligence.podspec */,
@@ -1131,7 +1125,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04528A7B2A712B71001EFA42 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1141,7 +1134,6 @@
 			files = (
 				A3FE6CE1286C956C00D89CC7 /* MIFormField.h in Resources */,
 				8F0A3F5B25C2F34700CD43A2 /* MappIntelligence.h in Resources */,
-				04528A7C2A712B71001EFA42 /* PrivacyInfo.xcprivacy in Resources */,
 				8F0A3F5C25C2F34700CD43A2 /* MappIntelligence.m in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1333,7 +1325,6 @@
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TVOS_DEPLOYMENT_TARGET = 12.0;
-				WATCHOS_DEPLOYMENT_TARGET = 4.0;
 			};
 			name = Debug;
 		};
@@ -1350,7 +1341,6 @@
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TVOS_DEPLOYMENT_TARGET = 12.0;
-				WATCHOS_DEPLOYMENT_TARGET = 4.0;
 			};
 			name = Release;
 		};
@@ -1414,7 +1404,6 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				WATCHOS_DEPLOYMENT_TARGET = 6.0;
 			};
 			name = Debug;
 		};
@@ -1472,7 +1461,6 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				VALIDATE_PRODUCT = YES;
-				WATCHOS_DEPLOYMENT_TARGET = 6.0;
 			};
 			name = Release;
 		};
@@ -1505,7 +1493,6 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TVOS_DEPLOYMENT_TARGET = 12.0;
-				WATCHOS_DEPLOYMENT_TARGET = 4.0;
 			};
 			name = Debug;
 		};
@@ -1537,7 +1524,6 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TVOS_DEPLOYMENT_TARGET = 12.0;
-				WATCHOS_DEPLOYMENT_TARGET = 4.0;
 			};
 			name = Release;
 		};
@@ -1557,7 +1543,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mapp.WebtrekkTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				WATCHOS_DEPLOYMENT_TARGET = 4.0;
 			};
 			name = Debug;
 		};
@@ -1577,7 +1562,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mapp.WebtrekkTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				WATCHOS_DEPLOYMENT_TARGET = 4.0;
 			};
 			name = Release;
 		};
@@ -1617,7 +1601,6 @@
 				TVOS_DEPLOYMENT_TARGET = 12.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
-				WATCHOS_DEPLOYMENT_TARGET = 4.0;
 			};
 			name = Debug;
 		};
@@ -1657,7 +1640,6 @@
 				TVOS_DEPLOYMENT_TARGET = 12.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
-				WATCHOS_DEPLOYMENT_TARGET = 4.0;
 			};
 			name = Release;
 		};

@@ -25,14 +25,11 @@
 
 @interface MIFormParameters()
 
-#if !TARGET_OS_WATCH && !TARGET_OS_TV
 @property NSMutableArray<UITextField *> * textFields;
 @property NSMutableArray<UITextView *> * textViews;
 @property NSMutableArray<UISwitch *> * switches;
 @property NSMutableArray<UIPickerView *> * pickers;
 @property NSMutableArray<UISegmentedControl *> * segmentedControls;
-#endif
-
 @property NSMutableArray<MIFormField *> * emptyNonPathFields;
 @property NSMutableArray<MIFormField *> * filledNonPathFields;
 @property NSMutableArray<MIFormField *> * pathFields;
