@@ -386,11 +386,9 @@ void MISUUIDWriteDictionaryToStorageLocation(NSInteger number, NSDictionary* dic
     if (!pasteboard) {
         return;
     }
-    
-    pasteboard.persistent = YES;
-    
-    [pasteboard setData:[NSKeyedArchiver archivedDataWithRootObject:dictionary]
-      forPasteboardType:MISUUIDTypeDataDictionary];
+        
+    NSError * error = nil;
+    [pasteboard setData:[NSKeyedArchiver archivedDataWithRootObject:dictionary requiringSecureCoding:NO error:&error] forPasteboardType:MISUUIDTypeDataDictionary];
 }
 
 /*
@@ -422,7 +420,9 @@ NSDictionary *MISUUIDDictionaryForStorageLocation(NSInteger number) {
     }
     
     @try {
-        decodedObject = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+        NSError * error = nil;
+        
+        decodedObject = [NSKeyedUnarchiver unarchivedObjectOfClass: [NSArray class] fromData:data error:&error];
     } @catch (NSException* exception) {
         // Catching an exception like this is risky.   However, crashing here is
         // not acceptable, and unarchiveObjectWithData can throw.

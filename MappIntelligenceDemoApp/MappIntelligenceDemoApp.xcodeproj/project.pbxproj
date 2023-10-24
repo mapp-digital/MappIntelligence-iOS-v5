@@ -3,12 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		04F19FFC2A98BE0900A66ED3 /* AppoxeeConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04F19FFA2A98BE0900A66ED3 /* AppoxeeConfig.plist */; };
-		04F19FFD2A98BE0900A66ED3 /* SetupForLocalTesting.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04F19FFB2A98BE0900A66ED3 /* SetupForLocalTesting.plist */; };
+		040247EA2AE6F6B400C06341 /* SetupForLocalTesting.plist in Resources */ = {isa = PBXBuildFile; fileRef = 040247E82AE6F6B400C06341 /* SetupForLocalTesting.plist */; };
+		040247EB2AE6F6B400C06341 /* AppoxeeConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 040247E92AE6F6B400C06341 /* AppoxeeConfig.plist */; };
 		8F20A10E25C2CF460006CB93 /* libMappIntelligenceiOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F20A10D25C2CF460006CB93 /* libMappIntelligenceiOS.a */; };
 		8F2D1D4F257789FA008CB31D /* ActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2D1D4E257789FA008CB31D /* ActionViewController.swift */; };
 		8F2D1D5525778A07008CB31D /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2D1D5425778A07008CB31D /* PageViewController.swift */; };
@@ -19,8 +19,6 @@
 		8FA78F0525BF188A00CC166A /* MediaPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA78F0325BF188A00CC166A /* MediaPlayerViewController.swift */; };
 		8FA78F0625BF188A00CC166A /* MediaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA78F0425BF188A00CC166A /* MediaViewController.swift */; };
 		8FA78F0C25BF18BE00CC166A /* WebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA78F0B25BF18BE00CC166A /* WebViewViewController.swift */; };
-		A341D7012A320F1100CA1946 /* AppoxeeConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = A341D7002A320F1100CA1946 /* AppoxeeConfig.plist */; };
-		A341D7032A320F1F00CA1946 /* SetupForLocalTesting.plist in Resources */ = {isa = PBXBuildFile; fileRef = A341D7022A320F1F00CA1946 /* SetupForLocalTesting.plist */; };
 		A345975E27A164C10038FE3F /* FormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A345975D27A164C10038FE3F /* FormViewController.swift */; };
 		A3588A9527C66BA40053961B /* RuntimeConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3588A9427C66BA40053961B /* RuntimeConfigurationViewController.swift */; };
 		A36E59CC259493A100BF8873 /* EcommerceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36E59CB259493A100BF8873 /* EcommerceViewController.swift */; };
@@ -48,8 +46,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		04F19FFA2A98BE0900A66ED3 /* AppoxeeConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AppoxeeConfig.plist; sourceTree = "<group>"; };
-		04F19FFB2A98BE0900A66ED3 /* SetupForLocalTesting.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SetupForLocalTesting.plist; sourceTree = "<group>"; };
+		040247E82AE6F6B400C06341 /* SetupForLocalTesting.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SetupForLocalTesting.plist; sourceTree = "<group>"; };
+		040247E92AE6F6B400C06341 /* AppoxeeConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AppoxeeConfig.plist; sourceTree = "<group>"; };
 		8F20A10D25C2CF460006CB93 /* libMappIntelligenceiOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libMappIntelligenceiOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F2D1D4E257789FA008CB31D /* ActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionViewController.swift; sourceTree = "<group>"; };
 		8F2D1D5425778A07008CB31D /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
@@ -63,8 +61,6 @@
 		8FE0AF26255D6FB20037AE4A /* MappIntelligenceDemoApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MappIntelligenceDemoApp.entitlements; sourceTree = "<group>"; };
 		A3258BF5250A4E0B00039B92 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A32AEA68242B716100BC7B46 /* libMappIntelligenceWatchOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libMappIntelligenceWatchOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		A341D7002A320F1100CA1946 /* AppoxeeConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AppoxeeConfig.plist; sourceTree = "<group>"; };
-		A341D7022A320F1F00CA1946 /* SetupForLocalTesting.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SetupForLocalTesting.plist; sourceTree = "<group>"; };
 		A345975D27A164C10038FE3F /* FormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewController.swift; sourceTree = "<group>"; };
 		A3588A9427C66BA40053961B /* RuntimeConfigurationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuntimeConfigurationViewController.swift; sourceTree = "<group>"; };
 		A35C78FF2452F83700D36144 /* libMappIntelligencetvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libMappIntelligencetvOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -132,10 +128,8 @@
 			isa = PBXGroup;
 			children = (
 				A3C8598429A80FC10097CF32 /* AppoxeeSDK.xcframework */,
-				A341D7002A320F1100CA1946 /* AppoxeeConfig.plist */,
-				A341D7022A320F1F00CA1946 /* SetupForLocalTesting.plist */,
-				04F19FFA2A98BE0900A66ED3 /* AppoxeeConfig.plist */,
-				04F19FFB2A98BE0900A66ED3 /* SetupForLocalTesting.plist */,
+				040247E92AE6F6B400C06341 /* AppoxeeConfig.plist */,
+				040247E82AE6F6B400C06341 /* SetupForLocalTesting.plist */,
 				8F94E6BC25BF199C00027623 /* Resources */,
 				8FA78F0325BF188A00CC166A /* MediaPlayerViewController.swift */,
 				8FA78F0425BF188A00CC166A /* MediaViewController.swift */,
@@ -239,13 +233,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				A3DE04F329475223008657B9 /* AppoxeeSDKResources.bundle in Resources */,
+				040247EA2AE6F6B400C06341 /* SetupForLocalTesting.plist in Resources */,
 				8F94E6BE25BF199C00027623 /* wt.mp4 in Resources */,
 				BCA1739E23D5D25E00B31430 /* LaunchScreen.storyboard in Resources */,
-				A341D7012A320F1100CA1946 /* AppoxeeConfig.plist in Resources */,
-				04F19FFD2A98BE0900A66ED3 /* SetupForLocalTesting.plist in Resources */,
-				A341D7032A320F1F00CA1946 /* SetupForLocalTesting.plist in Resources */,
-				04F19FFC2A98BE0900A66ED3 /* AppoxeeConfig.plist in Resources */,
 				BCA1739B23D5D25E00B31430 /* Assets.xcassets in Resources */,
+				040247EB2AE6F6B400C06341 /* AppoxeeConfig.plist in Resources */,
 				BCA1739923D5D25C00B31430 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -426,7 +418,7 @@
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				INFOPLIST_FILE = MappIntelligenceDemoApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -456,7 +448,7 @@
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				INFOPLIST_FILE = MappIntelligenceDemoApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

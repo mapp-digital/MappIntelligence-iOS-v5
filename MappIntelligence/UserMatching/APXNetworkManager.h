@@ -52,7 +52,5 @@ typedef void(^APXNetworkManagerCompletionBlock)(NSError *error, id data);
 // for communication with Appoxee Servers, passing info and updates.
 - (void)performNetworkOperation:(NetworkManagerOperationType)operation withData:(NSData *)dataArg andCompletionBlock:(APXNetworkManagerCompletionBlock)completionBlock;
 
-// for communication with Appoxee Servers, passing info and updates.
-- (NSDictionary *)performSynchronousNetworkOperation:(NetworkManagerOperationType)operation withData:(NSData *)data;
 
 @end

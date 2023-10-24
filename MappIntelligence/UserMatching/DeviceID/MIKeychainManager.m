@@ -52,7 +52,9 @@
     
     if ([self checkOSStatus:SecItemCopyMatching((__bridge CFDictionaryRef)keychainQuery, (CFTypeRef *)&keyData)]) {
         @try {
-            object = [NSKeyedUnarchiver unarchiveObjectWithData:(__bridge NSData *)keyData];
+            NSError * error = nil;
+            
+            object = [NSKeyedUnarchiver unarchivedObjectOfClass: [NSArray class] fromData:(__bridge NSData *)keyData error:&error];
         }
         @catch (NSException *exception) {
             [[MIAPXInappLogger shared] logObj:[[NSString alloc] initWithFormat:@"Unarchiving for key %@ failed with exception %@", key, exception.name] forDescription:kAPXLogLevelDescriptionDebug];
