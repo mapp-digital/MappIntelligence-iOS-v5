@@ -6,7 +6,7 @@ Pod::Spec.new do |s|
     s.author   = { 'Mapp Digital' => 'devgroup.mobile@webtrekk.com' }
     s.homepage = 'https://mapp.com/mapp-cloud/analytics/app-analytics/'
     s.license  = { :type => 'MIT', :file => 'LICENSE.md' }
-    s.ios.deployment_target = '10.0'
+    s.ios.deployment_target = '12.0'
     s.source   = { :git => 'https://github.com/mapp-digital/MappIntelligence-iOS-v5.git', :tag => s.version }
     s.exclude_files = 'MappIntelligence/include/**'
     s.source_files = "MappIntelligence/**/*.{h,m}"
