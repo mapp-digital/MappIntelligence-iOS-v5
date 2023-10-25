@@ -15,13 +15,10 @@
 
 - (instancetype)init {
     self = [super init];
-#if !TARGET_OS_WATCH
     _pageName = NSStringFromClass(self.topViewController.classForCoder);
-#endif
     return self;
 }
 
-#if !TARGET_OS_WATCH
 - (UIViewController*)topViewController {
     UIWindow* window = [[UIApplication sharedApplication] keyWindow];
     UIViewController* topViewControler = [window rootViewController];
@@ -35,6 +32,5 @@
     }
     return topViewControler;
 }
-#endif
 
 @end

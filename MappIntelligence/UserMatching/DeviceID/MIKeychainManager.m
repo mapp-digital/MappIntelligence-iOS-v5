@@ -5,7 +5,6 @@
 //  Created by Stefan Stevanovic on 22.9.21..
 //  Copyright © 2021 Appoxee. All rights reserved.
 //
-#if !TARGET_OS_WATCH && !TARGET_OS_TV
 #import "MIKeychainManager.h"
 #import <Security/Security.h>
 #import "MIAPXInappLogger.h"
@@ -37,8 +36,7 @@
     NSMutableDictionary *keychainQuery = [self keychainQueryForKey:key];
     // Deleting previous object with this key, because SecItemUpdate is more complicated.
     [self deleteObjectForKey:key];
-    
-    [keychainQuery setObject:[NSKeyedArchiver archivedDataWithRootObject:object] forKey:(__bridge id)kSecValueData];
+    [keychainQuery setObject:[NSKeyedArchiver archivedDataWithRootObject:object requiringSecureCoding:true error:nil] forKey:(__bridge id)kSecValueData];
     return [self checkOSStatus:SecItemAdd((__bridge CFDictionaryRef)keychainQuery, NULL)];
 }
 
@@ -77,4 +75,4 @@
 
 
 @end
-#endif
+

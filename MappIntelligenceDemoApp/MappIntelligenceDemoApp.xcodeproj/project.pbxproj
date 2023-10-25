@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04F19FFC2A98BE0900A66ED3 /* AppoxeeConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04F19FFA2A98BE0900A66ED3 /* AppoxeeConfig.plist */; };
+		04F19FFD2A98BE0900A66ED3 /* SetupForLocalTesting.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04F19FFB2A98BE0900A66ED3 /* SetupForLocalTesting.plist */; };
 		8F20A10E25C2CF460006CB93 /* libMappIntelligenceiOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F20A10D25C2CF460006CB93 /* libMappIntelligenceiOS.a */; };
 		8F2D1D4F257789FA008CB31D /* ActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2D1D4E257789FA008CB31D /* ActionViewController.swift */; };
 		8F2D1D5525778A07008CB31D /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2D1D5425778A07008CB31D /* PageViewController.swift */; };
@@ -14,32 +16,14 @@
 		8F2D1D6F25778F5F008CB31D /* CampaignViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2D1D6E25778F5F008CB31D /* CampaignViewController.swift */; };
 		8F3F6813257EE3D5005F8AFC /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F3F6812257EE3D5005F8AFC /* WebKit.framework */; };
 		8F94E6BE25BF199C00027623 /* wt.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 8F94E6BD25BF199C00027623 /* wt.mp4 */; };
-		8F94E6BF25BF199C00027623 /* wt.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 8F94E6BD25BF199C00027623 /* wt.mp4 */; };
-		8F94E7D025BF315700027623 /* TVMediaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F94E7CF25BF315700027623 /* TVMediaViewController.swift */; };
 		8FA78F0525BF188A00CC166A /* MediaPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA78F0325BF188A00CC166A /* MediaPlayerViewController.swift */; };
 		8FA78F0625BF188A00CC166A /* MediaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA78F0425BF188A00CC166A /* MediaViewController.swift */; };
 		8FA78F0C25BF18BE00CC166A /* WebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA78F0B25BF18BE00CC166A /* WebViewViewController.swift */; };
-		A32AEA41242B605B00BC7B46 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A32AEA3F242B605B00BC7B46 /* Interface.storyboard */; };
-		A32AEA43242B605F00BC7B46 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A32AEA42242B605F00BC7B46 /* Assets.xcassets */; };
-		A32AEA4A242B605F00BC7B46 /* MappIntelligenceWatchOSDemoApp Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = A32AEA49242B605F00BC7B46 /* MappIntelligenceWatchOSDemoApp Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		A32AEA4F242B605F00BC7B46 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32AEA4E242B605F00BC7B46 /* InterfaceController.swift */; };
-		A32AEA51242B605F00BC7B46 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32AEA50242B605F00BC7B46 /* ExtensionDelegate.swift */; };
-		A32AEA53242B605F00BC7B46 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32AEA52242B605F00BC7B46 /* NotificationController.swift */; };
-		A32AEA55242B606000BC7B46 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A32AEA54242B606000BC7B46 /* Assets.xcassets */; };
-		A32AEA5A242B606000BC7B46 /* MappIntelligenceWatchOSDemoApp.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = A32AEA3D242B605B00BC7B46 /* MappIntelligenceWatchOSDemoApp.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A341D7012A320F1100CA1946 /* AppoxeeConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = A341D7002A320F1100CA1946 /* AppoxeeConfig.plist */; };
 		A341D7032A320F1F00CA1946 /* SetupForLocalTesting.plist in Resources */ = {isa = PBXBuildFile; fileRef = A341D7022A320F1F00CA1946 /* SetupForLocalTesting.plist */; };
 		A345975E27A164C10038FE3F /* FormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A345975D27A164C10038FE3F /* FormViewController.swift */; };
 		A3588A9527C66BA40053961B /* RuntimeConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3588A9427C66BA40053961B /* RuntimeConfigurationViewController.swift */; };
-		A35C78F02452F81500D36144 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35C78EF2452F81500D36144 /* AppDelegate.swift */; };
-		A35C78F22452F81500D36144 /* ViewControllerTV.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35C78F12452F81500D36144 /* ViewControllerTV.swift */; };
-		A35C78F52452F81500D36144 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A35C78F32452F81500D36144 /* Main.storyboard */; };
-		A35C78F72452F81600D36144 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A35C78F62452F81600D36144 /* Assets.xcassets */; };
-		A35C78FA2452F81600D36144 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A35C78F82452F81600D36144 /* LaunchScreen.storyboard */; };
-		A35C79002452F83700D36144 /* libMappIntelligencetvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A35C78FF2452F83700D36144 /* libMappIntelligencetvOS.a */; };
 		A36E59CC259493A100BF8873 /* EcommerceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36E59CB259493A100BF8873 /* EcommerceViewController.swift */; };
-		A36E5A2C25AD9D8700BF8873 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCA1739A23D5D25E00B31430 /* Assets.xcassets */; };
-		A38A6AF4242CD74F00600D82 /* libMappIntelligenceWatchOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A38A6AF3242CD74F00600D82 /* libMappIntelligenceWatchOS.a */; };
 		A3ADC97E26D94057007504FF /* ExceptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3ADC97D26D94057007504FF /* ExceptionsViewController.swift */; };
 		A3C8598529A80FC10097CF32 /* AppoxeeSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3C8598429A80FC10097CF32 /* AppoxeeSDK.xcframework */; };
 		A3DE04F329475223008657B9 /* AppoxeeSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A3DE04F229475223008657B9 /* AppoxeeSDKResources.bundle */; };
@@ -50,42 +34,13 @@
 		BCA1739E23D5D25E00B31430 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCA1739C23D5D25E00B31430 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		A32AEA4B242B605F00BC7B46 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BCA1738623D5D25C00B31430 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A32AEA48242B605F00BC7B46;
-			remoteInfo = "MappIntelligenceWatchOSDemoApp Extension";
-		};
-		A32AEA58242B606000BC7B46 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BCA1738623D5D25C00B31430 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A32AEA3C242B605B00BC7B46;
-			remoteInfo = MappIntelligenceWatchOSDemoApp;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXCopyFilesBuildPhase section */
-		A32AEA5E242B606000BC7B46 /* Embed Foundation Extensions */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-				A32AEA4A242B605F00BC7B46 /* MappIntelligenceWatchOSDemoApp Extension.appex in Embed Foundation Extensions */,
-			);
-			name = "Embed Foundation Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		A32AEA62242B606000BC7B46 /* Embed Watch Content */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
-				A32AEA5A242B606000BC7B46 /* MappIntelligenceWatchOSDemoApp.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -93,6 +48,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		04F19FFA2A98BE0900A66ED3 /* AppoxeeConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AppoxeeConfig.plist; sourceTree = "<group>"; };
+		04F19FFB2A98BE0900A66ED3 /* SetupForLocalTesting.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SetupForLocalTesting.plist; sourceTree = "<group>"; };
 		8F20A10D25C2CF460006CB93 /* libMappIntelligenceiOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libMappIntelligenceiOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F2D1D4E257789FA008CB31D /* ActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionViewController.swift; sourceTree = "<group>"; };
 		8F2D1D5425778A07008CB31D /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
@@ -100,38 +57,17 @@
 		8F2D1D6E25778F5F008CB31D /* CampaignViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CampaignViewController.swift; sourceTree = "<group>"; };
 		8F3F6812257EE3D5005F8AFC /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		8F94E6BD25BF199C00027623 /* wt.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = wt.mp4; sourceTree = "<group>"; };
-		8F94E7CF25BF315700027623 /* TVMediaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TVMediaViewController.swift; sourceTree = "<group>"; };
 		8FA78F0325BF188A00CC166A /* MediaPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaPlayerViewController.swift; sourceTree = "<group>"; };
 		8FA78F0425BF188A00CC166A /* MediaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaViewController.swift; sourceTree = "<group>"; };
 		8FA78F0B25BF18BE00CC166A /* WebViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewViewController.swift; sourceTree = "<group>"; };
 		8FE0AF26255D6FB20037AE4A /* MappIntelligenceDemoApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MappIntelligenceDemoApp.entitlements; sourceTree = "<group>"; };
 		A3258BF5250A4E0B00039B92 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		A32AEA3D242B605B00BC7B46 /* MappIntelligenceWatchOSDemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MappIntelligenceWatchOSDemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		A32AEA40242B605B00BC7B46 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
-		A32AEA42242B605F00BC7B46 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		A32AEA44242B605F00BC7B46 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A32AEA49242B605F00BC7B46 /* MappIntelligenceWatchOSDemoApp Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "MappIntelligenceWatchOSDemoApp Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A32AEA4E242B605F00BC7B46 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
-		A32AEA50242B605F00BC7B46 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
-		A32AEA52242B605F00BC7B46 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
-		A32AEA54242B606000BC7B46 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		A32AEA56242B606000BC7B46 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A32AEA57242B606000BC7B46 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
-		A32AEA63242B6F7500BC7B46 /* MappIntelligenceWatchOSDemoApp Extension-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MappIntelligenceWatchOSDemoApp Extension-Bridging-Header.h"; sourceTree = "<group>"; };
 		A32AEA68242B716100BC7B46 /* libMappIntelligenceWatchOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libMappIntelligenceWatchOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A341D7002A320F1100CA1946 /* AppoxeeConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AppoxeeConfig.plist; sourceTree = "<group>"; };
 		A341D7022A320F1F00CA1946 /* SetupForLocalTesting.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SetupForLocalTesting.plist; sourceTree = "<group>"; };
 		A345975D27A164C10038FE3F /* FormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewController.swift; sourceTree = "<group>"; };
 		A3588A9427C66BA40053961B /* RuntimeConfigurationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuntimeConfigurationViewController.swift; sourceTree = "<group>"; };
-		A35C78ED2452F81500D36144 /* MappIntelligenceTvOSDemoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MappIntelligenceTvOSDemoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		A35C78EF2452F81500D36144 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A35C78F12452F81500D36144 /* ViewControllerTV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerTV.swift; sourceTree = "<group>"; };
-		A35C78F42452F81500D36144 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		A35C78F62452F81600D36144 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		A35C78F92452F81600D36144 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		A35C78FB2452F81600D36144 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A35C78FF2452F83700D36144 /* libMappIntelligencetvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libMappIntelligencetvOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		A35C79012452FA0500D36144 /* MappIntelligenceTvOSDemoApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MappIntelligenceTvOSDemoApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		A36E59CB259493A100BF8873 /* EcommerceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EcommerceViewController.swift; sourceTree = "<group>"; };
 		A38A6AEF242CCFA100600D82 /* libMappIntelligenceSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libMappIntelligenceSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A38A6AF1242CD0C600600D82 /* libMappIntelligenceSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libMappIntelligenceSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -153,22 +89,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		A32AEA46242B605F00BC7B46 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A38A6AF4242CD74F00600D82 /* libMappIntelligenceWatchOS.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A35C78EA2452F81500D36144 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A35C79002452F83700D36144 /* libMappIntelligencetvOS.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		BCA1738B23D5D25C00B31430 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -191,52 +111,10 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		A32AEA3E242B605B00BC7B46 /* MappIntelligenceWatchOSDemoApp */ = {
-			isa = PBXGroup;
-			children = (
-				A32AEA3F242B605B00BC7B46 /* Interface.storyboard */,
-				A32AEA42242B605F00BC7B46 /* Assets.xcassets */,
-				A32AEA44242B605F00BC7B46 /* Info.plist */,
-			);
-			path = MappIntelligenceWatchOSDemoApp;
-			sourceTree = "<group>";
-		};
-		A32AEA4D242B605F00BC7B46 /* MappIntelligenceWatchOSDemoApp Extension */ = {
-			isa = PBXGroup;
-			children = (
-				A32AEA4E242B605F00BC7B46 /* InterfaceController.swift */,
-				A32AEA50242B605F00BC7B46 /* ExtensionDelegate.swift */,
-				A32AEA52242B605F00BC7B46 /* NotificationController.swift */,
-				A32AEA54242B606000BC7B46 /* Assets.xcassets */,
-				A32AEA56242B606000BC7B46 /* Info.plist */,
-				A32AEA57242B606000BC7B46 /* PushNotificationPayload.apns */,
-				A32AEA63242B6F7500BC7B46 /* MappIntelligenceWatchOSDemoApp Extension-Bridging-Header.h */,
-			);
-			path = "MappIntelligenceWatchOSDemoApp Extension";
-			sourceTree = "<group>";
-		};
-		A35C78EE2452F81500D36144 /* MappIntelligenceTvOSDemoApp */ = {
-			isa = PBXGroup;
-			children = (
-				8F94E7CF25BF315700027623 /* TVMediaViewController.swift */,
-				A35C78EF2452F81500D36144 /* AppDelegate.swift */,
-				A35C78F12452F81500D36144 /* ViewControllerTV.swift */,
-				A35C78F32452F81500D36144 /* Main.storyboard */,
-				A35C78F62452F81600D36144 /* Assets.xcassets */,
-				A35C78F82452F81600D36144 /* LaunchScreen.storyboard */,
-				A35C78FB2452F81600D36144 /* Info.plist */,
-				A35C79012452FA0500D36144 /* MappIntelligenceTvOSDemoApp-Bridging-Header.h */,
-			);
-			path = MappIntelligenceTvOSDemoApp;
-			sourceTree = "<group>";
-		};
 		BCA1738523D5D25C00B31430 = {
 			isa = PBXGroup;
 			children = (
 				BCA1739023D5D25C00B31430 /* MappIntelligenceDemoApp */,
-				A32AEA3E242B605B00BC7B46 /* MappIntelligenceWatchOSDemoApp */,
-				A32AEA4D242B605F00BC7B46 /* MappIntelligenceWatchOSDemoApp Extension */,
-				A35C78EE2452F81500D36144 /* MappIntelligenceTvOSDemoApp */,
 				BCA1738F23D5D25C00B31430 /* Products */,
 				BCA173AE23D6FBFC00B31430 /* Frameworks */,
 			);
@@ -246,9 +124,6 @@
 			isa = PBXGroup;
 			children = (
 				BCA1738E23D5D25C00B31430 /* MappIntelligenceDemoApp.app */,
-				A32AEA3D242B605B00BC7B46 /* MappIntelligenceWatchOSDemoApp.app */,
-				A32AEA49242B605F00BC7B46 /* MappIntelligenceWatchOSDemoApp Extension.appex */,
-				A35C78ED2452F81500D36144 /* MappIntelligenceTvOSDemoApp.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -259,6 +134,8 @@
 				A3C8598429A80FC10097CF32 /* AppoxeeSDK.xcframework */,
 				A341D7002A320F1100CA1946 /* AppoxeeConfig.plist */,
 				A341D7022A320F1F00CA1946 /* SetupForLocalTesting.plist */,
+				04F19FFA2A98BE0900A66ED3 /* AppoxeeConfig.plist */,
+				04F19FFB2A98BE0900A66ED3 /* SetupForLocalTesting.plist */,
 				8F94E6BC25BF199C00027623 /* Resources */,
 				8FA78F0325BF188A00CC166A /* MediaPlayerViewController.swift */,
 				8FA78F0425BF188A00CC166A /* MediaViewController.swift */,
@@ -304,57 +181,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A32AEA3C242B605B00BC7B46 /* MappIntelligenceWatchOSDemoApp */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A32AEA5F242B606000BC7B46 /* Build configuration list for PBXNativeTarget "MappIntelligenceWatchOSDemoApp" */;
-			buildPhases = (
-				A32AEA3B242B605B00BC7B46 /* Resources */,
-				A32AEA5E242B606000BC7B46 /* Embed Foundation Extensions */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				A32AEA4C242B605F00BC7B46 /* PBXTargetDependency */,
-			);
-			name = MappIntelligenceWatchOSDemoApp;
-			productName = MappIntelligenceWatchOSDemoApp;
-			productReference = A32AEA3D242B605B00BC7B46 /* MappIntelligenceWatchOSDemoApp.app */;
-			productType = "com.apple.product-type.application.watchapp2";
-		};
-		A32AEA48242B605F00BC7B46 /* MappIntelligenceWatchOSDemoApp Extension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A32AEA5B242B606000BC7B46 /* Build configuration list for PBXNativeTarget "MappIntelligenceWatchOSDemoApp Extension" */;
-			buildPhases = (
-				A32AEA45242B605F00BC7B46 /* Sources */,
-				A32AEA46242B605F00BC7B46 /* Frameworks */,
-				A32AEA47242B605F00BC7B46 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "MappIntelligenceWatchOSDemoApp Extension";
-			productName = "MappIntelligenceWatchOSDemoApp Extension";
-			productReference = A32AEA49242B605F00BC7B46 /* MappIntelligenceWatchOSDemoApp Extension.appex */;
-			productType = "com.apple.product-type.watchkit2-extension";
-		};
-		A35C78EC2452F81500D36144 /* MappIntelligenceTvOSDemoApp */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A35C78FC2452F81600D36144 /* Build configuration list for PBXNativeTarget "MappIntelligenceTvOSDemoApp" */;
-			buildPhases = (
-				A35C78E92452F81500D36144 /* Sources */,
-				A35C78EA2452F81500D36144 /* Frameworks */,
-				A35C78EB2452F81500D36144 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = MappIntelligenceTvOSDemoApp;
-			productName = MappIntelligenceTvOSDemoApp;
-			productReference = A35C78ED2452F81500D36144 /* MappIntelligenceTvOSDemoApp.app */;
-			productType = "com.apple.product-type.application";
-		};
 		BCA1738D23D5D25C00B31430 /* MappIntelligenceDemoApp */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = BCA173A223D5D25E00B31430 /* Build configuration list for PBXNativeTarget "MappIntelligenceDemoApp" */;
@@ -367,7 +193,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				A32AEA59242B606000BC7B46 /* PBXTargetDependency */,
 			);
 			name = MappIntelligenceDemoApp;
 			productName = DemoWebtrekkApp;
@@ -384,17 +209,6 @@
 				LastUpgradeCheck = 1400;
 				ORGANIZATIONNAME = "Mapp Digital US, LLC";
 				TargetAttributes = {
-					A32AEA3C242B605B00BC7B46 = {
-						CreatedOnToolsVersion = 11.3.1;
-					};
-					A32AEA48242B605F00BC7B46 = {
-						CreatedOnToolsVersion = 11.3.1;
-						LastSwiftMigration = 1130;
-					};
-					A35C78EC2452F81500D36144 = {
-						CreatedOnToolsVersion = 11.3.1;
-						LastSwiftMigration = 1130;
-					};
 					BCA1738D23D5D25C00B31430 = {
 						CreatedOnToolsVersion = 11.3.1;
 						LastSwiftMigration = 1130;
@@ -415,43 +229,11 @@
 			projectRoot = "";
 			targets = (
 				BCA1738D23D5D25C00B31430 /* MappIntelligenceDemoApp */,
-				A32AEA3C242B605B00BC7B46 /* MappIntelligenceWatchOSDemoApp */,
-				A32AEA48242B605F00BC7B46 /* MappIntelligenceWatchOSDemoApp Extension */,
-				A35C78EC2452F81500D36144 /* MappIntelligenceTvOSDemoApp */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		A32AEA3B242B605B00BC7B46 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A32AEA43242B605F00BC7B46 /* Assets.xcassets in Resources */,
-				A32AEA41242B605B00BC7B46 /* Interface.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A32AEA47242B605F00BC7B46 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A32AEA55242B606000BC7B46 /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A35C78EB2452F81500D36144 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				8F94E6BF25BF199C00027623 /* wt.mp4 in Resources */,
-				A35C78FA2452F81600D36144 /* LaunchScreen.storyboard in Resources */,
-				A35C78F72452F81600D36144 /* Assets.xcassets in Resources */,
-				A36E5A2C25AD9D8700BF8873 /* Assets.xcassets in Resources */,
-				A35C78F52452F81500D36144 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		BCA1738C23D5D25C00B31430 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -460,7 +242,9 @@
 				8F94E6BE25BF199C00027623 /* wt.mp4 in Resources */,
 				BCA1739E23D5D25E00B31430 /* LaunchScreen.storyboard in Resources */,
 				A341D7012A320F1100CA1946 /* AppoxeeConfig.plist in Resources */,
+				04F19FFD2A98BE0900A66ED3 /* SetupForLocalTesting.plist in Resources */,
 				A341D7032A320F1F00CA1946 /* SetupForLocalTesting.plist in Resources */,
+				04F19FFC2A98BE0900A66ED3 /* AppoxeeConfig.plist in Resources */,
 				BCA1739B23D5D25E00B31430 /* Assets.xcassets in Resources */,
 				BCA1739923D5D25C00B31430 /* Main.storyboard in Resources */,
 			);
@@ -469,26 +253,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		A32AEA45242B605F00BC7B46 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A32AEA53242B605F00BC7B46 /* NotificationController.swift in Sources */,
-				A32AEA51242B605F00BC7B46 /* ExtensionDelegate.swift in Sources */,
-				A32AEA4F242B605F00BC7B46 /* InterfaceController.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A35C78E92452F81500D36144 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				8F94E7D025BF315700027623 /* TVMediaViewController.swift in Sources */,
-				A35C78F22452F81500D36144 /* ViewControllerTV.swift in Sources */,
-				A35C78F02452F81500D36144 /* AppDelegate.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		BCA1738A23D5D25C00B31430 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -511,44 +275,7 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		A32AEA4C242B605F00BC7B46 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A32AEA48242B605F00BC7B46 /* MappIntelligenceWatchOSDemoApp Extension */;
-			targetProxy = A32AEA4B242B605F00BC7B46 /* PBXContainerItemProxy */;
-		};
-		A32AEA59242B606000BC7B46 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A32AEA3C242B605B00BC7B46 /* MappIntelligenceWatchOSDemoApp */;
-			targetProxy = A32AEA58242B606000BC7B46 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin PBXVariantGroup section */
-		A32AEA3F242B605B00BC7B46 /* Interface.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A32AEA40242B605B00BC7B46 /* Base */,
-			);
-			name = Interface.storyboard;
-			sourceTree = "<group>";
-		};
-		A35C78F32452F81500D36144 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A35C78F42452F81500D36144 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		A35C78F82452F81600D36144 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A35C78F92452F81600D36144 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
 		BCA1739723D5D25C00B31430 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -568,171 +295,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		A32AEA5C242B606000BC7B46 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = LERY366S7C;
-				"EXCLUDED_ARCHS[sdk=*]" = "";
-				GCC_PRECOMPILE_PREFIX_HEADER = NO;
-				GCC_PREFIX_HEADER = "";
-				INFOPLIST_FILE = "MappIntelligenceWatchOSDemoApp Extension/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "MappIntelligenceWatchOSDemoApp Extension";
-				INFOPLIST_KEY_WKExtensionDelegateClassName = "$(PRODUCT_MODULE_NAME).ExtensionDelegate";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				LIBRARY_SEARCH_PATHS = "";
-				MARKETING_VERSION = 1.0;
-				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.mappIntelligence.MappIntelligenceDemoApp.watchkitapp.watchkitextension;
-				PRODUCT_NAME = "${TARGET_NAME}";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "MappIntelligenceWatchOSDemoApp Extension/MappIntelligenceWatchOSDemoApp Extension-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 6.1;
-			};
-			name = Debug;
-		};
-		A32AEA5D242B606000BC7B46 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = LERY366S7C;
-				GCC_PRECOMPILE_PREFIX_HEADER = NO;
-				GCC_PREFIX_HEADER = "";
-				INFOPLIST_FILE = "MappIntelligenceWatchOSDemoApp Extension/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "MappIntelligenceWatchOSDemoApp Extension";
-				INFOPLIST_KEY_WKExtensionDelegateClassName = "$(PRODUCT_MODULE_NAME).ExtensionDelegate";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				LIBRARY_SEARCH_PATHS = "";
-				MARKETING_VERSION = 1.0;
-				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.mappIntelligence.MappIntelligenceDemoApp.watchkitapp.watchkitextension;
-				PRODUCT_NAME = "${TARGET_NAME}";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "MappIntelligenceWatchOSDemoApp Extension/MappIntelligenceWatchOSDemoApp Extension-Bridging-Header.h";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 6.1;
-			};
-			name = Release;
-		};
-		A32AEA60242B606000BC7B46 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = LERY366S7C;
-				IBSC_MODULE = MappIntelligenceWatchOSDemoApp_Extension;
-				INFOPLIST_FILE = MappIntelligenceWatchOSDemoApp/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = MappIntelligenceDemoApp;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.mappIntelligence.MappIntelligenceDemoApp;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.mappIntelligence.MappIntelligenceDemoApp.watchkitapp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 6.1;
-			};
-			name = Debug;
-		};
-		A32AEA61242B606000BC7B46 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = LERY366S7C;
-				IBSC_MODULE = MappIntelligenceWatchOSDemoApp_Extension;
-				INFOPLIST_FILE = MappIntelligenceWatchOSDemoApp/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = MappIntelligenceDemoApp;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.mappIntelligence.MappIntelligenceDemoApp;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.mappIntelligence.MappIntelligenceDemoApp.watchkitapp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 6.1;
-			};
-			name = Release;
-		};
-		A35C78FD2452F81600D36144 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = LERY366S7C;
-				INFOPLIST_FILE = MappIntelligenceTvOSDemoApp/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.mapp.MappIntelligenceTvOSDemoApp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = appletvos;
-				SKIP_INSTALL = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "MappIntelligenceTvOSDemoApp/MappIntelligenceTvOSDemoApp-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 13.2;
-			};
-			name = Debug;
-		};
-		A35C78FE2452F81600D36144 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = LERY366S7C;
-				INFOPLIST_FILE = MappIntelligenceTvOSDemoApp/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.mapp.MappIntelligenceTvOSDemoApp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = appletvos;
-				SKIP_INSTALL = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "MappIntelligenceTvOSDemoApp/MappIntelligenceTvOSDemoApp-Bridging-Header.h";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 13.2;
-			};
-			name = Release;
-		};
 		BCA173A023D5D25E00B31430 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -913,33 +475,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A32AEA5B242B606000BC7B46 /* Build configuration list for PBXNativeTarget "MappIntelligenceWatchOSDemoApp Extension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A32AEA5C242B606000BC7B46 /* Debug */,
-				A32AEA5D242B606000BC7B46 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		A32AEA5F242B606000BC7B46 /* Build configuration list for PBXNativeTarget "MappIntelligenceWatchOSDemoApp" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A32AEA60242B606000BC7B46 /* Debug */,
-				A32AEA61242B606000BC7B46 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		A35C78FC2452F81600D36144 /* Build configuration list for PBXNativeTarget "MappIntelligenceTvOSDemoApp" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A35C78FD2452F81600D36144 /* Debug */,
-				A35C78FE2452F81600D36144 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		BCA1738923D5D25C00B31430 /* Build configuration list for PBXProject "MappIntelligenceDemoApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

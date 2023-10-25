@@ -73,7 +73,6 @@ static MappIntelligenceDefaultConfig *config = nil;
                    stringWithFormat:@"%@", [[config trackIDs] componentsJoinedByString:@","]];
 }
 
-#if !TARGET_OS_WATCH
 - (NSError *_Nullable)trackPageWithViewController:(UIViewController *_Nonnull)controller pageViewEvent:(MIPageViewEvent*_Nullable) event {
     if (![self isTrackingEnabled]) {
         return nil;
@@ -86,8 +85,6 @@ static MappIntelligenceDefaultConfig *config = nil;
     event.pageName = name;
     return [tracker trackWithEvent:event];
 }
-
-#endif
 
 - (NSError *_Nullable)trackPageWith:(NSString *)name {
     if (![self isTrackingEnabled]) {
@@ -168,11 +165,8 @@ static MappIntelligenceDefaultConfig *config = nil;
     _timerForSendRequests = [NSTimer scheduledTimerWithTimeInterval: [config requestsInterval] repeats:YES block:^(NSTimer * _Nonnull timer) {
         
         BOOL isAppActive = YES;
- #if !TARGET_OS_WATCH
+
          isAppActive = [[UIApplication sharedApplication] applicationState] == UIApplicationStateActive;
- #else
-         isAppActive = YES;
- #endif
         if (!isAppActive)
             return;
         if (config.backgroundSendout == YES && !isAppActive) {

@@ -20,9 +20,6 @@
 #import "MIMediaEvent.h"
 #import "MIDefaultTracker.h"
 
-#if TARGET_OS_WATCH
-#import <WatchKit/WatchKit.h>
-#endif
 
 @interface MIRequestUrlBuilder ()
 
@@ -84,23 +81,11 @@
   }
 
   MIProperties *properties = [request properties];
-#if !TARGET_OS_WATCH
   CGFloat scale = [[UIScreen mainScreen] scale];
   NSString *screenSize = [[NSString alloc]
       initWithFormat:@"%.fx%.f",
                      [UIScreen mainScreen].bounds.size.width * scale,
                      [UIScreen mainScreen].bounds.size.height * scale];
-#else
-  CGFloat scale = [[WKInterfaceDevice currentDevice] screenScale];
-  NSString *screenSize = [[NSString alloc]
-      initWithFormat:@"%.fx%.f",
-                     [[WKInterfaceDevice currentDevice] screenBounds]
-                             .size.width *
-                         scale,
-                     [[WKInterfaceDevice currentDevice] screenBounds]
-                             .size.height *
-                         scale];
-#endif
   NSString *libraryVersionOriginal = [[MappIntelligence version] substringToIndex:5];
   NSString *libraryVersionParced =
       [self codeString:[libraryVersionOriginal

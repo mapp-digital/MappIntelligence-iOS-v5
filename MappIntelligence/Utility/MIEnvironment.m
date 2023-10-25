@@ -12,9 +12,6 @@
 #import "MIEnvironment.h"
 #import <UIKit/UIKit.h>
 #import <sys/utsname.h>
-#if TARGET_OS_WATCH
-#import <WatchKit/WatchKit.h>
-#endif
 
 static NSString *const appVersonKey = @"kAppVersion";
 static NSString *const buildVersonKey = @"kBuildVersion";
@@ -37,19 +34,12 @@ static NSString *const buildVersonKey = @"kBuildVersion";
 }
 
 + (NSString *)operatingSystemName {
-#if TARGET_OS_WATCH
-  return [[WKInterfaceDevice currentDevice] systemName]; 
-#else
+
     return [[UIDevice currentDevice] systemName];
-#endif
 }
 
 + (NSString *)operatingSystemVersionString {
-#if TARGET_OS_WATCH
-    return [NSString stringWithFormat:@"%@", [[WKInterfaceDevice currentDevice] systemVersion]];
-#else
     return [NSString stringWithFormat:@"%@", [[UIDevice currentDevice] systemVersion]];
-#endif
 }
 
 + (NSString *)buildVersion {

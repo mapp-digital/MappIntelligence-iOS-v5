@@ -12,9 +12,6 @@
 #import "MIPageViewEvent.h"
 #import "MIFormSubmitEvent.h"
 #import "MIActionEvent.h"
-#if TARGET_OS_WATCH
-#import <WatchKit/WatchKit.h>
-#endif
 
 #endif /* DefaultTracker_h */
 
@@ -34,12 +31,8 @@
 - (BOOL)isBackgroundSendoutEnabled;
 - (BOOL)isUserMatchingEnabled;
 - (void)setupVersion: (NSString *_Nonnull) version andPlatform: (NSString *_Nonnull) platform;
-#if !TARGET_OS_WATCH
 - (NSError*_Nullable)track:(UIViewController *_Nonnull)controller;
 - (void)updateFirstSessionWith: (UIApplicationState) state;
-#else
-- (void)updateFirstSessionWith: (WKApplicationState) state;
-#endif
 - (NSError*_Nullable)trackWith:(NSString *_Nonnull)name;
 - (NSError*_Nullable)trackWithEvent:(MITrackingEvent *_Nonnull)event;
 - (NSError *_Nullable)trackWithCustomEvent:(MITrackingEvent *_Nonnull)event;

@@ -138,7 +138,6 @@
 - (NSDictionary *)performSynchronousNetworkOperation:(NetworkManagerOperationType)operation withData:(NSData *)data
 {
     NSDictionary *responseDictionary = nil;
-#if !TARGET_OS_WATCH
     if (data) {
         
         NSMutableURLRequest *request = [self generateRequestForOperation:operation];
@@ -147,6 +146,8 @@
         
         NSURLResponse *response = nil;
         NSError *error = nil;
+        NSURLSession *session = [NSURLSession sharedSession];
+        
         
         NSData *serverDataResponse = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
         
@@ -197,7 +198,6 @@
         
         //AppLog(@"No data was supplied, aborting network operation: %tu", operation);
     }
-#endif
 
     return responseDictionary;
 }

@@ -5,7 +5,6 @@
 //  Created by Raz Elkayam on 6/2/15.
 //  Copyright (c) 2015 Appoxee. All rights reserved.
 //
-#if !TARGET_OS_WATCH && !TARGET_OS_TV
 #import "MIAPXIdentifier.h"
 #import <UIKit/UIKit.h>
 #import <CommonCrypto/CommonCryptor.h>
@@ -102,9 +101,8 @@ NSString *const MISUUIDPastboardFileFormat = @"org.AppSecureUDID-";
             identifier = MISUUIDCryptorToString(kCCDecrypt, identifierData, ownerKey);
             if (!identifier) {
                 // We've failed to decrypt our identifier.  This is a sign of storage corruption.
-#if !TARGET_OS_WATCH && !TARGET_OS_TV
+
                 MISUUIDDeleteStorageLocation(ownerIndex);
-#endif
                 
                 // return here - do not write values back to the store
                 return MISUUIDDefaultIdentifier;
@@ -136,9 +134,7 @@ NSString *const MISUUIDPastboardFileFormat = @"org.AppSecureUDID-";
         if (@available(iOS 14, *)) {
             [[MIKeychainManager default] saveObject:identifier forKey:bundleID];
         } else {
-#if !TARGET_OS_WATCH && !TARGET_OS_TV
             MISUUIDWriteDictionaryToStorageLocation(ownerIndex, topLevelDictionary);
-#endif
         }
     }
     
@@ -228,9 +224,7 @@ NSInteger MISUUIDStorageLocationForOwnerKey(NSData *ownerKey, NSMutableDictionar
     for (NSInteger i = 0; i < SUUID_MAX_STORAGE_LOCATIONS; ++i) {
         NSDate*       modifiedDate;
         NSDictionary* dictionary;
-#if !TARGET_OS_WATCH && !TARGET_OS_TV
         dictionary = MISUUIDDictionaryForStorageLocation(i);
-#endif
         if (!dictionary) {
             if (lowestUnusedIndex == -1) {
                 lowestUnusedIndex = i;
@@ -281,9 +275,7 @@ NSInteger MISUUIDStorageLocationForOwnerKey(NSData *ownerKey, NSMutableDictionar
     }
     
     // Make sure to write the most recent structure to the new location
-#if !TARGET_OS_WATCH && !TARGET_OS_TV
     MISUUIDWriteDictionaryToStorageLocation(ownerIndex, mostRecentDictionary);
-#endif
     return ownerIndex;
 }
 
@@ -352,7 +344,6 @@ NSString *MISUUIDCryptorToString(CCOperation operation, NSData *value, NSData *k
 Clear a storage location, removing anything stored there.  Useful for dealing with
 potential corruption.  Be careful with this function, as it can remove Opt-Out markers.
 */
-#if !TARGET_OS_WATCH && !TARGET_OS_TV
 void MISUUIDDeleteStorageLocation(NSInteger number) {
     UIPasteboard* pasteboard;
     NSString*     name;
@@ -372,14 +363,12 @@ void MISUUIDDeleteStorageLocation(NSInteger number) {
     [pasteboard setData:[[NSData alloc] init] forPasteboardType:MISUUIDTypeDataDictionary];
     [UIPasteboard removePasteboardWithName:name];
 }
-#endif
 
 /*
  Writes out a dictionary to a storage location.  That dictionary must be a 'valid'
  AppSecureUDID structure, and the location must be within range.  A new location is
  created if is didn't already exist.
  */
-#if !TARGET_OS_WATCH && !TARGET_OS_TV
 void MISUUIDWriteDictionaryToStorageLocation(NSInteger number, NSDictionary* dictionary) {
     UIPasteboard* pasteboard;
     
@@ -403,7 +392,6 @@ void MISUUIDWriteDictionaryToStorageLocation(NSInteger number, NSDictionary* dic
     [pasteboard setData:[NSKeyedArchiver archivedDataWithRootObject:dictionary]
       forPasteboardType:MISUUIDTypeDataDictionary];
 }
-#endif
 
 /*
  Reads a dictionary from a storage location.  Validation occurs once data
@@ -412,7 +400,6 @@ void MISUUIDWriteDictionaryToStorageLocation(NSInteger number, NSDictionary* dic
  
  Returns the data dictionary, or nil on failure.
  */
-#if !TARGET_OS_WATCH && !TARGET_OS_TV
 NSDictionary *MISUUIDDictionaryForStorageLocation(NSInteger number) {
     id            decodedObject;
     UIPasteboard* pasteboard;
@@ -452,7 +439,6 @@ NSDictionary *MISUUIDDictionaryForStorageLocation(NSInteger number) {
     
     return decodedObject;
 }
-#endif
 
 /*
  Returns an NSString formatted with the supplied number.
@@ -540,4 +526,3 @@ BOOL MISUUIDValidOwnerObject(id object) {
 }
 
 @end
-#endif

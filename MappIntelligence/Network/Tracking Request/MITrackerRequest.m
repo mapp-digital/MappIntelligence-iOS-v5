@@ -23,9 +23,7 @@
   self = [super init];
   if (self) {
     _loger = [MappIntelligenceLogger shared];
-#if TARGET_OS_IOS
     _urlSession = [[NSURLSession alloc] init];
-#endif
   }
   return self;
 }
@@ -141,18 +139,14 @@
 
 - (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveData:(NSData *)data {
     //NSLog(@"%@", data);
-#if !TARGET_OS_WATCH
     UIBackgroundTaskIdentifier backgroundIdentifier = (unsigned long)[[NSUserDefaults standardUserDefaults] integerForKey:@"backgroundIdentifier"];
     [[UIApplication sharedApplication] endBackgroundTask: backgroundIdentifier];
-#endif
 }
 
 - (void)URLSession:(NSURLSession *)session didBecomeInvalidWithError:(NSError *)error {
     NSLog(@"error: %@", error);
-#if !TARGET_OS_WATCH
     UIBackgroundTaskIdentifier backgroundIdentifier = (unsigned long)[[NSUserDefaults standardUserDefaults] integerForKey:@"backgroundIdentifier"];
     [[UIApplication sharedApplication] endBackgroundTask: backgroundIdentifier];
-#endif
 }
 
 @end
