@@ -7,10 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8F0A3F5B25C2F34700CD43A2 /* MappIntelligence.h in Resources */ = {isa = PBXBuildFile; fileRef = A334861B23BF3E2300D0EB5F /* MappIntelligence.h */; };
-		8F0A3F5C25C2F34700CD43A2 /* MappIntelligence.m in Resources */ = {isa = PBXBuildFile; fileRef = A334861C23BF3E2300D0EB5F /* MappIntelligence.m */; };
-		8F0A3F6525C2F40C00CD43A2 /* MappIntelligenceiOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F20A08925C2CE470006CB93 /* MappIntelligenceiOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8F0A3F7725C2F47200CD43A2 /* MIWebViewTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F94E79E25BF2E8F00027623 /* MIWebViewTracker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8F143ED92510AD830024CF24 /* ActionEventTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F143ED82510AD830024CF24 /* ActionEventTests.m */; };
 		8F143EDB2510AECA0024CF24 /* ActionPropertiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F143EDA2510AECA0024CF24 /* ActionPropertiesTests.m */; };
 		8F143EDD2510B3220024CF24 /* SessionPropertiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F143EDC2510B3220024CF24 /* SessionPropertiesTests.m */; };
@@ -49,7 +45,6 @@
 		8F20A1B725C2D01D0006CB93 /* MappIntelligenceLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = BCEAE6B723BF5A8B007F410D /* MappIntelligenceLogger.m */; };
 		8F20A1C025C2D0300006CB93 /* MIEnvironment.m in Sources */ = {isa = PBXBuildFile; fileRef = A380D2032412B0AB009E2CD8 /* MIEnvironment.m */; };
 		8F20A1C925C2D0390006CB93 /* MappIntelligenceDefaultConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = BCD5E2C423CF38F300CE2092 /* MappIntelligenceDefaultConfig.m */; };
-		8F20A1DD25C2D20D0006CB93 /* libMappIntelligenceiOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F20A08725C2CE470006CB93 /* libMappIntelligenceiOS.a */; };
 		8F20A34825C2ED4B0006CB93 /* MappIntelligence.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A334861B23BF3E2300D0EB5F /* MappIntelligence.h */; };
 		8F20A35125C2ED650006CB93 /* MIMediaParameters.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8F94E72825BF281C00027623 /* MIMediaParameters.h */; };
 		8F20A35225C2ED650006CB93 /* MICampaignParameters.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8F423EDA254B17D900DE191D /* MICampaignParameters.h */; };
@@ -74,28 +69,14 @@
 		8F94E6C725BF27AC00027623 /* MIMediaTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F94E6C525BF27AC00027623 /* MIMediaTracker.h */; };
 		8F94E6E825BF27D200027623 /* MIMediaEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F94E6E625BF27D200027623 /* MIMediaEvent.m */; };
 		8F94E6E925BF27D200027623 /* MIMediaEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F94E6E725BF27D200027623 /* MIMediaEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8F94E70F25BF27EF00027623 /* MIMediaEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F94E6E725BF27D200027623 /* MIMediaEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8F94E72925BF281C00027623 /* MIMediaParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F94E72725BF281C00027623 /* MIMediaParameters.m */; };
 		8F94E72A25BF281C00027623 /* MIMediaParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F94E72825BF281C00027623 /* MIMediaParameters.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8F94E74925BF282E00027623 /* MIMediaParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F94E72825BF281C00027623 /* MIMediaParameters.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8F94E78E25BF2E0500027623 /* MIMediaEvent.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 8F94E6E725BF27D200027623 /* MIMediaEvent.h */; };
 		8F94E79625BF2E1100027623 /* MIMediaParameters.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 8F94E72825BF281C00027623 /* MIMediaParameters.h */; };
 		8F9C7F70255A851400CB95EF /* AdvertisementPropertiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F9C7F6F255A851400CB95EF /* AdvertisementPropertiesTests.m */; };
 		8FA11962253EDC82000AE887 /* MIUserCategories.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FA11960253EDC82000AE887 /* MIUserCategories.h */; };
 		8FA11963253EDC82000AE887 /* MIUserCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FA11961253EDC82000AE887 /* MIUserCategories.m */; };
 		8FAF2D3F25405DFE007AA438 /* MIUserCategories.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 8FA11960253EDC82000AE887 /* MIUserCategories.h */; };
-		8FCFD4FD25B18E3000EE8358 /* MICampaignParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F423EDA254B17D900DE191D /* MICampaignParameters.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8FCFD51C25B18EB000EE8358 /* MIEventParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FDF7105250B9E4D00818E51 /* MIEventParameters.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8FCFD52D25B18EB800EE8358 /* MIPageParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = A337445A24C1A12A0096259B /* MIPageParameters.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8FCFD54525B18EC300EE8358 /* MISessionParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FDF7111250BA9CB00818E51 /* MISessionParameters.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8FCFD55D25B18EF000EE8358 /* MIProduct.h in Headers */ = {isa = PBXBuildFile; fileRef = A338B79625470A1F00E50C28 /* MIProduct.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8FCFD57525B18F0400EE8358 /* MIUserCategories.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FA11960253EDC82000AE887 /* MIUserCategories.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8FCFD59425B18F1B00EE8358 /* MIEcommerceParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = A338B7892546FD1E00E50C28 /* MIEcommerceParameters.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8FCFD5AC25B18F6700EE8358 /* MIActionEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FDF710A250B9E5B00818E51 /* MIActionEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8FCFD5C425B18F6E00EE8358 /* MIPageViewEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = A380D1FD241296FD009E2CD8 /* MIPageViewEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8FCFD5DC25B18F7C00EE8358 /* MITrackingEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = A380D1F82411478C009E2CD8 /* MITrackingEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8FCFD5F425B18FA300EE8358 /* MIParams.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FD2C1F6258C0CA8002A9ED4 /* MIParams.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8FCFD61425B18FAA00EE8358 /* MIParamType.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FD2C20A258C0CCA002A9ED4 /* MIParamType.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8FCFD64B25B1916F00EE8358 /* MIParams.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 8FD2C1F6258C0CA8002A9ED4 /* MIParams.h */; };
 		8FCFD64C25B1916F00EE8358 /* MIParamType.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 8FD2C20A258C0CCA002A9ED4 /* MIParamType.h */; };
 		8FD2C1F8258C0CA8002A9ED4 /* MIParams.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FD2C1F6258C0CA8002A9ED4 /* MIParams.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -151,11 +132,9 @@
 		A338B7EF2548752B00E50C28 /* MIProduct.h in Copy Files */ = {isa = PBXBuildFile; fileRef = A338B79625470A1F00E50C28 /* MIProduct.h */; };
 		A338B803254C6C0A00E50C28 /* ProductTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A338B802254C6C0A00E50C28 /* ProductTests.m */; };
 		A338B813254C6D3A00E50C28 /* EcommercePropertiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A338B812254C6D3A00E50C28 /* EcommercePropertiesTests.m */; };
-		A33B3700246047C8005EA9AE /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A33B36FF246047C8005EA9AE /* libz.tbd */; };
 		A341D7062A433EBC00CA1946 /* MIUsageStatistics.h in Headers */ = {isa = PBXBuildFile; fileRef = A341D7042A433EBC00CA1946 /* MIUsageStatistics.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A341D7072A433EBC00CA1946 /* MIUsageStatistics.m in Sources */ = {isa = PBXBuildFile; fileRef = A341D7052A433EBC00CA1946 /* MIUsageStatistics.m */; };
 		A341D70A2A43487700CA1946 /* MIUsageStatistics.m in Sources */ = {isa = PBXBuildFile; fileRef = A341D7052A433EBC00CA1946 /* MIUsageStatistics.m */; };
-		A341D70B2A4348A200CA1946 /* MIUsageStatistics.h in Headers */ = {isa = PBXBuildFile; fileRef = A341D7042A433EBC00CA1946 /* MIUsageStatistics.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A341D70E2A43498000CA1946 /* MIUsageStatistics.h in Copy Files */ = {isa = PBXBuildFile; fileRef = A341D7042A433EBC00CA1946 /* MIUsageStatistics.h */; };
 		A341D7112A4349CE00CA1946 /* MIUsageStatistics.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A341D7042A433EBC00CA1946 /* MIUsageStatistics.h */; };
 		A341D7142A45BC3400CA1946 /* MIUsageStatisticsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A341D7132A45BC3400CA1946 /* MIUsageStatisticsTests.m */; };
@@ -164,10 +143,8 @@
 		A345976527A1890A0038FE3F /* MIFormField.h in Headers */ = {isa = PBXBuildFile; fileRef = A345976327A1890A0038FE3F /* MIFormField.h */; };
 		A345976627A1890A0038FE3F /* MIFormField.m in Sources */ = {isa = PBXBuildFile; fileRef = A345976427A1890A0038FE3F /* MIFormField.m */; };
 		A345976A27A9771B0038FE3F /* MIFormSubmitEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = A345976827A9771B0038FE3F /* MIFormSubmitEvent.m */; };
-		A345976B27A978700038FE3F /* MIFormSubmitEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = A345976727A9771B0038FE3F /* MIFormSubmitEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A345977027A97C510038FE3F /* MIFormSubmitEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = A345976827A9771B0038FE3F /* MIFormSubmitEvent.m */; };
 		A345977727A97C840038FE3F /* MIFormParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = A345976027A1878A0038FE3F /* MIFormParameters.m */; };
-		A345977827A97C930038FE3F /* MIFormParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = A345975F27A1878A0038FE3F /* MIFormParameters.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A345977E27A982C70038FE3F /* MIFormSubmitEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = A345976727A9771B0038FE3F /* MIFormSubmitEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A345977F27A982E80038FE3F /* MIFormParameters.h in Copy Files */ = {isa = PBXBuildFile; fileRef = A345975F27A1878A0038FE3F /* MIFormParameters.h */; };
 		A345978027A9843F0038FE3F /* MIFormField.h in Copy Files */ = {isa = PBXBuildFile; fileRef = A345976327A1890A0038FE3F /* MIFormField.h */; };
@@ -175,7 +152,6 @@
 		A345978527A9857C0038FE3F /* MIFormParameters.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A345975F27A1878A0038FE3F /* MIFormParameters.h */; };
 		A345978627A9857C0038FE3F /* MIFormField.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A345976327A1890A0038FE3F /* MIFormField.h */; };
 		A345978727A9857C0038FE3F /* MIFormSubmitEvent.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A345976727A9771B0038FE3F /* MIFormSubmitEvent.h */; };
-		A345978827A986920038FE3F /* MIFormField.h in Headers */ = {isa = PBXBuildFile; fileRef = A345976327A1890A0038FE3F /* MIFormField.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A345979027A986B10038FE3F /* MIFormField.m in Sources */ = {isa = PBXBuildFile; fileRef = A345976427A1890A0038FE3F /* MIFormField.m */; };
 		A357221924F8F17B005F9DE1 /* ParameterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A357221824F8F17B005F9DE1 /* ParameterTest.m */; };
 		A357221B24F933A1005F9DE1 /* RequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A357221A24F933A1005F9DE1 /* RequestTest.m */; };
@@ -185,7 +161,6 @@
 		A3588A9927D20A7D0053961B /* MediaPropertiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3588A9827D20A7D0053961B /* MediaPropertiesTests.m */; };
 		A3588A9B27D8B5A70053961B /* CampaignParameterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3588A9A27D8B5A70053961B /* CampaignParameterTests.m */; };
 		A3588A9D27D8E5340053961B /* EventParameterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3588A9C27D8E5340053961B /* EventParameterTests.m */; };
-		A35C795F2457679000D36144 /* MappIntelligenceSDK_iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = A35C795D2457679000D36144 /* MappIntelligenceSDK_iOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A36CD7CD23F44594004E3E2D /* MITrackerRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = A36CD7CB23F44594004E3E2D /* MITrackerRequest.h */; };
 		A36CD7CE23F44594004E3E2D /* MITrackerRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = A36CD7CC23F44594004E3E2D /* MITrackerRequest.m */; };
 		A36CD7D123F447D0004E3E2D /* MIProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = A36CD7CF23F447D0004E3E2D /* MIProperties.h */; };
@@ -218,7 +193,6 @@
 		A3A7255B243DEA0500671DB2 /* RequestUrlBuilderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3A7255A243DEA0500671DB2 /* RequestUrlBuilderTests.m */; };
 		A3A7255D243E07A100671DB2 /* URLSizeMonitorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3A7255C243E07A100671DB2 /* URLSizeMonitorTests.m */; };
 		A3A7255F243F154900671DB2 /* MappIntelligenceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3A7255E243F154900671DB2 /* MappIntelligenceTests.m */; };
-		A3A7DCE127E0A24E00A739B9 /* MIDefaultTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = BCBE5C0723F1A688002125C1 /* MIDefaultTracker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A3ADC97326D8EB34007504FF /* MIExceptionTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = A3ADC97126D8EB34007504FF /* MIExceptionTracker.h */; };
 		A3ADC97426D8EB34007504FF /* MIExceptionTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = A3ADC97226D8EB34007504FF /* MIExceptionTracker.m */; };
 		A3ADC98D26D941B5007504FF /* MIExceptionTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = A3ADC97226D8EB34007504FF /* MIExceptionTracker.m */; };
@@ -239,13 +213,11 @@
 		A3DE04EC2944BB6F008657B9 /* MIKeychainManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A3DE04EA2944BB6F008657B9 /* MIKeychainManager.m */; };
 		A3DE04F02944BBE3008657B9 /* MIAPXIdentifier.m in Sources */ = {isa = PBXBuildFile; fileRef = A3DE04E62944BAE1008657B9 /* MIAPXIdentifier.m */; };
 		A3DE04F12944BBF5008657B9 /* MIKeychainManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A3DE04EA2944BB6F008657B9 /* MIKeychainManager.m */; };
-		A3E8274E2461B6B700952606 /* MappIntelligence.h in Headers */ = {isa = PBXBuildFile; fileRef = A334861B23BF3E2300D0EB5F /* MappIntelligence.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A3EAFF612418E02F009D5108 /* MIUIFlowObserver.h in Headers */ = {isa = PBXBuildFile; fileRef = A3EAFF5F2418E02F009D5108 /* MIUIFlowObserver.h */; };
 		A3EAFF622418E02F009D5108 /* MIUIFlowObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = A3EAFF602418E02F009D5108 /* MIUIFlowObserver.m */; };
 		A3F08BBB28D9DC19004FF49C /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3187BAE2874805000653D05 /* WebKit.framework */; };
 		A3F08BBC28D9DC68004FF49C /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3187BAE2874805000653D05 /* WebKit.framework */; };
 		A3F08BBE28D9DD66004FF49C /* MediaTrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3F08BBD28D9DD66004FF49C /* MediaTrackerTests.m */; };
-		A3FE6CE1286C956C00D89CC7 /* MIFormField.h in Resources */ = {isa = PBXBuildFile; fileRef = A345976327A1890A0038FE3F /* MIFormField.h */; };
 		BCBE5BFB23EB1798002125C1 /* MappIntelligenceSDKLoggerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBE5BFA23EB1798002125C1 /* MappIntelligenceSDKLoggerTest.m */; };
 		BCBE5C0923F29E49002125C1 /* MIDefaultTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBE5C0823F29E49002125C1 /* MIDefaultTracker.m */; };
 		BCBE5C3A23F698EF002125C1 /* DefaultTrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBE5C3923F698EF002125C1 /* DefaultTrackerTests.m */; };
@@ -263,13 +235,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = A334861723BF3E2300D0EB5F;
 			remoteInfo = MappIntelligenceSDK;
-		};
-		8F20A1D225C2D0760006CB93 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A334861023BF3E2300D0EB5F /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 8F20A08625C2CE470006CB93;
-			remoteInfo = MappIntelligenceiOS;
 		};
 		A334862E23BF3F2800D0EB5F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -435,7 +400,6 @@
 		A3588A9827D20A7D0053961B /* MediaPropertiesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MediaPropertiesTests.m; sourceTree = "<group>"; };
 		A3588A9A27D8B5A70053961B /* CampaignParameterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CampaignParameterTests.m; sourceTree = "<group>"; };
 		A3588A9C27D8E5340053961B /* EventParameterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EventParameterTests.m; sourceTree = "<group>"; };
-		A35C795B2457679000D36144 /* MappIntelligenceSDK_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MappIntelligenceSDK_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A35C795D2457679000D36144 /* MappIntelligenceSDK_iOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MappIntelligenceSDK_iOS.h; sourceTree = "<group>"; };
 		A35C795E2457679000D36144 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A36CD7CB23F44594004E3E2D /* MITrackerRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MITrackerRequest.h; sourceTree = "<group>"; };
@@ -518,15 +482,6 @@
 			files = (
 				A3F08BBC28D9DC68004FF49C /* WebKit.framework in Frameworks */,
 				A334862D23BF3F2800D0EB5F /* libMappIntelligenceSDK.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A35C79582457679000D36144 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				8F20A1DD25C2D20D0006CB93 /* libMappIntelligenceiOS.a in Frameworks */,
-				A33B3700246047C8005EA9AE /* libz.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -676,7 +631,6 @@
 			children = (
 				A334861823BF3E2300D0EB5F /* libMappIntelligenceSDK.a */,
 				A334862823BF3F2800D0EB5F /* MappIntelligenceTests.xctest */,
-				A35C795B2457679000D36144 /* MappIntelligenceSDK_iOS.framework */,
 				8F20A08725C2CE470006CB93 /* libMappIntelligenceiOS.a */,
 			);
 			name = Products;
@@ -968,36 +922,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A35C79562457679000D36144 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				8F94E70F25BF27EF00027623 /* MIMediaEvent.h in Headers */,
-				8FCFD5C425B18F6E00EE8358 /* MIPageViewEvent.h in Headers */,
-				8FCFD59425B18F1B00EE8358 /* MIEcommerceParameters.h in Headers */,
-				8F94E74925BF282E00027623 /* MIMediaParameters.h in Headers */,
-				8FCFD52D25B18EB800EE8358 /* MIPageParameters.h in Headers */,
-				A35C795F2457679000D36144 /* MappIntelligenceSDK_iOS.h in Headers */,
-				8FCFD51C25B18EB000EE8358 /* MIEventParameters.h in Headers */,
-				A345978827A986920038FE3F /* MIFormField.h in Headers */,
-				8FCFD57525B18F0400EE8358 /* MIUserCategories.h in Headers */,
-				8FCFD61425B18FAA00EE8358 /* MIParamType.h in Headers */,
-				A345976B27A978700038FE3F /* MIFormSubmitEvent.h in Headers */,
-				8FCFD5AC25B18F6700EE8358 /* MIActionEvent.h in Headers */,
-				A3E8274E2461B6B700952606 /* MappIntelligence.h in Headers */,
-				8FCFD4FD25B18E3000EE8358 /* MICampaignParameters.h in Headers */,
-				8FCFD55D25B18EF000EE8358 /* MIProduct.h in Headers */,
-				A3A7DCE127E0A24E00A739B9 /* MIDefaultTracker.h in Headers */,
-				A345977827A97C930038FE3F /* MIFormParameters.h in Headers */,
-				8FCFD5DC25B18F7C00EE8358 /* MITrackingEvent.h in Headers */,
-				8FCFD54525B18EC300EE8358 /* MISessionParameters.h in Headers */,
-				8F0A3F6525C2F40C00CD43A2 /* MappIntelligenceiOS.h in Headers */,
-				8FCFD5F425B18FA300EE8358 /* MIParams.h in Headers */,
-				8F0A3F7725C2F47200CD43A2 /* MIWebViewTracker.h in Headers */,
-				A341D70B2A4348A200CA1946 /* MIUsageStatistics.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
@@ -1055,25 +979,6 @@
 			productReference = A334862823BF3F2800D0EB5F /* MappIntelligenceTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		A35C795A2457679000D36144 /* MappIntelligenceSDK-iOS */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A35C79602457679000D36144 /* Build configuration list for PBXNativeTarget "MappIntelligenceSDK-iOS" */;
-			buildPhases = (
-				A35C79562457679000D36144 /* Headers */,
-				A35C79572457679000D36144 /* Sources */,
-				A35C79582457679000D36144 /* Frameworks */,
-				A35C79592457679000D36144 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				8F20A1D325C2D0760006CB93 /* PBXTargetDependency */,
-			);
-			name = "MappIntelligenceSDK-iOS";
-			productName = "MappIntelligenceSDK-iOS";
-			productReference = A35C795B2457679000D36144 /* MappIntelligenceSDK_iOS.framework */;
-			productType = "com.apple.product-type.framework";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -1094,9 +999,6 @@
 					A334862723BF3F2800D0EB5F = {
 						CreatedOnToolsVersion = 11.3;
 					};
-					A35C795A2457679000D36144 = {
-						CreatedOnToolsVersion = 11.3.1;
-					};
 				};
 			};
 			buildConfigurationList = A334861323BF3E2300D0EB5F /* Build configuration list for PBXProject "MappIntelligenceSDK" */;
@@ -1114,7 +1016,6 @@
 			targets = (
 				A334861723BF3E2300D0EB5F /* MappIntelligenceSDK */,
 				A334862723BF3F2800D0EB5F /* MappIntelligenceTests */,
-				A35C795A2457679000D36144 /* MappIntelligenceSDK-iOS */,
 				8F20A08625C2CE470006CB93 /* MappIntelligenceiOS */,
 			);
 		};
@@ -1125,16 +1026,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A35C79592457679000D36144 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A3FE6CE1286C956C00D89CC7 /* MIFormField.h in Resources */,
-				8F0A3F5B25C2F34700CD43A2 /* MappIntelligence.h in Resources */,
-				8F0A3F5C25C2F34700CD43A2 /* MappIntelligence.m in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1284,13 +1175,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A35C79572457679000D36144 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -1298,11 +1182,6 @@
 			isa = PBXTargetDependency;
 			target = A334861723BF3E2300D0EB5F /* MappIntelligenceSDK */;
 			targetProxy = 8F20A10B25C2CEF50006CB93 /* PBXContainerItemProxy */;
-		};
-		8F20A1D325C2D0760006CB93 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 8F20A08625C2CE470006CB93 /* MappIntelligenceiOS */;
-			targetProxy = 8F20A1D225C2D0760006CB93 /* PBXContainerItemProxy */;
 		};
 		A334862F23BF3F2800D0EB5F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1561,82 +1440,6 @@
 			};
 			name = Release;
 		};
-		A35C79612457679000D36144 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = LERY366S7C;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = "";
-				"FRAMEWORK_SEARCH_PATHS[sdk=iphoneos*]" = Headers;
-				"FRAMEWORK_SEARCH_PATHS[sdk=iphonesimulator*]" = HeadersSim;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "MappIntelligenceSDK-iOS/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = mh_dylib;
-				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.mapp.MappIntelligenceSDK-iOS";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		A35C79622457679000D36144 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = LERY366S7C;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = "";
-				"FRAMEWORK_SEARCH_PATHS[sdk=iphoneos*]" = Headers;
-				"FRAMEWORK_SEARCH_PATHS[sdk=iphonesimulator*]" = HeadersSim;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "MappIntelligenceSDK-iOS/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = mh_dylib;
-				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.mapp.MappIntelligenceSDK-iOS";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1672,15 +1475,6 @@
 			buildConfigurations = (
 				A334863123BF3F2800D0EB5F /* Debug */,
 				A334863223BF3F2800D0EB5F /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		A35C79602457679000D36144 /* Build configuration list for PBXNativeTarget "MappIntelligenceSDK-iOS" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A35C79612457679000D36144 /* Debug */,
-				A35C79622457679000D36144 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
