@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.com/mapp-digital/MappIntelligence-iOS-v5.svg?branch=master)](https://travis-ci.com/github/mapp-digital/MappIntelligence-iOS-v5)
 
-[![CocoaPods Compatible](https://img.shields.io/cocoapods/v/MappIntelligence.svg?style=flat)](https://cocoapods.org/pods/MappIntelligence) ![Carthage](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat) ![SPM](https://img.shields.io/badge/SPM-compatible-4BC51D.svg?style=flat) ![Platform support](https://img.shields.io/badge/platform-ios-lightgrey.svg?style=flat)
+[![CocoaPods Compatible](https://img.shields.io/cocoapods/v/MappIntelligence.svg?style=flat)](https://cocoapods.org/pods/MappIntelligence) ![SPM](https://img.shields.io/badge/SPM-compatible-4BC51D.svg?style=flat) ![Platform support](https://img.shields.io/badge/platform-ios-lightgrey.svg?style=flat)
 
 The MappIntelligence SDK allows you to track user activities, screen flow and media usage for an App. All data is send to the MappIntelligence tracking system for further analysis.
 
@@ -18,10 +18,6 @@ The MappIntelligence SDK allows you to track user activities, screen flow and me
 [CocoaPods](https://www.cocoapods.org) (*Podfile*):
 
 `pod 'MappIntelligence'`
-
-[Carthage](https://github.com/Carthage/Carthage) (*Cartfile*):
-
-`github "mapp-digital/MappIntelligence-iOS-v5"`
 
 [Swift Package Manager](https://swift.org/package-manager/)(*Swift Package Manager*):
 
