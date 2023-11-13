@@ -133,6 +133,18 @@
         case viewed:
             return @"view";
             break;
+        case deletedFromBasket:
+            return @"del";
+            break;
+        case addedToWishlist:
+            return @"add-wl";
+            break;
+        case deletedFromWishlist:
+            return @"del-wl";
+            break;
+        case checkout:
+            return @"checkout";
+            break;
         default:
             return @"view";
     }

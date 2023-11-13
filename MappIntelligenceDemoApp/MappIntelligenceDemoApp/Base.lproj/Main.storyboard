@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="v0p-og-LCW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="v0p-og-LCW">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -326,19 +326,84 @@
                                     <action selector="trackEcommerceConfirmation:" destination="nWq-9p-hbM" eventType="touchUpInside" id="138-u7-h4N"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WEw-l6-Ya9">
+                                <rect key="frame" x="20" y="334" width="374" height="50"/>
+                                <color key="backgroundColor" red="0.021203886719999999" green="0.57247686389999997" blue="0.84162324669999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Ntc-7x-ncB"/>
+                                </constraints>
+                                <state key="normal" title="Delete from cart">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="DeleteFromCart:" destination="nWq-9p-hbM" eventType="touchUpInside" id="Uzu-RO-T3K"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k2e-xn-j0Q">
+                                <rect key="frame" x="20" y="404" width="374" height="50"/>
+                                <color key="backgroundColor" red="0.021203886719999999" green="0.57247686389999997" blue="0.84162324669999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="8Dq-Jf-ULM"/>
+                                </constraints>
+                                <state key="normal" title="Added to whishlist">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="AddToWhishlist:" destination="nWq-9p-hbM" eventType="touchUpInside" id="cqk-os-CIq"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nxf-09-WSY">
+                                <rect key="frame" x="20" y="474" width="374" height="50"/>
+                                <color key="backgroundColor" red="0.021203886719999999" green="0.57247686389999997" blue="0.84162324669999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Bdr-ik-Lh6"/>
+                                </constraints>
+                                <state key="normal" title="Deleted to whishlist">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="DeleteFromWhishlist:" destination="nWq-9p-hbM" eventType="touchUpInside" id="b72-0a-60i"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A88-Nb-BrX">
+                                <rect key="frame" x="20" y="544" width="374" height="50"/>
+                                <color key="backgroundColor" red="0.021203886719999999" green="0.57247686389999997" blue="0.84162324669999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="0LI-Zi-vqO"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="gq8-27-U3K"/>
+                                </constraints>
+                                <state key="normal" title="Checkout">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="Checkout:" destination="nWq-9p-hbM" eventType="touchUpInside" id="Vru-5M-S3u"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="rqB-Cv-zRt"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Cav-mF-t1W" firstAttribute="top" secondItem="foU-Q6-aLN" secondAttribute="bottom" constant="25" id="28j-BQ-Mnt"/>
+                            <constraint firstItem="rqB-Cv-zRt" firstAttribute="trailing" secondItem="A88-Nb-BrX" secondAttribute="trailing" constant="20" id="5rj-fd-8OU"/>
                             <constraint firstItem="rqB-Cv-zRt" firstAttribute="trailing" secondItem="Cav-mF-t1W" secondAttribute="trailing" constant="20" id="9O6-38-sbb"/>
+                            <constraint firstItem="rqB-Cv-zRt" firstAttribute="trailing" secondItem="nxf-09-WSY" secondAttribute="trailing" constant="20" id="Can-nP-jl4"/>
+                            <constraint firstItem="k2e-xn-j0Q" firstAttribute="top" secondItem="WEw-l6-Ya9" secondAttribute="bottom" constant="20" id="DWU-DF-wCv"/>
+                            <constraint firstItem="WEw-l6-Ya9" firstAttribute="top" secondItem="TDL-DC-ltT" secondAttribute="bottom" constant="20" id="FFh-Fi-bcH"/>
+                            <constraint firstItem="WEw-l6-Ya9" firstAttribute="leading" secondItem="rqB-Cv-zRt" secondAttribute="leading" constant="20" id="J7S-gf-rq7"/>
                             <constraint firstItem="foU-Q6-aLN" firstAttribute="leading" secondItem="rqB-Cv-zRt" secondAttribute="leading" constant="20" id="Ke0-cV-UQf"/>
+                            <constraint firstItem="k2e-xn-j0Q" firstAttribute="leading" secondItem="rqB-Cv-zRt" secondAttribute="leading" constant="20" id="Kid-IR-9tq"/>
                             <constraint firstItem="TDL-DC-ltT" firstAttribute="top" secondItem="Cav-mF-t1W" secondAttribute="bottom" constant="25" id="PcG-Kc-wO5"/>
                             <constraint firstItem="rqB-Cv-zRt" firstAttribute="trailing" secondItem="TDL-DC-ltT" secondAttribute="trailing" constant="20" id="RVM-gh-cD5"/>
                             <constraint firstItem="TDL-DC-ltT" firstAttribute="leading" secondItem="rqB-Cv-zRt" secondAttribute="leading" constant="20" id="S3X-MD-XYG"/>
+                            <constraint firstItem="rqB-Cv-zRt" firstAttribute="trailing" secondItem="k2e-xn-j0Q" secondAttribute="trailing" constant="20" id="VUl-1y-QBA"/>
+                            <constraint firstItem="nxf-09-WSY" firstAttribute="top" secondItem="k2e-xn-j0Q" secondAttribute="bottom" constant="20" id="WIu-74-iPh"/>
                             <constraint firstItem="foU-Q6-aLN" firstAttribute="top" secondItem="rqB-Cv-zRt" secondAttribute="top" constant="50" id="hs6-jz-CVu"/>
+                            <constraint firstItem="rqB-Cv-zRt" firstAttribute="trailing" secondItem="WEw-l6-Ya9" secondAttribute="trailing" constant="20" id="jM4-VB-8K9"/>
+                            <constraint firstItem="A88-Nb-BrX" firstAttribute="leading" secondItem="rqB-Cv-zRt" secondAttribute="leading" constant="20" id="kIo-fz-AZG"/>
+                            <constraint firstItem="A88-Nb-BrX" firstAttribute="top" secondItem="nxf-09-WSY" secondAttribute="bottom" constant="20" id="nbs-Yd-dM8"/>
                             <constraint firstItem="rqB-Cv-zRt" firstAttribute="trailing" secondItem="foU-Q6-aLN" secondAttribute="trailing" constant="20" id="pcf-NL-Q7O"/>
                             <constraint firstItem="Cav-mF-t1W" firstAttribute="leading" secondItem="rqB-Cv-zRt" secondAttribute="leading" constant="20" id="qLO-DG-f7d"/>
+                            <constraint firstItem="nxf-09-WSY" firstAttribute="leading" secondItem="rqB-Cv-zRt" secondAttribute="leading" constant="20" id="vwT-hE-a5q"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Ecommerce" id="xbJ-lf-65m">
@@ -347,7 +412,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="icn-H0-ckT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2977" y="1739"/>
+            <point key="canvasLocation" x="2976.811594202899" y="1738.858695652174"/>
         </scene>
         <!--Campaign-->
         <scene sceneID="ctv-iB-GBw">
@@ -1273,7 +1338,7 @@
             <color red="0.019999999552965164" green="0.57300001382827759" blue="0.84299999475479126" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="labelColor">
-            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

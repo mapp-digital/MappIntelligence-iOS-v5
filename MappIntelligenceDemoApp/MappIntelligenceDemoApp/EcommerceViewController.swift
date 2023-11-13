@@ -172,4 +172,64 @@ class EcommerceViewController: UIViewController {
         return totalCost
     }
 
+    @IBAction func DeleteFromCart(_ sender: Any) {
+        let ecommerceParameters1: MIEcommerceParameters =
+            MIEcommerceParameters(customParameters: [1 : "ProductParam1", 2 : "ProductParam2"])
+        
+        product1.quantity = 3
+        product2.quantity = 2
+        
+        ecommerceParameters1.status = .deletedFromBasket
+        ecommerceParameters1.products = [product1]
+        
+        let pageEvent = MIPageViewEvent(name: "TrackProductDeletedToBasket")
+        pageEvent.ecommerceParameters = ecommerceParameters1
+        
+        MappIntelligence.shared()?.trackPage(pageEvent)
+    }
+    @IBAction func AddToWhishlist(_ sender: Any) {
+        let ecommerceParameters1: MIEcommerceParameters =
+            MIEcommerceParameters(customParameters: [1 : "ProductParam1", 2 : "ProductParam2"])
+        
+        product1.quantity = 3
+        product2.quantity = 2
+        
+        ecommerceParameters1.status = .addedToWishlist
+        ecommerceParameters1.products = [product1]
+        
+        let pageEvent = MIPageViewEvent(name: "TrackProductAddedToWhishlist")
+        pageEvent.ecommerceParameters = ecommerceParameters1
+        
+        MappIntelligence.shared()?.trackPage(pageEvent)
+    }
+    @IBAction func DeleteFromWhishlist(_ sender: Any) {
+        let ecommerceParameters1: MIEcommerceParameters =
+            MIEcommerceParameters(customParameters: [1 : "ProductParam1", 2 : "ProductParam2"])
+        
+        product1.quantity = 3
+        product2.quantity = 2
+        
+        ecommerceParameters1.status = .deletedFromWishlist
+        ecommerceParameters1.products = [product1]
+        
+        let pageEvent = MIPageViewEvent(name: "TrackProductDeleteFromBasket")
+        pageEvent.ecommerceParameters = ecommerceParameters1
+        
+        MappIntelligence.shared()?.trackPage(pageEvent)
+    }
+    @IBAction func Checkout(_ sender: Any) {
+        let ecommerceParameters1: MIEcommerceParameters =
+            MIEcommerceParameters(customParameters: [1 : "ProductParam1", 2 : "ProductParam2"])
+        
+        product1.quantity = 3
+        product2.quantity = 2
+        
+        ecommerceParameters1.status = .checkout
+        ecommerceParameters1.products = [product1]
+        
+        let pageEvent = MIPageViewEvent(name: "TrackProductCheckout")
+        pageEvent.ecommerceParameters = ecommerceParameters1
+        
+        MappIntelligence.shared()?.trackPage(pageEvent)
+    }
 }

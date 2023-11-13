@@ -15,7 +15,11 @@ typedef NS_ENUM(NSInteger, MIStatus) {
     noneStatus = 0,
     addedToBasket = 1,
     purchased = 2,
-    viewed = 3
+    viewed = 3,
+    deletedFromBasket = 4,
+    addedToWishlist = 5,
+    deletedFromWishlist = 6,
+    checkout = 7
 };
 
 @interface MIEcommerceParameters : NSObject
