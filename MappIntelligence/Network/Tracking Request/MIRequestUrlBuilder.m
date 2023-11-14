@@ -363,9 +363,11 @@
 -(NSMutableArray *) getAnonimousParams: (NSMutableArray *) params {
     NSMutableArray *anonimParams = [[NSMutableArray alloc] init];
     NSArray *suppressed = [[MIDefaultTracker sharedInstance] suppressedParameters];
-    for (NSURLQueryItem *item in params) {
-        if (![suppressed containsObject: item.name] && ![item.name isEqualToString:@"eid"]) {
-            [anonimParams addObject:item];
+    if (suppressed != [NSNull null]) {
+        for (NSURLQueryItem *item in params) {
+            if (![suppressed containsObject: item.name] && ![item.name isEqualToString:@"eid"]) {
+                [anonimParams addObject:item];
+            }
         }
     }
     [anonimParams addObject:[NSURLQueryItem queryItemWithName:@"nc" value:@"1"]];
