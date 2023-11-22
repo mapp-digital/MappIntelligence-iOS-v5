@@ -39,7 +39,6 @@
     self = [super init];
     _tracker = tracker;
     _logger = [MappIntelligenceLogger shared];
-    //to force new session only for TV, bacause notficataion for willenterforeground do not work on TVOS
     [_tracker updateFirstSessionWith:[[UIApplication sharedApplication]
                                       applicationState]];
     self.TIME_WHEN_APP_ENTERS_TO_BACKGROUND = @"Background_Time";
