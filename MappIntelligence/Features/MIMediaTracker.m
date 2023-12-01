@@ -30,7 +30,7 @@
 
 -(BOOL) shouldTrack: (MIMediaEvent *) event {
     //invalid cases
-    if (event.mediaParameters.position.doubleValue >= event.mediaParameters.duration.doubleValue) {
+    if (event.mediaParameters.position.doubleValue == event.mediaParameters.duration.doubleValue) {
         return NO;
     }
 
