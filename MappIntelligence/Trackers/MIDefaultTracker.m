@@ -138,7 +138,11 @@ static NSString *userAgent;
       //it seems that is impossible to have queues on both places, so I will use the same one from database
       _queue = [[MIDatabaseManager shared] getExecutionQueue];
       //dispatch_queue_create("Inserting Requests", NULL);
-      [self fireSignal];
+      //this is added here because Flutter change the order of methods execution and the request was not sent at all.
+      // Delay execution of my block for 10 seconds.
+      dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 3 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+          [self fireSignal];
+      });
   }
   return sharedTracker;
 }
