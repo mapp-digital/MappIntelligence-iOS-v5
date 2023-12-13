@@ -138,7 +138,7 @@ static NSString *userAgent;
       //it seems that is impossible to have queues on both places, so I will use the same one from database
       _queue = [[MIDatabaseManager shared] getExecutionQueue];
       //dispatch_queue_create("Inserting Requests", NULL);
-
+      [self fireSignal];
   }
   return sharedTracker;
 }
