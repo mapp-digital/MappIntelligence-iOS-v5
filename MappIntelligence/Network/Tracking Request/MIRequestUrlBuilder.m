@@ -306,7 +306,11 @@
                                            andForComponents:
                                                (NSURLComponents *)components {
   NSMutableArray<NSString *> *componentsArray = [[NSMutableArray alloc] init];
-  for (NSURLQueryItem *object in parameters) {
+    NSArray<NSURLQueryItem *> * tempParameters = [[NSMutableArray alloc] init];
+    if(parameters) {
+        tempParameters = [parameters copy];
+    }
+  for (NSURLQueryItem *object in tempParameters) {
     NSString *value = [object value];
     if (![[object name] isEqual:@"p"]) {
       value = [self codeString:[object value]];
