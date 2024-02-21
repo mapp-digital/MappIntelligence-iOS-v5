@@ -284,9 +284,18 @@
     [_logger logObj:[[NSString alloc]
                         initWithFormat:@"Could not parse baseUrl: %@", _baseUrl]
         forDescription:kMappIntelligenceLogLevelDescriptionError];
-    return NULL;
+      urlComponents = [[NSURLComponents alloc] initWithURL:[self buildBaseUrlwithServer:[[NSURL alloc] initWithString:[MappIntelligence getUrl]] andWithId:[MappIntelligence getId]]
+                                                    resolvingAgainstBaseURL:YES];
   }
 
+    if (parameters == (id)[NSNull null] || parameters.count == 0 ) {
+        parameters = [[NSArray alloc] init];
+    }
+    if (urlComponents == (id)[NSNull null]) {
+        urlComponents = [[NSURLComponents alloc] initWithURL:[self buildBaseUrlwithServer:[[NSURL alloc] initWithString:[MappIntelligence getUrl]] andWithId:[MappIntelligence getId]]
+                                                      resolvingAgainstBaseURL:YES];
+        
+    }
   [urlComponents
       setPercentEncodedQuery:
           [self applyQueryItemsWithAlternativeURLEncodingWith:parameters
