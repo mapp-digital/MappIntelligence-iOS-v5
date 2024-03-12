@@ -94,17 +94,17 @@
         [self didBecomeActive];
     }];
     //Posted shortly before an app leaves the background state on its way to becoming the active app.
-    _applicationWillEnterForegroundObserver = [notificationCenter addObserverForName:UIApplicationWillEnterForegroundNotification object:NULL queue:NULL usingBlock:^(NSNotification * _Nonnull note) {
-        [self willEnterForeground];
-    }];
+//    _applicationWillEnterForegroundObserver = [notificationCenter addObserverForName:UIApplicationWillEnterForegroundNotification object:NULL queue:NULL usingBlock:^(NSNotification * _Nonnull note) {
+//        [self willEnterForeground];
+//    }];
     //Posted when the app is no longer active and loses focus.
     _applicationWillResignActiveObserver = [notificationCenter addObserverForName:UIApplicationWillResignActiveNotification object:NULL queue:NULL usingBlock:^(NSNotification * _Nonnull note) {
         [self willResignActive];
     }];
     //terminate, not called always
-    [notificationCenter addObserverForName:UIApplicationWillTerminateNotification object:NULL queue:NULL usingBlock:^(NSNotification * _Nonnull note) {
-        //[self willResignActive];
-    }];
+//    [notificationCenter addObserverForName:UIApplicationWillTerminateNotification object:NULL queue:NULL usingBlock:^(NSNotification * _Nonnull note) {
+//        //[self willResignActive];
+//    }];
     
     [notificationCenter addObserverForName:UIApplicationDidEnterBackgroundNotification object:NULL queue:NULL usingBlock:^(NSNotification * _Nonnull note) {
         [self willEnterBckground];
@@ -113,10 +113,6 @@
 }
 
 -(void)didBecomeActive {
-    
-}
-
--(void)willEnterForeground {
     if([_tracker isUserMatchingEnabled]) {
         [self getDeviceInfoForParameters:@[@"dmcUserId"]];
     }
@@ -154,6 +150,10 @@
             }];
         }
     }
+}
+
+-(void)willEnterForeground {
+    
 }
 
 -(void)willResignActive {
