@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="v0p-og-LCW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="v0p-og-LCW">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -960,21 +960,73 @@
                                     <segue destination="qkc-Xc-87e" kind="show" id="BG2-8G-xsg"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wiA-me-wJH">
+                                <rect key="frame" x="20" y="443" width="374" height="50"/>
+                                <color key="backgroundColor" name="Darkblue"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="c1u-fF-82E"/>
+                                </constraints>
+                                <state key="normal" title="Play">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="playButtonPressed:" destination="D55-Lk-m95" eventType="touchUpInside" id="iM8-WZ-ERe"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bad-FJ-Ccy">
+                                <rect key="frame" x="20" y="513" width="374" height="50"/>
+                                <color key="backgroundColor" name="Darkblue"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Iwo-rH-Gro"/>
+                                </constraints>
+                                <state key="normal" title="EOF">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="EOFButtonPressed:" destination="D55-Lk-m95" eventType="touchUpInside" id="VG9-ck-on4"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="position" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rxz-wJ-pb0">
+                                <rect key="frame" x="20" y="583" width="177" height="34"/>
+                                <accessibility key="accessibilityConfiguration" hint="position"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="duration" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZY3-s3-GRr">
+                                <rect key="frame" x="233" y="583" width="161" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="161" id="bSA-cF-Ufl"/>
+                                    <constraint firstAttribute="height" constant="34" id="jmi-lI-1Vx"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="YWP-z8-pxI"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="YWP-z8-pxI" firstAttribute="trailing" secondItem="wiA-me-wJH" secondAttribute="trailing" constant="20" id="68t-6x-MKs"/>
+                            <constraint firstItem="bad-FJ-Ccy" firstAttribute="top" secondItem="wiA-me-wJH" secondAttribute="bottom" constant="20" id="8re-n8-Dbi"/>
+                            <constraint firstItem="YWP-z8-pxI" firstAttribute="trailing" secondItem="ZY3-s3-GRr" secondAttribute="trailing" constant="20" id="BbC-2u-HE9"/>
+                            <constraint firstItem="ZY3-s3-GRr" firstAttribute="top" secondItem="bad-FJ-Ccy" secondAttribute="bottom" constant="20" id="CW6-ex-L2j"/>
+                            <constraint firstItem="rxz-wJ-pb0" firstAttribute="baseline" secondItem="ZY3-s3-GRr" secondAttribute="baseline" id="EDg-8B-w4n"/>
                             <constraint firstItem="Adp-jq-DBk" firstAttribute="leading" secondItem="YWP-z8-pxI" secondAttribute="leading" constant="20" id="EX4-VW-kHI"/>
                             <constraint firstItem="Adp-jq-DBk" firstAttribute="top" secondItem="Jjz-y8-0nP" secondAttribute="bottom" constant="35" id="Krp-lX-xYZ"/>
                             <constraint firstItem="YWP-z8-pxI" firstAttribute="trailing" secondItem="Adp-jq-DBk" secondAttribute="trailing" constant="20" id="MgB-N9-dIH"/>
                             <constraint firstItem="rVP-dK-I85" firstAttribute="top" secondItem="YWP-z8-pxI" secondAttribute="top" constant="50" id="NsQ-UA-1OO"/>
+                            <constraint firstItem="bad-FJ-Ccy" firstAttribute="leading" secondItem="YWP-z8-pxI" secondAttribute="leading" constant="20" id="RPC-w7-5gP"/>
+                            <constraint firstItem="YWP-z8-pxI" firstAttribute="trailing" secondItem="bad-FJ-Ccy" secondAttribute="trailing" constant="20" id="Ryg-yX-uoG"/>
                             <constraint firstItem="Jjz-y8-0nP" firstAttribute="top" secondItem="rVP-dK-I85" secondAttribute="bottom" constant="35" id="T38-yG-TSp"/>
                             <constraint firstItem="DVo-QJ-p6X" firstAttribute="trailing" secondItem="Adp-jq-DBk" secondAttribute="trailing" id="VPG-L2-NfP"/>
+                            <constraint firstItem="wiA-me-wJH" firstAttribute="top" secondItem="DVo-QJ-p6X" secondAttribute="bottom" constant="20" id="Xxi-fc-EaL"/>
+                            <constraint firstItem="ZY3-s3-GRr" firstAttribute="leading" secondItem="rxz-wJ-pb0" secondAttribute="trailing" constant="36" id="YHz-Y4-mry"/>
                             <constraint firstItem="DVo-QJ-p6X" firstAttribute="leading" secondItem="Adp-jq-DBk" secondAttribute="leading" id="ahe-yv-bgj"/>
                             <constraint firstItem="YWP-z8-pxI" firstAttribute="trailing" secondItem="rVP-dK-I85" secondAttribute="trailing" constant="20" id="daW-23-LJN"/>
                             <constraint firstItem="YWP-z8-pxI" firstAttribute="trailing" secondItem="Jjz-y8-0nP" secondAttribute="trailing" constant="20" id="geK-zJ-v5s"/>
                             <constraint firstItem="DVo-QJ-p6X" firstAttribute="top" secondItem="Adp-jq-DBk" secondAttribute="bottom" constant="39" id="isR-QW-331"/>
                             <constraint firstItem="Jjz-y8-0nP" firstAttribute="leading" secondItem="YWP-z8-pxI" secondAttribute="leading" constant="20" id="j0h-Tr-tAf"/>
+                            <constraint firstItem="rxz-wJ-pb0" firstAttribute="leading" secondItem="bad-FJ-Ccy" secondAttribute="leading" id="lFK-lD-61u"/>
+                            <constraint firstItem="wiA-me-wJH" firstAttribute="leading" secondItem="YWP-z8-pxI" secondAttribute="leading" constant="20" id="ng8-6D-V67"/>
                             <constraint firstItem="rVP-dK-I85" firstAttribute="leading" secondItem="YWP-z8-pxI" secondAttribute="leading" constant="20" id="rTa-x0-Z56"/>
                             <constraint firstItem="YWP-z8-pxI" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="DVo-QJ-p6X" secondAttribute="bottom" constant="313" id="ufc-JW-jTG"/>
                         </constraints>
@@ -982,10 +1034,14 @@
                     <navigationItem key="navigationItem" title="Media Tracking" id="J2l-Vy-fgb">
                         <barButtonItem key="backBarButtonItem" title="Back" id="9Sq-fT-47Y"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="durationTextField" destination="ZY3-s3-GRr" id="U3J-Zz-OSY"/>
+                        <outlet property="positionTextfield" destination="rxz-wJ-pb0" id="Mk4-FU-z6q"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kqz-qZ-4ug" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2147" y="1647"/>
+            <point key="canvasLocation" x="2146.376811594203" y="1646.7391304347827"/>
         </scene>
         <!--Media Player View Controller-->
         <scene sceneID="f5n-88-bbO">
@@ -1461,7 +1517,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="tintColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

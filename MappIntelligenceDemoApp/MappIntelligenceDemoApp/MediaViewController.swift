@@ -10,6 +10,8 @@ import UIKit
 
 class MediaViewController: UIViewController {
 
+    @IBOutlet weak var durationTextField: UITextField!
+    @IBOutlet weak var positionTextfield: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -27,5 +29,19 @@ class MediaViewController: UIViewController {
         let vc = (storyboard?.instantiateViewController(withIdentifier: "MediaExample")) as! MediaPlayerViewController
         vc.streamUrl = URL(string: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4")
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+    @IBAction func playButtonPressed(_ sender: Any) {
+        let duration = NSNumber(value: Int(durationTextField.text ?? "0") ?? 0)
+        let position = NSNumber(value: Int(positionTextfield.text ?? "0") ?? 0)
+        let mediaProperties = MIMediaParameters("TestVideo", action: "play", position: position, duration: duration)
+        let mediaEvent = MIMediaEvent(pageName: "Test", parameters: mediaProperties)
+        MappIntelligence.shared()?.trackMedia(mediaEvent)
+    }
+    @IBAction func EOFButtonPressed(_ sender: Any) {
+        let duration = NSNumber(value: Int(durationTextField.text ?? "0") ?? 0)
+        let position = NSNumber(value: Int(positionTextfield.text ?? "0") ?? 0)
+        let mediaProperties = MIMediaParameters("TestVideo", action: "eof", position: position, duration: duration)
+        let mediaEvent = MIMediaEvent(pageName: "Test", parameters: mediaProperties)
+        MappIntelligence.shared()?.trackMedia(mediaEvent)
     }
 }
