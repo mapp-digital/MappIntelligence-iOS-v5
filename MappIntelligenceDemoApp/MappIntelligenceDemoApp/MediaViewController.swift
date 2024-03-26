@@ -31,16 +31,16 @@ class MediaViewController: UIViewController {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     @IBAction func playButtonPressed(_ sender: Any) {
-        let duration = NSNumber(value: Int(durationTextField.text ?? "0") ?? 0)
-        let position = NSNumber(value: Int(positionTextfield.text ?? "0") ?? 0)
-        let mediaProperties = MIMediaParameters("TestVideo", action: "play", position: position, duration: duration)
+        let duration = Double(durationTextField.text ?? "0") ?? 0
+        let position = Double(positionTextfield.text ?? "0") ?? 0
+        let mediaProperties = MIMediaParameters("TestVideo", action: "play", position: position as NSNumber, duration: duration as NSNumber)
         let mediaEvent = MIMediaEvent(pageName: "Test", parameters: mediaProperties)
         MappIntelligence.shared()?.trackMedia(mediaEvent)
     }
     @IBAction func EOFButtonPressed(_ sender: Any) {
-        let duration = NSNumber(value: Int(durationTextField.text ?? "0") ?? 0)
-        let position = NSNumber(value: Int(positionTextfield.text ?? "0") ?? 0)
-        let mediaProperties = MIMediaParameters("TestVideo", action: "eof", position: position, duration: duration)
+        let duration = Double(durationTextField.text ?? "0") ?? 0
+        let position = Double(positionTextfield.text ?? "0") ?? 0
+        let mediaProperties = MIMediaParameters("TestVideo", action: "eof", position: position as NSNumber, duration: duration as NSNumber)
         let mediaEvent = MIMediaEvent(pageName: "Test", parameters: mediaProperties)
         MappIntelligence.shared()?.trackMedia(mediaEvent)
     }

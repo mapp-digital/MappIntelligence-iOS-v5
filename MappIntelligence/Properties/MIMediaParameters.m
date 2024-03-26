@@ -62,12 +62,12 @@
         [items addObject:[[NSURLQueryItem alloc] initWithName:@"mk" value:_action]];
     }
     if (_position) {
-        [items addObject:[[NSURLQueryItem alloc] initWithName:@"mt1" value: [NSString stringWithFormat:@"%ld", (long)_position.doubleValue]]];
+        [items addObject:[[NSURLQueryItem alloc] initWithName:@"mt1" value: [NSString stringWithFormat:@"%@",_position]]];
     } else {
         [items addObject:[[NSURLQueryItem alloc] initWithName:@"mt1" value: [NSString stringWithFormat:@"%ld", (long)0]]];
     }
     if (_duration) {
-        [items addObject:[[NSURLQueryItem alloc] initWithName:@"mt2" value: [NSString stringWithFormat:@"%ld",(long)_duration.doubleValue]]];
+        [items addObject:[[NSURLQueryItem alloc] initWithName:@"mt2" value: [NSString stringWithFormat:@"%@",_duration]]];
     } else {
         [items addObject:[[NSURLQueryItem alloc] initWithName:@"mt2" value: [NSString stringWithFormat:@"%ld",(long)0]]];
     }
