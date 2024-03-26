@@ -29,11 +29,7 @@
 }
 
 -(BOOL) shouldTrack: (MIMediaEvent *) event {
-    //invalid cases
-    if (event.mediaParameters.position.doubleValue == event.mediaParameters.duration.doubleValue) {
-        return NO;
-    }
-
+    
     NSDate *now = [[NSDate alloc] init];
     //check if media tracked is live stream
     if (event.mediaParameters.duration == 0) {

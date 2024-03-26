@@ -15,8 +15,10 @@ class MediaViewController: UIViewController {
     }
 
     @IBAction func trackMedia1(_ sender: Any) {
-        let mediaProperties = MIMediaParameters("TestVideo", action: "view", position: 12, duration: 120)
-        mediaProperties.customCategories = [20:"mediaCat"]
+//        let mediaProperties = MIMediaParameters("TestVideo", action: "view", position: 12, duration: 120)
+//        mediaProperties.customCategories = [20:"mediaCat"]
+//        let mediaEvent = MIMediaEvent(pageName: "Test", parameters: mediaProperties)
+        let mediaProperties = MIMediaParameters("TestVideo", action: "play", position: 0, duration: 0)
         let mediaEvent = MIMediaEvent(pageName: "Test", parameters: mediaProperties)
         MappIntelligence.shared()?.trackMedia(mediaEvent)
     }
