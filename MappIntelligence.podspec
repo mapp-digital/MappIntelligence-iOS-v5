@@ -10,6 +10,7 @@ Pod::Spec.new do |s|
     s.source   = { :git => 'https://github.com/mapp-digital/MappIntelligence-iOS-v5.git', :tag => s.version }
     s.exclude_files = 'MappIntelligence/include/**'
     s.source_files = "MappIntelligence/**/*.{h,m}"
+    s.resource_bundles = {'MappIntelligence' => ['*.xcprivacy']}
     s.ios.source_files = "MappIntelligenceiOS/**/*.{h,m}"
     s.summary  = 'The MappIntelligence SDK allows you to track user activities, screen flow usage for your App.'
 
