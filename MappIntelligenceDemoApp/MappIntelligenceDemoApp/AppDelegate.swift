@@ -27,7 +27,7 @@ var window: UIWindow?
         let didYouChangeTheStatusFlag = UserDefaults.standard.bool(forKey: "didYouChangeTheStatus")
         MappIntelligence.shared()?.anonymousTracking = false	     //didYouChangeTheStatusFlag ? (MappIntelligence.shared()?.anonymousTracking ?? false) : true
         MappIntelligence.shared()?.initWithConfiguration(array, onTrackdomain: domain as! String)
-        MappIntelligence.shared()?.trackPage(MIPageViewEvent(name: "ime_glupo"))
+        //MappIntelligence.shared()?.trackPage(MIPageViewEvent(name: "ime_glupo"))
         //MappIntelligence.shared()?.initWithConfiguration(array, onTrackdomain: domain as! String, andWithEverID: "43657756353521")
         MappIntelligence.shared()?.logLevel = .all
         MappIntelligence.shared()?.batchSupportEnabled = false

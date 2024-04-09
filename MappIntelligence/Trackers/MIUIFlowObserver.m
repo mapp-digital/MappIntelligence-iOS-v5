@@ -118,8 +118,6 @@
     }
     NSSetUncaughtExceptionHandler(&onUncaughtException);
     [self getExceptionFromFileAndSendItAsAnRequest];
-  [_tracker updateFirstSessionWith:[[UIApplication sharedApplication]
-                                       applicationState]];
     if (!_tracker.isBackgroundSendoutEnabled)
         return;
     self.backgroundIdentifier = (unsigned long)[[NSUserDefaults standardUserDefaults] integerForKey:@"backgroundIdentifier"];
@@ -153,7 +151,8 @@
 }
 
 -(void)willEnterForeground {
-    
+    [_tracker updateFirstSessionWith:[[UIApplication sharedApplication]
+                                         applicationState]];
 }
 
 -(void)willResignActive {
