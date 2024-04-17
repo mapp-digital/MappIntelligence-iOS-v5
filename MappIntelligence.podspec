@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
     s.name    = 'MappIntelligence'
-    s.version = '5.0.8'
+    s.version = '5.0.9'
 
     s.author   = { 'Mapp Digital' => 'devgroup.mobile@webtrekk.com' }
     s.homepage = 'https://mapp.com/mapp-cloud/analytics/app-analytics/'
