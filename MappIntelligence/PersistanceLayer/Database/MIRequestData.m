@@ -98,7 +98,7 @@
     for (MIDBRequest* r in _requests) {
         if([[r parameters] count] == 0)
             continue;
-        MITrackerRequest *request = [[MITrackerRequest alloc] init];
+        MITrackerRequest *request = [MITrackerRequest shared];
         [request sendRequestWith: [r urlForBatchSupprot:NO] andCompletition:^(NSError * _Nonnull error) {
             if(error) {
                 [self->_logger logObj:error forDescription:kMappIntelligenceLogLevelDescriptionDebug];

@@ -47,7 +47,7 @@
         }
         MIRequestData* dt = (MIRequestData*)data;
         NSArray<NSString *>* bodies = [self createBatchWith:dt];
-        MITrackerRequest *request = [[MITrackerRequest alloc] init];
+        MITrackerRequest *request = [MITrackerRequest shared];
         for (NSString *body in bodies) {
             if([body isEqualToString: @"wt?"])
                 continue;

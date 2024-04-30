@@ -14,6 +14,16 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MITrackerRequest : NSObject <NSURLSessionDataDelegate>
 
+/**
+ MappIntelligence instance
+ @brief Method to get a singleton instance of MITrackerReques
+ @code
+ let MITrackerRequestSingleton = MITrackerRequest.shared()
+ @endcode
+ @return MappIntelligence an Instance Type of MITrackerRequest.
+ */
++ (nullable instancetype)shared;
+
 @property MITrackingEvent *event;
 @property MIProperties *properties;
 

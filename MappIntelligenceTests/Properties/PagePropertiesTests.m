@@ -75,7 +75,7 @@
     [event setPageName:@"testPageName"];
     NSString *everid = [[[MIDefaultTracker alloc] init] generateEverId];
     MIProperties *properies = [[MIProperties alloc] initWithEverID:everid andSamplingRate:0 withTimeZone:[NSTimeZone localTimeZone] withTimestamp:[NSDate date] withUserAgent:@"Tracking Library"];
-    MITrackerRequest *request = [[MITrackerRequest alloc] initWithEvent:event andWithProperties:properies];
+    MITrackerRequest *request = [[MITrackerRequest shared] initWithEvent:event andWithProperties:properies];
     
     //3.get resulted list of query items
     NSMutableArray<NSURLQueryItem*>* result = [_pageProperties asQueryItems];

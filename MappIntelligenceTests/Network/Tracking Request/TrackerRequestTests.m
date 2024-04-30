@@ -21,7 +21,7 @@
 
 - (void)setUp {
     [super setUp];
-    _request = [[MITrackerRequest alloc] init];
+    _request = [MITrackerRequest shared];
 }
 
 - (void)tearDown {
@@ -35,7 +35,7 @@
 - (void)testInitWithEventAndProperties {
     MITrackingEvent *event = [[MITrackingEvent alloc] init];
     MIProperties *properties = [[MIProperties alloc] init];
-    _request = [[MITrackerRequest alloc] initWithEvent:event andWithProperties:properties];
+    _request = [[MITrackerRequest shared] initWithEvent:event andWithProperties:properties];
     XCTAssertNotNil(_request);
     XCTAssertNotNil([_request event]);
     XCTAssertNotNil([_request properties]);

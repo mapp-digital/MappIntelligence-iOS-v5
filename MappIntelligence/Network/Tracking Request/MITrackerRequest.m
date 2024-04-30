@@ -18,14 +18,31 @@
 @end
 
 @implementation MITrackerRequest
+static MITrackerRequest *sharedInstance = nil;
+
++ (nullable instancetype)shared {
+    static MITrackerRequest *shared = nil;
+
+    static dispatch_once_t onceToken;
+
+    dispatch_once(&onceToken, ^{
+
+      shared = [[MITrackerRequest alloc] init];
+    });
+
+    return shared;
+}
 
 - (instancetype)init {
-  self = [super init];
-  if (self) {
-    _loger = [MappIntelligenceLogger shared];
-    _urlSession = [[NSURLSession alloc] init];
-  }
-  return self;
+    if (!sharedInstance) {
+      sharedInstance = [super init];
+        _loger = [MappIntelligenceLogger shared];
+        _urlSession = [NSURLSession sharedSession];
+        [self createUrlSession];
+        [self createBackgroundUrlSession];
+
+    }
+    return sharedInstance;
 }
 
 - (instancetype)initWithEvent:(MITrackingEvent *)event
@@ -41,7 +58,7 @@
                      initWithFormat:@"Tracking Request: %@", [url absoluteURL]]
       forDescription:kMappIntelligenceLogLevelDescriptionInfo];
 
-  [self createUrlSession];
+  //[self createUrlSession];
 
   [[_urlSession
         dataTaskWithURL:url
@@ -61,7 +78,7 @@
 
 - (void)sendRequestWith:(NSURL *)url andBody:(NSString*)body andCompletition:(nonnull void (^)(NSError * _Nonnull))handler {
     
-    [self createUrlSession];
+    //[self createUrlSession];
     NSURLRequest* request = [self createRequest:url andBody:body];
     
     [[_urlSession dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
@@ -79,7 +96,7 @@
 
 
 - (void)sendBackgroundRequestWith:(NSURL *)url andBody:(NSString*)body {
-    [self createBackgroundUrlSession];
+    //[self createBackgroundUrlSession];
     NSURLRequest* request = [self createRequest:url andBody:body];
     
     [[_backgroundUrlSession dataTaskWithRequest:request] resume];

@@ -18,7 +18,7 @@
 - (MITrackerRequest *)createRequestWith:(MITrackingEvent *)event
                               andWith:(MIProperties *)properties {
   return
-      [[MITrackerRequest alloc] initWithEvent:event andWithProperties:properties];
+      [[MITrackerRequest shared] initWithEvent:event andWithProperties:properties];
 }
 
 @end
