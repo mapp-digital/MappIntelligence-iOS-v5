@@ -23,6 +23,7 @@
 @property MIExceptionTracker *exceptionTracker;
 @property MappIntelligenceLogger *logger;
 @property UIApplication *application;
+@property NSUserDefaults* defaults;
 @property NSObject *applicationDidBecomeActiveObserver;
 @property NSObject *applicationWillEnterForegroundObserver;
 @property NSObject *applicationWillResignActiveObserver;
@@ -113,6 +114,8 @@
 }
 
 -(void)didBecomeActive {
+    [_logger logObj:@"Did become active." forDescription:kMappIntelligenceLogLevelDescriptionDebug];
+    
     if([_tracker isUserMatchingEnabled]) {
         [self getDeviceInfoForParameters:@[@"dmcUserId"]];
     }
@@ -148,15 +151,24 @@
             }];
         }
     }
+    NSNumber *savedNo = [[NSUserDefaults standardUserDefaults] objectForKey:@"FirstOpen"];
+    if (savedNo != NULL) {
+        if (![savedNo  isEqual: @1]) {
+            [_tracker updateFirstSessionWith:[[UIApplication sharedApplication] applicationState]];
+        }
+    }
+    
+    
 }
 
 -(void)willEnterForeground {
-    [_tracker updateFirstSessionWith:[[UIApplication sharedApplication]
-                                         applicationState]];
+
+//        [_tracker updateFirstSessionWith:[[UIApplication sharedApplication] applicationState]];
+
 }
 
 -(void)willResignActive {
-	  [_tracker initHibernate];
+      [_tracker initHibernate];
 }
 
 -(void)willTerminate {
@@ -164,6 +176,9 @@
 }
 
 -(void)willEnterBckground {
+    NSNumber *number = @2;
+   [[NSUserDefaults standardUserDefaults] setObject: number forKey:@"FirstOpen"];
+   [[NSUserDefaults standardUserDefaults] synchronize];
     [_logger logObj:@"Enter background and send all requests." forDescription:kMappIntelligenceLogLevelDescriptionDebug];
     if (!_tracker.isBackgroundSendoutEnabled)
         return;

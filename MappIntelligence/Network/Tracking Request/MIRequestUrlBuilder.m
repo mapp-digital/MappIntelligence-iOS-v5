@@ -26,6 +26,7 @@
 @property NSURL *baseUrl;
 @property NSURL *serverUrl;
 @property NSString *mappIntelligenceId;
+@property NSUserDefaults* defaults;
 @property MIURLSizeMonitor *sizeMonitor;
 @property MappIntelligenceLogger *logger;
 @property NSMutableArray *campaignsToIgnore;
@@ -232,6 +233,13 @@
         [parametrs addObject:[NSURLQueryItem queryItemWithName:@"cs805" value: MIEnvironment.buildVersion]];
         [parametrs addObject:[NSURLQueryItem queryItemWithName:@"cs821" value: properties.isFirstEventOfApp ? @"1": @"0"]];
     }
+    
+    if (properties.isFirstEventOfApp) {
+        NSNumber *number = @1;
+       [[NSUserDefaults standardUserDefaults] setObject: number forKey:@"FirstOpen"];
+       [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+ 
     
     //process anonimous tracking
     if ([[MIDefaultTracker sharedInstance] anonymousTracking]) {
