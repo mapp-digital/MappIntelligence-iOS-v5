@@ -90,7 +90,7 @@ static MITrackerRequest *sharedInstance = nil;
                   forDescription:kMappIntelligenceLogLevelDescriptionDebug];
         }
         handler(error);
-        [self->_urlSession invalidateAndCancel];
+        //[self->_urlSession invalidateAndCancel];
     }] resume];
 }
 
