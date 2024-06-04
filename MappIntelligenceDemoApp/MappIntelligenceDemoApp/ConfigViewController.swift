@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Photos
 
 class ConfigViewController: UIViewController {
 
@@ -96,5 +97,17 @@ class ConfigViewController: UIViewController {
     @IBAction func SetUserMatchingToTrue(_ sender: Any) {
         MappIntelligence.shared()?.enableUserMatching = true
     }
+    
+    @IBAction func askforGalerypermission(_ sender: Any) {
+        let photos = PHPhotoLibrary.authorizationStatus()
+            if photos == .notDetermined {
+                PHPhotoLibrary.requestAuthorization({status in
+                    if status == .authorized{
+                        //...
+                    } else {}
+                })
+            }
+    }
+    
     
 }

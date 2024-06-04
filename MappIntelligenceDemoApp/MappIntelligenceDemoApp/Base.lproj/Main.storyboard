@@ -3,7 +3,7 @@
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -654,6 +654,19 @@
                                     <action selector="SetUserMatchingToTrue:" destination="7du-La-z9J" eventType="touchUpInside" id="Bx0-tR-JHv"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pHK-na-H8I">
+                                <rect key="frame" x="20" y="680" width="374" height="50"/>
+                                <color key="backgroundColor" red="0.021203886719999999" green="0.57247686389999997" blue="0.84162324669999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="7jy-jN-g1O"/>
+                                </constraints>
+                                <state key="normal" title="Ask For Galery permission">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="askforGalerypermission:" destination="7du-La-z9J" eventType="touchUpInside" id="YDz-hu-Lfh"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="3Yx-Kw-rk7"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -662,15 +675,18 @@
                             <constraint firstItem="uhR-9U-x7d" firstAttribute="leading" secondItem="3Yx-Kw-rk7" secondAttribute="leading" constant="20" id="6Uv-pM-ijt"/>
                             <constraint firstItem="7gN-HV-h5R" firstAttribute="leading" secondItem="3Yx-Kw-rk7" secondAttribute="leading" constant="20" id="7SR-ty-rBB"/>
                             <constraint firstItem="AgT-SC-XaE" firstAttribute="top" secondItem="c89-Id-IY0" secondAttribute="bottom" constant="25" id="8Lz-QN-eyd"/>
+                            <constraint firstItem="3Yx-Kw-rk7" firstAttribute="trailing" secondItem="pHK-na-H8I" secondAttribute="trailing" constant="20" id="9zc-MT-ais"/>
                             <constraint firstItem="hKu-jQ-csA" firstAttribute="leading" secondItem="eDG-2v-0Tx" secondAttribute="trailing" constant="10" id="AZx-SW-Lbl"/>
                             <constraint firstItem="3Yx-Kw-rk7" firstAttribute="trailing" secondItem="mNz-OQ-SRH" secondAttribute="trailing" constant="20" id="AhK-KQ-7a7"/>
                             <constraint firstItem="AgT-SC-XaE" firstAttribute="leading" secondItem="3Yx-Kw-rk7" secondAttribute="leading" constant="20" id="E6x-q8-9ga"/>
                             <constraint firstItem="uhR-9U-x7d" firstAttribute="top" secondItem="Stq-zW-wEO" secondAttribute="bottom" constant="20" id="ICj-dT-PST"/>
+                            <constraint firstItem="pHK-na-H8I" firstAttribute="leading" secondItem="3Yx-Kw-rk7" secondAttribute="leading" constant="20" id="IQf-HS-rOk"/>
                             <constraint firstItem="s8v-6e-bTg" firstAttribute="top" secondItem="7gN-HV-h5R" secondAttribute="bottom" constant="20" id="IZg-VS-G6T"/>
                             <constraint firstItem="7gN-HV-h5R" firstAttribute="top" secondItem="mNz-OQ-SRH" secondAttribute="bottom" constant="10" id="Kz0-av-nY1"/>
                             <constraint firstItem="mNz-OQ-SRH" firstAttribute="top" secondItem="uhR-9U-x7d" secondAttribute="bottom" constant="15" id="M0T-nt-ekd"/>
                             <constraint firstItem="c89-Id-IY0" firstAttribute="top" secondItem="XU0-8e-ykb" secondAttribute="bottom" constant="25" id="PuD-Do-bdv"/>
                             <constraint firstItem="3Yx-Kw-rk7" firstAttribute="trailing" secondItem="hKu-jQ-csA" secondAttribute="trailing" constant="20" id="RBr-xq-ant"/>
+                            <constraint firstItem="pHK-na-H8I" firstAttribute="top" secondItem="s8v-6e-bTg" secondAttribute="bottom" constant="20" id="Tfq-Id-oXN"/>
                             <constraint firstItem="eDG-2v-0Tx" firstAttribute="leading" secondItem="3Yx-Kw-rk7" secondAttribute="leading" constant="20" id="Tw0-fe-OYy"/>
                             <constraint firstItem="3Yx-Kw-rk7" firstAttribute="trailing" secondItem="7gN-HV-h5R" secondAttribute="trailing" constant="20" id="YeW-cb-5e3"/>
                             <constraint firstItem="s8v-6e-bTg" firstAttribute="leading" secondItem="3Yx-Kw-rk7" secondAttribute="leading" constant="20" id="Yl7-rx-0QU"/>
@@ -1517,7 +1533,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="tintColor">
-            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

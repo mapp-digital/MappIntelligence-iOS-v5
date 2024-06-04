@@ -92,7 +92,9 @@
       [NSNotificationCenter defaultCenter];
     //Posted when the app becomes active.
     _applicationDidBecomeActiveObserver = [notificationCenter addObserverForName: UIApplicationDidBecomeActiveNotification object:NULL queue:NULL usingBlock:^(NSNotification * _Nonnull note) {
-        [self didBecomeActive];
+        if (!([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive)) {
+            [self didBecomeActive];
+        }
     }];
     //Posted shortly before an app leaves the background state on its way to becoming the active app.
 //    _applicationWillEnterForegroundObserver = [notificationCenter addObserverForName:UIApplicationWillEnterForegroundNotification object:NULL queue:NULL usingBlock:^(NSNotification * _Nonnull note) {
@@ -168,7 +170,9 @@
 }
 
 -(void)willResignActive {
-      [_tracker initHibernate];
+    if (!([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive)) {
+        [_tracker initHibernate];
+    }
 }
 
 -(void)willTerminate {
