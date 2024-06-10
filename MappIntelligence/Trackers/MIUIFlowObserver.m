@@ -53,7 +53,6 @@
 
 - (void)showAlertView:(NSString*)message {
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Title" message:message preferredStyle:UIAlertControllerStyleAlert];
-    //...
     id rootViewController = [UIApplication sharedApplication].delegate.window.rootViewController;
     if([rootViewController isKindOfClass:[UINavigationController class]])
     {
@@ -63,7 +62,6 @@
     {
         rootViewController = ((UITabBarController *)rootViewController).selectedViewController;
     }
-    //...
     [rootViewController presentViewController:alertController animated:YES completion:nil];
 }
 
@@ -131,28 +129,39 @@
     [notificationCenter addObserverForName:UIApplicationDidEnterBackgroundNotification object:NULL queue:NULL usingBlock:^(NSNotification * _Nonnull note) {
         [self willEnterBckground];
     }];
-    //Change the host name here to change the server you want to monitor.
-    NSString *remoteHostName = @"www.apple.com";
-    NSString *remoteHostLabelFormatString = NSLocalizedString(@"Remote Host: %@", @"Remote host label format string");
-    
-    self.hostReachability = [Reachability reachabilityWithHostName:remoteHostName];
-    [self.hostReachability startNotifier];
-    [self updateInterfaceWithReachability:self.hostReachability];
 
     self.internetReachability = [Reachability reachabilityForInternetConnection];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNetworkChange:) name:kReachabilityChangedNotification object:nil];
     [self.internetReachability startNotifier];
-    [self updateInterfaceWithReachability:self.internetReachability];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        NetworkStatus remoteHostStatus = [self.internetReachability  currentReachabilityStatus];
+
+        if(remoteHostStatus == NotReachable)
+        {
+            [[MappIntelligenceLogger shared] logObj:@"There is no Internet connection" forDescription:kMappIntelligenceLogLevelDescriptionDebug];
+        }
+        else if (remoteHostStatus == ReachableViaWiFi || remoteHostStatus == ReachableViaWWAN)
+        {
+            [[MappIntelligenceLogger shared] logObj:@"Internet connection is established" forDescription:kMappIntelligenceLogLevelDescriptionDebug];
+        }
+    });
+    
+
     return YES;
 }
 
-- (void)updateInterfaceWithReachability:(Reachability *)reachability
+- (void) handleNetworkChange:(NSNotification *)notice
 {
-    if (reachability == self.hostReachability)
+
+    NetworkStatus remoteHostStatus = [[Reachability reachabilityForInternetConnection] currentReachabilityStatus];
+
+    if(remoteHostStatus == NotReachable) {
+        [[MappIntelligenceLogger shared] logObj:@"There is no Internet connection" forDescription:kMappIntelligenceLogLevelDescriptionDebug];
+    }
+    else if (remoteHostStatus == ReachableViaWiFi || remoteHostStatus == ReachableViaWWAN)
     {
-        NSLog(@"Internet is active %ld", (long)[self.internetReachability currentReachabilityStatus]);
-        if ([self.internetReachability currentReachabilityStatus] == 1 || [self.internetReachability currentReachabilityStatus] == 2) {
-            [self didBecomeActive];
-        }
+        [[MappIntelligenceLogger shared] logObj:@"Internet connection is established" forDescription:kMappIntelligenceLogLevelDescriptionDebug];
+        [self didBecomeActive];
     }
 }
 
