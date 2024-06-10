@@ -183,6 +183,9 @@
 		A3861FF627DB47B300F3F27C /* MIFormParameters.m in Headers */ = {isa = PBXBuildFile; fileRef = A345976027A1878A0038FE3F /* MIFormParameters.m */; };
 		A3861FF727DB4DFC00F3F27C /* MIDefaultTracker.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BCBE5C0723F1A688002125C1 /* MIDefaultTracker.h */; };
 		A3861FF827DB4E3500F3F27C /* MIDefaultTracker.h in Copy Files */ = {isa = PBXBuildFile; fileRef = BCBE5C0723F1A688002125C1 /* MIDefaultTracker.h */; };
+		A390BE5C2C13245200844D44 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = A390BE5A2C13245200844D44 /* Reachability.m */; };
+		A390BE5D2C13245200844D44 /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = A390BE5B2C13245200844D44 /* Reachability.h */; };
+		A390BE5F2C1366D000844D44 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = A390BE5A2C13245200844D44 /* Reachability.m */; };
 		A3955B4A287DACF000D4FA90 /* APXRequestBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = A3187B98287429EC00653D05 /* APXRequestBuilder.m */; };
 		A3955B4B287DACF800D4FA90 /* APXNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A3187BA1287429EC00653D05 /* APXNetworkManager.m */; };
 		A3955B4F287DAD2300D4FA90 /* MIAPXInappLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = A3187B9D287429EC00653D05 /* MIAPXInappLogger.m */; };
@@ -419,6 +422,8 @@
 		A380D21224141B55009E2CD8 /* MIURLSizeMonitor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MIURLSizeMonitor.h; sourceTree = "<group>"; };
 		A380D21324141B55009E2CD8 /* MIURLSizeMonitor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MIURLSizeMonitor.m; sourceTree = "<group>"; };
 		A38B41F52B4C3EF10059B7B1 /* MappIntelligencePrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = MappIntelligencePrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		A390BE5A2C13245200844D44 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		A390BE5B2C13245200844D44 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		A3A72556243DBF1000671DB2 /* PropertiesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PropertiesTests.m; sourceTree = "<group>"; };
 		A3A72558243DC22C00671DB2 /* RequestTrackerBuilderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RequestTrackerBuilderTests.m; sourceTree = "<group>"; };
 		A3A7255A243DEA0500671DB2 /* RequestUrlBuilderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RequestUrlBuilderTests.m; sourceTree = "<group>"; };
@@ -657,6 +662,7 @@
 		A334866D23BF567700D0EB5F /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				A390BE592C13243400844D44 /* Reachbility */,
 				A36CD7CA23F44567004E3E2D /* Tracking Request */,
 			);
 			path = Network;
@@ -774,6 +780,15 @@
 				A341D7052A433EBC00CA1946 /* MIUsageStatistics.m */,
 			);
 			path = Utility;
+			sourceTree = "<group>";
+		};
+		A390BE592C13243400844D44 /* Reachbility */ = {
+			isa = PBXGroup;
+			children = (
+				A390BE5B2C13245200844D44 /* Reachability.h */,
+				A390BE5A2C13245200844D44 /* Reachability.m */,
+			);
+			path = Reachbility;
 			sourceTree = "<group>";
 		};
 		A3CC5481248FC3CD006215FD /* Database */ = {
@@ -897,6 +912,7 @@
 				BCCAE6D0240D29A9005E9FD6 /* MappIntelligenceLogger.m in Headers */,
 				A3CC549224912AA8006215FD /* MIRequestData.h in Headers */,
 				A3ADC97326D8EB34007504FF /* MIExceptionTracker.h in Headers */,
+				A390BE5D2C13245200844D44 /* Reachability.h in Headers */,
 				A36CD7D123F447D0004E3E2D /* MIProperties.h in Headers */,
 				A380D2102413ED35009E2CD8 /* MIRequestUrlBuilder.h in Headers */,
 				A36CD7CD23F44594004E3E2D /* MITrackerRequest.h in Headers */,
@@ -1044,6 +1060,7 @@
 				8F20A17225C2CFCE0006CB93 /* MIRequestTrackerBuilder.m in Sources */,
 				8F20A0F025C2CEDC0006CB93 /* MIUserCategories.m in Sources */,
 				8F20A14525C2CFA30006CB93 /* MIPageViewEvent.m in Sources */,
+				A390BE5F2C1366D000844D44 /* Reachability.m in Sources */,
 				8F20A19A25C2D0000006CB93 /* MIRequestData.m in Sources */,
 				8F20A19B25C2D0000006CB93 /* MIDBRequest.m in Sources */,
 				A345977027A97C510038FE3F /* MIFormSubmitEvent.m in Sources */,
@@ -1097,6 +1114,7 @@
 				A3187BAB287429EC00653D05 /* APXNetworkManager.m in Sources */,
 				A36CD7CE23F44594004E3E2D /* MITrackerRequest.m in Sources */,
 				A345976A27A9771B0038FE3F /* MIFormSubmitEvent.m in Sources */,
+				A390BE5C2C13245200844D44 /* Reachability.m in Sources */,
 				BCEAE6B823BF5A8B007F410D /* MappIntelligenceLogger.m in Sources */,
 				A380D2112413ED35009E2CD8 /* MIRequestUrlBuilder.m in Sources */,
 				A380D2092412D8F2009E2CD8 /* MIRequestTrackerBuilder.m in Sources */,

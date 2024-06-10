@@ -14,6 +14,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import "APXRequestBuilder.h"
 #import "APXNetworkManager.h"
+#import "Reachability.h"
 
 #define doesAppEnterInBackground @"enteredInBackground";
 
@@ -31,6 +32,8 @@
 @property NSUserDefaults *sharedDefaults;
 @property NSString* TIME_WHEN_APP_ENTERS_TO_BACKGROUND;
 @property UIBackgroundTaskIdentifier backgroundIdentifier;
+@property (nonatomic) Reachability *hostReachability;
+@property (nonatomic) Reachability *internetReachability;
 
 @end
 
@@ -46,6 +49,22 @@
     _sharedDefaults = [NSUserDefaults standardUserDefaults];
     
     return self;
+}
+
+- (void)showAlertView:(NSString*)message {
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Title" message:message preferredStyle:UIAlertControllerStyleAlert];
+    //...
+    id rootViewController = [UIApplication sharedApplication].delegate.window.rootViewController;
+    if([rootViewController isKindOfClass:[UINavigationController class]])
+    {
+        rootViewController = ((UINavigationController *)rootViewController).viewControllers.firstObject;
+    }
+    if([rootViewController isKindOfClass:[UITabBarController class]])
+    {
+        rootViewController = ((UITabBarController *)rootViewController).selectedViewController;
+    }
+    //...
+    [rootViewController presentViewController:alertController animated:YES completion:nil];
 }
 
 - (void)getDeviceInfoForParameters:(NSArray *)parameters {
@@ -112,7 +131,29 @@
     [notificationCenter addObserverForName:UIApplicationDidEnterBackgroundNotification object:NULL queue:NULL usingBlock:^(NSNotification * _Nonnull note) {
         [self willEnterBckground];
     }];
-  return YES;
+    //Change the host name here to change the server you want to monitor.
+    NSString *remoteHostName = @"www.apple.com";
+    NSString *remoteHostLabelFormatString = NSLocalizedString(@"Remote Host: %@", @"Remote host label format string");
+    
+    self.hostReachability = [Reachability reachabilityWithHostName:remoteHostName];
+    [self.hostReachability startNotifier];
+    [self updateInterfaceWithReachability:self.hostReachability];
+
+    self.internetReachability = [Reachability reachabilityForInternetConnection];
+    [self.internetReachability startNotifier];
+    [self updateInterfaceWithReachability:self.internetReachability];
+    return YES;
+}
+
+- (void)updateInterfaceWithReachability:(Reachability *)reachability
+{
+    if (reachability == self.hostReachability)
+    {
+        NSLog(@"Internet is active %ld", (long)[self.internetReachability currentReachabilityStatus]);
+        if ([self.internetReachability currentReachabilityStatus] == 1 || [self.internetReachability currentReachabilityStatus] == 2) {
+            [self didBecomeActive];
+        }
+    }
 }
 
 -(void)didBecomeActive {
