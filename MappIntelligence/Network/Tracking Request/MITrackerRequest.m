@@ -8,6 +8,7 @@
 
 #import "MITrackerRequest.h"
 #import "MappIntelligenceLogger.h"
+#import "Reachability.h"
 
 @interface MITrackerRequest ()
 
@@ -77,7 +78,6 @@ static MITrackerRequest *sharedInstance = nil;
 }
 
 - (void)sendRequestWith:(NSURL *)url andBody:(NSString*)body andCompletition:(nonnull void (^)(NSError * _Nonnull))handler {
-    
     //[self createUrlSession];
     NSURLRequest* request = [self createRequest:url andBody:body];
     

@@ -143,6 +143,7 @@
         else if (remoteHostStatus == ReachableViaWiFi || remoteHostStatus == ReachableViaWWAN)
         {
             [[MappIntelligenceLogger shared] logObj:@"Internet connection is established" forDescription:kMappIntelligenceLogLevelDescriptionDebug];
+            [self sendAllRequestFromDB];
         }
     });
     
@@ -162,6 +163,20 @@
     {
         [[MappIntelligenceLogger shared] logObj:@"Internet connection is established" forDescription:kMappIntelligenceLogLevelDescriptionDebug];
         [self didBecomeActive];
+        [self sendAllRequestFromDB];
+    }
+}
+
+- (void)sendAllRequestFromDB {
+    if ([MappIntelligence shared].batchSupportEnabled == YES) {
+        //TODO: add timeout to this methods
+        [[MIDefaultTracker sharedInstance] sendBatchForRequestInBackground: NO withCompletionHandler:^(NSError * _Nullable error) {
+            //error is already obtain at one level lower
+        }];
+    } else {
+        [[MIDefaultTracker sharedInstance] sendRequestFromDatabaseWithCompletionHandler:^(NSError * _Nullable error) {
+            //error is already obtain in one level lower
+        }];
     }
 }
 

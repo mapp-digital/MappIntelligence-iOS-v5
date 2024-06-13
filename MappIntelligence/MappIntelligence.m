@@ -14,6 +14,7 @@
 #import "MIDeepLink.h"
 #import "MIMediaTracker.h"
 #import "MIExceptionTracker.h"
+#import "Reachability.h"
 #import <UIKit/UIKit.h>
 
 @interface MappIntelligence ()
@@ -144,15 +145,17 @@ static MappIntelligenceDefaultConfig *config = nil;
         if (!error) {
             [self->_logger logObj:@"Remove requests that are older than 14 days." forDescription:kMappIntelligenceLogLevelDescriptionDebug];
         }
-        if (config.batchSupport == YES) {
-            //TODO: add timeout to this methods
-            [self->tracker sendBatchForRequestInBackground: NO withCompletionHandler:^(NSError * _Nullable error) {
-                //error is already obtain at one level lower
-            }];
-        } else {
-            [self->tracker sendRequestFromDatabaseWithCompletionHandler:^(NSError * _Nullable error) {
-                //error is already obtain in one level lower
-            }];
+        if ([[Reachability reachabilityForInternetConnection] currentReachabilityStatus] != NotReachable) {
+            if (config.batchSupport == YES) {
+                //TODO: add timeout to this methods
+                [self->tracker sendBatchForRequestInBackground: NO withCompletionHandler:^(NSError * _Nullable error) {
+                    //error is already obtain at one level lower
+                }];
+            } else {
+                [self->tracker sendRequestFromDatabaseWithCompletionHandler:^(NSError * _Nullable error) {
+                    //error is already obtain in one level lower
+                }];
+            }
         }
     }];
     [self initTimerForRequestsSendout];
@@ -175,15 +178,16 @@ static MappIntelligenceDefaultConfig *config = nil;
             }];
             return;
         }
-        
-        if (config.batchSupport == YES) {
-            [self->tracker sendBatchForRequestInBackground: NO withCompletionHandler:^(NSError * _Nullable error) {
-                //error is already obtain in one level lower
-            }];
-        } else {
-            [self->tracker sendRequestFromDatabaseWithCompletionHandler:^(NSError * _Nullable error) {
-                //error is already obtain in one level lower
-            }];
+        if ([[Reachability reachabilityForInternetConnection] currentReachabilityStatus] != NotReachable) {
+            if (config.batchSupport == YES) {
+                [self->tracker sendBatchForRequestInBackground: NO withCompletionHandler:^(NSError * _Nullable error) {
+                    //error is already obtain in one level lower
+                }];
+            } else {
+                [self->tracker sendRequestFromDatabaseWithCompletionHandler:^(NSError * _Nullable error) {
+                    //error is already obtain in one level lower
+                }];
+            }
         }
     }];
 }
