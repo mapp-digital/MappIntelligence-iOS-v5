@@ -10,32 +10,29 @@ import UIKit
 import Photos
 import CoreLocation
 import CoreBluetooth
+import LocalAuthentication
 
 class PermissionsViewController: UIViewController, CLLocationManagerDelegate, CBCentralManagerDelegate, CBPeripheralDelegate {
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
+        var consoleLog = ""
+
         switch central.state {
-                   case .unauthorized:
-            if #available(iOS 13.0, *) {
-                switch central.authorization {
-                case .allowedAlways: break
-                case .denied: break
-                case .restricted: break
-                case .notDetermined: break
-                @unknown default:
-                    break;
-                }
-            } else {
-                // Fallback on earlier versions
-            }
-        case .unknown: break
-        case .unsupported: break
+        case .poweredOff:
+            consoleLog = "BLE is powered off"
         case .poweredOn:
-        self.centralManager?.scanForPeripherals(withServices: nil, options: [CBCentralManagerScanOptionAllowDuplicatesKey:true])
-        case .poweredOff: break
-        case .resetting: break
-                   @unknown default:
-            break;
-                   }
+            consoleLog = "BLE is poweredOn"
+        case .resetting:
+            consoleLog = "BLE is resetting"
+        case .unauthorized:
+            consoleLog = "BLE is unauthorized"
+        case .unknown:
+            consoleLog = "BLE is unknown"
+        case .unsupported:
+            consoleLog = "BLE is unsupported"
+        default:
+            consoleLog = "default"
+        }
+        print(consoleLog)
     }
     
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
@@ -95,20 +92,26 @@ class PermissionsViewController: UIViewController, CLLocationManagerDelegate, CB
         }
     }
     @IBAction func FaceIDPermission(_ sender: Any) {
-        let alertController = UIAlertController(
-                    title: "Enable Face ID/Touch ID",
-                    message: "To use biometric authentication, you need to enable Face ID/Touch ID for this app in your device settings.",
-                    preferredStyle: .alert
-                )
-                let settingsAction = UIAlertAction(title: "Go to Settings", style: .default) { _ in
-                    if let settingsURL = URL(string: UIApplication.openSettingsURLString) {
-                        UIApplication.shared.open(settingsURL, options: [:], completionHandler: nil)
+        let context = LAContext()
+        var error: NSError?
+
+        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+            let reason = "Identify yourself!"
+
+            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) {
+                [weak self] success, authenticationError in
+
+                DispatchQueue.main.async {
+                    if success {
+                        //self?.unlockSecretMessage()
+                    } else {
+                        // error
                     }
                 }
-                alertController.addAction(settingsAction)
-                let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-                alertController.addAction(cancelAction)
-                self.present(alertController, animated: true, completion: nil)
+            }
+        } else {
+            // no biometry
+        }
     }
     
     @IBAction func MicrophonePermission(_ sender: Any) {
