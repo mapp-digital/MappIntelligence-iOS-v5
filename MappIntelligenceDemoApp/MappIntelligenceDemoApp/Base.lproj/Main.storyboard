@@ -1587,7 +1587,6 @@
                                 </state>
                                 <connections>
                                     <action selector="FaceIDPermission:" destination="KcP-7f-qlG" eventType="touchUpInside" id="igw-w0-bc7"/>
-                                    <action selector="galleryPermission:" destination="KcP-7f-qlG" eventType="touchUpInside" id="njY-AR-m8Y"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ELg-fV-jAh">
@@ -1601,7 +1600,6 @@
                                 </state>
                                 <connections>
                                     <action selector="MicrophonePermission:" destination="KcP-7f-qlG" eventType="touchUpInside" id="Xlv-42-lf4"/>
-                                    <action selector="galleryPermission:" destination="KcP-7f-qlG" eventType="touchUpInside" id="fJe-AX-5WF"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bF7-At-H3x">
@@ -1614,8 +1612,6 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="MicrophonePermission:" destination="KcP-7f-qlG" eventType="touchUpInside" id="jCH-Fr-9FY"/>
-                                    <action selector="galleryPermission:" destination="KcP-7f-qlG" eventType="touchUpInside" id="uG9-82-ELC"/>
                                     <action selector="testBluetoothPermission:" destination="KcP-7f-qlG" eventType="touchUpInside" id="zRE-F7-iUP"/>
                                 </connections>
                             </button>

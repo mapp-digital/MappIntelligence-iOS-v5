@@ -88,5 +88,13 @@
 	<string>Use location for precisze location?</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Use location when it is in use?</string>
+	<key>NSFaceIDUsageDescription</key>
+	<string>Allow us to use face id?</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Allow us to use microphone?</string>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>Allow us to use bluetooth?</string>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>Allow us to use periferal bluettoth?</string>
 </dict>
 </plist>
