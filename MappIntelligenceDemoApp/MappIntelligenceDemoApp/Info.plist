@@ -74,5 +74,19 @@
 	</array>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Give us access to the library photo?</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Allo us to use camera?</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Allow us to use location always or when it is in use? </string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Allow us to use always location?</string>
+	<key>NSLocationDefaultAccuracyReduced</key>
+	<true/>
+	<key>NSLocationTemporaryUsageDescriptionDictionary</key>
+	<dict/>
+	<key>NSLocationUsageDescription</key>
+	<string>Use location for precisze location?</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Use location when it is in use?</string>
 </dict>
 </plist>

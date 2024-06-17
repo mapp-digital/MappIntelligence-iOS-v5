@@ -265,6 +265,33 @@
                                             <segue destination="Uno-u6-0B1" kind="show" id="8zg-1Y-idd"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="65" id="oX6-qo-0aa">
+                                        <rect key="frame" x="0.0" y="635" width="414" height="65"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oX6-qo-0aa" id="5WT-tu-ebL">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="65"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Permissions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mgD-Qt-R6k">
+                                                    <rect key="frame" x="161.66666666666666" y="22" width="90.666666666666657" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="sBM-kZ-ryo"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                                    <color key="textColor" red="0.019607843140000001" green="0.57254901960000004" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="mgD-Qt-R6k" firstAttribute="centerY" secondItem="5WT-tu-ebL" secondAttribute="centerY" id="Exl-VJ-OVl"/>
+                                                <constraint firstItem="mgD-Qt-R6k" firstAttribute="centerX" secondItem="5WT-tu-ebL" secondAttribute="centerX" id="YVc-3P-TSv"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <connections>
+                                            <segue destination="KcP-7f-qlG" kind="show" id="y18-jt-rGx"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -654,19 +681,6 @@
                                     <action selector="SetUserMatchingToTrue:" destination="7du-La-z9J" eventType="touchUpInside" id="Bx0-tR-JHv"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pHK-na-H8I">
-                                <rect key="frame" x="20" y="680" width="374" height="50"/>
-                                <color key="backgroundColor" red="0.021203886719999999" green="0.57247686389999997" blue="0.84162324669999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="7jy-jN-g1O"/>
-                                </constraints>
-                                <state key="normal" title="Ask For Galery permission">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="askforGalerypermission:" destination="7du-La-z9J" eventType="touchUpInside" id="YDz-hu-Lfh"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="3Yx-Kw-rk7"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -675,18 +689,15 @@
                             <constraint firstItem="uhR-9U-x7d" firstAttribute="leading" secondItem="3Yx-Kw-rk7" secondAttribute="leading" constant="20" id="6Uv-pM-ijt"/>
                             <constraint firstItem="7gN-HV-h5R" firstAttribute="leading" secondItem="3Yx-Kw-rk7" secondAttribute="leading" constant="20" id="7SR-ty-rBB"/>
                             <constraint firstItem="AgT-SC-XaE" firstAttribute="top" secondItem="c89-Id-IY0" secondAttribute="bottom" constant="25" id="8Lz-QN-eyd"/>
-                            <constraint firstItem="3Yx-Kw-rk7" firstAttribute="trailing" secondItem="pHK-na-H8I" secondAttribute="trailing" constant="20" id="9zc-MT-ais"/>
                             <constraint firstItem="hKu-jQ-csA" firstAttribute="leading" secondItem="eDG-2v-0Tx" secondAttribute="trailing" constant="10" id="AZx-SW-Lbl"/>
                             <constraint firstItem="3Yx-Kw-rk7" firstAttribute="trailing" secondItem="mNz-OQ-SRH" secondAttribute="trailing" constant="20" id="AhK-KQ-7a7"/>
                             <constraint firstItem="AgT-SC-XaE" firstAttribute="leading" secondItem="3Yx-Kw-rk7" secondAttribute="leading" constant="20" id="E6x-q8-9ga"/>
                             <constraint firstItem="uhR-9U-x7d" firstAttribute="top" secondItem="Stq-zW-wEO" secondAttribute="bottom" constant="20" id="ICj-dT-PST"/>
-                            <constraint firstItem="pHK-na-H8I" firstAttribute="leading" secondItem="3Yx-Kw-rk7" secondAttribute="leading" constant="20" id="IQf-HS-rOk"/>
                             <constraint firstItem="s8v-6e-bTg" firstAttribute="top" secondItem="7gN-HV-h5R" secondAttribute="bottom" constant="20" id="IZg-VS-G6T"/>
                             <constraint firstItem="7gN-HV-h5R" firstAttribute="top" secondItem="mNz-OQ-SRH" secondAttribute="bottom" constant="10" id="Kz0-av-nY1"/>
                             <constraint firstItem="mNz-OQ-SRH" firstAttribute="top" secondItem="uhR-9U-x7d" secondAttribute="bottom" constant="15" id="M0T-nt-ekd"/>
                             <constraint firstItem="c89-Id-IY0" firstAttribute="top" secondItem="XU0-8e-ykb" secondAttribute="bottom" constant="25" id="PuD-Do-bdv"/>
                             <constraint firstItem="3Yx-Kw-rk7" firstAttribute="trailing" secondItem="hKu-jQ-csA" secondAttribute="trailing" constant="20" id="RBr-xq-ant"/>
-                            <constraint firstItem="pHK-na-H8I" firstAttribute="top" secondItem="s8v-6e-bTg" secondAttribute="bottom" constant="20" id="Tfq-Id-oXN"/>
                             <constraint firstItem="eDG-2v-0Tx" firstAttribute="leading" secondItem="3Yx-Kw-rk7" secondAttribute="leading" constant="20" id="Tw0-fe-OYy"/>
                             <constraint firstItem="3Yx-Kw-rk7" firstAttribute="trailing" secondItem="7gN-HV-h5R" secondAttribute="trailing" constant="20" id="YeW-cb-5e3"/>
                             <constraint firstItem="s8v-6e-bTg" firstAttribute="leading" secondItem="3Yx-Kw-rk7" secondAttribute="leading" constant="20" id="Yl7-rx-0QU"/>
@@ -1517,6 +1528,128 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="esx-FK-muu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1459" y="2402"/>
+        </scene>
+        <!--Campaign-->
+        <scene sceneID="ed1-LO-52g">
+            <objects>
+                <viewController id="KcP-7f-qlG" customClass="PermissionsViewController" customModule="MappIntelligenceDemoApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tKG-Ma-hLl">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GeX-q6-rOk">
+                                <rect key="frame" x="20" y="114" width="374" height="50"/>
+                                <color key="backgroundColor" red="0.021203886719999999" green="0.57247686389999997" blue="0.84162324669999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="SRN-QD-x4h"/>
+                                </constraints>
+                                <state key="normal" title="Test Camera Permisson">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="cameraPermission:" destination="KcP-7f-qlG" eventType="touchUpInside" id="OyD-gX-00s"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gko-gB-6bF">
+                                <rect key="frame" x="20" y="184" width="374" height="50"/>
+                                <color key="backgroundColor" red="0.021203886719999999" green="0.57247686389999997" blue="0.84162324669999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Knu-kE-mCU"/>
+                                </constraints>
+                                <state key="normal" title="Test Location permisson ">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="locationPermission:" destination="KcP-7f-qlG" eventType="touchUpInside" id="x4M-Xf-91a"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ryh-El-hzt">
+                                <rect key="frame" x="20" y="254" width="374" height="50"/>
+                                <color key="backgroundColor" red="0.021203886719999999" green="0.57247686389999997" blue="0.84162324669999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="X3M-qD-Dhg"/>
+                                </constraints>
+                                <state key="normal" title="Test Gallery permission">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="galleryPermission:" destination="KcP-7f-qlG" eventType="touchUpInside" id="5iN-wA-tZ2"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wyu-e9-WpC">
+                                <rect key="frame" x="20" y="324" width="374" height="50"/>
+                                <color key="backgroundColor" red="0.021203886719999999" green="0.57247686389999997" blue="0.84162324669999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="a7V-jl-50M"/>
+                                </constraints>
+                                <state key="normal" title="Test Face ID permission">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="FaceIDPermission:" destination="KcP-7f-qlG" eventType="touchUpInside" id="igw-w0-bc7"/>
+                                    <action selector="galleryPermission:" destination="KcP-7f-qlG" eventType="touchUpInside" id="njY-AR-m8Y"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ELg-fV-jAh">
+                                <rect key="frame" x="20" y="394" width="374" height="50"/>
+                                <color key="backgroundColor" red="0.021203886719999999" green="0.57247686389999997" blue="0.84162324669999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="OlN-Xe-hzP"/>
+                                </constraints>
+                                <state key="normal" title="Test Microphone Permission">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="MicrophonePermission:" destination="KcP-7f-qlG" eventType="touchUpInside" id="Xlv-42-lf4"/>
+                                    <action selector="galleryPermission:" destination="KcP-7f-qlG" eventType="touchUpInside" id="fJe-AX-5WF"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bF7-At-H3x">
+                                <rect key="frame" x="20" y="464" width="374" height="50"/>
+                                <color key="backgroundColor" red="0.021203886719999999" green="0.57247686389999997" blue="0.84162324669999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="ddR-ht-A5o"/>
+                                </constraints>
+                                <state key="normal" title="Test Bluetutoh Permission">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="MicrophonePermission:" destination="KcP-7f-qlG" eventType="touchUpInside" id="jCH-Fr-9FY"/>
+                                    <action selector="galleryPermission:" destination="KcP-7f-qlG" eventType="touchUpInside" id="uG9-82-ELC"/>
+                                    <action selector="testBluetoothPermission:" destination="KcP-7f-qlG" eventType="touchUpInside" id="zRE-F7-iUP"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="y9x-nH-SA5"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ryh-El-hzt" firstAttribute="top" secondItem="Gko-gB-6bF" secondAttribute="bottom" constant="20" id="3Cb-UH-CBX"/>
+                            <constraint firstItem="y9x-nH-SA5" firstAttribute="trailing" secondItem="ELg-fV-jAh" secondAttribute="trailing" constant="20" id="8ea-MS-hOs"/>
+                            <constraint firstItem="Gko-gB-6bF" firstAttribute="top" secondItem="GeX-q6-rOk" secondAttribute="bottom" constant="20" id="9gK-ce-ToV"/>
+                            <constraint firstItem="bF7-At-H3x" firstAttribute="top" secondItem="ELg-fV-jAh" secondAttribute="bottom" constant="20" id="Ajx-tB-89G"/>
+                            <constraint firstItem="Wyu-e9-WpC" firstAttribute="leading" secondItem="y9x-nH-SA5" secondAttribute="leading" constant="20" id="Crg-Pw-GmL"/>
+                            <constraint firstItem="ryh-El-hzt" firstAttribute="leading" secondItem="y9x-nH-SA5" secondAttribute="leading" constant="20" id="Gfp-Na-6dk"/>
+                            <constraint firstItem="Gko-gB-6bF" firstAttribute="leading" secondItem="y9x-nH-SA5" secondAttribute="leading" constant="20" id="Wom-q3-frx"/>
+                            <constraint firstItem="GeX-q6-rOk" firstAttribute="top" secondItem="y9x-nH-SA5" secondAttribute="top" constant="50" id="XrQ-BR-dG9"/>
+                            <constraint firstItem="bF7-At-H3x" firstAttribute="leading" secondItem="y9x-nH-SA5" secondAttribute="leading" constant="20" id="Zva-TV-jcm"/>
+                            <constraint firstItem="y9x-nH-SA5" firstAttribute="trailing" secondItem="GeX-q6-rOk" secondAttribute="trailing" constant="20" id="brP-l1-FIZ"/>
+                            <constraint firstItem="y9x-nH-SA5" firstAttribute="trailing" secondItem="bF7-At-H3x" secondAttribute="trailing" constant="20" id="c06-4E-a90"/>
+                            <constraint firstItem="ELg-fV-jAh" firstAttribute="top" secondItem="Wyu-e9-WpC" secondAttribute="bottom" constant="20" id="dln-8L-in1"/>
+                            <constraint firstItem="ELg-fV-jAh" firstAttribute="leading" secondItem="y9x-nH-SA5" secondAttribute="leading" constant="20" id="eLq-6C-qf0"/>
+                            <constraint firstItem="y9x-nH-SA5" firstAttribute="trailing" secondItem="ryh-El-hzt" secondAttribute="trailing" constant="20" id="mFI-XI-zWp"/>
+                            <constraint firstItem="Wyu-e9-WpC" firstAttribute="top" secondItem="ryh-El-hzt" secondAttribute="bottom" constant="20" id="mtK-Mc-w6Z"/>
+                            <constraint firstItem="GeX-q6-rOk" firstAttribute="leading" secondItem="y9x-nH-SA5" secondAttribute="leading" constant="20" id="pzp-L5-7Us"/>
+                            <constraint firstItem="y9x-nH-SA5" firstAttribute="trailing" secondItem="Gko-gB-6bF" secondAttribute="trailing" constant="20" id="z2A-cU-eXb"/>
+                            <constraint firstItem="y9x-nH-SA5" firstAttribute="trailing" secondItem="Wyu-e9-WpC" secondAttribute="trailing" constant="20" id="zYb-UY-f8w"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Campaign" id="J5c-Ph-vm0">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="2Zq-Nd-8Bt"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="C3n-1S-Xz0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1728" y="7"/>
         </scene>
     </scenes>
     <resources>
