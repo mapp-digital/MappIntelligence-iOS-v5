@@ -63,14 +63,11 @@
 		8FA78F0B25BF18BE00CC166A /* WebViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewViewController.swift; sourceTree = "<group>"; };
 		8FE0AF26255D6FB20037AE4A /* MappIntelligenceDemoApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MappIntelligenceDemoApp.entitlements; sourceTree = "<group>"; };
 		A3258BF5250A4E0B00039B92 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		A32AEA68242B716100BC7B46 /* libMappIntelligenceWatchOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libMappIntelligenceWatchOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A345975D27A164C10038FE3F /* FormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewController.swift; sourceTree = "<group>"; };
 		A3588A9427C66BA40053961B /* RuntimeConfigurationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuntimeConfigurationViewController.swift; sourceTree = "<group>"; };
-		A35C78FF2452F83700D36144 /* libMappIntelligencetvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libMappIntelligencetvOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A36E59CB259493A100BF8873 /* EcommerceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EcommerceViewController.swift; sourceTree = "<group>"; };
 		A38A6AEF242CCFA100600D82 /* libMappIntelligenceSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libMappIntelligenceSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A38A6AF1242CD0C600600D82 /* libMappIntelligenceSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libMappIntelligenceSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		A38A6AF3242CD74F00600D82 /* libMappIntelligenceWatchOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libMappIntelligenceWatchOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A390BE622C2059EA00844D44 /* PermissionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionsViewController.swift; sourceTree = "<group>"; };
 		A3ADC97D26D94057007504FF /* ExceptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExceptionsViewController.swift; sourceTree = "<group>"; };
 		A3C8598429A80FC10097CF32 /* AppoxeeSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = AppoxeeSDK.xcframework; sourceTree = SOURCE_ROOT; };
@@ -167,11 +164,8 @@
 				8F20A10D25C2CF460006CB93 /* libMappIntelligenceiOS.a */,
 				8F3F6812257EE3D5005F8AFC /* WebKit.framework */,
 				A3258BF5250A4E0B00039B92 /* UIKit.framework */,
-				A35C78FF2452F83700D36144 /* libMappIntelligencetvOS.a */,
-				A38A6AF3242CD74F00600D82 /* libMappIntelligenceWatchOS.a */,
 				A38A6AF1242CD0C600600D82 /* libMappIntelligenceSDK.a */,
 				A38A6AEF242CCFA100600D82 /* libMappIntelligenceSDK.a */,
-				A32AEA68242B716100BC7B46 /* libMappIntelligenceWatchOS.a */,
 				BCCAE6CE240D261A005E9FD6 /* libMappIntelligenceSDK.a */,
 				BCBE5C2923F3F9F3002125C1 /* libMappIntelligenceSDK.a */,
 			);
