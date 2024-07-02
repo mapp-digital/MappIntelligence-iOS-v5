@@ -63,7 +63,7 @@
 		8F20A37F25C2EDC50006CB93 /* MIWebViewTracker.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8F94E79E25BF2E8F00027623 /* MIWebViewTracker.h */; };
 		8F3BC308254BFF1D00076321 /* MICampaignParameters.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 8F423EDA254B17D900DE191D /* MICampaignParameters.h */; };
 		8F423EDB254B17D900DE191D /* MICampaignParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F423ED9254B17D900DE191D /* MICampaignParameters.m */; };
-		8F423EDE254B17D900DE191D /* MICampaignParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F423EDA254B17D900DE191D /* MICampaignParameters.h */; };
+		8F423EDE254B17D900DE191D /* MICampaignParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F423EDA254B17D900DE191D /* MICampaignParameters.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8F4420EE250F7BA6003961F3 /* MISessionParameters.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 8FDF7111250BA9CB00818E51 /* MISessionParameters.h */; };
 		8F94E6C625BF27AC00027623 /* MIMediaTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F94E6C425BF27AC00027623 /* MIMediaTracker.m */; };
 		8F94E6C725BF27AC00027623 /* MIMediaTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F94E6C525BF27AC00027623 /* MIMediaTracker.h */; };
@@ -124,7 +124,7 @@
 		A337446624C849F00096259B /* MITrackerRequest.h in Copy Files */ = {isa = PBXBuildFile; fileRef = A36CD7CB23F44594004E3E2D /* MITrackerRequest.h */; };
 		A337446724C84A060096259B /* MITrackingEvent.h in Copy Files */ = {isa = PBXBuildFile; fileRef = A380D1F82411478C009E2CD8 /* MITrackingEvent.h */; };
 		A337446824C84A100096259B /* MIProperties.h in Copy Files */ = {isa = PBXBuildFile; fileRef = A36CD7CF23F447D0004E3E2D /* MIProperties.h */; };
-		A338B78B2546FD1E00E50C28 /* MIEcommerceParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = A338B7892546FD1E00E50C28 /* MIEcommerceParameters.h */; };
+		A338B78B2546FD1E00E50C28 /* MIEcommerceParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = A338B7892546FD1E00E50C28 /* MIEcommerceParameters.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A338B78C2546FD1E00E50C28 /* MIEcommerceParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = A338B78A2546FD1E00E50C28 /* MIEcommerceParameters.m */; };
 		A338B79825470A1F00E50C28 /* MIProduct.h in Headers */ = {isa = PBXBuildFile; fileRef = A338B79625470A1F00E50C28 /* MIProduct.h */; };
 		A338B79925470A1F00E50C28 /* MIProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = A338B79725470A1F00E50C28 /* MIProduct.m */; };
