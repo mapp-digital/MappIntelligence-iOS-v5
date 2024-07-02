@@ -138,7 +138,7 @@
 		A341D70E2A43498000CA1946 /* MIUsageStatistics.h in Copy Files */ = {isa = PBXBuildFile; fileRef = A341D7042A433EBC00CA1946 /* MIUsageStatistics.h */; };
 		A341D7112A4349CE00CA1946 /* MIUsageStatistics.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A341D7042A433EBC00CA1946 /* MIUsageStatistics.h */; };
 		A341D7142A45BC3400CA1946 /* MIUsageStatisticsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A341D7132A45BC3400CA1946 /* MIUsageStatisticsTests.m */; };
-		A345976127A1878A0038FE3F /* MIFormParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = A345975F27A1878A0038FE3F /* MIFormParameters.h */; };
+		A345976127A1878A0038FE3F /* MIFormParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = A345975F27A1878A0038FE3F /* MIFormParameters.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A345976227A1878A0038FE3F /* MIFormParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = A345976027A1878A0038FE3F /* MIFormParameters.m */; };
 		A345976527A1890A0038FE3F /* MIFormField.h in Headers */ = {isa = PBXBuildFile; fileRef = A345976327A1890A0038FE3F /* MIFormField.h */; };
 		A345976627A1890A0038FE3F /* MIFormField.m in Sources */ = {isa = PBXBuildFile; fileRef = A345976427A1890A0038FE3F /* MIFormField.m */; };
