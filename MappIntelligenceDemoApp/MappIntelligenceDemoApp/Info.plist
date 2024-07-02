@@ -50,8 +50,8 @@
 	</dict>
 	<key>UIBackgroundModes</key>
 	<array>
-        <string>bluetooth-central</string>
-        <string>bluetooth-peripheral</string>
+		<string>bluetooth-central</string>
+		<string>bluetooth-peripheral</string>
 		<string>fetch</string>
 		<string>processing</string>
 	</array>
@@ -98,5 +98,7 @@
 	<string>Allow us to use bluetooth?</string>
 	<key>NSBluetoothPeripheralUsageDescription</key>
 	<string>Allow us to use periferal bluettoth?</string>
+	<key>NSUserTrackingUsageDescription</key>
+	<string>Allow app to track? EverId will be generated for better personalisation.</string>
 </dict>
 </plist>
