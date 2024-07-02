@@ -74,7 +74,7 @@
 		8F94E78E25BF2E0500027623 /* MIMediaEvent.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 8F94E6E725BF27D200027623 /* MIMediaEvent.h */; };
 		8F94E79625BF2E1100027623 /* MIMediaParameters.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 8F94E72825BF281C00027623 /* MIMediaParameters.h */; };
 		8F9C7F70255A851400CB95EF /* AdvertisementPropertiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F9C7F6F255A851400CB95EF /* AdvertisementPropertiesTests.m */; };
-		8FA11962253EDC82000AE887 /* MIUserCategories.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FA11960253EDC82000AE887 /* MIUserCategories.h */; };
+		8FA11962253EDC82000AE887 /* MIUserCategories.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FA11960253EDC82000AE887 /* MIUserCategories.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8FA11963253EDC82000AE887 /* MIUserCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FA11961253EDC82000AE887 /* MIUserCategories.m */; };
 		8FAF2D3F25405DFE007AA438 /* MIUserCategories.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 8FA11960253EDC82000AE887 /* MIUserCategories.h */; };
 		8FCFD64B25B1916F00EE8358 /* MIParams.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 8FD2C1F6258C0CA8002A9ED4 /* MIParams.h */; };
