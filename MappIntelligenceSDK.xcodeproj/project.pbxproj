@@ -89,7 +89,7 @@
 		8FDF710C250B9E5B00818E51 /* MIActionEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FDF710A250B9E5B00818E51 /* MIActionEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8FDF710D250BA22100818E51 /* MIEventParameters.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 8FDF7105250B9E4D00818E51 /* MIEventParameters.h */; };
 		8FDF710E250BA22700818E51 /* MIActionEvent.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 8FDF710A250B9E5B00818E51 /* MIActionEvent.h */; };
-		8FDF7113250BA9CB00818E51 /* MISessionParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FDF7111250BA9CB00818E51 /* MISessionParameters.h */; };
+		8FDF7113250BA9CB00818E51 /* MISessionParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FDF7111250BA9CB00818E51 /* MISessionParameters.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8FDF7114250BA9CB00818E51 /* MISessionParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FDF7112250BA9CB00818E51 /* MISessionParameters.m */; };
 		8FEC887825598E6500E24EDC /* MIDeepLink.h in Headers */ = {isa = PBXBuildFile; fileRef = 8FEC887625598E6500E24EDC /* MIDeepLink.h */; };
 		8FEC887925598E6500E24EDC /* MIDeepLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 8FEC887725598E6500E24EDC /* MIDeepLink.m */; };
