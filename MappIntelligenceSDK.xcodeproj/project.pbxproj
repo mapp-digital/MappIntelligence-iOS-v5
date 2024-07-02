@@ -126,7 +126,7 @@
 		A337446824C84A100096259B /* MIProperties.h in Copy Files */ = {isa = PBXBuildFile; fileRef = A36CD7CF23F447D0004E3E2D /* MIProperties.h */; };
 		A338B78B2546FD1E00E50C28 /* MIEcommerceParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = A338B7892546FD1E00E50C28 /* MIEcommerceParameters.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A338B78C2546FD1E00E50C28 /* MIEcommerceParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = A338B78A2546FD1E00E50C28 /* MIEcommerceParameters.m */; };
-		A338B79825470A1F00E50C28 /* MIProduct.h in Headers */ = {isa = PBXBuildFile; fileRef = A338B79625470A1F00E50C28 /* MIProduct.h */; };
+		A338B79825470A1F00E50C28 /* MIProduct.h in Headers */ = {isa = PBXBuildFile; fileRef = A338B79625470A1F00E50C28 /* MIProduct.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A338B79925470A1F00E50C28 /* MIProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = A338B79725470A1F00E50C28 /* MIProduct.m */; };
 		A338B7E72548752200E50C28 /* MIEcommerceParameters.h in Copy Files */ = {isa = PBXBuildFile; fileRef = A338B7892546FD1E00E50C28 /* MIEcommerceParameters.h */; };
 		A338B7EF2548752B00E50C28 /* MIProduct.h in Copy Files */ = {isa = PBXBuildFile; fileRef = A338B79625470A1F00E50C28 /* MIProduct.h */; };
