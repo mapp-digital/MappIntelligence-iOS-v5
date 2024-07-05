@@ -27,7 +27,9 @@ var window: UIWindow?
         let domain = dict?["domain" as NSObject]
         let didYouChangeTheStatusFlag = UserDefaults.standard.bool(forKey: "didYouChangeTheStatus")
         MappIntelligence.shared()?.anonymousTracking = true
-        self.requestTrackingPermission()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.requestTrackingPermission()
+        }
         //didYouChangeTheStatusFlag ? (MappIntelligence.shared()?.anonymousTracking ?? false) : true
         MappIntelligence.shared()?.initWithConfiguration(array, onTrackdomain: domain as! String)
         //MappIntelligence.shared()?.trackPage(MIPageViewEvent(name: "ime_glupo"))
