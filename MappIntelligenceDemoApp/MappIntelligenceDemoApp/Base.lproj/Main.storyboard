@@ -886,7 +886,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="v0p-og-LCW" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="D9r-08-exJ">
-                        <rect key="frame" x="0.0" y="20" width="414" height="50"/>
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" name="Darkblue"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

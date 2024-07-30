@@ -6,6 +6,7 @@
 //  Copyright © 2020 Mapp Digital US, LLC. All rights reserved.
 //
 import UIKit
+import AppTrackingTransparency
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -25,7 +26,11 @@ var window: UIWindow?
         let array = [(dict?["track_ids" as NSObject]?.intValue) ?? 0]
         let domain = dict?["domain" as NSObject]
         let didYouChangeTheStatusFlag = UserDefaults.standard.bool(forKey: "didYouChangeTheStatus")
-        MappIntelligence.shared()?.anonymousTracking = false	     //didYouChangeTheStatusFlag ? (MappIntelligence.shared()?.anonymousTracking ?? false) : true
+        MappIntelligence.shared()?.anonymousTracking = true
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.requestTrackingPermission()
+        }
+        //didYouChangeTheStatusFlag ? (MappIntelligence.shared()?.anonymousTracking ?? false) : true
         MappIntelligence.shared()?.initWithConfiguration(array, onTrackdomain: domain as! String)
         //MappIntelligence.shared()?.trackPage(MIPageViewEvent(name: "ime_glupo"))
         //MappIntelligence.shared()?.initWithConfiguration(array, onTrackdomain: domain as! String, andWithEverID: "43657756353521")
@@ -43,6 +48,30 @@ var window: UIWindow?
         MappIntelligence.shared()?.enableCrashTracking(.allExceptionTypes)
         // Override point for customization after application launch.
         return true
+    }
+    
+    func requestTrackingPermission() {
+        if #available(iOS 14, *) {
+            ATTrackingManager.requestTrackingAuthorization { status in
+                switch status {
+                case .authorized:
+                    // Tracking authorization dialog was shown
+                    // and we are authorized
+                    MappIntelligence.shared()?.anonymousTracking = false
+                case .denied:
+                    // Tracking authorization dialog was
+                    // shown and permission is denied
+                    print("Denied")
+                case .notDetermined:
+                    // Tracking authorization dialog has not been shown
+                    print("Not Determined")
+                case .restricted:
+                    print("Restricted")
+                @unknown default:
+                    print("Unknown")
+                }
+            }
+        }
     }
     
     func applicationWillTerminate(_ application: UIApplication) {
