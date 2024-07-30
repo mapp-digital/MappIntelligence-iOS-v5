@@ -85,6 +85,18 @@
         case 3:
             return viewed;
             break;
+        case 4:
+            return deletedFromBasket;
+            break;
+        case 5:
+            return addedToWishlist;
+            break;
+        case 6:
+            return deletedFromWishlist;
+            break;
+        case 7:
+            return checkout;
+            break;
         default:
             return viewed;
     }}
