@@ -129,8 +129,10 @@ class EcommerceViewController: UIViewController {
         
         MappIntelligence.shared()?.trackPage(pageEvent)
         
-        ecommerceParameters1.products = [product2]
-        MappIntelligence.shared()?.trackPage(pageEvent)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            ecommerceParameters1.products = [self.product2]
+            MappIntelligence.shared()?.trackPage(pageEvent)
+        }
     }
     
     @IBAction func trackEcommerceConfirmation(_ sender: Any) {
@@ -152,7 +154,7 @@ class EcommerceViewController: UIViewController {
         let pageEvent = MIPageViewEvent(name: "TrackProductConfirmed")
         pageEvent.ecommerceParameters = ecommerceParameters
         
-        //MappIntelligence.shared()?.trackPage(pageEvent)
+        MappIntelligence.shared()?.trackPage(pageEvent)
         
         let pageEvent1 = MIPageViewEvent(name: "pageName")
         pageEvent1.pageParameters = MIPageParameters(pageParams: [5: "parameter value 5", 777: "this is my page type"], pageCategory: nil, search: nil)
