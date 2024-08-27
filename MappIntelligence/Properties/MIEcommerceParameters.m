@@ -52,7 +52,9 @@
                 _products = [_products arrayByAddingObject:[[MIProduct alloc] initWithDictionary:dict]];
             }
         }
-        _status = [self getStatusFrom:(int)(size_t)dictionary[key_status]];
+        NSNumber* statusNum = dictionary[key_status];
+        int status = [statusNum intValue];
+        _status = [self getStatusFrom:status];
         _currency = dictionary[key_currency];
         _orderID = dictionary[key_order_id];
         _orderValue = dictionary[key_order_value];
