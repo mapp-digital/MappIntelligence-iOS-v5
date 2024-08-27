@@ -37,10 +37,9 @@ static NSInteger const max_parameter_length = 255;
             pageName:(NSString *)page
           andScreenSize:(NSString *)size
           andTimeStamp:(double)stamp {
- //NSString *pParameter = [[NSString alloc]
-   //initWithFormat:@"%@,%@,0,%@,32,0,%.f,0,0,0", library, page, size, stamp];
-
-    NSString *pParameter = @"500";
+    //library hardcoded to 500 as a request of task 535
+ NSString *pParameter = [[NSString alloc]
+   initWithFormat:@"%@,%@,0,%@,32,0,%.f,0,0,0", @"500", page, size, stamp];
     
     NSString *decodedParameters = [pParameter stringByRemovingPercentEncoding];
     if (decodedParameters.length > max_parameter_length) {

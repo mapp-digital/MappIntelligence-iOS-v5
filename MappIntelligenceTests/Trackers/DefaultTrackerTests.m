@@ -181,4 +181,14 @@
     [self waitForExpectations:[NSArray arrayWithObject:expectation] timeout:5];
 }
 
+//sends 10000 requsts
+- (void)testSend10Krequests {
+    for (int i = 1; i <= 10000; i++)
+    {
+        NSLog(@"%d", i);
+        [_tracker trackWith:[NSString stringWithFormat:@"testPage%d",i]];
+        
+    }
+}
+
 @end
