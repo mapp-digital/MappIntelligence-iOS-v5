@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
     s.homepage = 'https://mapp.com/mapp-cloud/analytics/app-analytics/'
     s.license  = { :type => 'MIT', :file => 'LICENSE.md' }
     s.ios.deployment_target = '12.0'
-    s.source   = { :git => 'https://github.com/mapp-digital/MappIntelligence-iOS-v5.git',  :commit => "04c8615391725662ecc351e550194d698599775f" }
+    s.source   = { :git => 'https://github.com/mapp-digital/MappIntelligence-iOS-v5.git', :tag => s.version }
     s.exclude_files = 'MappIntelligence/include/**'
     s.source_files = "MappIntelligence/**/*.{h,m}"
     s.resource_bundles = {'MappIntelligence' => ['*.xcprivacy']}

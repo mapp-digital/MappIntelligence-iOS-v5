@@ -112,7 +112,6 @@
 		A32EE0A2243CB97200EDC5B8 /* MappIntelligenceDefaultConfigTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A32EE0A1243CB97200EDC5B8 /* MappIntelligenceDefaultConfigTest.m */; };
 		A334861D23BF3E2300D0EB5F /* MappIntelligence.m in Sources */ = {isa = PBXBuildFile; fileRef = A334861C23BF3E2300D0EB5F /* MappIntelligence.m */; };
 		A334861E23BF3E2300D0EB5F /* MappIntelligence.h in Copy Files */ = {isa = PBXBuildFile; fileRef = A334861B23BF3E2300D0EB5F /* MappIntelligence.h */; };
-		A334862D23BF3F2800D0EB5F /* libMappIntelligenceSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A334861823BF3E2300D0EB5F /* libMappIntelligenceSDK.a */; };
 		A334863423BF3FAD00D0EB5F /* MappIntelligence.h in Headers */ = {isa = PBXBuildFile; fileRef = A334861B23BF3E2300D0EB5F /* MappIntelligence.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A337445C24C1A12A0096259B /* MIPageParameters.h in Headers */ = {isa = PBXBuildFile; fileRef = A337445A24C1A12A0096259B /* MIPageParameters.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A337445D24C1A12A0096259B /* MIPageParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = A337445B24C1A12A0096259B /* MIPageParameters.m */; };
@@ -199,6 +198,8 @@
 		A3ADC97326D8EB34007504FF /* MIExceptionTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = A3ADC97126D8EB34007504FF /* MIExceptionTracker.h */; };
 		A3ADC97426D8EB34007504FF /* MIExceptionTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = A3ADC97226D8EB34007504FF /* MIExceptionTracker.m */; };
 		A3ADC98D26D941B5007504FF /* MIExceptionTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = A3ADC97226D8EB34007504FF /* MIExceptionTracker.m */; };
+		A3BA0E9C2C7E27F000A1D030 /* libMappIntelligenceSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A334861823BF3E2300D0EB5F /* libMappIntelligenceSDK.a */; };
+		A3BA0E9F2C7E2A7600A1D030 /* libMappIntelligenceiOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F20A08725C2CE470006CB93 /* libMappIntelligenceiOS.a */; };
 		A3CC5486248FC418006215FD /* MIDatabaseManager.h in Headers */ = {isa = PBXBuildFile; fileRef = A3CC5484248FC418006215FD /* MIDatabaseManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A3CC5487248FC418006215FD /* MIDatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A3CC5485248FC418006215FD /* MIDatabaseManager.m */; };
 		A3CC548A249125DD006215FD /* MIParameter.h in Headers */ = {isa = PBXBuildFile; fileRef = A3CC5488249125DD006215FD /* MIParameter.h */; };
@@ -239,12 +240,19 @@
 			remoteGlobalIDString = A334861723BF3E2300D0EB5F;
 			remoteInfo = MappIntelligenceSDK;
 		};
-		A334862E23BF3F2800D0EB5F /* PBXContainerItemProxy */ = {
+		A3BA0E9D2C7E27F000A1D030 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A334861023BF3E2300D0EB5F /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = A334861723BF3E2300D0EB5F;
-			remoteInfo = Webrekk;
+			remoteInfo = MappIntelligenceSDK;
+		};
+		A3BA0EA02C7E2A7600A1D030 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A334861023BF3E2300D0EB5F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8F20A08625C2CE470006CB93;
+			remoteInfo = MappIntelligenceiOS;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -484,8 +492,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3BA0E9F2C7E2A7600A1D030 /* libMappIntelligenceiOS.a in Frameworks */,
 				A3F08BBC28D9DC68004FF49C /* WebKit.framework in Frameworks */,
-				A334862D23BF3F2800D0EB5F /* libMappIntelligenceSDK.a in Frameworks */,
+				A3BA0E9C2C7E27F000A1D030 /* libMappIntelligenceSDK.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -986,7 +995,8 @@
 			buildRules = (
 			);
 			dependencies = (
-				A334862F23BF3F2800D0EB5F /* PBXTargetDependency */,
+				A3BA0E9E2C7E27F000A1D030 /* PBXTargetDependency */,
+				A3BA0EA12C7E2A7600A1D030 /* PBXTargetDependency */,
 			);
 			name = MappIntelligenceTests;
 			productName = WebtrekkTests;
@@ -1199,10 +1209,15 @@
 			target = A334861723BF3E2300D0EB5F /* MappIntelligenceSDK */;
 			targetProxy = 8F20A10B25C2CEF50006CB93 /* PBXContainerItemProxy */;
 		};
-		A334862F23BF3F2800D0EB5F /* PBXTargetDependency */ = {
+		A3BA0E9E2C7E27F000A1D030 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = A334861723BF3E2300D0EB5F /* MappIntelligenceSDK */;
-			targetProxy = A334862E23BF3F2800D0EB5F /* PBXContainerItemProxy */;
+			targetProxy = A3BA0E9D2C7E27F000A1D030 /* PBXContainerItemProxy */;
+		};
+		A3BA0EA12C7E2A7600A1D030 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8F20A08625C2CE470006CB93 /* MappIntelligenceiOS */;
+			targetProxy = A3BA0EA02C7E2A7600A1D030 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1431,6 +1446,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mapp.WebtrekkTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1450,6 +1466,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mapp.WebtrekkTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";

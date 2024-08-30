@@ -10,7 +10,6 @@
 		0418E7072B18A30A0008CB31 /* LiveStreamMediaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0418E7062B18A30A0008CB31 /* LiveStreamMediaViewController.swift */; };
 		0418E70A2B19C4690008CB31 /* AppoxeeConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0418E7082B19C4680008CB31 /* AppoxeeConfig.plist */; };
 		0418E70B2B19C4690008CB31 /* SetupForLocalTesting.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0418E7092B19C4680008CB31 /* SetupForLocalTesting.plist */; };
-		8F20A10E25C2CF460006CB93 /* libMappIntelligenceiOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F20A10D25C2CF460006CB93 /* libMappIntelligenceiOS.a */; };
 		8F2D1D4F257789FA008CB31D /* ActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2D1D4E257789FA008CB31D /* ActionViewController.swift */; };
 		8F2D1D5525778A07008CB31D /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2D1D5425778A07008CB31D /* PageViewController.swift */; };
 		8F2D1D6525778B82008CB31D /* ConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2D1D6425778B82008CB31D /* ConfigViewController.swift */; };
@@ -25,6 +24,7 @@
 		A36E59CC259493A100BF8873 /* EcommerceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36E59CB259493A100BF8873 /* EcommerceViewController.swift */; };
 		A390BE632C2059EA00844D44 /* PermissionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A390BE622C2059EA00844D44 /* PermissionsViewController.swift */; };
 		A3ADC97E26D94057007504FF /* ExceptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3ADC97D26D94057007504FF /* ExceptionsViewController.swift */; };
+		A3BA0EA82C81F39F00A1D030 /* libMappIntelligenceiOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F20A10D25C2CF460006CB93 /* libMappIntelligenceiOS.a */; };
 		A3C8598529A80FC10097CF32 /* AppoxeeSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3C8598429A80FC10097CF32 /* AppoxeeSDK.xcframework */; };
 		A3DE04F329475223008657B9 /* AppoxeeSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A3DE04F229475223008657B9 /* AppoxeeSDKResources.bundle */; };
 		BCA1739223D5D25C00B31430 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA1739123D5D25C00B31430 /* AppDelegate.swift */; };
@@ -90,7 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8F20A10E25C2CF460006CB93 /* libMappIntelligenceiOS.a in Frameworks */,
+				A3BA0EA82C81F39F00A1D030 /* libMappIntelligenceiOS.a in Frameworks */,
 				A3C8598529A80FC10097CF32 /* AppoxeeSDK.xcframework in Frameworks */,
 				8F3F6813257EE3D5005F8AFC /* WebKit.framework in Frameworks */,
 			);
@@ -415,7 +415,7 @@
 				CODE_SIGN_ENTITLEMENTS = MappIntelligenceDemoApp/MappIntelligenceDemoApp.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = LERY366S7C;
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
@@ -445,7 +445,7 @@
 				CODE_SIGN_ENTITLEMENTS = MappIntelligenceDemoApp/MappIntelligenceDemoApp.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = LERY366S7C;
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
