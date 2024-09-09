@@ -4,7 +4,7 @@
 //
 //  Created by Stefan Stevanovic on 1/3/20.
 //  Copyright © 2020 Mapp Digital US, LLC. All rights reserved.
-//
+// Mihajlo
 
 #import "MappIntelligence.h"
 #import "MappIntelligenceDefaultConfig.h"
