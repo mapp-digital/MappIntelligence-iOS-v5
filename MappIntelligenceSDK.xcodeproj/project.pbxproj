@@ -202,6 +202,11 @@
 		A3BA0E9F2C7E2A7600A1D030 /* libMappIntelligenceiOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F20A08725C2CE470006CB93 /* libMappIntelligenceiOS.a */; };
 		A3BA0EB52C8B204000A1D030 /* MIAPXInappLoggerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BA0EB42C8B204000A1D030 /* MIAPXInappLoggerTests.m */; };
 		A3BA0EB72C8B20BF00A1D030 /* APXNetworkManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BA0EB62C8B20BF00A1D030 /* APXNetworkManagerTests.m */; };
+		A3BA0EB92C8EDFC100A1D030 /* APXNetworkMetadataTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BA0EB82C8EDFC000A1D030 /* APXNetworkMetadataTests.m */; };
+		A3BA0EBF2C8EE98900A1D030 /* APXMIUMRequestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BA0EBE2C8EE98900A1D030 /* APXMIUMRequestTests.m */; };
+		A3BA0EC12C8EE9B500A1D030 /* APXMIRequestBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BA0EC02C8EE9B500A1D030 /* APXMIRequestBuilder.m */; };
+		A3BA0EC42C8EEC4F00A1D030 /* APXIdentifierTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BA0EC32C8EEC4F00A1D030 /* APXIdentifierTests.m */; };
+		A3BA0EC62C8EEC9000A1D030 /* APXKeychainManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BA0EC52C8EEC9000A1D030 /* APXKeychainManagerTests.m */; };
 		A3CC5486248FC418006215FD /* MIDatabaseManager.h in Headers */ = {isa = PBXBuildFile; fileRef = A3CC5484248FC418006215FD /* MIDatabaseManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A3CC5487248FC418006215FD /* MIDatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A3CC5485248FC418006215FD /* MIDatabaseManager.m */; };
 		A3CC548A249125DD006215FD /* MIParameter.h in Headers */ = {isa = PBXBuildFile; fileRef = A3CC5488249125DD006215FD /* MIParameter.h */; };
@@ -443,6 +448,11 @@
 		A3ADC97226D8EB34007504FF /* MIExceptionTracker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MIExceptionTracker.m; sourceTree = "<group>"; };
 		A3BA0EB42C8B204000A1D030 /* MIAPXInappLoggerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAPXInappLoggerTests.m; sourceTree = "<group>"; };
 		A3BA0EB62C8B20BF00A1D030 /* APXNetworkManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APXNetworkManagerTests.m; sourceTree = "<group>"; };
+		A3BA0EB82C8EDFC000A1D030 /* APXNetworkMetadataTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APXNetworkMetadataTests.m; sourceTree = "<group>"; };
+		A3BA0EBE2C8EE98900A1D030 /* APXMIUMRequestTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APXMIUMRequestTests.m; sourceTree = "<group>"; };
+		A3BA0EC02C8EE9B500A1D030 /* APXMIRequestBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APXMIRequestBuilder.m; sourceTree = "<group>"; };
+		A3BA0EC32C8EEC4F00A1D030 /* APXIdentifierTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APXIdentifierTests.m; sourceTree = "<group>"; };
+		A3BA0EC52C8EEC9000A1D030 /* APXKeychainManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APXKeychainManagerTests.m; sourceTree = "<group>"; };
 		A3CC5484248FC418006215FD /* MIDatabaseManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MIDatabaseManager.h; sourceTree = "<group>"; };
 		A3CC5485248FC418006215FD /* MIDatabaseManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MIDatabaseManager.m; sourceTree = "<group>"; };
 		A3CC5488249125DD006215FD /* MIParameter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MIParameter.h; sourceTree = "<group>"; };
@@ -807,10 +817,23 @@
 		A3BA0EB32C8B1FE100A1D030 /* UserMatching */ = {
 			isa = PBXGroup;
 			children = (
+				A3BA0EC22C8EEBFA00A1D030 /* DeviceID */,
+				A3BA0EC02C8EE9B500A1D030 /* APXMIRequestBuilder.m */,
+				A3BA0EBE2C8EE98900A1D030 /* APXMIUMRequestTests.m */,
+				A3BA0EB82C8EDFC000A1D030 /* APXNetworkMetadataTests.m */,
 				A3BA0EB62C8B20BF00A1D030 /* APXNetworkManagerTests.m */,
 				A3BA0EB42C8B204000A1D030 /* MIAPXInappLoggerTests.m */,
 			);
 			path = UserMatching;
+			sourceTree = "<group>";
+		};
+		A3BA0EC22C8EEBFA00A1D030 /* DeviceID */ = {
+			isa = PBXGroup;
+			children = (
+				A3BA0EC32C8EEC4F00A1D030 /* APXIdentifierTests.m */,
+				A3BA0EC52C8EEC9000A1D030 /* APXKeychainManagerTests.m */,
+			);
+			path = DeviceID;
 			sourceTree = "<group>";
 		};
 		A3CC5481248FC3CD006215FD /* Database */ = {
@@ -1190,13 +1213,16 @@
 				A357221D24F95742005F9DE1 /* RequestDataTest.m in Sources */,
 				A3588A9D27D8E5340053961B /* EventParameterTests.m in Sources */,
 				A3F08BBE28D9DD66004FF49C /* MediaTrackerTests.m in Sources */,
+				A3BA0EBF2C8EE98900A1D030 /* APXMIUMRequestTests.m in Sources */,
 				A3588A9927D20A7D0053961B /* MediaPropertiesTests.m in Sources */,
 				8F143ED92510AD830024CF24 /* ActionEventTests.m in Sources */,
 				A3A72557243DBF1000671DB2 /* PropertiesTests.m in Sources */,
 				BCBE5C3A23F698EF002125C1 /* DefaultTrackerTests.m in Sources */,
 				A357221924F8F17B005F9DE1 /* ParameterTest.m in Sources */,
+				A3BA0EC42C8EEC4F00A1D030 /* APXIdentifierTests.m in Sources */,
 				A3588A9B27D8B5A70053961B /* CampaignParameterTests.m in Sources */,
 				A357222224FD1ABB005F9DE1 /* PageViewEventTests.m in Sources */,
+				A3BA0EC12C8EE9B500A1D030 /* APXMIRequestBuilder.m in Sources */,
 				A3A7255B243DEA0500671DB2 /* RequestUrlBuilderTests.m in Sources */,
 				A341D7142A45BC3400CA1946 /* MIUsageStatisticsTests.m in Sources */,
 				A32EE0A2243CB97200EDC5B8 /* MappIntelligenceDefaultConfigTest.m in Sources */,
@@ -1210,6 +1236,8 @@
 				A357222024FD10AD005F9DE1 /* PagePropertiesTests.m in Sources */,
 				A3BA0EB52C8B204000A1D030 /* MIAPXInappLoggerTests.m in Sources */,
 				BCBE5BFB23EB1798002125C1 /* MappIntelligenceSDKLoggerTest.m in Sources */,
+				A3BA0EB92C8EDFC100A1D030 /* APXNetworkMetadataTests.m in Sources */,
+				A3BA0EC62C8EEC9000A1D030 /* APXKeychainManagerTests.m in Sources */,
 				8F9C7F70255A851400CB95EF /* AdvertisementPropertiesTests.m in Sources */,
 				A3A7255F243F154900671DB2 /* MappIntelligenceTests.m in Sources */,
 				A338B813254C6D3A00E50C28 /* EcommercePropertiesTests.m in Sources */,

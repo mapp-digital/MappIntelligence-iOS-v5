@@ -26,7 +26,11 @@
     if (keyedValues) {
         
         self.code = [keyedValues[@"code"] integerValue];
-        self.succes = ![keyedValues[@"error"] boolValue];
+        if (keyedValues[@"error"] == nil) {
+            self.succes = false;
+        } else {
+            self.succes = ![keyedValues[@"error"] boolValue];
+        }
         self.message = keyedValues[@"message"];
     }
 }
