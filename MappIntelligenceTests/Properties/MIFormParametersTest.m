@@ -1,13 +1,14 @@
 //
-//  MIFormParametersTest.m
+//  MIFormParameterTests.m
 //  MappIntelligenceTests
 //
-//  Created by Stefan Stevanovic on 26.4.22..
-//  Copyright © 2022 Mapp Digital US, LLC. All rights reserved.
+//  Created by Stefan Stevanovic on 16.9.24..
+//  Copyright © 2024 Mapp Digital US, LLC. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>
 #import "MIFormParameters.h"
+#import "MIFormField.h"
 
 #define key_form_name @"form_name"
 #define key_field_ids @"field_ids"
@@ -22,85 +23,63 @@
 #define key_form_submit @"mi_form_submit"
 #define key_form_fields @"mi_form_fields"
 
-@interface MIFormParametersTest : XCTestCase
-
-@property NSString* formName;
-@property NSMutableArray<NSNumber*>* fieldIds;
-@property NSMutableDictionary* renameFields;
-@property NSMutableDictionary* changeFieldsValue;
-@property NSMutableArray<NSNumber*>* anonymousSpecificFields;
-@property NSMutableArray<NSNumber*>* fullContentSpecificFields;
-@property BOOL confirmButton;
-@property NSNumber* anonymous;
-@property NSMutableArray<NSNumber*>* pathAnalysis;
-
-@property MIFormParameters* parameters;
-@property MIFormParameters* parametersFromDictionary;
-@property NSDictionary* dictionary;
+@interface MIFormParameterTests : XCTestCase
 
 @end
 
-@implementation MIFormParametersTest
+@implementation MIFormParameterTests
 
 - (void)setUp {
-    [self setUpDictiponary];
-    _parameters = [[MIFormParameters alloc] init];
-    _parameters.formName = _formName;
-    _parameters.fieldIds = _fieldIds;
-    _parameters.changeFieldsValue = _changeFieldsValue;
-    _parameters.anonymousSpecificFields = _anonymousSpecificFields;
-    _parameters.renameFields = _renameFields;
-    _parameters.fullContentSpecificFields = _fullContentSpecificFields;
-    _parameters.anonymous = _anonymous;
-    _parameters.confirmButton = _confirmButton;
-    _parameters.pathAnalysis = _pathAnalysis;
-    _parametersFromDictionary = [[MIFormParameters alloc] initWithDictionary:_dictionary];
-}
-
-- (void)setUpDictiponary {
-    _formName = @"testFormName";
-    _fieldIds = [@[@1, @2] copy];
-    _renameFields = [@{@1: @"renameField1"} copy];
-    _changeFieldsValue = [@{@2: @"changeNameField2"} copy];
-    _anonymousSpecificFields = [@[@3, @4] copy];
-    _fullContentSpecificFields = [@[@4] copy];
-    _confirmButton = YES;
-    _anonymous = [NSNumber numberWithBool:NO];
-    _pathAnalysis = [@[@1, @2, @2, @4] copy];
-    
-    _dictionary = @{key_form_name: _formName, key_field_ids: _fieldIds, key_rename_ids: _renameFields, key_change_fields_value: _changeFieldsValue, key_anonymous_specific_fields: _anonymousSpecificFields, key_full_content_specific_fields: _fullContentSpecificFields, key_confirm_button: [NSNumber numberWithBool:_confirmButton], key_anonymous: _anonymous, key_path_analysis: _pathAnalysis};
-}
-
--(void) checkParameters: (MIFormParameters*)tmpParameters {
-    XCTAssertTrue([tmpParameters.formName isEqualToString:_formName], @"Parameters has no good name property!" );
-    XCTAssertTrue([tmpParameters.fieldIds isEqualToArray:_fieldIds], @"Parameters has no good fileds ids  property!" );
-    XCTAssertTrue([tmpParameters.renameFields isEqualToDictionary:_renameFields], @"Parameters has no good rename fields value property!" );
-    XCTAssertTrue([tmpParameters.changeFieldsValue isEqualToDictionary:_changeFieldsValue], @"Parameters has no good change fields values property!" );
-    XCTAssertTrue([tmpParameters.anonymousSpecificFields isEqualToArray:_anonymousSpecificFields], @"Parameters has no good anonymous specific fields property!" );
-    XCTAssertTrue([tmpParameters.fullContentSpecificFields isEqualToArray:_fullContentSpecificFields], @"Parameters has no good full content fields property!" );
-    XCTAssertTrue([tmpParameters.anonymous isEqualToNumber:_anonymous], @"Parameters has no good anonymous property!" );
-    XCTAssertTrue(tmpParameters.confirmButton == _confirmButton, @"Parameters has no good confirm button property!" );
-    XCTAssertTrue([tmpParameters.pathAnalysis isEqualToArray:_pathAnalysis], @"Parameters has no good path property!" );
+    // Put setup code here. This method is called before the invocation of each test method in the class.
 }
 
 - (void)tearDown {
-    _dictionary = NULL;
-    _parameters = NULL;
-    _parametersFromDictionary = NULL;
+    // Put teardown code here. This method is called after the invocation of each test method in the class.
 }
 
-- (void)testInit {
-    [self checkParameters:_parameters];
+- (void)testInitWithDictionary {
+    NSMutableArray<NSNumber*>* field_ids_array = [[NSMutableArray alloc] initWithObjects:@1, @2, nil];
+    NSDictionary* rename_ids_dict = @{@1: @"Field One", @2: @"Field Two"};
+    NSArray<NSNumber*>* path_analysis_array = @[@1, @2];
+    NSDictionary *dict = @{
+        key_form_name: @"Test Form",
+        key_field_ids: field_ids_array,
+        key_rename_ids: rename_ids_dict,
+        key_change_fields_value: @{@1: @"New Value"},
+        key_anonymous_specific_fields: @[@1],
+        key_full_content_specific_fields: @[@2],
+        key_confirm_button: @YES,
+        key_anonymous: @NO,
+        key_path_analysis: path_analysis_array,
+        key_form_fields: @[@{@"id": @1, @"name": @"Field1", @"content": @"Content1"}, @{@"id": @2, @"name": @"Field2", @"content": @"Content2"}]
+    };
+
+    MIFormParameters *parameters = [[MIFormParameters alloc] initWithDictionary:dict];
+    
+    XCTAssertEqualObjects(parameters.formName, @"Test Form");
+    XCTAssertEqualObjects(parameters.fieldIds, field_ids_array);
+    XCTAssertEqualObjects(parameters.renameFields, rename_ids_dict);
+    XCTAssertEqualObjects(parameters.changeFieldsValue, @{@1: @"New Value"});
+    XCTAssertEqualObjects(parameters.anonymousSpecificFields, @[@1]);
+    XCTAssertEqualObjects(parameters.fullContentSpecificFields, @[@2]);
+    XCTAssertTrue(parameters.confirmButton);
+    XCTAssertEqual(parameters.anonymous, @NO);
+    XCTAssertEqualObjects(parameters.pathAnalysis, path_analysis_array);
+    XCTAssertTrue(parameters.fieldIds.count == 2);
 }
 
-- (void)testInitFromDicitionary {
-    [self checkParameters:_parametersFromDictionary];
+- (void)testDefaultInitialization {
+    MIFormParameters *parameters = [[MIFormParameters alloc] init];
+    
+    XCTAssertEqualObjects(parameters.formName, @"");
+    XCTAssertEqualObjects(parameters.fieldIds, @[]);
+    XCTAssertEqualObjects(parameters.renameFields, @{});
+    XCTAssertEqualObjects(parameters.changeFieldsValue, @{});
+    XCTAssertEqualObjects(parameters.anonymousSpecificFields, @[]);
+    XCTAssertEqualObjects(parameters.fullContentSpecificFields, @[]);
+    XCTAssertEqual(parameters.confirmButton, YES);
+    XCTAssertEqualObjects(parameters.pathAnalysis, @[]);
 }
 
-- (void)testAsQueryItemsForRequest {
-    //1. create expected query items
-    //NSMutableArray<NSURLQueryItem*>* result = [_parameters asQueryItems];
-    //not posibal tu test because it includes UIKit elements :(
-}
 
 @end

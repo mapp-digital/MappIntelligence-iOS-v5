@@ -48,13 +48,6 @@
     XCTAssertTrue([_pageProperties.internalSearch isEqualToString:_internalSearch], @"The internal search from page properties is not same as it is used for creation!");
 }
 
-- (void)testInitWithDictionary {
-    MIPageParameters* pageParameters = [[MIPageParameters alloc] initWithDictionary:_dictionary];
-    XCTAssertTrue([pageParameters.details isEqualToDictionary:_details], @"The details from page properties is not same as it is used for creation!");
-    XCTAssertTrue([pageParameters.groups isEqualToDictionary:_groups], @"The groups from page properties is not same as it is used for creation!");
-    XCTAssertTrue([pageParameters.internalSearch isEqualToString:_internalSearch], @"The internal search from page properties is not same as it is used for creation!");
-}
-
 - (void)testAsQueryItemsForRequest {
     //1. create expected query items
     NSMutableArray<NSURLQueryItem*>* expectedItems = [[NSMutableArray alloc] init];
@@ -89,5 +82,67 @@
         // Put the code you want to measure the time of here.
     }];
 }
+
+// Test initialization with page parameters, category, and search term
+- (void)testInitWithPageParams {
+    NSDictionary<NSNumber *, NSString *> *pageParams = @{@1: @"value1", @2: @"value2"};
+    NSMutableDictionary *category = [@{@"category1": @"value1"} mutableCopy];
+    NSString *searchTerm = @"testSearch";
+    
+    MIPageParameters *pageParamsObj = [[MIPageParameters alloc] initWithPageParams:pageParams pageCategory:category search:searchTerm];
+    
+    XCTAssertNotNil(pageParamsObj);
+    XCTAssertEqualObjects(pageParamsObj.details, pageParams);
+    XCTAssertEqualObjects(pageParamsObj.groups, category);
+    XCTAssertEqualObjects(pageParamsObj.internalSearch, searchTerm);
+}
+
+// Test initialization with a dictionary
+- (void)testInitWithDictionary {
+    NSDictionary *dictionary = @{
+        @"params": @{@1: @"value1", @2: @"value2"},
+        @"categories": @{@"category1": @"value1"},
+        @"searchTerm": @"testSearch"
+    };
+    
+    MIPageParameters *pageParamsObj = [[MIPageParameters alloc] initWithDictionary:dictionary];
+    
+    XCTAssertNotNil(pageParamsObj);
+    XCTAssertEqualObjects(pageParamsObj.details, dictionary[@"params"]);
+    XCTAssertEqualObjects(pageParamsObj.groups, dictionary[@"categories"]);
+    XCTAssertEqualObjects(pageParamsObj.internalSearch, dictionary[@"searchTerm"]);
+}
+
+// Test asQueryItems method with details, groups, and internal search
+- (void)testAsQueryItemsWithDetailsGroupsAndSearch {
+    NSDictionary<NSNumber *, NSString *> *details = @{@1: @"value1", @2: @"value2"};
+    NSMutableDictionary *groups = [@{@"category1": @"value1"} mutableCopy];
+    NSString *searchTerm = @"testSearch";
+    
+    MIPageParameters *pageParamsObj = [[MIPageParameters alloc] initWithPageParams:details pageCategory:groups search:searchTerm];
+    
+    NSMutableArray<NSURLQueryItem *> *queryItems = [pageParamsObj asQueryItems];
+    
+    XCTAssertEqual(queryItems.count, 4);
+    XCTAssertEqualObjects(queryItems[0].name, @"cp1");
+    XCTAssertEqualObjects(queryItems[0].value, @"value1");
+    XCTAssertEqualObjects(queryItems[1].name, @"cp2");
+    XCTAssertEqualObjects(queryItems[1].value, @"value2");
+    XCTAssertEqualObjects(queryItems[2].name, @"cgcategory1");
+    XCTAssertEqualObjects(queryItems[2].value, @"value1");
+    XCTAssertEqualObjects(queryItems[3].name, @"is");
+    XCTAssertEqualObjects(queryItems[3].value, @"testSearch");
+}
+
+// Test asQueryItems method with nil details, groups, and search
+- (void)testAsQueryItemsWithNilValues {
+    MIPageParameters *pageParamsObj = [[MIPageParameters alloc] initWithPageParams:nil pageCategory:nil search:nil];
+    
+    NSMutableArray<NSURLQueryItem *> *queryItems = [pageParamsObj asQueryItems];
+    
+    XCTAssertNotNil(queryItems);
+    XCTAssertEqual(queryItems.count, 0);
+}
+
 
 @end
