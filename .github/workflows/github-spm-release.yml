@@ -1,0 +1,80 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+  workflow_dispatch:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.ref }}
+  cancel-in-progress: true
+
+env:
+  DEVELOPER_DIR: /Applications/Xcode.app/Contents/Developer
+
+jobs:
+  test_apple_platforms:
+    name: Test on iOS
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        destination:
+          - "platform=iOS Simulator,name=iPhone 15"
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test platform ${{ matrix.destination }}
+        run: set -o pipefail && xcodebuild -scheme sdk-ios-playground -destination "${{ matrix.destination }}" | xcbeautify
+
+
+  test_spm:
+    name: Test SPM
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Build
+      run: swift build -v
+      
+  test_cocoapods:
+    name: Test Cocoa Pods
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Switch XCode Version
+      run: sudo xcode-select -s /Applications/Xcode_15.4.app
+    - name: Install Dependences
+      run: |
+        cd Example
+        pod repo update
+        pod install
+      shell: bash
+    - name: Test Only
+      uses: ty0x2333/cocoapods-action@master
+      with:
+        scheme: 'exampleTests'
+        additional_build_params: -destination 'platform=iOS Simulator,name=iPhone 15,OS=17.5'
+        lint: false
+
+      
+
+  release:
+    needs: [test_apple_platforms, test_spm, test_cocoapods]
+    name: Create a new GitHub release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: woke
+        uses: get-woke/woke-action@v0
+        with:
+          fail-on-error: true
+      - name: Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: '0.0.1'
+          release_name: Release 0.0.1
+          generate_release_notes: true
+          token: ${{ secrets.TOKEN_GB }}
