@@ -3,12 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		044A6D702C995D1D00C1F6F6 /* MIFormFieldParameterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 044A6D6F2C995D1D00C1F6F6 /* MIFormFieldParameterTests.m */; };
-		044A6D722C995D4600C1F6F6 /* MediaPropertiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 044A6D712C995D4600C1F6F6 /* MediaPropertiesTests.m */; };
+		04BAF8622CAA7D8D005960C8 /* MIEnvironmentTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BAF8612CAA7D8D005960C8 /* MIEnvironmentTests.m */; };
+		04BAF8652CAA7E26005960C8 /* OCMock in Frameworks */ = {isa = PBXBuildFile; productRef = 04BAF8642CAA7E26005960C8 /* OCMock */; };
 		04F88B7A2C9080490043B09C /* MIWebViewTrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F88B782C9080490043B09C /* MIWebViewTrackerTests.m */; };
 		04F88B7F2C9080DD0043B09C /* MIDeepLinkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F88B7E2C9080DD0043B09C /* MIDeepLinkTests.m */; };
 		8F143ED92510AD830024CF24 /* ActionEventTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F143ED82510AD830024CF24 /* ActionEventTests.m */; };
@@ -336,8 +337,8 @@
 
 /* Begin PBXFileReference section */
 		044A6D6F2C995D1D00C1F6F6 /* MIFormFieldParameterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIFormFieldParameterTests.m; sourceTree = "<group>"; };
-		044A6D712C995D4600C1F6F6 /* MediaPropertiesTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MediaPropertiesTests.m; path = ../../../../../Downloads/MediaPropertiesTests.m; sourceTree = "<group>"; };
 		04B84FC729279B1700A412B8 /* AppoxeeSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = AppoxeeSDK.xcframework; path = MappIntelligenceDemoApp/AppoxeeSDK.xcframework; sourceTree = "<group>"; };
+		04BAF8612CAA7D8D005960C8 /* MIEnvironmentTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MIEnvironmentTests.m; sourceTree = "<group>"; };
 		04F88B782C9080490043B09C /* MIWebViewTrackerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIWebViewTrackerTests.m; sourceTree = "<group>"; };
 		04F88B7E2C9080DD0043B09C /* MIDeepLinkTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIDeepLinkTests.m; sourceTree = "<group>"; };
 		8F143ED82510AD830024CF24 /* ActionEventTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionEventTests.m; sourceTree = "<group>"; };
@@ -516,6 +517,7 @@
 			files = (
 				A3BA0E9F2C7E2A7600A1D030 /* libMappIntelligenceiOS.a in Frameworks */,
 				A3F08BBC28D9DC68004FF49C /* WebKit.framework in Frameworks */,
+				04BAF8652CAA7E26005960C8 /* OCMock in Frameworks */,
 				A3BA0E9C2C7E27F000A1D030 /* libMappIntelligenceSDK.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -730,6 +732,7 @@
 			isa = PBXGroup;
 			children = (
 				A341D7132A45BC3400CA1946 /* MIUsageStatisticsTests.m */,
+				04BAF8612CAA7D8D005960C8 /* MIEnvironmentTests.m */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -742,7 +745,6 @@
 				8F143EDC2510B3220024CF24 /* SessionPropertiesTests.m */,
 				8FFDEA3A254225D800E069F7 /* UserPropertiesTests.m */,
 				A338B802254C6C0A00E50C28 /* ProductTests.m */,
-				044A6D712C995D4600C1F6F6 /* MediaPropertiesTests.m */,
 				A338B812254C6D3A00E50C28 /* EcommercePropertiesTests.m */,
 				8F9C7F6F255A851400CB95EF /* AdvertisementPropertiesTests.m */,
 				A3588A9827D20A7D0053961B /* MediaPropertiesTests.m */,
@@ -1083,6 +1085,9 @@
 				Base,
 			);
 			mainGroup = A334860F23BF3E2300D0EB5F;
+			packageReferences = (
+				04BAF8632CAA7E26005960C8 /* XCRemoteSwiftPackageReference "ocmock" */,
+			);
 			productRefGroup = A334861923BF3E2300D0EB5F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1227,7 +1232,6 @@
 				A357221D24F95742005F9DE1 /* RequestDataTest.m in Sources */,
 				A3588A9D27D8E5340053961B /* EventParameterTests.m in Sources */,
 				A3F08BBE28D9DD66004FF49C /* MediaTrackerTests.m in Sources */,
-				044A6D722C995D4600C1F6F6 /* MediaPropertiesTests.m in Sources */,
 				A3BA0EBF2C8EE98900A1D030 /* APXMIUMRequestTests.m in Sources */,
 				A3588A9927D20A7D0053961B /* MediaPropertiesTests.m in Sources */,
 				8F143ED92510AD830024CF24 /* ActionEventTests.m in Sources */,
@@ -1246,6 +1250,7 @@
 				A357221B24F933A1005F9DE1 /* RequestTest.m in Sources */,
 				A338B803254C6C0A00E50C28 /* ProductTests.m in Sources */,
 				8F143EDB2510AECA0024CF24 /* ActionPropertiesTests.m in Sources */,
+				04BAF8622CAA7D8D005960C8 /* MIEnvironmentTests.m in Sources */,
 				8FFDEA3B254225D800E069F7 /* UserPropertiesTests.m in Sources */,
 				A31C6F2024D9A9B200166585 /* DatabaseManagerTests.m in Sources */,
 				A3A72559243DC22C00671DB2 /* RequestTrackerBuilderTests.m in Sources */,
@@ -1573,6 +1578,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		04BAF8632CAA7E26005960C8 /* XCRemoteSwiftPackageReference "ocmock" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/erikdoe/ocmock";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		04BAF8642CAA7E26005960C8 /* OCMock */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 04BAF8632CAA7E26005960C8 /* XCRemoteSwiftPackageReference "ocmock" */;
+			productName = OCMock;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A334861023BF3E2300D0EB5F /* Project object */;
 }
