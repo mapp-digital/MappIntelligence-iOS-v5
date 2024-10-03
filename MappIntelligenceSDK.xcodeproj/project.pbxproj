@@ -10,9 +10,12 @@
 		044A6D702C995D1D00C1F6F6 /* MIFormFieldParameterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 044A6D6F2C995D1D00C1F6F6 /* MIFormFieldParameterTests.m */; };
 		04BAF8622CAA7D8D005960C8 /* MIEnvironmentTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BAF8612CAA7D8D005960C8 /* MIEnvironmentTests.m */; };
 		04BAF8652CAA7E26005960C8 /* OCMock in Frameworks */ = {isa = PBXBuildFile; productRef = 04BAF8642CAA7E26005960C8 /* OCMock */; };
+		04C5D8E62CAE79F200269504 /* MIPageViewEventTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C5D8E52CAE79F200269504 /* MIPageViewEventTests.m */; };
+		04C5D8EA2CAE79FB00269504 /* MIMediaEventTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C5D8E92CAE79FB00269504 /* MIMediaEventTests.m */; };
+		04C5D8EE2CAE7A1500269504 /* MIActionEventTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C5D8ED2CAE7A1500269504 /* MIActionEventTests.m */; };
+		04C5D8F02CAE7A1D00269504 /* MIFormSubmitEventTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C5D8EF2CAE7A1D00269504 /* MIFormSubmitEventTests.m */; };
 		04F88B7A2C9080490043B09C /* MIWebViewTrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F88B782C9080490043B09C /* MIWebViewTrackerTests.m */; };
 		04F88B7F2C9080DD0043B09C /* MIDeepLinkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F88B7E2C9080DD0043B09C /* MIDeepLinkTests.m */; };
-		8F143ED92510AD830024CF24 /* ActionEventTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F143ED82510AD830024CF24 /* ActionEventTests.m */; };
 		8F143EDB2510AECA0024CF24 /* ActionPropertiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F143EDA2510AECA0024CF24 /* ActionPropertiesTests.m */; };
 		8F143EDD2510B3220024CF24 /* SessionPropertiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F143EDC2510B3220024CF24 /* SessionPropertiesTests.m */; };
 		8F20A08C25C2CE470006CB93 /* MappIntelligenceiOS.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8F20A08925C2CE470006CB93 /* MappIntelligenceiOS.h */; };
@@ -161,7 +164,6 @@
 		A357221B24F933A1005F9DE1 /* RequestTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A357221A24F933A1005F9DE1 /* RequestTest.m */; };
 		A357221D24F95742005F9DE1 /* RequestDataTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A357221C24F95742005F9DE1 /* RequestDataTest.m */; };
 		A357222024FD10AD005F9DE1 /* PagePropertiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A357221F24FD10AD005F9DE1 /* PagePropertiesTests.m */; };
-		A357222224FD1ABB005F9DE1 /* PageViewEventTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A357222124FD1ABB005F9DE1 /* PageViewEventTests.m */; };
 		A3588A9927D20A7D0053961B /* MediaPropertiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3588A9827D20A7D0053961B /* MediaPropertiesTests.m */; };
 		A3588A9B27D8B5A70053961B /* CampaignParameterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3588A9A27D8B5A70053961B /* CampaignParameterTests.m */; };
 		A3588A9D27D8E5340053961B /* EventParameterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3588A9C27D8E5340053961B /* EventParameterTests.m */; };
@@ -339,9 +341,12 @@
 		044A6D6F2C995D1D00C1F6F6 /* MIFormFieldParameterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIFormFieldParameterTests.m; sourceTree = "<group>"; };
 		04B84FC729279B1700A412B8 /* AppoxeeSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = AppoxeeSDK.xcframework; path = MappIntelligenceDemoApp/AppoxeeSDK.xcframework; sourceTree = "<group>"; };
 		04BAF8612CAA7D8D005960C8 /* MIEnvironmentTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MIEnvironmentTests.m; sourceTree = "<group>"; };
+		04C5D8E52CAE79F200269504 /* MIPageViewEventTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MIPageViewEventTests.m; sourceTree = "<group>"; };
+		04C5D8E92CAE79FB00269504 /* MIMediaEventTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MIMediaEventTests.m; sourceTree = "<group>"; };
+		04C5D8ED2CAE7A1500269504 /* MIActionEventTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MIActionEventTests.m; sourceTree = "<group>"; };
+		04C5D8EF2CAE7A1D00269504 /* MIFormSubmitEventTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MIFormSubmitEventTests.m; sourceTree = "<group>"; };
 		04F88B782C9080490043B09C /* MIWebViewTrackerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIWebViewTrackerTests.m; sourceTree = "<group>"; };
 		04F88B7E2C9080DD0043B09C /* MIDeepLinkTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIDeepLinkTests.m; sourceTree = "<group>"; };
-		8F143ED82510AD830024CF24 /* ActionEventTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionEventTests.m; sourceTree = "<group>"; };
 		8F143EDA2510AECA0024CF24 /* ActionPropertiesTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionPropertiesTests.m; sourceTree = "<group>"; };
 		8F143EDC2510B3220024CF24 /* SessionPropertiesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SessionPropertiesTests.m; sourceTree = "<group>"; };
 		8F20A08725C2CE470006CB93 /* libMappIntelligenceiOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMappIntelligenceiOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -421,7 +426,6 @@
 		A357221A24F933A1005F9DE1 /* RequestTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RequestTest.m; sourceTree = "<group>"; };
 		A357221C24F95742005F9DE1 /* RequestDataTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RequestDataTest.m; sourceTree = "<group>"; };
 		A357221F24FD10AD005F9DE1 /* PagePropertiesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PagePropertiesTests.m; sourceTree = "<group>"; };
-		A357222124FD1ABB005F9DE1 /* PageViewEventTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PageViewEventTests.m; sourceTree = "<group>"; };
 		A3588A9827D20A7D0053961B /* MediaPropertiesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MediaPropertiesTests.m; sourceTree = "<group>"; };
 		A3588A9A27D8B5A70053961B /* CampaignParameterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CampaignParameterTests.m; sourceTree = "<group>"; };
 		A3588A9C27D8E5340053961B /* EventParameterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EventParameterTests.m; sourceTree = "<group>"; };
@@ -619,8 +623,10 @@
 		A32EE09C243B56FC00EDC5B8 /* Events */ = {
 			isa = PBXGroup;
 			children = (
-				8F143ED82510AD830024CF24 /* ActionEventTests.m */,
-				A357222124FD1ABB005F9DE1 /* PageViewEventTests.m */,
+				04C5D8ED2CAE7A1500269504 /* MIActionEventTests.m */,
+				04C5D8EF2CAE7A1D00269504 /* MIFormSubmitEventTests.m */,
+				04C5D8E92CAE79FB00269504 /* MIMediaEventTests.m */,
+				04C5D8E52CAE79F200269504 /* MIPageViewEventTests.m */,
 			);
 			name = Events;
 			sourceTree = "<group>";
@@ -1223,6 +1229,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04C5D8F02CAE7A1D00269504 /* MIFormSubmitEventTests.m in Sources */,
 				A32EE09F243B574E00EDC5B8 /* UIFlowObserverTests.m in Sources */,
 				A31C6F1D24D9A0F300166585 /* RequestBatchSupportUrlBuilderTests.m in Sources */,
 				04F88B7A2C9080490043B09C /* MIWebViewTrackerTests.m in Sources */,
@@ -1230,18 +1237,17 @@
 				A3BA0EB72C8B20BF00A1D030 /* APXNetworkManagerTests.m in Sources */,
 				A3A7255D243E07A100671DB2 /* URLSizeMonitorTests.m in Sources */,
 				A357221D24F95742005F9DE1 /* RequestDataTest.m in Sources */,
+				04C5D8EA2CAE79FB00269504 /* MIMediaEventTests.m in Sources */,
 				A3588A9D27D8E5340053961B /* EventParameterTests.m in Sources */,
 				A3F08BBE28D9DD66004FF49C /* MediaTrackerTests.m in Sources */,
 				A3BA0EBF2C8EE98900A1D030 /* APXMIUMRequestTests.m in Sources */,
 				A3588A9927D20A7D0053961B /* MediaPropertiesTests.m in Sources */,
-				8F143ED92510AD830024CF24 /* ActionEventTests.m in Sources */,
 				A3A72557243DBF1000671DB2 /* PropertiesTests.m in Sources */,
 				BCBE5C3A23F698EF002125C1 /* DefaultTrackerTests.m in Sources */,
 				A357221924F8F17B005F9DE1 /* ParameterTest.m in Sources */,
 				A3BA0EC42C8EEC4F00A1D030 /* APXIdentifierTests.m in Sources */,
 				044A6D702C995D1D00C1F6F6 /* MIFormFieldParameterTests.m in Sources */,
 				A3588A9B27D8B5A70053961B /* CampaignParameterTests.m in Sources */,
-				A357222224FD1ABB005F9DE1 /* PageViewEventTests.m in Sources */,
 				A3BA0EC12C8EE9B500A1D030 /* APXMIRequestBuilder.m in Sources */,
 				A3A7255B243DEA0500671DB2 /* RequestUrlBuilderTests.m in Sources */,
 				A341D7142A45BC3400CA1946 /* MIUsageStatisticsTests.m in Sources */,
@@ -1250,11 +1256,13 @@
 				A357221B24F933A1005F9DE1 /* RequestTest.m in Sources */,
 				A338B803254C6C0A00E50C28 /* ProductTests.m in Sources */,
 				8F143EDB2510AECA0024CF24 /* ActionPropertiesTests.m in Sources */,
+				04C5D8EE2CAE7A1500269504 /* MIActionEventTests.m in Sources */,
 				04BAF8622CAA7D8D005960C8 /* MIEnvironmentTests.m in Sources */,
 				8FFDEA3B254225D800E069F7 /* UserPropertiesTests.m in Sources */,
 				A31C6F2024D9A9B200166585 /* DatabaseManagerTests.m in Sources */,
 				A3A72559243DC22C00671DB2 /* RequestTrackerBuilderTests.m in Sources */,
 				A357222024FD10AD005F9DE1 /* PagePropertiesTests.m in Sources */,
+				04C5D8E62CAE79F200269504 /* MIPageViewEventTests.m in Sources */,
 				A3BA0EB52C8B204000A1D030 /* MIAPXInappLoggerTests.m in Sources */,
 				BCBE5BFB23EB1798002125C1 /* MappIntelligenceSDKLoggerTest.m in Sources */,
 				A3BA0EB92C8EDFC100A1D030 /* APXNetworkMetadataTests.m in Sources */,
