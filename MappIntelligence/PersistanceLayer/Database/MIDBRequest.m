@@ -99,8 +99,8 @@
     }
     
     if (self.status >= ACTIVE && self.status <= FAILED) {
-        keyedValues[key_status] = [NSNumber numberWithInt:(int)self.status] ;
-    }
+            keyedValues[key_status] = [self getStatusNumber] ;
+        }
     
     if (self.parameters) {
         
@@ -114,6 +114,23 @@
     }
     
     return keyedValues;
+}
+
+- (NSNumber*) getStatusNumber {
+    switch (self.status) {
+        case ACTIVE:
+            return @0;
+            break;
+        case SENT:
+            return @1;
+            break;
+        case FAILED:
+            return @2;
+            break;
+        default:
+            return @0;
+            break;
+    }
 }
 
 - (NSString*)print {

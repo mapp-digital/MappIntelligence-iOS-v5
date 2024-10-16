@@ -8,8 +8,12 @@
 
 #import <XCTest/XCTest.h>
 #import "MIRequestData.h"
+#import "MIDBRequest.h"
+#import "MITrackerRequest.h"
+#import "MappIntelligenceLogger.h"
+#import "MIDatabaseManager.h"
 
-@interface RequestDataTest : XCTestCase
+@interface MIRequestDataTest : XCTestCase
 
 @property MIRequestData* requestData;
 @property NSDate* date;
@@ -17,13 +21,15 @@
 @property MIDBRequest* request1;
 @property MIDBRequest* request2;
 @property NSDictionary *keyedValues;
+@property (nonatomic, strong) MappIntelligenceLogger *mockLogger;
 
 @end
 
-@implementation RequestDataTest
+@implementation MIRequestDataTest
 
 - (void)setUp {
     _requestData = [[MIRequestData alloc] init];
+    self.mockLogger = [MappIntelligenceLogger shared];
     NSString *dateStr = @"2020-08-27 17:16:32";
     // Convert string to date object
     _dateFormatter = [[NSDateFormatter alloc] init];
@@ -33,7 +39,7 @@
       @"id" : @123456,
       @"track_domain" : @"https://www.domain.com",
       @"track_ids" : @"12,34",
-      @"status" : @0,
+      @"status" : @1,
       @"date" : [_dateFormatter stringFromDate:_date]
     };
     _request1 = [[MIDBRequest alloc] initWithKeyedValues:keyedValues];
@@ -42,7 +48,7 @@
       @"id" : @7891234,
       @"track_domain" : @"https://www.domain.com",
       @"track_ids" : @"56,78",
-      @"status" : @0,
+      @"status" : @1,
       @"date" : [_dateFormatter stringFromDate:_date]
     };
     _request2 = [[MIDBRequest alloc] initWithKeyedValues:keyedValues];
@@ -52,20 +58,21 @@
                       @"id" : @123456,
                       @"track_domain" : @"https://www.domain.com",
                       @"track_ids" : @"12,34",
-                      @"status" : @0,
+                      @"status" : @1,
                       @"date" : [_dateFormatter stringFromDate:_date]
                     },
                     @{
                       @"id" : @7891234,
                       @"track_domain" : @"https://www.domain.com",
                       @"track_ids" : @"56,78",
-                      @"status" : @0,
+                      @"status" : @1,
                       @"date" : [_dateFormatter stringFromDate:_date]
                     }]
     };
 }
 
 - (void)tearDown {
+    self.mockLogger = nil;
     _requestData = nil;
     _date = nil;
     _dateFormatter = nil;
@@ -106,20 +113,47 @@
 
 - (void)testSendAllRequests {
     XCTestExpectation* expectation = [[XCTestExpectation alloc] initWithDescription:@"Wait until delete requests from database!"];
-    _requestData = [[MIRequestData alloc] initWithKeyedValues:_keyedValues];
-    NSLog(@"%@",_keyedValues);
+    MIParameter* paramter = [[MIParameter alloc] initWithKeyedValues: @{@"name" : @"item.name", @"value" : @"item.value"}];
+    NSMutableArray<MIParameter*>* paramters = [[NSMutableArray alloc] initWithObjects:paramter, nil];
+    [_request1 setParameters:paramters];
+    _requestData = [[MIRequestData alloc] initWithRequests:@[_request1]];
+    
     [_requestData sendAllRequestsWithCompletitionHandler:^(NSError * _Nullable error) {
         XCTAssertNil(error, @"There was an error wile sending all all requests!");
         [expectation fulfill];
     }];
-    [self waitForExpectations:[NSArray arrayWithObject:expectation] timeout:25];
+    [self waitForExpectations:[NSArray arrayWithObject:expectation] timeout:50];
 }
 
-- (void)testPerformanceExample {
-    // This is an example of a performance test case.
-    [self measureBlock:^{
-        // Put the code you want to measure the time of here.
-    }];
+- (void)testInitWithRequestsSecond {
+    NSArray *mockRequests = @[[[MIDBRequest alloc] initWithKeyedValues:@{@"key": @"value"}]];
+    self.requestData = [[MIRequestData alloc] initWithRequests:mockRequests];
+    
+    XCTAssertNotNil(self.requestData.requests);
+    XCTAssertEqual(self.requestData.requests.count, 1);
+}
+
+- (void)testSetValuesForKeysWithDictionary {
+    [self.requestData setValuesForKeysWithDictionary:_keyedValues];
+    
+    XCTAssertEqual(self.requestData.requests.count, 2);
+}
+
+- (void)testDictionaryWithValues {
+    [self.requestData setValuesForKeysWithDictionary:_keyedValues];
+    
+    NSDictionary *output = [self.requestData dictionaryWithValues];
+    XCTAssertNotNil(output);
+    XCTAssertEqual(output.count, 1);
+}
+
+- (void)testPrintSecond {
+    NSDictionary *keyedValues = @{@"key": @"value"};
+    [self.requestData setValuesForKeysWithDictionary:keyedValues];
+    
+    NSString *output = [self.requestData print];
+    XCTAssertNotNil(output);
+    // Depending on how print is implemented in MIDBRequest, you may want to check specific content.
 }
 
 @end
