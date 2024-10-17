@@ -13,6 +13,7 @@
 		0403E6932CBFC7F60021EB1D /* MappIntelligenceDefaultConfigTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0403E6922CBFC7F60021EB1D /* MappIntelligenceDefaultConfigTest.m */; };
 		0403E6952CC0E6120021EB1D /* MIDefaultTrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0403E6942CC0E6120021EB1D /* MIDefaultTrackerTests.m */; };
 		0403E6B82CC0F06D0021EB1D /* MIUIFlowObserverTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0403E6B72CC0F06D0021EB1D /* MIUIFlowObserverTests.m */; };
+		0403E6BA2CC11E870021EB1D /* MIExceptionTrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0403E6B92CC11E870021EB1D /* MIExceptionTrackerTests.m */; };
 		044A6D702C995D1D00C1F6F6 /* MIFormFieldParameterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 044A6D6F2C995D1D00C1F6F6 /* MIFormFieldParameterTests.m */; };
 		04BAF8622CAA7D8D005960C8 /* MIEnvironmentTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BAF8612CAA7D8D005960C8 /* MIEnvironmentTests.m */; };
 		04BAF8652CAA7E26005960C8 /* OCMock in Frameworks */ = {isa = PBXBuildFile; productRef = 04BAF8642CAA7E26005960C8 /* OCMock */; };
@@ -344,6 +345,7 @@
 		0403E6922CBFC7F60021EB1D /* MappIntelligenceDefaultConfigTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MappIntelligenceDefaultConfigTest.m; sourceTree = "<group>"; };
 		0403E6942CC0E6120021EB1D /* MIDefaultTrackerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MIDefaultTrackerTests.m; sourceTree = "<group>"; };
 		0403E6B72CC0F06D0021EB1D /* MIUIFlowObserverTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MIUIFlowObserverTests.m; sourceTree = "<group>"; };
+		0403E6B92CC11E870021EB1D /* MIExceptionTrackerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MIExceptionTrackerTests.m; sourceTree = "<group>"; };
 		044A6D6F2C995D1D00C1F6F6 /* MIFormFieldParameterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIFormFieldParameterTests.m; sourceTree = "<group>"; };
 		04B84FC729279B1700A412B8 /* AppoxeeSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = AppoxeeSDK.xcframework; path = MappIntelligenceDemoApp/AppoxeeSDK.xcframework; sourceTree = "<group>"; };
 		04BAF8612CAA7D8D005960C8 /* MIEnvironmentTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MIEnvironmentTests.m; sourceTree = "<group>"; };
@@ -634,6 +636,7 @@
 		A32EE09D243B570D00EDC5B8 /* Trackers */ = {
 			isa = PBXGroup;
 			children = (
+				0403E6B92CC11E870021EB1D /* MIExceptionTrackerTests.m */,
 				0403E6B72CC0F06D0021EB1D /* MIUIFlowObserverTests.m */,
 				0403E6942CC0E6120021EB1D /* MIDefaultTrackerTests.m */,
 			);
@@ -1247,6 +1250,7 @@
 				A3588A9B27D8B5A70053961B /* CampaignParameterTests.m in Sources */,
 				A3BA0EC12C8EE9B500A1D030 /* APXMIRequestBuilder.m in Sources */,
 				0403E68D2CBF94730021EB1D /* MIParameterTest.m in Sources */,
+				0403E6BA2CC11E870021EB1D /* MIExceptionTrackerTests.m in Sources */,
 				A3A7255B243DEA0500671DB2 /* RequestUrlBuilderTests.m in Sources */,
 				A341D7142A45BC3400CA1946 /* MIUsageStatisticsTests.m in Sources */,
 				A31D7A4F243CC0F200386A1C /* TrackerRequestTests.m in Sources */,
