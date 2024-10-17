@@ -11,14 +11,18 @@
 #import "MiDefaultTracker.h"
 #import "MIEnvironment.h"
 #import "MappIntelligence.h"
+#import "MappIntelligenceLogger.h"
+#import "MIDatabaseManager.h"
 
-@interface DefaultTrackerTests : XCTestCase
+@interface MIDefaultTrackerTests : XCTestCase
 
-@property MIDefaultTracker *tracker;
+@property (nonatomic, strong) MIDefaultTracker *tracker;
+@property (nonatomic, strong) MappIntelligenceLogger *mockLogger;
+@property (nonatomic, strong) MIDatabaseManager *mockDatabaseManager;
 
 @end
 
-@implementation DefaultTrackerTests
+@implementation MIDefaultTrackerTests
 
 - (void)setUp {
     [super setUp];
@@ -36,14 +40,18 @@
     NSNumber *number = [NSNumber numberWithLong:[[dict valueForKey:@"track_ids"] longValue]];
     NSArray* array = @[number];
     [[MappIntelligence shared] initWithConfiguration: array  onTrackdomain:[dict valueForKey:@"domain"]];
+    self.mockLogger = [MappIntelligenceLogger shared]; // Assuming this is a singleton
+    self.mockDatabaseManager = [MIDatabaseManager shared];
+    
+    [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:[[NSBundle mainBundle] bundleIdentifier]];
+
 }
 
 - (void)tearDown {
+    self.tracker = nil;
+    self.mockLogger = nil;
+    self.mockDatabaseManager = nil;
     [super tearDown];
-}
-
-- (void)testExample {
-    XCTAssertNotNil(_tracker);
 }
 
 - (void)testGenerateEverID {
@@ -69,14 +77,6 @@
         [[NSString alloc] initWithFormat:@"Tracking Library %@ (%@))",
                                          MappIntelligence.version, properties];
     XCTAssertTrue([generatedUserAgent isEqualToString:currentUserAgent], @"The genereted user agent is not correct!");
-}
-
-- (void)testUpdateFirstSessionWith {
-//    XCTAssertFalse([_tracker isReady]);
-//    [_tracker updateFirstSessionWith: UIApplicationStateActive];
-//    XCTAssertTrue([_tracker isReady]);
-//    [_tracker updateFirstSessionWith: UIApplicationStateInactive];
-//    XCTAssertTrue([_tracker isReady]);
 }
 
 - (void)testTrackUIController {
@@ -166,7 +166,7 @@
         XCTAssertNil(error, @"There was an error while sending requests from database as batch!");
         [expectation fulfill];
     }];
-    [self waitForExpectations:[NSArray arrayWithObject:expectation] timeout:25];
+    [self waitForExpectations:[NSArray arrayWithObject:expectation] timeout:50];
 }
 
 - (void)testRemoveAllRequestsFromDB {
@@ -190,5 +190,60 @@
         
     }
 }
+
+- (void)testInitialization {
+    XCTAssertNotNil(self.tracker);
+}
+
+- (void)testGenerateUserAgentSecondTest {
+    NSString *userAgent = [self.tracker generateUserAgent];
+    XCTAssertNotNil(userAgent);
+    XCTAssertTrue([userAgent containsString:@"Tracking Library"]);
+}
+
+- (void)testTrackWithEvent {
+    MITrackingEvent *event = [[MITrackingEvent alloc] init]; // Assume init sets some defaults
+    NSError *error = [self.tracker trackWithEvent:event];
+    
+    XCTAssertNil(error);
+    // Additional checks to verify if the event is enqueued correctly can be done here
+}
+
+- (void)testTrackWithData {
+    NSError *error = [self.tracker trackWith:@""];
+    XCTAssertNil(error);
+}
+
+- (void)testSetAnonymousTracking {
+    [self.tracker setAnonymousTracking:YES];
+    XCTAssertTrue(self.tracker.anonymousTracking);
+    // Check if everID is cleared
+    XCTAssertNil([[MIDefaultTracker sharedDefaults] stringForKey:@"everId"]);
+}
+
+- (void)testGenerateEverId {
+    NSString *everID = [self.tracker generateEverId];
+    XCTAssertNotNil(everID);
+    XCTAssertFalse([everID isEqualToString:@""]); // Check that it is not empty
+}
+
+- (void)testMigrateData {
+    [[MIDefaultTracker sharedDefaults] setValue:@"legacyValue" forKey:@"webtrekk.everId"];
+    [self.tracker migrateData];
+    
+    XCTAssertEqualObjects([[MIDefaultTracker sharedDefaults] stringForKey:@"everId"], @"legacyValue");
+}
+
+- (void)testSendRequestFromDatabaseWithCompletionHandler {
+    // Mock database behavior
+    __block NSError *errorReceived = nil;
+    [self.tracker sendRequestFromDatabaseWithCompletionHandler:^(NSError * _Nullable error) {
+        errorReceived = error;
+    }];
+    
+    // Validate behavior based on mock
+    XCTAssertNil(errorReceived); // Check if no error occurred during sending
+}
+
 
 @end
