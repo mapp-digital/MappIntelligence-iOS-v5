@@ -123,6 +123,10 @@
         [self didBecomeActive];
     }];
     
+    [notificationCenter addObserverForName:UIApplicationWillTerminateNotification object:NULL queue:NULL usingBlock:^(NSNotification * _Nonnull notification) {
+        [self willTerminate];
+    }];
+    
     
     [notificationCenter addObserverForName:UIApplicationDidEnterBackgroundNotification object:NULL queue:NULL usingBlock:^(NSNotification * _Nonnull note) {
         [self willEnterBckground];
@@ -235,11 +239,12 @@
 -(void)willResignActive {
     if (!([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive)) {
         [_tracker initHibernate];
+        [_tracker updateFirstSessionWith:[[UIApplication sharedApplication] applicationState]];
     }
 }
 
 -(void)willTerminate {
-    
+    [_tracker updateFirstSessionWith:[[UIApplication sharedApplication] applicationState]];
 }
 
 -(void)willEnterBckground {

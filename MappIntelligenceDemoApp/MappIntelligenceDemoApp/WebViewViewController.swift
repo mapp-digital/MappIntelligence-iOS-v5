@@ -13,14 +13,31 @@ class WebViewViewController: UIViewController {
    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let request = URLRequest(url: URL(string: "http://demoshop.webtrekk.com/web2app/index.html")!)
         
-        let configuration = WKWebViewConfiguration()
-        MIWebViewTracker.sharedInstance()?.update(configuration)
-                
-        let webView = WKWebView(frame: self.view.frame, configuration: configuration)
+        let webConfiguration = TrackingWrapper.webtrekk.updateWKWebViewConfiguration(WKWebViewConfiguration())
+        let request = URLRequest(url: URL(string: "https://www.emp.de")!)
+        let webView = WKWebView(frame: self.view.frame, configuration: webConfiguration)
         self.view.addSubview(webView)
         webView.load(request)
+        MappIntelligence.shared()?.trackPage(MIPageViewEvent(name: "default"))
+
+//        let request = URLRequest(url: URL(string: "http://demoshop.webtrekk.com/web2app/index.html")!)
+//        
+//        let configuration = WKWebViewConfiguration()
+//        MIWebViewTracker.sharedInstance()?.update(configuration)
+//                
+//        let webView = WKWebView(frame: self.view.frame, configuration: configuration)
+//        self.view.addSubview(webView)
+//        webView.load(request)
+    }
+}
+
+
+class TrackingWrapper: NSObject {
+    public static let webtrekk = Webtrekk()
+    public class Webtrekk: NSObject {
+        func updateWKWebViewConfiguration(_ configuration: WKWebViewConfiguration) -> WKWebViewConfiguration {
+            return MIWebViewTracker.sharedInstance()?.update(configuration) ?? WKWebViewConfiguration()
+        }
     }
 }
