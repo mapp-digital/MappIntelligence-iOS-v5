@@ -10,6 +10,7 @@
 #import "MappIntelligenceLogger.h"
 
 @interface MappIntelligenceSDKLoggerTest : XCTestCase
+@property (nonatomic, strong) MappIntelligenceLogger *logger;
 
 @end
 
@@ -17,9 +18,11 @@
 
 - (void)setUp {
     [super setUp];
+    self.logger = [MappIntelligenceLogger shared];
 }
 
 - (void)tearDown {
+    self.logger = nil;
     [super tearDown];
 }
 
@@ -93,6 +96,41 @@
     XCTAssertNotNil(log);
 
     XCTAssertTrue([log isEqualToString:@"[MappIntelligence Debug] test"], @"log is: %@", log);
+}
+
+- (void)testInitialization {
+    XCTAssertNotNil(self.logger);
+    XCTAssertEqual(self.logger.logLevel, kMappIntelligenceLogLevelDescriptionNone);
+    XCTAssertNotNil(self.logger.formatter);
+}
+
+- (void)testSharedInstance {
+    MappIntelligenceLogger *anotherLogger = [MappIntelligenceLogger shared];
+    XCTAssertEqual(self.logger, anotherLogger);
+}
+
+- (void)testLogObjWithMatchingLogLevel {
+    self.logger.logLevel = kMappIntelligenceLogLevelDescriptionDebug;
+    NSString *logOutput = [self.logger logObj:@"Test message" forDescription:kMappIntelligenceLogLevelDescriptionDebug];
+    XCTAssertEqualObjects(logOutput, @"[MappIntelligence Debug] Test message");
+}
+
+- (void)testLogObjWithNonMatchingLogLevel {
+    self.logger.logLevel = kMappIntelligenceLogLevelDescriptionNone;
+    NSString *logOutput = [self.logger logObj:@"Test message" forDescription:kMappIntelligenceLogLevelDescriptionDebug];
+    XCTAssertNil(logOutput);
+}
+
+- (void)testLogObjWithAllLogLevel {
+    self.logger.logLevel = kMappIntelligenceLogLevelDescriptionAll;
+    NSString *logOutput = [self.logger logObj:@"Test message" forDescription:kMappIntelligenceLogLevelDescriptionWarning];
+    XCTAssertEqualObjects(logOutput, @"[MappIntelligence Warning] Test message");
+}
+
+- (void)testLogObjWithFaultLogLevel {
+    self.logger.logLevel = kMappIntelligenceLogLevelDescriptionNone;
+    NSString *logOutput = [self.logger logObj:@"Fault message" forDescription:kMappIntelligenceLogLevelDescriptionFault];
+    XCTAssertEqualObjects(logOutput, @"[MappIntelligence Fault] Fault message");
 }
 
 @end
