@@ -347,6 +347,7 @@
 		0403E6B72CC0F06D0021EB1D /* MIUIFlowObserverTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MIUIFlowObserverTests.m; sourceTree = "<group>"; };
 		0403E6B92CC11E870021EB1D /* MIExceptionTrackerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MIExceptionTrackerTests.m; sourceTree = "<group>"; };
 		0403E6BB2CC77E710021EB1D /* MappIntelligenceSDKLoggerTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MappIntelligenceSDKLoggerTest.m; sourceTree = "<group>"; };
+		0403E6BD2CC8E83D0021EB1D /* MappIntelligenceTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = MappIntelligenceTests.xctestplan; sourceTree = "<group>"; };
 		044A6D6F2C995D1D00C1F6F6 /* MIFormFieldParameterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIFormFieldParameterTests.m; sourceTree = "<group>"; };
 		04B84FC729279B1700A412B8 /* AppoxeeSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = AppoxeeSDK.xcframework; path = MappIntelligenceDemoApp/AppoxeeSDK.xcframework; sourceTree = "<group>"; };
 		04BAF8612CAA7D8D005960C8 /* MIEnvironmentTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MIEnvironmentTests.m; sourceTree = "<group>"; };
@@ -911,6 +912,7 @@
 		BCEA32C023E979FD003AF806 /* MappIntelligenceTests */ = {
 			isa = PBXGroup;
 			children = (
+				0403E6BD2CC8E83D0021EB1D /* MappIntelligenceTests.xctestplan */,
 				A3BA0EB32C8B1FE100A1D030 /* UserMatching */,
 				A341D7122A45BBF600CA1946 /* Utility */,
 				A3F8889C28198F7D0054B9A1 /* Features */,

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>inapp</key>
+	<dict>
+		<key>custom_fields</key>
+		<array>
+			<string>customString</string>
+			<string>customNumber</string>
+			<string>customDate</string>
+		</array>
+		<key>media_timeout</key>
+		<integer>5</integer>
+	</dict>
+	<key>sdk</key>
+	<dict>
+		<key>app_id</key>
+		<string>106638</string>
+		<key>dmc_system_id</key>
+		<real>5963</real>
+		<key>sdk_key</key>
+		<string>174d50242535f7.79958106</string>
+		<key>is_eu</key>
+		<false/>
+		<key>open_landing_page_inside_app</key>
+		<false/>
+		<key>jamie_url</key>
+		<string>jamie.g.shortest-route.com</string>
+		<key>apx_open_url_internal</key>
+		<string>YES</string>
+	</dict>
+</dict>
+</plist>
