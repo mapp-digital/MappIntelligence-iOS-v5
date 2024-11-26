@@ -38,7 +38,7 @@
     if (self) {
         self.parameters = [[NSMutableArray alloc] init];
         for (NSURLQueryItem* item in parameters) {
-            if(![item.name isEqual:NULL] && ![item.value isEqual:NULL])
+            if(![item.name isEqual:NULL] && ![item.value isEqual:NULL] && item.value != nil && item.name != nil)
                 [self.parameters addObject:[[MIParameter alloc] initWithKeyedValues: @{@"name" : item.name, @"value" : item.value}]];
         }
         self.domain = domain;

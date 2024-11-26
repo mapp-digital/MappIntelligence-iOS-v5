@@ -1,9 +1,9 @@
 //
-//  RequestTrackerBuilderTests.m
+//  MIRequestTrackerBuilderTests.m
 //  MappIntelligenceTests
 //
-//  Created by Stefan Stevanovic on 4/8/20.
-//  Copyright © 2020 Mapp Digital US, LLC. All rights reserved.
+//  Created by Mihajlo Jezdic on 25.11.24.
+//  Copyright © 2024 Mapp Digital US, LLC. All rights reserved.
 //
 
 #import <XCTest/XCTest.h>
@@ -14,7 +14,7 @@
 #import "MIRequestTrackerBuilder.h"
 #import "MITrackerRequest.h"
 
-@interface RequestTrackerBuilderTests : XCTestCase
+@interface MIRequestTrackerBuilderTests : XCTestCase
 
 @property MIDefaultTracker *tracker;
 @property MIConfiguration *configuration;
@@ -22,7 +22,7 @@
 
 @end
 
-@implementation RequestTrackerBuilderTests
+@implementation MIRequestTrackerBuilderTests
 
 - (void)setUp {
     [super setUp];
@@ -55,3 +55,4 @@
 }
 
 @end
+
