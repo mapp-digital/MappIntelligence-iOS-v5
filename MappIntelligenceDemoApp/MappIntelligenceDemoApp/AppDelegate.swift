@@ -47,6 +47,12 @@ var window: UIWindow?
         MappIntelligence.shared()?.setTemporarySessionId("test123")
         MappIntelligence.shared()?.enableCrashTracking(.allExceptionTypes)
         // Override point for customization after application launch.
+        
+//        MappIntelligence.shared()?.anonymousTracking = true
+//        MappIntelligence.shared()?.initWithConfiguration([794940687426749], onTrackdomain: "https://tracker-int-01.webtrekk.net")
+//        MappIntelligence.shared()?.logLevel = .all
+//        MappIntelligence.shared()?.setTemporarySessionId("user-xyz-123456789")
+//        MappIntelligence.shared()?.requestInterval = 15
         return true
     }
     
@@ -102,4 +108,3 @@ var window: UIWindow?
     }
     
 }
-

@@ -218,8 +218,12 @@ static NSString *userAgent;
   NSString *tmpEverId = [[MIDefaultTracker sharedDefaults] stringForKey:everId];
   // https://nshipster.com/nil/ read for more explanation
   if (tmpEverId != nil) {
+      [[MIDefaultTracker sharedDefaults] setValue:tmpEverId forKey:everId];
+      [[MIDefaultTracker sharedDefaults] synchronize];
     return tmpEverId;
   } else {
+      [[MIDefaultTracker sharedDefaults] setValue:[self getNewEverID] forKey:everId];
+      [[MIDefaultTracker sharedDefaults] synchronize];
     return [self getNewEverID];
   }
 
@@ -377,7 +381,7 @@ static NSString *userAgent;
   [requestProperties setIsFirstEventOfApp:_isFirstEventOpen];
   [requestProperties setIsFirstEventOfSession:_isFirstEventOfSession];
   [requestProperties setIsFirstEventAfterAppUpdate:NO];
-  [requestProperties setEverId:[[MIDefaultTracker sharedDefaults] stringForKey:everId]];
+  //[requestProperties setEverId:[[MIDefaultTracker sharedDefaults] stringForKey:everId]];
 
   MIRequestTrackerBuilder *builder =
       [[MIRequestTrackerBuilder alloc] initWithConfoguration:self.config];

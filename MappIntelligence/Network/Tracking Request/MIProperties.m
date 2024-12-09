@@ -7,6 +7,7 @@
 //
 
 #import "MIProperties.h"
+#import "MIDefaultTracker.h"
 
 @implementation MIProperties
 

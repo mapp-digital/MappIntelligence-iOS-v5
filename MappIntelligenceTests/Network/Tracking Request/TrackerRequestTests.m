@@ -14,6 +14,7 @@
 @interface TrackerRequestTests : XCTestCase
 
 @property MITrackerRequest *request;
+@property (nonatomic, strong) MITrackerRequest *trackerRequest;
 
 @end
 
@@ -22,9 +23,11 @@
 - (void)setUp {
     [super setUp];
     _request = [MITrackerRequest shared];
+    self.trackerRequest = [MITrackerRequest shared];
 }
 
 - (void)tearDown {
+    self.trackerRequest = nil;
     [super tearDown];
 }
 
@@ -54,6 +57,69 @@
     [_request sendRequestWith:url andBody: body andCompletition:^(NSError * _Nonnull error) {
         XCTAssertNotNil(error);
     }];
+}
+
+- (void)testSharedInstance {
+    MITrackerRequest *anotherInstance = [MITrackerRequest shared];
+    XCTAssertEqual(self.trackerRequest, anotherInstance, @"The shared instance should be the same");
+}
+
+- (void)testInitWithEventAndPropertiesSecond {
+    MITrackingEvent *event = [[MITrackingEvent alloc] init]; // Assuming initializer is available
+    MIProperties *properties = [[MIProperties alloc] init]; // Assuming initializer is available
+    MITrackerRequest *request = [[MITrackerRequest alloc] initWithEvent:event andWithProperties:properties];
+    
+    XCTAssertNotNil(request, @"The request should be initialized");
+    // Further assertions can be added to check properties are set correctly
+}
+
+- (void)testSendRequestWithCompletion {
+    NSURL *url = [NSURL URLWithString:@"https://example.com"];
+    
+    XCTestExpectation *expectation = [self expectationWithDescription:@"Request should complete"];
+    
+    [self.trackerRequest sendRequestWith:url andCompletition:^(NSError * _Nonnull error) {
+        XCTAssertNil(error, @"Error should be nil on successful request");
+        [expectation fulfill];
+    }];
+    
+    [self waitForExpectationsWithTimeout:5 handler:nil];
+}
+
+- (void)testSendRequestWithBody {
+    NSURL *url = [NSURL URLWithString:@"https://example.com"];
+    NSString *body = @"Sample Body";
+    
+    XCTestExpectation *expectation = [self expectationWithDescription:@"Request should complete"];
+    
+    [self.trackerRequest sendRequestWith:url andBody:body andCompletition:^(NSError * _Nonnull error) {
+        XCTAssertNil(error, @"Error should be nil on successful request");
+        [expectation fulfill];
+    }];
+    
+    [self waitForExpectationsWithTimeout:5 handler:nil];
+}
+
+//- (void)testCreateRequest {
+//    NSURL *url = [NSURL URLWithString:@"https://example.com"];
+//    NSString *body = @"Sample Body";
+//    NSURLRequest *request = [self.trackerRequest createRequest:url andBody:body];
+//    
+//    XCTAssertNotNil(request, @"Request should not be nil");
+//    XCTAssertEqualObjects(request.HTTPMethod, @"POST", @"HTTP method should be POST");
+//    XCTAssertEqualObjects(request.HTTPBody, [body dataUsingEncoding:NSUTF8StringEncoding], @"HTTP body should match");
+//    XCTAssertEqualObjects([request valueForHTTPHeaderField:@"Content-Type"], @"text/plain; charset=utf-8", @"Content-Type header should be set");
+//}
+
+- (void)testBackgroundRequest {
+    NSURL *url = [NSURL URLWithString:@"https://example.com"];
+    NSString *body = @"Sample Body";
+
+    [self.trackerRequest sendBackgroundRequestWith:url andBody:body];
+    
+    // Since this method does not have a completion handler,
+    // you might want to check internal state or log output
+    // or use a mock session if you want to validate network behavior.
 }
 
 @end
