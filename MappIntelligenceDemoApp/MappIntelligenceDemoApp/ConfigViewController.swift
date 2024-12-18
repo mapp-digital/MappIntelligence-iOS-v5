@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AppTrackingTransparency
 
 class ConfigViewController: UIViewController {
 
@@ -19,7 +20,8 @@ class ConfigViewController: UIViewController {
         if let anonymousTracking = MappIntelligence.shared()?.anonymousTracking, anonymousTracking == true {
             anonymSwitch.isOn = true
         }
-        EverIDLabel.text = "Ever ID: " + (MappIntelligence.shared()?.getEverId() ?? "there is no EverID")
+        
+        self.EverIDLabel.text = "Ever ID: " + (MappIntelligence.shared()?.getEverId() ?? "there is no EverID")
     }
 
     @IBAction func optOut(_ sender: Any) {
@@ -55,14 +57,69 @@ class ConfigViewController: UIViewController {
     }
     
     @IBAction func toggleAnonimousTracking(_ sender: UISwitch) {
-        UserDefaults.standard.setValue(true, forKey: "didYouChangeTheStatus")
-        if (sender.isOn) {
-            MappIntelligence.shared()?.enableAnonymousTracking(["uc706"])
-            MappIntelligence.shared()?.setTemporarySessionId("user-xyz-123456789")
-        } else {
-            MappIntelligence.shared()?.anonymousTracking = false
+        requestTrackingPermission(sender)
+    }
+    
+    func requestTrackingPermission(_ sender: UISwitch) {
+        if #available(iOS 14, *) {
+            ATTrackingManager.requestTrackingAuthorization { status in
+                switch status {
+                case .authorized:
+                    // Tracking authorization dialog was shown
+                    // and we are authorized
+                    MappIntelligence.shared()?.anonymousTracking = false
+                    UserDefaults.standard.setValue(true, forKey: "didYouChangeTheStatus")
+                    
+                    if (sender.isOn) {
+                        MappIntelligence.shared()?.enableAnonymousTracking(["uc706"])
+                        MappIntelligence.shared()?.setTemporarySessionId("user-xyz-123456789")
+                    } else {
+                        MappIntelligence.shared()?.anonymousTracking = false
+                    }
+                    self.EverIDLabel.text = "Ever ID: " + (MappIntelligence.shared()?.getEverId() ?? "there is no EverID")
+                case .denied:
+                    // Tracking authorization dialog was
+                    // shown and permission is denied
+                    let alert = UIAlertController(title: "Request permisssion", message: "Go to general settings to turn on option for enabling tracking", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+                        switch action.style{
+                            case .default:
+                            print("default")
+                            guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
+                                        return
+                                    }
+
+                                    if UIApplication.shared.canOpenURL(settingsUrl) {
+                                        UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                                            print("Settings opened: \(success)") // Prints true
+                                        })
+                                    }
+                            
+                            case .cancel:
+                            print("cancel")
+                            
+                            case .destructive:
+                            print("destructive")
+                            
+                        @unknown default:
+                            return
+                        }
+                    }))
+                    self.present(alert, animated: true, completion: nil)
+                    sender.isOn = true
+                    MappIntelligence.shared()?.anonymousTracking = true
+                    print("Denied")
+                case .notDetermined:
+                    // Tracking authorization dialog has not been shown
+                    MappIntelligence.shared()?.anonymousTracking = false
+                    print("Not Determined")
+                case .restricted:
+                    print("Restricted")
+                @unknown default:
+                    print("Unknown")
+                }
+            }
         }
-        EverIDLabel.text = "Ever ID: " + (MappIntelligence.shared()?.getEverId() ?? "there is no EverID")
     }
     
     @IBAction func initwithEverID(_ sender: Any) {

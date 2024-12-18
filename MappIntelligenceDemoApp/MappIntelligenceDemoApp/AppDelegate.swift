@@ -67,9 +67,11 @@ var window: UIWindow?
                 case .denied:
                     // Tracking authorization dialog was
                     // shown and permission is denied
+                    MappIntelligence.shared()?.anonymousTracking = true
                     print("Denied")
                 case .notDetermined:
                     // Tracking authorization dialog has not been shown
+                    MappIntelligence.shared()?.anonymousTracking = false
                     print("Not Determined")
                 case .restricted:
                     print("Restricted")

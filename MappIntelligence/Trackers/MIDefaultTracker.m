@@ -220,11 +220,14 @@ static NSString *userAgent;
   if (tmpEverId != nil) {
       [[MIDefaultTracker sharedDefaults] setValue:tmpEverId forKey:everId];
       [[MIDefaultTracker sharedDefaults] synchronize];
+      everID = tmpEverId;
     return tmpEverId;
   } else {
-      [[MIDefaultTracker sharedDefaults] setValue:[self getNewEverID] forKey:everId];
+      tmpEverId = [self getNewEverID];
+      [[MIDefaultTracker sharedDefaults] setValue:tmpEverId forKey:everId];
       [[MIDefaultTracker sharedDefaults] synchronize];
-    return [self getNewEverID];
+      everID = tmpEverId;
+    return tmpEverId;
   }
 
   return @"";
