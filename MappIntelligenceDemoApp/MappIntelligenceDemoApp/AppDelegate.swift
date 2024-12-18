@@ -26,7 +26,7 @@ var window: UIWindow?
         let array = [(dict?["track_ids" as NSObject]?.intValue) ?? 0]
         let domain = dict?["domain" as NSObject]
         let didYouChangeTheStatusFlag = UserDefaults.standard.bool(forKey: "didYouChangeTheStatus")
-        MappIntelligence.shared()?.anonymousTracking = true
+        //MappIntelligence.shared()?.anonymousTracking = true
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.requestTrackingPermission()
         }
