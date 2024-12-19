@@ -27,7 +27,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Test platform ${{ matrix.destination }}
-        run: set -o pipefail && xcodebuild -scheme sdk-ios-playground -destination "${{ matrix.destination }}" | xcbeautify
+        run: set -o pipefail && cd MappIntelligenceDemoApp/ && xcodebuild -scheme MappIntelligenceDemoApp -destination "${{ matrix.destination }}" | xcbeautify
 
 
   test_spm:
@@ -74,7 +74,7 @@ jobs:
       - name: Release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: '0.0.1'
-          release_name: Release 0.0.1
+          tag_name: '5.0.13'
+          release_name: Release 5.0.13
           generate_release_notes: true
           token: ${{ secrets.TOKEN_GB }}
