@@ -220,12 +220,7 @@
             }];
         }
     }
-    NSNumber *savedNo = [[NSUserDefaults standardUserDefaults] objectForKey:@"FirstOpen"];
-    if (savedNo != NULL) {
-        if (![savedNo  isEqual: @1]) {
-            [_tracker updateFirstSessionWith:[[UIApplication sharedApplication] applicationState]];
-        }
-    }
+    [self checkFNS];
     
     
 }
@@ -244,13 +239,18 @@
 }
 
 -(void)willTerminate {
+    NSNumber *number = @1;
+   [[NSUserDefaults standardUserDefaults] setObject: number forKey:@"FirstOpen"];
+   [[NSUserDefaults standardUserDefaults] synchronize];
     [_tracker updateFirstSessionWith:[[UIApplication sharedApplication] applicationState]];
 }
 
 -(void)willEnterBckground {
-    NSNumber *number = @2;
-   [[NSUserDefaults standardUserDefaults] setObject: number forKey:@"FirstOpen"];
-   [[NSUserDefaults standardUserDefaults] synchronize];
+    if(_tracker.isItFlutter != YES) {
+        NSNumber *number = @2;
+       [[NSUserDefaults standardUserDefaults] setObject: number forKey:@"FirstOpen"];
+       [[NSUserDefaults standardUserDefaults] synchronize];
+    }
     [_logger logObj:@"Enter background and send all requests." forDescription:kMappIntelligenceLogLevelDescriptionDebug];
     if (!_tracker.isBackgroundSendoutEnabled)
         return;
@@ -314,6 +314,30 @@ void onUncaughtException(NSException* exception)
     NSString *filePath = [documentsDirectory stringByAppendingPathComponent:@"file.txt"];
     // now delete the file
     return [[NSFileManager defaultManager]removeItemAtPath:filePath error:nil];
+}
+
+-(void)checkFNS {
+    NSNumber *savedNo = [[NSUserDefaults standardUserDefaults] objectForKey:@"FirstOpen"];
+    ;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        NSLog(@"Is this flutter: %@", self->_tracker.isItFlutter != YES ? @"NO" : @"YES");
+    });
+    
+    if (savedNo != NULL) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+            NSLog(@"Is this flutter: %@", self->_tracker.isItFlutter != YES ? @"NO" : @"YES");
+            if (self->_tracker.isItFlutter == YES && [savedNo  isEqual: @1]) {
+                
+                [self->_tracker updateFirstSessionWith:UIApplicationStateInactive];
+                NSNumber *number = @2;
+                [[NSUserDefaults standardUserDefaults] setObject: number forKey:@"FirstOpen"];
+                [[NSUserDefaults standardUserDefaults] synchronize];
+            }
+        });
+        if (![savedNo  isEqual: @1]) {
+            [_tracker updateFirstSessionWith:[[UIApplication sharedApplication] applicationState]];
+        }
+    }
 }
 
 @end

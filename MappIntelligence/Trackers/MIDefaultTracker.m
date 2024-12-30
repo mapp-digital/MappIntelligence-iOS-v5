@@ -123,6 +123,7 @@ static NSString *userAgent;
 //      if (_anonymousTracking == NULL) {
 //          _anonymousTracking = [[MIDefaultTracker sharedDefaults] boolForKey:anonymous];
 //      }
+      _isItFlutter = NO;
     _temporaryID = NULL;
     everID = [sharedTracker generateEverId];
     _config = [[MIConfiguration alloc] init];
@@ -240,6 +241,9 @@ static NSString *userAgent;
         [[MIDefaultTracker sharedDefaults] removeObjectForKey:everId];
     }
     [[MIDefaultTracker sharedDefaults] synchronize];
+}
+- (void)setIsItFlutter:(BOOL)isItFlutter {
+    _isItFlutter = isItFlutter;
 }
 
 - (void)setEverIDFromString:(NSString *_Nonnull)everIDString {
