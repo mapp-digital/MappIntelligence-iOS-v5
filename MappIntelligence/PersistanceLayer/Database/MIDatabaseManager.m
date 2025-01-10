@@ -679,9 +679,8 @@ dispatch_async(_executionQueue, ^{
   //dispatch_queue_t queue = dispatch_queue_create("Fetch Resulats", NULL);
 
   dispatch_async(_executionQueue, ^{
-
-    NSMutableArray *parameters = nil;
-
+        NSMutableArray *parameters = nil;
+      
     const char *dbPath = [self.databasePath UTF8String];
 
     NSError *error;
@@ -722,7 +721,9 @@ dispatch_async(_executionQueue, ^{
           };
           MIParameter *parameter =
               [[MIParameter alloc] initWithKeyedValues:keyedValues];
-          [parameters insertObject:parameter atIndex:0];
+            dispatch_sync(dispatch_get_main_queue(), ^{
+                [parameters insertObject:parameter atIndex:0];
+            });
         }
 
       } else {
@@ -743,7 +744,7 @@ dispatch_async(_executionQueue, ^{
                                      userInfo:userInfo];
     }
     sqlite3_close(dbHandler);
-    dispatch_async(dispatch_get_main_queue(), ^{
+    dispatch_sync(dispatch_get_main_queue(), ^{
 
       if (completionHandler) {
 
