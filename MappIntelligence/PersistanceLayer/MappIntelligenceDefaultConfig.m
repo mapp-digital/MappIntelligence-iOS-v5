@@ -287,7 +287,7 @@ NSInteger const batchSupportSizeDefault = 5000;
     self.optOut = optOutDefault;
     self.batchSupport = batchSupportDefault;
     self.userMatching = userMatchingDefault;
-    self.requestPerQueue = requestIntervalDefault;
+    self.requestPerQueue = requestPerQueueDefault;
 }
 
 - (BOOL) isConfiguredForTracking {
