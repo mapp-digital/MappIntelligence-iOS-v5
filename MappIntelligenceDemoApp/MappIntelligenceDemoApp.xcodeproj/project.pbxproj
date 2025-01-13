@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0403E6C02CC8FC470021EB1D /* AppoxeeConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0403E6BE2CC8FC470021EB1D /* AppoxeeConfig.plist */; };
+		0403E6C12CC8FC470021EB1D /* SetupForLocalTesting.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0403E6BF2CC8FC470021EB1D /* SetupForLocalTesting.plist */; };
 		0418E7072B18A30A0008CB31 /* LiveStreamMediaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0418E7062B18A30A0008CB31 /* LiveStreamMediaViewController.swift */; };
 		0418E70A2B19C4690008CB31 /* AppoxeeConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0418E7082B19C4680008CB31 /* AppoxeeConfig.plist */; };
 		0418E70B2B19C4690008CB31 /* SetupForLocalTesting.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0418E7092B19C4680008CB31 /* SetupForLocalTesting.plist */; };
@@ -48,6 +50,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0403E6BE2CC8FC470021EB1D /* AppoxeeConfig.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = AppoxeeConfig.plist; sourceTree = "<group>"; };
+		0403E6BF2CC8FC470021EB1D /* SetupForLocalTesting.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = SetupForLocalTesting.plist; sourceTree = "<group>"; };
 		0418E7062B18A30A0008CB31 /* LiveStreamMediaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveStreamMediaViewController.swift; sourceTree = "<group>"; };
 		0418E7082B19C4680008CB31 /* AppoxeeConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AppoxeeConfig.plist; sourceTree = "<group>"; };
 		0418E7092B19C4680008CB31 /* SetupForLocalTesting.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SetupForLocalTesting.plist; sourceTree = "<group>"; };
@@ -131,6 +135,8 @@
 				A3C8598429A80FC10097CF32 /* AppoxeeSDK.xcframework */,
 				0418E7082B19C4680008CB31 /* AppoxeeConfig.plist */,
 				0418E7092B19C4680008CB31 /* SetupForLocalTesting.plist */,
+				0403E6BE2CC8FC470021EB1D /* AppoxeeConfig.plist */,
+				0403E6BF2CC8FC470021EB1D /* SetupForLocalTesting.plist */,
 				8F94E6BC25BF199C00027623 /* Resources */,
 				8FA78F0325BF188A00CC166A /* MediaPlayerViewController.swift */,
 				8FA78F0425BF188A00CC166A /* MediaViewController.swift */,
@@ -234,6 +240,8 @@
 			files = (
 				A3DE04F329475223008657B9 /* AppoxeeSDKResources.bundle in Resources */,
 				0418E70A2B19C4690008CB31 /* AppoxeeConfig.plist in Resources */,
+				0403E6C02CC8FC470021EB1D /* AppoxeeConfig.plist in Resources */,
+				0403E6C12CC8FC470021EB1D /* SetupForLocalTesting.plist in Resources */,
 				8F94E6BE25BF199C00027623 /* wt.mp4 in Resources */,
 				BCA1739E23D5D25E00B31430 /* LaunchScreen.storyboard in Resources */,
 				0418E70B2B19C4690008CB31 /* SetupForLocalTesting.plist in Resources */,

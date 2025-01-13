@@ -1,24 +1,26 @@
 //
-//  TrackerRequestTests.m
+//  MITrackRequestTests.m
 //  MappIntelligenceTests
 //
-//  Created by Stefan Stevanovic on 4/7/20.
-//  Copyright © 2020 Mapp Digital US, LLC. All rights reserved.
+//  Created by Mihajlo Jezdic on 25.11.24.
+//  Copyright © 2024 Mapp Digital US, LLC. All rights reserved.
 //
+
+#import <Foundation/Foundation.h>
 
 #import <XCTest/XCTest.h>
 #import "MITrackerRequest.h"
 #import "MITrackingEvent.h"
 #import "MIProperties.h"
 
-@interface TrackerRequestTests : XCTestCase
+@interface MITrackerRequestTests : XCTestCase
 
 @property MITrackerRequest *request;
 @property (nonatomic, strong) MITrackerRequest *trackerRequest;
 
 @end
 
-@implementation TrackerRequestTests
+@implementation MITrackerRequestTests
 
 - (void)setUp {
     [super setUp];

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,6 +14,7 @@
 		0403E6952CC0E6120021EB1D /* MIDefaultTrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0403E6942CC0E6120021EB1D /* MIDefaultTrackerTests.m */; };
 		0403E6B82CC0F06D0021EB1D /* MIUIFlowObserverTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0403E6B72CC0F06D0021EB1D /* MIUIFlowObserverTests.m */; };
 		0403E6BA2CC11E870021EB1D /* MIExceptionTrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0403E6B92CC11E870021EB1D /* MIExceptionTrackerTests.m */; };
+		0403E6BC2CC77E710021EB1D /* MappIntelligenceSDKLoggerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0403E6BB2CC77E710021EB1D /* MappIntelligenceSDKLoggerTest.m */; };
 		044A6D702C995D1D00C1F6F6 /* MIFormFieldParameterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 044A6D6F2C995D1D00C1F6F6 /* MIFormFieldParameterTests.m */; };
 		04BAF8622CAA7D8D005960C8 /* MIEnvironmentTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BAF8612CAA7D8D005960C8 /* MIEnvironmentTests.m */; };
 		04BAF8652CAA7E26005960C8 /* OCMock in Frameworks */ = {isa = PBXBuildFile; productRef = 04BAF8642CAA7E26005960C8 /* OCMock */; };
@@ -21,6 +22,13 @@
 		04C5D8EA2CAE79FB00269504 /* MIMediaEventTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C5D8E92CAE79FB00269504 /* MIMediaEventTests.m */; };
 		04C5D8EE2CAE7A1500269504 /* MIActionEventTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C5D8ED2CAE7A1500269504 /* MIActionEventTests.m */; };
 		04C5D8F02CAE7A1D00269504 /* MIFormSubmitEventTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C5D8EF2CAE7A1D00269504 /* MIFormSubmitEventTests.m */; };
+		04ED46032CF4A28700D39E1D /* MITrackRequestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 04ED46022CF4A28700D39E1D /* MITrackRequestTests.m */; };
+		04ED46052CF4A2B600D39E1D /* MIPropertiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 04ED46042CF4A2B600D39E1D /* MIPropertiesTests.m */; };
+		04ED46072CF4A2FA00D39E1D /* MIRequestTrackerBuilderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 04ED46062CF4A2FA00D39E1D /* MIRequestTrackerBuilderTests.m */; };
+		04ED46092CF4A31D00D39E1D /* MIRequestUrlBuilderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 04ED46082CF4A31D00D39E1D /* MIRequestUrlBuilderTests.m */; };
+		04ED460B2CF4A34500D39E1D /* MIURLSizeMonitorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 04ED460A2CF4A34500D39E1D /* MIURLSizeMonitorTests.m */; };
+		04F353342CECCD6800E9BBF9 /* MIParamTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F353332CECCD6800E9BBF9 /* MIParamTests.m */; };
+		04F353362CECCDEC00E9BBF9 /* MIParamTypeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F353352CECCDEC00E9BBF9 /* MIParamTypeTests.m */; };
 		04F88B7A2C9080490043B09C /* MIWebViewTrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F88B782C9080490043B09C /* MIWebViewTrackerTests.m */; };
 		04F88B7F2C9080DD0043B09C /* MIDeepLinkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 04F88B7E2C9080DD0043B09C /* MIDeepLinkTests.m */; };
 		8F143EDB2510AECA0024CF24 /* ActionPropertiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F143EDA2510AECA0024CF24 /* ActionPropertiesTests.m */; };
@@ -121,7 +129,6 @@
 		A3187BAB287429EC00653D05 /* APXNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A3187BA1287429EC00653D05 /* APXNetworkManager.m */; };
 		A31C6F1D24D9A0F300166585 /* RequestBatchSupportUrlBuilderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A31C6F1C24D9A0F300166585 /* RequestBatchSupportUrlBuilderTests.m */; };
 		A31C6F2024D9A9B200166585 /* DatabaseManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A31C6F1F24D9A9B200166585 /* DatabaseManagerTests.m */; };
-		A31D7A4F243CC0F200386A1C /* TrackerRequestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A31D7A4E243CC0F200386A1C /* TrackerRequestTests.m */; };
 		A32E16B22A8D05EA000304AA /* MIUsageStatistics.h in Sources */ = {isa = PBXBuildFile; fileRef = A341D7042A433EBC00CA1946 /* MIUsageStatistics.h */; };
 		A334861D23BF3E2300D0EB5F /* MappIntelligence.m in Sources */ = {isa = PBXBuildFile; fileRef = A334861C23BF3E2300D0EB5F /* MappIntelligence.m */; };
 		A334861E23BF3E2300D0EB5F /* MappIntelligence.h in Copy Files */ = {isa = PBXBuildFile; fileRef = A334861B23BF3E2300D0EB5F /* MappIntelligence.h */; };
@@ -199,10 +206,6 @@
 		A3955B4F287DAD2300D4FA90 /* MIAPXInappLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = A3187B9D287429EC00653D05 /* MIAPXInappLogger.m */; };
 		A3955B53287DAD2D00D4FA90 /* APXNetworkMetadata.m in Sources */ = {isa = PBXBuildFile; fileRef = A3187B9B287429EC00653D05 /* APXNetworkMetadata.m */; };
 		A3955B57287DAD3200D4FA90 /* APXRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = A3187B9F287429EC00653D05 /* APXRequest.m */; };
-		A3A72557243DBF1000671DB2 /* PropertiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3A72556243DBF1000671DB2 /* PropertiesTests.m */; };
-		A3A72559243DC22C00671DB2 /* RequestTrackerBuilderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3A72558243DC22C00671DB2 /* RequestTrackerBuilderTests.m */; };
-		A3A7255B243DEA0500671DB2 /* RequestUrlBuilderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3A7255A243DEA0500671DB2 /* RequestUrlBuilderTests.m */; };
-		A3A7255D243E07A100671DB2 /* URLSizeMonitorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3A7255C243E07A100671DB2 /* URLSizeMonitorTests.m */; };
 		A3A7255F243F154900671DB2 /* MappIntelligenceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3A7255E243F154900671DB2 /* MappIntelligenceTests.m */; };
 		A3ADC97326D8EB34007504FF /* MIExceptionTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = A3ADC97126D8EB34007504FF /* MIExceptionTracker.h */; };
 		A3ADC97426D8EB34007504FF /* MIExceptionTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = A3ADC97226D8EB34007504FF /* MIExceptionTracker.m */; };
@@ -238,7 +241,6 @@
 		A3F08BBB28D9DC19004FF49C /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3187BAE2874805000653D05 /* WebKit.framework */; };
 		A3F08BBC28D9DC68004FF49C /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3187BAE2874805000653D05 /* WebKit.framework */; };
 		A3F08BBE28D9DD66004FF49C /* MediaTrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3F08BBD28D9DD66004FF49C /* MediaTrackerTests.m */; };
-		BCBE5BFB23EB1798002125C1 /* MappIntelligenceSDKLoggerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBE5BFA23EB1798002125C1 /* MappIntelligenceSDKLoggerTest.m */; };
 		BCBE5C0923F29E49002125C1 /* MIDefaultTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = BCBE5C0823F29E49002125C1 /* MIDefaultTracker.m */; };
 		BCCAE6D0240D29A9005E9FD6 /* MappIntelligenceLogger.m in Headers */ = {isa = PBXBuildFile; fileRef = BCEAE6B723BF5A8B007F410D /* MappIntelligenceLogger.m */; };
 		BCCAE6D2240D2E16005E9FD6 /* MappIntelligenceDefaultConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = BCA1738123D5C12A00B31430 /* MappIntelligenceDefaultConfig.h */; };
@@ -346,6 +348,8 @@
 		0403E6942CC0E6120021EB1D /* MIDefaultTrackerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MIDefaultTrackerTests.m; sourceTree = "<group>"; };
 		0403E6B72CC0F06D0021EB1D /* MIUIFlowObserverTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MIUIFlowObserverTests.m; sourceTree = "<group>"; };
 		0403E6B92CC11E870021EB1D /* MIExceptionTrackerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MIExceptionTrackerTests.m; sourceTree = "<group>"; };
+		0403E6BB2CC77E710021EB1D /* MappIntelligenceSDKLoggerTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MappIntelligenceSDKLoggerTest.m; sourceTree = "<group>"; };
+		0403E6BD2CC8E83D0021EB1D /* MappIntelligenceTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = MappIntelligenceTests.xctestplan; sourceTree = "<group>"; };
 		044A6D6F2C995D1D00C1F6F6 /* MIFormFieldParameterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIFormFieldParameterTests.m; sourceTree = "<group>"; };
 		04B84FC729279B1700A412B8 /* AppoxeeSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = AppoxeeSDK.xcframework; path = MappIntelligenceDemoApp/AppoxeeSDK.xcframework; sourceTree = "<group>"; };
 		04BAF8612CAA7D8D005960C8 /* MIEnvironmentTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MIEnvironmentTests.m; sourceTree = "<group>"; };
@@ -353,6 +357,13 @@
 		04C5D8E92CAE79FB00269504 /* MIMediaEventTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MIMediaEventTests.m; sourceTree = "<group>"; };
 		04C5D8ED2CAE7A1500269504 /* MIActionEventTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MIActionEventTests.m; sourceTree = "<group>"; };
 		04C5D8EF2CAE7A1D00269504 /* MIFormSubmitEventTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MIFormSubmitEventTests.m; sourceTree = "<group>"; };
+		04ED46022CF4A28700D39E1D /* MITrackRequestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MITrackRequestTests.m; sourceTree = "<group>"; };
+		04ED46042CF4A2B600D39E1D /* MIPropertiesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MIPropertiesTests.m; sourceTree = "<group>"; };
+		04ED46062CF4A2FA00D39E1D /* MIRequestTrackerBuilderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MIRequestTrackerBuilderTests.m; sourceTree = "<group>"; };
+		04ED46082CF4A31D00D39E1D /* MIRequestUrlBuilderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MIRequestUrlBuilderTests.m; sourceTree = "<group>"; };
+		04ED460A2CF4A34500D39E1D /* MIURLSizeMonitorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MIURLSizeMonitorTests.m; sourceTree = "<group>"; };
+		04F353332CECCD6800E9BBF9 /* MIParamTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MIParamTests.m; sourceTree = "<group>"; };
+		04F353352CECCDEC00E9BBF9 /* MIParamTypeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MIParamTypeTests.m; sourceTree = "<group>"; };
 		04F88B782C9080490043B09C /* MIWebViewTrackerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIWebViewTrackerTests.m; sourceTree = "<group>"; };
 		04F88B7E2C9080DD0043B09C /* MIDeepLinkTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIDeepLinkTests.m; sourceTree = "<group>"; };
 		8F143EDA2510AECA0024CF24 /* ActionPropertiesTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionPropertiesTests.m; sourceTree = "<group>"; };
@@ -402,7 +413,6 @@
 		A3187BAE2874805000653D05 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk/System/iOSSupport/System/Library/Frameworks/WebKit.framework; sourceTree = DEVELOPER_DIR; };
 		A31C6F1C24D9A0F300166585 /* RequestBatchSupportUrlBuilderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RequestBatchSupportUrlBuilderTests.m; sourceTree = "<group>"; };
 		A31C6F1F24D9A9B200166585 /* DatabaseManagerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DatabaseManagerTests.m; sourceTree = "<group>"; };
-		A31D7A4E243CC0F200386A1C /* TrackerRequestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TrackerRequestTests.m; sourceTree = "<group>"; };
 		A334861823BF3E2300D0EB5F /* libMappIntelligenceSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMappIntelligenceSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A334861B23BF3E2300D0EB5F /* MappIntelligence.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MappIntelligence.h; sourceTree = "<group>"; };
 		A334861C23BF3E2300D0EB5F /* MappIntelligence.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MappIntelligence.m; sourceTree = "<group>"; };
@@ -455,10 +465,6 @@
 		A38B41F52B4C3EF10059B7B1 /* MappIntelligencePrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = MappIntelligencePrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		A390BE5A2C13245200844D44 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		A390BE5B2C13245200844D44 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
-		A3A72556243DBF1000671DB2 /* PropertiesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PropertiesTests.m; sourceTree = "<group>"; };
-		A3A72558243DC22C00671DB2 /* RequestTrackerBuilderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RequestTrackerBuilderTests.m; sourceTree = "<group>"; };
-		A3A7255A243DEA0500671DB2 /* RequestUrlBuilderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RequestUrlBuilderTests.m; sourceTree = "<group>"; };
-		A3A7255C243E07A100671DB2 /* URLSizeMonitorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = URLSizeMonitorTests.m; sourceTree = "<group>"; };
 		A3A7255E243F154900671DB2 /* MappIntelligenceTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MappIntelligenceTests.m; sourceTree = "<group>"; };
 		A3ADC97126D8EB34007504FF /* MIExceptionTracker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MIExceptionTracker.h; sourceTree = "<group>"; };
 		A3ADC97226D8EB34007504FF /* MIExceptionTracker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MIExceptionTracker.m; sourceTree = "<group>"; };
@@ -491,7 +497,6 @@
 		A3F8888B281825A40054B9A1 /* MIFormParametersTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MIFormParametersTest.m; sourceTree = "<group>"; };
 		A3F88899281985810054B9A1 /* MIFormFieldTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MIFormFieldTests.m; sourceTree = "<group>"; };
 		BCA1738123D5C12A00B31430 /* MappIntelligenceDefaultConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MappIntelligenceDefaultConfig.h; sourceTree = "<group>"; };
-		BCBE5BFA23EB1798002125C1 /* MappIntelligenceSDKLoggerTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MappIntelligenceSDKLoggerTest.m; path = MappIntelligenceTests/Log/MappIntelligenceSDKLoggerTest.m; sourceTree = SOURCE_ROOT; };
 		BCBE5C0723F1A688002125C1 /* MIDefaultTracker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MIDefaultTracker.h; path = MappIntelligence/Trackers/MIDefaultTracker.h; sourceTree = SOURCE_ROOT; };
 		BCBE5C0823F29E49002125C1 /* MIDefaultTracker.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MIDefaultTracker.m; sourceTree = "<group>"; };
 		BCD5E2C223CF309900CE2092 /* MIConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MIConfig.h; sourceTree = "<group>"; };
@@ -500,6 +505,10 @@
 		BCEAE6B523BF5912007F410D /* MappIntelligenceLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MappIntelligenceLogger.h; sourceTree = "<group>"; };
 		BCEAE6B723BF5A8B007F410D /* MappIntelligenceLogger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MappIntelligenceLogger.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		04ED460C2CF4A37600D39E1D /* Reachability */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Reachability; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		8F20A08425C2CE470006CB93 /* Frameworks */ = {
@@ -584,7 +593,7 @@
 		A31D7A4B243CBDE500386A1C /* Log */ = {
 			isa = PBXGroup;
 			children = (
-				BCBE5BFA23EB1798002125C1 /* MappIntelligenceSDKLoggerTest.m */,
+				0403E6BB2CC77E710021EB1D /* MappIntelligenceSDKLoggerTest.m */,
 			);
 			path = Log;
 			sourceTree = "<group>";
@@ -592,6 +601,7 @@
 		A31D7A4C243CBE1A00386A1C /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				04ED460C2CF4A37600D39E1D /* Reachability */,
 				A31D7A4D243CC0B600386A1C /* Tracking Request */,
 			);
 			path = Network;
@@ -600,12 +610,14 @@
 		A31D7A4D243CC0B600386A1C /* Tracking Request */ = {
 			isa = PBXGroup;
 			children = (
-				A31D7A4E243CC0F200386A1C /* TrackerRequestTests.m */,
-				A3A72556243DBF1000671DB2 /* PropertiesTests.m */,
-				A3A72558243DC22C00671DB2 /* RequestTrackerBuilderTests.m */,
-				A3A7255A243DEA0500671DB2 /* RequestUrlBuilderTests.m */,
-				A3A7255C243E07A100671DB2 /* URLSizeMonitorTests.m */,
 				A31C6F1C24D9A0F300166585 /* RequestBatchSupportUrlBuilderTests.m */,
+				04F353332CECCD6800E9BBF9 /* MIParamTests.m */,
+				04F353352CECCDEC00E9BBF9 /* MIParamTypeTests.m */,
+				04ED46022CF4A28700D39E1D /* MITrackRequestTests.m */,
+				04ED46042CF4A2B600D39E1D /* MIPropertiesTests.m */,
+				04ED46062CF4A2FA00D39E1D /* MIRequestTrackerBuilderTests.m */,
+				04ED46082CF4A31D00D39E1D /* MIRequestUrlBuilderTests.m */,
+				04ED460A2CF4A34500D39E1D /* MIURLSizeMonitorTests.m */,
 			);
 			path = "Tracking Request";
 			sourceTree = "<group>";
@@ -911,6 +923,7 @@
 		BCEA32C023E979FD003AF806 /* MappIntelligenceTests */ = {
 			isa = PBXGroup;
 			children = (
+				0403E6BD2CC8E83D0021EB1D /* MappIntelligenceTests.xctestplan */,
 				A3BA0EB32C8B1FE100A1D030 /* UserMatching */,
 				A341D7122A45BBF600CA1946 /* Utility */,
 				A3F8889C28198F7D0054B9A1 /* Features */,
@@ -1057,6 +1070,9 @@
 			dependencies = (
 				A3BA0E9E2C7E27F000A1D030 /* PBXTargetDependency */,
 				A3BA0EA12C7E2A7600A1D030 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				04ED460C2CF4A37600D39E1D /* Reachability */,
 			);
 			name = MappIntelligenceTests;
 			productName = WebtrekkTests;
@@ -1236,24 +1252,26 @@
 				A31C6F1D24D9A0F300166585 /* RequestBatchSupportUrlBuilderTests.m in Sources */,
 				04F88B7A2C9080490043B09C /* MIWebViewTrackerTests.m in Sources */,
 				04F88B7F2C9080DD0043B09C /* MIDeepLinkTests.m in Sources */,
+				04ED46072CF4A2FA00D39E1D /* MIRequestTrackerBuilderTests.m in Sources */,
 				A3BA0EB72C8B20BF00A1D030 /* APXNetworkManagerTests.m in Sources */,
-				A3A7255D243E07A100671DB2 /* URLSizeMonitorTests.m in Sources */,
+				04ED46052CF4A2B600D39E1D /* MIPropertiesTests.m in Sources */,
 				04C5D8EA2CAE79FB00269504 /* MIMediaEventTests.m in Sources */,
 				A3588A9D27D8E5340053961B /* EventParameterTests.m in Sources */,
 				A3F08BBE28D9DD66004FF49C /* MediaTrackerTests.m in Sources */,
 				A3BA0EBF2C8EE98900A1D030 /* APXMIUMRequestTests.m in Sources */,
 				A3588A9927D20A7D0053961B /* MediaPropertiesTests.m in Sources */,
-				A3A72557243DBF1000671DB2 /* PropertiesTests.m in Sources */,
 				0403E6952CC0E6120021EB1D /* MIDefaultTrackerTests.m in Sources */,
+				0403E6BC2CC77E710021EB1D /* MappIntelligenceSDKLoggerTest.m in Sources */,
 				A3BA0EC42C8EEC4F00A1D030 /* APXIdentifierTests.m in Sources */,
+				04F353342CECCD6800E9BBF9 /* MIParamTests.m in Sources */,
 				044A6D702C995D1D00C1F6F6 /* MIFormFieldParameterTests.m in Sources */,
 				A3588A9B27D8B5A70053961B /* CampaignParameterTests.m in Sources */,
+				04ED460B2CF4A34500D39E1D /* MIURLSizeMonitorTests.m in Sources */,
 				A3BA0EC12C8EE9B500A1D030 /* APXMIRequestBuilder.m in Sources */,
 				0403E68D2CBF94730021EB1D /* MIParameterTest.m in Sources */,
 				0403E6BA2CC11E870021EB1D /* MIExceptionTrackerTests.m in Sources */,
-				A3A7255B243DEA0500671DB2 /* RequestUrlBuilderTests.m in Sources */,
+				04ED46092CF4A31D00D39E1D /* MIRequestUrlBuilderTests.m in Sources */,
 				A341D7142A45BC3400CA1946 /* MIUsageStatisticsTests.m in Sources */,
-				A31D7A4F243CC0F200386A1C /* TrackerRequestTests.m in Sources */,
 				0403E6932CBFC7F60021EB1D /* MappIntelligenceDefaultConfigTest.m in Sources */,
 				A338B803254C6C0A00E50C28 /* ProductTests.m in Sources */,
 				0403E6B82CC0F06D0021EB1D /* MIUIFlowObserverTests.m in Sources */,
@@ -1263,11 +1281,10 @@
 				0403E6912CBFC0690021EB1D /* MIRequestDataTest.m in Sources */,
 				8FFDEA3B254225D800E069F7 /* UserPropertiesTests.m in Sources */,
 				A31C6F2024D9A9B200166585 /* DatabaseManagerTests.m in Sources */,
-				A3A72559243DC22C00671DB2 /* RequestTrackerBuilderTests.m in Sources */,
 				A357222024FD10AD005F9DE1 /* PagePropertiesTests.m in Sources */,
+				04ED46032CF4A28700D39E1D /* MITrackRequestTests.m in Sources */,
 				04C5D8E62CAE79F200269504 /* MIPageViewEventTests.m in Sources */,
 				A3BA0EB52C8B204000A1D030 /* MIAPXInappLoggerTests.m in Sources */,
-				BCBE5BFB23EB1798002125C1 /* MappIntelligenceSDKLoggerTest.m in Sources */,
 				0403E68F2CBF947A0021EB1D /* MIRequestTest.m in Sources */,
 				A3BA0EB92C8EDFC100A1D030 /* APXNetworkMetadataTests.m in Sources */,
 				A3BA0EC62C8EEC9000A1D030 /* APXKeychainManagerTests.m in Sources */,
@@ -1275,6 +1292,7 @@
 				A3A7255F243F154900671DB2 /* MappIntelligenceTests.m in Sources */,
 				A338B813254C6D3A00E50C28 /* EcommercePropertiesTests.m in Sources */,
 				8F143EDD2510B3220024CF24 /* SessionPropertiesTests.m in Sources */,
+				04F353362CECCDEC00E9BBF9 /* MIParamTypeTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

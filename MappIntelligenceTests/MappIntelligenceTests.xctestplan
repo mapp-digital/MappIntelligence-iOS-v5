@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "9A1952BB-799D-40BE-9924-380BE4888A34",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:MappIntelligenceSDK.xcodeproj",
+        "identifier" : "A334862723BF3F2800D0EB5F",
+        "name" : "MappIntelligenceTests"
+      }
+    }
+  ],
+  "version" : 1
+}
