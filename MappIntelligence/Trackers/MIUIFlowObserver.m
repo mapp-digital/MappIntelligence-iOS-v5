@@ -334,7 +334,7 @@ void onUncaughtException(NSException* exception)
                 [[NSUserDefaults standardUserDefaults] synchronize];
             }
         });
-        if (![savedNo  isEqual: @1]) {
+        if ([savedNo  isEqual: @1]) {
             [_tracker updateFirstSessionWith:[[UIApplication sharedApplication] applicationState]];
         }
     }
