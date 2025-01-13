@@ -17,6 +17,8 @@
 
 @property MITrackerRequest *request;
 @property (nonatomic, strong) MITrackerRequest *trackerRequest;
+@property XCTestExpectation *expectationFirst;
+@property XCTestExpectation *expectationSecond;
 
 @end
 
@@ -75,31 +77,29 @@
     // Further assertions can be added to check properties are set correctly
 }
 
-- (void)testSendRequestWithCompletion {
-    NSURL *url = [NSURL URLWithString:@"https://example.com"];
-    
-    XCTestExpectation *expectation = [self expectationWithDescription:@"Request should complete"];
-    
-    [self.trackerRequest sendRequestWith:url andCompletition:^(NSError * _Nonnull error) {
-        XCTAssertNil(error, @"Error should be nil on successful request");
-        [expectation fulfill];
-    }];
-    
-    [self waitForExpectationsWithTimeout:5 handler:nil];
-}
-
 - (void)testSendRequestWithBody {
-    NSURL *url = [NSURL URLWithString:@"https://example.com"];
-    NSString *body = @"Sample Body";
+    NSURL *url = [NSURL URLWithString:@"http://tracker-int-01.webtrekk.net/794940687426749/batch?eid=6173676774907917685&X-WT-UA=Tracking%20Library%205.0.13%20%28iOS%2018.0%3B%20iPhone%3B%20en_RS%29%29"];
+    NSString *body = @"wt?p=500,MappIntelligenceDemoApp.PageViewController,0,750x1334,32,0,1736797465512,0,0,0&fns=1&one=0&cs801=5.0.13&cs802=iOS&pf=71&la=en&cs804=1.0&cs805=3&cs821=0&eor=1";
     
-    XCTestExpectation *expectation = [self expectationWithDescription:@"Request should complete"];
+    _expectationSecond = [self expectationWithDescription:@"Request should complete"];
     
     [self.trackerRequest sendRequestWith:url andBody:body andCompletition:^(NSError * _Nonnull error) {
         XCTAssertNil(error, @"Error should be nil on successful request");
-        [expectation fulfill];
+        [self->_expectationSecond fulfill];
     }];
+    [self waitForExpectations:[NSArray arrayWithObjects: _expectationSecond, nil] enforceOrder:YES];
+}
+
+- (void)testSendRequestWithCompletion {
+    NSURL *url = [NSURL URLWithString:@"http://tracker-int-01.webtrekk.net/794940687426749/batch?eid=6173676774907917685&X-WT-UA=Tracking%20Library%205.0.13%20%28iOS%2018.0%3B%20iPhone%3B%20en_RS%29%29"];
     
-    [self waitForExpectationsWithTimeout:5 handler:nil];
+    _expectationFirst = [self expectationWithDescription:@"Request should complete"];
+    
+    [self.trackerRequest sendRequestWith:url andCompletition:^(NSError * _Nonnull error) {
+        XCTAssertNil(error, @"Error should be nil on successful request");
+        [self->_expectationFirst fulfill];
+    }];
+    [self waitForExpectations:[NSArray arrayWithObjects:_expectationFirst, nil] enforceOrder:YES];
 }
 
 //- (void)testCreateRequest {

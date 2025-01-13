@@ -76,13 +76,6 @@
     XCTAssertTrue([expectedItems isEqualToArray:result], @"The expected query is not the same as ones from result!");
 }
 
-- (void)testPerformanceExample {
-    // This is an example of a performance test case.
-    [self measureBlock:^{
-        // Put the code you want to measure the time of here.
-    }];
-}
-
 // Test initialization with page parameters, category, and search term
 - (void)testInitWithPageParams {
     NSDictionary<NSNumber *, NSString *> *pageParams = @{@1: @"value1", @2: @"value2"};

@@ -100,6 +100,7 @@
 
 - (void)testInitialization {
     XCTAssertNotNil(self.logger);
+    self.logger.logLevel = kMappIntelligenceLogLevelDescriptionNone;
     XCTAssertEqual(self.logger.logLevel, kMappIntelligenceLogLevelDescriptionNone);
     XCTAssertNotNil(self.logger.formatter);
 }

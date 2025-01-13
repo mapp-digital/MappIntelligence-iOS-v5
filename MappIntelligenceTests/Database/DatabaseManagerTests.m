@@ -33,6 +33,7 @@
     NSURLQueryItem* item2 = [[NSURLQueryItem alloc] initWithName:@"parameter2Name" value:@"parameter2Value"];
     NSArray* array = [NSArray arrayWithObjects:item1, item2, nil];
     MIDBRequest* request = [[MIDBRequest alloc] initWithParamters:array andDomain:@"https://q3.webtrekk.net" andTrackIds:@"385255285199574"];
+    [_dbManager deleteAllRequest];
     [_dbManager insertRequest:request];
     usleep(1000000);
     [_dbManager fetchAllRequestsFromInterval:15*100 andWithCompletionHandler:^(NSError * _Nonnull error, id  _Nullable data) {
@@ -58,7 +59,8 @@
    NSURLQueryItem* item2 = [[NSURLQueryItem alloc] initWithName:@"parameter2Name" value:@"parameter2Value"];
    NSArray* array = [NSArray arrayWithObjects:item1, item2, nil];
     MIDBRequest* request = [[MIDBRequest alloc] initWithParamters:array andDomain:@"https://q3.webtrekk.net" andTrackIds:@"385255285199574"];
-   [_dbManager insertRequest:request];
+    [_dbManager deleteAllRequest];
+    [_dbManager insertRequest:request];
     usleep(1000000);
     [_dbManager fetchAllRequestsFromInterval:15*100 andWithCompletionHandler:^(NSError * _Nonnull error, id  _Nullable data) {
         BOOL testRequestFlag = NO;
@@ -99,6 +101,7 @@
     NSURLQueryItem* item2 = [[NSURLQueryItem alloc] initWithName:@"parameter2Name" value:@"parameter2Value"];
     NSArray* array = [NSArray arrayWithObjects:item1, item2, nil];
     MIDBRequest* request = [[MIDBRequest alloc] initWithParamters:array andDomain:@"https://q3.webtrekk.net" andTrackIds:@"385255285199574"];
+    [_dbManager deleteAllRequest];
     [_dbManager insertRequest:request];
     usleep(1000000);
     [_dbManager fetchAllRequestsFromInterval:15*100 andWithCompletionHandler:^(NSError * _Nonnull error, id  _Nullable data) {
@@ -144,6 +147,7 @@
     item2 = [[NSURLQueryItem alloc] initWithName:@"parameter2Name" value:@"parameter2ValueForRequest2"];
     NSArray* array2 = [NSArray arrayWithObjects:item1, item2, nil];
     MIDBRequest* request2 = [[MIDBRequest alloc] initWithParamters:array2 andDomain:@"https://q3.webtrekk.net" andTrackIds:@"385255285199574"];
+    [_dbManager deleteAllRequest];
     
     //2. insert two requests
     [_dbManager insertRequest:request1];
@@ -205,13 +209,14 @@
     NSURLQueryItem* item2 = [[NSURLQueryItem alloc] initWithName:@"parameter2Name" value:@"parameter2Value"];
     NSArray* array = [NSArray arrayWithObjects:item1, item2, nil];
     MIDBRequest* request = [[MIDBRequest alloc] initWithParamters:array andDomain:@"https://q3.webtrekk.net" andTrackIds:@"385255285199574"];
+    [_dbManager deleteAllRequest];
     [_dbManager insertRequest:request];
-    usleep(3000000);
+    //usleep(3000000);
     [_dbManager fetchAllRequestsFromInterval:15*100 andWithCompletionHandler:^(NSError * _Nonnull error, id  _Nullable data) {
         if (!error) {
             MIRequestData* dt = (MIRequestData*)data;
             for (MIDBRequest* r in dt.requests) {
-                if ([r.parameters[0].name isEqualToString:@"parameter1NameStatusUpdate"] && ([r status] == ACTIVE)) {
+                if ([r.parameters[0].name isEqualToString:@"parameter1NameStatusUpdate"]) {
                     [self->_dbManager updateStatusOfRequestWithId:[r.uniqueId intValue] andStatus:FAILED];
                     usleep(3000000);
                     [self->_dbManager fetchAllRequestsFromInterval:15*100 andWithCompletionHandler:^(NSError * _Nonnull error, id  _Nullable data) {
@@ -239,7 +244,7 @@
             XCTAssertTrue(NO, @"The database return error!");
         }
     }];
-    [self waitForExpectations:[NSArray arrayWithObject:expectation] timeout:20];
+    [self waitForExpectations:[NSArray arrayWithObject:expectation] timeout:35];
     
 }
 

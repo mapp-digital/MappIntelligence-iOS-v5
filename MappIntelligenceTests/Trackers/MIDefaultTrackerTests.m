@@ -147,17 +147,6 @@
     XCTAssertFalse([previousEverId isEqualToString: nextEverId]);
 }
 
-- (void)testSendRequestFromDatabase {
-    XCTestExpectation* expectation = [[XCTestExpectation alloc] initWithDescription:@"Wait until send all requests one by one from database!"];
-    //1. write requests into database
-    //2. send requests from database one by one
-    [_tracker sendRequestFromDatabaseWithCompletionHandler:^(NSError * _Nullable error) {
-        XCTAssertNil(error, @"There was an error while sending requests one by one!");
-        [expectation fulfill];
-    }];
-    [self waitForExpectations:[NSArray arrayWithObject:expectation] timeout:15];
-}
-
 - (void)testSendBatchForRequest {
     XCTestExpectation* expectation = [[XCTestExpectation alloc] initWithDescription:@"Wait until send batch with requests from database!"];
     //1. write requests into database
@@ -166,7 +155,7 @@
         XCTAssertNil(error, @"There was an error while sending requests from database as batch!");
         [expectation fulfill];
     }];
-    [self waitForExpectations:[NSArray arrayWithObject:expectation] timeout:50];
+    [self waitForExpectations:[NSArray arrayWithObject:expectation]];
 }
 
 - (void)testRemoveAllRequestsFromDB {
@@ -179,6 +168,17 @@
     }];
     //3. check if all removed successfully
     [self waitForExpectations:[NSArray arrayWithObject:expectation] timeout:5];
+}
+
+- (void)testSendRequestFromDatabase {
+    XCTestExpectation* expectation = [[XCTestExpectation alloc] initWithDescription:@"Wait until send all requests one by one from database!"];
+    //1. write requests into database
+    //2. send requests from database one by one
+    [_tracker sendRequestFromDatabaseWithCompletionHandler:^(NSError * _Nullable error) {
+        XCTAssertNil(error, @"There was an error while sending requests one by one!");
+        [expectation fulfill];
+    }];
+    [self waitForExpectations:[NSArray arrayWithObject:expectation]];
 }
 
 //sends 10000 requsts

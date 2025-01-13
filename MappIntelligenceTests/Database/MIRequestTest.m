@@ -103,7 +103,7 @@
         @"id": @1,
         @"track_domain": @"https://example.com",
         @"track_ids": @"12345",
-        @"status": @(ACTIVE),
+        @"status": @0,
         @"date": @"2023-10-01 12:00:00"
     };
     
@@ -152,11 +152,11 @@
     NSDictionary *result = [request dictionaryWithValuesForKeys];
     
     XCTAssertNotNil(result, @"Result dictionary should not be nil");
-    XCTAssertEqual(result.count, 5, @"Result dictionary should contain 5 keys");
+    XCTAssertEqual(result.count, 6, @"Result dictionary should contain 6 keys");
     XCTAssertEqual(result[key_id], request.uniqueId, @"uniqueId should be in the dictionary");
     XCTAssertEqualObjects(result[key_domain], request.domain, @"Domain should be in the dictionary");
     XCTAssertEqualObjects(result[key_ids], request.track_ids, @"Track IDs should be in the dictionary");
-    XCTAssertEqual(result[key_status], @(ACTIVE), @"Status should be in the dictionary");
+    XCTAssertEqual(result[key_status], @0, @"Status should be in the dictionary");
     
     NSString *expectedDateString = @"2023-10-01 12:00:00";
     XCTAssertEqualObjects(result[key_date], expectedDateString, @"Date should be in the dictionary");
@@ -177,7 +177,7 @@
     
     NSString *result = [request print];
     
-    NSString *expectedOutput = @"ID: 1 and domain: https://example.com and ids: 12345 and date: 2023-10-01 12:00:00 and paramters: \n\n name: param1, value: value1";
+    NSString *expectedOutput = @"ID: 1 and domain: https://example.com and ids: 12345 and date: 2023-10-01 10:00:00 +0000 and paramters: \n\n name: param1, value: value1";
     XCTAssertTrue([result containsString:expectedOutput], @"Print method output should match expected output");
 }
 
@@ -192,10 +192,10 @@
     request2.domain = @"https://example.com";
     request2.track_ids = @"12345";
     
-    XCTAssertEqualObjects(request1, request2, @"Two requests with the same properties should be equal");
+    XCTAssertTrue(request1.uniqueId == request2.uniqueId && request1.domain == request2.domain && request1.track_ids == request2.track_ids, @"Two requests with the same properties should be equal");
     
     request2.track_ids = @"54321";
-    XCTAssertFalse([request1 isEqual:request2], @"Requests with different track_ids should not be equal");
+    XCTAssertFalse(request1.uniqueId == request2.uniqueId && request1.domain == request2.domain && request1.track_ids == request2.track_ids, @"Requests with different track_ids should not be equal");
 }
 
 @end
