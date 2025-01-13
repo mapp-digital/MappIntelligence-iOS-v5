@@ -9,7 +9,7 @@
 #import <XCTest/XCTest.h>
 #import "MIPageViewEvent.h"
 
-@interface PageViewEventTests : XCTestCase
+@interface MIPageViewEventTests : XCTestCase
 
 @property MIPageViewEvent* pageViewEvent;
 @property MIPageParameters* pageProperties;
@@ -23,7 +23,7 @@
 @property NSMutableDictionary *sessionDictionary;
 @end
 
-@implementation PageViewEventTests
+@implementation MIPageViewEventTests
 
 - (void)setUp {
     _details = [@{@20: @[@"cp20Override"]} copy];
@@ -81,6 +81,27 @@
     [self measureBlock:^{
         // Put the code you want to measure the time of here.
     }];
+}
+
+- (void)testInitializationWithName {
+    // Arrange
+    NSString *expectedPageName = @"TestPage";
+
+    // Act
+    MIPageViewEvent *pageViewEvent = [[MIPageViewEvent alloc] initWithName:expectedPageName];
+
+    // Assert
+    XCTAssertNotNil(pageViewEvent, @"MIPageViewEvent should not be nil after initialization.");
+    XCTAssertEqualObjects(pageViewEvent.pageName, expectedPageName, @"Page name should match the expected value.");
+}
+
+- (void)testInitializationWithNilName {
+    // Act
+    MIPageViewEvent *pageViewEvent = [[MIPageViewEvent alloc] initWithName:nil];
+
+    // Assert
+    XCTAssertNotNil(pageViewEvent, @"MIPageViewEvent should not be nil after initialization even with nil name.");
+    XCTAssertNil(pageViewEvent.pageName, @"Page name should be nil when initialized with a nil value.");
 }
 
 @end

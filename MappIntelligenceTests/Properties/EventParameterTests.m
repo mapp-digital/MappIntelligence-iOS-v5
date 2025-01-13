@@ -31,15 +31,6 @@
     _dictionary = NULL;
 }
 
-- (void)testInitWithParameters {
-    MIEventParameters* eventPr = [[MIEventParameters alloc] initWithParameters:_parameters];
-    XCTAssertTrue(eventPr.parameters == _parameters, @"Parameters is wrong for event!");
-}
-
-- (void)testInitWithDictionary {
-    XCTAssertTrue(_eventParameters.parameters == _parameters, @"Parameters is wrong for event!");
-}
-
 - (void)testasQueryItems {
     NSMutableArray<NSURLQueryItem*>* eventPropertiesQueryItems = [_eventParameters asQueryItems];
     
@@ -51,6 +42,48 @@
     }
     
     
+}
+
+// Test initialization with parameters
+- (void)testInitWithParameters {
+    NSDictionary<NSNumber *, NSString *> *parameters = @{@1: @"value1", @2: @"value2"};
+    MIEventParameters *eventParams = [[MIEventParameters alloc] initWithParameters:parameters];
+    
+    XCTAssertNotNil(eventParams);
+    XCTAssertEqualObjects(eventParams.parameters, parameters);
+}
+
+// Test initialization with a dictionary
+- (void)testInitWithDictionary {
+    NSDictionary *dictionary = @{key_parameters: @{@1: @"value1", @2: @"value2"}};
+    MIEventParameters *eventParams = [[MIEventParameters alloc] initWithDictionary:dictionary];
+    
+    XCTAssertNotNil(eventParams);
+    XCTAssertEqualObjects(eventParams.parameters, dictionary[key_parameters]);
+}
+
+// Test asQueryItems method when parameters are provided
+- (void)testAsQueryItemsWithParameters {
+    NSDictionary<NSNumber *, NSString *> *parameters = @{@1: @"value1", @2: @"value2"};
+    MIEventParameters *eventParams = [[MIEventParameters alloc] initWithParameters:parameters];
+    
+    NSMutableArray<NSURLQueryItem *> *queryItems = [eventParams asQueryItems];
+    
+    XCTAssertEqual(queryItems.count, 2);
+    XCTAssertEqualObjects(queryItems[0].name, @"ck1");
+    XCTAssertEqualObjects(queryItems[0].value, @"value1");
+    XCTAssertEqualObjects(queryItems[1].name, @"ck2");
+    XCTAssertEqualObjects(queryItems[1].value, @"value2");
+}
+
+// Test asQueryItems method when parameters are nil
+- (void)testAsQueryItemsWithNilParameters {
+    MIEventParameters *eventParams = [[MIEventParameters alloc] initWithParameters:nil];
+    
+    NSMutableArray<NSURLQueryItem *> *queryItems = [eventParams asQueryItems];
+    
+    XCTAssertNotNil(queryItems);
+    XCTAssertEqual(queryItems.count, 0);  // No parameters, no query items
 }
 
 @end

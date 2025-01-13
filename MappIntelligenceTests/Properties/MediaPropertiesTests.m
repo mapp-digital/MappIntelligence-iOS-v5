@@ -55,26 +55,71 @@
     _mediaPropertiesFromDict = nil;
 }
 
-- (void)testInit {
-    XCTAssertTrue([_mediaProperties.name isEqualToString:_videoName], @"Video name is not correct!");
-    XCTAssertTrue([_mediaProperties.action isEqualToString:_videoAction], @"Video action is not correct!");
-    XCTAssertTrue([_mediaProperties.position isEqual:_position], @"Video position is not correct!");
-    XCTAssertTrue([_mediaProperties.duration isEqual:_duration], @"Video duration is not correct!");
-    XCTAssertTrue([_mediaProperties.customCategories isEqual:_categories], @"Video duration is not correct!");
+- (void)testInitWithParameters {
+    // Initialize with parameters
+    NSString *name = @"testName";
+    NSString *action = @"testAction";
+    NSNumber *position = @10;
+    NSNumber *duration = @20;
+    
+    MIMediaParameters *parameters = [[MIMediaParameters alloc] initWith:name action:action position:position duration:duration];
+    
+    XCTAssertEqualObjects(parameters.name, name, @"Name should be set correctly");
+    XCTAssertEqualObjects(parameters.action, action, @"Action should be set correctly");
+    XCTAssertEqualObjects(parameters.position, position, @"Position should be set correctly");
+    XCTAssertEqualObjects(parameters.duration, duration, @"Duration should be set correctly");
 }
 
-- (void)testinitWithDictionary {
-    NSNumber* bandwidth = @56578;
-    NSNumber* soundIsMuted = [NSNumber numberWithBool:YES];
-    NSNumber* soundVolume = @34;
-    XCTAssertTrue([_mediaPropertiesFromDict.name isEqualToString:_videoName], @"Video name is not correct!");
-    XCTAssertTrue([_mediaPropertiesFromDict.action isEqualToString:_videoAction], @"Video action is not correct!");
-    XCTAssertTrue([_mediaPropertiesFromDict.position isEqual:_position], @"Video position is not correct!");
-    XCTAssertTrue([_mediaPropertiesFromDict.duration isEqual:_duration], @"Video duration is not correct!");
-    XCTAssertTrue([_mediaPropertiesFromDict.customCategories isEqual:_categories], @"Video duration is not correct!");
-    XCTAssertTrue([_mediaPropertiesFromDict.bandwith isEqualToNumber:bandwidth], @"Video bandwidht is not correct!");
-    XCTAssertTrue([_mediaPropertiesFromDict.soundIsMuted isEqualToNumber:soundIsMuted], @"Video sound_is_muted is not correct!");
-    XCTAssertTrue([_mediaPropertiesFromDict.soundVolume isEqualToNumber:soundVolume], @"Video sound volume is not correct!");
+- (void)testInitWithDictionary {
+    // Initialize with dictionary
+    NSDictionary *dictionary = @{
+        @"name": @"testName",
+        @"action": @"testAction",
+        @"bandwith": @100,
+        @"position": @10,
+        @"duration": @20,
+        @"soundIsMuted": @YES,
+        @"soundVolume": @0.5,
+        @"customCategories": @{ @1: @"cat1", @2: @"cat2" }
+    };
+    
+    MIMediaParameters *parameters = [[MIMediaParameters alloc] initWithDictionary:dictionary];
+    
+    XCTAssertEqualObjects(parameters.name, @"testName", @"Name should be set correctly");
+    XCTAssertEqualObjects(parameters.action, @"testAction", @"Action should be set correctly");
+    XCTAssertEqualObjects(parameters.bandwith, @100, @"Bandwith should be set correctly");
+    XCTAssertEqualObjects(parameters.position, @10, @"Position should be set correctly");
+    XCTAssertEqualObjects(parameters.duration, @20, @"Duration should be set correctly");
+    XCTAssertEqualObjects(parameters.soundIsMuted, @YES, @"SoundIsMuted should be set correctly");
+    XCTAssertEqualObjects(parameters.soundVolume, @0.5, @"SoundVolume should be set correctly");
+    XCTAssertEqualObjects(parameters.customCategories, (@{ @1: @"cat1", @2: @"cat2" }), @"CustomCategories should be set correctly");
+}
+
+#pragma mark - URL Query Items Tests
+
+- (void)testAsQueryItems {
+    // Initialize with parameters
+    MIMediaParameters *parameters = [[MIMediaParameters alloc] initWith:_videoName action:_videoAction position:_position duration:_duration];
+    [parameters setSoundVolume:@0.5];
+    [parameters setBandwith:@100];
+    [parameters setSoundIsMuted:@1];
+    
+    // Generate URL query items
+    NSMutableArray<NSURLQueryItem *> *queryItems = [parameters asQueryItems];
+    
+    // Test if query items are generated correctly
+    NSMutableDictionary *queryItemsDict = [NSMutableDictionary dictionary];
+    for (NSURLQueryItem *item in queryItems) {
+        queryItemsDict[item.name] = item.value;
+    }
+    
+    XCTAssertEqualObjects(queryItemsDict[@"mi"], _videoName, @"Name query item should be set correctly");
+    XCTAssertEqualObjects(queryItemsDict[@"mk"], _videoAction, @"Action query item should be set correctly");
+    XCTAssertEqualObjects(queryItemsDict[@"mt1"], [_position stringValue], @"Position query item should be set correctly");
+    XCTAssertEqualObjects(queryItemsDict[@"mt2"], [_duration stringValue], @"Duration query item should be set correctly");
+    XCTAssertEqualObjects(queryItemsDict[@"mut"], @"1", @"SoundIsMuted query item should be set correctly");
+    XCTAssertEqualObjects(queryItemsDict[@"vol"], @"0.5", @"SoundVolume query item should be set correctly");
+    XCTAssertEqualObjects(queryItemsDict[@"bw"], @"100", @"Bandwith query item should be set correctly");
 }
 
 - (void)testasQueryItems {

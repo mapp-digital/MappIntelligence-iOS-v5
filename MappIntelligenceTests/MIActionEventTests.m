@@ -9,7 +9,7 @@
 #import <XCTest/XCTest.h>
 #import "MIActionEvent.h"
 
-@interface ActionEventTests : XCTestCase
+@interface MIActionEventTests : XCTestCase
 @property NSMutableDictionary* details;
 @property MIActionEvent* actionEvent;
 @property MIEventParameters* actionProperties;
@@ -21,7 +21,7 @@
 
 @end
 
-@implementation ActionEventTests
+@implementation MIActionEventTests
 
 - (void)setUp {
     _details = [@{@20: @"ck20Override"} copy];
@@ -69,11 +69,54 @@
     XCTAssertTrue([[_actionEvent campaignParameters] isEqual: _advertisementProperties], @"Advertisement properties is not the same as it used for creation of page view event!");
 }
 
-- (void)testPerformanceExample {
-    // This is an example of a performance test case.
-    [self measureBlock:^{
-        // Put the code you want to measure the time of here.
-    }];
+- (void)testInitializationWithName {
+    // Arrange
+    NSString *expectedName = @"TestAction";
+
+    // Act
+    MIActionEvent *actionEvent = [[MIActionEvent alloc] initWithName:expectedName];
+
+    // Assert
+    XCTAssertNotNil(actionEvent, @"MIActionEvent should not be nil after initialization.");
+    XCTAssertEqualObjects(actionEvent.name, expectedName, @"Name should match the expected value.");
+}
+
+- (void)testPageName {
+    // Arrange
+    MIActionEvent *actionEvent = [[MIActionEvent alloc] initWithName:@"TestAction"];
+
+    // Act
+    NSString *pageName = actionEvent.pageName;
+
+    // Assert
+    XCTAssertEqualObjects(pageName, @"0", @"Page name should always return '0'.");
+}
+
+- (void)testAsQueryItemsWithName {
+    // Arrange
+    NSString *name = @"TestAction";
+    MIActionEvent *actionEvent = [[MIActionEvent alloc] initWithName:name];
+
+    // Act
+    NSMutableArray<NSURLQueryItem *> *queryItems = [actionEvent asQueryItems];
+
+    // Assert
+    XCTAssertNotNil(queryItems, @"Query items should not be nil.");
+    XCTAssertEqual(queryItems.count, 1, @"There should be 1 query item generated.");
+    XCTAssertEqualObjects(queryItems[0].name, @"ct", @"Query item name should be 'ct'.");
+    XCTAssertEqualObjects(queryItems[0].value, name, @"Query item value should match the action name.");
+}
+
+- (void)testAsQueryItemsWithoutName {
+    // Arrange
+    MIActionEvent *actionEvent = [[MIActionEvent alloc] initWithName:nil];
+
+    // Act
+    NSMutableArray<NSURLQueryItem *> *queryItems = [actionEvent asQueryItems];
+
+    // Assert
+    XCTAssertNotNil(queryItems, @"Query items should not be nil.");
+    XCTAssertEqual(queryItems.count, 0, @"There should be no query items generated when name is nil.");
 }
 
 @end

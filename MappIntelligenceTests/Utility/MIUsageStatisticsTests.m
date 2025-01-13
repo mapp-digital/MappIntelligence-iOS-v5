@@ -7,7 +7,9 @@
 //
 
 #import <XCTest/XCTest.h>
+#import <OCMock/OCMock.h>
 #import "MIUsageStatistics.h"
+#import "MappIntelligenceLogger.h"
 
 /*
  SDK feature    Value
@@ -26,17 +28,11 @@
 @interface MIUsageStatisticsTests : XCTestCase
 
 @property MIUsageStatistics* statisticsObject;
-
+@property (nonatomic, strong) MIUsageStatistics *usageStatistics;
+@property (nonatomic, strong) id mockLogger;
 @end
 
 @implementation MIUsageStatisticsTests
-
-- (void)setUp {
-    // Put setup code here. This method is called before the invocation of each test method in the class.
-    _statisticsObject = [[MIUsageStatistics alloc] init];
-    //128 + 64 + 32 + 8 + 4 + 2 + 1 = 239
-    XCTAssertEqual([[_statisticsObject getUserStatisticsValue] intValue], 239, "Inital usage statistics is not ok");
-}
 
 - (void)testRemoveAutoTracking {
     [_statisticsObject setAutoTracking:[NSNumber numberWithInt:0]];
@@ -80,9 +76,123 @@
     XCTAssertEqual([[_statisticsObject getUserStatisticsValue] intValue], 238, "Usage statistics when batch support is dissabled is not ok");
 }
 
-- (void)tearDown {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
-    _statisticsObject = NULL;
+
+- (void)setUp {
+    [super setUp];
+    self.usageStatistics = [[MIUsageStatistics alloc] init];
+    [[MappIntelligenceLogger shared] setLogLevel:kMappIntelligenceLogLevelDescriptionAll];
+    self.mockLogger = OCMClassMock([MappIntelligenceLogger class]);
+    [self.mockLogger setLogLevel:kMappIntelligenceLogLevelDescriptionAll];
+    _statisticsObject = [[MIUsageStatistics alloc] init];
+    //128 + 64 + 32 + 8 + 4 + 2 + 1 = 239
+    XCTAssertEqual([[_statisticsObject getUserStatisticsValue] intValue], 239, "Inital usage statistics is not ok");
 }
+
+- (void)tearDown {
+    [self.mockLogger stopMocking];
+    self.mockLogger = nil;
+    self.usageStatistics = nil;
+    _statisticsObject = NULL;
+    [super tearDown];
+}
+
+- (void)testInitialization {
+    XCTAssertEqualObjects(self.usageStatistics.activityAutoTracking, @(0), @"activityAutoTracking should be initialized to 0");
+    XCTAssertEqualObjects(self.usageStatistics.fragmentsAutoTracking, @(0), @"fragmentsAutoTracking should be initialized to 0");
+    XCTAssertEqualObjects(self.usageStatistics.autoTracking, @(128), @"autoTracking should be initialized to 128 (2^7)");
+    XCTAssertEqualObjects(self.usageStatistics.backgroundSendout, @(64), @"backgroundSendout should be initialized to 64 (2^6)");
+    XCTAssertEqualObjects(self.usageStatistics.userMatching, @(32), @"userMatching should be initialized to 32 (2^5)");
+    XCTAssertEqualObjects(self.usageStatistics.webview, @(0), @"webview should be initialized to 0");
+    XCTAssertEqualObjects(self.usageStatistics.setEverId, @(8), @"setEverId should be initialized to 8 (2^3)");
+    XCTAssertEqualObjects(self.usageStatistics.appVersionInEveryRequest, @(4), @"appVersionInEveryRequest should be initialized to 4 (2^2)");
+    XCTAssertEqualObjects(self.usageStatistics.crashTracking, @(2), @"crashTracking should be initialized to 2 (2^1)");
+    XCTAssertEqualObjects(self.usageStatistics.batchSupport, @(1), @"batchSupport should be initialized to 1 (2^0)");
+}
+
+- (void)testSetters {
+    // Test setting autoTracking to 0
+    [self.usageStatistics setAutoTracking:@(0)];
+    XCTAssertEqualObjects(self.usageStatistics.autoTracking, @(0), @"autoTracking should be set to 0");
+
+    // Test setting autoTracking to non-zero
+    [self.usageStatistics setAutoTracking:@(1)];
+    XCTAssertEqualObjects(self.usageStatistics.autoTracking, @(128), @"autoTracking should be set to 128 (2^7)");
+
+    // Test other setters similarly...
+    [self.usageStatistics setBackgroundSendout:@(0)];
+    XCTAssertEqualObjects(self.usageStatistics.backgroundSendout, @(0), @"backgroundSendout should be set to 0");
+
+    [self.usageStatistics setUserMatching:@(0)];
+    XCTAssertEqualObjects(self.usageStatistics.userMatching, @(0), @"userMatching should be set to 0");
+
+    [self.usageStatistics setSetEverId:@(0)];
+    XCTAssertEqualObjects(self.usageStatistics.setEverId, @(0), @"setEverId should be set to 0");
+
+    [self.usageStatistics setAppVersionInEveryRequest:@(0)];
+    XCTAssertEqualObjects(self.usageStatistics.appVersionInEveryRequest, @(0), @"appVersionInEveryRequest should be set to 0");
+
+    [self.usageStatistics setCrashTracking:@(0)];
+    XCTAssertEqualObjects(self.usageStatistics.crashTracking, @(0), @"crashTracking should be set to 0");
+
+    [self.usageStatistics setBatchSupport:@(0)];
+    XCTAssertEqualObjects(self.usageStatistics.batchSupport, @(0), @"batchSupport should be set to 0");
+}
+
+- (void)testPrintUserStatistics {
+    // Prepare for logging
+    NSString *expectedLog = [NSString stringWithFormat:@"\n===================================================\n===================Usage Statistics================\nActivity Auto Tracking: %i\nFragments Auto Tracking: %i\nAuto Tracking: %i\nBackground Sendout: %i\nUser Matching: %i\nWebview: %i\nSet EverId: %i\nApp Version in every Request: %i\nCrash Tracking: %i\nBatch Support: %i\n===================================================\n",
+                             [self.usageStatistics.activityAutoTracking intValue],
+                             [self.usageStatistics.fragmentsAutoTracking intValue],
+                             [self.usageStatistics.autoTracking intValue],
+                             [self.usageStatistics.backgroundSendout intValue],
+                             [self.usageStatistics.userMatching intValue],
+                             [self.usageStatistics.webview intValue],
+                             [self.usageStatistics.setEverId intValue],
+                             [self.usageStatistics.appVersionInEveryRequest intValue],
+                             [self.usageStatistics.crashTracking intValue],
+                             [self.usageStatistics.batchSupport intValue]];
+
+    // Mock logger behavior
+    OCMExpect([[self.mockLogger shared] logObj:expectedLog forDescription:kMappIntelligenceLogLevelDescriptionDebug]);
+    
+    // Call the method under test
+    [self.usageStatistics printUserStatistics];
+
+    // Verify that the expected log call was made
+    OCMVerifyAll(self.mockLogger);
+}
+
+- (void)testGetUserStatisticsValue {
+    NSString *expectedValue = [NSString stringWithFormat:@"%i", ([self.usageStatistics.activityAutoTracking intValue] +
+                                                               [self.usageStatistics.fragmentsAutoTracking intValue] +
+                                                               [self.usageStatistics.autoTracking intValue] +
+                                                               [self.usageStatistics.backgroundSendout intValue] +
+                                                               [self.usageStatistics.userMatching intValue] +
+                                                               [self.usageStatistics.webview intValue] +
+                                                               [self.usageStatistics.setEverId intValue] +
+                                                               [self.usageStatistics.appVersionInEveryRequest intValue] +
+                                                               [self.usageStatistics.crashTracking intValue] +
+                                                               [self.usageStatistics.batchSupport intValue])];
+
+    // Calculate the actual value
+    NSString *actualValue = [self.usageStatistics getUserStatisticsValue];
+
+    // Verify the returned value matches the expected value
+    XCTAssertEqualObjects(actualValue, expectedValue, @"getUserStatisticsValue should return the correct aggregated value.");
+}
+
+- (void)testReset {
+    // Set some properties to non-zero values
+    [self.usageStatistics setBatchSupport:@(1)];
+    [self.usageStatistics setUserMatching:@(32)];
+
+    // Call reset method
+    [self.usageStatistics reset];
+
+    // Verify that properties have been reset correctly
+    XCTAssertEqualObjects(self.usageStatistics.batchSupport, @(0), @"batchSupport should be reset to 0");
+    XCTAssertEqualObjects(self.usageStatistics.userMatching, @(0), @"userMatching should be reset to 0");
+}
+
 
 @end

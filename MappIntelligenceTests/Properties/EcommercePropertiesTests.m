@@ -312,4 +312,124 @@
     return result;
 }
 
+
+- (void)testInitWithCustomParameters {
+    NSDictionary<NSNumber*, NSString*>* customParameters = @{@1: @"testValue"};
+    MIEcommerceParameters *ecommerceParams = [[MIEcommerceParameters alloc] initWithCustomParameters:customParameters];
+    
+    XCTAssertEqual(ecommerceParams.customParameters[@1], @"testValue", @"Custom parameters should be set correctly");
+}
+
+- (void)testInitWithDictionaryCustom {
+    NSDictionary *dict = @{
+        key_currency: @"USD",
+        key_order_id: @"12345",
+        key_order_value: @100.99,
+        key_status: @2,
+        key_products: @[@{@"name": @"TestProduct", @"cost": @49.99}],
+    };
+    
+    MIEcommerceParameters *ecommerceParams = [[MIEcommerceParameters alloc] initWithDictionary:dict];
+    
+    XCTAssertEqualObjects(ecommerceParams.currency, @"USD", @"Currency should be USD");
+    XCTAssertEqualObjects(ecommerceParams.orderID, @"12345", @"Order ID should be 12345");
+    XCTAssertEqual([ecommerceParams.orderValue doubleValue], 100.99, @"Order value should be 100.99");
+    XCTAssertEqual(ecommerceParams.status, purchased, @"Status should be set to 'purchased'");
+    XCTAssertEqual(ecommerceParams.products.count, 1, @"There should be 1 product in the list");
+}
+
+- (void)testSetStatus {
+    MIEcommerceParameters *ecommerceParams = [[MIEcommerceParameters alloc] init];
+    
+    // Test setting different statuses and checking the getStatus conversion
+    [ecommerceParams setStatus:addedToBasket];
+    XCTAssertEqual(ecommerceParams.status, addedToBasket, @"Status should be set to 'addedToBasket'");
+    
+    [ecommerceParams setStatus:viewed];
+    XCTAssertEqual(ecommerceParams.status, viewed, @"Status should be set to 'viewed'");
+    
+    [ecommerceParams setStatus:checkout];
+    XCTAssertEqual(ecommerceParams.status, checkout, @"Status should be set to 'checkout'");
+}
+
+- (void)testAsQueryItemsWithStatus {
+    // Test if status is correctly converted into query items
+    NSDictionary *dict = @{
+        key_currency: @"USD",
+        key_order_id: @"12345",
+        key_order_value: @100.99,
+        key_status: @1, // Testing addedToBasket
+    };
+    
+    MIEcommerceParameters *ecommerceParams = [[MIEcommerceParameters alloc] initWithDictionary:dict];
+    
+    NSMutableArray<NSURLQueryItem*> *queryItems = [ecommerceParams asQueryItems];
+    
+    // Verify the 'st' query item reflects the correct status
+    NSURLQueryItem *statusItem = [self getQueryItemWithName:@"st" fromItems:queryItems];
+    XCTAssertEqualObjects(statusItem.value, @"add", @"Status should be 'add' for 'addedToBasket'");
+}
+
+- (void)testAsQueryItemsWithBasicData {
+    NSDictionary *dict = @{
+        key_currency: @"USD",
+        key_order_id: @"12345",
+        key_order_value: @100.99,
+        key_status: @2,
+    };
+    
+    MIEcommerceParameters *ecommerceParams = [[MIEcommerceParameters alloc] initWithDictionary:dict];
+    
+    NSMutableArray<NSURLQueryItem*> *queryItems = [ecommerceParams asQueryItems];
+    
+    XCTAssertEqual(queryItems.count, 4, @"There should be 4 query items (currency, orderID, orderValue, status)");
+    
+    NSURLQueryItem *currencyItem = [self getQueryItemWithName:@"cr" fromItems:queryItems];
+    XCTAssertEqualObjects(currencyItem.value, @"USD", @"Currency should be set to USD");
+    
+    NSURLQueryItem *orderIDItem = [self getQueryItemWithName:@"oi" fromItems:queryItems];
+    XCTAssertEqualObjects(orderIDItem.value, @"12345", @"Order ID should be set to 12345");
+    
+    NSURLQueryItem *orderValueItem = [self getQueryItemWithName:@"ov" fromItems:queryItems];
+    XCTAssertEqualObjects(orderValueItem.value, @"100.99", @"Order value should be set to 100.99");
+    
+    NSURLQueryItem *statusItem = [self getQueryItemWithName:@"st" fromItems:queryItems];
+    XCTAssertEqualObjects(statusItem.value, @"conf", @"Status should be set to 'conf' for 'purchased'");
+}
+
+- (void)testProductHandling {
+    NSDictionary *productDict = @{
+        @"name": @"TestProduct",
+        @"cost": @49.99,
+        @"quantity": @1,
+    };
+    
+    MIProduct *product = [[MIProduct alloc] initWithDictionary:productDict];
+    
+    MIEcommerceParameters *ecommerceParams = [[MIEcommerceParameters alloc] init];
+    ecommerceParams.products = [NSMutableArray arrayWithObject:product];
+    
+    NSMutableArray<NSURLQueryItem*> *queryItems = [ecommerceParams asQueryItems];
+    
+    NSURLQueryItem *productNameItem = [self getQueryItemWithName:@"ba" fromItems:queryItems];
+    XCTAssertEqualObjects(productNameItem.value, @"TestProduct", @"Product name should be 'TestProduct'");
+    
+    NSURLQueryItem *productCostItem = [self getQueryItemWithName:@"co" fromItems:queryItems];
+    XCTAssertEqualObjects(productCostItem.value, @"49.99", @"Product cost should be '49.99'");
+    
+    NSURLQueryItem *productQuantityItem = [self getQueryItemWithName:@"qn" fromItems:queryItems];
+    XCTAssertEqualObjects(productQuantityItem.value, @"1", @"Product quantity should be '1'");
+}
+
+#pragma mark - Helper Methods
+
+- (NSURLQueryItem*)getQueryItemWithName:(NSString*)name fromItems:(NSArray<NSURLQueryItem*>*)items {
+    for (NSURLQueryItem *item in items) {
+        if ([item.name isEqualToString:name]) {
+            return item;
+        }
+    }
+    return nil;
+}
+
 @end
