@@ -18,6 +18,7 @@
 @interface MIDefaultTracker : NSObject
 @property BOOL isReady;
 @property (nonatomic) BOOL anonymousTracking;
+@property (nonatomic) BOOL isItFlutter;
 @property NSString*_Nullable temporaryID;
 @property NSString* _Nonnull version;
 @property NSString* _Nonnull platform;
