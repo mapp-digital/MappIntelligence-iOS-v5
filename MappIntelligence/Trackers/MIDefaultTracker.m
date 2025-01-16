@@ -123,6 +123,9 @@ static NSString *userAgent;
 //      if (_anonymousTracking == NULL) {
 //          _anonymousTracking = [[MIDefaultTracker sharedDefaults] boolForKey:anonymous];
 //      }
+      NSNumber *number = @1;
+     [[NSUserDefaults standardUserDefaults] setObject: number forKey:@"FirstOpen"];
+     [[NSUserDefaults standardUserDefaults] synchronize];
       _isItFlutter = NO;
     _temporaryID = NULL;
     everID = [sharedTracker generateEverId];
