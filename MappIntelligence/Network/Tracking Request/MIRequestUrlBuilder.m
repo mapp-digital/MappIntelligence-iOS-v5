@@ -239,6 +239,11 @@
        [[NSUserDefaults standardUserDefaults] setObject: number forKey:@"FirstOpen"];
        [[NSUserDefaults standardUserDefaults] synchronize];
     }
+    else {
+        NSNumber *number = @2;
+       [[NSUserDefaults standardUserDefaults] setObject: number forKey:@"FirstOpen"];
+       [[NSUserDefaults standardUserDefaults] synchronize];
+    }
  
     
     //process anonimous tracking

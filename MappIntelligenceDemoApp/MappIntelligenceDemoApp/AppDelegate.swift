@@ -35,7 +35,7 @@ var window: UIWindow?
         //MappIntelligence.shared()?.trackPage(MIPageViewEvent(name: "ime_glupo"))
         //MappIntelligence.shared()?.initWithConfiguration(array, onTrackdomain: domain as! String, andWithEverID: "43657756353521")
         MappIntelligence.shared()?.logLevel = .all
-        MappIntelligence.shared()?.batchSupportEnabled = true
+        MappIntelligence.shared()?.batchSupportEnabled = false
         MappIntelligence.shared()?.batchSupportSize = 150
         MappIntelligence.shared()?.requestInterval = 1
         MappIntelligence.shared()?.requestPerQueue = 300

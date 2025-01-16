@@ -148,7 +148,11 @@
             [self sendAllRequestFromDB];
         }
     });
-    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        if(self->_tracker.isItFlutter == YES) {
+            [self didBecomeActive];
+        }
+    });
 
     return YES;
 }
@@ -335,7 +339,9 @@ void onUncaughtException(NSException* exception)
             }
         });
         if ([savedNo  isEqual: @1]) {
-            [_tracker updateFirstSessionWith:[[UIApplication sharedApplication] applicationState]];
+//            [_tracker updateFirstSessionWith:[[UIApplication sharedApplication] applicationState]];
+            //UIApplicationStateInactive
+            [_tracker updateFirstSessionWith:UIApplicationStateInactive];
         }
     }
 }

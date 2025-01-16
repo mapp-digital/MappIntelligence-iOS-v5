@@ -130,7 +130,6 @@
 		A31C6F1D24D9A0F300166585 /* RequestBatchSupportUrlBuilderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A31C6F1C24D9A0F300166585 /* RequestBatchSupportUrlBuilderTests.m */; };
 		A31C6F2024D9A9B200166585 /* DatabaseManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A31C6F1F24D9A9B200166585 /* DatabaseManagerTests.m */; };
 		A32E16B22A8D05EA000304AA /* MIUsageStatistics.h in Sources */ = {isa = PBXBuildFile; fileRef = A341D7042A433EBC00CA1946 /* MIUsageStatistics.h */; };
-		A331A4C62D3577CB00AFE846 /* SetupForLocalTesting.plist in Resources */ = {isa = PBXBuildFile; fileRef = A331A4C52D3577CB00AFE846 /* SetupForLocalTesting.plist */; };
 		A334861D23BF3E2300D0EB5F /* MappIntelligence.m in Sources */ = {isa = PBXBuildFile; fileRef = A334861C23BF3E2300D0EB5F /* MappIntelligence.m */; };
 		A334861E23BF3E2300D0EB5F /* MappIntelligence.h in Copy Files */ = {isa = PBXBuildFile; fileRef = A334861B23BF3E2300D0EB5F /* MappIntelligence.h */; };
 		A334863423BF3FAD00D0EB5F /* MappIntelligence.h in Headers */ = {isa = PBXBuildFile; fileRef = A334861B23BF3E2300D0EB5F /* MappIntelligence.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -414,7 +413,7 @@
 		A3187BAE2874805000653D05 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk/System/iOSSupport/System/Library/Frameworks/WebKit.framework; sourceTree = DEVELOPER_DIR; };
 		A31C6F1C24D9A0F300166585 /* RequestBatchSupportUrlBuilderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RequestBatchSupportUrlBuilderTests.m; sourceTree = "<group>"; };
 		A31C6F1F24D9A9B200166585 /* DatabaseManagerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DatabaseManagerTests.m; sourceTree = "<group>"; };
-		A331A4C52D3577CB00AFE846 /* SetupForLocalTesting.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = SetupForLocalTesting.plist; path = MappIntelligenceTests/SetupForLocalTesting.plist; sourceTree = "<group>"; };
+		A31F7FB32D380B6B000A4D1E /* SetupForLocalTesting.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = SetupForLocalTesting.plist; sourceTree = "<group>"; };
 		A334861823BF3E2300D0EB5F /* libMappIntelligenceSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libMappIntelligenceSDK.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A334861B23BF3E2300D0EB5F /* MappIntelligence.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MappIntelligence.h; sourceTree = "<group>"; };
 		A334861C23BF3E2300D0EB5F /* MappIntelligence.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MappIntelligence.m; sourceTree = "<group>"; };
@@ -669,7 +668,7 @@
 		A334860F23BF3E2300D0EB5F = {
 			isa = PBXGroup;
 			children = (
-				A331A4C52D3577CB00AFE846 /* SetupForLocalTesting.plist */,
+				A31F7FB32D380B6B000A4D1E /* SetupForLocalTesting.plist */,
 				A38B41F52B4C3EF10059B7B1 /* MappIntelligencePrivacyInfo.xcprivacy */,
 				A33C1D3A24508C990049D5E5 /* LICENSE.md */,
 				A30E3EC62444A3970047D7A6 /* MappIntelligence.podspec */,
@@ -1132,7 +1131,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A331A4C62D3577CB00AFE846 /* SetupForLocalTesting.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
