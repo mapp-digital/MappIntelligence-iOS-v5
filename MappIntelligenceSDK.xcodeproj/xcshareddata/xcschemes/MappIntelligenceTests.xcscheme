@@ -28,6 +28,17 @@
                ReferencedContainer = "container:MappIntelligenceSDK.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A3B220D52D899D1700F8EE40"
+               BuildableName = "MappIntelligenceDemoAppUITests.xctest"
+               BlueprintName = "MappIntelligenceDemoAppUITests"
+               ReferencedContainer = "container:MappIntelligenceDemoApp/MappIntelligenceDemoApp.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
@@ -57,15 +68,6 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "BCA1738D23D5D25C00B31430"
-            BuildableName = "MappIntelligenceDemoApp.app"
-            BlueprintName = "MappIntelligenceDemoApp"
-            ReferencedContainer = "container:MappIntelligenceDemoApp/MappIntelligenceDemoApp.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
