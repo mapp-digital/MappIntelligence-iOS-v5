@@ -205,7 +205,7 @@
 		BCA1738623D5D25C00B31430 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1130;
+				LastSwiftUpdateCheck = 1620;
 				LastUpgradeCheck = 1400;
 				ORGANIZATIONNAME = "Mapp Digital US, LLC";
 				TargetAttributes = {

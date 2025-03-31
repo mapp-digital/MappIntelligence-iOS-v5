@@ -193,27 +193,50 @@
                 }
             }
         } else if ([event isKindOfClass:MIActionEvent.class]) {
-            [parametrs addObjectsFromArray:[(MIActionEvent*)event asQueryItems]];
-            MISessionParameters *session = ((MIActionEvent*)event).sessionParameters;
-            [parametrs addObjectsFromArray:[session asQueryItems]];
-            MIUserCategories *userCategories = ((MIActionEvent*)event).userCategories;
-            parametrs = [self removeDmcUserId:parametrs and:[userCategories asQueryItems]];
-            [parametrs addObjectsFromArray:[userCategories asQueryItems]];
-            MIEcommerceParameters *ecommerceParameters = ((MIActionEvent*)event).ecommerceParameters;
-            [parametrs addObjectsFromArray:[ecommerceParameters asQueryItems]];
-            MICampaignParameters *advertisementProperties = ((MIActionEvent*)event).campaignParameters;
-            if ([self sendCampaignData:advertisementProperties]) {
+            MIActionEvent *actionEvent = (MIActionEvent*)event;
+            [parametrs addObjectsFromArray:[actionEvent asQueryItems]];
+            
+            MISessionParameters *session = actionEvent.sessionParameters;
+            if (session) {
+                [parametrs addObjectsFromArray:[session asQueryItems]];
+            }
+            
+            MIUserCategories *userCategories = actionEvent.userCategories;
+            if (userCategories) {
+                NSArray<NSURLQueryItem *> *userCategoryItems = [userCategories asQueryItems];
+                if (userCategoryItems && parametrs) {
+                    parametrs = [self removeDmcUserId:parametrs and:userCategoryItems];
+                    [parametrs addObjectsFromArray:userCategoryItems];
+                }
+            }
+            
+            MIEcommerceParameters *ecommerceParameters = actionEvent.ecommerceParameters;
+            if (ecommerceParameters) {
+                [parametrs addObjectsFromArray:[ecommerceParameters asQueryItems]];
+            }
+            
+            MICampaignParameters *advertisementProperties = actionEvent.campaignParameters;
+            if (advertisementProperties && [self sendCampaignData:advertisementProperties]) {
                 [parametrs addObjectsFromArray:[advertisementProperties asQueryItems]];
             }
         } else if ([event isKindOfClass:MIMediaEvent.class]) {
-            MIMediaParameters *media = ((MIMediaEvent*)event).mediaParameters;
-            [parametrs addObjectsFromArray:[media asQueryItems]];
-            MISessionParameters *session = ((MIMediaEvent*)event).sessionParameters;
-            [parametrs addObjectsFromArray:[session asQueryItems]];
-            MIEventParameters *eventParameters = ((MIMediaEvent*)event).eventParameters;
-            [parametrs addObjectsFromArray:[eventParameters asQueryItems]];
-            MIEcommerceParameters *ecommerceProperties = ((MIMediaEvent*)event).ecommerceParameters;
-            [parametrs addObjectsFromArray:[ecommerceProperties asQueryItems]];
+            MIMediaEvent *mediaEvent = (MIMediaEvent*)event;
+            MIMediaParameters *media = mediaEvent.mediaParameters;
+            if (media) {
+                [parametrs addObjectsFromArray:[media asQueryItems]];
+            }
+            MISessionParameters *session = mediaEvent.sessionParameters;
+            if (session) {
+                [parametrs addObjectsFromArray:[session asQueryItems]];
+            }
+            MIEventParameters *eventParameters = mediaEvent.eventParameters;
+            if (eventParameters) {
+                [parametrs addObjectsFromArray:[eventParameters asQueryItems]];
+            }
+            MIEcommerceParameters *ecommerceProperties = mediaEvent.ecommerceParameters;
+            if (ecommerceProperties) {
+                [parametrs addObjectsFromArray:[ecommerceProperties asQueryItems]];
+            }
         } else if ([event isKindOfClass:MIFormSubmitEvent.class]) {
             [parametrs addObjectsFromArray:[((MIFormSubmitEvent*)event).formParameters asQueryItems]];
         }
