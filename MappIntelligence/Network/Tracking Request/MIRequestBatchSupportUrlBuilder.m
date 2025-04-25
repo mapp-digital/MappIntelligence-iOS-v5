@@ -94,13 +94,21 @@
     NSArray *subArray =
         [data.requests subarrayWithRange:NSMakeRange(i * 5000, length)];
     for (MIDBRequest *req in subArray) {
-        NSString* partOfBody = [[[req urlForBatchSupprot:YES] query] stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
-        if ([partOfBody isEqualToString: @""] || [partOfBody isEqualToString: @" "]) {
+        NSURL *url = [req urlForBatchSupprot:YES];
+        if (!url) {
+            continue;
+        }
+        NSString *query = [url query];
+        if (!query) {
+            continue;
+        }
+        NSString* partOfBody = [query stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
+        if (!partOfBody || [partOfBody isEqualToString:@""] || [partOfBody isEqualToString:@" "]) {
             continue;
         }
         [body appendString:@"wt?"];
         [body appendString:partOfBody];
-      [body appendString:@"\n"];
+        [body appendString:@"\n"];
     }
       if ([body length] != 0) {
           [array addObject:body];
@@ -108,14 +116,21 @@
     i++;
   } else {
     for (MIDBRequest *req in data.requests) {
-      
-        NSString* partOfBody = [[[req urlForBatchSupprot:YES] query] stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
-        if ([partOfBody isEqualToString: @""] || [partOfBody isEqualToString: @" "]) {
+        NSURL *url = [req urlForBatchSupprot:YES];
+        if (!url) {
+            continue;
+        }
+        NSString *query = [url query];
+        if (!query) {
+            continue;
+        }
+        NSString* partOfBody = [query stringByReplacingOccurrencesOfString:@"\n" withString:@" "];
+        if (!partOfBody || [partOfBody isEqualToString:@""] || [partOfBody isEqualToString:@" "]) {
             continue;
         }
         [body appendString:@"wt?"];
-        [body appendString:partOfBody ];
-      [body appendString:@"\n"];
+        [body appendString:partOfBody];
+        [body appendString:@"\n"];
     }
       if ([body length] != 0) {
           [array addObject:body];
