@@ -78,8 +78,8 @@
 }
 
 - (void)testSendRequestWithBody {
-    NSURL *url = [NSURL URLWithString:@"http://tracker-int-01.webtrekk.net/794940687426749/batch?eid=6173676774907917685&X-WT-UA=Tracking%20Library%205.0.14%20%28iOS%2018.0%3B%20iPhone%3B%20en_RS%29%29"];
-    NSString *body = @"wt?p=500,MappIntelligenceDemoApp.PageViewController,0,750x1334,32,0,1736797465512,0,0,0&fns=1&one=0&cs801=5.0.14&cs802=iOS&pf=71&la=en&cs804=1.0&cs805=3&cs821=0&eor=1";
+    NSURL *url = [NSURL URLWithString:@"http://tracker-int-01.webtrekk.net/794940687426749/batch?eid=6173676774907917685&X-WT-UA=Tracking%20Library%205.0.15%20%28iOS%2018.0%3B%20iPhone%3B%20en_RS%29%29"];
+    NSString *body = @"wt?p=500,MappIntelligenceDemoApp.PageViewController,0,750x1334,32,0,1736797465512,0,0,0&fns=1&one=0&cs801=5.0.15&cs802=iOS&pf=71&la=en&cs804=1.0&cs805=3&cs821=0&eor=1";
     
     _expectationSecond = [self expectationWithDescription:@"Request should complete"];
     
@@ -91,7 +91,7 @@
 }
 
 - (void)testSendRequestWithCompletion {
-    NSURL *url = [NSURL URLWithString:@"http://tracker-int-01.webtrekk.net/794940687426749/batch?eid=6173676774907917685&X-WT-UA=Tracking%20Library%205.0.14%20%28iOS%2018.0%3B%20iPhone%3B%20en_RS%29%29"];
+    NSURL *url = [NSURL URLWithString:@"http://tracker-int-01.webtrekk.net/794940687426749/batch?eid=6173676774907917685&X-WT-UA=Tracking%20Library%205.0.15%20%28iOS%2018.0%3B%20iPhone%3B%20en_RS%29%29"];
     
     _expectationFirst = [self expectationWithDescription:@"Request should complete"];
     
