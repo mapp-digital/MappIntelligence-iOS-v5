@@ -40,6 +40,11 @@ jobs:
     runs-on: macos-latest
     steps:
     - uses: actions/checkout@v4
+    - name: Create config file for build
+        run: |
+          mkdir -p MappIntelligenceDemoApp/MappIntelligenceDemoApp
+          echo "${{ secrets.APPOXEECONFIG }}" | base64 --decode > MappIntelligenceDemoApp/MappIntelligenceDemoApp/AppoxeeConfig.plist
+          echo "${{ secrets.SETUPFORLOCALTESTING }}" | base64 --decode > MappIntelligenceDemoApp/MappIntelligenceDemoApp/SetupForLocalTesting.plist
     - name: Build
       run: swift build -v
       
@@ -48,6 +53,11 @@ jobs:
     runs-on: macos-latest
     steps:
     - uses: actions/checkout@master
+    - name: Create config file for build
+        run: |
+          mkdir -p MappIntelligenceDemoApp/MappIntelligenceDemoApp
+          echo "${{ secrets.APPOXEECONFIG }}" | base64 --decode > MappIntelligenceDemoApp/MappIntelligenceDemoApp/AppoxeeConfig.plist
+          echo "${{ secrets.SETUPFORLOCALTESTING }}" | base64 --decode > MappIntelligenceDemoApp/MappIntelligenceDemoApp/SetupForLocalTesting.plist
     - name: Switch XCode Version
       run: sudo xcode-select -s /Applications/Xcode_15.4.app
     - name: Install Dependences
