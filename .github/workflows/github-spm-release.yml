@@ -45,8 +45,11 @@ jobs:
         mkdir -p MappIntelligenceDemoApp/MappIntelligenceDemoApp
         echo "${{ secrets.APPOXEECONFIG }}" | base64 --decode > MappIntelligenceDemoApp/MappIntelligenceDemoApp/AppoxeeConfig.plist
         echo "${{ secrets.SETUPFORLOCALTESTING }}" | base64 --decode > MappIntelligenceDemoApp/MappIntelligenceDemoApp/SetupForLocalTesting.plist
-    - name: Build
-      run: swift build -v
+    - name: Build for iOS
+      run: |
+        xcodebuild -scheme MappIntelligenceDemoApp \
+                   -destination 'generic/platform=iOS' \
+                   clean build | xcbeautify
       
   test_cocoapods:
     name: Test Cocoa Pods
