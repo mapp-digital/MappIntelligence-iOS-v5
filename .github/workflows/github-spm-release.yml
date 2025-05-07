@@ -16,18 +16,6 @@ env:
   DEVELOPER_DIR: /Applications/Xcode.app/Contents/Developer
 
 jobs:
-  add_sensitive_data:
-    name: Add sensitive plist files
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
-
-      - name: Create config file for build
-        run: |
-          echo "${{ secrets.APPOXEECONFIG }}" > MappIntelligenceDemoApp/MappIntelligenceDemoApp/AppoxeeConfig.plist
-          echo "${{ secrets.SETUPFORLOCALTESTING }}" > MappIntelligenceDemoApp/MappIntelligenceDemoApp/SetupForLocalTesting.plist
   test_apple_platforms:
     name: Test on iOS
     runs-on: macos-latest
@@ -38,8 +26,13 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+      - name: Create config file for build
+        run: |
+          mkdir -p MappIntelligenceDemoApp/MappIntelligenceDemoApp
+          echo "${{ secrets.APPOXEECONFIG }}" | base64 --decode > MappIntelligenceDemoApp/MappIntelligenceDemoApp/AppoxeeConfig.plist
+          echo "${{ secrets.SETUPFORLOCALTESTING }}" | base64 --decode > MappIntelligenceDemoApp/MappIntelligenceDemoApp/SetupForLocalTesting.plist
       - name: Test platform ${{ matrix.destination }}
-        run: set -o pipefail && cd MappIntelligenceDemoApp/ && xcodebuild -scheme MappIntelligenceDemoApp -destination "${{ matrix.destination }}" | xcbeautify
+        run: set -o pipefail && cd MappIntelligenceDemoApp/ && xcodebuild -scheme MappIntelligenceDemoApp -destination "${{ matrix.destination }}" clean build | xcbeautify
 
 
   test_spm:
@@ -47,14 +40,27 @@ jobs:
     runs-on: macos-latest
     steps:
     - uses: actions/checkout@v4
-    - name: Build
-      run: swift build -v
+    - name: Create config file for build
+      run: |
+        mkdir -p MappIntelligenceDemoApp/MappIntelligenceDemoApp
+        echo "${{ secrets.APPOXEECONFIG }}" | base64 --decode > MappIntelligenceDemoApp/MappIntelligenceDemoApp/AppoxeeConfig.plist
+        echo "${{ secrets.SETUPFORLOCALTESTING }}" | base64 --decode > MappIntelligenceDemoApp/MappIntelligenceDemoApp/SetupForLocalTesting.plist
+    - name: Build for iOS
+      run: |
+        xcodebuild -scheme MappIntelligenceDemoApp \
+                   -destination 'generic/platform=iOS' \
+                   clean build | xcbeautify
       
   test_cocoapods:
     name: Test Cocoa Pods
     runs-on: macos-latest
     steps:
     - uses: actions/checkout@master
+    - name: Create config file for build
+      run: |
+        mkdir -p MappIntelligenceDemoApp/MappIntelligenceDemoApp
+        echo "${{ secrets.APPOXEECONFIG }}" | base64 --decode > MappIntelligenceDemoApp/MappIntelligenceDemoApp/AppoxeeConfig.plist
+        echo "${{ secrets.SETUPFORLOCALTESTING }}" | base64 --decode > MappIntelligenceDemoApp/MappIntelligenceDemoApp/SetupForLocalTesting.plist
     - name: Switch XCode Version
       run: sudo xcode-select -s /Applications/Xcode_15.4.app
     - name: Install Dependences
