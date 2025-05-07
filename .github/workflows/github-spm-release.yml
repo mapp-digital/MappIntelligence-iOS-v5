@@ -26,8 +26,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - name: Switch Xcode version
-        run: sudo xcode-select -s /Applications/Xcode_16.0.app
+      - uses: actions/setup-xcode@v3
+        with:
+          xcode-version: '16.0'
       - name: Create config file for build
         run: |
           mkdir -p MappIntelligenceDemoApp/MappIntelligenceDemoApp
