@@ -32,7 +32,8 @@ jobs:
           echo "${{ secrets.APPOXEECONFIG }}" | base64 --decode > MappIntelligenceDemoApp/MappIntelligenceDemoApp/AppoxeeConfig.plist
           echo "${{ secrets.SETUPFORLOCALTESTING }}" | base64 --decode > MappIntelligenceDemoApp/MappIntelligenceDemoApp/SetupForLocalTesting.plist
       - name: Test platform ${{ matrix.destination }}
-        run: set -o pipefail && cd MappIntelligenceDemoApp/ && xcodebuild -scheme MappIntelligenceDemoApp -destination "${{ matrix.destination }}" | xcbeautify
+        run: set -o pipefail && cd MappIntelligenceDemoApp/ && xcodebuild -scheme MappIntelligenceDemoApp -destination "${{ matrix.destination }}" \
+                   clean build | xcbeautify
 
 
   test_spm:
