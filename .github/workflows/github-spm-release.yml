@@ -16,19 +16,6 @@ env:
   DEVELOPER_DIR: /Applications/Xcode.app/Contents/Developer
 
 jobs:
-  add_sensitive_data:
-    name: Add sensitive plist files
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
-
-      - name: Create config file for build
-        run: |
-          mkdir -p MappIntelligenceDemoApp/MappIntelligenceDemoApp
-          echo "${{ secrets.APPOXEECONFIG }}" | base64 --decode > MappIntelligenceDemoApp/MappIntelligenceDemoApp/AppoxeeConfig.plist
-          echo "${{ secrets.SETUPFORLOCALTESTING }}" | base64 --decode > MappIntelligenceDemoApp/MappIntelligenceDemoApp/SetupForLocalTesting.plist
   test_apple_platforms:
     name: Test on iOS
     runs-on: macos-latest
@@ -39,6 +26,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+      - name: Create config file for build
+        run: |
+          mkdir -p MappIntelligenceDemoApp/MappIntelligenceDemoApp
+          echo "${{ secrets.APPOXEECONFIG }}" | base64 --decode > MappIntelligenceDemoApp/MappIntelligenceDemoApp/AppoxeeConfig.plist
+          echo "${{ secrets.SETUPFORLOCALTESTING }}" | base64 --decode > MappIntelligenceDemoApp/MappIntelligenceDemoApp/SetupForLocalTesting.plist
       - name: Test platform ${{ matrix.destination }}
         run: set -o pipefail && cd MappIntelligenceDemoApp/ && xcodebuild -scheme MappIntelligenceDemoApp -destination "${{ matrix.destination }}" | xcbeautify
 
