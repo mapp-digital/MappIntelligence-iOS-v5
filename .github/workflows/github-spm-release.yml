@@ -16,6 +16,11 @@ env:
   DEVELOPER_DIR: /Applications/Xcode.app/Contents/Developer
 
 jobs:
+  add_sensitive_data:
+    name: Create config file for build
+    run:
+        echo "${{ secrets.APPOXEECONFIG }}" > MappIntelligenceDemoApp/MappIntelligenceDemoApp/AppoxeeConfig.plist
+        echo "${{ secrets.SETUPFORLOCALTESTING }}" > MappIntelligenceDemoApp/MappIntelligenceDemoApp/SetupForLocalTesting.plist
   test_apple_platforms:
     name: Test on iOS
     runs-on: macos-latest
