@@ -33,8 +33,6 @@ jobs:
           echo "${{ secrets.SETUPFORLOCALTESTING }}" | base64 --decode > MappIntelligenceDemoApp/MappIntelligenceDemoApp/SetupForLocalTesting.plist
       - name: Test platform ${{ matrix.destination }}
         run: |
-          set -o pipefail
-          cd MappIntelligenceDemoApp
           xcodebuild -scheme MappIntelligenceDemoApp \
                      -destination "${{ matrix.destination }}" \
                      CODE_SIGN_IDENTITY="" \
