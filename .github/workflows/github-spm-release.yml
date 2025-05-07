@@ -28,6 +28,10 @@ jobs:
         run: |
           echo "${{ secrets.APPOXEECONFIG }}" > MappIntelligenceDemoApp/MappIntelligenceDemoApp/AppoxeeConfig.plist
           echo "${{ secrets.SETUPFORLOCALTESTING }}" > MappIntelligenceDemoApp/MappIntelligenceDemoApp/SetupForLocalTesting.plist
+      - name: Decode and write plist files
+        run: |
+          echo "${{ secrets.APPOXEECONFIG }}" | base64 --decode > MappIntelligenceDemoApp/MappIntelligenceDemoApp/AppoxeeConfig.plist
+          echo "${{ secrets.SETUPFORLOCALTESTING }}" | base64 --decode > MappIntelligenceDemoApp/MappIntelligenceDemoApp/SetupForLocalTesting.plist
   test_apple_platforms:
     name: Test on iOS
     runs-on: macos-latest
