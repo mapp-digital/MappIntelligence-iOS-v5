@@ -56,10 +56,6 @@ jobs:
     - name: Build for iOS
       run: |
         set -o pipefail
-        xcodebuild -scheme MappIntelligenceSDK \
-                   -destination "platform=iOS Simulator,name=iPhone 15" \
-                   CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO \
-                   clean build | xcbeautify
         xcodebuild -scheme MappIntelligenceiOS \
                    -destination "platform=iOS Simulator,name=iPhone 15" \
                    CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO \
