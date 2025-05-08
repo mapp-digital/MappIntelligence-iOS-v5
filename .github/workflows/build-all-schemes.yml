@@ -1,0 +1,37 @@
+name: Build All Schemes
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build:
+    name: Build All Schemes in Workspace
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install xcbeautify
+        run: brew install xcbeautify
+
+      - name: List schemes
+        id: list-schemes
+        run: |
+          SCHEMES=$(xcodebuild -list -workspace Example.xcworkspace | awk '/Schemes:/,0' | tail -n +2 | sed 's/^ *//')
+          echo "schemes<<EOF" >> $GITHUB_OUTPUT
+          echo "$SCHEMES" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Build all schemes
+        run: |
+          echo "${{ steps.list-schemes.outputs.schemes }}" | while read scheme; do
+            echo "🔨 Building scheme: $scheme"
+            xcodebuild -workspace Example.xcworkspace \
+              -scheme "$scheme" \
+              -destination 'platform=iOS Simulator,name=iPhone 15' \
+              clean build | xcbeautify
+          done
+
