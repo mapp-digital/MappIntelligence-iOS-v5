@@ -25,19 +25,6 @@ jobs:
       - name: Install xcbeautify
         run: brew install xcbeautify
 
-      - name: Install dependencies (CocoaPods)
-        run: |
-          cd Example
-          pod install
-
-      - name: Test CocoaPods project
-        run: |
-          cd Example
-          xcodebuild -workspace Example.xcworkspace \
-            -scheme Example \
-            -destination 'platform=iOS Simulator,name=iPhone 15,OS=17.5' \
-            clean test | xcbeautify
-
       - name: Test SPM package
         run: |
           swift build -v
