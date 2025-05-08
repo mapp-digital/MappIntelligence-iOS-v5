@@ -1104,7 +1104,7 @@
 				};
 			};
 			buildConfigurationList = A334861323BF3E2300D0EB5F /* Build configuration list for PBXProject "MappIntelligenceSDK" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 15.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
