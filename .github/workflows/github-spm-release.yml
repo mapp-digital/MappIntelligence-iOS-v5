@@ -26,9 +26,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-xcode@v3
-        with:
-          xcode-version: '16.0'
       - name: Create config file for build
         run: |
           mkdir -p MappIntelligenceDemoApp/MappIntelligenceDemoApp
@@ -36,6 +33,8 @@ jobs:
           echo "${{ secrets.SETUPFORLOCALTESTING }}" | base64 --decode > MappIntelligenceDemoApp/MappIntelligenceDemoApp/SetupForLocalTesting.plist
       - name: Test platform ${{ matrix.destination }}
         run: |
+          set -o pipefail
+          cd MappIntelligenceDemoApp
           xcodebuild -scheme MappIntelligenceDemoApp \
                      -destination "${{ matrix.destination }}" \
                      CODE_SIGN_IDENTITY="" \
@@ -56,6 +55,8 @@ jobs:
         echo "${{ secrets.SETUPFORLOCALTESTING }}" | base64 --decode > MappIntelligenceDemoApp/MappIntelligenceDemoApp/SetupForLocalTesting.plist
     - name: Build for iOS
       run: |
+        set -o pipefail
+        cd MappIntelligenceDemoApp
         xcodebuild -scheme MappIntelligenceDemoApp \
                    -destination 'generic/platform=iOS' \
                    clean build | xcbeautify
