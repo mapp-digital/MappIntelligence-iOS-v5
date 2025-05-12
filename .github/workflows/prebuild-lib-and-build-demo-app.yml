@@ -4,6 +4,11 @@ on:
   workflow_dispatch:
 
 jobs:
+  list-xcode:
+    runs-on: macos-latest
+    steps:
+      - name: Show available Xcode versions
+        run: ls /Applications | grep Xcode
   build:
     runs-on: macos-latest
 
