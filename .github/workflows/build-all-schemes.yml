@@ -3,7 +3,6 @@ name: Build All Schemes
 on:
   push:
     branches: [main]
-  pull_request:
 
 jobs:
   build:
@@ -29,7 +28,7 @@ jobs:
         run: |
           echo "${{ steps.list-schemes.outputs.schemes }}" | while read scheme; do
             echo "🔨 Building scheme: $scheme"
-            xcodebuild -workspace Example.xcworkspace \
+            xcodebuild -workspace MappIntelligenceSDK.xcworkspace \
               -scheme "$scheme" \
               -destination 'platform=iOS Simulator,name=iPhone 15' \
               clean build | xcbeautify
