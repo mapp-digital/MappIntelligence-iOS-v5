@@ -40,6 +40,7 @@ jobs:
                      CODE_SIGN_IDENTITY="" \
                      CODE_SIGNING_REQUIRED=NO \
                      CODE_SIGNING_ALLOWED=NO \
+                     GCC_PRECOMPILE_PREFIX_HEADER=NO \
                      clean build | xcbeautify
 
 
@@ -67,6 +68,7 @@ jobs:
         xcodebuild -scheme MappIntelligenceDemoApp \
                    -destination "platform=iOS Simulator,name=iPhone 15" \
                    CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO \
+                   GCC_PRECOMPILE_PREFIX_HEADER=NO \
                    clean build | xcbeautify
       
   test_cocoapods:
