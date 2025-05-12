@@ -1,0 +1,40 @@
+name: Prebuild Library and Build Demo App
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set Xcode version
+        run: sudo xcode-select -s /Applications/Xcode_15.3.app # or another available version
+
+      - name: Build Static Library (.a)
+        run: |
+          xcodebuild -workspace MappIntelligenceSDK.xcworkspace \
+            -scheme MappIntelligenceiOS \
+            -sdk iphoneos \
+            -configuration Release \
+            BUILD_DIR=build
+
+      - name: Copy built .a to Demo App
+        run: |
+          mkdir -p MappIntelligenceDemoApp/Frameworks
+          cp build/Release-iphoneos/MappIntelligenceiOS.a MappIntelligenceDemoApp/Frameworks/
+
+      - name: Build Demo App using prebuilt .a
+        run: |
+          cd MappIntelligenceDemoApp
+          xcodebuild -workspace MappIntelligenceSDK.xcworkspace \
+            -scheme MappIntelligenceDemoApp \
+            -sdk iphoneos \
+            -configuration Release \
+            OTHER_LDFLAGS="-lMappIntelligenceiOS" \
+            HEADER_SEARCH_PATHS="${PWD}/MappIntelligence/include" \
+            LIBRARY_SEARCH_PATHS="${PWD}/MappIntelligenceDemoApp/Frameworks"
+
