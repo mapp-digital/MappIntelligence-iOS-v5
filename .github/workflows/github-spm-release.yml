@@ -26,6 +26,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+      - name: Show available Xcode versions
+        run: ls /Applications | grep Xcode
       - name: Create config file for build
         run: |
           mkdir -p MappIntelligenceDemoApp/MappIntelligenceDemoApp
