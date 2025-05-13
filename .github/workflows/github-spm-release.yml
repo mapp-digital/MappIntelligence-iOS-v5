@@ -34,7 +34,6 @@ jobs:
       - name: Test platform ${{ matrix.destination }}
         run: |
           set -o pipefail
-          cd MappIntelligenceDemoApp
           xcodebuild -workspace MappIntelligenceSDK.xcworkspace -scheme MappIntelligenceDemoApp \
                      -destination "${{ matrix.destination }}" \
                      CODE_SIGN_IDENTITY="" \
