@@ -28,6 +28,8 @@ jobs:
       - uses: actions/checkout@v4
       - name: Show available Xcode versions
         run: ls /Applications | grep Xcode
+      - name: Switch Xcode version
+        run: sudo xcode-select -s /Applications/Xcode_16.2.app
       - name: Create config file for build
         run: |
           mkdir -p MappIntelligenceDemoApp/MappIntelligenceDemoApp
