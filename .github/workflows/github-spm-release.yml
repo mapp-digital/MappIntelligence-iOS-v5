@@ -26,16 +26,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - name: Build MappIntelligenceiOS
-        run: |
-          set -o pipefail
-          xcodebuild build --workspace MappIntelligenceSDK.workspace \
-                     -destination "${{ matrix.destination }}" \
-                     CODE_SIGN_IDENTITY="" \
-                     CODE_SIGNING_REQUIRED=NO \
-                     CODE_SIGNING_ALLOWED=NO \
-                     GCC_PRECOMPILE_PREFIX_HEADER=NO \
-                     clean build | xcbeautify
       - name: Create config file for build
         run: |
           mkdir -p MappIntelligenceDemoApp/MappIntelligenceDemoApp
