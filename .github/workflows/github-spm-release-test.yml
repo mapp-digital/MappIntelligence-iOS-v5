@@ -34,7 +34,7 @@ jobs:
           xcodebuild -scheme MappIntelligenceiOS \
                      -destination 'platform=iOS Simulator,name=iPhone 15,OS=17.5' \
                      clean build | xcbeautify
-          swift build -v
+          swift build -v -target arm64
           swift test -v
 
   release:
