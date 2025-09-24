@@ -8,7 +8,7 @@ on:
 
 jobs:
   build_and_test:
-    runs-on: macos-15
+    runs-on: macos-latest
 
     steps:
       - name: Checkout repo
@@ -27,7 +27,7 @@ jobs:
 
       - name: Install reqired SDK
         run: |
-          xcodebuild -downloadPlatform iOS -buildVersion 17.5
+          xcodebuild -downloadPlatform iOS -buildVersion 17.5 -architectureVariant arm64
 
       - name: Test SPM package
         run: |
