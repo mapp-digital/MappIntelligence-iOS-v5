@@ -25,6 +25,12 @@ jobs:
       - name: Install xcbeautify
         run: brew install xcbeautify
 
+      - name: List avaliable XCode versions
+        run: ls /Applications | grep Xcode
+
+      - name: Show current version of Xcode
+        run: xcodebuild -version
+
       - name: Install reqired SDK
         run: |
           xcodebuild -downloadPlatform iOS -buildVersion 17.5
