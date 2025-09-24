@@ -8,7 +8,7 @@ on:
 
 jobs:
   build_and_test:
-    runs-on: macos-14
+    runs-on: macos-15
 
     steps:
       - name: Checkout repo
@@ -24,6 +24,10 @@ jobs:
 
       - name: Install xcbeautify
         run: brew install xcbeautify
+
+      - name: Install reqired SDK
+        run: |
+          xcodebuild -downloadPlatform iOS -buildVersion 17.5
 
       - name: Test SPM package
         run: |
