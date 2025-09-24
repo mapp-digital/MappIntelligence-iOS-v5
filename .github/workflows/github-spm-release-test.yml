@@ -27,7 +27,7 @@ jobs:
 
       - name: Install reqired SDK
         run: |
-          xcodebuild -downloadPlatform iOS -buildVersion 17.5 -architectureVariant arm64
+          xcodebuild -downloadPlatform iOS -buildVersion 17.5
 
       - name: Test SPM package
         run: |
