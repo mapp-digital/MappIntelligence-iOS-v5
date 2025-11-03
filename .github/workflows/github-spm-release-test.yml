@@ -14,11 +14,11 @@ jobs:
       - name: Get version from podspec
         id: version
         run: |
-        VERSION=$(ruby -rjson -e "
+          VERSION=$(ruby -rjson -e "
             spec = eval(File.read('MappIntelligence.podspec'))
             puts spec.version
             ")
-        echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
       - name: Checkout repo
         uses: actions/checkout@v4
 
