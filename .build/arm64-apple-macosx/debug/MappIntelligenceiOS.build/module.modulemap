@@ -1,0 +1,4 @@
+module MappIntelligenceiOS {
+    umbrella header "/Users/stefan.stevanovic/Documents/MappIntelligence-iOS-v5/MappIntelligenceiOS/MappIntelligenceiOS.h"
+    export *
+}
