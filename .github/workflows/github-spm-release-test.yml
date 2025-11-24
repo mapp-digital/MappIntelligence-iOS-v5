@@ -11,14 +11,14 @@ jobs:
     runs-on: macos-latest
 
     steps:
-      - name: Get version from podspec
-        id: version
+      - name: Extract version from podspec
+        id: get_version
         run: |
-          VERSION=$(ruby -rjson -e "
-            spec = eval(File.read('../../MappIntelligence.podspec'))
-            puts spec.version
-            ")
+          VERSION=$(grep -E "s.version\s*=" MappIntelligence.podspec | sed -E "s/.*= *['\"]([^'\"]+)['\"].*/\1/")
           echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Print version
+        run: echo "Version from podspec:${{ steps.get_version.outputs.version }}"
       - name: Checkout repo
         uses: actions/checkout@v4
 
