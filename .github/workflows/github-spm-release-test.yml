@@ -11,6 +11,8 @@ jobs:
     runs-on: macos-latest
 
     steps:
+      - name: Show root directory structure
+        run: ls -R .
       - name: Extract version from podspec
         id: get_version
         run: |
