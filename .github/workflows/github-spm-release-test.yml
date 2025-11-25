@@ -29,14 +29,11 @@ jobs:
         run: |
           xcodebuild -downloadPlatform iOS -buildVersion 17.5
 
-      - name: Test SPM package
+      - name: Test SPM package and Run Unit tests
         run: |
           xcodebuild -scheme MappIntelligenceiOS \
                      -destination 'platform=iOS Simulator,name=iPhone 15,OS=17.5' \
                      clean build | xcbeautify
-
-      - name: Run Unit Tests
-        run: |
           xcodebuild -scheme MappIntelligenceTests \
                      -destination 'platform=iOS Simulator,name=iPhone 15,OS=17.5' \
                      clean build | xcbeautify
