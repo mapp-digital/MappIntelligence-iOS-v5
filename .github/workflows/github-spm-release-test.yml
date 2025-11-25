@@ -11,16 +11,6 @@ jobs:
     runs-on: macos-latest
 
     steps:
-      - name: Show root directory structure
-        run: ls -R .
-      - name: Extract version from podspec
-        id: get_version
-        run: |
-          VERSION=$(grep -E "s.version\s*=" MappIntelligence.podspec | sed -E "s/.*= *['\"]([^'\"]+)['\"].*/\1/")
-          echo "version=$VERSION" >> $GITHUB_OUTPUT
-
-      - name: Print version
-        run: echo "Version from podspec:${{ steps.get_version.outputs.version }}"
       - name: Checkout repo
         uses: actions/checkout@v4
 
@@ -42,6 +32,12 @@ jobs:
       - name: Test SPM package
         run: |
           xcodebuild -scheme MappIntelligenceiOS \
+                     -destination 'platform=iOS Simulator,name=iPhone 15,OS=17.5' \
+                     clean build | xcbeautify
+
+      - name: Run Unit Tests
+        run: |
+          xcodebuild -scheme MappIntelligenceTests \
                      -destination 'platform=iOS Simulator,name=iPhone 15,OS=17.5' \
                      clean build | xcbeautify
 
