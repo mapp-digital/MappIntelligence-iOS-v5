@@ -37,7 +37,13 @@ jobs:
                      
       - name: Install reqired SDK for Unit Tests
         run: |
-          xcodebuild -downloadPlatform iOS -buildVersion 17.5
+          sudo xcode-select -s /Applications/Xcode.app
+          sudo xcodebuild -downloadPlatform iOS
+          sudo xcrun simctl runtime add /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS.simruntime || true
+          sudo xcrun simctl create "iPhone-15" "com.apple.CoreSimulator.SimDeviceType.iPhone-15" "com.apple.Platform.iOS"
+
+      - name: List simulators
+        run: xcrun simctl list devices
 
       - name: Run Unit tests
         run: |
