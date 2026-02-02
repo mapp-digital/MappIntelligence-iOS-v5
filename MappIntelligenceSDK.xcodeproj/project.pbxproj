@@ -1030,6 +1030,7 @@
 				8F20A08325C2CE470006CB93 /* Sources */,
 				8F20A08425C2CE470006CB93 /* Frameworks */,
 				8F20A08525C2CE470006CB93 /* CopyFiles */,
+				A31BCCB12F31275900B2E7DC /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1135,6 +1136,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A31BCCB12F31275900B2E7DC /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n#!/bin/bash\nset -e\n\nLIB_NAME=\"MappIntelligenceiOS\"\nOUTPUT_DIR=\"${PROJECT_DIR}/XCFramework\"\n\nDEVICE_ARCHIVE=\"${BUILD_DIR}/${CONFIGURATION}-iphoneos\"\nSIM_ARCHIVE=\"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator\"\n\nDEVICE_LIB=\"${DEVICE_ARCHIVE}/lib${LIB_NAME}.a\"\nSIM_LIB=\"${SIM_ARCHIVE}/lib${LIB_NAME}.a\"\n\nDEVICE_HEADERS=\"${DEVICE_ARCHIVE}/include\"\nSIM_HEADERS=\"${SIM_ARCHIVE}/include\"\n\necho \"Building XCFramework for ${LIB_NAME}\"\n\nrm -rf \"${OUTPUT_DIR}/${LIB_NAME}.xcframework\"\nmkdir -p \"${OUTPUT_DIR}\"\n\nxcodebuild -create-xcframework \\\n  -library \"${DEVICE_LIB}\" -headers \"${DEVICE_HEADERS}\" \\\n  -library \"${SIM_LIB}\" -headers \"${SIM_HEADERS}\" \\\n  -output \"${OUTPUT_DIR}/${LIB_NAME}.xcframework\"\n\necho \"✅ XCFramework created at ${OUTPUT_DIR}/${LIB_NAME}.xcframework\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8F20A08325C2CE470006CB93 /* Sources */ = {
