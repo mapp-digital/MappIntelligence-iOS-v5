@@ -210,6 +210,8 @@
 		A3ADC97326D8EB34007504FF /* MIExceptionTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = A3ADC97126D8EB34007504FF /* MIExceptionTracker.h */; };
 		A3ADC97426D8EB34007504FF /* MIExceptionTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = A3ADC97226D8EB34007504FF /* MIExceptionTracker.m */; };
 		A3ADC98D26D941B5007504FF /* MIExceptionTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = A3ADC97226D8EB34007504FF /* MIExceptionTracker.m */; };
+		A3B44C812F3627F4005FAEED /* MappIntelligenceLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = BCEAE6B523BF5912007F410D /* MappIntelligenceLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A3B44C822F36292A005FAEED /* MappIntelligenceLogger.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BCEAE6B523BF5912007F410D /* MappIntelligenceLogger.h */; };
 		A3BA0E9C2C7E27F000A1D030 /* libMappIntelligenceSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A334861823BF3E2300D0EB5F /* libMappIntelligenceSDK.a */; };
 		A3BA0E9F2C7E2A7600A1D030 /* libMappIntelligenceiOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F20A08725C2CE470006CB93 /* libMappIntelligenceiOS.a */; };
 		A3BA0EB52C8B204000A1D030 /* MIAPXInappLoggerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BA0EB42C8B204000A1D030 /* MIAPXInappLoggerTests.m */; };
@@ -280,6 +282,7 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				A3B44C822F36292A005FAEED /* MappIntelligenceLogger.h in CopyFiles */,
 				A341D7112A4349CE00CA1946 /* MIUsageStatistics.h in CopyFiles */,
 				A3861FF727DB4DFC00F3F27C /* MIDefaultTracker.h in CopyFiles */,
 				A345978527A9857C0038FE3F /* MIFormParameters.h in CopyFiles */,
@@ -1008,6 +1011,7 @@
 				A380D21424141B55009E2CD8 /* MIURLSizeMonitor.h in Headers */,
 				A3EAFF612418E02F009D5108 /* MIUIFlowObserver.h in Headers */,
 				A380D20C2413D317009E2CD8 /* MIConfiguration.h in Headers */,
+				A3B44C812F3627F4005FAEED /* MappIntelligenceLogger.h in Headers */,
 				A338B79825470A1F00E50C28 /* MIProduct.h in Headers */,
 				8FEC887825598E6500E24EDC /* MIDeepLink.h in Headers */,
 				A3CC548A249125DD006215FD /* MIParameter.h in Headers */,
