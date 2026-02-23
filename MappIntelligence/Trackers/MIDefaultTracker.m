@@ -166,7 +166,6 @@ static NSString *userAgent;
   _config.serverUrl = [[NSURL alloc] initWithString:[MappIntelligence getUrl]];
   _config.MappIntelligenceId = [MappIntelligence getId];
   _config.requestInterval = [[MappIntelligence shared] requestInterval];
-    _config.requestPerQueue = ([[MappIntelligence shared] batchSupportEnabled]) ? [[MappIntelligence shared] batchSupportSize] : [[MappIntelligence shared] requestPerQueue];
   _requestUrlBuilder =
       [[MIRequestUrlBuilder alloc] initWithUrl:_config.serverUrl
                                    andWithId:_config.MappIntelligenceId];
@@ -186,7 +185,11 @@ static NSString *userAgent;
 }
 
 - (void)sendRequestFromDatabaseWithCompletionHandler:(void (^)(NSError * _Nullable))handler {
-    [[MIDatabaseManager shared] fetchAllRequestsFromInterval: _config.requestPerQueue andWithCompletionHandler:^(NSError * _Nonnull error, id  _Nullable data) {
+    // When batch is OFF, we still fetch a window of requests and send them one by one.
+    // Choose a reasonable fixed window size for non-batch mode.
+    const double nonBatchWindow = 1000.0;
+    double fetchLimit = ([[MappIntelligence shared] batchSupportEnabled] ? [[MappIntelligence shared] batchSupportSize] : nonBatchWindow);
+    [[MIDatabaseManager shared] fetchAllRequestsFromInterval: fetchLimit andWithCompletionHandler:^(NSError * _Nonnull error, id  _Nullable data) {
         if (!error) {
             MIRequestData* dt = (MIRequestData*)data;
             [dt sendAllRequestsWithCompletitionHandler:^(NSError * _Nullable error) {

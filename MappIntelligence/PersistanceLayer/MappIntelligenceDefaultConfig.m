@@ -15,7 +15,6 @@
 #define key_logLevel @"log_level"
 #define key_requestsInterval @"requests_interval"
 #define key_autoTracking @"auto_tracking"
-#define key_requestPerQueue @"request_per_batch"
 #define key_batchSupport @"batch_support"
 #define key_userMatching @"user_matching"
 #define key_optOut @"optOut"
@@ -27,7 +26,6 @@ BOOL const optOutDefault = NO;
 BOOL const batchSupportDefault = NO;
 BOOL const userMatchingDefault = NO;
 BOOL const backgroundSendoutDefault = NO;
-NSInteger const requestPerQueueDefault = 100;
 NSInteger const batchSupportSizeDefault = 5000;
 
 @interface MappIntelligenceDefaultConfig ()
@@ -42,7 +40,6 @@ NSInteger const batchSupportSizeDefault = 5000;
 @synthesize batchSupport = _batchSupport;
 @synthesize userMatching = _userMatching;
 @synthesize backgroundSendout = _backgroundSendout;
-@synthesize requestPerQueue = _requestPerQueue;
 @synthesize requestsInterval = _requestsInterval;
 @synthesize optOut = _optOut;
 /**  Track domain is a mandatory field */
@@ -78,18 +75,12 @@ NSInteger const batchSupportSizeDefault = 5000;
                                 ? userMatchingDefault
                                 : [[NSUserDefaults standardUserDefaults]
                                       doubleForKey:key_userMatching];
-        self.requestPerQueue = (![[NSUserDefaults standardUserDefaults]
-                                   doubleForKey:key_requestPerQueue])
-                                   ? requestPerQueueDefault
-                                   : [[NSUserDefaults standardUserDefaults]
-                                         doubleForKey:key_requestPerQueue];
     }
   return self;
 }
 
 - (void)encodeWithCoder:(NSCoder *)encoder {
 
-  [encoder encodeInt64:self.requestPerQueue forKey:key_requestPerQueue];
   [encoder encodeBool:self.autoTracking forKey:key_autoTracking];
   [encoder encodeBool:self.batchSupport forKey:key_batchSupport];
   [encoder encodeBool:self.userMatching forKey:key_userMatching];
@@ -106,7 +97,6 @@ NSInteger const batchSupportSizeDefault = 5000;
     self.autoTracking = [coder decodeBoolForKey:key_autoTracking];
     self.batchSupport = [coder decodeBoolForKey:key_batchSupport];
     self.userMatching = [coder decodeBoolForKey:key_userMatching];
-    self.requestPerQueue = [coder decodeIntForKey:key_requestPerQueue];
     self.requestsInterval = [coder decodeIntForKey:key_requestsInterval];
     self.trackDomain = [coder decodeObjectForKey:key_trackDomain];
     self.logLevel = [coder decodeIntForKey:key_logLevel];
@@ -134,15 +124,6 @@ NSInteger const batchSupportSizeDefault = 5000;
                         stringByAppendingFormat:self.backgroundSendout ? @"Yes"
                                                                   : @"No"])
         forDescription:kMappIntelligenceLogLevelDescriptionInfo];
-  [self validateNumberOfRequestsPerQueue:self.requestPerQueue];
-  [_logger logObj:([@"Number of requests in queue: "
-                      stringByAppendingFormat:
-                          @"%@",
-                          [NSString
-                              stringWithFormat:@"%ld",
-                                               (long)self.requestPerQueue]])
-      forDescription:kMappIntelligenceLogLevelDescriptionInfo];
-  [self validateRequestTimeInterval:self.requestsInterval];
   [_logger logObj:([@"Request time interval in minutes: "
                       stringByAppendingFormat:
                           @"%@",
@@ -171,23 +152,6 @@ NSInteger const batchSupportSizeDefault = 5000;
 
 - (NSString *)getLogLevelFor:(MappIntelligenceLogLevelDescription)description {
   return [_logger logLevelFor:description];
-}
-
-- (void)validateNumberOfRequestsPerQueue:(NSInteger)numberOfRequests {
-  if (numberOfRequests > 10000) {
-    [_logger logObj: [NSString stringWithFormat: @"Number of requests cannot exceed 10000, will be "
-                    @"returned to "
-                      @"default (%ld).", (long)requestPerQueueDefault]
-        forDescription:kMappIntelligenceLogLevelDescriptionError];
-    self.requestPerQueue = requestPerQueueDefault;
-  }
-    if (numberOfRequests < 100) {
-      [_logger logObj:[NSString stringWithFormat: @"Number of requests cannot be lower than 100, will be "
-                      @"returned to "
-                       @"default (%ld).", (long)requestPerQueueDefault]
-          forDescription:kMappIntelligenceLogLevelDescriptionError];
-      self.requestPerQueue = requestPerQueueDefault;
-    }
 }
 
 - (void)validateRequestTimeInterval:(NSInteger)timeInterval {
@@ -263,12 +227,6 @@ NSInteger const batchSupportSizeDefault = 5000;
     return _optOut;
 }
 
-- (void)setRequestPerQueue:(NSInteger)requestPerQueue {
-    _requestPerQueue = requestPerQueue;
-    [[NSUserDefaults standardUserDefaults] setInteger:requestPerQueue forKey:key_requestPerQueue];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
-
 - (void)setBatchSupport:(BOOL)batchSupport {
     _batchSupport = batchSupport;
     [[NSUserDefaults standardUserDefaults] setBool:batchSupport forKey:key_batchSupport];
@@ -287,7 +245,6 @@ NSInteger const batchSupportSizeDefault = 5000;
     self.optOut = optOutDefault;
     self.batchSupport = batchSupportDefault;
     self.userMatching = userMatchingDefault;
-    self.requestPerQueue = requestPerQueueDefault;
 }
 
 - (BOOL) isConfiguredForTracking {

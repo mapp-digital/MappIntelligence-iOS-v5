@@ -18,7 +18,6 @@
 @property (nonatomic, setter = setRequestsInterval:) NSTimeInterval requestsInterval;
 @property MappIntelligenceLogLevelDescription logLevel;
 @property BOOL autoTracking;
-@property (nonatomic, setter = setRequestPerQueue:) NSInteger requestPerQueue;
 @property BOOL batchSupport;
 @property BOOL backgroundSendout;
 @property BOOL userMatching;

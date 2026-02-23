@@ -12,7 +12,6 @@ extern NSTimeInterval const requestIntervalDefault;
 extern BOOL const optOutDefault;
 extern BOOL const batchSupportDefault;
 extern BOOL const userMatchingDefault;
-extern NSInteger const requestPerQueueDefault;
 extern NSInteger const batchSupportSizeDefault;
 
 @interface MappIntelligenceDefaultConfig : NSObject <MIConfig, NSCoding>

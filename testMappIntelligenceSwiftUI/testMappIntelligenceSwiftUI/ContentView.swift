@@ -38,7 +38,6 @@ struct ContentView: View {
             MappIntelligence.shared()?.batchSupportEnabled = false
             MappIntelligence.shared()?.batchSupportSize = 150
             MappIntelligence.shared()?.requestInterval = 60
-            MappIntelligence.shared()?.requestPerQueue = 300
             MappIntelligence.shared()?.shouldMigrate = true
             MappIntelligence.shared()?.sendAppVersionInEveryRequest = true
             MappIntelligence.shared()?.enableBackgroundSendout = true

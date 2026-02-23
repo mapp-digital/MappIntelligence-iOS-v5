@@ -49,7 +49,6 @@ typedef NS_ENUM(NSInteger, exceptionType) {
 @property (nonatomic, readwrite) BOOL batchSupportEnabled;
 @property (nonatomic, readwrite) BOOL enableBackgroundSendout;
 @property (nonatomic, readwrite) NSInteger batchSupportSize;
-@property (nonatomic, readwrite) NSInteger requestPerQueue;
 @property (nonatomic, readwrite) BOOL shouldMigrate;
 @property (nonatomic, readwrite) BOOL anonymousTracking;
 @property (nonatomic, readwrite) BOOL sendAppVersionInEveryRequest;

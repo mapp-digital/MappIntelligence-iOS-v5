@@ -103,7 +103,6 @@ static MappIntelligenceDefaultConfig *config = nil;
                         onTrackdomain:(NSString *)trackDomain
               withAutotrackingEnabled:(BOOL)autoTracking
                        requestInterval:(NSTimeInterval)requestInterval
-                     numberOfRequests:(NSInteger)numberOfRequestInQueue
                   batchSupportEnabled:(BOOL)batchSupport
     viewControllerAutoTrackingEnabled:(BOOL)viewControllerAutoTracking
                           andLogLevel:(logLevel)lv {
@@ -124,8 +123,6 @@ static MappIntelligenceDefaultConfig *config = nil;
   [config setViewControllerAutoTracking:viewControllerAutoTracking];
     //MARK: because autotracking is not available for iOS
         [[[MIDefaultTracker sharedInstance] usageStatistics] setAutoTracking:[NSNumber numberWithInt:0]];
-    
-  [config setRequestPerQueue:numberOfRequestInQueue];
   [config setSendAppVersionToEveryRequest:NO];
     [[[MIDefaultTracker sharedInstance] usageStatistics] setAppVersionInEveryRequest:[NSNumber numberWithInt:0]];
   [config setBackgroundSendout:NO];
@@ -201,7 +198,7 @@ static MappIntelligenceDefaultConfig *config = nil;
         return;
     }
     //default values for tequest timeout is 45 and for log level it is .none
-    [self initWithConfiguration:trackIDs onTrackdomain:trackDomain withAutotrackingEnabled:YES requestInterval: requestIntervalDefault numberOfRequests:requestPerQueueDefault
+    [self initWithConfiguration:trackIDs onTrackdomain:trackDomain withAutotrackingEnabled:YES requestInterval: requestIntervalDefault
             batchSupportEnabled:batchSupportDefault viewControllerAutoTrackingEnabled:YES andLogLevel: none];
 }
 
@@ -283,16 +280,6 @@ static MappIntelligenceDefaultConfig *config = nil;
     return config.userMatching;
 }
 
-- (NSInteger) requestPerQueue {
-    return config.requestPerQueue;
-}
-
-- (void) setRequestPerQueue:(NSInteger)requestPerQueue {
-    [config setRequestPerQueue:requestPerQueue];
-    [config logConfig];
-    [tracker initializeTracking];
-}
-
 - (NSTimeInterval)requestInterval {
   return [config requestsInterval];
 }
@@ -342,7 +329,7 @@ static MappIntelligenceDefaultConfig *config = nil;
 }
 
 - (void)printAllRequestFromDatabase {
-    [[MIDatabaseManager shared] fetchAllRequestsFromInterval:[config requestPerQueue] andWithCompletionHandler: ^(NSError * _Nonnull error, id  _Nullable data) {
+    [[MIDatabaseManager shared] fetchAllRequestsFromInterval:100 andWithCompletionHandler: ^(NSError * _Nonnull error, id  _Nullable data) {
         if (!error) {
             MIRequestData* dt = (MIRequestData*)data;
             [dt print];

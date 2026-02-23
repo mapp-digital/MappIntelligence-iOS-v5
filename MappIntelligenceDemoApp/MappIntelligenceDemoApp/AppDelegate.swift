@@ -35,10 +35,9 @@ var window: UIWindow?
         //MappIntelligence.shared()?.trackPage(MIPageViewEvent(name: "ime_glupo"))
         //MappIntelligence.shared()?.initWithConfiguration(array, onTrackdomain: domain as! String, andWithEverID: "43657756353521")
         MappIntelligence.shared()?.logLevel = .all
-        MappIntelligence.shared()?.batchSupportEnabled = false
+        MappIntelligence.shared()?.batchSupportEnabled = true
         MappIntelligence.shared()?.batchSupportSize = 150
-        MappIntelligence.shared()?.requestInterval = 1
-        MappIntelligence.shared()?.requestPerQueue = 300
+        MappIntelligence.shared()?.requestInterval = 1*60
         MappIntelligence.shared()?.shouldMigrate = true
         MappIntelligence.shared()?.sendAppVersionInEveryRequest = true
         MappIntelligence.shared()?.enableBackgroundSendout = true
@@ -110,3 +109,4 @@ var window: UIWindow?
     }
     
 }
+

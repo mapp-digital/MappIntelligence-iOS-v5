@@ -41,7 +41,6 @@
     XCTAssertEqual(self.config.optOut, optOutDefault);
     XCTAssertEqual(self.config.batchSupport, batchSupportDefault);
     XCTAssertEqual(self.config.userMatching, userMatchingDefault);
-    XCTAssertEqual(self.config.requestPerQueue, requestPerQueueDefault);
 }
 
 - (void)testLogConfigWithNoTrackIDs {
@@ -59,7 +58,6 @@
     self.config.optOut = YES;
     self.config.batchSupport = YES;
     self.config.userMatching = YES;
-    self.config.requestPerQueue = 200;
 
     [self.config reset];
     
@@ -67,7 +65,6 @@
     XCTAssertEqual(self.config.optOut, optOutDefault);
     XCTAssertEqual(self.config.batchSupport, batchSupportDefault);
     XCTAssertEqual(self.config.userMatching, userMatchingDefault);
-    XCTAssertEqual(self.config.requestPerQueue, requestPerQueueDefault);
 }
 
 - (void)testIsConfiguredForTracking {
