@@ -72,6 +72,24 @@
     [self checkProduct:_productFromDictionary];
 }
 
+- (void)testNameReturnsEmptyStringWhenNil {
+    MIProduct *product = [[MIProduct alloc] init];
+    product.name = nil;
+    XCTAssertEqualObjects(product.name, @"");
+}
+
+- (void)testIsEqualMatchesAllFields {
+    MIProduct *left = [[MIProduct alloc] initWithDictionary:_dictionary];
+    MIProduct *right = [[MIProduct alloc] initWithDictionary:_dictionary];
+    XCTAssertTrue([left isEqual:right]);
+}
+
+- (void)testIsEqualDetectsDifference {
+    MIProduct *left = [[MIProduct alloc] initWithDictionary:_dictionary];
+    MIProduct *right = [[MIProduct alloc] initWithDictionary:@{key_name: @"Different"}];
+    XCTAssertFalse([left isEqual:right]);
+}
+
 -(void) checkProduct: (MIProduct*)tmpProduct {
     XCTAssertTrue([tmpProduct.name isEqualToString:_productName], @"Product has no good name property!" );
     XCTAssertTrue([tmpProduct.quantity isEqualToNumber:_quantity], @"Product has no good quantity property!" );

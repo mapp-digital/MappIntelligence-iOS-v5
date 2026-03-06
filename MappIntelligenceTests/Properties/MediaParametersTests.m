@@ -11,33 +11,84 @@
 
 @interface MediaParametersTests : XCTestCase
 @property MIMediaParameters *parameters;
-@property NSMutableDictionary *testData;
+@property NSDictionary *dictionary;
 @end
 
 @implementation MediaParametersTests
 
 - (void)setUp {
-    _testData[@"videoName"] = @"TestVideo";
-    _testData[@"action"] = @"init";
-    _testData[@"position"] = 23;
-    _testData[@"duration"] = 100;
-    _parameters = [[MIMediaParameters alloc] initWith:_testData[@"videoName"] action:_testData[@"action"] postion:_testData[@"position"] duration:_testData[@"duration"]];
+    [super setUp];
+    _parameters = [[MIMediaParameters alloc] initWith:@"TestVideo" action:@"init" position:@23 duration:@100];
+    _parameters.customCategories = @{@1: @"mediaCustom1"};
+    _parameters.soundIsMuted = @1;
+    _parameters.soundVolume = @50;
+    _parameters.bandwith = @1200;
+
+    _dictionary = @{
+        @"name": @"VideoFromDict",
+        @"action": @"play",
+        @"position": @12,
+        @"duration": @98,
+        @"soundIsMuted": @0,
+        @"soundVolume": @80,
+        @"bandwith": @512,
+        @"customCategories": @{@3: @"dictCustom"}
+    };
 }
 
 - (void)tearDown {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
+    _parameters = nil;
+    _dictionary = nil;
+    [super tearDown];
 }
 
-- (void)testExample {
-    // This is an example of a functional test case.
-    // Use XCTAssert and related functions to verify your tests produce the correct results.
+- (void)testInitWithValues {
+    XCTAssertEqualObjects(_parameters.name, @"TestVideo");
+    XCTAssertEqualObjects(_parameters.action, @"init");
+    XCTAssertEqualObjects(_parameters.position, @23);
+    XCTAssertEqualObjects(_parameters.duration, @100);
 }
 
-- (void)testPerformanceExample {
-    // This is an example of a performance test case.
-    [self measureBlock:^{
-        // Put the code you want to measure the time of here.
+- (void)testInitWithDictionary {
+    MIMediaParameters *params = [[MIMediaParameters alloc] initWithDictionary:_dictionary];
+
+    XCTAssertEqualObjects(params.name, @"VideoFromDict");
+    XCTAssertEqualObjects(params.action, @"play");
+    XCTAssertEqualObjects(params.position, @12);
+    XCTAssertEqualObjects(params.duration, @98);
+    XCTAssertEqualObjects(params.soundIsMuted, @0);
+    XCTAssertEqualObjects(params.soundVolume, @80);
+    XCTAssertEqualObjects(params.bandwith, @512);
+    XCTAssertEqualObjects(params.customCategories[@3], @"dictCustom");
+}
+
+- (void)testAsQueryItems {
+    NSMutableArray<NSURLQueryItem *> *queryItems = [_parameters asQueryItems];
+
+    XCTAssertTrue([queryItems containsObject:[[NSURLQueryItem alloc] initWithName:@"mi" value:@"TestVideo"]]);
+    XCTAssertTrue([queryItems containsObject:[[NSURLQueryItem alloc] initWithName:@"mk" value:@"init"]]);
+    XCTAssertTrue([queryItems containsObject:[[NSURLQueryItem alloc] initWithName:@"mt1" value:@"23"]]);
+    XCTAssertTrue([queryItems containsObject:[[NSURLQueryItem alloc] initWithName:@"mt2" value:@"100"]]);
+    XCTAssertTrue([queryItems containsObject:[[NSURLQueryItem alloc] initWithName:@"mut" value:@"1"]]);
+    XCTAssertTrue([queryItems containsObject:[[NSURLQueryItem alloc] initWithName:@"vol" value:@"50"]]);
+    XCTAssertTrue([queryItems containsObject:[[NSURLQueryItem alloc] initWithName:@"bw" value:@"1200"]]);
+    XCTAssertTrue([queryItems containsObject:[[NSURLQueryItem alloc] initWithName:@"mg1" value:@"mediaCustom1"]]);
+}
+
+- (void)testAsQueryItemsWithNullCustomCategories {
+    MIMediaParameters *params = [[MIMediaParameters alloc] initWithDictionary:@{
+        @"name": @"VideoNullCustom",
+        @"action": @"play",
+        @"position": @1,
+        @"duration": @2,
+        @"customCategories": [NSNull null]
     }];
+
+    NSMutableArray<NSURLQueryItem *> *queryItems = nil;
+    XCTAssertNoThrow(queryItems = [params asQueryItems]);
+    XCTAssertNotNil(queryItems);
+    XCTAssertTrue([queryItems containsObject:[[NSURLQueryItem alloc] initWithName:@"mi" value:@"VideoNullCustom"]]);
+    XCTAssertFalse([queryItems containsObject:[[NSURLQueryItem alloc] initWithName:@"mg1" value:@"any"]]);
 }
 
 @end

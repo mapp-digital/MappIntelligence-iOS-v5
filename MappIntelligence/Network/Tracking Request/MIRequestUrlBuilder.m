@@ -23,13 +23,13 @@
 
 @interface MIRequestUrlBuilder ()
 
-@property NSURL *baseUrl;
-@property NSURL *serverUrl;
-@property NSString *mappIntelligenceId;
-@property NSUserDefaults* defaults;
-@property MIURLSizeMonitor *sizeMonitor;
-@property MappIntelligenceLogger *logger;
-@property NSMutableArray *campaignsToIgnore;
+@property (nonatomic, strong) NSURL *baseUrl;
+@property (nonatomic, strong) NSURL *serverUrl;
+@property (nonatomic, copy) NSString *mappIntelligenceId;
+@property (nonatomic, strong) NSUserDefaults* defaults;
+@property (nonatomic, strong) MIURLSizeMonitor *sizeMonitor;
+@property (nonatomic, strong) MappIntelligenceLogger *logger;
+@property (nonatomic, strong) NSMutableArray *campaignsToIgnore;
 
 - (NSURL *)buildBaseUrlwithServer:(NSURL *)serverUrl
                         andWithId:(NSString *)mappIntelligenceId;
@@ -52,10 +52,12 @@
 - (instancetype)initWithUrl:(NSURL *)serverUrl
                   andWithId:(NSString *)mappIntelligenceId {
   self = [self init];
-  _serverUrl = serverUrl;
-  _mappIntelligenceId = mappIntelligenceId;
-  _baseUrl =
-      [self buildBaseUrlwithServer:_serverUrl andWithId:_mappIntelligenceId];
+  if (self) {
+    self.serverUrl = serverUrl;
+    self.mappIntelligenceId = mappIntelligenceId;
+    self.baseUrl = [self buildBaseUrlwithServer:self.serverUrl
+                                      andWithId:self.mappIntelligenceId];
+  }
   return self;
 }
 
@@ -75,11 +77,12 @@
   NSString *pageNameOpt = [event pageName];
   NSURL *url;
 
-  if (!pageNameOpt && ![event isKindOfClass:MIFormSubmitEvent.class]) {
-    [_logger logObj:@"Tracking event must contain a page name: %@"
-        forDescription:kMappIntelligenceLogLevelDescriptionError];
-    return url;
-  }
+  @synchronized (self) {
+    if (!pageNameOpt && ![event isKindOfClass:MIFormSubmitEvent.class]) {
+      [_logger logObj:@"Tracking event must contain a page name: %@"
+          forDescription:kMappIntelligenceLogLevelDescriptionError];
+      return url;
+    }
 
   MIProperties *properties = [request properties];
   CGFloat scale = [[UIScreen mainScreen] scale];
@@ -270,7 +273,7 @@
  
     
     //process anonimous tracking
-    if ([[MIDefaultTracker sharedInstance] anonymousTracking]) {
+    if ([MIDefaultTracker isAnonymousTrackingEnabled]) {
         parametrs = [self getAnonimousParams:parametrs];
     }
     
@@ -278,12 +281,14 @@
     
     [_sizeMonitor setCurrentRequestSize:[_sizeMonitor currentRequestSize] +
                                        5]; // add for end of the request
-  
-    url = [self createURLFromParametersWith:parametrs];
+
+    NSArray<NSURLQueryItem *> *safeParameters = [parametrs copy];
+    url = [self createURLFromParametersWith:safeParameters];
   _dbRequest = [[MIDBRequest alloc] initWithParamters:parametrs
                                         andDomain:[MappIntelligence getUrl]
                                       andTrackIds:[MappIntelligence getId]];
   return url;
+  }
 }
 
 -(BOOL)containsEmailReceiverId:(NSArray<NSURLQueryItem *> *)parameters {
@@ -323,10 +328,14 @@
       urlComponents = [[NSURLComponents alloc] initWithURL:[self buildBaseUrlwithServer:[[NSURL alloc] initWithString:[MappIntelligence getUrl]] andWithId:[MappIntelligence getId]]
                                                     resolvingAgainstBaseURL:YES];
   }
+  if (!urlComponents) {
+      return NULL;
+  }
 
     if (parameters == (id)[NSNull null] || parameters.count == 0 ) {
-        parameters = [[NSArray alloc] init];
+        parameters = @[];
     }
+    parameters = [parameters copy];
     if (urlComponents == (id)[NSNull null]) {
         urlComponents = [[NSURLComponents alloc] initWithURL:[self buildBaseUrlwithServer:[[NSURL alloc] initWithString:[MappIntelligence getUrl]] andWithId:[MappIntelligence getId]]
                                                       resolvingAgainstBaseURL:YES];
@@ -355,15 +364,36 @@
     if(parameters) {
         tempParameters = [parameters copy];
     }
-  for (NSURLQueryItem *object in tempParameters) {
-    NSString *value = [object value];
-    if (![[object name] isEqual:@"p"]) {
-      value = [self codeString:[object value]];
+  for (id object in tempParameters) {
+    if (![object isKindOfClass:[NSURLQueryItem class]]) {
+      continue;
+    }
+    NSURLQueryItem *item = (NSURLQueryItem *)object;
+    NSString *name = [item name];
+    if (name == (id)[NSNull null]) {
+      name = nil;
+    }
+    if (name != nil && ![name isKindOfClass:[NSString class]]) {
+      name = [name description];
+    }
+    if (name.length == 0) {
+      continue;
+    }
+
+    NSString *value = [item value];
+    if (value == (id)[NSNull null]) {
+      value = nil;
+    }
+    if (value != nil && ![value isKindOfClass:[NSString class]]) {
+      value = [value description];
+    }
+    if (![name isEqual:@"p"]) {
+      value = [self codeString:value];
     }
     [componentsArray
         addObject:[[NSString alloc]
-                      initWithFormat:@"%@=%@", [self codeString:[object name]],
-                                     value]];
+                      initWithFormat:@"%@=%@", [self codeString:name],
+                                     value ?: @""]];
   }
   if ([components percentEncodedQuery] != nil) {
     [components
@@ -382,10 +412,17 @@
 
 - (NSString *)codeString:(NSString *)str {
 
+    if (str == (id)[NSNull null] || str == nil) {
+        return @"";
+    }
+    if (![str isKindOfClass:[NSString class]]) {
+        str = [str description];
+    }
+
     NSString* codeChar = @"$', /:?@=&+()!;";
-  NSCharacterSet *cValue = [NSCharacterSet URLQueryAllowedCharacterSet];
+    NSCharacterSet *cValue = [NSCharacterSet URLQueryAllowedCharacterSet];
     NSMutableCharacterSet *csValue = [cValue mutableCopy];
-    
+
     for (NSInteger charIdx=0; charIdx<codeChar.length; charIdx++) {
         unichar ch = [codeChar characterAtIndex:charIdx];
         [csValue removeCharactersInString:[NSString stringWithFormat:@"%C", ch]];

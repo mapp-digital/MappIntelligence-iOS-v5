@@ -26,6 +26,7 @@
 @property MIUsageStatistics* _Nonnull usageStatistics;
 
 + (nullable instancetype)sharedInstance;
++ (BOOL)isAnonymousTrackingEnabled;
 - (NSString *_Nullable)generateEverId;
 - (void)setEverIDFromString: (NSString *_Nonnull)everIDString;
 - (NSString*_Nonnull)generateUserAgent;

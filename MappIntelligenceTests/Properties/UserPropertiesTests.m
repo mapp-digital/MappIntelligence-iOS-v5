@@ -194,4 +194,17 @@ static MIBirthday dataInit = { .day = 1, .month = 2, .year = 1991};
     XCTAssertTrue([_userPropertiesFromDict.customCategories isEqualToDictionary:_customCategories], @"The custom categories is not correct!");
 }
 
+- (void)testAsQueryItemsWithNullCustomCategoriesFromDictionary {
+    NSMutableDictionary *dictionaryWithNullCustomCategories = [_dictionary mutableCopy];
+    [dictionaryWithNullCustomCategories setObject:[NSNull null] forKey:key_custom_categories];
+    MIUserCategories *userProperties = [[MIUserCategories alloc] initWithDictionary:dictionaryWithNullCustomCategories];
+
+    NSMutableArray<NSURLQueryItem *> *queryItems = nil;
+    XCTAssertNoThrow(queryItems = [userProperties asQueryItems]);
+    XCTAssertNotNil(queryItems);
+
+    XCTAssertTrue([queryItems containsObject:[[NSURLQueryItem alloc] initWithName:@"uc700" value:_emailAddress]]);
+    XCTAssertFalse([queryItems containsObject:[[NSURLQueryItem alloc] initWithName:@"uc12" value:@"custom_categories"]]);
+}
+
 @end

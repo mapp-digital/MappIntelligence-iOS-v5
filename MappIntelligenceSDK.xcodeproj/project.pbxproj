@@ -176,6 +176,9 @@
 		A3588A9927D20A7D0053961B /* MediaPropertiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3588A9827D20A7D0053961B /* MediaPropertiesTests.m */; };
 		A3588A9B27D8B5A70053961B /* CampaignParameterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3588A9A27D8B5A70053961B /* CampaignParameterTests.m */; };
 		A3588A9D27D8E5340053961B /* EventParameterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3588A9C27D8E5340053961B /* EventParameterTests.m */; };
+		A35F7C782F58C2250033E53E /* APXRequestBuilderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A35F7C772F58C2250033E53E /* APXRequestBuilderTests.m */; };
+		A35F7C7C2F59B4EC0033E53E /* MIDBRequestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A35F7C7B2F59B4EC0033E53E /* MIDBRequestTests.m */; };
+		A35F7C802F59DE470033E53E /* MITestURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = A35F7C7F2F59DE470033E53E /* MITestURLProtocol.m */; };
 		A36CD7CD23F44594004E3E2D /* MITrackerRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = A36CD7CB23F44594004E3E2D /* MITrackerRequest.h */; };
 		A36CD7CE23F44594004E3E2D /* MITrackerRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = A36CD7CC23F44594004E3E2D /* MITrackerRequest.m */; };
 		A36CD7D123F447D0004E3E2D /* MIProperties.h in Headers */ = {isa = PBXBuildFile; fileRef = A36CD7CF23F447D0004E3E2D /* MIProperties.h */; };
@@ -221,6 +224,7 @@
 		A3BA0EC12C8EE9B500A1D030 /* APXMIRequestBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BA0EC02C8EE9B500A1D030 /* APXMIRequestBuilder.m */; };
 		A3BA0EC42C8EEC4F00A1D030 /* APXIdentifierTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BA0EC32C8EEC4F00A1D030 /* APXIdentifierTests.m */; };
 		A3BA0EC62C8EEC9000A1D030 /* APXKeychainManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3BA0EC52C8EEC9000A1D030 /* APXKeychainManagerTests.m */; };
+		A3C29F732F589A2000ADCBB1 /* MIFormParametersTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A3C29F722F589A2000ADCBB1 /* MIFormParametersTests.m */; };
 		A3CC5486248FC418006215FD /* MIDatabaseManager.h in Headers */ = {isa = PBXBuildFile; fileRef = A3CC5484248FC418006215FD /* MIDatabaseManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A3CC5487248FC418006215FD /* MIDatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A3CC5485248FC418006215FD /* MIDatabaseManager.m */; };
 		A3CC548A249125DD006215FD /* MIParameter.h in Headers */ = {isa = PBXBuildFile; fileRef = A3CC5488249125DD006215FD /* MIParameter.h */; };
@@ -448,6 +452,10 @@
 		A3588A9C27D8E5340053961B /* EventParameterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EventParameterTests.m; sourceTree = "<group>"; };
 		A35C795D2457679000D36144 /* MappIntelligenceSDK_iOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MappIntelligenceSDK_iOS.h; sourceTree = "<group>"; };
 		A35C795E2457679000D36144 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A35F7C772F58C2250033E53E /* APXRequestBuilderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = APXRequestBuilderTests.m; sourceTree = "<group>"; };
+		A35F7C7B2F59B4EC0033E53E /* MIDBRequestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MIDBRequestTests.m; sourceTree = "<group>"; };
+		A35F7C7E2F59DE400033E53E /* MITestURLProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MITestURLProtocol.h; sourceTree = "<group>"; };
+		A35F7C7F2F59DE470033E53E /* MITestURLProtocol.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MITestURLProtocol.m; sourceTree = "<group>"; };
 		A36CD7CB23F44594004E3E2D /* MITrackerRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MITrackerRequest.h; sourceTree = "<group>"; };
 		A36CD7CC23F44594004E3E2D /* MITrackerRequest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MITrackerRequest.m; sourceTree = "<group>"; };
 		A36CD7CF23F447D0004E3E2D /* MIProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MIProperties.h; sourceTree = "<group>"; };
@@ -479,6 +487,7 @@
 		A3BA0EC02C8EE9B500A1D030 /* APXMIRequestBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APXMIRequestBuilder.m; sourceTree = "<group>"; };
 		A3BA0EC32C8EEC4F00A1D030 /* APXIdentifierTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APXIdentifierTests.m; sourceTree = "<group>"; };
 		A3BA0EC52C8EEC9000A1D030 /* APXKeychainManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APXKeychainManagerTests.m; sourceTree = "<group>"; };
+		A3C29F722F589A2000ADCBB1 /* MIFormParametersTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MIFormParametersTests.m; sourceTree = "<group>"; };
 		A3CC5484248FC418006215FD /* MIDatabaseManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MIDatabaseManager.h; sourceTree = "<group>"; };
 		A3CC5485248FC418006215FD /* MIDatabaseManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MIDatabaseManager.m; sourceTree = "<group>"; };
 		A3CC5488249125DD006215FD /* MIParameter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MIParameter.h; sourceTree = "<group>"; };
@@ -590,6 +599,7 @@
 				0403E68E2CBF947A0021EB1D /* MIRequestTest.m */,
 				0403E68C2CBF94730021EB1D /* MIParameterTest.m */,
 				A31C6F1F24D9A9B200166585 /* DatabaseManagerTests.m */,
+				A35F7C7B2F59B4EC0033E53E /* MIDBRequestTests.m */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -779,6 +789,7 @@
 				044A6D6F2C995D1D00C1F6F6 /* MIFormFieldParameterTests.m */,
 				A3F8888B281825A40054B9A1 /* MIFormParametersTest.m */,
 				A3F88899281985810054B9A1 /* MIFormFieldTests.m */,
+				A3C29F722F589A2000ADCBB1 /* MIFormParametersTests.m */,
 			);
 			path = Properties;
 			sourceTree = "<group>";
@@ -790,6 +801,15 @@
 				A35C795E2457679000D36144 /* Info.plist */,
 			);
 			path = "MappIntelligenceSDK-iOS";
+			sourceTree = "<group>";
+		};
+		A35F7C7D2F59DE3B0033E53E /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				A35F7C7E2F59DE400033E53E /* MITestURLProtocol.h */,
+				A35F7C7F2F59DE470033E53E /* MITestURLProtocol.m */,
+			);
+			path = Support;
 			sourceTree = "<group>";
 		};
 		A36CD7CA23F44567004E3E2D /* Tracking Request */ = {
@@ -861,6 +881,7 @@
 				A3BA0EB82C8EDFC000A1D030 /* APXNetworkMetadataTests.m */,
 				A3BA0EB62C8B20BF00A1D030 /* APXNetworkManagerTests.m */,
 				A3BA0EB42C8B204000A1D030 /* MIAPXInappLoggerTests.m */,
+				A35F7C772F58C2250033E53E /* APXRequestBuilderTests.m */,
 			);
 			path = UserMatching;
 			sourceTree = "<group>";
@@ -940,6 +961,7 @@
 				A32EE09C243B56FC00EDC5B8 /* Events */,
 				BCEA32C123E979FD003AF806 /* Info.plist */,
 				A3A7255E243F154900671DB2 /* MappIntelligenceTests.m */,
+				A35F7C7D2F59DE3B0033E53E /* Support */,
 			);
 			path = MappIntelligenceTests;
 			sourceTree = "<group>";
@@ -1157,7 +1179,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n#!/bin/bash\nset -e\n\nLIB_NAME=\"MappIntelligenceiOS\"\nOUTPUT_DIR=\"${PROJECT_DIR}/XCFramework\"\n\nDEVICE_ARCHIVE=\"${BUILD_DIR}/${CONFIGURATION}-iphoneos\"\nSIM_ARCHIVE=\"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator\"\n\nDEVICE_LIB=\"${DEVICE_ARCHIVE}/lib${LIB_NAME}.a\"\nSIM_LIB=\"${SIM_ARCHIVE}/lib${LIB_NAME}.a\"\n\nDEVICE_HEADERS=\"${DEVICE_ARCHIVE}/include\"\nSIM_HEADERS=\"${SIM_ARCHIVE}/include\"\n\necho \"Building XCFramework for ${LIB_NAME}\"\n\nrm -rf \"${OUTPUT_DIR}/${LIB_NAME}.xcframework\"\nmkdir -p \"${OUTPUT_DIR}\"\n\nxcodebuild -create-xcframework \\\n  -library \"${DEVICE_LIB}\" -headers \"${DEVICE_HEADERS}\" \\\n  -library \"${SIM_LIB}\" -headers \"${SIM_HEADERS}\" \\\n  -output \"${OUTPUT_DIR}/${LIB_NAME}.xcframework\"\n\necho \"✅ XCFramework created at ${OUTPUT_DIR}/${LIB_NAME}.xcframework\"\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n#!/bin/bash\nset -e\n\nLIB_NAME=\"MappIntelligenceiOS\"\nOUTPUT_DIR=\"${PROJECT_DIR}/XCFramework\"\n\nDEVICE_ARCHIVE=\"${BUILD_DIR}/${CONFIGURATION}-iphoneos\"\nSIM_ARCHIVE=\"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator\"\n\nDEVICE_LIB=\"${DEVICE_ARCHIVE}/lib${LIB_NAME}.a\"\nSIM_LIB=\"${SIM_ARCHIVE}/lib${LIB_NAME}.a\"\n\nDEVICE_HEADERS=\"${DEVICE_ARCHIVE}/include\"\nSIM_HEADERS=\"${SIM_ARCHIVE}/include\"\n\n# Do not fail regular app/test builds when one of the platform artifacts is not produced.\nif [[ ! -f \"${DEVICE_LIB}\" || ! -f \"${SIM_LIB}\" || ! -d \"${DEVICE_HEADERS}\" || ! -d \"${SIM_HEADERS}\" ]]; then\n  echo \"Skipping XCFramework creation for ${LIB_NAME}; required device/simulator artifacts are not available in this build.\"\n  exit 0\nfi\n\necho \"Building XCFramework for ${LIB_NAME}\"\n\nrm -rf \"${OUTPUT_DIR}/${LIB_NAME}.xcframework\"\nmkdir -p \"${OUTPUT_DIR}\"\n\nxcodebuild -create-xcframework \\\n  -library \"${DEVICE_LIB}\" -headers \"${DEVICE_HEADERS}\" \\\n  -library \"${SIM_LIB}\" -headers \"${SIM_HEADERS}\" \\\n  -output \"${OUTPUT_DIR}/${LIB_NAME}.xcframework\"\n\necho \"XCFramework created at ${OUTPUT_DIR}/${LIB_NAME}.xcframework\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1297,6 +1319,7 @@
 				A3BA0EC12C8EE9B500A1D030 /* APXMIRequestBuilder.m in Sources */,
 				0403E68D2CBF94730021EB1D /* MIParameterTest.m in Sources */,
 				0403E6BA2CC11E870021EB1D /* MIExceptionTrackerTests.m in Sources */,
+				A3C29F732F589A2000ADCBB1 /* MIFormParametersTests.m in Sources */,
 				04ED46092CF4A31D00D39E1D /* MIRequestUrlBuilderTests.m in Sources */,
 				A341D7142A45BC3400CA1946 /* MIUsageStatisticsTests.m in Sources */,
 				0403E6932CBFC7F60021EB1D /* MappIntelligenceDefaultConfigTest.m in Sources */,
@@ -1305,15 +1328,18 @@
 				8F143EDB2510AECA0024CF24 /* ActionPropertiesTests.m in Sources */,
 				04C5D8EE2CAE7A1500269504 /* MIActionEventTests.m in Sources */,
 				04BAF8622CAA7D8D005960C8 /* MIEnvironmentTests.m in Sources */,
+				A35F7C782F58C2250033E53E /* APXRequestBuilderTests.m in Sources */,
 				0403E6912CBFC0690021EB1D /* MIRequestDataTest.m in Sources */,
 				8FFDEA3B254225D800E069F7 /* UserPropertiesTests.m in Sources */,
 				A31C6F2024D9A9B200166585 /* DatabaseManagerTests.m in Sources */,
+				A35F7C802F59DE470033E53E /* MITestURLProtocol.m in Sources */,
 				A357222024FD10AD005F9DE1 /* PagePropertiesTests.m in Sources */,
 				04ED46032CF4A28700D39E1D /* MITrackRequestTests.m in Sources */,
 				04C5D8E62CAE79F200269504 /* MIPageViewEventTests.m in Sources */,
 				A3BA0EB52C8B204000A1D030 /* MIAPXInappLoggerTests.m in Sources */,
 				0403E68F2CBF947A0021EB1D /* MIRequestTest.m in Sources */,
 				A3BA0EB92C8EDFC100A1D030 /* APXNetworkMetadataTests.m in Sources */,
+				A35F7C7C2F59B4EC0033E53E /* MIDBRequestTests.m in Sources */,
 				A3BA0EC62C8EEC9000A1D030 /* APXKeychainManagerTests.m in Sources */,
 				8F9C7F70255A851400CB95EF /* AdvertisementPropertiesTests.m in Sources */,
 				A3A7255F243F154900671DB2 /* MappIntelligenceTests.m in Sources */,

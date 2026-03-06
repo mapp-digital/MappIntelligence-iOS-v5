@@ -54,14 +54,24 @@ static MITrackerRequest *sharedInstance = nil;
   return self;
 }
 
+- (NSURLSession *)sessionForRequest {
+  Class testProtocolClass = NSClassFromString(@"MITestURLProtocol");
+  if (testProtocolClass && [testProtocolClass isSubclassOfClass:[NSURLProtocol class]]) {
+      NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration ephemeralSessionConfiguration];
+      configuration.protocolClasses = @[ testProtocolClass ];
+      return [NSURLSession sessionWithConfiguration:configuration];
+  }
+  return _urlSession;
+}
+
 - (void)sendRequestWith:(NSURL *)url andCompletition:(nonnull void (^)(NSError * _Nonnull))handler {
   [_loger logObj:[[NSString alloc]
                      initWithFormat:@"Tracking Request: %@", [url absoluteURL]]
       forDescription:kMappIntelligenceLogLevelDescriptionInfo];
 
-  //[self createUrlSession];
+  NSURLSession *session = [self sessionForRequest];
 
-  [[_urlSession
+  [[session
         dataTaskWithURL:url
       completionHandler:^(NSData *_Nullable data,
                           NSURLResponse *_Nullable response,
@@ -78,10 +88,10 @@ static MITrackerRequest *sharedInstance = nil;
 }
 
 - (void)sendRequestWith:(NSURL *)url andBody:(NSString*)body andCompletition:(nonnull void (^)(NSError * _Nonnull))handler {
-    //[self createUrlSession];
     NSURLRequest* request = [self createRequest:url andBody:body];
+    NSURLSession *session = [self sessionForRequest];
     
-    [[_urlSession dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+    [[session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (!error) {
             [self->_loger logObj:[[NSString alloc]
                                   initWithFormat:
@@ -90,7 +100,6 @@ static MITrackerRequest *sharedInstance = nil;
                   forDescription:kMappIntelligenceLogLevelDescriptionDebug];
         }
         handler(error);
-        //[self->_urlSession invalidateAndCancel];
     }] resume];
 }
 
@@ -130,6 +139,11 @@ static MITrackerRequest *sharedInstance = nil;
   [urlSessionConfiguration
       setRequestCachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData];
   [urlSessionConfiguration setShouldUseExtendedBackgroundIdleMode:YES];
+
+  Class testProtocolClass = NSClassFromString(@"MITestURLProtocol");
+  if (testProtocolClass && [testProtocolClass isSubclassOfClass:[NSURLProtocol class]]) {
+      urlSessionConfiguration.protocolClasses = @[ testProtocolClass ];
+  }
 
   _urlSession = [NSURLSession sessionWithConfiguration:urlSessionConfiguration];
   [_urlSession setSessionDescription:@"Mapp Intelligence Tracking"];

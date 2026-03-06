@@ -65,9 +65,11 @@
 
 - (NSDictionary<NSNumber* ,NSString*> *) filterCustomDict: (NSDictionary<NSNumber* ,NSString*> *) dict{
     NSMutableDictionary *result = [[NSMutableDictionary alloc] init];
-    for (NSNumber *idx in dict) {
-        if (idx.intValue > 0) {
-            [result setObject:dict[idx] forKey:idx];
+    if(![dict isKindOfClass: [NSNull class]]) {
+        for (NSNumber *idx in dict) {
+            if (idx.intValue > 0) {
+                [result setObject:dict[idx] forKey:idx];
+            }
         }
     }
     return result;
@@ -115,12 +117,18 @@
     if (other == self) {
         return YES;
     }
+    if (![other isKindOfClass:MICampaignParameters.class]) {
+        return NO;
+    }
     MICampaignParameters *otherObj = (MICampaignParameters *)other;
-    if(self.action == otherObj.action &&
-       self.oncePerSession == otherObj.oncePerSession &&
-       [self.campaignId isEqual:otherObj.campaignId] &&
-       [self.customParameters isEqual: otherObj.customParameters] &&
-       [self.mediaCode isEqual: otherObj.mediaCode]) {
+    BOOL campaignEqual = (self.campaignId == otherObj.campaignId) || [self.campaignId isEqual:otherObj.campaignId];
+    BOOL mediaEqual = (self.mediaCode == otherObj.mediaCode) || [self.mediaCode isEqual:otherObj.mediaCode];
+    BOOL customEqual = (self.customParameters == otherObj.customParameters) || [self.customParameters isEqual:otherObj.customParameters];
+    if (self.action == otherObj.action &&
+        self.oncePerSession == otherObj.oncePerSession &&
+        campaignEqual &&
+        customEqual &&
+        mediaEqual) {
         return YES;
     }
     return NO;

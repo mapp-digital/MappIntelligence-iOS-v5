@@ -17,6 +17,12 @@
     andCompletionBlock:(APXNetworkManagerCompletionBlock)block;
 
 - (NSMutableURLRequest *)generateRequestForOperation:(NetworkManagerOperationType)operation;
+- (NSURLRequest *)contentRequestForOperation:(NetworkManagerOperationType)operation withAppID:(NSString *)appID andUDID:(NSString *)udid;
+- (void)removeRetryOfOperation:(NetworkManagerOperationType)operation;
+- (NSString *)baseURLStringPerEnvoirnment;
+- (NSString *)getServerAddress;
+- (NSString *)endPointByNetworkOperation:(NetworkManagerOperationType)operation;
+- (NSString *)httpMethodForOperation:(NetworkManagerOperationType)operation;
 
 @property (nonatomic, strong) NSMutableDictionary *retryOperations; // Expose the private property
 @end
@@ -39,20 +45,38 @@
 
 // Test retry operation
 - (void)testRetryOperation {
-    XCTestExpectation *expectation = [self expectationWithDescription:@"Retry operation expectation"];
-    
+    [self.networkManager.retryOperations removeAllObjects];
+
     NSData *testData = [@"Test retry data" dataUsingEncoding:NSUTF8StringEncoding];
-    
-    BOOL retrying = [self.networkManager retryOperation:kAPXNetworkManagerOperationTypeFeedback withData:testData andCompletionBlock:^(NSError *error, id response) {
-        // Simulate an error to trigger retries
-        NSError *simulatedError = [NSError errorWithDomain:@"TestDomain" code:100 userInfo:nil];
-        XCTAssertNotNil(simulatedError, @"Simulated error should not be nil");
-        [expectation fulfill];
+    NSString *retryKey = [NSString stringWithFormat:@"retryKey_%tu", kAPXNetworkManagerOperationTypeFeedback];
+
+    BOOL retrying = [self.networkManager retryOperation:kAPXNetworkManagerOperationTypeFeedback
+                                               withData:testData
+                                     andCompletionBlock:^(NSError *error, id response) {
     }];
-    
-    XCTAssertTrue(retrying, @"Operation should be retrying");
-    
-    [self waitForExpectationsWithTimeout:15.0 handler:nil];
+
+    XCTAssertTrue(retrying, @"Operation should be retrying on first attempt");
+    XCTAssertEqualObjects(self.networkManager.retryOperations[retryKey], @(1));
+
+    [self.networkManager retryOperation:kAPXNetworkManagerOperationTypeFeedback
+                               withData:testData
+                     andCompletionBlock:^(NSError *error, id response) {
+    }];
+    XCTAssertEqualObjects(self.networkManager.retryOperations[retryKey], @(2));
+
+    [self.networkManager retryOperation:kAPXNetworkManagerOperationTypeFeedback
+                               withData:testData
+                     andCompletionBlock:^(NSError *error, id response) {
+    }];
+    XCTAssertEqualObjects(self.networkManager.retryOperations[retryKey], @(3));
+
+    BOOL retryingAfterMax = [self.networkManager retryOperation:kAPXNetworkManagerOperationTypeFeedback
+                                                      withData:testData
+                                            andCompletionBlock:^(NSError *error, id response) {
+    }];
+
+    XCTAssertFalse(retryingAfterMax, @"Operation should stop retrying after max attempts");
+    XCTAssertNil(self.networkManager.retryOperations[retryKey]);
 }
 
 - (void)testManagerIsInitialized
@@ -126,6 +150,66 @@
     NSDictionary *response = [self.networkManager performSynchronousNetworkOperation:kAPXNetworkManagerOperationTypeFeedback withData:nil];
     
     XCTAssertNil(response, @"Response should be nil when no data is provided");
+}
+
+- (void)testBaseURLStringPerEnvironmentReturnsValue {
+    self.networkManager.environment = kAPXNetworkManagerEnvironmentVirginia;
+    NSString *baseURL = [self.networkManager baseURLStringPerEnvoirnment];
+    XCTAssertNotNil(baseURL);
+    XCTAssertTrue([baseURL containsString:@"https://"]);
+}
+
+- (void)testEndPointAndHttpMethodForOperation {
+    NSString *endpoint = [self.networkManager endPointByNetworkOperation:kAPXNetworkManagerOperationTypeFeedback];
+    NSString *method = [self.networkManager httpMethodForOperation:kAPXNetworkManagerOperationTypeFeedback];
+
+    XCTAssertNotNil(endpoint);
+    XCTAssertNotNil(method);
+    XCTAssertEqualObjects(method, @"PUT");
+}
+
+- (void)testGetServerAddressReturnsDefaultOrConfigured {
+    NSString *server = [self.networkManager getServerAddress];
+    XCTAssertNotNil(server);
+    XCTAssertTrue([server containsString:@"https://"]);
+}
+
+- (void)testContentRequestForFeedbackIncludesBodyAndEndpoint {
+    NSURLRequest *request = [self.networkManager contentRequestForOperation:kAPXNetworkManagerOperationTypeFeedback
+                                                                   withAppID:@"app"
+                                                                    andUDID:@"udid"];
+    NSString *body = [[NSString alloc] initWithData:request.HTTPBody encoding:NSUTF8StringEncoding];
+
+    XCTAssertEqualObjects(request.HTTPMethod, @"POST");
+    XCTAssertTrue([request.URL.absoluteString containsString:@"feedback/feedback.aspx"]);
+    XCTAssertTrue([body containsString:@"appID=app"]);
+    XCTAssertTrue([body containsString:@"key=udid"]);
+}
+
+- (void)testContentRequestForMoreAppsUsesMoreAppsEndpoint {
+    NSURLRequest *request = [self.networkManager contentRequestForOperation:kAPXNetworkManagerOperationTypeMoreApps
+                                                                   withAppID:@"myApp"
+                                                                    andUDID:@"udid"];
+
+    XCTAssertEqualObjects(request.HTTPMethod, @"POST");
+    XCTAssertTrue([request.URL.absoluteString containsString:@"MoreApps/myApp"]);
+}
+
+- (void)testGenerateRequestUsesPreferedURLWhenSet {
+    self.networkManager.preferedURL = @"https://example.com/";
+    NSMutableURLRequest *request = [self.networkManager generateRequestForOperation:kAPXNetworkManagerOperationTypeFeedback];
+    XCTAssertTrue([request.URL.absoluteString hasPrefix:@"https://example.com/"]);
+    self.networkManager.preferedURL = nil;
+}
+
+- (void)testRemoveRetryOfOperationDoesNotCrash {
+    [self.networkManager.retryOperations removeAllObjects];
+    [self.networkManager retryOperation:kAPXNetworkManagerOperationTypeFeedback
+                               withData:[@"data" dataUsingEncoding:NSUTF8StringEncoding]
+                     andCompletionBlock:^(NSError *error, id response) {
+    }];
+
+    XCTAssertNoThrow([self.networkManager removeRetryOfOperation:kAPXNetworkManagerOperationTypeFeedback]);
 }
 
 @end

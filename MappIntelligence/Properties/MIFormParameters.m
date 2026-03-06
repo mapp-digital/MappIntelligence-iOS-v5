@@ -86,7 +86,7 @@
 
 - (void) setTrackableFields {
     if([_fieldIds count] > 0) {
-        dispatch_sync(dispatch_get_main_queue(), ^{
+        [self performOnMainThreadSync:^{
             for (UITextField* textField in _textFields) {
                 if (![[_fieldIds copy] containsObject:[NSNumber numberWithInteger:textField.tag]]) {
                     [_textFields removeObject:textField];
@@ -112,7 +112,7 @@
                     [_switches removeObject:switchC];
                 }
             }
-        });
+        }];
     }
 }
 
@@ -156,55 +156,64 @@
     return [NSString stringWithFormat:@"%@.%@", (nameOfControl == NULL ? @"n/a" : nameOfControl), typeOfControl];
 }
 
+- (void)performOnMainThreadSync:(dispatch_block_t)block {
+    if ([NSThread isMainThread]) {
+        block();
+        return;
+    }
+    dispatch_sync(dispatch_get_main_queue(), block);
+}
+
 - (void)createFromFields {
     UIViewController* superViewController = self.topViewController;
-    dispatch_sync(dispatch_get_main_queue(), ^{
-        __block UIView* superView = superViewController.view;
+    __block UIView* superView = NULL;
+    [self performOnMainThreadSync:^{
+        superView = superViewController.view;
         if (superView) {
             //make sure that arrays are empty, if property is saved as state at SwiftUI app
-            _textFields = [[NSMutableArray alloc] init];
-            _textViews = [[NSMutableArray alloc] init];
-            _switches = [[NSMutableArray alloc] init];
-            _pickers = [[NSMutableArray alloc] init];
-            _segmentedControls = [[NSMutableArray alloc] init];
+            self->_textFields = [[NSMutableArray alloc] init];
+            self->_textViews = [[NSMutableArray alloc] init];
+            self->_switches = [[NSMutableArray alloc] init];
+            self->_pickers = [[NSMutableArray alloc] init];
+            self->_segmentedControls = [[NSMutableArray alloc] init];
             [self getTextFields:superView];
             [self getTextViews:superView];
             [self getPickerViews:superView];
             [self getSegmetedControls:superView];
             [self getSwithces:superView];
         }
-    });
+    }];
     if (!_formName) {
         _formName = NSStringFromClass(self.topViewController.classForCoder);
     }
     _fields = [[NSMutableArray alloc] init];
     [self setTrackableFields];
     for (UITextField* textField in _textFields) {
-        dispatch_sync(dispatch_get_main_queue(), ^{
+        [self performOnMainThreadSync:^{
             self->_fields = [self->_fields arrayByAddingObject:[[MIFormField alloc] initWithName:[self getNameForControl:textField] andContent:textField.text andID:textField.tag andWithAnonymus: YES andFocus:textField.isFocused]];
-        });
+        }];
     }
     for (UITextView* textView in _textViews) {
-        dispatch_sync(dispatch_get_main_queue(), ^{
+        [self performOnMainThreadSync:^{
             self->_fields = [self->_fields arrayByAddingObject:[[MIFormField alloc] initWithName:[self getNameForControl:textView] andContent:textView.text andID:textView.tag andWithAnonymus:YES andFocus:textView.isFocused]];
-        });
+        }];
     }
     for (UIPickerView* pickerView in _pickers) {
-        dispatch_sync(dispatch_get_main_queue(), ^{
+        [self performOnMainThreadSync:^{
             NSString* test = [self extractValueForAllComponentOfPickerView:pickerView];
             self->_fields = [self->_fields arrayByAddingObject:[[MIFormField alloc] initWithName:[self getNameForControl:pickerView] andContent:test andID:pickerView.tag andWithAnonymus:[_anonymous boolValue] ? YES : NO andFocus:pickerView.isFocused]];
-        });
+        }];
     }
     for (UISegmentedControl* segmentedControl in _segmentedControls) {
-        dispatch_sync(dispatch_get_main_queue(), ^{
+        [self performOnMainThreadSync:^{
             NSString *title = [segmentedControl titleForSegmentAtIndex:segmentedControl.selectedSegmentIndex];
             self->_fields = [self->_fields arrayByAddingObject:[[MIFormField alloc] initWithName:[self getNameForControl:segmentedControl] andContent:title andID:segmentedControl.tag andWithAnonymus:[_anonymous boolValue] ? YES : NO andFocus:segmentedControl.isFocused]];
-        });
+        }];
     }
     for (UISwitch* switchC in _switches) {
-        dispatch_sync(dispatch_get_main_queue(), ^{
+        [self performOnMainThreadSync:^{
             self->_fields = [self->_fields arrayByAddingObject:[[MIFormField alloc] initWithName:[self getNameForControl:switchC] andContent:(switchC.on ? @"mapp_inteligence_switch" : @"") andID:switchC.tag andWithAnonymus:YES andFocus:switchC.isFocused]];
-        });
+        }];
     }
     
     if (![_anonymous boolValue]) {
@@ -353,24 +362,32 @@
 
 - (UIViewController*)topViewController {
     __block UIWindow* window;
-    dispatch_sync(dispatch_get_main_queue(), ^{
+    if ([NSThread isMainThread]) {
         window = [[UIApplication sharedApplication] keyWindow];
-    });
+    } else {
+        [self performOnMainThreadSync:^{
+            window = [[UIApplication sharedApplication] keyWindow];
+        }];
+    }
     __block UIViewController* topViewControler;
-    dispatch_sync(dispatch_get_main_queue(), ^{
+    if ([NSThread isMainThread]) {
         topViewControler = [window rootViewController];
-    });
+    } else {
+        [self performOnMainThreadSync:^{
+            topViewControler = [window rootViewController];
+        }];
+    }
     if (!window || !topViewControler)
         return NULL;
-    dispatch_sync(dispatch_get_main_queue(), ^{
+    [self performOnMainThreadSync:^{
         while( [topViewControler presentedViewController] ) {
             topViewControler = [topViewControler presentedViewController];
         }
-    });
+    }];
     if ([topViewControler isKindOfClass:UINavigationController.class]) {
-        dispatch_sync(dispatch_get_main_queue(), ^{
+        [self performOnMainThreadSync:^{
             topViewControler = ((UINavigationController*)topViewControler).topViewController;
-        });
+        }];
         return topViewControler;
     }
     return topViewControler;

@@ -12,6 +12,8 @@
 		0418E7072B18A30A0008CB31 /* LiveStreamMediaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0418E7062B18A30A0008CB31 /* LiveStreamMediaViewController.swift */; };
 		0418E70A2B19C4690008CB31 /* AppoxeeConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0418E7082B19C4680008CB31 /* AppoxeeConfig.plist */; };
 		0418E70B2B19C4690008CB31 /* SetupForLocalTesting.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0418E7092B19C4680008CB31 /* SetupForLocalTesting.plist */; };
+		A3B220DB2D899F0100F8EE40 /* MappIntelligenceDemoAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B220DD2D899F0100F8EE40 /* MappIntelligenceDemoAppUITests.swift */; };
+		A3B220DC2D899F0100F8EE40 /* MappIntelligenceDemoAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B220DE2D899F0100F8EE40 /* MappIntelligenceDemoAppUITestsLaunchTests.swift */; };
 		8F2D1D4F257789FA008CB31D /* ActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2D1D4E257789FA008CB31D /* ActionViewController.swift */; };
 		8F2D1D5525778A07008CB31D /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2D1D5425778A07008CB31D /* PageViewController.swift */; };
 		8F2D1D6525778B82008CB31D /* ConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2D1D6425778B82008CB31D /* ConfigViewController.swift */; };
@@ -36,6 +38,16 @@
 		BCA1739E23D5D25E00B31430 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCA1739C23D5D25E00B31430 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		A3B220D72D899D1700F8EE40 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BCA1738623D5D25C00B31430 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BCA1738D23D5D25C00B31430;
+			remoteInfo = MappIntelligenceDemoApp;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		A32AEA62242B606000BC7B46 /* Embed Watch Content */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -55,6 +67,9 @@
 		0418E7062B18A30A0008CB31 /* LiveStreamMediaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveStreamMediaViewController.swift; sourceTree = "<group>"; };
 		0418E7082B19C4680008CB31 /* AppoxeeConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = AppoxeeConfig.plist; sourceTree = "<group>"; };
 		0418E7092B19C4680008CB31 /* SetupForLocalTesting.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SetupForLocalTesting.plist; sourceTree = "<group>"; };
+		A3B220D62D899D1700F8EE40 /* MappIntelligenceDemoAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MappIntelligenceDemoAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A3B220DD2D899F0100F8EE40 /* MappIntelligenceDemoAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MappIntelligenceDemoAppUITests.swift; sourceTree = "<group>"; };
+		A3B220DE2D899F0100F8EE40 /* MappIntelligenceDemoAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MappIntelligenceDemoAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		8F20A10D25C2CF460006CB93 /* libMappIntelligenceiOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libMappIntelligenceiOS.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F2D1D4E257789FA008CB31D /* ActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionViewController.swift; sourceTree = "<group>"; };
 		8F2D1D5425778A07008CB31D /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
@@ -90,6 +105,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		A3B220D32D899D1700F8EE40 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BCA1738B23D5D25C00B31430 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -116,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				BCA1739023D5D25C00B31430 /* MappIntelligenceDemoApp */,
+				A3B220DA2D899E3C00F8EE40 /* MappIntelligenceDemoAppUITests */,
 				BCA1738F23D5D25C00B31430 /* Products */,
 				BCA173AE23D6FBFC00B31430 /* Frameworks */,
 			);
@@ -125,8 +148,18 @@
 			isa = PBXGroup;
 			children = (
 				BCA1738E23D5D25C00B31430 /* MappIntelligenceDemoApp.app */,
+				A3B220D62D899D1700F8EE40 /* MappIntelligenceDemoAppUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		A3B220DA2D899E3C00F8EE40 /* MappIntelligenceDemoAppUITests */ = {
+			isa = PBXGroup;
+			children = (
+				A3B220DD2D899F0100F8EE40 /* MappIntelligenceDemoAppUITests.swift */,
+				A3B220DE2D899F0100F8EE40 /* MappIntelligenceDemoAppUITestsLaunchTests.swift */,
+			);
+			path = MappIntelligenceDemoAppUITests;
 			sourceTree = "<group>";
 		};
 		BCA1739023D5D25C00B31430 /* MappIntelligenceDemoApp */ = {
@@ -181,6 +214,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		A3B220D52D899D1700F8EE40 /* MappIntelligenceDemoAppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A3B220E12D89A0A700F8EE40 /* Build configuration list for PBXNativeTarget "MappIntelligenceDemoAppUITests" */;
+			buildPhases = (
+				A3B220D22D899D1700F8EE40 /* Sources */,
+				A3B220D32D899D1700F8EE40 /* Frameworks */,
+				A3B220D42D899D1700F8EE40 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A3B220D82D899D1700F8EE40 /* PBXTargetDependency */,
+			);
+			name = MappIntelligenceDemoAppUITests;
+			productName = MappIntelligenceDemoAppUITests;
+			productReference = A3B220D62D899D1700F8EE40 /* MappIntelligenceDemoAppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		BCA1738D23D5D25C00B31430 /* MappIntelligenceDemoApp */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = BCA173A223D5D25E00B31430 /* Build configuration list for PBXNativeTarget "MappIntelligenceDemoApp" */;
@@ -209,6 +260,10 @@
 				LastUpgradeCheck = 1400;
 				ORGANIZATIONNAME = "Mapp Digital US, LLC";
 				TargetAttributes = {
+					A3B220D52D899D1700F8EE40 = {
+						CreatedOnToolsVersion = 14.0;
+						TestTargetID = BCA1738D23D5D25C00B31430;
+					};
 					BCA1738D23D5D25C00B31430 = {
 						CreatedOnToolsVersion = 11.3.1;
 						LastSwiftMigration = 1130;
@@ -229,11 +284,19 @@
 			projectRoot = "";
 			targets = (
 				BCA1738D23D5D25C00B31430 /* MappIntelligenceDemoApp */,
+				A3B220D52D899D1700F8EE40 /* MappIntelligenceDemoAppUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		A3B220D42D899D1700F8EE40 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BCA1738C23D5D25C00B31430 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -253,6 +316,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		A3B220D22D899D1700F8EE40 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A3B220DB2D899F0100F8EE40 /* MappIntelligenceDemoAppUITests.swift in Sources */,
+				A3B220DC2D899F0100F8EE40 /* MappIntelligenceDemoAppUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BCA1738A23D5D25C00B31430 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -276,6 +348,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A3B220D82D899D1700F8EE40 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BCA1738D23D5D25C00B31430 /* MappIntelligenceDemoApp */;
+			targetProxy = A3B220D72D899D1700F8EE40 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		BCA1739723D5D25C00B31430 /* Main.storyboard */ = {
@@ -474,6 +554,42 @@
 			};
 			name = Release;
 		};
+		A3B220DF2D89A02000F8EE40 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
+				DEVELOPMENT_TEAM = LERY366S7C;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mappIntelligence.MappIntelligenceDemoAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MappIntelligenceDemoApp;
+			};
+			name = Debug;
+		};
+		A3B220E02D89A02000F8EE40 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
+				DEVELOPMENT_TEAM = LERY366S7C;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mappIntelligence.MappIntelligenceDemoAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MappIntelligenceDemoApp;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -491,6 +607,15 @@
 			buildConfigurations = (
 				BCA173A323D5D25E00B31430 /* Debug */,
 				BCA173A423D5D25E00B31430 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A3B220E12D89A0A700F8EE40 /* Build configuration list for PBXNativeTarget "MappIntelligenceDemoAppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A3B220DF2D89A02000F8EE40 /* Debug */,
+				A3B220E02D89A02000F8EE40 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -37,7 +37,7 @@
 
 - (void)tearDown {
     self.exceptionTracker = nil;
-    [self.mockTracker stopMocking];
+    self.mockTracker = nil;
     [self.mockLogger stopMocking];
 }
 
@@ -80,10 +80,43 @@
 - (void)testTrackInfoWithName_CustomType {
     [self.exceptionTracker initializeExceptionTracking];
     self.exceptionTracker.typeOfExceptionsToTrack = custom_and_caught;
-    
+
     NSError *error = [self.exceptionTracker trackInfoWithName:@"CustomInfo" andWithMessage:@"Custom message"];
-    
+
     XCTAssertNil(error);
+}
+
+- (void)testTrackInfoWithNameReturnsErrorWhenLevelNotSatisfied {
+    [self.exceptionTracker initializeExceptionTracking];
+    self.exceptionTracker.typeOfExceptionsToTrack = uncaught;
+
+    NSError *error = [self.exceptionTracker trackInfoWithName:@"CustomInfo" andWithMessage:@"Custom message"];
+
+    XCTAssertNotNil(error);
+    XCTAssertEqual(error.code, 900);
+}
+
+- (void)testTrackErrorReturnsErrorWhenNotInitializedButLevelSatisfied {
+    self.exceptionTracker.typeOfExceptionsToTrack = caught;
+
+    NSError *error = [self.exceptionTracker trackError:[NSError errorWithDomain:@"TestDomain" code:500 userInfo:nil]];
+
+    XCTAssertNotNil(error);
+    XCTAssertEqual(error.code, 900);
+}
+
+- (void)testTrackInfoWithNameCallsTrackerWhenAllowed {
+    id trackerMock = OCMClassMock([MIDefaultTracker class]);
+    [self.exceptionTracker setValue:trackerMock forKey:@"tracker"];
+    [self.exceptionTracker initializeExceptionTracking];
+    self.exceptionTracker.typeOfExceptionsToTrack = custom;
+
+    OCMExpect([trackerMock trackWithCustomEvent:[OCMArg any]]).andReturn(nil);
+
+    NSError *error = [self.exceptionTracker trackInfoWithName:@"CustomInfo" andWithMessage:@"Custom message"];
+
+    XCTAssertNil(error);
+    OCMVerifyAll(trackerMock);
 }
 
 // Test tracking error

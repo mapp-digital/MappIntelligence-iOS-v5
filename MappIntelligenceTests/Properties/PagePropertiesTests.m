@@ -137,5 +137,21 @@
     XCTAssertEqual(queryItems.count, 0);
 }
 
+- (void)testAsQueryItemsWithNullDetailsFromDictionary {
+    NSDictionary *dictionary = @{
+        @"params": [NSNull null],
+        @"categories": @{@"category1": @"value1"},
+        @"searchTerm": @"testSearch"
+    };
+    MIPageParameters *pageParamsObj = [[MIPageParameters alloc] initWithDictionary:dictionary];
+
+    NSMutableArray<NSURLQueryItem *> *queryItems = nil;
+    XCTAssertNoThrow(queryItems = [pageParamsObj asQueryItems]);
+    XCTAssertNotNil(queryItems);
+
+    XCTAssertTrue([queryItems containsObject:[[NSURLQueryItem alloc] initWithName:@"cgcategory1" value:@"value1"]]);
+    XCTAssertTrue([queryItems containsObject:[[NSURLQueryItem alloc] initWithName:@"is" value:@"testSearch"]]);
+}
+
 
 @end

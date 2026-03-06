@@ -9,6 +9,10 @@
 #import <XCTest/XCTest.h>
 #import "MIURLSizeMonitor.h"
 
+@interface MIURLSizeMonitor (Testable)
++ (NSString *)getSizedValue:(NSString *)value forParameter:(NSString *)parameter;
+@end
+
 @interface MIURLSizeMonitorTests : XCTestCase
 
 @property MIURLSizeMonitor* sizeMonitor;
@@ -41,6 +45,21 @@
     XCTAssertTrue([pParameter length] > 255, @"p parameter is greater than 255 characters");
     pParameter = [_sizeMonitor cutPParameterLegth:library pageName:contentID andScreenSize:size andTimeStamp:stamp];
     XCTAssertTrue([pParameter length] == 255, @"p parameter is greater than 255 characters");
+}
+
+- (void)testGetSizedValueReturnsSameWhenUnderLimit {
+    NSString *value = @"short";
+    NSString *sized = [MIURLSizeMonitor getSizedValue:value forParameter:@"cp1"];
+    XCTAssertEqualObjects(value, sized);
+}
+
+- (void)testGetSizedValueTruncatesWhenOverLimit {
+    NSMutableString *value = [[NSMutableString alloc] init];
+    for (int i = 0; i < 300; i++) {
+        [value appendString:@"a"];
+    }
+    NSString *sized = [MIURLSizeMonitor getSizedValue:value forParameter:@"cp1"];
+    XCTAssertEqual(sized.length, 255);
 }
 @end
 

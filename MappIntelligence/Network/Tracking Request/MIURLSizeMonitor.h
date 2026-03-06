@@ -20,6 +20,8 @@ NS_ASSUME_NONNULL_BEGIN
                         pageName:(NSString *)page
                    andScreenSize:(NSString *)size
                     andTimeStamp:(double)stamp;
++ (NSString *)getSizedValue:(NSString *)value
+               forParameter:(NSString *)parameter;
 
 @end
 

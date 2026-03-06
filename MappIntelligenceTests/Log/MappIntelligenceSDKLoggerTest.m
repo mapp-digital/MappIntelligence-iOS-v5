@@ -134,4 +134,24 @@
     XCTAssertEqualObjects(logOutput, @"[MappIntelligence Fault] Fault message");
 }
 
+- (void)testLogLevelForDescriptionReturnsWhenEnabled {
+    self.logger.logLevel = kMappIntelligenceLogLevelDescriptionAll;
+
+    XCTAssertEqualObjects([self.logger logLevelFor:kMappIntelligenceLogLevelDescriptionDebug], @"Debug");
+    XCTAssertEqualObjects([self.logger logLevelFor:kMappIntelligenceLogLevelDescriptionWarning], @"Warning");
+    XCTAssertEqualObjects([self.logger logLevelFor:kMappIntelligenceLogLevelDescriptionError], @"Error");
+    XCTAssertEqualObjects([self.logger logLevelFor:kMappIntelligenceLogLevelDescriptionFault], @"Fault");
+    XCTAssertEqualObjects([self.logger logLevelFor:kMappIntelligenceLogLevelDescriptionInfo], @"Info");
+    XCTAssertEqualObjects([self.logger logLevelFor:kMappIntelligenceLogLevelDescriptionAll], @"All");
+    XCTAssertEqualObjects([self.logger logLevelFor:kMappIntelligenceLogLevelDescriptionNone], @"None");
+}
+
+- (void)testLogLevelForDescriptionReturnsNilWhenDisabled {
+    self.logger.logLevel = kMappIntelligenceLogLevelDescriptionError;
+
+    XCTAssertNil([self.logger logLevelFor:kMappIntelligenceLogLevelDescriptionDebug]);
+    XCTAssertNil([self.logger logLevelFor:kMappIntelligenceLogLevelDescriptionWarning]);
+    XCTAssertEqualObjects([self.logger logLevelFor:kMappIntelligenceLogLevelDescriptionError], @"Error");
+}
+
 @end

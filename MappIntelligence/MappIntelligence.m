@@ -24,6 +24,7 @@
 @property MIExceptionTracker *exceptionTracker;
 @property MappIntelligenceLogger *logger;
 @property NSTimer* timerForSendRequests;
+@property (nonatomic) logLevel cachedLogLevel;
 
 @end
 
@@ -40,6 +41,7 @@ static MappIntelligenceDefaultConfig *config = nil;
     sharedInstance = [super init];
     config = [[MappIntelligenceDefaultConfig alloc] init];
     _logger = [MappIntelligenceLogger shared];
+    _cachedLogLevel = none;
       _batchSupportSize = batchSupportSizeDefault;
 
   }
@@ -108,6 +110,7 @@ static MappIntelligenceDefaultConfig *config = nil;
                           andLogLevel:(logLevel)lv {
 
   [config setLogLevel:(MappIntelligenceLogLevelDescription)lv];
+  self.cachedLogLevel = lv;
   [config setTrackIDs:trackIDs];
   [config setTrackDomain:trackDomain];
   [config setAutoTracking:autoTracking];
@@ -145,11 +148,11 @@ static MappIntelligenceDefaultConfig *config = nil;
         if ([[Reachability reachabilityForInternetConnection] currentReachabilityStatus] != NotReachable) {
             if (config.batchSupport == YES) {
                 //TODO: add timeout to this methods
-                [self->tracker sendBatchForRequestInBackground: NO withCompletionHandler:^(NSError * _Nullable error) {
+                [self.tracker sendBatchForRequestInBackground: NO withCompletionHandler:^(NSError * _Nullable error) {
                     //error is already obtain at one level lower
                 }];
             } else {
-                [self->tracker sendRequestFromDatabaseWithCompletionHandler:^(NSError * _Nullable error) {
+                [self.tracker sendRequestFromDatabaseWithCompletionHandler:^(NSError * _Nullable error) {
                     //error is already obtain in one level lower
                 }];
             }
@@ -159,8 +162,12 @@ static MappIntelligenceDefaultConfig *config = nil;
 }
 
 - (void)initTimerForRequestsSendout {
-    if(_timerForSendRequests) {
-        return;
+    if (_timerForSendRequests) {
+        if ([_timerForSendRequests isValid]) {
+            return;
+        }
+        [_timerForSendRequests invalidate];
+        _timerForSendRequests = nil;
     }
     _timerForSendRequests = [NSTimer scheduledTimerWithTimeInterval: [config requestsInterval] repeats:YES block:^(NSTimer * _Nonnull timer) {
         
@@ -170,18 +177,18 @@ static MappIntelligenceDefaultConfig *config = nil;
         if (!isAppActive)
             return;
         if (config.backgroundSendout == YES && !isAppActive) {
-            [self->tracker sendBatchForRequestInBackground: YES withCompletionHandler:^(NSError * _Nullable error) {
+            [self.tracker sendBatchForRequestInBackground: YES withCompletionHandler:^(NSError * _Nullable error) {
                 //error is already obtain in one level lower
             }];
             return;
         }
         if ([[Reachability reachabilityForInternetConnection] currentReachabilityStatus] != NotReachable) {
             if (config.batchSupport == YES) {
-                [self->tracker sendBatchForRequestInBackground: NO withCompletionHandler:^(NSError * _Nullable error) {
+                [self.tracker sendBatchForRequestInBackground: NO withCompletionHandler:^(NSError * _Nullable error) {
                     //error is already obtain in one level lower
                 }];
             } else {
-                [self->tracker sendRequestFromDatabaseWithCompletionHandler:^(NSError * _Nullable error) {
+                [self.tracker sendRequestFromDatabaseWithCompletionHandler:^(NSError * _Nullable error) {
                     //error is already obtain in one level lower
                 }];
             }
@@ -234,6 +241,7 @@ static MappIntelligenceDefaultConfig *config = nil;
 
 - (void)setLogLevel:(logLevel)logLevel {
   [config setLogLevel:(MappIntelligenceLogLevelDescription)logLevel];
+  self.cachedLogLevel = logLevel;
   [config logConfig];
 }
 
@@ -268,15 +276,16 @@ static MappIntelligenceDefaultConfig *config = nil;
     if (enableUserMatching) {
         [[NSUserDefaults standardUserDefaults] removeObjectForKey:EMAIL_RECEIVER_ID];
     }
-    if ([[MIDefaultTracker sharedInstance] anonymousTracking]) {
-        [config setUserMatching:NO];
-        [[MappIntelligenceLogger shared] logObj:@"It is not possible to do user matching while anonymous tracking is turn on." forDescription:kMappIntelligenceLogLevelDescriptionDebug];
-        return;
-    }
     [config setUserMatching:enableUserMatching];
+    if ([[MIDefaultTracker sharedInstance] anonymousTracking]) {
+        [[MappIntelligenceLogger shared] logObj:@"It is not possible to do user matching while anonymous tracking is turn on." forDescription:kMappIntelligenceLogLevelDescriptionDebug];
+    }
 }
 
 - (BOOL)enableUserMatching {
+    if ([[MIDefaultTracker sharedInstance] anonymousTracking]) {
+        return NO;
+    }
     return config.userMatching;
 }
 
@@ -285,7 +294,13 @@ static MappIntelligenceDefaultConfig *config = nil;
 }
 
 - (logLevel)logLevel {
-  return (logLevel)[config logLevel];
+  if (config) {
+    MappIntelligenceLogLevelDescription level = [config logLevel];
+    if (level != 0) {
+      return (logLevel)level;
+    }
+  }
+  return self.cachedLogLevel;
 }
 
 - (BOOL)batchSupportEnabled {

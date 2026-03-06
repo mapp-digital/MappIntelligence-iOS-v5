@@ -34,6 +34,7 @@
 @property UIBackgroundTaskIdentifier backgroundIdentifier;
 @property (nonatomic) Reachability *hostReachability;
 @property (nonatomic) Reachability *internetReachability;
+@property (nonatomic, assign) BOOL isInvalidated;
 
 @end
 
@@ -49,6 +50,34 @@
     _sharedDefaults = [NSUserDefaults standardUserDefaults];
     
     return self;
+}
+
+- (void)invalidate {
+    if (self.isInvalidated) {
+        return;
+    }
+    self.isInvalidated = YES;
+    NSNotificationCenter *notificationCenter = [NSNotificationCenter defaultCenter];
+    if (self.applicationDidBecomeActiveObserver) {
+        [notificationCenter removeObserver:self.applicationDidBecomeActiveObserver];
+        self.applicationDidBecomeActiveObserver = nil;
+    }
+    if (self.applicationWillEnterForegroundObserver) {
+        [notificationCenter removeObserver:self.applicationWillEnterForegroundObserver];
+        self.applicationWillEnterForegroundObserver = nil;
+    }
+    if (self.applicationWillResignActiveObserver) {
+        [notificationCenter removeObserver:self.applicationWillResignActiveObserver];
+        self.applicationWillResignActiveObserver = nil;
+    }
+    if (self.applicationWillTerminataObserver) {
+        [notificationCenter removeObserver:self.applicationWillTerminataObserver];
+        self.applicationWillTerminataObserver = nil;
+    }
+    if (self.internetReachability) {
+        [self.internetReachability stopNotifier];
+    }
+    [notificationCenter removeObserver:self name:kReachabilityChangedNotification object:nil];
 }
 
 - (void)showAlertView:(NSString*)message {
@@ -109,6 +138,9 @@
       [NSNotificationCenter defaultCenter];
     //Posted when the app becomes active.
     _applicationDidBecomeActiveObserver = [notificationCenter addObserverForName: UIApplicationDidBecomeActiveNotification object:NULL queue:NULL usingBlock:^(NSNotification * _Nonnull note) {
+        if (self.isInvalidated) {
+            return;
+        }
         if (!([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive)) {
             [self didBecomeActive];
         }
@@ -116,19 +148,31 @@
     
     //Posted when the app is no longer active and loses focus.
     _applicationWillResignActiveObserver = [notificationCenter addObserverForName:UIApplicationWillResignActiveNotification object:NULL queue:NULL usingBlock:^(NSNotification * _Nonnull note) {
+        if (self.isInvalidated) {
+            return;
+        }
         [self willResignActive];
     }];
     
     _applicationWillEnterForegroundObserver = [notificationCenter addObserverForName:UIApplicationWillEnterForegroundNotification object:NULL queue:NULL usingBlock:^(NSNotification * _Nonnull notification) {
+        if (self.isInvalidated) {
+            return;
+        }
         [self didBecomeActive];
     }];
     
     [notificationCenter addObserverForName:UIApplicationWillTerminateNotification object:NULL queue:NULL usingBlock:^(NSNotification * _Nonnull notification) {
+        if (self.isInvalidated) {
+            return;
+        }
         [self willTerminate];
     }];
     
     
     [notificationCenter addObserverForName:UIApplicationDidEnterBackgroundNotification object:NULL queue:NULL usingBlock:^(NSNotification * _Nonnull note) {
+        if (self.isInvalidated) {
+            return;
+        }
         [self willEnterBckground];
     }];
 
@@ -136,6 +180,9 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleNetworkChange:) name:kReachabilityChangedNotification object:nil];
     [self.internetReachability startNotifier];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        if (self.isInvalidated) {
+            return;
+        }
         NetworkStatus remoteHostStatus = [self.internetReachability  currentReachabilityStatus];
 
         if(remoteHostStatus == NotReachable)
@@ -149,6 +196,9 @@
         }
     });
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        if (self.isInvalidated) {
+            return;
+        }
         if(self->_tracker.isItFlutter == YES) {
             [self didBecomeActive];
         }
@@ -159,8 +209,17 @@
 
 - (void) handleNetworkChange:(NSNotification *)notice
 {
+    if (self.isInvalidated) {
+        return;
+    }
 
-    NetworkStatus remoteHostStatus = [[Reachability reachabilityForInternetConnection] currentReachabilityStatus];
+    Reachability *reachability = nil;
+    if (notice.object && [notice.object isKindOfClass:Reachability.class]) {
+        reachability = (Reachability *)notice.object;
+    } else {
+        reachability = [Reachability reachabilityForInternetConnection];
+    }
+    NetworkStatus remoteHostStatus = [reachability currentReachabilityStatus];
 
     if(remoteHostStatus == NotReachable) {
         [[MappIntelligenceLogger shared] logObj:@"There is no Internet connection" forDescription:kMappIntelligenceLogLevelDescriptionDebug];
@@ -187,6 +246,9 @@
 }
 
 -(void)didBecomeActive {
+    if (self.isInvalidated) {
+        return;
+    }
     [_logger logObj:@"Did become active." forDescription:kMappIntelligenceLogLevelDescriptionDebug];
     
     if([_tracker isUserMatchingEnabled]) {
@@ -236,6 +298,9 @@
 }
 
 -(void)willResignActive {
+    if (self.isInvalidated) {
+        return;
+    }
     if (!([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive)) {
         [_tracker initHibernate];
         [_tracker updateFirstSessionWith:[[UIApplication sharedApplication] applicationState]];
@@ -243,6 +308,9 @@
 }
 
 -(void)willTerminate {
+    if (self.isInvalidated) {
+        return;
+    }
     NSNumber *number = @1;
    [[NSUserDefaults standardUserDefaults] setObject: number forKey:@"FirstOpen"];
    [[NSUserDefaults standardUserDefaults] synchronize];
@@ -250,6 +318,9 @@
 }
 
 -(void)willEnterBckground {
+    if (self.isInvalidated) {
+        return;
+    }
     if(_tracker.isItFlutter != YES) {
         NSNumber *number = @2;
        [[NSUserDefaults standardUserDefaults] setObject: number forKey:@"FirstOpen"];
@@ -321,14 +392,23 @@ void onUncaughtException(NSException* exception)
 }
 
 -(void)checkFNS {
+    if (self.isInvalidated) {
+        return;
+    }
     NSNumber *savedNo = [[NSUserDefaults standardUserDefaults] objectForKey:@"FirstOpen"];
     ;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+        if (self.isInvalidated) {
+            return;
+        }
         NSLog(@"Is this flutter: %@", self->_tracker.isItFlutter != YES ? @"NO" : @"YES");
     });
     
     if (savedNo != NULL) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+            if (self.isInvalidated) {
+                return;
+            }
             NSLog(@"Is this flutter: %@", self->_tracker.isItFlutter != YES ? @"NO" : @"YES");
             if (self->_tracker.isItFlutter == YES && [savedNo  isEqual: @1]) {
                 
@@ -347,4 +427,3 @@ void onUncaughtException(NSException* exception)
 }
 
 @end
-

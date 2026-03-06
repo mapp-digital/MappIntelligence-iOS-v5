@@ -43,7 +43,7 @@ var window: UIWindow?
         MappIntelligence.shared()?.enableBackgroundSendout = true
         //MappIntelligence.shared()?.enableUserMatching = true
         //MappIntelligence.shared()?.setTemporarySessionId("user-xyz-123456789")
-        MappIntelligence.shared()?.setTemporarySessionId("test123")
+        //MappIntelligence.shared()?.setTemporarySessionId("test123")
         MappIntelligence.shared()?.enableCrashTracking(.allExceptionTypes)
         // Override point for customization after application launch.
         

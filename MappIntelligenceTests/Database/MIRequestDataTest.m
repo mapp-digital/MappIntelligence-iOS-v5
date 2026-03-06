@@ -12,6 +12,7 @@
 #import "MITrackerRequest.h"
 #import "MappIntelligenceLogger.h"
 #import "MIDatabaseManager.h"
+#import "MITestURLProtocol.h"
 
 @interface MIRequestDataTest : XCTestCase
 
@@ -30,6 +31,13 @@
 - (void)setUp {
     _requestData = [[MIRequestData alloc] init];
     self.mockLogger = [MappIntelligenceLogger shared];
+
+    [MITestURLProtocol stubWithStatusCode:200 data:[NSData data] error:nil];
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration ephemeralSessionConfiguration];
+    configuration.protocolClasses = @[ [MITestURLProtocol class] ];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
+    [[MITrackerRequest shared] setValue:session forKey:@"urlSession"];
+
     NSString *dateStr = @"2020-08-27 17:16:32";
     // Convert string to date object
     _dateFormatter = [[NSDateFormatter alloc] init];

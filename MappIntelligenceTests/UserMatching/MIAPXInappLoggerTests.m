@@ -27,6 +27,12 @@
     [super tearDown];
 }
 
+- (void)assertError:(NSError *)error domain:(NSString *)domain info:(NSString *)info code:(NSInteger)code {
+    XCTAssertEqualObjects(error.domain, domain);
+    XCTAssertEqual(error.code, code);
+    XCTAssertEqualObjects(error.userInfo[@"info"], info);
+}
+
 // Test for singleton instance
 - (void)testSharedInstance {
     MIAPXInappLogger *sharedInstance1 = [MIAPXInappLogger shared];
@@ -53,6 +59,18 @@
     XCTAssertTrue([logOutput containsString:@"[Appoxee Error]"], @"Log output should contain error level description");
 }
 
+- (void)testLogObjForDescription_Critical {
+    self.logger.logLevel = kAPXLogLevelDescriptionCritical;
+    NSString *logOutput = [self.logger logObj:@"Test critical log" forDescription:kAPXLogLevelDescriptionCritical];
+    XCTAssertTrue([logOutput containsString:@"[Appoxee Critical]"], @"Log output should contain critical level description");
+}
+
+- (void)testLogObjForDescription_Emergency {
+    self.logger.logLevel = kAPXLogLevelDescriptionEmergency;
+    NSString *logOutput = [self.logger logObj:@"Test emergency log" forDescription:kAPXLogLevelDescriptionEmergency];
+    XCTAssertTrue([logOutput containsString:@"[Appoxee Emergency]"], @"Log output should contain emergency level description");
+}
+
 - (void)testLogObjForDescription_Ignored {
     self.logger.logLevel = kAPXLogLevelDescriptionCritical;
     NSString *logOutput = [self.logger logObj:@"Test debug log" forDescription:kAPXLogLevelDescriptionDebug];
@@ -62,26 +80,72 @@
 // Test errorWithType: method
 - (void)testErrorWithType_Caching {
     NSError *error = [MIAPXInappLogger errorWithType:kAPXErrorTypeCaching];
-    XCTAssertEqualObjects(error.domain, @"APX_PersistanceLayerDomain");
-    XCTAssertEqual(error.code, kAPXErrorTypeCaching);
-    XCTAssertEqualObjects(error.userInfo[@"info"], @"Failed caching object.");
+    [self assertError:error domain:@"APX_PersistanceLayerDomain" info:@"Failed caching object." code:kAPXErrorTypeCaching];
+}
+
+- (void)testErrorWithType_UnCaching {
+    NSError *error = [MIAPXInappLogger errorWithType:kAPXErrorTypeUnCaching];
+    [self assertError:error domain:@"APX_PersistanceLayerDomain" info:@"Failed loading object from cache." code:kAPXErrorTypeUnCaching];
+}
+
+- (void)testErrorWithType_ObjectDoesNotExist {
+    NSError *error = [MIAPXInappLogger errorWithType:kAPXErrorTypeCachingObjectDoesNotExist];
+    [self assertError:error domain:@"APX_PersistanceLayerDomain" info:@"Object does not exist." code:kAPXErrorTypeCachingObjectDoesNotExist];
+}
+
+- (void)testErrorWithType_MissingArguments {
+    NSError *error = [MIAPXInappLogger errorWithType:kAPXErrorTypeMissingArguments];
+    [self assertError:error domain:@"APX_GeneralError" info:@"Missing arguments, can't continue." code:kAPXErrorTypeMissingArguments];
 }
 
 - (void)testErrorWithType_Network {
     NSError *error = [MIAPXInappLogger errorWithType:kAPXErrorTypeNetwork];
-    XCTAssertEqualObjects(error.domain, @"APX_NetworkError");
-    XCTAssertEqual(error.code, kAPXErrorTypeNetwork);
-    XCTAssertEqualObjects(error.userInfo[@"info"], @"Missing arguments or bad Argumens.");
+    [self assertError:error domain:@"APX_NetworkError" info:@"Missing arguments or bad Argumens." code:kAPXErrorTypeNetwork];
+}
+
+- (void)testErrorWithType_BadArguments {
+    NSError *error = [MIAPXInappLogger errorWithType:kAPXErrorTypeBadArguments];
+    [self assertError:error domain:@"APX_GeneralError" info:@"Wrong or unformatted arguments, can't continue." code:kAPXErrorTypeBadArguments];
 }
 
 - (void)testErrorWithType_TagExists {
     NSError *error = [MIAPXInappLogger errorWithType:kAPXErrorTypeTagExists];
-    XCTAssertEqualObjects(error.domain, @"APX_DataService");
-    XCTAssertEqual(error.code, kAPXErrorTypeTagExists);
-    XCTAssertEqualObjects(error.userInfo[@"info"], @"Tag name already exist in device tags with desired boolean state.");
+    [self assertError:error domain:@"APX_DataService" info:@"Tag name already exist in device tags with desired boolean state." code:kAPXErrorTypeTagExists];
 }
 
-// Add more tests for other error types as needed
+- (void)testErrorWithType_TagDoesNotExist {
+    NSError *error = [MIAPXInappLogger errorWithType:kAPXErrorTypeTagDoesNotExists];
+    [self assertError:error domain:@"APX_DataService" info:@"Tag name doesn't exist in device tags, or in application tags." code:kAPXErrorTypeTagDoesNotExists];
+}
+
+- (void)testErrorWithType_TagUncompletedArguments {
+    NSError *error = [MIAPXInappLogger errorWithType:kAPXErrorTypeTagUncompletedArguments];
+    [self assertError:error domain:@"APX_DataService" info:@"Missing arguments, or empry arguments." code:kAPXErrorTypeTagUncompletedArguments];
+}
+
+- (void)testErrorWithType_OptionNotAvailable {
+    NSError *error = [MIAPXInappLogger errorWithType:kAPXErrorTypeOptionNotAvailable];
+    [self assertError:error domain:@"APX_GeneralError" info:@"Option is not available, please contact support." code:kAPXErrorTypeOptionNotAvailable];
+}
+
+- (void)testErrorWithType_GeneralError {
+    NSError *error = [MIAPXInappLogger errorWithType:kAPXErrorTypeGeneralError];
+    [self assertError:error domain:@"APX_GeneralError" info:@"General Error" code:kAPXErrorTypeGeneralError];
+}
+
+- (void)testErrorWithType_SilentPush {
+    NSError *error = [MIAPXInappLogger errorWithType:kAPXErrorTypeSilentPush];
+    [self assertError:error domain:@"APX_PushSender" info:@"Push did not originate from Appoxee. Aborting actions." code:kAPXErrorTypeSilentPush];
+}
+
+- (void)testErrorWithType_DMC {
+    NSError *error = [MIAPXInappLogger errorWithType:kAPXErrorTypeDMC];
+    [self assertError:error domain:@"APX_DMCError" info:@"Error while polling user." code:kAPXErrorTypeDMC];
+}
+
+- (void)testErrorWithType_DMCUserDoesntExist {
+    NSError *error = [MIAPXInappLogger errorWithType:kAPXErrorTypeDMCUserDoesntExist];
+    [self assertError:error domain:@"APX_DMCError" info:@"User doesnt exists." code:kAPXErrorTypeDMCUserDoesntExist];
+}
 
 @end
-

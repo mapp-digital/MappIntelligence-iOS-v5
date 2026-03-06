@@ -86,4 +86,14 @@
     XCTAssertEqual(queryItems.count, 0);  // No parameters, no query items
 }
 
+- (void)testAsQueryItemsWithNullParametersFromDictionary {
+    NSDictionary *dictionary = @{key_parameters: [NSNull null]};
+    MIEventParameters *eventParams = [[MIEventParameters alloc] initWithDictionary:dictionary];
+
+    NSMutableArray<NSURLQueryItem *> *queryItems = nil;
+    XCTAssertNoThrow(queryItems = [eventParams asQueryItems]);
+    XCTAssertNotNil(queryItems);
+    XCTAssertEqual(queryItems.count, 0);
+}
+
 @end

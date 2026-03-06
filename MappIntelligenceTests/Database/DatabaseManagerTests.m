@@ -9,6 +9,7 @@
 #import <XCTest/XCTest.h>
 #import "MIDatabaseManager.h"
 #import "MIRequestData.h"
+#import <sqlite3.h>
 
 @interface DatabaseManagerTests : XCTestCase
 
@@ -131,7 +132,52 @@
 }
 
 - (void)testRemoveOldRequestsWithCompletitionHandler {
-    //TODO: think about how to simulate 14 days old requests
+    XCTestExpectation* expectation = [[XCTestExpectation alloc] initWithDescription:@"Remove old requests"];
+
+    NSURLQueryItem* item1 = [[NSURLQueryItem alloc] initWithName:@"parameterOldName" value:@"parameterOldValue"];
+    NSArray* array = [NSArray arrayWithObjects:item1, nil];
+    MIDBRequest* request = [[MIDBRequest alloc] initWithParamters:array andDomain:@"https://q3.webtrekk.net" andTrackIds:@"385255285199574"];
+
+    [_dbManager deleteAllRequest];
+    [_dbManager insertRequest:request];
+    usleep(1000000);
+
+    [_dbManager fetchAllRequestsFromInterval:15*100 andWithCompletionHandler:^(NSError * _Nonnull error, id  _Nullable data) {
+        MIRequestData* dt = (MIRequestData*)data;
+        if (dt.requests.count == 0) {
+            XCTFail(@"No requests inserted for cleanup test");
+            [expectation fulfill];
+            return;
+        }
+
+        MIDBRequest *first = dt.requests.firstObject;
+        NSNumber *requestId = first.uniqueId;
+        NSString *dbPath = [self->_dbManager valueForKey:@"databasePath"];
+
+        sqlite3 *dbHandler;
+        if (sqlite3_open_v2([dbPath UTF8String], &dbHandler, SQLITE_OPEN_READWRITE | SQLITE_OPEN_FULLMUTEX, NULL) == SQLITE_OK) {
+            NSString *updateSQL = [NSString stringWithFormat:@"UPDATE REQUESTS_TABLE SET DATE='2000-01-01' WHERE ID=%@", requestId];
+            sqlite3_exec(dbHandler, [updateSQL UTF8String], NULL, NULL, NULL);
+        }
+        sqlite3_close(dbHandler);
+
+        [self->_dbManager removeOldRequestsWithCompletitionHandler:^(NSError * _Nonnull error, id  _Nullable data) {
+            [self->_dbManager fetchAllRequestsFromInterval:15*100 andWithCompletionHandler:^(NSError * _Nonnull error, id  _Nullable data) {
+                MIRequestData* dt = (MIRequestData*)data;
+                BOOL hasOld = NO;
+                for (MIDBRequest* r in dt.requests) {
+                    if ([r.uniqueId isEqualToNumber:requestId]) {
+                        hasOld = YES;
+                        break;
+                    }
+                }
+                XCTAssertFalse(hasOld);
+                [expectation fulfill];
+            }];
+        }];
+    }];
+
+    [self waitForExpectations:[NSArray arrayWithObject:expectation] timeout:10];
 }
 
 - (void)testRemoveRequestsDB {

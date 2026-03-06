@@ -304,9 +304,11 @@
 
 - (NSDictionary<NSNumber* ,NSString*> *) filterCustomDict: (NSDictionary<NSNumber* ,NSString*> *) dict{
     NSMutableDictionary *result = [[NSMutableDictionary alloc] init];
-    for (NSNumber *idx in dict) {
-        if (idx.intValue > 0) {
-            [result setObject:dict[idx] forKey:idx];
+    if(![dict isKindOfClass: [NSNull class]]) {
+        for (NSNumber *idx in dict) {
+            if (idx.intValue > 0) {
+                [result setObject:dict[idx] forKey:idx];
+            }
         }
     }
     return result;
@@ -370,6 +372,36 @@
     XCTAssertEqualObjects(statusItem.value, @"add", @"Status should be 'add' for 'addedToBasket'");
 }
 
+- (void)testStatusMappingFromDictionaryDefaultsToViewed {
+    NSDictionary *dict = @{
+        key_status: @99
+    };
+
+    MIEcommerceParameters *ecommerceParams = [[MIEcommerceParameters alloc] initWithDictionary:dict];
+
+    XCTAssertEqual(ecommerceParams.status, viewed);
+}
+
+- (void)testStatusMappingForNoneStatus {
+    NSDictionary *dict = @{
+        key_status: @0
+    };
+
+    MIEcommerceParameters *ecommerceParams = [[MIEcommerceParameters alloc] initWithDictionary:dict];
+
+    XCTAssertEqual(ecommerceParams.status, noneStatus);
+}
+
+- (void)testAsQueryItemsWithWishlistStatus {
+    MIEcommerceParameters *ecommerceParams = [[MIEcommerceParameters alloc] init];
+    [ecommerceParams setStatus:addedToWishlist];
+
+    NSMutableArray<NSURLQueryItem*> *queryItems = [ecommerceParams asQueryItems];
+    NSURLQueryItem *statusItem = [self getQueryItemWithName:@"st" fromItems:queryItems];
+
+    XCTAssertEqualObjects(statusItem.value, @"add-wl");
+}
+
 - (void)testAsQueryItemsWithBasicData {
     NSDictionary *dict = @{
         key_currency: @"USD",
@@ -419,6 +451,23 @@
     
     NSURLQueryItem *productQuantityItem = [self getQueryItemWithName:@"qn" fromItems:queryItems];
     XCTAssertEqualObjects(productQuantityItem.value, @"1", @"Product quantity should be '1'");
+}
+
+- (void)testAsQueryItemsWithNullCustomParametersFromDictionary {
+    NSDictionary *dict = @{
+        key_currency: @"USD",
+        key_order_id: @"12345",
+        key_order_value: @100.99,
+        key_status: @2,
+        key_custom_parameters: [NSNull null]
+    };
+
+    MIEcommerceParameters *ecommerceParams = [[MIEcommerceParameters alloc] initWithDictionary:dict];
+    NSMutableArray<NSURLQueryItem*> *queryItems = nil;
+
+    XCTAssertNoThrow(queryItems = [ecommerceParams asQueryItems]);
+    XCTAssertNotNil(queryItems);
+    XCTAssertEqual(queryItems.count, 4);
 }
 
 #pragma mark - Helper Methods

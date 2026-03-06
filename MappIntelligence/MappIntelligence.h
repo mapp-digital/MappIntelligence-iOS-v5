@@ -84,6 +84,13 @@ typedef NS_ENUM(NSInteger, exceptionType) {
 */
 - (NSError *_Nullable)trackPageWithViewController:(UIViewController *_Nonnull)controller pageViewEvent:(MIPageViewEvent*_Nullable) event;
 
+/**
+@brief Method which will track page by name
+@param name - page name
+@return the error which may happen through process of tracking, if returns nil there is no error.
+*/
+- (NSError *_Nullable)trackPageWith:(NSString *_Nonnull)name;
+
 
 /**
 @brief Method which will track page event

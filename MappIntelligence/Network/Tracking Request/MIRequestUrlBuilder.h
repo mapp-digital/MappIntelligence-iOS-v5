@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MIRequestUrlBuilder : NSObject
 
-@property MIDBRequest *dbRequest;
+@property (nonatomic, strong) MIDBRequest *dbRequest;
 
 -(instancetype)initWithUrl: (NSURL*) serverUrl andWithId: (NSString*) mappIntelligenceId;
 -(NSURL *)urlForRequest:(MITrackerRequest *)request withCustomData: (BOOL) custom;

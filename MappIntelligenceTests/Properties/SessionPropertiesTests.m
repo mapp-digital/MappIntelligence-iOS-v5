@@ -58,4 +58,13 @@
      XCTAssertTrue([expectedItems isEqualToArray:result], @"The expected query is not the same as ones from result!");
 }
 
+- (void)testAsQueryItemsWithNullParametersFromDictionary {
+    MISessionParameters *sessionParameter = [[MISessionParameters alloc] initWithDictionary:@{key_parameters: [NSNull null]}];
+    NSMutableArray<NSURLQueryItem *> *queryItems = nil;
+
+    XCTAssertNoThrow(queryItems = [sessionParameter asQueryItems]);
+    XCTAssertNotNil(queryItems);
+    XCTAssertEqual(queryItems.count, 0);
+}
+
 @end

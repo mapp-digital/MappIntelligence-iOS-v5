@@ -182,9 +182,11 @@
 
 - (NSDictionary<NSNumber* ,NSString*> *) filterCustomDict: (NSDictionary<NSNumber* ,NSString*> *) dict{
     NSMutableDictionary *result = [[NSMutableDictionary alloc] init];
-    for (NSNumber *idx in dict) {
-        if (idx.intValue > 0) {
-            [result setObject:dict[idx] forKey:idx];
+    if(![dict isKindOfClass: [NSNull class]]) {
+        for (NSNumber *idx in dict) {
+            if (idx.intValue > 0) {
+                [result setObject:dict[idx] forKey:idx];
+            }
         }
     }
     return result;

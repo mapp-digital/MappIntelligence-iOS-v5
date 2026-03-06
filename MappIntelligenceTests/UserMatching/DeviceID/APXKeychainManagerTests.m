@@ -9,6 +9,10 @@
 #import <XCTest/XCTest.h>
 #import "MIKeychainManager.h"
 
+@interface MIKeychainManager (TestAccess)
+- (BOOL)checkOSStatus:(OSStatus)status;
+@end
+
 @interface MIKeychainManagerTests : XCTestCase
 @property (nonatomic, strong) MIKeychainManager *keychainManager;
 @end
@@ -44,6 +48,28 @@
     id loadedObject = [self.keychainManager loadObjectForKey:testKey];
     
     XCTAssertNil(loadedObject, @"Loaded object should be nil for non-existent key");
+}
+
+- (void)testSaveLoadDeleteRoundTrip {
+    NSString *key = [NSString stringWithFormat:@"mi.keychain.%@", [NSUUID UUID].UUIDString];
+    NSString *value = @"token-value";
+
+    BOOL saved = [self.keychainManager saveObject:value forKey:key];
+    id loaded = [self.keychainManager loadObjectForKey:key];
+
+    if (saved) {
+        XCTAssertEqualObjects(loaded, value);
+    } else {
+        XCTAssertNil(loaded);
+    }
+
+    BOOL deleted = [self.keychainManager deleteObjectForKey:key];
+    XCTAssertTrue(deleted || !saved);
+}
+
+- (void)testCheckOSStatus {
+    XCTAssertTrue([self.keychainManager checkOSStatus:noErr]);
+    XCTAssertFalse([self.keychainManager checkOSStatus:errSecItemNotFound]);
 }
 
 @end

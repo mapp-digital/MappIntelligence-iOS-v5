@@ -13,6 +13,9 @@
 #import "MappIntelligence.h"
 #import "MappIntelligenceLogger.h"
 #import "MIDatabaseManager.h"
+#import "MITrackerRequest.h"
+#import "MITestURLProtocol.h"
+#import "MIConfiguration.h"
 
 @interface MIDefaultTrackerTests : XCTestCase
 
@@ -20,6 +23,11 @@
 @property (nonatomic, strong) MappIntelligenceLogger *mockLogger;
 @property (nonatomic, strong) MIDatabaseManager *mockDatabaseManager;
 
+@end
+
+@interface MappIntelligence (MIDefaultTrackerTestAccess)
+- (void)setEnableBackgroundSendout:(BOOL)enableBackgroundSendout;
+- (void)setEnableUserMatching:(BOOL)enableUserMatching;
 @end
 
 @implementation MIDefaultTrackerTests
@@ -40,6 +48,13 @@
     NSNumber *number = [NSNumber numberWithLong:[[dict valueForKey:@"track_ids"] longValue]];
     NSArray* array = @[number];
     [[MappIntelligence shared] initWithConfiguration: array  onTrackdomain:[dict valueForKey:@"domain"]];
+
+    [MITestURLProtocol stubWithStatusCode:200 data:[NSData data] error:nil];
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration ephemeralSessionConfiguration];
+    configuration.protocolClasses = @[ [MITestURLProtocol class] ];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration];
+    [[MITrackerRequest shared] setValue:session forKey:@"urlSession"];
+
     self.mockLogger = [MappIntelligenceLogger shared]; // Assuming this is a singleton
     self.mockDatabaseManager = [MIDatabaseManager shared];
     
@@ -214,6 +229,19 @@
     XCTAssertNil(error);
 }
 
+- (void)testBackgroundSendoutAndUserMatchingFlags {
+    [[MappIntelligence shared] initWithConfiguration:@[@1234] onTrackdomain:@"https://test.com"];
+
+    [[MappIntelligence shared] setEnableBackgroundSendout:YES];
+    XCTAssertTrue([self.tracker isBackgroundSendoutEnabled]);
+
+    [[MappIntelligence shared] setEnableUserMatching:YES];
+    XCTAssertTrue([self.tracker isUserMatchingEnabled]);
+
+    [[MappIntelligence shared] setEnableBackgroundSendout:NO];
+    [[MappIntelligence shared] setEnableUserMatching:NO];
+}
+
 - (void)testSetAnonymousTracking {
     [self.tracker setAnonymousTracking:YES];
     XCTAssertTrue(self.tracker.anonymousTracking);
@@ -245,5 +273,74 @@
     XCTAssertNil(errorReceived); // Check if no error occurred during sending
 }
 
+- (void)testTemporarySessionIdIsNotSetWhenAnonymousTrackingIsDisabled {
+    [[MappIntelligence shared] setAnonymousTracking:NO];
+    [[MappIntelligence shared] setTemporarySessionId:@"test123"];
+
+    XCTAssertNil(self.tracker.temporaryID, @"Temporary session ID must stay nil when anonymous tracking is disabled.");
+}
+
+- (void)testTemporarySessionIdIsSetWhenAnonymousTrackingIsEnabled {
+    [[MappIntelligence shared] setAnonymousTracking:YES];
+    [[MappIntelligence shared] setTemporarySessionId:@"test123"];
+
+    XCTAssertEqualObjects(self.tracker.temporaryID, @"test123", @"Temporary session ID should be persisted only while anonymous tracking is enabled.");
+}
+
+- (void)testTemporarySessionIdIsClearedWhenAnonymousTrackingTurnsOff {
+    [[MappIntelligence shared] setAnonymousTracking:YES];
+    [[MappIntelligence shared] setTemporarySessionId:@"test123"];
+    [[MappIntelligence shared] setAnonymousTracking:NO];
+
+    XCTAssertNil(self.tracker.temporaryID, @"Temporary session ID should be cleared once anonymous tracking is disabled.");
+}
+
+- (void)testGenerateEverIdReturnsEmptyWhenAnonymousTrackingEnabled {
+    [self.tracker setAnonymousTracking:YES];
+
+    NSString *everId = [self.tracker generateEverId];
+
+    XCTAssertEqualObjects(everId, @"");
+    [self.tracker setAnonymousTracking:NO];
+}
+
+- (void)testGenerateEverIdUsesStoredValue {
+    NSString *storedEverId = @"6123456789012345678";
+    [[MIDefaultTracker sharedDefaults] setValue:storedEverId forKey:@"everId"];
+
+    NSString *everId = [self.tracker generateEverId];
+
+    XCTAssertEqualObjects(everId, storedEverId);
+}
+
+- (void)testSetAnonymousTrackingClearsStoredEverId {
+    [[MIDefaultTracker sharedDefaults] setValue:@"6123456789012345678" forKey:@"everId"];
+
+    [self.tracker setAnonymousTracking:YES];
+
+    XCTAssertNil([[MIDefaultTracker sharedDefaults] stringForKey:@"everId"]);
+    [self.tracker setAnonymousTracking:NO];
+}
+
+- (void)testSetEverIDFromStringNoopWhenAnonymousTrackingEnabled {
+    [self.tracker setAnonymousTracking:YES];
+    [[MIDefaultTracker sharedDefaults] setValue:@"old" forKey:@"everId"];
+
+    [self.tracker setEverIDFromString:@"new"];
+
+    XCTAssertEqualObjects([[MIDefaultTracker sharedDefaults] stringForKey:@"everId"], @"old");
+    [self.tracker setAnonymousTracking:NO];
+}
+
+- (void)testTrackWithReturnsErrorWhenNotConfigured {
+    MIConfiguration *config = [[MIConfiguration alloc] init];
+    config.MappIntelligenceId = @"";
+    config.serverUrl = [NSURL URLWithString:@"https://example.com"];
+    [self.tracker setValue:config forKey:@"config"];
+
+    NSError *error = [self.tracker trackWith:@"test"];
+
+    XCTAssertNotNil(error);
+}
 
 @end

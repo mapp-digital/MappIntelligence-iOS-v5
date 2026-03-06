@@ -36,6 +36,16 @@
     return shared;
 }
 
+- (NSURLSession *)sessionForRequest {
+    Class testProtocolClass = NSClassFromString(@"MITestURLProtocol");
+    if (testProtocolClass && [testProtocolClass isSubclassOfClass:[NSURLProtocol class]]) {
+        NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration ephemeralSessionConfiguration];
+        configuration.protocolClasses = @[ testProtocolClass ];
+        return [NSURLSession sessionWithConfiguration:configuration];
+    }
+    return [NSURLSession sharedSession];
+}
+
 - (void)performNetworkOperation:(NetworkManagerOperationType)operation withData:(NSData *)dataArg andCompletionBlock:(APXNetworkManagerCompletionBlock)completionBlock
 {
     if (dataArg) {
@@ -49,7 +59,7 @@
         NSLog(@"Headers: %@", [request allHTTPHeaderFields]);
         NSLog(@"Body: %@", [[NSString alloc] initWithData:[request HTTPBody] encoding:NSUTF8StringEncoding]);
         
-        NSURLSession *session = [NSURLSession sharedSession];
+        NSURLSession *session = [self sessionForRequest];
         
         NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
             

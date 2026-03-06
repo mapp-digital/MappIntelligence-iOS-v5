@@ -14,6 +14,11 @@
 #define key_last_focus @"mi_last_focus"
 #define key_anonymus @"mi_anonymus"
 
+static void MIUncaughtExceptionHandler(NSException *exception) {
+    NSLog(@"Uncaught exception: %@ %@", exception.name, exception.reason);
+    NSLog(@"Call stack: %@", exception.callStackSymbols);
+}
+
 @interface MIFormFieldParameterTests : XCTestCase
 
 @end
@@ -22,6 +27,10 @@
 
 - (void)setUp {
     // Put setup code here. This method is called before the invocation of each test method in the class.
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        NSSetUncaughtExceptionHandler(&MIUncaughtExceptionHandler);
+    });
 }
 
 - (void)tearDown {

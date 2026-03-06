@@ -21,7 +21,12 @@
 #import "MIRequestData.h"
 #import "MIRequestBatchSupportUrlBuilder.h"
 
-
+#ifdef DEBUG
+// Test-only hook to override database manager singleton
+@interface MIDatabaseManager (TestHook)
++ (void)setShared:(MIDatabaseManager *)manager;
+@end
+#endif
 
 #import <objc/runtime.h>
 
@@ -115,6 +120,10 @@ static NSString *userAgent;
     shared = [[MIDefaultTracker alloc] init];
   });
   return shared;
+}
+
++ (BOOL)isAnonymousTrackingEnabled {
+  return [[MIDefaultTracker sharedDefaults] boolForKey:anonymous];
 }
 
 - (instancetype)init {
@@ -508,3 +517,37 @@ static NSString *userAgent;
 }
 
 @end
+#ifdef DEBUG
+#import "MIDatabaseManager.h"
+
+static MIDatabaseManager *_mi_test_shared_db_manager = nil;
+
+@interface MIDatabaseManager (TestHookPrivate)
++ (MIDatabaseManager *)shared;
+@end
+
+@implementation MIDatabaseManager (TestHook)
++ (void)setShared:(MIDatabaseManager *)manager {
+    _mi_test_shared_db_manager = manager;
+}
+@end
+
+// Swizzle +shared to return the test instance when set.
+__attribute__((constructor)) static void mi_override_dbmanager_shared(void) {
+    Class cls = object_getClass([MIDatabaseManager class]);
+    SEL originalSel = @selector(shared);
+    Method originalMethod = class_getClassMethod(cls, originalSel);
+    if (!originalMethod) { return; }
+
+    IMP originalIMP = method_getImplementation(originalMethod);
+    IMP newIMP = imp_implementationWithBlock(^id(id _self){
+        if (_mi_test_shared_db_manager) {
+            return _mi_test_shared_db_manager;
+        }
+        typedef id (*Fn)(id, SEL);
+        return ((Fn)originalIMP)(_self, originalSel);
+    });
+    method_setImplementation(originalMethod, newIMP);
+}
+#endif
+

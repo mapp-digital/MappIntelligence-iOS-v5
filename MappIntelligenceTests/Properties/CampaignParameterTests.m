@@ -168,4 +168,21 @@
     XCTAssertTrue([params1 isEqual:params2]);
 }
 
+- (void)testAsQueryItemsWithNullCustomParameters {
+    NSDictionary *dict = @{
+        @"campaignId": @"testCampaign",
+        @"action": @1,
+        @"mediaCode": @"testMediaCode",
+        @"oncePerSession": @YES,
+        @"customParameters": [NSNull null]
+    };
+
+    MICampaignParameters *params = [[MICampaignParameters alloc] initWithDictionary:dict];
+    NSMutableArray<NSURLQueryItem *> *queryItems = nil;
+
+    XCTAssertNoThrow(queryItems = [params asQueryItems]);
+    XCTAssertNotNil(queryItems);
+    XCTAssertEqual(queryItems.count, 2);
+}
+
 @end

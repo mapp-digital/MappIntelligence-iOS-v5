@@ -9,7 +9,17 @@
     }
   ],
   "defaultOptions" : {
-
+    "codeCoverage" : {
+      "enabled" : true,
+      "onlyGenerateCoverageForSpecifiedTargets" : true,
+      "targets" : [
+        {
+          "containerPath" : "container:MappIntelligenceSDK.xcodeproj",
+          "identifier" : "A334861723BF3E2300D0EB5F",
+          "name" : "MappIntelligenceSDK"
+        }
+      ]
+    }
   },
   "testTargets" : [
     {
