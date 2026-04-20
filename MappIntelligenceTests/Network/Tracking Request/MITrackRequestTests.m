@@ -80,7 +80,7 @@ static id MITrackerRequestTestApplicationInstance = nil;
 }
 
 - (void)testSendRequestWith {
-    NSURL *url = [[NSURL alloc] initWithString:@"https://q3.webtrekk.net/385255285199574/wt?p=500,MappIntelligenceDemoApp.ViewController,0,1125x2436,32,0,1586272855006,0,0,0&eid=6158627047292181549&fns=1&one=0&X-WT-UA=Tracking%20Library%205.1.0%20(iOS%20Version%2013.3%20(Build%2017C45);%20iPhone;%20en_US))&X-WT-IP=192.168.1.3&la=en&eor=1"];
+    NSURL *url = [[NSURL alloc] initWithString:@"https://q3.webtrekk.net/385255285199574/wt?p=500,MappIntelligenceDemoApp.ViewController,0,1125x2436,32,0,1586272855006,0,0,0&eid=6158627047292181549&fns=1&one=0&X-WT-UA=Tracking%20Library%205.1.1%20(iOS%20Version%2013.3%20(Build%2017C45);%20iPhone;%20en_US))&X-WT-IP=192.168.1.3&la=en&eor=1"];
     XCTestExpectation *expectation = [self expectationWithDescription:@"Request should complete"];
 
     [_request sendRequestWith:url andCompletition:^(NSError * _Nonnull error) {
@@ -153,7 +153,7 @@ static id MITrackerRequestTestApplicationInstance = nil;
 
 - (void)testSendRequestWithBody {
     NSURL *url = [NSURL URLWithString:@"http://tracker-int-01.webtrekk.net/794940687426749/batch?eid=6173676774907917685&X-WT-UA=Tracking%20Library%205.q.0%20%28iOS%2018.0%3B%20iPhone%3B%20en_RS%29%29"];
-    NSString *body = @"wt?p=500,MappIntelligenceDemoApp.PageViewController,0,750x1334,32,0,1736797465512,0,0,0&fns=1&one=0&cs801=5.1.0&cs802=iOS&pf=71&la=en&cs804=1.0&cs805=3&cs821=0&eor=1";
+    NSString *body = @"wt?p=500,MappIntelligenceDemoApp.PageViewController,0,750x1334,32,0,1736797465512,0,0,0&fns=1&one=0&cs801=5.1.1&cs802=iOS&pf=71&la=en&cs804=1.0&cs805=3&cs821=0&eor=1";
     
     _expectationSecond = [self expectationWithDescription:@"Request should complete"];
     
@@ -165,7 +165,7 @@ static id MITrackerRequestTestApplicationInstance = nil;
 }
 
 - (void)testSendRequestWithCompletion {
-    NSURL *url = [NSURL URLWithString:@"http://tracker-int-01.webtrekk.net/794940687426749/batch?eid=6173676774907917685&X-WT-UA=Tracking%20Library%205.1.0%20%28iOS%2018.0%3B%20iPhone%3B%20en_RS%29%29"];
+    NSURL *url = [NSURL URLWithString:@"http://tracker-int-01.webtrekk.net/794940687426749/batch?eid=6173676774907917685&X-WT-UA=Tracking%20Library%205.1.1%20%28iOS%2018.0%3B%20iPhone%3B%20en_RS%29%29"];
     
     _expectationFirst = [self expectationWithDescription:@"Request should complete"];
     
