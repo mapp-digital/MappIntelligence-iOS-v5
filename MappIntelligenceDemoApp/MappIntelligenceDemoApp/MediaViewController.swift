@@ -14,6 +14,12 @@ class MediaViewController: UIViewController {
     @IBOutlet weak var positionTextfield: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Episodes", style: .plain, target: self, action: #selector(showEpisodeList))
+    }
+
+    @objc private func showEpisodeList() {
+        let viewController = EpisodeListViewController()
+        navigationController?.pushViewController(viewController, animated: true)
     }
 
     @IBAction func trackMedia1(_ sender: Any) {

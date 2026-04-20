@@ -8,12 +8,8 @@
 
 #import "MIMediaTracker.h"
 
-
 @interface MIMediaTracker ()
-@property (nonatomic, strong) NSDate *lastTrackedTime;
-@property (nonatomic, strong) NSDate *lastTrackedTimeLiveStream;
-@property MIMediaEvent *lastTrackedEvent;
-@property NSString *lastAction;
+@property (nonatomic, strong) NSMutableDictionary<NSString *, NSDate *> *lastTrackedTimeByKey;
 @end
 
 @implementation MIMediaTracker
@@ -24,35 +20,28 @@
   static dispatch_once_t onceToken;
   dispatch_once(&onceToken, ^{
     shared = [[MIMediaTracker alloc] init];
+    shared.lastTrackedTimeByKey = [[NSMutableDictionary alloc] init];
   });
   return shared;
 }
 
 -(BOOL) shouldTrack: (MIMediaEvent *) event {
-    
+
     NSDate *now = [[NSDate alloc] init];
-    //check if media tracked is live stream
-    if (event.mediaParameters.duration == 0) {
-        if(_lastTrackedTimeLiveStream) {
-            NSTimeInterval allowedInterval = 60;
-            NSTimeInterval elapsed = [now timeIntervalSinceDate: _lastTrackedTimeLiveStream];
-            if (elapsed < allowedInterval && [_lastAction isEqualToString:event.mediaParameters.action]) {
-                return NO;
-            }
+    NSTimeInterval allowedInterval = event.mediaParameters.duration == 0 ? 60 : 3;
+    NSString *mediaName = event.mediaParameters.name ?: @"";
+    NSString *action = event.mediaParameters.action ?: @"";
+    NSString *key = [NSString stringWithFormat:@"%@|%@", mediaName, action];
+
+    NSDate *lastTrackedTime = self.lastTrackedTimeByKey[key];
+    if (lastTrackedTime) {
+        NSTimeInterval elapsed = [now timeIntervalSinceDate:lastTrackedTime];
+        if (elapsed < allowedInterval) {
+            return NO;
         }
-        _lastAction = event.mediaParameters.action;
-        _lastTrackedTimeLiveStream = now;
-    } else {
-        if(_lastTrackedTime) {
-            NSTimeInterval allowedInterval = 3;
-            NSTimeInterval elapsed = [now timeIntervalSinceDate: _lastTrackedTime];
-            if (elapsed < allowedInterval && [_lastAction isEqualToString:event.mediaParameters.action]) {
-                return NO;
-            }
-        }
-        _lastAction = event.mediaParameters.action;
-        _lastTrackedTime = now;
     }
+
+    self.lastTrackedTimeByKey[key] = now;
     return YES;
 }
 

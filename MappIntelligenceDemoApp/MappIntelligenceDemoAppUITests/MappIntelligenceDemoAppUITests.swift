@@ -1,3 +1,4 @@
+import Foundation
 import XCTest
 
 final class MappIntelligenceDemoAppUITests: XCTestCase {
@@ -46,6 +47,27 @@ final class MappIntelligenceDemoAppUITests: XCTestCase {
         XCTAssertTrue(app.buttons["Track Page"].exists)
         XCTAssertTrue(app.buttons["Track Custom Page"].exists)
         XCTAssertTrue(app.buttons["Track Page with custom data"].exists)
+    }
+
+    func testWebViewRapidScrollReproducesMissingInitScenario() {
+        let app = XCUIApplication()
+        // Set WEBVIEW_URL in the scheme to target the customer page with multiple episodes.
+        let targetURL = ProcessInfo.processInfo.environment["WEBVIEW_URL"] ?? "http://demoshop.webtrekk.com/web2app/index.html"
+        app.launchArguments = ["-WebViewURL", targetURL]
+        app.launchEnvironment["WEBVIEW_URL"] = targetURL
+        app.launch()
+        dismissSystemPromptsIfNeeded()
+
+        app.staticTexts["WebView"].tap()
+        XCTAssertTrue(app.navigationBars["WebView"].waitForExistence(timeout: 5))
+
+        let webView = app.webViews["TrackingWebView"]
+        XCTAssertTrue(webView.waitForExistence(timeout: 15))
+
+        for _ in 0..<6 {
+            webView.swipeUp()
+            RunLoop.current.run(until: Date(timeIntervalSinceNow: 0.2))
+        }
     }
 
     private func dismissSystemPromptsIfNeeded() {

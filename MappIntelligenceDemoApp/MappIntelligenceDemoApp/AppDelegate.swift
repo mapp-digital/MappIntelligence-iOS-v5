@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        //Appoxee.shared()?.engageAndAutoIntegrate(launchOptions: launchOptions, andDelegate: nil, with: .L3)
+        Appoxee.shared()?.engageAndAutoIntegrate(launchOptions: launchOptions, andDelegate: nil, with: .L3)
         let bundles = Bundle.allBundles
         var path = ""
         for bundle in bundles {
@@ -41,13 +41,15 @@ var window: UIWindow?
         MappIntelligence.shared()?.shouldMigrate = true
         MappIntelligence.shared()?.sendAppVersionInEveryRequest = true
         MappIntelligence.shared()?.enableBackgroundSendout = true
+        MappIntelligence.shared()?.enableUserMatching = true
         //MappIntelligence.shared()?.enableUserMatching = true
         //MappIntelligence.shared()?.setTemporarySessionId("user-xyz-123456789")
         //MappIntelligence.shared()?.setTemporarySessionId("test123")
         MappIntelligence.shared()?.enableCrashTracking(.allExceptionTypes)
         // Override point for customization after application launch.
         
-//        MappIntelligence.shared()?.anonymousTracking = true
+        MappIntelligence.shared()?.enableAnonymousTracking(["cd", "cp17"])
+        MappIntelligence.shared()?.setTemporarySessionId("user-xyz-123456789")
 //        MappIntelligence.shared()?.initWithConfiguration([794940687426749], onTrackdomain: "https://tracker-int-01.webtrekk.net")
 //        MappIntelligence.shared()?.logLevel = .all
 //        MappIntelligence.shared()?.setTemporarySessionId("user-xyz-123456789")
@@ -109,4 +111,3 @@ var window: UIWindow?
     }
     
 }
-

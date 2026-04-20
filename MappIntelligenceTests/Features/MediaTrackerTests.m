@@ -20,6 +20,7 @@
 - (void)setUp {
     [super setUp];
     self.tracker = [MIMediaTracker sharedInstance];
+    [self.tracker setValue:[[NSMutableDictionary alloc] init] forKey:@"lastTrackedTimeByKey"];
 }
 
 - (void)tearDown {
@@ -67,6 +68,16 @@
     XCTAssertTrue(shouldTrack, @"The live stream event with a different action should be tracked even within the allowed interval");
 }
 
+- (void)testShouldTrack_LiveStream_SameActionDifferentMediaWithinAllowedInterval {
+    // Create two live stream events with the same action but different media names
+    MIMediaEvent *liveStreamEvent1 = [self createEventWithDuration:0 action:@"play" name:@"Episode-1"];
+    MIMediaEvent *liveStreamEvent2 = [self createEventWithDuration:0 action:@"play" name:@"Episode-2"];
+    
+    [self.tracker shouldTrack:liveStreamEvent1];
+    BOOL shouldTrack = [self.tracker shouldTrack:liveStreamEvent2];
+    XCTAssertTrue(shouldTrack, @"Live stream events for different media names should be tracked even with the same action");
+}
+
 - (void)testShouldTrack_NonLiveStream_FirstEvent {
     // Create a non-live stream event (duration > 0)
     MIMediaEvent *nonLiveStreamEvent = [self createEventWithDuration:@100 action:@"play"];
@@ -101,11 +112,24 @@
     XCTAssertTrue(shouldTrack, @"The non-live stream event with a different action should be tracked even within the allowed interval");
 }
 
+- (void)testShouldTrack_NonLiveStream_SameActionDifferentMediaWithinAllowedInterval {
+    // Create two non-live stream events with the same action but different media names
+    MIMediaEvent *nonLiveStreamEvent1 = [self createEventWithDuration:@100 action:@"play" name:@"Episode-1"];
+    MIMediaEvent *nonLiveStreamEvent2 = [self createEventWithDuration:@100 action:@"play" name:@"Episode-2"];
+    
+    [self.tracker shouldTrack:nonLiveStreamEvent1];
+    BOOL shouldTrack = [self.tracker shouldTrack:nonLiveStreamEvent2];
+    XCTAssertTrue(shouldTrack, @"Non-live stream events for different media names should be tracked even with the same action");
+}
+
 #pragma mark - Helper Methods
 
 - (MIMediaEvent *)createEventWithDuration:(NSNumber *)duration action:(NSString *)action {
-    
-    MIMediaParameters *params = [[MIMediaParameters alloc] initWith:@"TestMediaParamterName" action:action position:@1.0 duration:duration];
+    return [self createEventWithDuration:duration action:action name:@"TestMediaParamterName"];
+}
+
+- (MIMediaEvent *)createEventWithDuration:(NSNumber *)duration action:(NSString *)action name:(NSString *)name {
+    MIMediaParameters *params = [[MIMediaParameters alloc] initWith:name action:action position:@1.0 duration:duration];
     MIMediaEvent *event = [[MIMediaEvent alloc] initWithPageName:@"TestMediaName" parameters:params];
     return event;
 }

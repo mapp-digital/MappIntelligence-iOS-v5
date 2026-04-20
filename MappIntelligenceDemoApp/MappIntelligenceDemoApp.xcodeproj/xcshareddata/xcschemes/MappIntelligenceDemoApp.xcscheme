@@ -39,6 +39,17 @@
                ReferencedContainer = "container:MappIntelligenceDemoApp.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A3967D222F90DF6100E6EAB1"
+               BuildableName = "MappIntelligenceDemoAppTests.xctest"
+               BlueprintName = "MappIntelligenceDemoAppTests"
+               ReferencedContainer = "container:MappIntelligenceDemoApp.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
